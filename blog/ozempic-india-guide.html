@@ -149,12 +149,119 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .byline-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--gold-glow);border:1px solid var(--gold-border);border-radius:20px;font-size:11px;font-weight:600;color:var(--gold)}
 .byline-badge i{font-size:12px}
 
-.quick-answer{padding:24px;background:var(--bg2);border-left:4px solid var(--gold);border-radius:8px;margin-bottom:32px}
-.quick-answer-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
-.quick-answer-content{font-size:14px;color:var(--text);line-height:1.6}
-.quick-answer-list{list-style:none;margin:12px 0 0 0;padding:0}
-.quick-answer-list li{padding:8px 0;display:flex;gap:10px}
-.quick-answer-list li::before{content:'◆';color:var(--gold);font-size:8px;line-height:1.7;flex-shrink:0}
+.article-body{padding:24px 24px}
+.article-body-inner{max-width:720px;margin:0 auto}
+.article-body p{font-size:16px;color:var(--text);line-height:1.7;margin-bottom:24px}
+.article-body h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.2;color:var(--text);margin:32px 0 12px 0;letter-spacing:.02em}
+.article-body h3{font-family:var(--sans);font-size:18px;font-weight:600;color:var(--text);margin:28px 0 12px 0;letter-spacing:.01em}
+.article-body h2 em,.article-body h3 em{color:var(--gold);font-style:italic}
+.article-body strong{color:var(--text);font-weight:600}
+.article-body ul,.article-body ol{margin:16px 0 24px 0;padding-left:24px;font-size:16px;color:var(--text);line-height:1.7}
+.article-body li{margin-bottom:8px}
+.article-body blockquote{padding:20px;background:var(--bg2);border-left:4px solid var(--gold);margin:28px 0;font-size:15px;font-style:italic;color:var(--text);line-height:1.7}
+.article-body a{color:var(--gold);font-weight:500;transition:color .2s}
+.article-body a:hover{color:var(--dark)}
+
+.cta-card{background:linear-gradient(135deg,rgba(184,146,46,0.08),rgba(184,146,46,0.03));border:1.5px solid var(--gold-border);border-radius:16px;padding:24px;margin:40px 0;display:flex;gap:16px;align-items:center;transition:all .3s var(--ease);text-decoration:none;color:inherit}
+.cta-card:hover{border-color:var(--gold);box-shadow:0 8px 24px rgba(184,146,46,0.12)}
+.cta-card-icon{width:44px;height:44px;background:var(--gold);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;flex-shrink:0}
+.cta-card-body{flex:1}
+.cta-card-label{font-size:12px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px}
+.cta-card-text{font-size:14px;color:var(--text);font-weight:500}
+.cta-card-arrow{color:var(--gold);font-size:18px;transition:transform .3s var(--ease)}
+.cta-card:hover .cta-card-arrow{transform:translateX(4px)}
+
+.faq{padding:40px 20px;background:var(--bg2);margin-top:0}
+.faq-inner{max-width:720px;margin:0 auto}
+.faq-head{text-align:center;margin-bottom:32px}
+.faq-head .eyebrow-center{margin-bottom:12px}
+.faq-head h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.15;letter-spacing:.02em;margin-bottom:8px}
+.faq-head p{font-size:14px;color:var(--text)}
+
+.faq-list{list-style:none;margin:0;padding:0}
+.faq-item{border-top:1px solid var(--border)}
+.faq-item:last-child{border-bottom:1px solid var(--border)}
+.faq-item details{padding:20px 0;transition:padding .2s}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;cursor:pointer;font-size:14px;font-weight:500;color:var(--text);line-height:1.5}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:22px;color:var(--text);transition:transform .25s var(--ease),color .2s;font-weight:300;line-height:1;flex-shrink:0;margin-top:2px}
+.faq-item details[open] summary::after{transform:rotate(45deg);color:var(--gold)}
+.faq-ans{font-size:14px;color:var(--text);line-height:1.6;margin-top:14px;max-width:640px}
+
+.disclaimer{padding:20px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;font-size:12px;color:var(--text);line-height:1.6;margin-bottom:20px}
+.disclaimer strong{color:var(--text)}
+
+.cta-final{position:relative;padding:56px 24px 64px;background:var(--deep);color:#fff;overflow:hidden;border-radius:28px 28px 0 0;margin-top:12px}
+.cta-final::before{content:'';position:absolute;top:0;left:50%;transform:translateX(%);width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(184,146,46,0.14) 0%,transparent 65%);pointer-events:none;animation:glowPulse 7s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:0.6;transform:translateX(%) scale(1)}50%{opacity:1;transform:translateX(%) scale(1.05)}}
+
+.cta-final-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;text-align:center}
+.cta-final .eyebrow-center{margin-bottom:18px;color:var(--gold)}
+.cta-final h2{font-family:var(--serif);font-size:32px;font-weight:400;line-height:1.12;letter-spacing:.03em;margin-bottom:18px}
+.cta-final h2 em{color:var(--gold);font-style:italic}
+.cta-final-lede{font-size:14.5px;color:rgba(255,255,255,0.7);line-height:1.65;max-width:520px;margin:0 auto 36px}
+
+.cta-button-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.cta-button-group .btn{flex:1 1 auto;min-width:140px}
+@media(min-width:520px){.cta-button-group .btn{flex:0 0 auto}}
+
+.cta-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;font-size:12px;color:rgba(255,255,255,0.6);margin-top:24px}
+.cta-trust .item{display:flex;align-items:center;gap:6px}
+.cta-trust i{color:var(--gold);font-size:14px}
+
+.footer{padding:32px 24px;background:var(--deep);color:rgba(255,255,255,0.5);text-align:center;font-size:11px;font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase}
+.footer .logo{font-family:var(--serif);font-size:22px;color:#fff;text-transform:none;letter-spacing:.02em;margin-bottom:8px;display:inline-block;font-weight:700}
+.footer .logo .dot{color:var(--gold)}
+
+@media(min-width:768px){
+ .nav{padding:0 32px}
+ .article-header{padding:calc(var(--nav-h, 60px) + 40px) 56px 56px}
+ .article-title{font-size:40px}
+ .article-body{padding:56px 56px}
+ .article-body h2{font-size:36px;margin:48px 0 20px 0}
+ .faq{padding:48px 56px}
+ .faq-head h2{font-size:36px}
+ .cta-final{padding:72px 32px 88px}
+ .cta-final h2{font-size:40px}
+ .cta-final-lede{font-size:16px}
+}
+
+@media(min-width:520px) and (max-width:767px){
+ .article-title{font-size:36px}
+}
+
+.table-wrapper{overflow-x:auto;margin:24px 0;border-radius:12px;border:1px solid var(--border)}
+.article-body table{width:100%;border-collapse:collapse;font-size:14px}
+.article-body th{background:var(--bg2);padding:12px 16px;text-align:left;font-weight:600;border-bottom:1px solid var(--border);color:var(--text)}
+.article-body td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text)}
+.article-body tr:last-child td{border-bottom:none}
+
+/* ─── DROPDOWN MENU ─── */
+/* ─── DROPDOWN NAV ─── */
+.dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.dropdown-overlay.open{opacity:1;pointer-events:auto}
+.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(400px,92vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:0;box-shadow:-12px 0 48px rgba(0,0,0,0.12)}
+.dropdown-panel.open{transform:translateX(0)}
+.dropdown-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--bg);border-bottom:1px solid var(--border)}
+.dropdown-head-logo{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
+.dropdown-head-logo .dot{color:var(--gold)}
+.dropdown-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:16px;transition:all .2s;border:none;cursor:pointer}
+.dropdown-close:hover{background:var(--surface)}
+.dropdown-body{padding:20px 24px 32px}
+.article-header{padding:calc(var(--nav-h, 60px) + 20px) 24px 24px;background:var(--bg);border-bottom:1px solid var(--border)}
+.article-header-inner{max-width:720px;margin:0 auto}
+.article-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+.article-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+.article-title{font-family:var(--serif);font-size:32px;font-weight:400;line-height:1.15;color:var(--text);margin-bottom:20px;letter-spacing:.02em}
+.article-byline{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.byline-author{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:500}
+.byline-avatar{width:40px;height:40px;border-radius:50%;background:var(--gold-glow);border:1px solid var(--gold-border)}
+.byline-info{flex:1}
+.byline-name{display:block;color:var(--text);font-weight:600;font-size:13px}
+.byline-role{display:block;color:var(--text);font-size:12px;margin-top:2px}
+.byline-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--text)}
+.byline-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--gold-glow);border:1px solid var(--gold-border);border-radius:20px;font-size:11px;font-weight:600;color:var(--gold)}
+.byline-badge i{font-size:12px}
 
 .article-body{padding:24px 24px}
 .article-body-inner{max-width:720px;margin:0 auto}
@@ -310,15 +417,157 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .cta-card{margin:36px 0}
 .faq{padding:64px 20px}
 
-</style></head><body><nav class="nav"><a href="/" class="nav-logo">arq<span class="dot">.</span></a><div class="nav-right"><a href="#cta" class="nav-link">Join the waitlist</a><button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav><!-- ─── DROPDOWN MENU ─── --><div class="dropdown-overlay" id="dropdownOverlay"></div><div class="dropdown-panel" id="dropdownPanel"><button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button><div class="dropdown-section"><div class="dropdown-section-title">Conditions</div><div class="dropdown-links"><a href="/pcos" class="dropdown-link">PCOS</a><a href="/thyroid" class="dropdown-link">Thyroid</a><a href="/diabetes" class="dropdown-link">Diabetes</a><a href="/weight-loss" class="dropdown-link">Weight Loss</a><a href="/hair-loss" class="dropdown-link">Hair Loss</a><a href="/testosterone" class="dropdown-link">Testosterone</a><a href="/vitamin-deficiency" class="dropdown-link">Vitamin Deficiency</a><a href="/fatigue" class="dropdown-link">Fatigue</a><a href="/sleep" class="dropdown-link">Sleep</a><a href="/skin" class="dropdown-link">Skincare</a><a href="/focus" class="dropdown-link">Focus</a><a href="/blood-pressure" class="dropdown-link">Blood Pressure</a><a href="/iv-infusions" class="dropdown-link">IV Infusions</a><a href="/recovery" class="dropdown-link">Recovery</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Sports</div><div class="dropdown-links"><a href="/pickleball" class="dropdown-link">Pickleball</a><a href="/padel" class="dropdown-link">Padel</a><a href="/runners" class="dropdown-link">Running</a><a href="/strength" class="dropdown-link">Strength</a><a href="/performance" class="dropdown-link">Performance</a><a href="/hyrox" class="dropdown-link">HyRox</a><a href="/endurance" class="dropdown-link">Endurance</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Learn</div><div class="dropdown-links"><a href="/blog/" class="dropdown-link">All Articles</a><a href="/blog/ozempic-india-guide" class="dropdown-link">Ozempic Guide</a><a href="/blog/pcos-symptoms-india" class="dropdown-link">PCOS Guide</a><a href="/blog/hba1c-test-guide" class="dropdown-link">HbA1c Test</a><a href="/blog/finasteride-india-guide" class="dropdown-link">Finasteride Guide</a><a href="/blog/tretinoin-indian-skin-guide" class="dropdown-link">Tretinoin Guide</a><a href="/blog/hrv-explained" class="dropdown-link">HRV Explained</a></div></div><div class="dropdown-section"><a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist. <i class="ph-bold ph-arrow-right"></i></a></div></div><nav class="breadcrumb"><div class="breadcrumb-inner"><a href="/">arq.</a><span class="breadcrumb-sep">›</span><a href="/blog">Blog</a><span class="breadcrumb-sep">›</span><span>Ozempic in India</span></div></nav><header class="article-header"><div class="article-header-inner"><span class="article-eyebrow">GLP-1 Guide</span><h1 class="article-title">Is Ozempic Available in India? Complete Guide (2026)</h1><div class="article-byline"><div class="byline-author"><div class="byline-avatar"></div><div class="byline-info"><span class="byline-name">arq. medical team</span><span class="byline-role">Physician-led health optimization</span></div></div><div class="byline-meta"><span class="byline-badge"><i class="ph-fill ph-check-circle"></i>Medically reviewed</span><span>April 16, 2026</span></div></div></div></header><section class="article-body"><div class="article-body-inner"><div class="quick-answer"><div class="quick-answer-label">TL;DR — Quick answer</div><div class="quick-answer-content">You Googled "Ozempic India." Here's what you need to know about availability, legality, cost, and how to get it prescribed properly.</div><ul class="quick-answer-list"><li>Yes, Ozempic (semaglutide) is legal and available in India under DCGI approval</li><li>Requires a valid prescription under the Drugs & Cosmetics Act — buying without one is illegal</li><li>You must get baseline bloodwork (HbA1c, liver, thyroid, pancreatic tests) before starting</li><li>arq. prescribes GLP-1 therapy only after reviewing 100+ biomarkers — this is the difference</li></ul></div></div></section><article class="article-body"><div class="article-body-inner"><h2>Is Ozempic Legal in India?</h2><p>Yes. Semaglutide (the active ingredient in Ozempic) is approved by the <strong>Drugs Controller General of India (DCGI)</strong> and is legally available in India under the brand name <strong>Ozempic</strong> (manufactured by Novo Nordisk). It's also available as <strong>Rybelsus</strong> (oral formulation).</p><p>However—and this is critical—Ozempic is a <strong>Schedule H medication</strong> under the Drugs & Cosmetics Act, 1940. This means it requires a valid prescription from a registered medical practitioner. Buying without a prescription is <em>illegal</em> and potentially dangerous. Many clinicians also recommend concurrent evaluation of <a href="/thyroid">thyroid function</a> before initiating GLP-1 therapy.</p><p>Many people search for Ozempic online without prescription because they've heard it "works for <a href="/weight-loss" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">weight loss</a>." What they often don't realize: getting Ozempic without <a href="/panel" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">bloodwork</a> is medically irresponsible. You could be starting a medication that puts strain on organs you don't even know are compromised.</p><div class="article-fold" id="articleFold"><h2>How Much Does Ozempic Cost in India?</h2><p>Here's what you'll typically pay at Indian pharmacies</p><div class="table-wrapper"><p>Pricing varies by formulation, dosage, and pharmacy. Your arq. physician will recommend the most cost-effective option based on your bloodwork.</p></div><p><em>Note: Prices vary by pharmacy, city, and distributor markup. Always compare before purchasing.</em> Delhi and Bangalore typically have competitive pricing. Smaller cities or remote areas may have higher markups due to lower volume.</p><h2>What. <a href="/panel" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">Blood Tests</a> Do You Need Before Starting?</h2><p>This is where most online Ozempic sellers fall short. They'll prescribe without <a href="/panel" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">bloodwork</a>. We won't—and neither should your physician.</p><p>Before starting Ozempic, you need baseline blood tests that reveal whether your body is actually a good candidate. Here's why each test matters</p><h3>Essential Baseline Tests</h3><ul><li><strong>HbA1c (Glycated Hemoglobin)</strong> Shows your average blood sugar over 3 months. If you're already diabetic, this informs dosing. If you're not, it's your metabolic baseline.</li><li><strong>Fasting insulin</strong> Reveals insulin resistance—the root cause of metabolic problems in many people. High fasting insulin means GLP-1 might work exceptionally well for you.</li><li><strong><a href="/thyroid" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">Thyroid</a> panel (TSH, Free T3, Free T4)</strong> GLP-1 doesn't cause <a href="/thyroid" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">thyroid</a> problems, but if you have <a href="/thyroid">undiagnosed thyroid dysfunction</a>, it can mimic <a href="/weight-loss" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">weight loss</a> resistance or cause side effects. Must rule out.</li><li><strong>Liver function tests (ALT, AST, GGT, bilirubin)</strong> Semaglutide is metabolized in the liver. If your liver is compromised, dosing needs adjustment.</li><li><strong>Lipid panel (Total cholesterol, LDL, HDL, triglycerides)</strong> Baseline for comparison. GLP-1 often improves lipids, so you'll want to measure this improvement.</li><li><strong>Pancreatic enzymes (amylase, lipase)</strong> Rare but documented risk: pancreatitis. You need a clean baseline to know if symptoms later are drug-related or coincidental.</li><li><strong>Kidney function (creatinine, eGFR)</strong> Semaglutide hasn't been studied extensively in severe renal impairment. Your physician needs to know your baseline.</li></ul><p>That's 7+ tests, not 1. And they're not expensive—a complete metabolic panel costs ₹1,500–₹3,000 at most labs in India <strong>Getting these tests is non-negotiable.</strong></p><h2>How arq. Prescribes GLP-1 Therapy</h2><p>Most clinics hand you a prescription after a 5-minute chat. We don't. Here's what the arq. protocol looks like:</p><h3>Step 1: Comprehensive bloodwork — at home</h3><p>We send a phlebotomist to your door. The arq. metabolic panel covers 100+ biomarkers — fasting insulin, HbA1c, lipid panel, liver and kidney function, thyroid, inflammatory markers — far beyond the basic glucose test most doctors order. This tells us <em>why</em> your metabolism is struggling, not just <em>that</em> it is.</p><h3>Step 2: Physician consult + results review</h3><p>Your assigned arq. physician — not a chatbot, not a general practitioner doing telemedicine on the side — reviews every marker with you. If GLP-1 therapy (like Ozempic/semaglutide) is appropriate, they'll explain exactly why, what to expect, and how it fits your full metabolic picture. If it's not right for you, they'll tell you that too.</p><h3>Step 3: Your protocol, delivered</h3><p>If prescribed, your physician builds a GLP-1 protocol tailored to your metabolism, starting dose (usually 0.25 mg once weekly for Ozempic), titration schedule, and dietary guidance included. Medication is sourced from licensed Indian pharmacies and delivered to your door. A Schedule H prescription is issued with your physician's registration details and signature, ensuring full legal compliance.</p><h3>Ongoing: Quarterly blood panels</h3><p>Every 90 days, we retest. Your physician adjusts dosing based on real data — metabolic markers, body composition changes, blood pressure, repeat fasting glucose/HbA1c, and how you feel. This is how responsible prescribing works: measure, adjust, repeat.</p><h2>Ozempic vs. Wegovy vs. Mounjaro — What's the Difference?</h2><h3>Ozempic (Semaglutide) — 0.5 mg, 1 mg pens</h3><p>FDA approved for Type 2 diabetes. In India, prescribed off-label for weight loss. Once-weekly injection. Works by increasing GLP-1 (glucagon-like peptide), which suppresses appetite and slows gastric emptying. Average weight loss: 8–12% body weight over 12 months.</p><h3>Wegovy (Semaglutide) — 2.4 mg pen</h3><p>Same active ingredient as Ozempic, but higher dose specifically approved by FDA for chronic weight management. Not yet approved by DCGI for India, though some clinics import it. Higher cost, more potent appetite suppression.</p><h3>Mounjaro (Tirzepatide)</h3><p>Dual GLP-1 and GIP receptor agonist. Newer mechanism. Clinically shows 20–22% weight loss (better than semaglutide's 8–12%). Available in India. is available in India. Some physicians now prefer this as first-line for <a href="/weight-loss">weight loss</a>. For a deeper comparison, see our guide on. <a href="/blog/semaglutide-india">semaglutide in India</a>.</p><blockquote>
+
+/* ─── MOBILE SPACING OPTIMIZATION ─── */
+@media(max-width:520px){
+  .breadcrumb{padding-top:calc(var(--nav-h) + 6px);padding-bottom:6px;padding-left:16px;padding-right:16px}
+  .article-header{padding:10px 16px 16px}
+  .article-eyebrow{margin-bottom:8px;font-size:10px}
+  .article-title{font-size:26px;margin-bottom:12px}
+  .article-byline{gap:8px;margin-bottom:12px;padding-bottom:12px}
+  .byline-avatar{width:32px;height:32px}
+  .byline-name{font-size:12px}
+  .byline-role{font-size:11px}
+  .byline-meta{gap:8px;font-size:11px}
+  .article-body{padding:16px 16px}
+  .article-body p{font-size:15px;margin-bottom:16px;line-height:1.65}
+  .article-body h2{font-size:22px;margin:28px 0 10px}
+  .article-body h3{font-size:16px;margin:20px 0 8px}
+  .article-body ul,.article-body ol{margin:12px 0 16px;padding-left:20px;font-size:15px}
+  .article-body li{margin-bottom:6px}
+  .article-body blockquote{padding:14px;margin:20px 0;font-size:14px}
+  .article-body table th,.article-body table td{padding:8px 10px;font-size:12px}
+  .tldr-box{padding:20px 16px;margin:20px 0}
+  .tldr-box h3{font-size:16px}
+  .tldr-box li{padding:10px 0;font-size:12px}
+  .highlight-box,.info-box,.warning-box{padding:14px 16px;margin:20px 0;font-size:13px}
+  .cta-card{padding:16px;margin:24px 0;gap:12px}
+  .cta-card-icon{width:36px;height:36px;font-size:16px;border-radius:10px}
+  .cta-card-text{font-size:13px}
+  .faq{padding:28px 16px}
+  .faq h2,.faq-head h2{font-size:22px;margin-bottom:20px}
+  .faq-item summary{font-size:13px;padding:12px 0}
+  .faq-ans{font-size:13px}
+  .disclaimer{padding:14px;font-size:11px;margin-bottom:16px}
+  .cta-final{padding:32px 16px 40px;border-radius:20px 20px 0 0}
+  .cta-final h2{font-size:24px}
+  .cta-final-lede{font-size:13px;margin-bottom:24px}
+  .cta-trust{gap:8px 16px;font-size:11px}
+  .related{padding:24px 16px}
+  .related h2{font-size:20px}
+  .related-grid{gap:10px}
+  .footer{padding:20px 16px;font-size:10px}
+  .read-more-wrap{padding:16px 0 4px}
+  .read-more-btn{padding:10px 22px;font-size:12px}
+  .article-hero{padding:calc(var(--nav-h) + 24px) 16px 28px}
+  .article-h1{margin-bottom:16px}
+  .article-meta{gap:12px;padding-top:16px;font-size:12px}
+}
+
+</style></head><body><nav class="nav"><a href="/" class="nav-logo">arq<span class="dot">.</span></a><div class="nav-right"><a href="#cta" class="nav-link">Join the waitlist</a><button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav><!-- ─── DROPDOWN MENU ─── --><div class="dropdown-overlay" id="dropdownOverlay"></div>
+<div class="dropdown-panel" id="dropdownPanel">
+  <div class="dropdown-head">
+    <div class="dropdown-head-logo">arq<span class="dot">.</span></div>
+    <button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
+  </div>
+  <div class="dropdown-body">
+    <!-- Hero cards — top 4 conditions -->
+    <div class="dd-hero-label">Popular</div>
+    <div class="dd-hero-grid">
+      <a href="/weight-loss" class="dd-hero-card">
+        <div class="dd-hero-card-name">Weight Loss</div>
+        <div class="dd-hero-card-sub">GLP-1 therapy · metabolic panels</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/pcos" class="dd-hero-card">
+        <div class="dd-hero-card-name">PCOS</div>
+        <div class="dd-hero-card-sub">Hormone balance · insulin</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/thyroid" class="dd-hero-card">
+        <div class="dd-hero-card-name">Thyroid</div>
+        <div class="dd-hero-card-sub">TSH · T3/T4 · autoimmune</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/hair-loss" class="dd-hero-card">
+        <div class="dd-hero-card-name">Hair Loss</div>
+        <div class="dd-hero-card-sub">DHT · finasteride · regrowth</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+    </div>
+
+    <!-- All conditions accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion open" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">All conditions</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/diabetes" class="dd-link">Diabetes</a>
+        <a href="/testosterone" class="dd-link">Testosterone</a>
+        <a href="/vitamin-deficiency" class="dd-link">Vitamins</a>
+        <a href="/fatigue" class="dd-link">Fatigue</a>
+        <a href="/sleep" class="dd-link">Sleep</a>
+        <a href="/skin" class="dd-link">Skincare</a>
+        <a href="/focus" class="dd-link">Focus</a>
+        <a href="/blood-pressure" class="dd-link">Blood Pressure</a>
+        <a href="/iv-infusions" class="dd-link">IV Infusions</a>
+        <a href="/recovery" class="dd-link">Recovery</a>
+      </div>
+    </div>
+
+    <!-- Sports accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">Sports</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/pickleball" class="dd-link">Pickleball</a>
+        <a href="/padel" class="dd-link">Padel</a>
+        <a href="/runners" class="dd-link">Running</a>
+        <a href="/strength" class="dd-link">Strength</a>
+        <a href="/performance" class="dd-link">Performance</a>
+        <a href="/hyrox" class="dd-link">HyRox</a>
+        <a href="/endurance" class="dd-link">Endurance</a>
+      </div>
+    </div>
+
+    <!-- Learn accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">Learn</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/blog/" class="dd-link">All Articles</a>
+        <a href="/panel" class="dd-link">Our Panel</a>
+        <a href="/blog/ozempic-india-guide" class="dd-link">Ozempic Guide</a>
+        <a href="/blog/finasteride-india-guide" class="dd-link">Finasteride Guide</a>
+        <a href="/blog/pcos-symptoms-india" class="dd-link">PCOS Guide</a>
+        <a href="/blog/hba1c-test-guide" class="dd-link">HbA1c Test</a>
+      </div>
+    </div>
+  </div>
+  <div class="dd-cta-wrap">
+    <a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+  </div>
+</div><div class="dropdown-section"><div class="dropdown-section-title">Sports</div><div class="dropdown-links"><a href="/pickleball" class="dropdown-link">Pickleball</a><a href="/padel" class="dropdown-link">Padel</a><a href="/runners" class="dropdown-link">Running</a><a href="/strength" class="dropdown-link">Strength</a><a href="/performance" class="dropdown-link">Performance</a><a href="/hyrox" class="dropdown-link">HyRox</a><a href="/endurance" class="dropdown-link">Endurance</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Learn</div><div class="dropdown-links"><a href="/blog/" class="dropdown-link">All Articles</a><a href="/blog/ozempic-india-guide" class="dropdown-link">Ozempic Guide</a><a href="/blog/pcos-symptoms-india" class="dropdown-link">PCOS Guide</a><a href="/blog/hba1c-test-guide" class="dropdown-link">HbA1c Test</a><a href="/blog/finasteride-india-guide" class="dropdown-link">Finasteride Guide</a><a href="/blog/tretinoin-indian-skin-guide" class="dropdown-link">Tretinoin Guide</a><a href="/blog/hrv-explained" class="dropdown-link">HRV Explained</a></div></div><div class="dropdown-section"><a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist. <i class="ph-bold ph-arrow-right"></i></a></div></div><nav class="breadcrumb"><div class="breadcrumb-inner"><a href="/">arq.</a><span class="breadcrumb-sep">›</span><a href="/blog">Blog</a><span class="breadcrumb-sep">›</span><span>Ozempic in India</span></div></nav><header class="article-header"><div class="article-header-inner"><span class="article-eyebrow">GLP-1 Guide</span><h1 class="article-title">Is Ozempic Available in India? Complete Guide (2026)</h1><div class="article-byline"><div class="byline-author"><div class="byline-avatar"></div><div class="byline-info"><span class="byline-name">arq. medical team</span><span class="byline-role">Physician-led health optimization</span></div></div><div class="byline-meta"><span class="byline-badge"><i class="ph-fill ph-check-circle"></i>Medically reviewed</span><span>April 16, 2026</span></div></div></div></header><section class="article-body"><div class="article-body-inner"><div class="tldr-box">
+  <span class="box-eyebrow">Key takeaways</span>
+  <h3>Ozempic in India — what you need to know:</h3>
+  <ul>
+    <li><strong>Yes, Ozempic (semaglutide) is legal</strong> and available in India under DCGI approval</li>
+    <li><strong>Requires a valid prescription</strong> under the Drugs & Cosmetics Act — buying without one is illegal</li>
+    <li><strong>Baseline bloodwork is non-negotiable</strong> — HbA1c, liver, thyroid, pancreatic tests before starting</li>
+    <li>arq. prescribes GLP-1 therapy only after reviewing <strong>100+ biomarkers</strong> — this is the difference</li>
+  </ul>
+</div></div></section><article class="article-body"><div class="article-body-inner"><h2>Is Ozempic Legal in India?</h2><p>Yes. Semaglutide (the active ingredient in Ozempic) is approved by the <strong>Drugs Controller General of India (DCGI)</strong> and is legally available in India under the brand name <strong>Ozempic</strong> (manufactured by Novo Nordisk). It's also available as <strong>Rybelsus</strong> (oral formulation).</p><p>However—and this is critical—Ozempic is a <strong>Schedule H medication</strong> under the Drugs & Cosmetics Act, 1940. This means it requires a valid prescription from a registered medical practitioner. Buying without a prescription is <em>illegal</em> and potentially dangerous. Many clinicians also recommend concurrent evaluation of <a href="/thyroid">thyroid function</a> before initiating GLP-1 therapy.</p><p>Many people search for Ozempic online without prescription because they've heard it "works for <a href="/weight-loss" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">weight loss</a>." What they often don't realize: getting Ozempic without <a href="/panel" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">bloodwork</a> is medically irresponsible. You could be starting a medication that puts strain on organs you don't even know are compromised.</p><div class="article-fold" id="articleFold"><h2>How Much Does Ozempic Cost in India?</h2><p>Here's what you'll typically pay at Indian pharmacies</p><div class="table-wrapper"><p>Pricing varies by formulation, dosage, and pharmacy. Your arq. physician will recommend the most cost-effective option based on your bloodwork.</p></div><p><em>Note: Prices vary by pharmacy, city, and distributor markup. Always compare before purchasing.</em> Delhi and Bangalore typically have competitive pricing. Smaller cities or remote areas may have higher markups due to lower volume.</p><h2>What. <a href="/panel" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">Blood Tests</a> Do You Need Before Starting?</h2><p>This is where most online Ozempic sellers fall short. They'll prescribe without <a href="/panel" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">bloodwork</a>. We won't—and neither should your physician.</p><p>Before starting Ozempic, you need baseline blood tests that reveal whether your body is actually a good candidate. Here's why each test matters</p><h3>Essential Baseline Tests</h3><ul><li><strong>HbA1c (Glycated Hemoglobin)</strong> Shows your average blood sugar over 3 months. If you're already diabetic, this informs dosing. If you're not, it's your metabolic baseline.</li><li><strong>Fasting insulin</strong> Reveals insulin resistance—the root cause of metabolic problems in many people. High fasting insulin means GLP-1 might work exceptionally well for you.</li><li><strong><a href="/thyroid" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">Thyroid</a> panel (TSH, Free T3, Free T4)</strong> GLP-1 doesn't cause <a href="/thyroid" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">thyroid</a> problems, but if you have <a href="/thyroid">undiagnosed thyroid dysfunction</a>, it can mimic <a href="/weight-loss" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">weight loss</a> resistance or cause side effects. Must rule out.</li><li><strong>Liver function tests (ALT, AST, GGT, bilirubin)</strong> Semaglutide is metabolized in the liver. If your liver is compromised, dosing needs adjustment.</li><li><strong>Lipid panel (Total cholesterol, LDL, HDL, triglycerides)</strong> Baseline for comparison. GLP-1 often improves lipids, so you'll want to measure this improvement.</li><li><strong>Pancreatic enzymes (amylase, lipase)</strong> Rare but documented risk: pancreatitis. You need a clean baseline to know if symptoms later are drug-related or coincidental.</li><li><strong>Kidney function (creatinine, eGFR)</strong> Semaglutide hasn't been studied extensively in severe renal impairment. Your physician needs to know your baseline.</li></ul><p>That's 7+ tests, not 1. And they're not expensive—a complete metabolic panel costs ₹1,500–₹3,000 at most labs in India <strong>Getting these tests is non-negotiable.</strong></p><h2>How arq. Prescribes GLP-1 Therapy</h2><p>Most clinics hand you a prescription after a 5-minute chat. We don't. Here's what the arq. protocol looks like:</p><h3>Step 1: Comprehensive bloodwork — at home</h3><p>We send a phlebotomist to your door. The arq. metabolic panel covers 100+ biomarkers — fasting insulin, HbA1c, lipid panel, liver and kidney function, thyroid, inflammatory markers — far beyond the basic glucose test most doctors order. This tells us <em>why</em> your metabolism is struggling, not just <em>that</em> it is.</p><h3>Step 2: Physician consult + results review</h3><p>Your assigned arq. physician — not a chatbot, not a general practitioner doing telemedicine on the side — reviews every marker with you. If GLP-1 therapy (like Ozempic/semaglutide) is appropriate, they'll explain exactly why, what to expect, and how it fits your full metabolic picture. If it's not right for you, they'll tell you that too.</p><h3>Step 3: Your protocol, delivered</h3><p>If prescribed, your physician builds a GLP-1 protocol tailored to your metabolism, starting dose (usually 0.25 mg once weekly for Ozempic), titration schedule, and dietary guidance included. Medication is sourced from licensed Indian pharmacies and delivered to your door. A Schedule H prescription is issued with your physician's registration details and signature, ensuring full legal compliance.</p><h3>Ongoing: Quarterly blood panels</h3><p>Every 90 days, we retest. Your physician adjusts dosing based on real data — metabolic markers, body composition changes, blood pressure, repeat fasting glucose/HbA1c, and how you feel. This is how responsible prescribing works: measure, adjust, repeat.</p><h2>Ozempic vs. Wegovy vs. Mounjaro — What's the Difference?</h2><h3>Ozempic (Semaglutide) — 0.5 mg, 1 mg pens</h3><p>FDA approved for Type 2 diabetes. In India, prescribed off-label for weight loss. Once-weekly injection. Works by increasing GLP-1 (glucagon-like peptide), which suppresses appetite and slows gastric emptying. Average weight loss: 8–12% body weight over 12 months.</p><h3>Wegovy (Semaglutide) — 2.4 mg pen</h3><p>Same active ingredient as Ozempic, but higher dose specifically approved by FDA for chronic weight management. Not yet approved by DCGI for India, though some clinics import it. Higher cost, more potent appetite suppression.</p><h3>Mounjaro (Tirzepatide)</h3><p>Dual GLP-1 and GIP receptor agonist. Newer mechanism. Clinically shows 20–22% weight loss (better than semaglutide's 8–12%). Available in India. is available in India. Some physicians now prefer this as first-line for <a href="/weight-loss">weight loss</a>. For a deeper comparison, see our guide on. <a href="/blog/semaglutide-india">semaglutide in India</a>.</p><blockquote>
  The choice between these depends on your biomarkers. High insulin resistance? Tirzepatide might be better. Diabetic? Ozempic is proven. Your bloodwork has the answer.
  </blockquote><h2>What Happens if You Get Ozempic Without Bloodwork?</h2><p>You become a statistic. Here are real risks</p><ul><li><strong>Undiagnosed pancreatitis</strong> You start Ozempic. Weeks later, abdominal pain. You think it's a "side effect." It's actually acute pancreatitis, and you've delayed treatment.</li><li><strong>Drug interactions</strong> You're on medication X. No one knew. Semaglutide reduces absorption of X. You think your heart medication isn't working. In reality, it's being digested too fast.</li><li><strong><a href="/thyroid" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">Thyroid</a> catastrophe</strong> You have undiagnosed Hashimoto's. Your TSH is 8. Starting GLP-1 amplifies thyroid symptoms. You feel hypothyroid but have no baseline to compare against. This is precisely why. <a href="/thyroid">thyroid screening</a> must precede any GLP-1 initiation.</li><li><strong>Liver strain</strong> You have mild fatty liver disease (unknown). Semaglutide is metabolized hepatically. Your liver function worsens silently. By the time you find out, it's stage 2.</li></ul><p>Bloodwork costs ₹2,000. A hospital stay for pancreatitis costs ₹50,000+. The math is obvious.</p><h2>Why arq. is Different</h2><p>Most online clinics prescribe based on a questionnaire. We don't. Here's our protocol</p><ul><li>You complete a detailed health history (not a chatbot form—actual physician intake)</li><li>You get bloodwork: 100+ biomarkers through NABL-accredited labs</li><li>You have a 30-minute consultation with your assigned physician who reviews every result</li><li>If appropriate, we prescribe a GLP-1 protocol tailored to your metabolism</li><li>Quarterly monitoring: blood draws, follow-up consults, dose adjustments based on your data</li></ul><p>We don't prescribe Ozempic to everyone. Some people's bloodwork says "you need insulin sensitization first" or "your liver function is borderline—let's start with lifestyle." That's why your data matters.</p></div><!-- end article-fold --><div class="read-more-wrap" id="readMoreWrap"><button class="read-more-btn" id="readMoreBtn">
  Continue reading. <i class="ph-bold ph-caret-down"></i></button></div><a href="/weight-loss" class="cta-card"><div class="cta-card-icon"><i class="ph-bold ph-heart"></i></div><div class="cta-card-body"><div class="cta-card-label">Explore arq</div><div class="cta-card-text">Looking for physician-prescribed GLP-1 therapy in India?</div></div><div class="cta-card-arrow"><i class="ph-bold ph-arrow-right"></i></div></a></div></article><section class="faq"><div class="faq-inner"><div class="faq-head"><span class="eyebrow-center">Questions</span><h2>Frequently asked</h2></div><div class="faq-list"><div class="faq-item"><details><summary>Can I buy Ozempic online in India without a prescription?</summary><div class="faq-ans">No. Ozempic is a Schedule H medication under the Drugs & Cosmetics Act, 1940, and requires a valid prescription from a licensed registered medical practitioner. Buying without a prescription is illegal and medically unsafe. You will not receive proper bloodwork baseline checks, dosing guidance, or physician monitoring. Many websites claiming to sell "without prescription" are operating illegally and may send counterfeit or contaminated products.</div></details></div><div class="faq-item"><details><summary>How long does it take for Ozempic to work?</summary><div class="faq-ans">Most people notice appetite suppression within 3–5 days of the first injection. Significant weight loss typically becomes visible after 4–6 weeks of consistent use. Peak effects are usually seen by 12–16 weeks. Results vary based on your baseline metabolism, diet adherence, exercise, and the biomarkers your physician identifies. Some people respond within 2 weeks; others take 8 weeks. Your physician monitors this in follow-ups.</div></details></div><div class="faq-item"><details><summary>What are the side effects of Ozempic?</summary><div class="faq-ans">Common side effects include nausea, vomiting, diarrhea, constipation, and abdominal discomfort—usually mild and temporary (2–3 weeks). Rare but serious risks include pancreatitis, thyroid tumors (documented in animal studies, not yet in humans), and gallbladder issues. This is why baseline bloodwork (pancreatic amylase, lipase, thyroid, liver function) is essential before starting. Your physician should monitor you quarterly and ask about symptoms at each visit.</div></details></div><div class="faq-item"><details><summary>Is Ozempic covered by health insurance in India?</summary><div class="faq-ans">Coverage is limited. Most standard health insurance plans in India cover Ozempic only for diagnosed Type 2 diabetes with medical necessity documentation and physician recommendation. Very few plans cover it for weight management alone. Costs are typically out-of-pocket. Check with your insurer—provide them your physician's prescription and diagnosis code. Some corporate health plans may have better coverage; ask your employer's HR team.</div></details></div><div class="faq-item"><details><summary>Can vegetarians take Ozempic?</summary><div class="faq-ans">Yes. Ozempic is a synthetic peptide (semaglutide) produced through recombinant DNA technology in bacterial cultures—not derived from animal sources or tested on animals during manufacturing. Both vegetarians and vegans can take it safely without ethical concerns. The manufacturing process is entirely cell-based.</div></details></div></div></div></section><section class="article-body"><div class="article-body-inner"><div class="disclaimer"><strong>Medical Disclaimer</strong> This article is for informational purposes only and does not constitute medical advice. Always consult a licensed physician before starting any medication or health protocol. The information presented reflects the state of medical knowledge as of April 2026 and may change. Individual results vary. arq. does not endorse self-prescription and recommends consulting a qualified endocrinologist or metabolic health specialist before using GLP-1 medications.
  </div></div></section><section class="cta-final" id="cta" aria-label="Call to action"><div class="cta-final-inner"><span class="eyebrow-center">Ready for clarity?</span><h2>Your health. <em>deserves data</em></h2><p class="cta-final-lede">100+ biomarkers. A physician assigned to you. A protocol built on your data, not templates.</p><div class="cta-button-group"><a href="#" class="btn btn-gold btn-lg">Join the waitlist. <i class="ph-bold ph-arrow-right"></i></a></div><div class="cta-trust"><div class="item"><i class="ph-fill ph-check-circle"></i>NABL-accredited labs</div><div class="item"><i class="ph-fill ph-check-circle"></i>DPDP-compliant</div><div class="item"><i class="ph-fill ph-check-circle"></i>Licensed physicians</div></div></div></section><section class="related"><div class="related-inner"><div class="related-head"><h2>Keep reading</h2></div><div class="related-grid"><a href="/weight-loss" class="related-card"><div class="rc-eyebrow">Condition</div><div class="rc-title">Weight Loss</div></a><a href="/blog/semaglutide-vs-tirzepatide" class="related-card"><div class="rc-eyebrow">Article</div><div class="rc-title">Semaglutide vs Tirzepatide</div></a><a href="/blog/ozempic-weight-loss-india" class="related-card"><div class="rc-eyebrow">Article</div><div class="rc-title">Ozempic for Weight Loss</div></a></div></div></section><footer class="footer"><div class="logo">arq<span class="dot">.</span></div><div>India's online clinic · © 2026</div></footer><script>
 const nav = document.querySelector('.nav');
-const setNav = () => nav.classList.toggle('scrolled', window.scrollY > 50);
-setNav();
-window.addEventListener('scroll', setNav, {passive:true});
+nav.classList.add('scrolled');
 
 const reveal = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {

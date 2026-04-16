@@ -125,7 +125,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 em{font-style:italic;color:var(--gold)}
 
 /* ─── NAV ─── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
+.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
+.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
+.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
 .nav.at-top{background:transparent}
 .nav.scrolled{background:rgba(250,249,245,0.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 var(--border)}
 .nav.scrolled .nav-logo{color:var(--text)}
@@ -133,11 +136,7 @@ em{font-style:italic;color:var(--gold)}
 .nav-logo{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--text);letter-spacing:.02em;transition:color .3s ease}
 .nav-logo .dot{color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:10px}
-.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
-.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
-.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
-.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
-.nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
+.nav.scrolled .nav.scrolled .nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
 .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
 .nav.scrolled .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
 .nav-hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:1px;transition:background .3s ease}
@@ -293,35 +292,199 @@ footer a:hover{color:var(--gold-light)}
 .modal-close:hover{color:var(--text)}
 
 /* ─── DROPDOWN ─── */
-.dropdown-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.3);display:none;z-index:998}
-.dropdown-overlay.active{display:block}
-.dropdown-panel{position:fixed;top:0;left:0;width:280px;height:100vh;background:var(--card);overflow-y:auto;z-index:999;transform:translateX(%);transition:transform .3s var(--ease);padding:80px 0 40px}
-.dropdown-panel.active{transform:translateX(0)}
-.dropdown-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:color .2s}
-.dropdown-close:hover{color:var(--gold)}
-.dropdown-section{padding:20px 20px;border-bottom:1px solid var(--border)}
-.dropdown-section:last-child{border-bottom:none}
-.dropdown-section-title{font-weight:600;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);margin-bottom:14px}
-.dropdown-links{display:flex;flex-direction:column;gap:8px}
-.dropdown-link{font-size:14px;color:var(--text);transition:color .2s;padding:4px 0}
-.dropdown-link:hover{color:var(--gold)}
-.dropdown-cta{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--gold);font-size:13px;padding:16px 20px;transition:all .2s;margin:0 20px}
-.dropdown-cta:hover{gap:12px}
+/* ─── DROPDOWN NAV ─── */
+.dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.dropdown-overlay.open{opacity:1;pointer-events:auto}
+.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(400px,92vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:0;box-shadow:-12px 0 48px rgba(0,0,0,0.12)}
+.dropdown-panel.open{transform:translateX(0)}
+.dropdown-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--bg);border-bottom:1px solid var(--border)}
+.dropdown-head-logo{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
+.dropdown-head-logo .dot{color:var(--gold)}
+.dropdown-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:16px;transition:all .2s;border:none;cursor:pointer}
+.dropdown-close:hover{background:var(--surface)}
+.dropdown-body{padding:20px 24px 32px}
+/* Hero condition cards */
+.dd-hero-label{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.dd-hero-label::before{content:'';width:14px;height:1px;background:var(--gold);opacity:0.5}
+.dd-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.dd-hero-card{display:flex;flex-direction:column;gap:4px;padding:16px 14px;border-radius:14px;background:var(--card);border:1px solid var(--border);text-decoration:none;transition:all .25s var(--ease)}
+.dd-hero-card:hover{border-color:var(--gold-border);box-shadow:0 4px 16px rgba(184,146,46,0.1);transform:translateY(-1px)}
+.dd-hero-card-name{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--text);letter-spacing:-0.01em}
+.dd-hero-card-sub{font-size:11px;color:var(--text-60);line-height:1.4}
+.dd-hero-card .dd-hero-arrow{font-size:11px;color:var(--gold);margin-top:4px;transition:transform .2s}
+.dd-hero-card:hover .dd-hero-arrow{transform:translateX(3px)}
+/* Accordion sections */
+.dd-section{border-top:1px solid var(--border);padding-top:16px;margin-top:16px}
+.dd-section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+.dd-accordion{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:0 0 12px;background:none;border:none;width:100%}
+.dd-accordion-label{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.dd-accordion-label::before{content:'';width:14px;height:1px;background:var(--gold);opacity:0.5}
+.dd-accordion-icon{font-size:14px;color:var(--text-30);transition:transform .3s var(--ease)}
+.dd-accordion.open .dd-accordion-icon{transform:rotate(180deg)}
+.dd-accordion-body{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-height:0;overflow:hidden;transition:max-height .4s var(--ease),opacity .3s;opacity:0}
+.dd-accordion.open+.dd-accordion-body{max-height:400px;opacity:1}
+.dd-link{display:flex;align-items:center;padding:10px 12px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:transparent;text-decoration:none;transition:all .2s var(--ease)}
+.dd-link:hover{background:var(--gold-glow);color:var(--gold)}
+.dd-link i{margin-right:8px;font-size:14px;color:var(--text-30);transition:color .2s}
+.dd-link:hover i{color:var(--gold)}
+/* CTA at bottom */
+.dd-cta-wrap{padding:20px 24px;position:sticky;bottom:0;background:linear-gradient(to top,var(--bg) 80%,transparent);border-top:1px solid var(--border)}
+.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;align-items:center;justify-content:center;gap:6px;transition:all .3s var(--ease);text-decoration:none;box-shadow:0 4px 16px rgba(184,146,46,0.25)}
+.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(184,146,46,0.35)}
+@media(max-width:520px){.dd-hero-grid{grid-template-columns:1fr}.creds-grid{gap:24px}.creds-logo{height:34px}}
 .dropdown-cta i{font-size:16px}
 
 /* ─── RESPONSIVE ─── */
 @media (max-width:767px){
- .nav-link{display:none}
  .article-h1{font-size:28px}
  .article-body h2{font-size:22px;margin:24px 0 10px}
  .cta-final h2{font-size:26px}
  .comparison-table{font-size:13px}
  .comparison-table th,.comparison-table td{padding:10px}
 }
-</style></head><body><!-- ─── NAV ─── --><nav class="nav"><a href="/" class="nav-logo">arq<span class="dot">.</span></a><div class="nav-right"><a href="#cta" class="nav-link">Join the waitlist</a><button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav><!-- ─── DROPDOWN MENU ─── --><div class="dropdown-overlay" id="dropdownOverlay"></div><div class="dropdown-panel" id="dropdownPanel"><button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button><div class="dropdown-section"><div class="dropdown-section-title">Conditions</div><div class="dropdown-links"><a href="/pcos" class="dropdown-link">PCOS</a><a href="/thyroid" class="dropdown-link">Thyroid</a><a href="/diabetes" class="dropdown-link">Diabetes</a><a href="/weight-loss" class="dropdown-link">Weight Loss</a><a href="/hair-loss" class="dropdown-link">Hair Loss</a><a href="/testosterone" class="dropdown-link">Testosterone</a><a href="/vitamin-deficiency" class="dropdown-link">Vitamin Deficiency</a><a href="/fatigue" class="dropdown-link">Fatigue</a><a href="/sleep" class="dropdown-link">Sleep</a><a href="/skin" class="dropdown-link">Skincare</a><a href="/focus" class="dropdown-link">Focus</a><a href="/blood-pressure" class="dropdown-link">Blood Pressure</a><a href="/iv-infusions" class="dropdown-link">IV Infusions</a><a href="/recovery" class="dropdown-link">Recovery</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Sports</div><div class="dropdown-links"><a href="/pickleball" class="dropdown-link">Pickleball</a><a href="/padel" class="dropdown-link">Padel</a><a href="/runners" class="dropdown-link">Running</a><a href="/strength" class="dropdown-link">Strength</a><a href="/performance" class="dropdown-link">Performance</a><a href="/hyrox" class="dropdown-link">HyRox</a><a href="/endurance" class="dropdown-link">Endurance</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Learn</div><div class="dropdown-links"><a href="/blog/" class="dropdown-link">All Articles</a><a href="/blog/ozempic-india-guide" class="dropdown-link">Ozempic Guide</a><a href="/blog/pcos-symptoms-india" class="dropdown-link">PCOS Guide</a><a href="/blog/hba1c-test-guide" class="dropdown-link">HbA1c Test</a><a href="/blog/finasteride-india-guide" class="dropdown-link">Finasteride Guide</a><a href="/blog/tretinoin-indian-skin-guide" class="dropdown-link">Tretinoin Guide</a><a href="/blog/hrv-explained" class="dropdown-link">HRV Explained</a></div></div><div class="dropdown-section"><a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist. <i class="ph-bold ph-arrow-right"></i></a></div></div><!-- ═══ ARTICLE HERO ═══ --><section class="article-hero"><div class="article-content"><span class="article-eyebrow">Cognition</span><h1 class="article-h1">Modafinil vs Armodafinil:<em>Understanding the Differences</em></h1><div class="article-meta"><div class="article-meta-item"><i class="ph-fill ph-calendar"></i><span>April 4, 2026</span></div><div class="article-meta-item"><i class="ph-fill ph-user-circle"></i><span>arq. medical team</span></div><div class="article-meta-item"><span>12 min read</span></div></div></div></section><!-- ═══ ARTICLE BODY ═══ --><section class="article-body"><div class="article-fold"><p><strong>Modafinil and armodafinil are not the same drug.</strong> Though similar, they have distinct pharmacological differences that matter for efficacy, side effects, and suitability for your needs. This guide explains the chemistry, practical differences, dosing, and how to choose which is right for you.</p><!-- TL;DR --><div class="tldr-box"><span class="box-eyebrow">Key takeaways</span><h3>Before you start modafinil or armodafinil</h3><ul><li><strong>Modafinil</strong> is a racemic mixture (50% R + 50% S enantiomer)</li><li><strong>Armodafinil</strong> is the pure R-enantiomer—roughly 2–3× more potent per mg</li><li>Modafinil: faster onset, shorter duration (12–15 hr half-life). Best for acute focus.</li><li>Armodafinil: sustained effects, longer duration (15–20 hr half-life). Best for all-day clarity.</li><li>Both are Schedule H (prescription required in India). Available as generics (Modalert, Modiodal, Waklert).</li><li>Switching between them is possible: 100 mg modafinil ≈ 50 mg armodafinil.</li><li>Tolerance builds in 2–4 weeks; cycling (5 days on, 2 days off) maintains efficacy.</li></ul></div><h2>What Is Modafinil?</h2><p>Modafinil is a prescription nootropic (cognitive enhancer) that promotes wakefulness and focus without the anxiety and jitteriness typical of traditional stimulants like caffeine or amphetamines. It was originally developed in France in the 1970s as a treatment for narcolepsy.</p><p>Today, modafinil is used for</p><ul><li>Narcolepsy and other sleep disorders</li><li>ADHD (off-label)</li><li>Cognitive enhancement in healthy individuals</li><li>Shift-work sleep disorder</li><li>Fatigue in chronic illnesses</li></ul><p>In India, modafinil is sold under brand names like <strong>Modalert</strong> (Sun Pharma) and <strong>Modiodal</strong> (marketed as prescription medication). It's a controlled substance but legal with a valid prescription.</p><div class="cta-card"><strong>Key point</strong> Modafinil is a <em>racemic</em> mixture, meaning it contains two mirror-image molecular forms (enantiomers): the R-form and the S-form. This distinction is crucial to understanding why armodafinil exists.
+
+/* ─── MOBILE SPACING OPTIMIZATION ─── */
+@media(max-width:520px){
+  .breadcrumb{padding-top:calc(var(--nav-h) + 6px);padding-bottom:6px;padding-left:16px;padding-right:16px}
+  .article-header{padding:10px 16px 16px}
+  .article-eyebrow{margin-bottom:8px;font-size:10px}
+  .article-title{font-size:26px;margin-bottom:12px}
+  .article-byline{gap:8px;margin-bottom:12px;padding-bottom:12px}
+  .byline-avatar{width:32px;height:32px}
+  .byline-name{font-size:12px}
+  .byline-role{font-size:11px}
+  .byline-meta{gap:8px;font-size:11px}
+  .article-body{padding:16px 16px}
+  .article-body p{font-size:15px;margin-bottom:16px;line-height:1.65}
+  .article-body h2{font-size:22px;margin:28px 0 10px}
+  .article-body h3{font-size:16px;margin:20px 0 8px}
+  .article-body ul,.article-body ol{margin:12px 0 16px;padding-left:20px;font-size:15px}
+  .article-body li{margin-bottom:6px}
+  .article-body blockquote{padding:14px;margin:20px 0;font-size:14px}
+  .article-body table th,.article-body table td{padding:8px 10px;font-size:12px}
+  .tldr-box{padding:20px 16px;margin:20px 0}
+  .tldr-box h3{font-size:16px}
+  .tldr-box li{padding:10px 0;font-size:12px}
+  .highlight-box,.info-box,.warning-box{padding:14px 16px;margin:20px 0;font-size:13px}
+  .cta-card{padding:16px;margin:24px 0;gap:12px}
+  .cta-card-icon{width:36px;height:36px;font-size:16px;border-radius:10px}
+  .cta-card-text{font-size:13px}
+  .faq{padding:28px 16px}
+  .faq h2,.faq-head h2{font-size:22px;margin-bottom:20px}
+  .faq-item summary{font-size:13px;padding:12px 0}
+  .faq-ans{font-size:13px}
+  .disclaimer{padding:14px;font-size:11px;margin-bottom:16px}
+  .cta-final{padding:32px 16px 40px;border-radius:20px 20px 0 0}
+  .cta-final h2{font-size:24px}
+  .cta-final-lede{font-size:13px;margin-bottom:24px}
+  .cta-trust{gap:8px 16px;font-size:11px}
+  .related{padding:24px 16px}
+  .related h2{font-size:20px}
+  .related-grid{gap:10px}
+  .footer{padding:20px 16px;font-size:10px}
+  .read-more-wrap{padding:16px 0 4px}
+  .read-more-btn{padding:10px 22px;font-size:12px}
+  .article-hero{padding:calc(var(--nav-h) + 24px) 16px 28px}
+  .article-h1{margin-bottom:16px}
+  .article-meta{gap:12px;padding-top:16px;font-size:12px}
+}
+
+</style></head><body><!-- ─── NAV ─── --><nav class="nav"><a href="/" class="nav-logo">arq<span class="dot">.</span></a><div class="nav-right"><a href="#cta" class="nav-link">Join the waitlist</a><button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav><!-- ─── DROPDOWN MENU ─── --><!-- ─── DROPDOWN PANEL ─── -->
+<div class="dropdown-overlay" id="dropdownOverlay"></div>
+<div class="dropdown-panel" id="dropdownPanel">
+  <div class="dropdown-head">
+    <div class="dropdown-head-logo">arq<span class="dot">.</span></div>
+    <button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
+  </div>
+  <div class="dropdown-body">
+    <!-- Hero cards — top 4 conditions -->
+    <div class="dd-hero-label">Popular</div>
+    <div class="dd-hero-grid">
+      <a href="/weight-loss" class="dd-hero-card">
+        <div class="dd-hero-card-name">Weight Loss</div>
+        <div class="dd-hero-card-sub">GLP-1 therapy · metabolic panels</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/pcos" class="dd-hero-card">
+        <div class="dd-hero-card-name">PCOS</div>
+        <div class="dd-hero-card-sub">Hormone balance · insulin</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/thyroid" class="dd-hero-card">
+        <div class="dd-hero-card-name">Thyroid</div>
+        <div class="dd-hero-card-sub">TSH · T3/T4 · autoimmune</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/hair-loss" class="dd-hero-card">
+        <div class="dd-hero-card-name">Hair Loss</div>
+        <div class="dd-hero-card-sub">DHT · finasteride · regrowth</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+    </div>
+
+    <!-- All conditions accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion open" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">All conditions</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/diabetes" class="dd-link">Diabetes</a>
+        <a href="/testosterone" class="dd-link">Testosterone</a>
+        <a href="/vitamin-deficiency" class="dd-link">Vitamins</a>
+        <a href="/fatigue" class="dd-link">Fatigue</a>
+        <a href="/sleep" class="dd-link">Sleep</a>
+        <a href="/skin" class="dd-link">Skincare</a>
+        <a href="/focus" class="dd-link">Focus</a>
+        <a href="/blood-pressure" class="dd-link">Blood Pressure</a>
+        <a href="/iv-infusions" class="dd-link">IV Infusions</a>
+        <a href="/recovery" class="dd-link">Recovery</a>
+      </div>
+    </div>
+
+    <!-- Sports accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">Sports</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/pickleball" class="dd-link">Pickleball</a>
+        <a href="/padel" class="dd-link">Padel</a>
+        <a href="/runners" class="dd-link">Running</a>
+        <a href="/strength" class="dd-link">Strength</a>
+        <a href="/performance" class="dd-link">Performance</a>
+        <a href="/hyrox" class="dd-link">HyRox</a>
+        <a href="/endurance" class="dd-link">Endurance</a>
+      </div>
+    </div>
+
+    <!-- Learn accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">Learn</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/blog/" class="dd-link">All Articles</a>
+        <a href="/panel" class="dd-link">Our Panel</a>
+        <a href="/blog/ozempic-india-guide" class="dd-link">Ozempic Guide</a>
+        <a href="/blog/finasteride-india-guide" class="dd-link">Finasteride Guide</a>
+        <a href="/blog/pcos-symptoms-india" class="dd-link">PCOS Guide</a>
+        <a href="/blog/hba1c-test-guide" class="dd-link">HbA1c Test</a>
+      </div>
+    </div>
+  </div>
+  <div class="dd-cta-wrap">
+    <a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+  </div>
+</div><!-- ═══ ARTICLE HERO ═══ --><section class="article-hero"><div class="article-content"><span class="article-eyebrow">Cognition</span><h1 class="article-h1">Modafinil vs Armodafinil:<em>Understanding the Differences</em></h1><div class="article-meta"><div class="article-meta-item"><i class="ph-fill ph-calendar"></i><span>April 4, 2026</span></div><div class="article-meta-item"><i class="ph-fill ph-user-circle"></i><span>arq. medical team</span></div><div class="article-meta-item"><span>12 min read</span></div></div></div></section><!-- ═══ ARTICLE BODY ═══ --><section class="article-body"><div class="article-fold"><p><strong>Modafinil and armodafinil are not the same drug.</strong> Though similar, they have distinct pharmacological differences that matter for efficacy, side effects, and suitability for your needs. This guide explains the chemistry, practical differences, dosing, and how to choose which is right for you.</p><!-- TL;DR --><div class="tldr-box"><span class="box-eyebrow">Key takeaways</span><h3>Before you start modafinil or armodafinil</h3><ul><li><strong>Modafinil</strong> is a racemic mixture (50% R + 50% S enantiomer)</li><li><strong>Armodafinil</strong> is the pure R-enantiomer—roughly 2–3× more potent per mg</li><li>Modafinil: faster onset, shorter duration (12–15 hr half-life). Best for acute focus.</li><li>Armodafinil: sustained effects, longer duration (15–20 hr half-life). Best for all-day clarity.</li><li>Both are Schedule H (prescription required in India). Available as generics (Modalert, Modiodal, Waklert).</li><li>Switching between them is possible: 100 mg modafinil ≈ 50 mg armodafinil.</li><li>Tolerance builds in 2–4 weeks; cycling (5 days on, 2 days off) maintains efficacy.</li></ul></div><h2>What Is Modafinil?</h2><p>Modafinil is a prescription nootropic (cognitive enhancer) that promotes wakefulness and focus without the anxiety and jitteriness typical of traditional stimulants like caffeine or amphetamines. It was originally developed in France in the 1970s as a treatment for narcolepsy.</p><p>Today, modafinil is used for</p><ul><li>Narcolepsy and other sleep disorders</li><li>ADHD (off-label)</li><li>Cognitive enhancement in healthy individuals</li><li>Shift-work sleep disorder</li><li>Fatigue in chronic illnesses</li></ul><p>In India, modafinil is sold under brand names like <strong>Modalert</strong> (Sun Pharma) and <strong>Modiodal</strong> (marketed as prescription medication). It's a controlled substance but legal with a valid prescription.</p><div class="cta-card"><strong>Key point</strong> Modafinil is a <em>racemic</em> mixture, meaning it contains two mirror-image molecular forms (enantiomers): the R-form and the S-form. This distinction is crucial to understanding why armodafinil exists.
 </div><h2>What Is Armodafinil?</h2><p>Armodafinil is the <strong>purified R-enantiomer</strong> of modafinil. Instead of a 50/50 mixture of two active forms, armodafinil contains only the R-enantiomer, which is the primary active component responsible for modafinil's effects.</p><p>Armodafinil's advantages</p><ul><li><strong>Higher potency</strong> Roughly 2–3× more potent per milligram than modafinil</li><li><strong>Longer half-life</strong> 15–20 hours vs. modafinil's 12–15 hours</li><li><strong>Cleaner effects</strong> Fewer "metabolic byproducts" from the S-enantiomer</li><li><strong>Fewer side effects</strong> Some users report less headache, anxiety, or insomnia</li><li><strong>More sustained</strong> Keeps peak plasma levels stable over longer periods</li></ul><p>In India, armodafinil is sold as <strong>Waklert</strong> by Sun Pharma and is also available as a generic. The brand name Nuvigil (FDA-approved in the US) is less common in India but generic versions are widely available.</p><h2>The Chemistry Explained: Enantiomers Simplified</h2><p>Imagine your hands: your left hand and right hand are mirror images of each other, but they're not identical. You can't superimpose one onto the other perfectly. In chemistry, molecules with this property are called <strong>enantiomers</strong>.</p><p>Modafinil has two enantiomers</p><ul><li><strong>R-enantiomer</strong> (the "right hand"): This is the pharmacologically active form—it binds to receptors in your brain and produces the nootropic effects.</li><li><strong>S-enantiomer</strong> (the "left hand"): This form is much less active and is partially metabolized as a byproduct.</li></ul><p>Modafinil as marketed contains 50% R and 50% S. Armodafinil isolates just the R-enantiomer, removing the metabolic burden of the S-enantiomer.</p><p><strong>Practical takeaway</strong> If modafinil is like taking a full-spectrum B-complex vitamin, armodafinil is like taking a concentrated B12 supplement. More targeted, more potent per unit, but the same basic mechanism.</p><h2>Head-to-Head Comparison</h2><p>Here's a detailed side-by-side comparison of modafinil and armodafinil across the metrics that matter most</p><p>Pricing varies by formulation, dosage, and pharmacy. Your arq. physician will recommend the most cost-effective option based on your bloodwork.</p></div><h2>Clinical Characteristics of Modafinil</h2><p>Medical professionals may consider modafinil in patients where the following characteristics are relevant</p><ul><li><strong>Need a fast onset.</strong> Modafinil kicks in around 30 minutes, vs. 45 for armodafinil. If you need acute focus. <em>now</em>, modafinil wins.</li><li><strong>Want to avoid evening wakefulness.</strong> With a 12–15 hour half-life, a morning dose of modafinil will be mostly out of your system by bedtime. Armodafinil's 15–20 hour half-life risks sleep disruption if taken too late.</li><li><strong>Are exam cramming or doing short, intense work.</strong> The shorter duration and faster onset are perfect for a 6–8 hour focus window (e.g., exam prep, a deadline sprint).</li><li><strong>Are cost-conscious.</strong> Modafinil is generally cheaper in India due to higher competition and more generic manufacturers.</li><li><strong>Want to cycle on and off.</strong> The shorter half-life makes it easier to take "drug holidays" without residual effects.</li><li><strong>Are sensitive to longer-acting drugs.</strong> If you prefer to feel "normal" more quickly after the effect wears off, modafinil's shorter duration is an advantage.</li></ul><h2>Clinical Characteristics of Armodafinil</h2><p>Medical professionals may consider armodafinil in patients where the following characteristics are relevant</p><ul><li><strong>Need all-day sustained focus.</strong> The 15–20 hour half-life and more stable peak make armodafinil ideal for a full workday or long shifts. You take it once in the morning and it carries you through.</li><li><strong>Are sensitive to side effects.</strong> Because armodafinil is more "concentrated" and has fewer metabolic byproducts, many users report fewer headaches, anxiety, or jitteriness.</li><li><strong>Want maximum potency.</strong> At 75 mg of armodafinil ≈ 150–200 mg of modafinil in effect, you're getting more bang for your buck per dose.</li><li><strong>Dislike frequent dosing.</strong> One dose of armodafinil in the morning covers your whole day; modafinil might require a midday top-up.</li><li><strong>Have a regular schedule.</strong> If your work/study is consistent day-to-day, armodafinil's longer, steadier effect suits routine better than modafinil's shorter spike.</li><li><strong>Are doing knowledge work or deep focus tasks.</strong> Writing, coding, research, strategic thinking—tasks that benefit from sustained, uninterrupted clarity favor armodafinil.</li></ul><h2>Stacking & Cycling Protocols</h2><h3>What to Stack With</h3><p>Both modafinil and armodafinil work synergistically with certain supplements</p><ul><li><strong>L-theanine (100–200 mg)</strong> Smooths the edge, reduces anxiety, promotes calm focus. Works especially well with modafinil's faster onset.</li><li><strong>Magnesium glycinate (200–400 mg)</strong> Prevents headaches, improves sleep quality if taken at night. Essential if you notice tension or sleep disruption.</li><li><strong>Alpha-GPC or CDP-choline (300–600 mg)</strong> Supports acetylcholine, pairs well with modafinil/armodafinil for sustained cognition.</li><li><strong>Omega fatty acids</strong> Supports brain health over the long term. Not acute, but useful for chronic use.</li></ul><h3>Cycling Protocols</h3><p>To avoid tolerance buildup, most users cycle these drugs</p><ul><li><strong>5 days on, 2 days off</strong> Take modafinil/armodafinil Mon–Fri, rest Sat–Sun. This is the most popular cycle and allows your body to reset.</li><li><strong>2 weeks on, 1 week off</strong> Better for sustained projects. Maintain focus for 2 weeks, then take a full week off to reset dopamine and other neurotransmitters.</li><li><strong>Alternating doses</strong> Take your normal dose, then a lower dose (e.g., 100 mg modafinil, then 50 mg), then off. This gradual decline can reduce rebound fatigue.</li></ul><div class="cta-card"><strong>Important</strong> These are not drugs to use every single day indefinitely. Tolerance builds within 2–4 weeks of continuous use. Cycling is essential for maintaining efficacy and avoiding dependency.
 </div><h2>Can You Switch Between Modafinil and Armodafinil?</h2><p>Yes, absolutely. Many users alternate between them depending on their needs</p><h3>Rough Equivalence</h3><p>A general guideline for switching</p><ul><li><strong>100 mg modafinil ≈ 50 mg armodafinil</strong></li><li><strong>150 mg modafinil ≈ 75 mg armodafinil</strong></li><li><strong>200 mg modafinil ≈ 100 mg armodafinil</strong></li></ul><h3>How to Transition</h3><ol><li><strong>Start low</strong> If switching from modafinil (e.g., 200 mg) to armodafinil, start at 75 mg, not your modafinil-equivalent dose.</li><li><strong>Assess for 3–5 days</strong> Note how you feel—energy, focus, side effects, sleep.</li><li><strong>Adjust upward gradually</strong> If you want a stronger effect, increase by 25 mg increments. Don't jump to 150 mg immediately.</li><li><strong>Account for the longer half-life</strong> Armodafinil stays in your system longer, so residual effects accumulate if you take it every day. You may need to drop your dose or increase gaps.</li></ol><p><strong>Pro tip</strong> Some users find alternating works well—take modafinil Mon/Wed/Fri for acute focus, armodafinil Tue/Thu for sustained days. This gives you flexibility while managing tolerance.</p><h2>Obtaining a Prescription in India</h2><p>Both modafinil and armodafinil are <strong>Schedule H drugs</strong> in India under the Drugs and Cosmetics Act. They require a valid prescription from a registered medical practitioner and are available through licensed pharmacies.</p><h3>How to Obtain a Prescription</h3><p><strong>arq.clinic</strong> makes it easy to get the right medication for your situation. Discuss with a physician which modafinil or armodafinil may be appropriate for you through our telemedicine consultation process</p><ul><li>Book a consultation with an arq physician</li><li>Discuss your focus needs and medical history</li><li>Receive a prescription if medically appropriate</li><li>Get Modalert, Modiodal (modafinil), or Waklert (armodafinil) delivered within 48 hours</li></ul><div class="cta-card"><strong><a href="#cta">Book your consultation</a></strong> to discuss which is appropriate for your situation.
-</div></section><!-- ═══ FAQ ═══ --><section class="faq"><div class="faq-head"><span class="eyebrow">Common Questions</span><h2>Frequently Asked Questions</h2></div><ul class="faq-list"><li class="faq-item"><details><summary>What's the main difference between modafinil and armodafinil?</summary><div class="faq-ans"><p>Modafinil is a racemic mixture (50% R-form, 50% S-form), while armodafinil is pure R-enantiomer. Armodafinil is more potent (2–3× per mg), longer-lasting (15–20 hr half-life vs. 12–15 hr), and often produces fewer side effects due to the absence of the inactive S-form metabolites.</p></div></details></li><li class="faq-item"><details><summary>Is armodafinil stronger than modafinil?</summary><div class="faq-ans"><p>Yes, on a per-milligram basis. A 50 mg dose of armodafinil is roughly equivalent to 100–150 mg of modafinil in terms of effect. However, "stronger" doesn't necessarily mean "better"—it depends on your needs. If you want a quick boost, modafinil might be preferable. For all-day clarity, armodafinil wins.</p></div></details></li><li class="faq-item"><details><summary>Can I buy modafinil or armodafinil in India?</summary><div class="faq-ans"><p>Both modafinil and armodafinil are Schedule H drugs in India, available through licensed pharmacies with a valid prescription from a registered medical practitioner. Modafinil is marketed under brand names like Modalert and Modiodal, while armodafinil is sold as Waklert (Sun Pharma) and generics. A doctor's prescription is required for purchase.</p></div></details></li><li class="faq-item"><details><summary>Can I switch between modafinil and armodafinil?</summary><div class="faq-ans"><p>Yes. A rough equivalent: 100 mg modafinil ≈ 50 mg armodafinil. When switching, start at the lower dose and assess for 3–5 days before adjusting. Many users alternate based on their weekly schedule—modafinil for acute days, armodafinil for steady days.</p></div></details></li><li class="faq-item"><details><summary>What are the side effects?</summary><div class="faq-ans"><p>Both have similar side effect profiles: headache, insomnia, anxiety, or dry mouth in some users. Armodafinil users often report fewer side effects because the S-enantiomer (absent in armodafinil) causes some of the metabolic stress. Side effects are usually mild and subside with cycling (e.g., 5 days on, 2 days off).</p></div></details></li><li class="faq-item"><details><summary>Can I use modafinil/armodafinil every single day?</summary><div class="faq-ans"><p>Technically yes, but not recommended. Tolerance develops within 2–4 weeks of daily use, meaning the effects diminish. Cycling—taking 5 days on, 2 days off, or 2 weeks on, 1 week off—maintains efficacy and reduces the risk of dependency. Your doctor can advise on a cycling schedule tailored to your needs.</p></div></details></li><li class="faq-item"><details><summary>What's the cost difference in India?</summary><div class="faq-ans"><p>Modafinil generics: per 100 mg tablet. Armodafinil generics: per 75–150 mg tablet. Prices vary by pharmacy and brand. Since armodafinil is 2–3× more potent, cost per effect is often similar. Some users find modafinil cheaper on a per-dose basis.</p></div></details></li></ul></section><!-- ═══ DISCLAIMER ═══ --><section class="medical-disclaimer"><div class="disclaimer-box"><strong>Medical Disclaimer</strong><p>This article is for informational and educational purposes only. Modafinil and armodafinil are Schedule H prescription medications in India under the Drugs and Cosmetics Act and cannot be used without a valid prescription from a registered medical practitioner. This article is not intended to promote, advertise, or encourage the use of these medications for any purpose. Always consult with a licensed healthcare provider before considering any medication. The information presented herein is based on published scientific literature and is meant solely to increase understanding of these substances.</p></div></section><!-- ═══ CTA — FOOTER ═══ --><section class="cta-final" id="cta"><div class="cta-final-inner"><span class="eyebrow-center">Medical guidance</span><h2>Talk to an <em>arq.</em> physician</h2><p class="cta-final-lede">Not sure which medication is right for you? Our physicians specialize in cognitive optimization and can help you find the right approach based on your goals and medical history.</p><div class="cta-button-group"><button class="btn btn-gold btn-lg" onclick="openWaitlist()">Join waitlist</button><a href="https://wa.me/919137307628" class="btn btn-light btn-lg">WhatsApp us</a></div><div class="cta-trust"><div class="item"><i class="ph-fill ph-seal-check"></i><span>Prescription delivered in 24 hrs</span></div><div class="item"><i class="ph-fill ph-heart"></i><span>Evidence-based medical guidance</span></div></div></div></section><!-- ─── WAITLIST MODAL ─── --><footer><p>&copy; 2026 arq. All rights reserved. | <a href="/privacy">Privacy</a> | <a href="/terms">Terms</a></p></footer><script>
+</div></section></div><!-- end article-fold -->
+<div class="read-more-wrap" id="readMoreWrap"><button class="read-more-btn" id="readMoreBtn">
+ Continue reading <i class="ph-bold ph-caret-down"></i></button></div>
+<!-- ═══ FAQ ═══ --><section class="faq"><div class="faq-head"><span class="eyebrow">Common Questions</span><h2>Frequently Asked Questions</h2></div><ul class="faq-list"><li class="faq-item"><details><summary>What's the main difference between modafinil and armodafinil?</summary><div class="faq-ans"><p>Modafinil is a racemic mixture (50% R-form, 50% S-form), while armodafinil is pure R-enantiomer. Armodafinil is more potent (2–3× per mg), longer-lasting (15–20 hr half-life vs. 12–15 hr), and often produces fewer side effects due to the absence of the inactive S-form metabolites.</p></div></details></li><li class="faq-item"><details><summary>Is armodafinil stronger than modafinil?</summary><div class="faq-ans"><p>Yes, on a per-milligram basis. A 50 mg dose of armodafinil is roughly equivalent to 100–150 mg of modafinil in terms of effect. However, "stronger" doesn't necessarily mean "better"—it depends on your needs. If you want a quick boost, modafinil might be preferable. For all-day clarity, armodafinil wins.</p></div></details></li><li class="faq-item"><details><summary>Can I buy modafinil or armodafinil in India?</summary><div class="faq-ans"><p>Both modafinil and armodafinil are Schedule H drugs in India, available through licensed pharmacies with a valid prescription from a registered medical practitioner. Modafinil is marketed under brand names like Modalert and Modiodal, while armodafinil is sold as Waklert (Sun Pharma) and generics. A doctor's prescription is required for purchase.</p></div></details></li><li class="faq-item"><details><summary>Can I switch between modafinil and armodafinil?</summary><div class="faq-ans"><p>Yes. A rough equivalent: 100 mg modafinil ≈ 50 mg armodafinil. When switching, start at the lower dose and assess for 3–5 days before adjusting. Many users alternate based on their weekly schedule—modafinil for acute days, armodafinil for steady days.</p></div></details></li><li class="faq-item"><details><summary>What are the side effects?</summary><div class="faq-ans"><p>Both have similar side effect profiles: headache, insomnia, anxiety, or dry mouth in some users. Armodafinil users often report fewer side effects because the S-enantiomer (absent in armodafinil) causes some of the metabolic stress. Side effects are usually mild and subside with cycling (e.g., 5 days on, 2 days off).</p></div></details></li><li class="faq-item"><details><summary>Can I use modafinil/armodafinil every single day?</summary><div class="faq-ans"><p>Technically yes, but not recommended. Tolerance develops within 2–4 weeks of daily use, meaning the effects diminish. Cycling—taking 5 days on, 2 days off, or 2 weeks on, 1 week off—maintains efficacy and reduces the risk of dependency. Your doctor can advise on a cycling schedule tailored to your needs.</p></div></details></li><li class="faq-item"><details><summary>What's the cost difference in India?</summary><div class="faq-ans"><p>Modafinil generics: per 100 mg tablet. Armodafinil generics: per 75–150 mg tablet. Prices vary by pharmacy and brand. Since armodafinil is 2–3× more potent, cost per effect is often similar. Some users find modafinil cheaper on a per-dose basis.</p></div></details></li></ul></section><!-- ═══ DISCLAIMER ═══ --><section class="medical-disclaimer"><div class="disclaimer-box"><strong>Medical Disclaimer</strong><p>This article is for informational and educational purposes only. Modafinil and armodafinil are Schedule H prescription medications in India under the Drugs and Cosmetics Act and cannot be used without a valid prescription from a registered medical practitioner. This article is not intended to promote, advertise, or encourage the use of these medications for any purpose. Always consult with a licensed healthcare provider before considering any medication. The information presented herein is based on published scientific literature and is meant solely to increase understanding of these substances.</p></div></section><!-- ═══ CTA — FOOTER ═══ --><section class="cta-final" id="cta"><div class="cta-final-inner"><span class="eyebrow-center">Medical guidance</span><h2>Talk to an <em>arq.</em> physician</h2><p class="cta-final-lede">Not sure which medication is right for you? Our physicians specialize in cognitive optimization and can help you find the right approach based on your goals and medical history.</p><div class="cta-button-group"><button class="btn btn-gold btn-lg" onclick="openWaitlist()">Join waitlist</button></div><div class="cta-trust"><div class="item"><i class="ph-fill ph-seal-check"></i><span>Prescription delivered in 24 hrs</span></div><div class="item"><i class="ph-fill ph-heart"></i><span>Evidence-based medical guidance</span></div></div></div></section><!-- ─── WAITLIST MODAL ─── --><footer><p>&copy; 2026 arq. All rights reserved. | <a href="/privacy">Privacy</a> | <a href="/terms">Terms</a></p></footer><script>
 // Navigation
 const hamburger = document.getElementById('hamburger');
 const dropdownOverlay = document.getElementById('dropdownOverlay');
@@ -457,6 +620,11 @@ document.querySelector('.nav').classList.add('at-top');
     var t=link.textContent.toLowerCase();
     if(t.includes('waitlist')){link.addEventListener('click',function(e){e.preventDefault();openWaitlist()})}
   });
+
+  var readMoreBtn=document.getElementById('readMoreBtn');
+  var articleFold=document.getElementById('articleFold');
+  var readMoreWrap=document.getElementById('readMoreWrap');
+  if(readMoreBtn&&articleFold){readMoreBtn.addEventListener('click',function(){articleFold.classList.add('expanded');readMoreWrap.style.display='none';})}
 })();
 </script>
 </body></html>

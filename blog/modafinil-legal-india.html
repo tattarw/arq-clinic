@@ -100,7 +100,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 em{font-style:italic;color:var(--gold)}
 
 /* ─── NAV ─── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
+.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
+.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
+.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
 .nav.at-top{background:transparent}
 .nav.scrolled{background:rgba(250,249,245,0.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 var(--border)}
 .nav.scrolled .nav-logo{color:var(--text)}
@@ -108,11 +111,7 @@ em{font-style:italic;color:var(--gold)}
 .nav-logo{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--text);letter-spacing:.02em;transition:color .3s ease}
 .nav-logo .dot{color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:10px}
-.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
-.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
-.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
-.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
-.nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
+.nav.scrolled .nav.scrolled .nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
 .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
 .nav.scrolled .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
 .nav-hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:1px;transition:background .3s ease}
@@ -269,21 +268,46 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 }
 
 /* ─── DROPDOWN MENU ─── */
+/* ─── DROPDOWN NAV ─── */
 .dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
 .dropdown-overlay.open{opacity:1;pointer-events:auto}
-.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(380px,90vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:80px 28px 40px;box-shadow:-8px 0 40px rgba(0,0,0,0.12)}
+.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(400px,92vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:0;box-shadow:-12px 0 48px rgba(0,0,0,0.12)}
 .dropdown-panel.open{transform:translateX(0)}
-.dropdown-close{position:absolute;top:16px;right:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:18px;transition:all .2s}
+.dropdown-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--bg);border-bottom:1px solid var(--border)}
+.dropdown-head-logo{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
+.dropdown-head-logo .dot{color:var(--gold)}
+.dropdown-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:16px;transition:all .2s;border:none;cursor:pointer}
 .dropdown-close:hover{background:var(--surface)}
-.dropdown-section{margin-bottom:28px}
-.dropdown-section-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.dropdown-section-title::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
-.dropdown-links{display:flex;flex-wrap:wrap;gap:6px}
-.dropdown-link{display:inline-flex;align-items:center;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:var(--bg2);border:1px solid var(--border);transition:all .2s var(--ease)}
-.dropdown-link:hover{border-color:var(--gold-border);background:var(--gold-glow);color:var(--gold)}
-.dropdown-link.active{border-color:var(--gold);background:var(--gold-glow);color:var(--gold);font-weight:600}
-.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;justify-content:center;align-items:center;gap:6px;margin-top:8px;transition:all .3s var(--ease);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
-.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+.dropdown-body{padding:20px 24px 32px}
+/* Hero condition cards */
+.dd-hero-label{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.dd-hero-label::before{content:'';width:14px;height:1px;background:var(--gold);opacity:0.5}
+.dd-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.dd-hero-card{display:flex;flex-direction:column;gap:4px;padding:16px 14px;border-radius:14px;background:var(--card);border:1px solid var(--border);text-decoration:none;transition:all .25s var(--ease)}
+.dd-hero-card:hover{border-color:var(--gold-border);box-shadow:0 4px 16px rgba(184,146,46,0.1);transform:translateY(-1px)}
+.dd-hero-card-name{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--text);letter-spacing:-0.01em}
+.dd-hero-card-sub{font-size:11px;color:var(--text-60);line-height:1.4}
+.dd-hero-card .dd-hero-arrow{font-size:11px;color:var(--gold);margin-top:4px;transition:transform .2s}
+.dd-hero-card:hover .dd-hero-arrow{transform:translateX(3px)}
+/* Accordion sections */
+.dd-section{border-top:1px solid var(--border);padding-top:16px;margin-top:16px}
+.dd-section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+.dd-accordion{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:0 0 12px;background:none;border:none;width:100%}
+.dd-accordion-label{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.dd-accordion-label::before{content:'';width:14px;height:1px;background:var(--gold);opacity:0.5}
+.dd-accordion-icon{font-size:14px;color:var(--text-30);transition:transform .3s var(--ease)}
+.dd-accordion.open .dd-accordion-icon{transform:rotate(180deg)}
+.dd-accordion-body{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-height:0;overflow:hidden;transition:max-height .4s var(--ease),opacity .3s;opacity:0}
+.dd-accordion.open+.dd-accordion-body{max-height:400px;opacity:1}
+.dd-link{display:flex;align-items:center;padding:10px 12px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:transparent;text-decoration:none;transition:all .2s var(--ease)}
+.dd-link:hover{background:var(--gold-glow);color:var(--gold)}
+.dd-link i{margin-right:8px;font-size:14px;color:var(--text-30);transition:color .2s}
+.dd-link:hover i{color:var(--gold)}
+/* CTA at bottom */
+.dd-cta-wrap{padding:20px 24px;position:sticky;bottom:0;background:linear-gradient(to top,var(--bg) 80%,transparent);border-top:1px solid var(--border)}
+.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;align-items:center;justify-content:center;gap:6px;transition:all .3s var(--ease);text-decoration:none;box-shadow:0 4px 16px rgba(184,146,46,0.25)}
+.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(184,146,46,0.35)}
+@media(max-width:520px){.dd-hero-grid{grid-template-columns:1fr}.creds-grid{gap:24px}.creds-logo{height:34px}}
 
 /* ─── READ MORE FOLD ─── */
 .article-fold{max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0}
@@ -313,7 +337,143 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .wl-trust span{display:flex;align-items:center;gap:4px}
 .wl-trust i{color:var(--gold);font-size:12px}
 
-</style></head><body><!-- ─── NAV ─── --><nav class="nav"><a href="/" class="nav-logo">arq<span class="dot">.</span></a><div class="nav-right"><a href="#cta" class="nav-link">Join the waitlist</a><button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav><!-- ─── DROPDOWN MENU ─── --><div class="dropdown-overlay" id="dropdownOverlay"></div><div class="dropdown-panel" id="dropdownPanel"><button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button><div class="dropdown-section"><div class="dropdown-section-title">Conditions</div><div class="dropdown-links"><a href="/pcos" class="dropdown-link">PCOS</a><a href="/thyroid" class="dropdown-link">Thyroid</a><a href="/diabetes" class="dropdown-link">Diabetes</a><a href="/weight-loss" class="dropdown-link">Weight Loss</a><a href="/hair-loss" class="dropdown-link">Hair Loss</a><a href="/testosterone" class="dropdown-link">Testosterone</a><a href="/vitamin-deficiency" class="dropdown-link">Vitamin Deficiency</a><a href="/fatigue" class="dropdown-link">Fatigue</a><a href="/sleep" class="dropdown-link">Sleep</a><a href="/skin" class="dropdown-link">Skincare</a><a href="/focus" class="dropdown-link">Focus</a><a href="/blood-pressure" class="dropdown-link">Blood Pressure</a><a href="/iv-infusions" class="dropdown-link">IV Infusions</a><a href="/recovery" class="dropdown-link">Recovery</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Sports</div><div class="dropdown-links"><a href="/pickleball" class="dropdown-link">Pickleball</a><a href="/padel" class="dropdown-link">Padel</a><a href="/runners" class="dropdown-link">Running</a><a href="/strength" class="dropdown-link">Strength</a><a href="/performance" class="dropdown-link">Performance</a><a href="/hyrox" class="dropdown-link">HyRox</a><a href="/endurance" class="dropdown-link">Endurance</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Learn</div><div class="dropdown-links"><a href="/blog/" class="dropdown-link">All Articles</a><a href="/blog/ozempic-india-guide" class="dropdown-link">Ozempic Guide</a><a href="/blog/pcos-symptoms-india" class="dropdown-link">PCOS Guide</a><a href="/blog/hba1c-test-guide" class="dropdown-link">HbA1c Test</a><a href="/blog/finasteride-india-guide" class="dropdown-link">Finasteride Guide</a><a href="/blog/tretinoin-indian-skin-guide" class="dropdown-link">Tretinoin Guide</a><a href="/blog/hrv-explained" class="dropdown-link">HRV Explained</a></div></div><div class="dropdown-section"><a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist. <i class="ph-bold ph-arrow-right"></i></a></div></div><!-- ═══ ARTICLE HERO ═══ --><section class="article-hero"><div class="article-content"><span class="article-eyebrow">Cognition guide</span><h1 class="article-h1">Is Modafinil Legal in India? <em>The Honest Answer</em></h1><div class="article-meta"><div class="article-meta-item"><i class="ph-fill ph-calendar"></i><span>April 16, 2026</span></div><div class="article-meta-item"><i class="ph-fill ph-user-circle"></i><span>arq. medical team</span></div><div class="article-meta-badge"><i class="ph-fill ph-stethoscope"></i>
+
+/* ─── MOBILE SPACING OPTIMIZATION ─── */
+@media(max-width:520px){
+  .breadcrumb{padding-top:calc(var(--nav-h) + 6px);padding-bottom:6px;padding-left:16px;padding-right:16px}
+  .article-header{padding:10px 16px 16px}
+  .article-eyebrow{margin-bottom:8px;font-size:10px}
+  .article-title{font-size:26px;margin-bottom:12px}
+  .article-byline{gap:8px;margin-bottom:12px;padding-bottom:12px}
+  .byline-avatar{width:32px;height:32px}
+  .byline-name{font-size:12px}
+  .byline-role{font-size:11px}
+  .byline-meta{gap:8px;font-size:11px}
+  .article-body{padding:16px 16px}
+  .article-body p{font-size:15px;margin-bottom:16px;line-height:1.65}
+  .article-body h2{font-size:22px;margin:28px 0 10px}
+  .article-body h3{font-size:16px;margin:20px 0 8px}
+  .article-body ul,.article-body ol{margin:12px 0 16px;padding-left:20px;font-size:15px}
+  .article-body li{margin-bottom:6px}
+  .article-body blockquote{padding:14px;margin:20px 0;font-size:14px}
+  .article-body table th,.article-body table td{padding:8px 10px;font-size:12px}
+  .tldr-box{padding:20px 16px;margin:20px 0}
+  .tldr-box h3{font-size:16px}
+  .tldr-box li{padding:10px 0;font-size:12px}
+  .highlight-box,.info-box,.warning-box{padding:14px 16px;margin:20px 0;font-size:13px}
+  .cta-card{padding:16px;margin:24px 0;gap:12px}
+  .cta-card-icon{width:36px;height:36px;font-size:16px;border-radius:10px}
+  .cta-card-text{font-size:13px}
+  .faq{padding:28px 16px}
+  .faq h2,.faq-head h2{font-size:22px;margin-bottom:20px}
+  .faq-item summary{font-size:13px;padding:12px 0}
+  .faq-ans{font-size:13px}
+  .disclaimer{padding:14px;font-size:11px;margin-bottom:16px}
+  .cta-final{padding:32px 16px 40px;border-radius:20px 20px 0 0}
+  .cta-final h2{font-size:24px}
+  .cta-final-lede{font-size:13px;margin-bottom:24px}
+  .cta-trust{gap:8px 16px;font-size:11px}
+  .related{padding:24px 16px}
+  .related h2{font-size:20px}
+  .related-grid{gap:10px}
+  .footer{padding:20px 16px;font-size:10px}
+  .read-more-wrap{padding:16px 0 4px}
+  .read-more-btn{padding:10px 22px;font-size:12px}
+  .article-hero{padding:calc(var(--nav-h) + 24px) 16px 28px}
+  .article-h1{margin-bottom:16px}
+  .article-meta{gap:12px;padding-top:16px;font-size:12px}
+}
+
+</style></head><body><!-- ─── NAV ─── --><nav class="nav"><a href="/" class="nav-logo">arq<span class="dot">.</span></a><div class="nav-right"><a href="#cta" class="nav-link">Join the waitlist</a><button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav><!-- ─── DROPDOWN MENU ─── --><!-- ─── DROPDOWN PANEL ─── -->
+<div class="dropdown-overlay" id="dropdownOverlay"></div>
+<div class="dropdown-panel" id="dropdownPanel">
+  <div class="dropdown-head">
+    <div class="dropdown-head-logo">arq<span class="dot">.</span></div>
+    <button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
+  </div>
+  <div class="dropdown-body">
+    <!-- Hero cards — top 4 conditions -->
+    <div class="dd-hero-label">Popular</div>
+    <div class="dd-hero-grid">
+      <a href="/weight-loss" class="dd-hero-card">
+        <div class="dd-hero-card-name">Weight Loss</div>
+        <div class="dd-hero-card-sub">GLP-1 therapy · metabolic panels</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/pcos" class="dd-hero-card">
+        <div class="dd-hero-card-name">PCOS</div>
+        <div class="dd-hero-card-sub">Hormone balance · insulin</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/thyroid" class="dd-hero-card">
+        <div class="dd-hero-card-name">Thyroid</div>
+        <div class="dd-hero-card-sub">TSH · T3/T4 · autoimmune</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/hair-loss" class="dd-hero-card">
+        <div class="dd-hero-card-name">Hair Loss</div>
+        <div class="dd-hero-card-sub">DHT · finasteride · regrowth</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+    </div>
+
+    <!-- All conditions accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion open" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">All conditions</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/diabetes" class="dd-link">Diabetes</a>
+        <a href="/testosterone" class="dd-link">Testosterone</a>
+        <a href="/vitamin-deficiency" class="dd-link">Vitamins</a>
+        <a href="/fatigue" class="dd-link">Fatigue</a>
+        <a href="/sleep" class="dd-link">Sleep</a>
+        <a href="/skin" class="dd-link">Skincare</a>
+        <a href="/focus" class="dd-link">Focus</a>
+        <a href="/blood-pressure" class="dd-link">Blood Pressure</a>
+        <a href="/iv-infusions" class="dd-link">IV Infusions</a>
+        <a href="/recovery" class="dd-link">Recovery</a>
+      </div>
+    </div>
+
+    <!-- Sports accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">Sports</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/pickleball" class="dd-link">Pickleball</a>
+        <a href="/padel" class="dd-link">Padel</a>
+        <a href="/runners" class="dd-link">Running</a>
+        <a href="/strength" class="dd-link">Strength</a>
+        <a href="/performance" class="dd-link">Performance</a>
+        <a href="/hyrox" class="dd-link">HyRox</a>
+        <a href="/endurance" class="dd-link">Endurance</a>
+      </div>
+    </div>
+
+    <!-- Learn accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">Learn</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/blog/" class="dd-link">All Articles</a>
+        <a href="/panel" class="dd-link">Our Panel</a>
+        <a href="/blog/ozempic-india-guide" class="dd-link">Ozempic Guide</a>
+        <a href="/blog/finasteride-india-guide" class="dd-link">Finasteride Guide</a>
+        <a href="/blog/pcos-symptoms-india" class="dd-link">PCOS Guide</a>
+        <a href="/blog/hba1c-test-guide" class="dd-link">HbA1c Test</a>
+      </div>
+    </div>
+  </div>
+  <div class="dd-cta-wrap">
+    <a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+  </div>
+</div><!-- ═══ ARTICLE HERO ═══ --><section class="article-hero"><div class="article-content"><span class="article-eyebrow">Cognition guide</span><h1 class="article-h1">Is Modafinil Legal in India? <em>The Honest Answer</em></h1><div class="article-meta"><div class="article-meta-item"><i class="ph-fill ph-calendar"></i><span>April 16, 2026</span></div><div class="article-meta-item"><i class="ph-fill ph-user-circle"></i><span>arq. medical team</span></div><div class="article-meta-badge"><i class="ph-fill ph-stethoscope"></i>
  Medically reviewed
  </div></div></div></section><!-- ═══ ARTICLE BODY ═══ --><section class="article-body"><p><strong>Modafinil is legal in India with a valid prescription.</strong> It is classified as a Schedule H drug under the Drugs and Cosmetics Act 1940, which means it requires a prescription from a registered medical practitioner. It is <em>not</em> a narcotic under the NDPS Act. But here's the reality: many online pharmacies sell modafinil without prescriptions, enforcement is inconsistent, and most men buying it have no medical oversight. This guide explains the legal status, why you should get a prescription despite the grey market, and how to do it safely.</p><!-- TL;DR --><div class="tldr-box"><span class="box-eyebrow">Key takeaways</span><h3>Before buying modafinil in India</h3><ul><li><strong>Modafinil is legal with a prescription</strong> — Schedule H drug, not a narcotic</li><li>Many online pharmacies sell without Rx, but this bypasses quality assurance and medical screening</li><li><strong>You need to understand how it works</strong> — dopamine reuptake inhibition, not a simple stimulant</li><li>Contraindications matter — cardiac arrhythmias, hypertension, pregnancy are absolute no-gos</li><li>Drug interactions exist — modafinil affects SSRIs, anticonvulsants, and blood thinners</li><li>arq. prescribes after screening for contraindications, drug interactions, and your medical history</li></ul></div><h2>What is Modafinil?</h2><p>Modafinil is a eugeroic — a wakefulness-promoting agent. It was originally developed to treat narcolepsy and other sleep disorders, but its mechanisms make it valuable for cognitive enhancement, focus, and sustained attention. Unlike amphetamines, it doesn't cause a "rush." The effect is subtle, sustained, and smooth — people describe it as turning on a light switch rather than pressing the gas pedal.</p><h3>How It Works</h3><p>Modafinil operates through multiple neurotransmitter pathways</p><ul><li><strong>Dopamine reuptake inhibition</strong> Increases dopamine availability, enhancing motivation and reward signaling</li><li><strong>Histamine modulation</strong> Promotes wakefulness through the histaminergic system</li><li><strong>Orexin system activation</strong> Stimulates the orexin (hypocretin) neurons involved in arousal</li></ul><h3>History & Development</h3><p>Modafinil was synthesized by Michel Jouvet and Lafon Laboratories in France in the late 1970s, initially for narcolepsy treatment. The FDA approved it in 1998 in the US. Today, it's one of the most researched and manufactured pharmaceuticals globally.</p><h3>Manufacturing in India</h3><p>India is a major modafinil producer. Key manufacturers include</p><ul><li><strong>Sun Pharmaceutical</strong> Produces Modalert (100mg, 200mg)</li><li><strong>HAB Pharma</strong> Produces Modvigil</li><li><strong>Intas Pharmaceuticals</strong> Produces Modafresh</li></ul><div class="article-fold" id="articleFold"><h2>Legal Status Explained</h2><p>Understanding India's drug classification system is key to understanding modafinil's legal status. India uses several regulatory categories. Modafinil falls under <strong>Schedule H</strong>.</p><h3>Schedule H: What It Means</h3><p>Schedule H drugs require a prescription but are. <em>not</em> narcotics. They're considered potentially harmful if misused but are legitimate medications. Examples include many antibiotics, steroids, and psychoactive substances like modafinil.</p><h3>Schedule H ≠ Narcotic</h3><p>This is the critical distinction. Modafinil is <em>not</em> under the Narcotic Drugs and Psychotropic Substances (NDPS) Act. It's regulated like many common medications. Schedule X includes drugs with high abuse potential and restricted legitimate use: benzodiazepines at high doses, strong opioids, certain stimulants. Modafinil is far lower tier.</p><h3>The Grey Market Reality</h3><p>Here's the honest part: many online pharmacies in India sell modafinil without requiring a prescription. Enforcement of the Schedule H requirement is inconsistent. Some pharmacies ignore it; some don't. But here's why you should get a prescription anyway</p><ul><li><strong>No quality assurance</strong> Grey market suppliers have no regulatory oversight. Product authenticity is uncertain.</li><li><strong>No medical oversight</strong> A doctor screens for contraindications and drug interactions. Buying without Rx skips this safety step.</li><li><strong>Legal grey zone</strong> While enforcement is lax, you're technically breaking the law.</li><li><strong>Payment trail</strong> Without documentation, you have no proof of legitimate purchase if questioned.</li></ul><h2>Why a Prescription Matters</h2><p>A prescription isn't bureaucratic friction — it's a safety feature. Here's what it provides</p><h3>Dosage Calibration</h3><p>Your weight, age, metabolism, and use case affect optimal dosage. A doctor adjusts for these factors. Generic "just take 200mg" advice misses personalization.</p><h3>Drug Interactions Screening</h3><p>If you're on SSRIs, stimulants, certain anticonvulsants, or blood thinners, modafinil can interact. A doctor checks your medication list and flags conflicts.</p><h3>Contraindications Check</h3><p>Modafinil is contraindicated in</p><ul><li>Cardiac arrhythmias or structural heart disease</li><li>Uncontrolled hypertension</li><li>Pregnancy (teratogenic risk)</li><li>Severe liver or kidney disease</li></ul><p>A doctor ensures you don't have these conditions.</p><h3>Legal Protection</h3><p>If you experience a side effect or adverse event, having a documented prescription and doctor oversight provides legal and medical protection.</p><h3>Quality Assurance</h3><p>Licensed pharmacies dispense regulated products. You get genuine Modalert, not counterfeit or contaminated material.</p><h2>Modafinil Brands Available in India</h2><p>All contain the same active ingredient (100mg or 200mg modafinil base) but differ in inactive formulations, manufacturing standards, and bioavailability. The most widely recognized is Modalert (Sun Pharma)</p><ul><li><strong>Modalert (Sun Pharma)</strong> 100mg, 200mg tablets. Most reliable and widely distributed. Approximately per tablet.</li><li><strong>Modvigil (HAB Pharma)</strong> 100mg, 200mg tablets. Good bioavailability. Approximately per tablet.</li><li><strong>Modafresh (Intas)</strong> 100mg, 200mg tablets. Emerging brand. Approximately per tablet.</li></ul><h2>Research on Off-Label Uses</h2><p>Modafinil is FDA-approved for narcolepsy, obstructive sleep apnea, and shift work sleep disorder. Off-label use for cognitive enhancement, focus, sustained attention, and fatigue is common but not officially indicated. The evidence for cognitive enhancement in healthy adults is mixed: some studies show modest improvements in executive function and motivation; others show minimal benefit in non-sleep-deprived individuals.</p><h2>Side Effects & Safety</h2><p><strong>Common side effects (1% of users)</strong> Headaches, nausea, insomnia (if taken late), anxiety, dizziness. These are usually mild and diminish with continued use or dose reduction.</p><p><strong>Rare but serious</strong> Skin reactions (Stevens-Johnson Syndrome, though extremely rare), cardiac arrhythmias (in predisposed individuals), mood changes, allergic reactions.</p><p><strong>Why screenings matter</strong> Your doctor checks for cardiac risk factors, liver/kidney disease, and history of psychiatric illness before prescribing. These screenings catch contraindications that online marketplaces ignore.</p><h2>Obtaining a Modafinil Prescription</h2><p><strong>Step 1: Physician Consultation</strong><br/>Discuss your sleep history, fatigue symptoms, use case (narcolepsy, shift work, cognitive enhancement), family medical history, and current medications.</p><p><strong>Step 2: Medical Screening</strong><br/>Your physician takes a cardiac history, checks blood pressure, screens for hypertension, and asks about mood/psychiatric history to ensure no absolute contraindications.</p><p><strong>Step 3: Prescription & Dispensing</strong><br/>If cleared, you receive a Schedule H prescription for modafinil (typically Modalert or Modvigil). Licensed pharmacies require the prescription; grey market ones don't. Use a licensed pharmacy.</p><p><strong>Step 4: Monitoring</strong><br/>Follow-up at 2 weeks to assess tolerance, side effects, and efficacy. Your physician adjusts dosage or discontinues if side effects warrant it.</p><h2>Modafinil Dosage Guide</h2><p><strong>Standard dose</strong> 100-200mg once daily, taken in the morning. Some individuals respond to lower doses (100mg); others benefit from up to 400mg, but this requires physician guidance.</p><p><strong>Typical timeline</strong></p><ul><li>Week 1: Onset of effects in 1 hours, lasts 12 hours</li><li>Weeks 2: Tolerance may develop; some users report diminished effect</li><li>Ongoing: Consistent use without tolerance escalation is common if dosage remains stable</li></ul><p><strong>Factors affecting dosage</strong> Body weight, age, liver function, concurrent medications, use case. Your physician personalizes this.</p><h2>Frequently Asked Questions</h2><ul class="faq-list"><li class="faq-item"><details><summary>Is it safe to buy modafinil without a prescription from online pharmacies?</summary><div class="faq-ans">Technically, it's illegal in India. Practically, many online pharmacies sell without prescriptions. But you lose medical oversight, quality assurance, and legal protection. If something goes wrong, you have no documentation and no physician to blame — just your own risk. Licensed dispensing with a prescription is safer.</div></details></li><li class="faq-item"><details><summary>Can I use modafinil with other medications?</summary><div class="faq-ans">Modafinil interacts with SSRIs, certain anticonvulsants, blood thinners, and other drugs. Your physician reviews your medication list before prescribing to identify conflicts. Do not assume it's safe without this review.</div></details></li><li class="faq-item"><details><summary>How long can I take modafinil safely?</summary><div class="faq-ans">Long-term use (years) is generally safe at standard doses, with periodic monitoring. Your physician determines the duration based on your use case, side effect profile, and response. Do not assume indefinite use is safe without oversight.</div></details></li><li class="faq-item"><details><summary>What's the difference between modafinil and other stimulants?</summary><div class="faq-ans">Modafinil is not an amphetamine. It works through dopamine and histamine pathways, not sympathomimetic overdrive. The effect is milder, longer-lasting, and less likely to cause crash or addiction. But it still carries contraindications and side effects.</div></details></li><li class="faq-item"><details><summary>Can women take modafinil?</summary><div class="faq-ans">Modafinil is teratogenic (causes birth defects in male fetuses). Women of reproductive age should not take it without careful physician oversight. Pregnancy is an absolute contraindication. Postmenopausal women may be prescribed it if medically appropriate.</div></details></li></ul><div class="cta-card"><p><strong>Wondering if modafinil is right for you?</strong> Join the waitlist who understands your medical history, drug interactions, and legal landscape. <a href="#cta">Get a proper prescription →</a></p></div></section><!-- ═══ FAQ ═══ --></div><!-- end article-fold --><div class="read-more-wrap" id="readMoreWrap"><button class="read-more-btn" id="readMoreBtn">
  Continue reading. <i class="ph-bold ph-caret-down"></i></button></div><section class="faq"><div class="faq-head"><span class="eyebrow" style="justify-content: center; display: flex;">Legal & Medical</span><h2>More questions about modafinil in India</h2></div><ul class="faq-list"><li class="faq-item"><details><summary>Is modafinil a controlled substance in India?</summary><div class="faq-ans">Modafinil is a Schedule H drug, not a controlled substance. Schedule H requires a prescription but is not a narcotic. Controlled substances (Schedule X) are reserved for drugs with high abuse potential like benzodiazepines and opioids. This distinction matters legally and medically.</div></details></li><li class="faq-item"><details><summary>What happens if I'm caught with modafinil without a prescription?</summary><div class="faq-ans">Technically, buying Schedule H drugs without a prescription is illegal. Enforcement is inconsistent — most personal use goes unnoticed. But if questioned, you have no legal defense. Having a documented prescription and physician oversight provides protection and peace of mind.</div></details></li><li class="faq-item"><details><summary>Can I import modafinil from abroad into India?</summary><div class="faq-ans">Importing Schedule H drugs is restricted. Personal imports (small quantities for personal use) may be tolerated, but importing for resale is illegal. Check current customs regulations, as they vary. The safest approach is obtaining a prescription in India and dispensing locally.</div></details></li><li class="faq-item"><details><summary>Why is modafinil cheaper in some online pharmacies?</summary><div class="faq-ans">Cheaper modafinil often comes from grey market suppliers with no quality control, lower manufacturing standards, or counterfeit products. The savings come at the cost of authenticity, purity, and safety. Licensed pharmacies charge more because they verify product origin and meet regulatory standards.</div></details></li><li class="faq-item"><details><summary>Do I need ongoing bloodwork to take modafinil?</summary><div class="faq-ans">Baseline bloodwork is recommended to ensure liver/kidney function is normal and no underlying cardiac issues exist. Ongoing monitoring depends on your use case and physician assessment. Most healthy individuals don't require frequent bloodwork, but periodic check-ins are prudent.</div></details></li><li class="faq-item"><details><summary>Is arq. allowed to prescribe modafinil in India?</summary><div class="faq-ans">arq. physicians are licensed medical practitioners registered with the Medical Council of India (MCI/NMC). They can prescribe Schedule H drugs, including modafinil, within their scope of practice. All prescriptions are legal, documented, and subject to regulatory oversight.</div></details></li></ul></section><!-- ═══ CTA — FOOTER ═══ --><section class="cta-final" id="cta"><div class="cta-final-inner"><span class="eyebrow-center">Ready for clarity</span><h2>Join the waitlist about. <em>modafinil</em></h2><p class="cta-final-lede">Get a prescription with full medical oversight. Understand contraindications, drug interactions, and whether modafinil is right for you. No grey market — just safe, legal, documented care.</p><div class="cta-button-group"><button class="btn btn-gold btn-lg" onclick="openWaitlist()">Join the waitlist</button></div><div class="cta-trust"><div class="item"><i class="ph-fill ph-shield-check"></i> Licensed physicians</div><div class="item"><i class="ph-fill ph-scroll"></i> Legal prescriptions</div><div class="item"><i class="ph-fill ph-lock"></i> Confidential</div></div></div></section><!-- ─── FOOTER ─── --><footer class="footer"><a href="/" class="logo">arq<span class="dot">.</span></a><p>Medical information, not medical advice. Always consult a licensed physician.</p></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script><script>

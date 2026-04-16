@@ -124,7 +124,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 em{font-style:italic;color:var(--gold)}
 
 /* ─── NAV ─── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
+.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
+.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
+.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
 .nav.at-top{background:transparent}
 .nav.scrolled{background:rgba(250,249,245,0.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 var(--border)}
 .nav.scrolled .nav-logo{color:var(--text)}
@@ -132,11 +135,7 @@ em{font-style:italic;color:var(--gold)}
 .nav-logo{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--text);letter-spacing:.02em;transition:color .3s ease}
 .nav-logo .dot{color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:10px}
-.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
-.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
-.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
-.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
-.nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
+.nav.scrolled .nav.scrolled .nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
 .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
 .nav.scrolled .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
 .nav-hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:1px;transition:background .3s ease}
@@ -293,21 +292,46 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 }
 
 /* ─── DROPDOWN MENU ─── */
+/* ─── DROPDOWN NAV ─── */
 .dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
 .dropdown-overlay.open{opacity:1;pointer-events:auto}
-.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(380px,90vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:80px 28px 40px;box-shadow:-8px 0 40px rgba(0,0,0,0.12)}
+.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(400px,92vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:0;box-shadow:-12px 0 48px rgba(0,0,0,0.12)}
 .dropdown-panel.open{transform:translateX(0)}
-.dropdown-close{position:absolute;top:16px;right:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:18px;transition:all .2s}
+.dropdown-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--bg);border-bottom:1px solid var(--border)}
+.dropdown-head-logo{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
+.dropdown-head-logo .dot{color:var(--gold)}
+.dropdown-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:16px;transition:all .2s;border:none;cursor:pointer}
 .dropdown-close:hover{background:var(--surface)}
-.dropdown-section{margin-bottom:28px}
-.dropdown-section-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.dropdown-section-title::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
-.dropdown-links{display:flex;flex-wrap:wrap;gap:6px}
-.dropdown-link{display:inline-flex;align-items:center;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:var(--bg2);border:1px solid var(--border);transition:all .2s var(--ease)}
-.dropdown-link:hover{border-color:var(--gold-border);background:var(--gold-glow);color:var(--gold)}
-.dropdown-link.active{border-color:var(--gold);background:var(--gold-glow);color:var(--gold);font-weight:600}
-.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;justify-content:center;align-items:center;gap:6px;margin-top:8px;transition:all .3s var(--ease);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
-.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+.dropdown-body{padding:20px 24px 32px}
+/* Hero condition cards */
+.dd-hero-label{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.dd-hero-label::before{content:'';width:14px;height:1px;background:var(--gold);opacity:0.5}
+.dd-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.dd-hero-card{display:flex;flex-direction:column;gap:4px;padding:16px 14px;border-radius:14px;background:var(--card);border:1px solid var(--border);text-decoration:none;transition:all .25s var(--ease)}
+.dd-hero-card:hover{border-color:var(--gold-border);box-shadow:0 4px 16px rgba(184,146,46,0.1);transform:translateY(-1px)}
+.dd-hero-card-name{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--text);letter-spacing:-0.01em}
+.dd-hero-card-sub{font-size:11px;color:var(--text-60);line-height:1.4}
+.dd-hero-card .dd-hero-arrow{font-size:11px;color:var(--gold);margin-top:4px;transition:transform .2s}
+.dd-hero-card:hover .dd-hero-arrow{transform:translateX(3px)}
+/* Accordion sections */
+.dd-section{border-top:1px solid var(--border);padding-top:16px;margin-top:16px}
+.dd-section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+.dd-accordion{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:0 0 12px;background:none;border:none;width:100%}
+.dd-accordion-label{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.dd-accordion-label::before{content:'';width:14px;height:1px;background:var(--gold);opacity:0.5}
+.dd-accordion-icon{font-size:14px;color:var(--text-30);transition:transform .3s var(--ease)}
+.dd-accordion.open .dd-accordion-icon{transform:rotate(180deg)}
+.dd-accordion-body{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-height:0;overflow:hidden;transition:max-height .4s var(--ease),opacity .3s;opacity:0}
+.dd-accordion.open+.dd-accordion-body{max-height:400px;opacity:1}
+.dd-link{display:flex;align-items:center;padding:10px 12px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:transparent;text-decoration:none;transition:all .2s var(--ease)}
+.dd-link:hover{background:var(--gold-glow);color:var(--gold)}
+.dd-link i{margin-right:8px;font-size:14px;color:var(--text-30);transition:color .2s}
+.dd-link:hover i{color:var(--gold)}
+/* CTA at bottom */
+.dd-cta-wrap{padding:20px 24px;position:sticky;bottom:0;background:linear-gradient(to top,var(--bg) 80%,transparent);border-top:1px solid var(--border)}
+.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;align-items:center;justify-content:center;gap:6px;transition:all .3s var(--ease);text-decoration:none;box-shadow:0 4px 16px rgba(184,146,46,0.25)}
+.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(184,146,46,0.35)}
+@media(max-width:520px){.dd-hero-grid{grid-template-columns:1fr}.creds-grid{gap:24px}.creds-logo{height:34px}}
 
 /* ─── READ MORE FOLD ─── */
 .article-fold{max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0}
@@ -345,7 +369,143 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .cta-card{margin:36px 0}
 .faq{padding:64px 20px}
 
-</style></head><body><!-- ─── NAV ─── --><nav class="nav"><a href="/" class="nav-logo">arq<span class="dot">.</span></a><div class="nav-right"><a href="#cta" class="nav-link">Join the waitlist</a><button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav><!-- ─── DROPDOWN MENU ─── --><div class="dropdown-overlay" id="dropdownOverlay"></div><div class="dropdown-panel" id="dropdownPanel"><button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button><div class="dropdown-section"><div class="dropdown-section-title">Conditions</div><div class="dropdown-links"><a href="/pcos" class="dropdown-link">PCOS</a><a href="/thyroid" class="dropdown-link">Thyroid</a><a href="/diabetes" class="dropdown-link">Diabetes</a><a href="/weight-loss" class="dropdown-link">Weight Loss</a><a href="/hair-loss" class="dropdown-link">Hair Loss</a><a href="/testosterone" class="dropdown-link">Testosterone</a><a href="/vitamin-deficiency" class="dropdown-link">Vitamin Deficiency</a><a href="/fatigue" class="dropdown-link">Fatigue</a><a href="/sleep" class="dropdown-link">Sleep</a><a href="/skin" class="dropdown-link">Skincare</a><a href="/focus" class="dropdown-link">Focus</a><a href="/blood-pressure" class="dropdown-link">Blood Pressure</a><a href="/iv-infusions" class="dropdown-link">IV Infusions</a><a href="/recovery" class="dropdown-link">Recovery</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Sports</div><div class="dropdown-links"><a href="/pickleball" class="dropdown-link">Pickleball</a><a href="/padel" class="dropdown-link">Padel</a><a href="/runners" class="dropdown-link">Running</a><a href="/strength" class="dropdown-link">Strength</a><a href="/performance" class="dropdown-link">Performance</a><a href="/hyrox" class="dropdown-link">HyRox</a><a href="/endurance" class="dropdown-link">Endurance</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Learn</div><div class="dropdown-links"><a href="/blog/" class="dropdown-link">All Articles</a><a href="/blog/ozempic-india-guide" class="dropdown-link">Ozempic Guide</a><a href="/blog/pcos-symptoms-india" class="dropdown-link">PCOS Guide</a><a href="/blog/hba1c-test-guide" class="dropdown-link">HbA1c Test</a><a href="/blog/finasteride-india-guide" class="dropdown-link">Finasteride Guide</a><a href="/blog/tretinoin-indian-skin-guide" class="dropdown-link">Tretinoin Guide</a><a href="/blog/full-body-checkup-india" class="dropdown-link">Full Body Checkup</a></div></div><div class="dropdown-section"><a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist. <i class="ph-bold ph-arrow-right"></i></a></div></div><!-- ═══ ARTICLE HERO ═══ --><section class="article-hero"><div class="article-content"><span class="article-eyebrow">Preventive health guide</span><h1 class="article-h1">Full Body Checkup in India: Why the <em> Package Is Wasting Your Money</em></h1><div class="article-meta"><div class="article-meta-item"><i class="ph-fill ph-calendar"></i><span>April 16, 2026</span></div><div class="article-meta-item"><i class="ph-fill ph-user-circle"></i><span>arq. medical team</span></div><div class="article-meta-badge"><i class="ph-fill ph-stethoscope"></i>
+
+/* ─── MOBILE SPACING OPTIMIZATION ─── */
+@media(max-width:520px){
+  .breadcrumb{padding-top:calc(var(--nav-h) + 6px);padding-bottom:6px;padding-left:16px;padding-right:16px}
+  .article-header{padding:10px 16px 16px}
+  .article-eyebrow{margin-bottom:8px;font-size:10px}
+  .article-title{font-size:26px;margin-bottom:12px}
+  .article-byline{gap:8px;margin-bottom:12px;padding-bottom:12px}
+  .byline-avatar{width:32px;height:32px}
+  .byline-name{font-size:12px}
+  .byline-role{font-size:11px}
+  .byline-meta{gap:8px;font-size:11px}
+  .article-body{padding:16px 16px}
+  .article-body p{font-size:15px;margin-bottom:16px;line-height:1.65}
+  .article-body h2{font-size:22px;margin:28px 0 10px}
+  .article-body h3{font-size:16px;margin:20px 0 8px}
+  .article-body ul,.article-body ol{margin:12px 0 16px;padding-left:20px;font-size:15px}
+  .article-body li{margin-bottom:6px}
+  .article-body blockquote{padding:14px;margin:20px 0;font-size:14px}
+  .article-body table th,.article-body table td{padding:8px 10px;font-size:12px}
+  .tldr-box{padding:20px 16px;margin:20px 0}
+  .tldr-box h3{font-size:16px}
+  .tldr-box li{padding:10px 0;font-size:12px}
+  .highlight-box,.info-box,.warning-box{padding:14px 16px;margin:20px 0;font-size:13px}
+  .cta-card{padding:16px;margin:24px 0;gap:12px}
+  .cta-card-icon{width:36px;height:36px;font-size:16px;border-radius:10px}
+  .cta-card-text{font-size:13px}
+  .faq{padding:28px 16px}
+  .faq h2,.faq-head h2{font-size:22px;margin-bottom:20px}
+  .faq-item summary{font-size:13px;padding:12px 0}
+  .faq-ans{font-size:13px}
+  .disclaimer{padding:14px;font-size:11px;margin-bottom:16px}
+  .cta-final{padding:32px 16px 40px;border-radius:20px 20px 0 0}
+  .cta-final h2{font-size:24px}
+  .cta-final-lede{font-size:13px;margin-bottom:24px}
+  .cta-trust{gap:8px 16px;font-size:11px}
+  .related{padding:24px 16px}
+  .related h2{font-size:20px}
+  .related-grid{gap:10px}
+  .footer{padding:20px 16px;font-size:10px}
+  .read-more-wrap{padding:16px 0 4px}
+  .read-more-btn{padding:10px 22px;font-size:12px}
+  .article-hero{padding:calc(var(--nav-h) + 24px) 16px 28px}
+  .article-h1{margin-bottom:16px}
+  .article-meta{gap:12px;padding-top:16px;font-size:12px}
+}
+
+</style></head><body><!-- ─── NAV ─── --><nav class="nav"><a href="/" class="nav-logo">arq<span class="dot">.</span></a><div class="nav-right"><a href="#cta" class="nav-link">Join the waitlist</a><button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav><!-- ─── DROPDOWN MENU ─── --><!-- ─── DROPDOWN PANEL ─── -->
+<div class="dropdown-overlay" id="dropdownOverlay"></div>
+<div class="dropdown-panel" id="dropdownPanel">
+  <div class="dropdown-head">
+    <div class="dropdown-head-logo">arq<span class="dot">.</span></div>
+    <button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
+  </div>
+  <div class="dropdown-body">
+    <!-- Hero cards — top 4 conditions -->
+    <div class="dd-hero-label">Popular</div>
+    <div class="dd-hero-grid">
+      <a href="/weight-loss" class="dd-hero-card">
+        <div class="dd-hero-card-name">Weight Loss</div>
+        <div class="dd-hero-card-sub">GLP-1 therapy · metabolic panels</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/pcos" class="dd-hero-card">
+        <div class="dd-hero-card-name">PCOS</div>
+        <div class="dd-hero-card-sub">Hormone balance · insulin</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/thyroid" class="dd-hero-card">
+        <div class="dd-hero-card-name">Thyroid</div>
+        <div class="dd-hero-card-sub">TSH · T3/T4 · autoimmune</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/hair-loss" class="dd-hero-card">
+        <div class="dd-hero-card-name">Hair Loss</div>
+        <div class="dd-hero-card-sub">DHT · finasteride · regrowth</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+    </div>
+
+    <!-- All conditions accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion open" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">All conditions</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/diabetes" class="dd-link">Diabetes</a>
+        <a href="/testosterone" class="dd-link">Testosterone</a>
+        <a href="/vitamin-deficiency" class="dd-link">Vitamins</a>
+        <a href="/fatigue" class="dd-link">Fatigue</a>
+        <a href="/sleep" class="dd-link">Sleep</a>
+        <a href="/skin" class="dd-link">Skincare</a>
+        <a href="/focus" class="dd-link">Focus</a>
+        <a href="/blood-pressure" class="dd-link">Blood Pressure</a>
+        <a href="/iv-infusions" class="dd-link">IV Infusions</a>
+        <a href="/recovery" class="dd-link">Recovery</a>
+      </div>
+    </div>
+
+    <!-- Sports accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">Sports</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/pickleball" class="dd-link">Pickleball</a>
+        <a href="/padel" class="dd-link">Padel</a>
+        <a href="/runners" class="dd-link">Running</a>
+        <a href="/strength" class="dd-link">Strength</a>
+        <a href="/performance" class="dd-link">Performance</a>
+        <a href="/hyrox" class="dd-link">HyRox</a>
+        <a href="/endurance" class="dd-link">Endurance</a>
+      </div>
+    </div>
+
+    <!-- Learn accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">Learn</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/blog/" class="dd-link">All Articles</a>
+        <a href="/panel" class="dd-link">Our Panel</a>
+        <a href="/blog/ozempic-india-guide" class="dd-link">Ozempic Guide</a>
+        <a href="/blog/finasteride-india-guide" class="dd-link">Finasteride Guide</a>
+        <a href="/blog/pcos-symptoms-india" class="dd-link">PCOS Guide</a>
+        <a href="/blog/hba1c-test-guide" class="dd-link">HbA1c Test</a>
+      </div>
+    </div>
+  </div>
+  <div class="dd-cta-wrap">
+    <a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+  </div>
+</div><!-- ═══ ARTICLE HERO ═══ --><section class="article-hero"><div class="article-content"><span class="article-eyebrow">Preventive health guide</span><h1 class="article-h1">Full Body Checkup in India: Why the <em> Package Is Wasting Your Money</em></h1><div class="article-meta"><div class="article-meta-item"><i class="ph-fill ph-calendar"></i><span>April 16, 2026</span></div><div class="article-meta-item"><i class="ph-fill ph-user-circle"></i><span>arq. medical team</span></div><div class="article-meta-badge"><i class="ph-fill ph-stethoscope"></i>
  Medically reviewed
  </div></div></div></section><!-- ═══ ARTICLE BODY ═══ --><section class="article-body"><p><strong>You get what you measure, and most full body checkup packages in India measure the wrong things.</strong> Thyrocare, Healthians, and Dr Lal PathLabs offer packages testing 70 parameters. It sounds comprehensive. It isn't. These packages test markers that screen for acute illness (anemia, kidney failure, liver disease). They miss the markers that actually predict disease 5 years before you feel sick. A ferritin of 15 is "normal" on a standard checkup but functionally depleted. Your LDL might be 120 and "normal," but your ApoB (particle count) reveals cardiovascular risk. Your fasting glucose is fine, but your fasting insulin is through the roof — you're becoming diabetic 10 years before any lab shows it.</p><!-- TL;DR --><div class="tldr-box"><span class="box-eyebrow">Key takeaways</span><h3>Why packages fail at prevention</h3><ul><li><strong>They test population ranges, not optimal ranges.</strong> "Normal" on a standard panel includes 50% of sick people.</li><li><strong>They miss predictive markers</strong> ApoB (heart disease), Lp(a) (genetic risk), fasting insulin (<a href="/diabetes" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">diabetes</a> 10 years early), hs-CRP (inflammation)</li><li><strong>No. <a href="/vitamin-deficiency" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">vitamin</a> assessment</strong> 70% of Indians deficient in Vitamin D, 47% deficient in B12 — standard checkups don't measure these</li><li><strong><a href="/thyroid" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">Thyroid</a> is incomplete</strong> Only TSH is tested. Not T3, T4, or TPO antibodies — missing Hashimoto's and subclinical hypothyroidism</li><li><strong>No physician interpretation</strong> You get a printout labeled "normal" or "abnormal" against population ranges. Optimal ranges are narrower.</li><li><strong>arq.'s 108-marker panel includes everything.</strong> Predictive biomarkers + optimal ranges + physician consultation = prevention that actually works</li></ul></div><h2>What Packages Actually Test (And Why It's Not Enough)</h2><p>Standard full body checkup packages are designed for diagnostic efficiency, not prevention. They're fast, cheap to run, and fine for detecting acute illness. They are terrible for catching disease before it starts.</p><h3>What They Test</h3><ul><li><strong>CBC (Complete Blood Count)</strong> Hemoglobin, WBC, platelets — checks for anemia and infection</li><li><strong>Liver Function Tests (LFTs)</strong> ALT, AST, bilirubin — screens for hepatitis or cirrhosis</li><li><strong>Kidney Function Tests (KFTs)</strong> Creatinine, BUN, eGFR — checks if kidneys are failing</li><li><strong>Lipid Profile</strong> Total cholesterol, LDL, HDL, triglycerides — screens for cardiovascular risk</li><li><strong>Thyroid (TSH only)</strong> Tests if thyroid is severely hyper or hypothyroid</li><li><strong>Fasting Blood Sugar</strong> Checks if you're diabetic right now</li></ul><p>These are all good tests. For acute illness, they work. A person with hypothyroidism will have abnormal TSH. Someone with diabetes will have elevated fasting glucose. Someone with severe anemia has low hemoglobin. But. <em>acute illness is the endpoint of disease progression.</em> By the time TSH is abnormal, your thyroid has been failing for years. By the time fasting glucose is elevated, insulin resistance has been building for a decade.</p><h3>What They DON'T Test (And Should)</h3><ul><li><strong>ApoB (Apolipoprotein B)</strong> Measures atherogenic particle count — far superior to LDL for heart disease risk. Two people with identical LDL can have vastly different heart disease risk based on ApoB.</li><li><strong>Lp(a) (Lipoprotein A)</strong> Genetic cardiovascular risk factor. Test once, know your lifetime risk. If elevated (>50 mg/dL), your heart disease risk is 2-3x higher. Most people never know this.</li><li><strong>Fasting Insulin + HOMA-IR</strong> Reveals insulin resistance — the precursor to diabetes. Catches metabolic disease 10 years before HbA1c becomes abnormal.</li><li><strong>hs-CRP (High-Sensitivity C-Reactive Protein)</strong> Measures systemic inflammation — independent predictor of heart disease and stroke. Chronically elevated hs-CRP is dangerous, even with normal cholesterol.</li><li><strong>Homocysteine</strong> Amino acid that damages blood vessels and brain. Elevated homocysteine predicts dementia and heart disease. B vitamins lower it. Standard checkups miss it.</li><li><strong>Free Testosterone (not just total)</strong> Total testosterone can be normal while free testosterone (the biologically active form) is depleted. Sexual dysfunction, muscle loss, and fatigue result.</li><li><strong>Full Thyroid Panel (T3, T4, TPO antibodies)</strong> TSH alone misses Hashimoto's, subclinical hypothyroidism, and thyroid autoimmunity. 5% of Indians have thyroid disease undetected by TSH screening alone.</li><li><strong>Vitamin D (25-OH Vitamin D)</strong> 70% of Indians deficient. Causes bone loss, immune dysfunction, and mood disorders. Standard checkups don't measure it.</li><li><strong>Vitamin B12</strong> 47% of Indian vegetarians deficient. Causes anemia, neuropathy, cognitive decline. Shows up on CBC if severe, but subclinical deficiency is common.</li><li><strong>Ferritin (Iron Storage)</strong> Standard checkups check hemoglobin (iron in blood). Ferritin (iron in storage) is depleted first — causing hair loss, fatigue, poor wound healing. A ferritin of 15 is "normal" but functionally depleted.</li><li><strong>Folate & B vitamins</strong> Deficiency causes anemia, mouth ulcers, cognitive issues. Rarely measured outside CBC context.</li></ul><p>These aren't exotic tests. They're available in every NABL-accredited lab in India. They just cost more than the package, so they're not included in budget screening.</p><div class="article-fold" id="articleFold"><h2>The Real Cost of Prevention vs False Reassurance</h2><p>A checkup gives you false reassurance. The report says "normal" and you feel fine. You move on. Two years later, you have chest pain and a heart catheterization reveals 80% blockage in your LAD artery. Your cardiologist says, "You should have been on a statin 5 years ago." You had no idea. Your cholesterol screening (LDL 120) looked normal. But your ApoB was 90 — cardiovascular catastrophe waiting to happen. You measured the wrong thing.</p><p>A comprehensive 108-marker panel costs more (typically ), but it catches disease 5 years before symptoms. If fasting insulin is elevated, you start diet modification, exercise, and potentially metformin — reversing insulin resistance before diabetes develops. If Lp(a) is high, you adjust your statin target lower. If hs-CRP is chronically elevated, you address inflammation through diet and lifestyle. If Vitamin D is 15, you supplement 4,000 IU daily and recheck in 3 months. By the time disease is symptomatic, intervention costs tens of lakhs and carries life-altering risk. Prevention costs thousands and works.</p><p>This is the difference between. <em>screening</em> (measuring to exclude acute illness) and <em>prevention</em> (measuring to prevent future disease).</p><h2>Why Physician Interpretation Matters (More Than You Think)</h2><p>Lab reports show each result as "normal," "low," or "high" based on population ranges. Population ranges include sick people. The "normal" range for testosterone, for example, is 300 ng/dL. But a man at 350 is functionally low — he has fatigue, poor recovery, low libido. Technically "normal." Functionally inadequate.</p><p>Optimal ranges are narrower. A ferritin of 30 is technically normal, but optimal is 50. A TSH of 2.5 is normal, but optimal for someone with a family history of thyroid disease is <2.0. A fasting insulin of 12 is normal (normal up to 12), but optimal is <5. At 12, you're in early insulin resistance.</p><p>A physician who understands prevention interprets your. <a href="/panel" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">bloodwork</a> against optimal ranges, not population ranges. They see patterns: elevated fasting insulin + elevated triglycerides + low HDL = metabolic syndrome developing, intervention needed now. They see: elevated hs-CRP + elevated homocysteine + borderline LDL = inflammation-driven cardiovascular risk, not cholesterol-driven, requires different treatment. They see: low Vitamin D + elevated TPO antibodies + normal TSH = early autoimmune thyroid disease, supplementation prevents progression.</p><p>A lab report without physician interpretation is raw data. With it, it becomes a roadmap for prevention.</p><h2>arq.'s 108-Marker Panel: What's Different</h2><p>arq. doesn't compete on price. A checkup is cheaper. arq.'s full body panel is designed for <em>prevention</em>, not screening. Here's what's included that packages miss</p><h3>Cardiovascular Prevention</h3><ul><li>ApoB (particle count, superior to LDL)</li><li>Lp(a) (genetic risk — test once)</li><li>hs-CRP (inflammation)</li><li>Homocysteine (vessel damage)</li><li>Standard lipid panel (total cholesterol, LDL, HDL, triglycerides)</li></ul><h3>Metabolic Health</h3><ul><li>Fasting insulin (insulin resistance early detection)</li><li>HOMA-IR (insulin resistance index)</li><li>Fasting glucose (glucose control)</li><li>HbA1c (3-month glucose average)</li></ul><h3>Thyroid Assessment</h3><ul><li>TSH, Free T3, Free T4 (complete panel, not just TSH)</li><li>TPO antibodies (autoimmunity detection)</li></ul><h3>Micronutrient & Mineral Status</h3><ul><li>Vitamin D (25-OH Vitamin D)</li><li>Vitamin B12 + folate</li><li>Iron panel (ferritin, serum iron, TIBC)</li><li>Magnesium, zinc (for immune & metabolic function)</li></ul><h3>Hormone Assessment</h3><ul><li>Total & free testosterone</li><li>Estradiol (in men, tracks aromatization)</li><li>DHEA-S</li><li>Cortisol (morning baseline)</li></ul><h3>Inflammation & Immune</h3><ul><li>hs-CRP (systemic inflammation)</li><li>Complete WBC differential (immune cell breakdown)</li></ul><h3>Organ Function (Standard)</h3><ul><li>CBC (hemoglobin, WBC, platelets)</li><li>Liver function (ALT, AST, bilirubin, albumin)</li><li>Kidney function (creatinine, BUN, eGFR)</li><li>Electrolytes (sodium, potassium, chloride, CO2)</li></ul><p>Plus: Physician consultation to interpret results, identify patterns, and create a personalized protocol based on YOUR data.</p><h2>Age-Based Testing Recommendations</h2><p>Not everyone needs a 108-marker panel every year. arq. tailors frequency and depth based on age and risk factors</p><h3>Ages 20: Baseline Assessment</h3><ul><li><strong>Frequency</strong> Once at age 25 then every 3 years if healthy</li><li><strong>Goal</strong> Establish baseline biomarkers, identify genetic/early metabolic issues</li><li><strong>Priority markers</strong> Lipid panel, fasting insulin, Vitamin D, thyroid, iron</li><li><strong>Why it matters</strong> Catch genetic predispositions (family history of early heart disease, diabetes, autoimmune thyroid) before they manifest. Establish healthy baselines for comparison later.</li></ul><h3>Ages 30: Annual Assessment</h3><ul><li><strong>Frequency</strong> Annually</li><li><strong>Goal</strong> Track metabolic drift, catch early disease development</li><li><strong>Priority markers</strong> Full panel — cardiovascular risk, insulin sensitivity, thyroid, micronutrients, hormones</li><li><strong>Why it matters</strong> This is the decade metabolic disease accelerates. Insulin resistance develops, inflammation creeps up, Vitamin D declines. Early intervention (diet, exercise, supplementation) prevents disease by age 50.</li></ul><h3>Ages 40: Semi-Annual Assessment</h3><ul><li><strong>Frequency</strong> Every 6 months</li><li><strong>Goal</strong> Close monitoring for metabolic disease, hormone changes (perimenopause in women)</li><li><strong>Priority markers</strong> Full panel, with special attention to cardiovascular markers, insulin sensitivity, thyroid (especially women), and hormone levels</li><li><strong>Why it matters</strong> This is when chronic disease often emerges. Close monitoring allows early intervention — statins if indicated, thyroid medication if TSH drifts, insulin sensitizers if HOMA-IR rises. Women approaching menopause need hormone assessment.</li></ul><h3>Ages 50+: Quarterly or As-Needed</h3><ul><li><strong>Frequency</strong> Every 3 months if on medications; annually if healthy baseline</li><li><strong>Goal</strong> Monitor disease progression, medication efficacy, age-related decline</li><li><strong>Priority markers</strong> Full panel with emphasis on cardiovascular markers, glucose control, kidney/liver function, hormone levels (especially post-menopausal women)</li><li><strong>Why it matters</strong> Medication monitoring is critical. Statins, blood pressure meds, thyroid medication need regular reassessment. Kidney function declines with age — medications may need adjustment. Early detection of chronic kidney disease or cardiac decline allows intervention.</li></ul><h2>How Often Should Healthy People Test?</h2><p>The answer depends on baseline results and family history.</p><ul><li><strong>Completely healthy baseline (all markers optimal, no family history)</strong> Every 12 months is reasonable</li><li><strong>One or more optimal markers in suboptimal range (Vitamin D low, ferritin borderline, TSH on higher end of normal)</strong> Annual testing + targeted supplementation/lifestyle changes</li><li><strong>Family history of early heart disease, diabetes, or autoimmune disease</strong> Every 6 months, starting age 30</li><li><strong>On any chronic medication (blood pressure, thyroid, statin, diabetes)</strong> Every 3 months for first 1 years, then annually if stable</li><li><strong>Multiple metabolic risk factors (obesity, sedentary lifestyle, high stress)</strong> Every 3 months to track metabolic changes and response to intervention</li></ul><p>The point:<em>Testing frequency should match risk.</em> Low-risk people can test less often. High-risk people or those with family history need regular monitoring. arq.'s physician interprets your results and recommends a testing schedule tailored to you.</p><h2>Why arq.'s Approach Is Different From Thyrocare, Healthians, Dr Lal</h2><p>These labs offer fast, cheap testing. They're excellent for acute diagnostic confirmation. But they're not prevention-focused. Their business model is volume — move tests quickly, report results, done. arq.'s model is different</p><ul><li><strong>Test the right markers</strong> Prevention-focused biomarkers, not just acute illness screening</li><li><strong>Interpret against optimal ranges</strong> Not just population ranges. Your Vitamin D of 35 is "normal" but suboptimal.</li><li><strong>Physician consultation included</strong> Your physician reviews your full panel, sees patterns, builds a protocol specific to YOU. Not a template.</li><li><strong>Personalized protocol</strong> If Vitamin D is low, you get supplementation. If fasting insulin is elevated, you get metabolic intervention. If thyroid antibodies are present, you get monitoring protocol for autoimmune thyroid disease. Protocol is built on data, not guessing.</li><li><strong>Ongoing monitoring</strong> Retest at 3 months to verify intervention is working. Adjust if needed. Prevention requires feedback and adjustment.</li><li><strong>Indian-specific</strong> arq. uses NABL-accredited labs, understands the Indian health landscape, and knows the biomarkers most relevant to Indian population (high vitamin D deficiency, thyroid autoimmunity, metabolic disease prevalence).</li></ul><div class="cta-card"><p><strong>Want to know your true health status?</strong> won't get you there. <a href="#cta">Get tested for what actually matters →</a></p></div><h2>The Bottom Line: Know What You're Measuring</h2><p>A checkup is designed to exclude acute disease. It's good at that job. But prevention requires measuring different things: biomarkers that predict disease 5 years in advance, interpreted against optimal ranges by a physician who understands prevention.</p><p>You can get a package, feel relieved that "everything is normal," and develop a heart attack at 45. Or you can get comprehensive testing, learn that your ApoB is high, your Lp(a) is elevated, and your hs-CRP is chronically elevated — and start a prevention protocol that keeps your arteries clean and your heart healthy for decades.</p><p>The difference is what you measure. And what you do with the data.</p></section><!-- ═══ FAQ ═══ --></div><!-- end article-fold --><div class="read-more-wrap" id="readMoreWrap"><button class="read-more-btn" id="readMoreBtn">
  Continue reading. <i class="ph-bold ph-caret-down"></i></button></div><section class="faq"><div class="faq-head"><span class="eyebrow" style="justify-content: center; display: flex;">Questions</span><h2>Frequently asked about full body checkups</h2></div><ul class="faq-list"><li class="faq-item"><details><summary>What's included in a full body checkup?</summary><div class="faq-ans">Standard packages typically include CBC, liver function, kidney function, lipid profile, thyroid (TSH only), and fasting blood sugar. arq.'s 108-marker panel adds cardiovascular risk markers (ApoB, Lp(a)), insulin sensitivity (fasting insulin, HOMA-IR), inflammation (hs-CRP), micronutrients (Vitamin D, B12, ferritin), full thyroid panel (T3, T4, TPO antibodies), homocysteine, and sex hormone assessment. The difference is precision — catching disease 5 years before symptoms.</div></details></li><li class="faq-item"><details><summary>What's the best full body checkup package in India?</summary><div class="faq-ans">The best package is the one that catches disease before it starts. packages miss markers that predict heart disease, diabetes, and metabolic disease years in advance. arq.'s 108-marker panel costs more but includes ApoB (better than LDL), Lp(a) (genetic cardiovascular risk), fasting insulin (catches diabetes 10 years early), hs-CRP (inflammation), and full thyroid assessment — not just TSH. Combined with physician interpretation (lab 'normal' ranges include sick people), you get actionable prevention, not false reassurance.</div></details></li><li class="faq-item"><details><summary>How much does a full body checkup cost in India?</summary><div class="faq-ans">Basic packages from Thyrocare, Healthians, Dr Lal PathLabs range from . arq.'s 108-marker panel is higher because it includes predictive biomarkers — ApoB, Lp(a), fasting insulin, hs-CRP, micronutrient assessment, and full thyroid panel. Additionally, your results include physician consultation (not just lab interpretation), creating a personalized protocol based on YOUR data. You're paying for precision prevention and expert interpretation, not a checklist.</div></details></li><li class="faq-item"><details><summary>When should I get a full body checkup?</summary><div class="faq-ans">Baseline testing at age 25 then annually for healthy adults. Those with family history of heart disease, diabetes, or cancer should test every 6 months. After age 40, annual testing is standard. If you have risk factors (obesity, hypertension, sedentary lifestyle), quarterly testing allows course correction before disease develops. Waiting until symptoms appear means disease is often advanced — prevention catches it 5 years early.</div></details></li><li class="faq-item"><details><summary>What's the difference between ApoB and LDL?</summary><div class="faq-ans">LDL cholesterol measures cholesterol in low-density particles. But particle count matters more than cholesterol amount. ApoB measures the actual number of atherogenic particles, making it superior for heart disease risk. Two people with the same LDL can have vastly different ApoB and therefore different heart risk. For prevention, ApoB is more predictive. Standard checkups measure LDL because it's cheaper — prevention-focused care measures ApoB.</div></details></li><li class="faq-item"><details><summary>What does Lp(a) tell you?</summary><div class="faq-ans">Lp(a) is a genetically determined risk factor for cardiovascular disease and early heart attack — test once, know your lifetime risk. Unlike LDL (modifiable through diet/exercise), Lp(a) is heritable. If elevated (>50 mg/dL), your heart disease risk is 2-3x higher. Most standard checkups don't measure it — prevention-focused care does. Why? Because if your Lp(a) is high, your prevention strategy changes (potentially earlier statin therapy, closer monitoring). You can't manage what you don't measure.</div></details></li><li class="faq-item"><details><summary>Why is fasting insulin important?</summary><div class="faq-ans">Fasting insulin reveals insulin resistance — the precursor to diabetes. Most people develop insulin resistance 10+ years before HbA1c becomes abnormal. By that time, metabolic damage is significant. If fasting insulin is elevated (>12 mIU/L) or HOMA-IR is high (>2.5), you can intervene with diet, exercise, or medication before diabetes develops. Standard checkups only measure fasting glucose and HbA1c — missing the early warning. Prevention-focused care catches insulin resistance in stage 1, when it's most reversible.</div></details></li><li class="faq-item"><details><summary>What does hs-CRP measure?</summary><div class="faq-ans">High-sensitivity C-reactive protein (hs-CRP) measures systemic inflammation — a predictor of heart disease, stroke, and metabolic disease. Chronically elevated hs-CRP predicts cardiovascular events independently of cholesterol. Most people with normal cholesterol and elevated hs-CRP still have heart disease risk — but they're not flagged. Standard checkups miss this. arq.'s panel includes hs-CRP so inflammation can be addressed through diet, exercise, or medication. Prevention catches inflammation before it hardens arteries.</div></details></li></ul></section><!-- ═══ MEDICAL DISCLAIMER ═══ --><section class="medical-disclaimer"><div class="disclaimer-box"><strong>Medical Disclaimer</strong> This article is for educational purposes only and does not constitute medical advice. Full body checkup interpretation and preventive health decisions require consultation with a qualified physician. arq. is India's physician-led online clinic — our physicians review your bloodwork and create personalized protocols. This information reflects current medical evidence as of 2026.

@@ -434,22 +434,46 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .wl-trust i{color:var(--gold);font-size:12px}
 
 /* ═══ DROPDOWN NAV ═══ */
-.dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+/* ─── DROPDOWN NAV ─── */
+.dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
 .dropdown-overlay.open{opacity:1;pointer-events:auto}
-.dropdown-panel{position:fixed;top:0;left:0;right:0;z-index:1001;background:var(--bg);transform:translateY(-100%);transition:transform .4s var(--ease);padding:72px 24px 28px;box-shadow:0 8px 40px rgba(0,0,0,0.1);max-height:70vh;overflow-y:auto}
-.dropdown-panel.open{transform:translateY(0)}
-.dropdown-close{position:absolute;top:16px;right:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2,#f0ede7);color:var(--text);font-size:18px;transition:all .2s;border:none;cursor:pointer}
-.dropdown-close:hover{background:var(--surface,#e5e1d8)}
-.dropdown-inner{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:720px;margin:0 auto}
-@media(max-width:520px){.dropdown-inner{grid-template-columns:1fr;gap:16px}.creds-grid{gap:24px}.creds-logo{height:34px}}
-.dropdown-section-title{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.dropdown-section-title::before{content:'';width:12px;height:1px;background:var(--gold);opacity:0.5}
-.dropdown-links{display:flex;flex-wrap:wrap;gap:5px}
-.dropdown-link{display:inline-flex;align-items:center;padding:7px 12px;border-radius:8px;font-size:12px;font-weight:500;color:var(--text);background:rgba(26,23,20,0.03);border:1px solid rgba(26,23,20,0.06);transition:all .2s var(--ease);text-decoration:none}
-.dropdown-link:hover{border-color:var(--gold-border);background:var(--gold-glow);color:var(--gold)}
-.dropdown-cta-wrap{grid-column:1/-1;text-align:center;padding-top:4px}
-.dropdown-cta{display:inline-flex;padding:12px 32px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;align-items:center;gap:6px;transition:all .3s var(--ease);text-decoration:none;box-shadow:0 4px 16px rgba(184,146,46,0.25)}
-.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
+.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(400px,92vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:0;box-shadow:-12px 0 48px rgba(0,0,0,0.12)}
+.dropdown-panel.open{transform:translateX(0)}
+.dropdown-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--bg);border-bottom:1px solid var(--border)}
+.dropdown-head-logo{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
+.dropdown-head-logo .dot{color:var(--gold)}
+.dropdown-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:16px;transition:all .2s;border:none;cursor:pointer}
+.dropdown-close:hover{background:var(--surface)}
+.dropdown-body{padding:20px 24px 32px}
+/* Hero condition cards */
+.dd-hero-label{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.dd-hero-label::before{content:'';width:14px;height:1px;background:var(--gold);opacity:0.5}
+.dd-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.dd-hero-card{display:flex;flex-direction:column;gap:4px;padding:16px 14px;border-radius:14px;background:var(--card);border:1px solid var(--border);text-decoration:none;transition:all .25s var(--ease)}
+.dd-hero-card:hover{border-color:var(--gold-border);box-shadow:0 4px 16px rgba(184,146,46,0.1);transform:translateY(-1px)}
+.dd-hero-card-name{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--text);letter-spacing:-0.01em}
+.dd-hero-card-sub{font-size:11px;color:var(--text-60);line-height:1.4}
+.dd-hero-card .dd-hero-arrow{font-size:11px;color:var(--gold);margin-top:4px;transition:transform .2s}
+.dd-hero-card:hover .dd-hero-arrow{transform:translateX(3px)}
+/* Accordion sections */
+.dd-section{border-top:1px solid var(--border);padding-top:16px;margin-top:16px}
+.dd-section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+.dd-accordion{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:0 0 12px;background:none;border:none;width:100%}
+.dd-accordion-label{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.dd-accordion-label::before{content:'';width:14px;height:1px;background:var(--gold);opacity:0.5}
+.dd-accordion-icon{font-size:14px;color:var(--text-30);transition:transform .3s var(--ease)}
+.dd-accordion.open .dd-accordion-icon{transform:rotate(180deg)}
+.dd-accordion-body{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-height:0;overflow:hidden;transition:max-height .4s var(--ease),opacity .3s;opacity:0}
+.dd-accordion.open+.dd-accordion-body{max-height:400px;opacity:1}
+.dd-link{display:flex;align-items:center;padding:10px 12px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:transparent;text-decoration:none;transition:all .2s var(--ease)}
+.dd-link:hover{background:var(--gold-glow);color:var(--gold)}
+.dd-link i{margin-right:8px;font-size:14px;color:var(--text-30);transition:color .2s}
+.dd-link:hover i{color:var(--gold)}
+/* CTA at bottom */
+.dd-cta-wrap{padding:20px 24px;position:sticky;bottom:0;background:linear-gradient(to top,var(--bg) 80%,transparent);border-top:1px solid var(--border)}
+.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;align-items:center;justify-content:center;gap:6px;transition:all .3s var(--ease);text-decoration:none;box-shadow:0 4px 16px rgba(184,146,46,0.25)}
+.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(184,146,46,0.35)}
+@media(max-width:520px){.dd-hero-grid{grid-template-columns:1fr}.creds-grid{gap:24px}.creds-logo{height:34px}}
 
 /* ═══ FOOTER LINKS ═══ */
 .footer-links{max-width:720px;margin:0 auto 24px;text-align:left}
@@ -504,51 +528,91 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 <!-- ─── DROPDOWN PANEL ─── -->
 <div class="dropdown-overlay" id="dropdownOverlay"></div>
 <div class="dropdown-panel" id="dropdownPanel">
-  <button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <div class="dropdown-inner">
-    <div class="dropdown-section">
-      <div class="dropdown-section-title">Conditions</div>
-      <div class="dropdown-links">
-        <a href="/pcos" class="dropdown-link">PCOS</a>
-        <a href="/thyroid" class="dropdown-link">Thyroid</a>
-        <a href="/diabetes" class="dropdown-link">Diabetes</a>
-        <a href="/weight-loss" class="dropdown-link">Weight Loss</a>
-        <a href="/hair-loss" class="dropdown-link">Hair Loss</a>
-        <a href="/testosterone" class="dropdown-link">Testosterone</a>
-        <a href="/vitamin-deficiency" class="dropdown-link">Vitamins</a>
-        <a href="/fatigue" class="dropdown-link">Fatigue</a>
-        <a href="/sleep" class="dropdown-link">Sleep</a>
-        <a href="/skin" class="dropdown-link">Skincare</a>
-        <a href="/focus" class="dropdown-link">Focus</a>
-        <a href="/blood-pressure" class="dropdown-link">Blood Pressure</a>
-        <a href="/iv-infusions" class="dropdown-link">IV Infusions</a>
-        <a href="/recovery" class="dropdown-link">Recovery</a>
+  <div class="dropdown-head">
+    <div class="dropdown-head-logo">arq<span class="dot">.</span></div>
+    <button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
+  </div>
+  <div class="dropdown-body">
+    <!-- Hero cards — top 4 conditions -->
+    <div class="dd-hero-label">Popular</div>
+    <div class="dd-hero-grid">
+      <a href="/weight-loss" class="dd-hero-card">
+        <div class="dd-hero-card-name">Weight Loss</div>
+        <div class="dd-hero-card-sub">GLP-1 therapy · metabolic panels</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/pcos" class="dd-hero-card">
+        <div class="dd-hero-card-name">PCOS</div>
+        <div class="dd-hero-card-sub">Hormone balance · insulin</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/thyroid" class="dd-hero-card">
+        <div class="dd-hero-card-name">Thyroid</div>
+        <div class="dd-hero-card-sub">TSH · T3/T4 · autoimmune</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/hair-loss" class="dd-hero-card">
+        <div class="dd-hero-card-name">Hair Loss</div>
+        <div class="dd-hero-card-sub">DHT · finasteride · regrowth</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+    </div>
+
+    <!-- All conditions accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion open" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">All conditions</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/diabetes" class="dd-link">Diabetes</a>
+        <a href="/testosterone" class="dd-link">Testosterone</a>
+        <a href="/vitamin-deficiency" class="dd-link">Vitamins</a>
+        <a href="/fatigue" class="dd-link">Fatigue</a>
+        <a href="/sleep" class="dd-link">Sleep</a>
+        <a href="/skin" class="dd-link">Skincare</a>
+        <a href="/focus" class="dd-link">Focus</a>
+        <a href="/blood-pressure" class="dd-link">Blood Pressure</a>
+        <a href="/iv-infusions" class="dd-link">IV Infusions</a>
+        <a href="/recovery" class="dd-link">Recovery</a>
       </div>
     </div>
-    <div class="dropdown-section">
-      <div class="dropdown-section-title">Sports</div>
-      <div class="dropdown-links">
-        <a href="/pickleball" class="dropdown-link">Pickleball</a>
-        <a href="/padel" class="dropdown-link">Padel</a>
-        <a href="/runners" class="dropdown-link">Running</a>
-        <a href="/strength" class="dropdown-link">Strength</a>
-        <a href="/performance" class="dropdown-link">Performance</a>
-        <a href="/hyrox" class="dropdown-link">HyRox</a>
-        <a href="/endurance" class="dropdown-link">Endurance</a>
-      </div>
-      <div class="dropdown-section-title" style="margin-top:20px">Learn</div>
-      <div class="dropdown-links">
-        <a href="/blog/" class="dropdown-link">All Articles</a>
-        <a href="/panel" class="dropdown-link">Our Panel</a>
-        <a href="/blog/ozempic-india-guide" class="dropdown-link">Ozempic Guide</a>
-        <a href="/blog/finasteride-india-guide" class="dropdown-link">Finasteride Guide</a>
-        <a href="/blog/pcos-symptoms-india" class="dropdown-link">PCOS Guide</a>
-        <a href="/blog/hba1c-test-guide" class="dropdown-link">HbA1c Test</a>
+
+    <!-- Sports accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">Sports</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/pickleball" class="dd-link">Pickleball</a>
+        <a href="/padel" class="dd-link">Padel</a>
+        <a href="/runners" class="dd-link">Running</a>
+        <a href="/strength" class="dd-link">Strength</a>
+        <a href="/performance" class="dd-link">Performance</a>
+        <a href="/hyrox" class="dd-link">HyRox</a>
+        <a href="/endurance" class="dd-link">Endurance</a>
       </div>
     </div>
-    <div class="dropdown-cta-wrap">
-      <a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+
+    <!-- Learn accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">Learn</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/blog/" class="dd-link">All Articles</a>
+        <a href="/panel" class="dd-link">Our Panel</a>
+        <a href="/blog/ozempic-india-guide" class="dd-link">Ozempic Guide</a>
+        <a href="/blog/finasteride-india-guide" class="dd-link">Finasteride Guide</a>
+        <a href="/blog/pcos-symptoms-india" class="dd-link">PCOS Guide</a>
+        <a href="/blog/hba1c-test-guide" class="dd-link">HbA1c Test</a>
+      </div>
     </div>
+  </div>
+  <div class="dd-cta-wrap">
+    <a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
   </div>
 </div>
 

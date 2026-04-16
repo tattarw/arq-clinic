@@ -132,7 +132,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 em{font-style:italic;color:var(--gold)}
 
 /* ─── NAV ─── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
+.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
+.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
+.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
 .nav.at-top{background:transparent}
 .nav.scrolled{background:rgba(250,249,245,0.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 var(--border)}
 .nav.scrolled .nav-logo{color:var(--text)}
@@ -140,11 +143,7 @@ em{font-style:italic;color:var(--gold)}
 .nav-logo{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--text);letter-spacing:.02em;transition:color .3s ease}
 .nav-logo .dot{color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:10px}
-.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
-.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
-.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
-.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
-.nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
+.nav.scrolled .nav.scrolled .nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
 .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
 .nav.scrolled .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
 .nav-hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:1px;transition:background .3s ease}
@@ -301,21 +300,46 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 }
 
 /* ─── DROPDOWN MENU ─── */
+/* ─── DROPDOWN NAV ─── */
 .dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
 .dropdown-overlay.open{opacity:1;pointer-events:auto}
-.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(380px,90vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:80px 28px 40px;box-shadow:-8px 0 40px rgba(0,0,0,0.12)}
+.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(400px,92vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:0;box-shadow:-12px 0 48px rgba(0,0,0,0.12)}
 .dropdown-panel.open{transform:translateX(0)}
-.dropdown-close{position:absolute;top:16px;right:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:18px;transition:all .2s}
+.dropdown-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--bg);border-bottom:1px solid var(--border)}
+.dropdown-head-logo{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
+.dropdown-head-logo .dot{color:var(--gold)}
+.dropdown-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:16px;transition:all .2s;border:none;cursor:pointer}
 .dropdown-close:hover{background:var(--surface)}
-.dropdown-section{margin-bottom:28px}
-.dropdown-section-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.dropdown-section-title::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
-.dropdown-links{display:flex;flex-wrap:wrap;gap:6px}
-.dropdown-link{display:inline-flex;align-items:center;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:var(--bg2);border:1px solid var(--border);transition:all .2s var(--ease)}
-.dropdown-link:hover{border-color:var(--gold-border);background:var(--gold-glow);color:var(--gold)}
-.dropdown-link.active{border-color:var(--gold);background:var(--gold-glow);color:var(--gold);font-weight:600}
-.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;justify-content:center;align-items:center;gap:6px;margin-top:8px;transition:all .3s var(--ease);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
-.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+.dropdown-body{padding:20px 24px 32px}
+/* Hero condition cards */
+.dd-hero-label{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.dd-hero-label::before{content:'';width:14px;height:1px;background:var(--gold);opacity:0.5}
+.dd-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.dd-hero-card{display:flex;flex-direction:column;gap:4px;padding:16px 14px;border-radius:14px;background:var(--card);border:1px solid var(--border);text-decoration:none;transition:all .25s var(--ease)}
+.dd-hero-card:hover{border-color:var(--gold-border);box-shadow:0 4px 16px rgba(184,146,46,0.1);transform:translateY(-1px)}
+.dd-hero-card-name{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--text);letter-spacing:-0.01em}
+.dd-hero-card-sub{font-size:11px;color:var(--text-60);line-height:1.4}
+.dd-hero-card .dd-hero-arrow{font-size:11px;color:var(--gold);margin-top:4px;transition:transform .2s}
+.dd-hero-card:hover .dd-hero-arrow{transform:translateX(3px)}
+/* Accordion sections */
+.dd-section{border-top:1px solid var(--border);padding-top:16px;margin-top:16px}
+.dd-section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+.dd-accordion{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:0 0 12px;background:none;border:none;width:100%}
+.dd-accordion-label{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.dd-accordion-label::before{content:'';width:14px;height:1px;background:var(--gold);opacity:0.5}
+.dd-accordion-icon{font-size:14px;color:var(--text-30);transition:transform .3s var(--ease)}
+.dd-accordion.open .dd-accordion-icon{transform:rotate(180deg)}
+.dd-accordion-body{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-height:0;overflow:hidden;transition:max-height .4s var(--ease),opacity .3s;opacity:0}
+.dd-accordion.open+.dd-accordion-body{max-height:400px;opacity:1}
+.dd-link{display:flex;align-items:center;padding:10px 12px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:transparent;text-decoration:none;transition:all .2s var(--ease)}
+.dd-link:hover{background:var(--gold-glow);color:var(--gold)}
+.dd-link i{margin-right:8px;font-size:14px;color:var(--text-30);transition:color .2s}
+.dd-link:hover i{color:var(--gold)}
+/* CTA at bottom */
+.dd-cta-wrap{padding:20px 24px;position:sticky;bottom:0;background:linear-gradient(to top,var(--bg) 80%,transparent);border-top:1px solid var(--border)}
+.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;align-items:center;justify-content:center;gap:6px;transition:all .3s var(--ease);text-decoration:none;box-shadow:0 4px 16px rgba(184,146,46,0.25)}
+.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(184,146,46,0.35)}
+@media(max-width:520px){.dd-hero-grid{grid-template-columns:1fr}.creds-grid{gap:24px}.creds-logo{height:34px}}
 
 /* ─── READ MORE FOLD ─── */
 .article-fold{max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0}
@@ -353,7 +377,143 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .cta-card{margin:36px 0}
 .faq{padding:64px 20px}
 
-</style></head><body><!-- ─── NAV ─── --><nav class="nav"><a href="/" class="nav-logo">arq<span class="dot">.</span></a><div class="nav-right"><a href="#cta" class="nav-link">Join the waitlist</a><button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav><!-- ─── DROPDOWN MENU ─── --><div class="dropdown-overlay" id="dropdownOverlay"></div><div class="dropdown-panel" id="dropdownPanel"><button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button><div class="dropdown-section"><div class="dropdown-section-title">Conditions</div><div class="dropdown-links"><a href="/pcos" class="dropdown-link">PCOS</a><a href="/thyroid" class="dropdown-link">Thyroid</a><a href="/diabetes" class="dropdown-link">Diabetes</a><a href="/weight-loss" class="dropdown-link">Weight Loss</a><a href="/hair-loss" class="dropdown-link">Hair Loss</a><a href="/testosterone" class="dropdown-link">Testosterone</a><a href="/vitamin-deficiency" class="dropdown-link">Vitamin Deficiency</a><a href="/fatigue" class="dropdown-link">Fatigue</a><a href="/sleep" class="dropdown-link">Sleep</a><a href="/skin" class="dropdown-link">Skincare</a><a href="/focus" class="dropdown-link">Focus</a><a href="/blood-pressure" class="dropdown-link">Blood Pressure</a><a href="/iv-infusions" class="dropdown-link">IV Infusions</a><a href="/recovery" class="dropdown-link">Recovery</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Sports</div><div class="dropdown-links"><a href="/pickleball" class="dropdown-link">Pickleball</a><a href="/padel" class="dropdown-link">Padel</a><a href="/runners" class="dropdown-link">Running</a><a href="/strength" class="dropdown-link">Strength</a><a href="/performance" class="dropdown-link">Performance</a><a href="/hyrox" class="dropdown-link">HyRox</a><a href="/endurance" class="dropdown-link">Endurance</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Learn</div><div class="dropdown-links"><a href="/blog/" class="dropdown-link">All Articles</a><a href="/blog/ozempic-india-guide" class="dropdown-link">Ozempic Guide</a><a href="/blog/pcos-symptoms-india" class="dropdown-link">PCOS Guide</a><a href="/blog/hba1c-test-guide" class="dropdown-link">HbA1c Test</a><a href="/blog/finasteride-india-guide" class="dropdown-link">Finasteride Guide</a><a href="/blog/tretinoin-indian-skin-guide" class="dropdown-link">Tretinoin Guide</a><a href="/blog/hrv-explained" class="dropdown-link">HRV Explained</a></div></div><div class="dropdown-section"><a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist. <i class="ph-bold ph-arrow-right"></i></a></div></div><!-- ═══ ARTICLE HERO ═══ --><section class="article-hero"><div class="article-content"><span class="article-eyebrow">Nootropic guide</span><h1 class="article-h1">Modafinil Side Effects: What to Know. <em>Before Starting</em></h1><div class="article-meta"><div class="article-meta-item"><i class="ph-fill ph-calendar"></i><span>April 16, 2026</span></div><div class="article-meta-item"><i class="ph-fill ph-user-circle"></i><span>arq. medical team</span></div><div class="article-meta-badge"><i class="ph-fill ph-stethoscope"></i>
+
+/* ─── MOBILE SPACING OPTIMIZATION ─── */
+@media(max-width:520px){
+  .breadcrumb{padding-top:calc(var(--nav-h) + 6px);padding-bottom:6px;padding-left:16px;padding-right:16px}
+  .article-header{padding:10px 16px 16px}
+  .article-eyebrow{margin-bottom:8px;font-size:10px}
+  .article-title{font-size:26px;margin-bottom:12px}
+  .article-byline{gap:8px;margin-bottom:12px;padding-bottom:12px}
+  .byline-avatar{width:32px;height:32px}
+  .byline-name{font-size:12px}
+  .byline-role{font-size:11px}
+  .byline-meta{gap:8px;font-size:11px}
+  .article-body{padding:16px 16px}
+  .article-body p{font-size:15px;margin-bottom:16px;line-height:1.65}
+  .article-body h2{font-size:22px;margin:28px 0 10px}
+  .article-body h3{font-size:16px;margin:20px 0 8px}
+  .article-body ul,.article-body ol{margin:12px 0 16px;padding-left:20px;font-size:15px}
+  .article-body li{margin-bottom:6px}
+  .article-body blockquote{padding:14px;margin:20px 0;font-size:14px}
+  .article-body table th,.article-body table td{padding:8px 10px;font-size:12px}
+  .tldr-box{padding:20px 16px;margin:20px 0}
+  .tldr-box h3{font-size:16px}
+  .tldr-box li{padding:10px 0;font-size:12px}
+  .highlight-box,.info-box,.warning-box{padding:14px 16px;margin:20px 0;font-size:13px}
+  .cta-card{padding:16px;margin:24px 0;gap:12px}
+  .cta-card-icon{width:36px;height:36px;font-size:16px;border-radius:10px}
+  .cta-card-text{font-size:13px}
+  .faq{padding:28px 16px}
+  .faq h2,.faq-head h2{font-size:22px;margin-bottom:20px}
+  .faq-item summary{font-size:13px;padding:12px 0}
+  .faq-ans{font-size:13px}
+  .disclaimer{padding:14px;font-size:11px;margin-bottom:16px}
+  .cta-final{padding:32px 16px 40px;border-radius:20px 20px 0 0}
+  .cta-final h2{font-size:24px}
+  .cta-final-lede{font-size:13px;margin-bottom:24px}
+  .cta-trust{gap:8px 16px;font-size:11px}
+  .related{padding:24px 16px}
+  .related h2{font-size:20px}
+  .related-grid{gap:10px}
+  .footer{padding:20px 16px;font-size:10px}
+  .read-more-wrap{padding:16px 0 4px}
+  .read-more-btn{padding:10px 22px;font-size:12px}
+  .article-hero{padding:calc(var(--nav-h) + 24px) 16px 28px}
+  .article-h1{margin-bottom:16px}
+  .article-meta{gap:12px;padding-top:16px;font-size:12px}
+}
+
+</style></head><body><!-- ─── NAV ─── --><nav class="nav"><a href="/" class="nav-logo">arq<span class="dot">.</span></a><div class="nav-right"><a href="#cta" class="nav-link">Join the waitlist</a><button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav><!-- ─── DROPDOWN MENU ─── --><!-- ─── DROPDOWN PANEL ─── -->
+<div class="dropdown-overlay" id="dropdownOverlay"></div>
+<div class="dropdown-panel" id="dropdownPanel">
+  <div class="dropdown-head">
+    <div class="dropdown-head-logo">arq<span class="dot">.</span></div>
+    <button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
+  </div>
+  <div class="dropdown-body">
+    <!-- Hero cards — top 4 conditions -->
+    <div class="dd-hero-label">Popular</div>
+    <div class="dd-hero-grid">
+      <a href="/weight-loss" class="dd-hero-card">
+        <div class="dd-hero-card-name">Weight Loss</div>
+        <div class="dd-hero-card-sub">GLP-1 therapy · metabolic panels</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/pcos" class="dd-hero-card">
+        <div class="dd-hero-card-name">PCOS</div>
+        <div class="dd-hero-card-sub">Hormone balance · insulin</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/thyroid" class="dd-hero-card">
+        <div class="dd-hero-card-name">Thyroid</div>
+        <div class="dd-hero-card-sub">TSH · T3/T4 · autoimmune</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+      <a href="/hair-loss" class="dd-hero-card">
+        <div class="dd-hero-card-name">Hair Loss</div>
+        <div class="dd-hero-card-sub">DHT · finasteride · regrowth</div>
+        <i class="ph-bold ph-arrow-right dd-hero-arrow"></i>
+      </a>
+    </div>
+
+    <!-- All conditions accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion open" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">All conditions</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/diabetes" class="dd-link">Diabetes</a>
+        <a href="/testosterone" class="dd-link">Testosterone</a>
+        <a href="/vitamin-deficiency" class="dd-link">Vitamins</a>
+        <a href="/fatigue" class="dd-link">Fatigue</a>
+        <a href="/sleep" class="dd-link">Sleep</a>
+        <a href="/skin" class="dd-link">Skincare</a>
+        <a href="/focus" class="dd-link">Focus</a>
+        <a href="/blood-pressure" class="dd-link">Blood Pressure</a>
+        <a href="/iv-infusions" class="dd-link">IV Infusions</a>
+        <a href="/recovery" class="dd-link">Recovery</a>
+      </div>
+    </div>
+
+    <!-- Sports accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">Sports</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/pickleball" class="dd-link">Pickleball</a>
+        <a href="/padel" class="dd-link">Padel</a>
+        <a href="/runners" class="dd-link">Running</a>
+        <a href="/strength" class="dd-link">Strength</a>
+        <a href="/performance" class="dd-link">Performance</a>
+        <a href="/hyrox" class="dd-link">HyRox</a>
+        <a href="/endurance" class="dd-link">Endurance</a>
+      </div>
+    </div>
+
+    <!-- Learn accordion -->
+    <div class="dd-section">
+      <button class="dd-accordion" onclick="this.classList.toggle('open')">
+        <span class="dd-accordion-label">Learn</span>
+        <i class="ph-bold ph-caret-down dd-accordion-icon"></i>
+      </button>
+      <div class="dd-accordion-body">
+        <a href="/blog/" class="dd-link">All Articles</a>
+        <a href="/panel" class="dd-link">Our Panel</a>
+        <a href="/blog/ozempic-india-guide" class="dd-link">Ozempic Guide</a>
+        <a href="/blog/finasteride-india-guide" class="dd-link">Finasteride Guide</a>
+        <a href="/blog/pcos-symptoms-india" class="dd-link">PCOS Guide</a>
+        <a href="/blog/hba1c-test-guide" class="dd-link">HbA1c Test</a>
+      </div>
+    </div>
+  </div>
+  <div class="dd-cta-wrap">
+    <a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+  </div>
+</div><!-- ═══ ARTICLE HERO ═══ --><section class="article-hero"><div class="article-content"><span class="article-eyebrow">Nootropic guide</span><h1 class="article-h1">Modafinil Side Effects: What to Know. <em>Before Starting</em></h1><div class="article-meta"><div class="article-meta-item"><i class="ph-fill ph-calendar"></i><span>April 16, 2026</span></div><div class="article-meta-item"><i class="ph-fill ph-user-circle"></i><span>arq. medical team</span></div><div class="article-meta-badge"><i class="ph-fill ph-stethoscope"></i>
  Medically reviewed
  </div></div></div></section><!-- ═══ ARTICLE BODY ═══ --><section class="article-body"><p><strong>Modafinil (Modalert, Modvigil) is everywhere in India — sold legally at pharmacies, used by students, professionals, shift workers, and biohackers chasing. <a href="/focus" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">focus</a>.</strong> It's effective. It does boost wakefulness, alertness, and focus for most people. But like all drugs, it has side effects, contraindications, and requires medical oversight. A 24-year-old with no cardiac history and a 60-year-old with hypertension have very different risk profiles. Understanding those differences before you pop a Modalert tablet is crucial.</p><!-- TL;DR --><div class="tldr-box"><span class="box-eyebrow">Key takeaways</span><h3>Modafinil side effects essentials</h3><ul><li><strong>Most common side effects</strong> Headache (15%), insomnia (if taken late), appetite suppression, nausea, dizziness, anxiety</li><li><strong>Rare but serious</strong> Stevens-Johnson Syndrome (SJS) — rash, blistering, stop immediately</li><li><strong>Cardiac risks</strong> Increased heart rate, blood pressure, rare myocardial infarction. Not safe if you have heart disease or arrhythmia.</li><li><strong>Drug interactions</strong> CYP3A4 inducer — reduces oral contraceptive efficacy, interacts with warfarin, carbamazepine</li><li><strong>Baseline bloodwork required</strong> Liver enzymes, kidney function, CBC, ECG if over 40</li><li><strong>Long-term considerations</strong> Tolerance, psychological dependence, <a href="/sleep" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">sleep</a> architecture disruption</li></ul></div><h2>What is Modafinil? How Does It Work?</h2><p>Modafinil is a eugeroic — a wakefulness-promoting agent. Unlike traditional stimulants (amphetamines, cocaine), modafinil's exact mechanism isn't fully understood, but research suggests it works by</p><ul><li><strong>Increasing dopamine</strong> Modafinil inhibits dopamine reuptake, raising dopamine levels in the prefrontal cortex (attention, motivation, focus)</li><li><strong>Increasing norepinephrine</strong> Promotes wakefulness and alertness</li><li><strong>Increasing histamine</strong> Promotes arousal</li><li><strong>Hypocretin/orexin signaling</strong> Regulates sleep-wake cycles</li></ul><p>Unlike amphetamines, modafinil doesn't produce euphoria, has lower abuse potential, and isn't as "harsh" on the system. FDA-approved for narcolepsy, sleep apnea, and shift work sleep disorder. Used off-label for ADHD, depression, <a href="/fatigue" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">fatigue</a>.</p><p><strong>Available in India</strong> Modalert (100mg, 200mg), Modvigil (100mg, 200mg), and various generics. depending on brand and quantity. Prescription required (Schedule H drug technically, though widely sold OTC).</p><div class="article-fold" id="articleFold"><h2>Common Side Effects (Frequency 15%)</h2><h3>Headache (15% of users)</h3><p>Most common. Ranges from mild to moderate, sometimes tension-type. Usually appears in first few days, may resolve with repeated use or hydration. If persistent, dose reduction or discontinuation helps. Keep hydrated — modafinil increases urinary output.</p><h3>Insomnia (10% of users)</h3><p>Modafinil's half-life is 12 hours. Taken at 8 AM, it's still active at 8 PM. If you're sensitive, this causes sleep onset insomnia (can't fall asleep for 1 hours) or fragmented sleep. Management: take modafinil before 2 PM (earlier is better). Avoid double-dosing; one tablet is usually sufficient. If insomnia persists, switch to earlier dosing or discontinue.</p><h3>Appetite Suppression (10% of users)</h3><p>Some users eat less, feel less hungry. Usually mild. Eat regular meals anyway — your body still needs fuel. If appetite suppression is severe (weight loss, malnutrition), stop or reduce dose. Not a reason to continue using modafinil.</p><h3>Nausea (5% of users)</h3><p>Usually mild, transient. Take with food if this happens. Resolve within a few days in most cases.</p><h3>Dizziness or Lightheadedness (3% of users)</h3><p>More common at higher doses. Don't drive if dizzy. Hydration and food help. Usually improves after day 2.</p><h3>Anxiety or Nervousness (5% of users)</h3><p>Modafinil can increase sympathetic tone (fight-or-flight activation). Users prone to anxiety may feel jittery, restless, or anxious. Dose reduction or discontinuation usually resolves this quickly. Don't take modafinil if you have untreated anxiety disorder.</p><h3>Dry Mouth (5% of users)</h3><p>Drink more water. Sugarless gum/lozenges can help.</p><h2>Rare But Serious Side Effects (<1%)</h2><h3>Stevens-Johnson Syndrome (SJS) — 1 per 1,000,000 users</h3><p>Life-threatening allergic skin reaction. Symptoms: rash (often starting on face/trunk, spreading), fever, blistering, mouth ulcers, eye involvement, internal mucosal involvement. Can progress to multi-organ failure <strong>If you develop ANY unusual rash after starting modafinil, stop immediately and seek emergency care.</strong> SJS is rare but serious enough to mention.</p><h3>Liver Enzyme Elevation (Rare)</h3><p>Elevated AST, ALT reported in small percentage. Usually reversible upon discontinuation. This is why baseline liver function tests and quarterly monitoring matter for long-term use.</p><h3>Cardiac Events (Rare but Real)</h3><p>Modafinil increases heart rate and blood pressure. Rare cases of myocardial infarction (heart attack), arrhythmia, and sudden cardiac death have been reported, mostly in people with underlying cardiac disease. If you have any history of heart problems, modafinil is risky.</p><h3>Psychiatric Effects (Rare)</h3><p>Depression, mood changes, psychosis in susceptible individuals. People with history of psychosis, bipolar disorder, or schizophrenia should avoid modafinil.</p><h2>Who Should NOT Take Modafinil?</h2><ul><li><strong>Cardiac disease or arrhythmia</strong> Modafinil increases HR and BP. High risk.</li><li><strong>Uncontrolled hypertension</strong> Modafinil can elevate BP further.</li><li><strong>History of psychosis, bipolar disorder, or severe psychiatric illness</strong> Risk of mood destabilization.</li><li><strong>Liver disease or cirrhosis</strong> Can't metabolize it safely; hepatotoxicity risk.</li><li><strong>Pregnancy</strong> Insufficient safety data; teratogenicity unclear.</li><li><strong>Hypersensitivity to modafinil or armodafinil</strong> Risk of SJS.</li><li><strong>Untreated sleep apnea</strong> Modafinil masks apnea but doesn't treat it; dangerous.</li><li><strong>History of drug abuse or addiction</strong> Even low abuse potential can trigger relapse.</li></ul><h2>Bloodwork Before Starting Modafinil</h2><p><strong>Baseline (before starting)</strong></p><ul><li><strong>Liver function tests (AST, ALT, GGT, bilirubin)</strong> Modafinil is hepatically metabolized</li><li><strong>Kidney function (creatinine, eGFR, BUN)</strong> Baseline safety</li><li><strong>Complete blood count (CBC)</strong> Screen for anemia, infections</li><li><strong>Electrocardiogram (ECG)</strong> Essential if age >40 or cardiac risk factors</li><li><strong>Blood pressure</strong> Baseline for monitoring</li><li><strong>Fasting glucose</strong> Modafinil can affect glucose metabolism</li></ul><p><strong>Ongoing (for long-term use)</strong></p><ul><li><strong>Quarterly liver function tests</strong> Monitor for hepatotoxicity</li><li><strong>Annual ECG</strong> If you develop symptoms or age >50</li><li><strong>Blood pressure monitoring</strong> Regular checks</li></ul><h2>Modafinil Interactions with Other Drugs</h2><p><strong>Critical interactions</strong></p><p><strong>Oral Contraceptives</strong> Modafinil is a CYP3A4 inducer — it speeds up contraceptive metabolism, reducing efficacy. Women on birth control taking modafinil may have inadequate contraceptive coverage <strong>Use backup contraception or switch to non-hormonal method.</strong></p><p><strong>Warfarin (blood thinner)</strong> Modafinil may reduce warfarin efficacy. If you're on warfarin, modafinil requires careful monitoring or avoidance.</p><p><strong>Carbamazepine or Phenytoin (anticonvulsants)</strong> Complex bidirectional interaction. Avoid combination or monitor closely.</p><p><strong>Avoid combining</strong> Other stimulants (amphetamine, caffeine in excess), SSRIs, other serotonergic drugs (risk of serotonin syndrome is low but possible).</p><h2>Long-Term Considerations</h2><h3>Tolerance</h3><p>Some users develop tolerance (needing higher doses for same effect). Tolerance develops over weeks to months in frequent users. Management: cycle use (e.g., 5 days on, 2 days off), or use intermittently rather than daily.</p><h3>Psychological Dependence</h3><p>Physical addiction is rare, but psychological dependence can develop — reliance on modafinil for focus, anxiety about stopping. Not life-threatening, but real. Use responsibly; don't use daily without breaks.</p><h3>Sleep Architecture Disruption</h3><p>Modafinil suppresses REM sleep and stage 2 sleep even if you "fall asleep." Long-term sleep disruption can impair memory consolidation, mood regulation, immune function. Take modafinil early in the day. Don't use chronically without breaks.</p><h3>When to Stop</h3><p>If you develop persistent headaches, cardiac symptoms (chest pain, palpitations, shortness of breath), mood changes, or any rash, stop immediately and consult a physician.</p><div class="cta-card"><p><strong>Considering modafinil?</strong> Get baseline testing first. Liver function, kidney function, cardiac status matter. <a href="#cta">Talk to an arq. physician before starting →</a></p></div><h2>arq.'s Approach: Safe Modafinil Use</h2><ul><li><strong>Comprehensive assessment</strong> Health history, cardiac risk, psychiatric history, medications</li><li><strong>Baseline bloodwork</strong> Liver, kidney, CBC, ECG (if indicated)</li><li><strong>Risk stratification</strong> Determine if modafinil is appropriate for you</li><li><strong>Dosing guidance</strong> Usually 100-200mg in morning, not daily long-term</li><li><strong>Drug interaction screening</strong> Check all current medications for interactions</li><li><strong>Ongoing monitoring</strong> Quarterly liver function tests, annual ECG if age >50</li><li><strong>Cycling protocol</strong> Recommendation for 5-days-on, 2-days-off to prevent tolerance and dependence</li></ul><p><strong>The goal</strong> Modafinil can be useful for focus and wakefulness, but only if it's safe for *you*. Not everyone should take it. Medical oversight prevents side effects and complications.</p></section><!-- ═══ FAQ ═══ --></div><!-- end article-fold --><div class="read-more-wrap" id="readMoreWrap"><button class="read-more-btn" id="readMoreBtn">
  Continue reading. <i class="ph-bold ph-caret-down"></i></button></div><section class="faq"><div class="faq-head"><span class="eyebrow" style="justify-content: center; display: flex;">Questions</span><h2>Frequently asked about Modafinil</h2></div><ul class="faq-list"><li class="faq-item"><details><summary>Is modafinil the same as amphetamine?</summary><div class="faq-ans">No. Modafinil is not amphetamine. Amphetamines are stimulants that increase dopamine and norepinephrine dramatically — causing euphoria, addiction potential, and significant side effects. Modafinil's exact mechanism isn't fully understood, but it likely increases dopamine, histamine, and norepinephrine more subtly. Modafinil doesn't produce a 'high' and has lower addiction potential. It's considered a eugeroic (wakefulness-promoting agent), not a classic stimulant.</div></details></li><li class="faq-item"><details><summary>Can I take modafinil every day long-term?</summary><div class="faq-ans">Technically yes, but not without monitoring. Modafinil is approved for long-term use in narcolepsy (years, even decades). However, tolerance can develop (needing higher doses for same effect), and long-term neurological effects aren't fully understood. Many users benefit from cycling: use 5 days/week with 2 days off, or monthly breaks. This maintains efficacy and reduces tolerance. Baseline and quarterly liver function monitoring is essential for long-term use.</div></details></li><li class="faq-item"><details><summary>Does modafinil affect sleep architecture?</summary><div class="faq-ans">Yes. Modafinil taken late in the day (after 2 PM) can cause insomnia due to its long half-life (~12 hours). It suppresses REM sleep and stage 2 sleep, potentially affecting sleep quality even if you fall asleep. Long-term: disrupted sleep architecture can impair memory consolidation, emotional regulation, and immune function. Take modafinil early (7 AM) to minimize evening disruption. Never use modafinil if you have sleep disorders like sleep apnea unless treated.</div></details></li><li class="faq-item"><details><summary>What is Stevens-Johnson Syndrome and what's the real risk?</summary><div class="faq-ans">Stevens-Johnson Syndrome (SJS) is a rare but severe drug reaction (skin blistering, mucosal involvement, internal organ failure). Risk with modafinil is approximately 1 per 1,000,000 users — extremely rare. However, it's life-threatening if it occurs. Warning signs: unusual rash (especially target-like lesions), fever, blistering, mouth ulcers, eye involvement. If you develop a rash on modafinil, stop immediately and seek medical attention. Most people tolerate modafinil without issue, but this risk exists and shouldn't be ignored.</div></details></li><li class="faq-item"><details><summary>Does modafinil interact with contraceptive pills?</summary><div class="faq-ans">Yes. Modafinil is a CYP3A4 inducer — it speeds up the metabolism of oral contraceptives, potentially reducing their efficacy. Women on birth control taking modafinil should discuss backup contraception with their physician. Alternative methods (IUD, implant, barrier methods) may be safer. This is a real concern: inadequate contraceptive coverage = unintended pregnancy. Always disclose modafinil use to your OB-GYN.</div></details></li><li class="faq-item"><details><summary>Can modafinil cause dependency or addiction?</summary><div class="faq-ans">Low risk, but real. Modafinil is not a controlled substance in most countries, and abuse potential is lower than amphetamines. However, psychological dependence can develop — reliance on modafinil for focus, fear of stopping. Physical withdrawal is usually mild (fatigue, depressed mood) compared to amphetamines. Tolerance (needing higher doses) develops in some users. Cycling use or periodic breaks can prevent both. Don't use modafinil daily without breaks for extended periods without physician oversight.</div></details></li><li class="faq-item"><details><summary>What should I avoid while taking modafinil?</summary><div class="faq-ans">Avoid: alcohol (increases side effect risk), excess caffeine (additive stimulation, anxiety), driving if drowsy or having adverse reactions, and pregnancy (insufficient safety data). Be cautious with: other medications metabolized by CYP3A4 (check with your physician), warfarin (modafinil may interact), and phenytoin/carbamazepine (similar metabolism). Always disclose all medications and supplements to your physician before starting modafinil.</div></details></li><li class="faq-item"><details><summary>Is modafinil safe for people with cardiac disease?</summary><div class="faq-ans">No. Modafinil can increase heart rate and blood pressure. If you have arrhythmia, uncontrolled hypertension, left ventricular hypertrophy, or any cardiac disease, modafinil is contraindicated. Even in healthy people, rare cases of myocardial infarction have been reported. Baseline cardiac assessment (ECG) is wise before starting, especially if you're over 40 or have family history of heart disease. This isn't meant to scare — it's to inform.</div></details></li><li class="faq-item"><details><summary>Can modafinil help with weight loss?</summary><div class="faq-ans">Modafinil can suppress appetite (20% of users), sometimes leading to modest weight loss. However, using a prescription medication primarily for weight loss is inappropriate and risky. If appetite suppression occurs, monitor nutritional intake — ensure you're eating enough protein and micronutrients. For sustainable weight loss, focus on diet and exercise; modafinil is not a weight-loss drug. If you develop severe appetite suppression or malnutrition, consult your arq. physician.</div></details></li></ul></section><!-- ═══ MEDICAL DISCLAIMER ═══ --><section class="medical-disclaimer"><div class="disclaimer-box"><strong>Medical Disclaimer</strong> This article is for educational purposes only and does not constitute medical advice. Modafinil is a prescription medication with potential side effects and serious contraindications. Only a qualified physician can determine if modafinil is safe for you. Baseline bloodwork and cardiac assessment are essential before starting. arq. is India's physician-led online clinic — our physicians conduct thorough evaluation before prescribing. This information reflects current medical evidence as of 2026.

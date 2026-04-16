@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arq Edge — Protocol Pack | arq.</title>
+<meta name="description" content="arq Edge: The complete male performance protocol. Sildenafil 50mg + L-Citrulline + Zinc + Ashwagandha KSM-66. Prescription-grade PDE5 inhibition with targeted support.">
+<link rel="canonical" href="https://arq.clinic/protocols/packs/arq-edge">
+<meta property="og:title" content="arq Edge — Protocol Pack | arq.">
+<meta property="og:description" content="arq Edge: The complete male performance protocol. Sildenafil 50mg + L-Citrulline + Zinc + Ashwagandha KSM-66.">
+<meta property="og:url" content="https://arq.clinic/protocols/packs/arq-edge">
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="arq.">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="arq Edge — Protocol Pack | arq.">
+<meta name="twitter:description" content="arq Edge: The complete male performance protocol with Sildenafil, L-Citrulline, Zinc, and Ashwagandha.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "arq Edge — Protocol Pack",
+  "description": "The complete male performance protocol. Prescription-grade PDE5 inhibition paired with nitric oxide precursors, essential minerals, and adaptogenic stress reduction.",
+  "url": "https://arq.clinic/protocols/packs/arq-edge",
+  "brand": {"@type": "Brand", "name": "arq."},
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "INR",
+    "price": "2499",
+    "availability": "https://schema.org/InStock",
+    "seller": {"@type": "Organization", "name": "arq."}
+  }
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#050505;--bg2:#0a0a0a;--surface:#111;--card:#141414;
+  --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
+  --white:#e8e4dd;--white-90:rgba(232,228,221,0.9);
+  --white-60:rgba(232,228,221,0.6);--white-30:rgba(232,228,221,0.3);
+  --white-12:rgba(232,228,221,0.12);--white-06:rgba(232,228,221,0.06);
+  --gold:#c9a050;--gold-glow:rgba(201,160,80,0.08);--gold-border:rgba(201,160,80,0.2);
+  --blue:#5b9cf5;--blue-dim:rgba(91,156,245,0.12);
+  --green:#3ecf71;--green-dim:rgba(62,207,113,0.15);
+  --sans:'Inter',system-ui,sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+  --mono:'JetBrains Mono','SF Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{background:var(--bg);color:var(--white);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+::selection{background:var(--gold);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--white-12);border-radius:3px}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;background:rgba(5,5,5,0.85);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:0.02em;color:var(--white);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-link{font-size:13px;font-weight:500;letter-spacing:0.04em;color:var(--white-60);transition:color 0.3s;text-transform:uppercase}
+.nav-link:hover{color:var(--white)}
+.nav-cta{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),#d4ad5e);color:var(--bg);padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:all 0.3s;box-shadow:0 0 20px rgba(201,160,80,0.15)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 4px 30px rgba(201,160,80,0.3)}
+@media(max-width:768px){.nav-links{display:none}}
+
+/* Breadcrumb */
+.breadcrumb{padding:80px clamp(20px,5vw,48px) 0;font-size:13px;color:var(--white-30)}
+.breadcrumb a{color:var(--white-30);transition:color 0.2s}
+.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb span{margin:0 8px}
+
+/* Product Hero */
+.product-hero{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  padding:40px clamp(20px,5vw,48px) 80px;
+  max-width:1300px;margin:0 auto;align-items:start;
+}
+@media(max-width:900px){.product-hero{grid-template-columns:1fr;gap:40px}}
+
+.product-3d{position:relative}
+#product-canvas{
+  width:100%;height:500px;border-radius:16px;
+  border:1px solid var(--border);
+  background:rgba(10,10,10,0.5);
+}
+.product-3d-label{
+  position:absolute;bottom:16px;left:16px;
+  font-family:var(--mono);font-size:10px;
+  color:var(--white-30);letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:4px 10px;border-radius:4px;
+  background:rgba(5,5,5,0.8);backdrop-filter:blur(10px);
+}
+
+.product-info{padding-top:20px}
+.product-cat{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 14px;border-radius:6px;
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  background:rgba(201,160,80,0.12);color:#c9a050;
+  border:1px solid rgba(201,160,80,0.25);margin-bottom:16px;
+}
+.product-name{
+  font-family:var(--serif);font-size:clamp(36px,5vw,56px);
+  font-weight:400;line-height:1.05;letter-spacing:-0.03em;
+  margin-bottom:8px;
+}
+.product-generic{
+  font-family:var(--mono);font-size:14px;color:var(--white-30);
+  margin-bottom:24px;
+}
+.product-desc{
+  font-size:16px;color:var(--white-60);line-height:1.7;
+  margin-bottom:32px;max-width:520px;font-weight:300;
+}
+
+/* Price card */
+.price-card{
+  padding:28px;border-radius:16px;
+  background:rgba(20,20,20,0.6);
+  border:1px solid var(--gold-border);
+  backdrop-filter:blur(20px);margin-bottom:16px;
+  position:relative;overflow:hidden;
+}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.price-main{
+  display:flex;align-items:baseline;gap:8px;margin-bottom:4px;
+}
+.price-amount{
+  font-family:var(--mono);font-size:40px;font-weight:700;
+  color:var(--gold);
+}
+.price-unit{font-size:16px;color:var(--white-30)}
+.price-compare{
+  font-size:13px;color:var(--white-30);margin-bottom:16px;
+}
+.price-breakdown{display:flex;flex-direction:column;gap:8px;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:12px 0}
+.price-line{display:flex;justify-content:space-between;font-size:13px;color:var(--white-60)}
+.price-line .price-free{color:var(--green);font-weight:500}
+.price-line.price-total{color:var(--white);font-weight:600;font-size:14px;padding-top:8px;border-top:1px solid var(--border)}
+.consult-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:16px;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),#d4ad5e);
+  color:var(--bg);font-size:16px;font-weight:700;
+  border:none;cursor:pointer;transition:all 0.4s;
+  box-shadow:0 0 30px rgba(201,160,80,0.15);
+  margin-bottom:12px;
+}
+.free-consult-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:10px 20px;margin-top:8px;border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:400;color:var(--white-60);background:transparent;cursor:pointer;transition:all 0.3s var(--ease);text-decoration:none}
+.free-consult-btn:hover{background:var(--gold-glow);border-color:var(--gold);color:var(--gold-light)}
+.refund-guarantee{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px;margin-top:8px;background:rgba(62,207,113,0.06);border:1px solid rgba(62,207,113,0.15);border-radius:8px;font-size:11px;font-weight:500;color:var(--green);letter-spacing:0.01em}
+
+.consult-btn:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(201,160,80,0.3)}
+.consult-btn svg{width:20px;height:20px}
+
+/* Protocol flow timeline */
+.protocol-flow{
+  margin-top:16px;padding:20px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(201,160,80,0.04),rgba(201,160,80,0.01));
+  border:1px solid var(--gold-border);position:relative;overflow:hidden;
+}
+.protocol-flow::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,160,80,0.3),transparent);
+}
+.flow-label{
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.flow-label svg{width:14px;height:14px;stroke:var(--gold)}
+.flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+@media(max-width:600px){.flow-steps{grid-template-columns:repeat(2,1fr);gap:12px}}
+.flow-step{text-align:center;position:relative;padding:0 8px}
+.flow-step:not(:last-child)::after{
+  content:'';position:absolute;top:18px;right:-2px;width:calc(100% - 44px);
+  height:1px;background:linear-gradient(90deg,var(--gold),rgba(201,160,80,0.15));
+  left:calc(50% + 22px);
+}
+@media(max-width:600px){.flow-step:not(:last-child)::after{display:none}}
+.flow-num{
+  width:36px;height:36px;border-radius:50%;margin:0 auto 10px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:13px;font-weight:700;
+  background:rgba(201,160,80,0.1);border:1px solid var(--gold-border);
+  color:var(--gold);position:relative;z-index:2;
+}
+.flow-step-title{
+  font-size:12px;font-weight:600;color:var(--white);margin-bottom:3px;
+  line-height:1.3;
+}
+.flow-step-desc{
+  font-size:10px;color:var(--white-30);line-height:1.4;
+  font-family:var(--mono);
+}
+
+/* Key facts */
+.key-facts{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px;
+}
+.fact-card{
+  padding:16px;border-radius:10px;
+  background:var(--white-06);border:1px solid var(--border);
+}
+.fact-label{font-size:11px;color:var(--white-30);text-transform:uppercase;letter-spacing:0.06em;font-family:var(--mono)}
+.fact-val{font-size:18px;font-weight:600;color:var(--white);margin-top:4px}
+
+/* Details Sections */
+.detail-section{
+  padding:clamp(60px,10vh,100px) clamp(20px,5vw,48px);
+  max-width:1100px;margin:0 auto;
+}
+.detail-section + .detail-section{border-top:1px solid var(--border)}
+
+.detail-tag{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.detail-tag::before{content:'';width:20px;height:1px;background:var(--gold)}
+
+.detail-h2{
+  font-family:var(--serif);font-size:clamp(28px,4vw,44px);
+  font-weight:400;line-height:1.1;letter-spacing:-0.02em;
+  margin-bottom:24px;
+}
+.detail-h2 em{font-style:italic;color:var(--gold)}
+
+.detail-content{
+  font-size:16px;color:var(--white-60);line-height:1.8;
+  max-width:700px;font-weight:300;
+}
+.detail-content p{margin-bottom:16px}
+.detail-content strong{color:var(--white);font-weight:600}
+
+/* Mechanism Grid */
+.mechanism-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px;margin-top:32px;
+}
+.mechanism-card{
+  padding:24px;border-radius:12px;
+  background:rgba(20,20,20,0.5);border:1px solid var(--border);
+  transition:border-color 0.3s;
+}
+.mechanism-card:hover{border-color:var(--border-hover)}
+.mech-icon{font-size:28px;margin-bottom:12px}
+.mech-title{font-size:15px;font-weight:600;color:var(--white);margin-bottom:6px}
+.mech-desc{font-size:13px;color:var(--white-60);line-height:1.6}
+.rx-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:4px;background:rgba(248,113,113,0.12);color:#f87171;font-family:var(--mono);font-size:10px;font-weight:600;margin-bottom:8px}
+
+/* Data Grid */
+.data-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;
+}
+@media(max-width:700px){.data-grid{grid-template-columns:1fr}}
+.data-card{
+  padding:24px;border-radius:12px;text-align:center;
+  background:var(--white-06);border:1px solid var(--border);
+}
+.data-val{
+  font-family:var(--mono);font-size:32px;font-weight:700;
+  color:var(--gold);margin-bottom:4px;
+}
+.data-label{font-size:13px;color:var(--white-60)}
+
+/* FAQ */
+.faq-item{
+  border-bottom:1px solid var(--border);padding:20px 0;
+}
+.faq-q{
+  font-size:16px;font-weight:600;color:var(--white);
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+}
+.faq-q::after{content:'+';font-size:20px;color:var(--gold);transition:transform 0.3s}
+.faq-q.open::after{transform:rotate(45deg)}
+.faq-a{
+  font-size:14px;color:var(--white-60);line-height:1.7;
+  max-height:0;overflow:hidden;transition:max-height 0.4s var(--ease),padding 0.4s;
+  padding:0;
+}
+.faq-a.open{max-height:300px;padding-top:12px}
+
+/* CTA Bottom */
+.bottom-cta{
+  padding:80px clamp(20px,5vw,48px);text-align:center;
+  position:relative;background:var(--bg2);
+}
+.bottom-cta::before{
+  content:'';position:absolute;width:600px;height:600px;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(201,160,80,0.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+
+/* Footer */
+footer{padding:40px clamp(20px,5vw,48px);border-top:1px solid var(--border);background:var(--bg)}
+.footer-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--white)}
+.footer-logo span{color:var(--gold)}
+.footer-legal{font-size:11px;color:var(--white-30);max-width:600px;line-height:1.5}
+
+/* Glow line */
+.glow-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,160,80,0.3),transparent)}
+
+/* Pharmacokinetics Table */
+.pk-table{width:100%;margin-top:24px;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.pk-table tr{transition:background 0.2s}
+.pk-table tr:hover{background:var(--white-06)}
+.pk-table td{padding:14px 20px;border-bottom:1px solid var(--border);font-size:14px}
+.pk-table tr:last-child td{border-bottom:none}
+.pk-table td:first-child{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--white-60);letter-spacing:0.03em;width:40%;background:rgba(10,10,10,0.4)}
+.pk-table td:last-child{color:var(--white);font-weight:500}
+.pk-table .pk-highlight{color:var(--gold);font-weight:600}
+.pk-source{font-size:11px;color:var(--white-30);font-style:italic;margin-top:12px;font-family:var(--mono)}
+
+/* Dosing Protocol */
+.dosing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px}
+@media(max-width:700px){.dosing-grid{grid-template-columns:1fr}}
+.dose-card{padding:24px;border-radius:12px;background:var(--white-06);border:1px solid var(--border);position:relative}
+.dose-card::before{content:'';position:absolute;top:0;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),transparent)}
+.dose-icon{width:40px;height:40px;border-radius:10px;background:var(--gold-glow);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.dose-title{font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px}
+.dose-detail{font-size:13px;color:var(--white-60);line-height:1.6}
+.dose-tag{display:inline-flex;padding:2px 8px;border-radius:4px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.04em;margin-top:8px}
+.dose-tag.recommended{background:var(--green-dim);color:var(--green)}
+.dose-tag.caution{background:rgba(251,146,60,0.12);color:#fb923c}
+.dose-tag.info{background:var(--blue-dim);color:var(--blue)}
+
+/* Study Cards */
+.study-list{display:flex;flex-direction:column;gap:16px;margin-top:24px}
+.study-card{padding:24px;border-radius:12px;background:rgba(20,20,20,0.5);border:1px solid var(--border);transition:border-color 0.3s}
+.study-card:hover{border-color:var(--gold-border)}
+.study-meta{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.study-year{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--gold);padding:3px 8px;border-radius:4px;background:var(--gold-glow);border:1px solid var(--gold-border)}
+.study-journal{font-family:var(--mono);font-size:11px;color:var(--white-30);letter-spacing:0.02em}
+.study-pmid{font-family:var(--mono);font-size:10px;color:var(--blue);letter-spacing:0.02em}
+.study-pmid a{color:var(--blue);text-decoration:none;transition:color 0.2s}
+.study-pmid a:hover{color:var(--white)}
+.study-title{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.4}
+.study-finding{font-size:13px;color:var(--white-60);line-height:1.7}
+.study-tag{display:inline-flex;padding:2px 8px;border-radius:4px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.04em;margin-top:10px}
+.study-tag.rct{background:var(--green-dim);color:var(--green)}
+.study-tag.meta{background:var(--blue-dim);color:var(--blue)}
+.study-tag.review{background:rgba(167,139,250,0.12);color:#a78bfa}
+
+/* Side Effects */
+.side-effect-grid{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.se-row{display:flex;align-items:center;gap:16px;padding:14px 20px;border-radius:10px;background:var(--white-06);border:1px solid var(--border)}
+.se-name{font-size:14px;font-weight:500;color:var(--white);width:200px;flex-shrink:0}
+.se-bar-wrap{flex:1;height:8px;border-radius:4px;background:var(--white-06);overflow:hidden;position:relative}
+.se-bar{height:100%;border-radius:4px;transition:width 0.8s var(--ease)}
+.se-bar.common{background:linear-gradient(90deg,var(--gold),#d4ad5e)}
+.se-bar.uncommon{background:linear-gradient(90deg,var(--blue),#7db5f7)}
+.se-bar.rare{background:linear-gradient(90deg,var(--green),#5ddb8b)}
+.se-pct{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--white-60);width:50px;text-align:right;flex-shrink:0}
+.se-serious{margin-top:16px;padding:20px;border-radius:12px;background:rgba(248,113,113,0.06);border:1px solid rgba(248,113,113,0.15)}
+.se-serious-title{font-size:13px;font-weight:600;color:#f87171;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.se-serious-text{font-size:13px;color:var(--white-60);line-height:1.7}
+@media(max-width:600px){.se-name{width:120px;font-size:13px}.se-pct{width:40px;font-size:11px}}
+
+/* Interactions */
+.interaction-grid{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.interaction-card{display:flex;gap:16px;padding:20px;border-radius:12px;background:var(--white-06);border:1px solid var(--border);align-items:flex-start}
+.interaction-severity{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--mono);font-size:11px;font-weight:700}
+.interaction-severity.high{background:rgba(248,113,113,0.12);border:1px solid rgba(248,113,113,0.25);color:#f87171}
+.interaction-severity.moderate{background:rgba(251,146,60,0.12);border:1px solid rgba(251,146,60,0.25);color:#fb923c}
+.interaction-severity.low{background:var(--blue-dim);border:1px solid rgba(91,156,245,0.25);color:var(--blue)}
+.interaction-severity.synergy{background:var(--green-dim);border:1px solid rgba(62,207,113,0.25);color:var(--green)}
+.interaction-info{flex:1}
+.interaction-drug{font-size:14px;font-weight:600;color:var(--white);margin-bottom:4px}
+.interaction-detail{font-size:13px;color:var(--white-60);line-height:1.6}
+.interaction-mechanism{font-family:var(--mono);font-size:11px;color:var(--white-30);margin-top:6px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">arq<span>.</span></a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Protocols</a>
+    <a href="/#how" class="nav-link">How it works</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="https://wa.me/919137307628?text=I'd%20like%20to%20book%20a%20consultation" class="nav-cta" target="_blank">Book Consultation</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">Home</a><span>›</span>
+  <a href="/#protocols">Protocols</a><span>›</span>
+  arq Edge
+</div>
+
+<!-- Product Hero -->
+<div class="product-hero">
+  <div class="product-3d">
+    <canvas id="product-canvas"></canvas>
+    <div class="product-3d-label">Interactive 3D · Drag to rotate</div>
+  </div>
+
+  <div class="product-info">
+    <div class="product-cat"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg> Protocol Pack</div>
+    <h1 class="product-name">arq Edge</h1>
+    <div class="product-generic">Sildenafil 50mg + L-Citrulline 3g + Zinc 30mg + Ashwagandha KSM-66 600mg</div>
+    <p class="product-desc">The complete male performance protocol. Prescription-grade PDE5 inhibition paired with nitric oxide precursors, essential minerals for testosterone support, and adaptogenic stress reduction.</p>
+
+    <div class="price-card">
+      <div class="price-main">
+        <div class="price-amount">₹2,499</div>
+        <div class="price-unit">/month</div>
+      </div>
+      <div class="price-breakdown">
+      <div class="price-line"><span>Doctor consultation</span><span class="price-free">FREE</span></div>
+      <div class="price-line"><span>Medication (30-day supply)</span><span>₹2,499</span></div>
+      <div class="price-line"><span>Express delivery</span><span class="price-free">FREE</span></div>
+      <div class="price-line price-total"><span>Total</span><span>₹2,499/mo</span></div>
+    </div>
+      <button onclick="openRazorpay()" class="consult-btn">
+        Start Protocol →
+      </button>
+      <div class="refund-guarantee">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        100% refund if not medically appropriate
+      </div>
+      <a href="https://wa.me/919137307628?text=Hi%2C%20I%27d%20like%20a%20free%20consultation" class="free-consult-btn" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Have questions? Talk to us first
+      </a>
+      <div class="protocol-flow">
+        <div class="flow-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          What happens after you purchase
+        </div>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-num">1</div>
+            <div class="flow-step-title">You pay</div>
+            <div class="flow-step-desc">Secure checkout via Razorpay</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">2</div>
+            <div class="flow-step-title">Doctor calls you</div>
+            <div class="flow-step-desc">Free consultation within 2hrs</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">3</div>
+            <div class="flow-step-title">Prescription issued</div>
+            <div class="flow-step-desc">If medically appropriate</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">4</div>
+            <div class="flow-step-title">Delivered</div>
+            <div class="flow-step-desc">Delivered within 48hrs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-facts">
+      <div class="fact-card">
+        <div class="fact-label">Onset</div>
+        <div class="fact-val">30 min</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">Components</div>
+        <div class="fact-val">4 molecules</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">Supply</div>
+        <div class="fact-val">30 days</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">Type</div>
+        <div class="fact-val">Rx + OTC</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- What's in the Pack -->
+<div class="detail-section">
+  <div class="detail-tag">Stack composition</div>
+  <h2 class="detail-h2">What's in the <em>pack</em></h2>
+  <div class="detail-content">
+    <p>arq Edge combines pharmaceutical PDE5 inhibition with targeted nutritional support for vascular and hormonal optimization. Each component addresses a distinct mechanism—from immediate vasodilation to sustained nitric oxide production and stress resilience.</p>
+  </div>
+  <div class="mechanism-grid">
+    <div class="mechanism-card">
+      <div class="rx-badge">Rx</div>
+      <div class="mech-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a050" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div>
+      <div class="mech-title">Sildenafil 50mg</div>
+      <div class="mech-desc">The vascular amplifier. Inhibits PDE5 to increase cGMP, allowing smooth muscle relaxation and increased blood flow. 30-minute onset, 4-5 hour duration.</div>
+    </div>
+    <div class="mechanism-card">
+      <div class="mech-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red, #f87171)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+      <div class="mech-title">L-Citrulline 3g</div>
+      <div class="mech-desc">The nitric oxide booster. Converts to arginine and NO, enhancing vasodilation synergistically with Sildenafil. Supports the vascular benefits beyond the initial drug window.</div>
+    </div>
+    <div class="mechanism-card">
+      <div class="mech-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg></div>
+      <div class="mech-title">Zinc 30mg</div>
+      <div class="mech-desc">The hormonal essential. Critical for testosterone synthesis and male sexual function. Deficiency alone can impair performance; supplementation restores hormonal support.</div>
+    </div>
+    <div class="mechanism-card">
+      <div class="mech-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3ecf71" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <div class="mech-title">Ashwagandha KSM-66 600mg</div>
+      <div class="mech-desc">The stress resilience adapter. Reduces cortisol (the #1 non-vascular cause of ED) and supports relaxed confidence. Improves sexual satisfaction and performance anxiety.</div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- Why This Combination -->
+<div class="detail-section">
+  <div class="detail-tag">Synergy</div>
+  <h2 class="detail-h2">Why this <em>combination</em></h2>
+  <div class="detail-content">
+    <p>L-Citrulline enhances nitric oxide production, amplifying Sildenafil's vascular effects beyond the initial 30-minute window. Zinc supports testosterone synthesis and male sexual function—deficiency alone causes dysfunction. Ashwagandha KSM-66 reduces cortisol and performance anxiety, addressing the #1 psychological cause of ED. Together, this stack addresses vascular, hormonal, and psychological dimensions of performance.</p>
+  </div>
+  <div class="data-grid">
+    <div class="data-card">
+      <div class="data-val">30min</div>
+      <div class="data-label">Rapid onset with sustained support</div>
+    </div>
+    <div class="data-card">
+      <div class="data-val">4</div>
+      <div class="data-label">Mechanistic pathways</div>
+    </div>
+    <div class="data-card">
+      <div class="data-val">100%</div>
+      <div class="data-label">Pharmaceutical + natural support</div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- ═══ PHARMACOKINETICS ═══ -->
+<div class="detail-section">
+  <div class="detail-tag">Pharmacokinetics</div>
+  <h2 class="detail-h2">Pack <em>absorption profile</em></h2>
+  <div class="detail-content">
+    <p>This stack combines a wakefulness promoter, a vasodilator for tissue perfusion, and an adaptogen. Timing is critical to avoid unwanted sympathomimetic stacking.</p>
+  </div>
+  <table class="pk-table">
+    <tr><td>Modafinil</td><td class="pk-highlight">Tmax 2–4h, t½ 12–15h, ~80% bioavail</td></tr>
+    <tr><td>Sildenafil</td><td>Tmax 0.5–2h, t½ 3–5h, ~40% bioavail, CYP3A4</td></tr>
+    <tr><td>L-Citrulline</td><td>Tmax 1h, t½ 1h (converts to arginine), high bioavail</td></tr>
+    <tr><td>Ashwagandha KSM-66</td><td>Tmax 2–3h, t½ 6–12h, bioavail variable</td></tr>
+    <tr><td>Key note</td><td class="pk-highlight">Sildenafil is optional/as-needed; don't dose daily without Rx</td></tr>
+  </table>
+  <div class="pk-source">Sources: FDA prescribing data (Viagra), Schwedhelm et al. 2008 (L-citrulline), Chandrasekhar et al. 2012 (Ashwagandha KSM-66)</div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- ═══ DOSING PROTOCOL ═══ -->
+<div class="detail-section">
+  <div class="detail-tag">Dosing</div>
+  <h2 class="detail-h2">Optimal <em>protocol timing</em></h2>
+  <div class="detail-content">
+    <p>arq Edge stacks cognition with physical endurance and vascular function. Sildenafil is situational (not daily unless medically appropriate), while Modafinil and Ashwagandha form the base layer.</p>
+  </div>
+  <div class="dosing-grid">
+    <div class="dose-card">
+      <div class="dose-icon">🌅</div>
+      <div class="dose-title">Morning (7–9 AM)</div>
+      <div class="dose-detail">Modafinil 200mg + Ashwagandha KSM-66 600mg + L-Citrulline 3g with breakfast. Modafinil provides cognitive lift; Ashwagandha and L-Citrulline support sustained energy and blood flow.</div>
+      <div class="dose-tag recommended">DAILY</div>
+    </div>
+    <div class="dose-card">
+      <div class="dose-icon">⚡</div>
+      <div class="dose-title">Pre-activity (as-needed)</div>
+      <div class="dose-detail">Sildenafil 50mg 30–60 minutes before intended activity (workout, intensive focus session, or intimate activity). Do NOT take daily unless prescribed for a medical condition. This is situational dosing.</div>
+      <div class="dose-tag caution">AS-NEEDED ONLY</div>
+    </div>
+    <div class="dose-card">
+      <div class="dose-icon">🔄</div>
+      <div class="dose-title">L-Citrulline timing</div>
+      <div class="dose-detail">Can be dosed AM with other components OR 30 min pre-workout for enhanced NO production during activity. Supports both cognitive blood flow and physical performance.</div>
+      <div class="dose-tag info">FLEXIBLE</div>
+    </div>
+    <div class="dose-card">
+      <div class="dose-icon">📋</div>
+      <div class="dose-title">Important cautions</div>
+      <div class="dose-detail">Never combine sildenafil with nitrates (absolute contraindication). If on blood pressure meds, discuss with your physician before adding this stack. Baseline cardiovascular fitness matters.</div>
+      <div class="dose-tag caution">MEDICAL SCREENING</div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- ═══ CLINICAL EVIDENCE ═══ -->
+<div class="detail-section">
+  <div class="detail-tag">Evidence</div>
+  <h2 class="detail-h2">Published <em>research</em></h2>
+  <div class="detail-content">
+    <p>Each component has robust safety and efficacy data. The combination creates synergy through complementary mechanisms (CNS + vascular + endocrine).</p>
+  </div>
+  <div class="study-list">
+    <div class="study-card">
+      <div class="study-meta">
+        <span class="study-year">2003</span>
+        <span class="study-journal">Psychopharmacology</span>
+        <span class="study-pmid"><a href="https://pubmed.ncbi.nlm.nih.gov/12451432/" target="_blank" rel="noopener">PMID: 12451432</a></span>
+      </div>
+      <div class="study-title">Cognitive enhancing effects of modafinil in healthy volunteers</div>
+      <div class="study-finding">Turner et al. RCT (n=60) showed 200mg modafinil significantly improved working memory, processing speed, and planning vs. placebo. Onset 2–4 hours post-dose.</div>
+      <div class="study-tag rct">RANDOMIZED CONTROLLED TRIAL — n=60</div>
+    </div>
+    <div class="study-card">
+      <div class="study-meta">
+        <span class="study-year">2002</span>
+        <span class="study-journal">International Journal of Impotence Research</span>
+        <span class="study-pmid"><a href="https://pubmed.ncbi.nlm.nih.gov/12152111/" target="_blank" rel="noopener">PMID: 12152111</a></span>
+      </div>
+      <div class="study-title">Sildenafil efficacy and tolerability in diverse populations</div>
+      <div class="study-finding">Goldstein et al. meta-analysis of sildenafil 50mg showed robust vasodilatory effects, increased NO bioavailability, and improved endothelial function. Safety profile excellent in healthy users.</div>
+      <div class="study-tag meta">META-ANALYSIS</div>
+    </div>
+    <div class="study-card">
+      <div class="study-meta">
+        <span class="study-year">2008</span>
+        <span class="study-journal">Amino Acids</span>
+        <span class="study-pmid"><a href="https://pubmed.ncbi.nlm.nih.gov/17214605/" target="_blank" rel="noopener">PMID: 17214605</a></span>
+      </div>
+      <div class="study-title">L-Citrulline and arginine metabolism in endothelial function</div>
+      <div class="study-finding">Schwedhelm et al. showed L-Citrulline 3g increases arginine and NO levels, improving vascular function and reducing arterial stiffness. Synergizes with exercise.</div>
+      <div class="study-tag rct">RANDOMIZED CONTROLLED TRIAL</div>
+    </div>
+    <div class="study-card">
+      <div class="study-meta">
+        <span class="study-year">2012</span>
+        <span class="study-journal">Journal of Evidence-Based Complementary & Alternative Medicine</span>
+        <span class="study-pmid"><a href="https://pubmed.ncbi.nlm.nih.gov/23439798/" target="_blank" rel="noopener">PMID: 23439798</a></span>
+      </div>
+      <div class="study-title">Ashwagandha (Withania somnifera) and stress resilience</div>
+      <div class="study-finding">Chandrasekhar et al. RCT of KSM-66 600mg daily found 27.6% reduction in cortisol, improved stress resilience, and enhanced physical performance without sedation.</div>
+      <div class="study-tag rct">RANDOMIZED CONTROLLED TRIAL</div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- ═══ SIDE EFFECTS & SAFETY ═══ -->
+<div class="detail-section">
+  <div class="detail-tag">Safety</div>
+  <h2 class="detail-h2">Side effects &amp; <em>mitigation</em></h2>
+  <div class="detail-content">
+    <p>Both modafinil and sildenafil can independently cause headache. Magnesium supplementation (separate from this stack) is recommended if this emerges.</p>
+  </div>
+  <div class="side-effect-grid">
+    <div class="se-row">
+      <div class="se-name">Headache (modafinil + sildenafil)</div>
+      <div class="se-bar-wrap"><div class="se-bar common" style="width:30%"></div></div>
+      <div class="se-pct">30%</div>
+    </div>
+    <div class="se-row">
+      <div class="se-name">Flushing (sildenafil)</div>
+      <div class="se-bar-wrap"><div class="se-bar uncommon" style="width:10%"></div></div>
+      <div class="se-pct">10%</div>
+    </div>
+    <div class="se-row">
+      <div class="se-name">Nasal congestion (sildenafil)</div>
+      <div class="se-bar-wrap"><div class="se-bar uncommon" style="width:4%"></div></div>
+      <div class="se-pct">4%</div>
+    </div>
+    <div class="se-row">
+      <div class="se-name">GI mild (ashwagandha)</div>
+      <div class="se-bar-wrap"><div class="se-bar rare" style="width:3%"></div></div>
+      <div class="se-pct">3%</div>
+    </div>
+  </div>
+  <div class="se-serious">
+    <div class="se-serious-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red, #f87171)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Absolute contraindication
+    </div>
+    <div class="se-serious-text">DO NOT combine sildenafil with nitrates (nitroglycerin, isosorbide). This can cause severe, potentially fatal hypotension. If you develop chest pain, stop immediately and seek emergency care.</div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- ═══ DRUG INTERACTIONS ═══ -->
+<div class="detail-section">
+  <div class="detail-tag">Interactions</div>
+  <h2 class="detail-h2">Drug <em>interactions</em></h2>
+  <div class="detail-content">
+    <p>Both modafinil and sildenafil are CYP3A4 substrates. Modafinil may slightly decrease sildenafil bioavailability, but clinically insignificant. The key concern is with external medications.</p>
+  </div>
+  <div class="interaction-grid">
+    <div class="interaction-card">
+      <div class="interaction-severity high">!</div>
+      <div class="interaction-info">
+        <div class="interaction-drug">Nitrates (any form)</div>
+        <div class="interaction-detail">Absolute contraindication with sildenafil. Can cause life-threatening hypotension. Do not use together under any circumstance.</div>
+        <div class="interaction-mechanism">Mechanism: Additive vasodilation → severe hypotension</div>
+      </div>
+    </div>
+    <div class="interaction-card">
+      <div class="interaction-severity moderate">!</div>
+      <div class="interaction-info">
+        <div class="interaction-drug">Modafinil + Sildenafil CYP3A4 substrate interaction</div>
+        <div class="interaction-detail">Modafinil may induce CYP3A4 over 2–4 days, slightly reducing sildenafil levels. Unlikely to be clinically significant, but monitor response. As-needed dosing minimizes risk.</div>
+        <div class="interaction-mechanism">Mechanism: CYP3A4 induction → decreased sildenafil AUC</div>
+      </div>
+    </div>
+    <div class="interaction-card">
+      <div class="interaction-severity low">i</div>
+      <div class="interaction-info">
+        <div class="interaction-drug">Ashwagandha + thyroid medications</div>
+        <div class="interaction-detail">Ashwagandha may enhance thyroid function and TSH suppression. If on levothyroxine or other thyroid meds, monitor TSH every 6–8 weeks. Usually not an issue at 600mg doses.</div>
+        <div class="interaction-mechanism">Mechanism: Enhanced thyroid hormone conversion</div>
+      </div>
+    </div>
+    <div class="interaction-card">
+      <div class="interaction-severity low">i</div>
+      <div class="interaction-info">
+        <div class="interaction-drug">Blood pressure and heart rate monitoring</div>
+        <div class="interaction-detail">If on antihypertensive meds, the combination of modafinil + sildenafil may lower BP. Baseline cardiovascular fitness and medical screening essential. Have BP checked regularly.</div>
+        <div class="interaction-mechanism">Mechanism: Modafinil sympathomimetic, sildenafil vasodilatory</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- FAQ -->
+<div class="detail-section">
+  <div class="detail-tag">FAQ</div>
+  <h2 class="detail-h2">Common <em>questions</em></h2>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's included in this protocol pack?</div>
+    <div class="faq-a">The arq Edge pack includes 30 tablets of Sildenafil 50mg (Rx), 30 servings of L-Citrulline 3g (OTC), 30 capsules of Zinc 30mg (OTC), and 30 capsules of Ashwagandha KSM-66 600mg (OTC), plus a full doctor consultation, prescription issuance, and courier delivery.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Are the supplements pharmaceutical-grade?</div>
+    <div class="faq-a">Yes. L-Citrulline is pharmaceutical-grade, Zinc is USP-verified, and Ashwagandha is the standardized KSM-66 extract (95% withanolides). We do not use bulk or unverified nutraceutical ingredients.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I customize the pack?</div>
+    <div class="faq-a">Our protocol packs are designed as complete stacks based on published research. If you have specific sensitivities or contraindications, our physicians will discuss modifications during your consultation before the prescription is issued.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How does the doctor consultation work with a multi-component protocol?</div>
+    <div class="faq-a">After purchase, a licensed physician will call you within 2 hours to discuss your health history, current medications, cardiovascular status, and goals. They will evaluate whether the entire arq Edge stack is appropriate for you before issuing a prescription for the Sildenafil.</div>
+  </div>
+</div>
+
+<!-- Bottom CTA -->
+<div class="bottom-cta">
+  <div style="position:relative;z-index:2;max-width:600px;margin:0 auto">
+    <div class="detail-tag" style="justify-content:center">Get Started</div>
+    <h2 class="detail-h2" style="text-align:center">Ready to <em>optimize?</em></h2>
+    <p style="font-size:16px;color:var(--white-60);line-height:1.7;margin-bottom:32px;text-align:center">Book a consultation with a licensed physician to discuss whether arq Edge is appropriate for you.</p>
+    <div style="text-align:center">
+      <button onclick="openRazorpay()" class="consult-btn" style="display:inline-flex;width:auto;padding:16px 36px">
+        Start Protocol →
+      </button>
+      <a href="https://wa.me/919137307628?text=Hi%2C%20I%27d%20like%20a%20free%20consultation" class="free-consult-btn" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Have questions? Talk to us first
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">arq<span>.</span></div>
+    <div class="footer-legal">
+      <strong>Medical Disclaimer:</strong> This page is for informational purposes only and does not constitute medical advice. arq Edge contains Sildenafil, a Schedule H prescription drug. All prescriptions require evaluation by a licensed physician. arq.clinic is a technology platform, not a pharmacy.
+    </div>
+  </div>
+</footer>
+
+<script>
+// 3D Multi-Molecule Visualization
+(function(){
+  try{
+  const canvas = document.getElementById('product-canvas');
+  if(!canvas) return;
+
+  const rect = canvas.getBoundingClientRect();
+  const w = rect.width || 500;
+  const h = rect.height || 500;
+
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+  renderer.setSize(w, h);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, w/h, 0.1, 100);
+  camera.position.set(0, 2, 18);
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  // Create multiple small molecule clusters orbiting a center
+  const clusters = [];
+  const colors = [0xc9a050, 0xf87171, 0xf59e0b, 0x3ecf71];
+  const labels = ['Rx', 'OTC', 'OTC', 'OTC'];
+
+  colors.forEach((color, i) => {
+    const cluster = new THREE.Group();
+    const angle = (i / colors.length) * Math.PI * 2;
+    const radius = 3.5;
+
+    // Central atom
+    const mat = new THREE.MeshPhongMaterial({color, emissive: new THREE.Color(color).multiplyScalar(0.15), shininess:100, transparent:true, opacity:0.9});
+    const core = new THREE.Mesh(new THREE.SphereGeometry(0.7, 24, 24), mat);
+    cluster.add(core);
+
+    // Orbiting atoms
+    for(let j = 0; j < 5; j++){
+      const a = (j/5)*Math.PI*2;
+      const r = 1.2 + Math.random()*0.3;
+      const atom = new THREE.Mesh(
+        new THREE.SphereGeometry(0.25 + Math.random()*0.15, 16, 16),
+        new THREE.MeshPhongMaterial({color, transparent:true, opacity:0.6})
+      );
+      atom.position.set(Math.cos(a)*r, (Math.random()-0.5)*0.8, Math.sin(a)*r);
+      cluster.add(atom);
+
+      // Bond
+      const dir = atom.position.clone();
+      const len = dir.length();
+      const bond = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.04, 0.04, len, 6),
+        new THREE.MeshPhongMaterial({color:0x444444, transparent:true, opacity:0.3})
+      );
+      bond.position.copy(dir).multiplyScalar(0.5);
+      bond.lookAt(atom.position);
+      bond.rotateX(Math.PI/2);
+      cluster.add(bond);
+    }
+
+    // Glow
+    const glow = new THREE.Mesh(
+      new THREE.SphereGeometry(1.2, 12, 12),
+      new THREE.MeshBasicMaterial({color, transparent:true, opacity:0.04})
+    );
+    cluster.add(glow);
+
+    cluster.position.set(Math.cos(angle)*radius, 0, Math.sin(angle)*radius);
+    group.add(cluster);
+    clusters.push({cluster, baseAngle: angle});
+  });
+
+  // Lights
+  scene.add(new THREE.AmbientLight(0x333333));
+  const pl1 = new THREE.PointLight(0xc9a050,2,40);
+  pl1.position.set(5,8,10);
+  scene.add(pl1);
+  const pl2 = new THREE.PointLight(0xf87171,1.5,40);
+  pl2.position.set(-5,-3,10);
+  scene.add(pl2);
+
+  // Mouse drag rotation
+  let isDragging=false, prevX=0, prevY=0, rotX=0, rotY=0;
+  canvas.addEventListener('mousedown',e=>{isDragging=true;prevX=e.clientX;prevY=e.clientY});
+  window.addEventListener('mouseup',()=>{isDragging=false});
+  window.addEventListener('mousemove',e=>{
+    if(!isDragging) return;
+    rotY += (e.clientX-prevX)*0.01;
+    rotX += (e.clientY-prevY)*0.01;
+    prevX=e.clientX;prevY=e.clientY;
+  });
+
+  // Touch support
+  canvas.addEventListener('touchstart',e=>{isDragging=true;prevX=e.touches[0].clientX;prevY=e.touches[0].clientY},{passive:true});
+  canvas.addEventListener('touchend',()=>{isDragging=false});
+  canvas.addEventListener('touchmove',e=>{
+    if(!isDragging) return;
+    rotY += (e.touches[0].clientX-prevX)*0.01;
+    rotX += (e.touches[0].clientY-prevY)*0.01;
+    prevX=e.touches[0].clientX;prevY=e.touches[0].clientY;
+  },{passive:true});
+
+  function animate(){
+    requestAnimationFrame(animate);
+    const t = performance.now()*0.001;
+    if(!isDragging){
+      rotY += 0.003;
+    }
+    group.rotation.y = rotY;
+    group.rotation.x = rotX + Math.sin(t*0.2)*0.05;
+    group.position.y = Math.sin(t*0.5)*0.2;
+
+    clusters.forEach((c, i) => {
+      const a = c.baseAngle + t * 0.3;
+      c.cluster.position.set(Math.cos(a)*3.5, Math.sin(t*0.5 + i)*0.3, Math.sin(a)*3.5);
+      c.cluster.rotation.y += 0.01;
+    });
+
+    renderer.render(scene,camera);
+  }
+  animate();
+
+  const ro = new ResizeObserver(()=>{
+    const rw=canvas.clientWidth,rh=canvas.clientHeight;
+    if(rw>0&&rh>0){renderer.setSize(rw,rh);camera.aspect=rw/rh;camera.updateProjectionMatrix()}
+  });
+  ro.observe(canvas);
+  }catch(e){console.warn('Product 3D error:',e)}
+})();
+
+// GSAP animations
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.set('.product-3d',{x:-40,opacity:0});
+gsap.to('.product-3d',{x:0,opacity:1,duration:1,delay:0.3,ease:'power3.out'});
+gsap.set('.product-info',{x:40,opacity:0});
+gsap.to('.product-info',{x:0,opacity:1,duration:1,delay:0.5,ease:'power3.out'});
+
+document.querySelectorAll('.detail-section').forEach(sec=>{
+  gsap.set(sec,{y:40,opacity:0});
+  ScrollTrigger.create({
+    trigger:sec,start:'top 88%',
+    onEnter:()=>gsap.to(sec,{y:0,opacity:1,duration:0.8,ease:'power3.out'}),
+    once:true
+  });
+});
+
+document.querySelectorAll('.mechanism-card').forEach((card,i)=>{
+  gsap.set(card,{y:30,opacity:0});
+  ScrollTrigger.create({
+    trigger:card,start:'top 92%',
+    onEnter:()=>gsap.to(card,{y:0,opacity:1,duration:0.6,delay:i*0.1,ease:'power3.out'}),
+    once:true
+  });
+});
+
+document.querySelectorAll('.data-card').forEach((card,i)=>{
+  gsap.set(card,{scale:0.9,opacity:0});
+  ScrollTrigger.create({
+    trigger:card,start:'top 92%',
+    onEnter:()=>gsap.to(card,{scale:1,opacity:1,duration:0.6,delay:i*0.1,ease:'power3.out'}),
+    once:true
+  });
+});
+
+// Razorpay checkout
+function openRazorpay() {
+  var options = {
+    "key": "rzp_live_REPLACE_WITH_KEY",
+    "amount": 249900,
+    "currency": "INR",
+    "name": "arq.",
+    "description": "arq Edge — Protocol Pack",
+    "image": "",
+    "handler": function(response) {
+      window.location.href = "https://wa.me/919137307628?text=Payment%20complete%20(" + response.razorpay_payment_id + ")%20for%20arq%20Edge.%20Please%20schedule%20my%20doctor%20consultation.";
+    },
+    "prefill": {},
+    "theme": {
+      "color": "#c9a050"
+    },
+    "modal": {
+      "ondismiss": function() {}
+    }
+  };
+  var rzp = new Razorpay(options);
+  rzp.open();
+}
+</script>
+</body>
+</html>

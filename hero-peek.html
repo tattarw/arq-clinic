@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>arq. — Hero with peeking next section</title>
+<meta name="theme-color" content="#0e0e0c">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf9f5;
+  --dark:#0e0e0c;
+  --ink:#1a1714;
+  --gold:#b8922e;
+  --sans:'Sora',system-ui,-apple-system,sans-serif;
+  --serif:'DM Serif Display',Georgia,serif;
+  --mono:'IBM Plex Mono','SF Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --radius-peek:32px;
+}
+html,body{background:var(--dark);color:#f5f1e8;font-family:var(--sans);-webkit-font-smoothing:antialiased;scroll-behavior:smooth;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+::selection{background:var(--gold);color:#fff}
+
+/* ── TOP BAR ─────────────────────────────────────────── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:calc(64px + env(safe-area-inset-top,0px));
+  padding:env(safe-area-inset-top,0px) 20px 0;
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(180deg,rgba(14,14,12,0.55) 0%,rgba(14,14,12,0) 100%);
+  backdrop-filter:blur(2px);
+}
+.logo{font-family:var(--serif);font-size:28px;font-weight:400;color:#f5f1e8;letter-spacing:-0.02em;line-height:1}
+.logo span{color:var(--gold)}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.login{font-size:14px;font-weight:500;color:#f5f1e8;opacity:0.9;text-decoration:none;letter-spacing:0.01em}
+.login:hover{opacity:1}
+.menu-btn{width:42px;height:42px;border-radius:999px;background:#fff;border:none;cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,0.18)}
+.menu-btn::before{content:'';width:18px;height:4px;background:radial-gradient(circle at 3px 2px,var(--ink) 2px,transparent 2.5px),radial-gradient(circle at 9px 2px,var(--ink) 2px,transparent 2.5px),radial-gradient(circle at 15px 2px,var(--ink) 2px,transparent 2.5px)}
+
+/* ── HERO ────────────────────────────────────────────── */
+.hero{
+  position:relative;
+  min-height:100vh;min-height:100svh;
+  padding:0 24px 96px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  overflow:hidden;isolation:isolate;
+  background:#0e0e0c;
+}
+.hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-media::after{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(14,14,12,0.15) 0%,rgba(14,14,12,0) 35%,rgba(14,14,12,0.35) 70%,rgba(14,14,12,0.9) 100%),
+    linear-gradient(90deg,rgba(14,14,12,0.35) 0%,rgba(14,14,12,0) 40%)
+}
+.hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-media.placeholder{background:radial-gradient(120% 80% at 70% 30%,#3d5a66 0%,#1e2a32 45%,#0e0e0c 85%)}
+
+.hero-copy{max-width:560px;position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(245,241,232,0.7);margin-bottom:20px}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,10.5vw,96px);line-height:0.98;letter-spacing:-0.025em;color:#f5f1e8;margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero .sub{font-size:clamp(15px,4vw,19px);line-height:1.5;font-weight:400;color:rgba(245,241,232,0.82);max-width:460px;margin-bottom:28px}
+.cta{display:inline-flex;align-items:center;gap:12px;padding:18px 26px 18px 30px;background:var(--gold);color:var(--ink);border:none;border-radius:999px;cursor:pointer;font-family:var(--sans);font-size:16px;font-weight:600;letter-spacing:-0.005em;text-decoration:none;transition:transform 0.35s var(--ease),box-shadow 0.35s var(--ease),background 0.35s var(--ease);box-shadow:0 10px 30px rgba(184,146,46,0.28)}
+.cta:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(184,146,46,0.38);background:#c9a23a}
+.cta .arrow{width:26px;height:26px;border-radius:50%;background:rgba(14,14,12,0.1);display:grid;place-items:center;transition:transform 0.35s var(--ease)}
+.cta:hover .arrow{transform:translateX(3px)}
+.trust{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:13px;color:rgba(245,241,232,0.78);font-weight:400}
+.trust i{color:var(--gold);font-size:16px}
+
+/* ── NEXT SECTION — its own rounded top creates the peek ─ */
+/* The rounded bar IS the top of .next, lifted up over the hero
+   via negative margin. Hero has no peek element of its own. */
+.next{
+  position:relative;
+  z-index:2;
+  margin-top:calc(var(--radius-peek) * -1);
+  background:var(--bg);
+  color:var(--ink);
+  border-radius:var(--radius-peek) var(--radius-peek) 0 0;
+  padding:calc(var(--radius-peek) + 28px) 24px 120px;
+  box-shadow:0 -18px 40px rgba(0,0,0,0.22)
+}
+
+/* Scroll chevron lives on the .next section, positioned at its rounded edge */
+.scroll-hint{
+  position:absolute;left:50%;top:-22px;
+  transform:translateX(-50%);
+  width:44px;height:44px;border-radius:999px;
+  background:var(--bg);
+  color:rgba(26,23,20,0.55);
+  display:grid;place-items:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+  animation:hintPulse 2.4s ease-in-out infinite;
+  text-decoration:none
+}
+.scroll-hint i{font-size:20px;line-height:1;margin-top:-2px;animation:hintArrow 2.4s ease-in-out infinite}
+@keyframes hintPulse{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(3px)}}
+@keyframes hintArrow{0%,100%{transform:translateY(0);opacity:0.55}50%{transform:translateY(3px);opacity:1}}
+
+.next .label{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(26,23,20,0.55);margin-bottom:14px}
+.next h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,7vw,54px);line-height:1.02;letter-spacing:-0.02em;color:var(--ink);max-width:720px;margin-bottom:20px}
+.next p{font-size:clamp(15px,3.8vw,18px);line-height:1.55;color:rgba(26,23,20,0.72);max-width:640px}
+
+@media(min-width:720px){
+  :root{--radius-peek:44px}
+  .hero{padding:0 clamp(32px,6vw,80px) 120px}
+  .next{padding:calc(var(--radius-peek) + 36px) clamp(32px,6vw,80px) 140px}
+}
+@media(prefers-reduced-motion:reduce){.scroll-hint,.scroll-hint i{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="#" class="logo">arq<span>.</span></a>
+  <div class="topbar-right">
+    <a href="#" class="login">Login</a>
+    <button class="menu-btn" aria-label="Menu"></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-media placeholder">
+    <!-- <video autoplay muted loop playsinline poster="hero-poster.jpg">
+           <source src="hero.mp4" type="video/mp4">
+         </video> -->
+  </div>
+
+  <div class="hero-copy">
+    <span class="eyebrow">Physician-led · Bloodwork first</span>
+    <h1>Know your <em>biology</em>.<br>Own your results.</h1>
+    <p class="sub">100+ biomarkers. Quarterly. A dedicated physician who reads the numbers and writes the protocol.</p>
+    <a href="#next" class="cta">
+      Begin your baseline
+      <span class="arrow"><i class="ph-bold ph-arrow-right"></i></span>
+    </a>
+    <div class="trust"><i class="ph-bold ph-check-circle"></i> Home phlebotomy across India · No clinic visits</div>
+  </div>
+</section>
+
+<section class="next" id="next">
+  <a href="#next" class="scroll-hint" aria-label="Scroll to next section">
+    <i class="ph-bold ph-caret-down"></i>
+  </a>
+  <div class="label">How arq. works</div>
+  <h2>A baseline. A physician. A protocol tuned to you.</h2>
+  <p>Seven days from blood draw to prescription. Quarterly cycles. Adjusted every time your numbers move. Built for the person who already measures everything.</p>
+</section>
+
+</body>
+</html>

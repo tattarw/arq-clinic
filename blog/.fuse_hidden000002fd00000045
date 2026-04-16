@@ -1,0 +1,513 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><title>Modafinil Side Effects: What to Know Before Starting</title><meta name="description" content="Complete guide to modafinil side effects. Common (headache, insomnia, nausea) and rare (Stevens-Johnson Syndrome). Who shouldn't take it. Bloodwork and long-term monitoring."><meta name="theme-color" content="#0a0806"><link rel="canonical" href="https://arq.clinic/blog/modafinil-side-effects"><!-- Open Graph --><meta property="og:title" content="Modafinil Side Effects: What to Know Before Starting"><meta property="og:description" content="Modafinil safety guide. Common side effects, who shouldn't take it, baseline bloodwork, and long-term monitoring requirements."><meta property="og:image" content="https://arq.clinic/og-modafinil.png"><meta property="og:url" content="https://arq.clinic/blog/modafinil-side-effects"><meta property="og:type" content="article"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Modafinil Side Effects: What to Know Before Starting"><meta name="twitter:description" content="Side effects, contraindications, bloodwork, and monitoring for modafinil use in India."><meta name="twitter:image" content="https://arq.clinic/og-modafinil.png"><!-- Article Structured Data --><script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Modafinil Side Effects: What to Know Before Starting",
+ "description": "Complete guide to modafinil side effects. Common (headache, insomnia, nausea) and rare (Stevens-Johnson Syndrome). Who shouldn't take it. Bloodwork and long-term monitoring.",
+ "image": "https://arq.clinic/og-modafinil.png",
+ "datePublished": "2026-04-16",
+ "dateModified": "2026-04-16",
+ "author": {
+ "@type": "Organization",
+ "name": "arq.",
+ "url": "https://arq.clinic"
+ },
+ "publisher": {
+ "@type": "Organization",
+ "name": "arq.",
+ "logo": {
+ "@type": "ImageObject",
+ "url": "https://arq.clinic/logo.png",
+ "width": 250,
+ "height": 60
+ }
+ }
+}
+</script><!-- FAQ Schema --><script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "Is modafinil the same as amphetamine?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "No. Modafinil is not amphetamine. Amphetamines are stimulants that increase dopamine and norepinephrine dramatically — causing euphoria, addiction potential, and significant side effects. Modafinil's exact mechanism isn't fully understood, but it likely increases dopamine, histamine, and norepinephrine more subtly. Modafinil doesn't produce a 'high' and has lower addiction potential. It's considered a eugeroic (wakefulness-promoting agent), not a classic stimulant."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Can I take modafinil every day long-term?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Technically yes, but not without monitoring. Modafinil is approved for long-term use in narcolepsy (years, even decades). However, tolerance can develop (needing higher doses for same effect), and long-term neurological effects aren't fully understood. Many users benefit from cycling: use 5 days/week with 2 days off, or monthly breaks. This maintains efficacy and reduces tolerance. Baseline and quarterly liver function monitoring is essential for long-term use."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Does modafinil affect sleep architecture?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Yes. Modafinil taken late in the day (after 2 PM) can cause insomnia due to its long half-life (~12 hours). It suppresses REM sleep and stage 2 sleep, potentially affecting sleep quality even if you fall asleep. Long-term: disrupted sleep architecture can impair memory consolidation, emotional regulation, and immune function. Take modafinil early (7 AM) to minimize evening disruption. Never use modafinil if you have sleep disorders like sleep apnea unless treated."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What is Stevens-Johnson Syndrome and what's the real risk?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Stevens-Johnson Syndrome (SJS) is a rare but severe drug reaction (skin blistering, mucosal involvement, internal organ failure). Risk with modafinil is approximately 1 per 1,000,000 users — extremely rare. However, it's life-threatening if it occurs. Warning signs: unusual rash (especially target-like lesions), fever, blistering, mouth ulcers, eye involvement. If you develop a rash on modafinil, stop immediately and seek medical attention. Most people tolerate modafinil without issue, but this risk exists and shouldn't be ignored."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Does modafinil interact with contraceptive pills?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Yes. Modafinil is a CYP3A4 inducer — it speeds up the metabolism of oral contraceptives, potentially reducing their efficacy. Women on birth control taking modafinil should discuss backup contraception with their physician. Alternative methods (IUD, implant, barrier methods) may be safer. This is a real concern: inadequate contraceptive coverage = unintended pregnancy. Always disclose modafinil use to your OB-GYN."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Can modafinil cause dependency or addiction?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Low risk, but real. Modafinil is not a controlled substance in most countries, and abuse potential is lower than amphetamines. However, psychological dependence can develop — reliance on modafinil for focus, fear of stopping. Physical withdrawal is usually mild (fatigue, depressed mood) compared to amphetamines. Tolerance (needing higher doses) develops in some users. Cycling use or periodic breaks can prevent both. Don't use modafinil daily without breaks for extended periods without physician oversight."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What should I avoid while taking modafinil?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Avoid: alcohol (increases side effect risk), excess caffeine (additive stimulation, anxiety), driving if drowsy or having adverse reactions, and pregnancy (insufficient safety data). Be cautious with: other medications metabolized by CYP3A4 (check with your physician), warfarin (modafinil may interact), and phenytoin/carbamazepine (similar metabolism). Always disclose all medications and supplements to your physician before starting modafinil."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Is modafinil safe for people with cardiac disease?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "No. Modafinil can increase heart rate and blood pressure. If you have arrhythmia, uncontrolled hypertension, left ventricular hypertrophy, or any cardiac disease, modafinil is contraindicated. Even in healthy people, rare cases of myocardial infarction have been reported. Baseline cardiac assessment (ECG) is wise before starting, especially if you're over 40 or have family history of heart disease. This isn't meant to scare — it's to inform."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Can modafinil help with weight loss?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Modafinil can suppress appetite (20% of users), sometimes leading to modest weight loss. However, using a prescription medication primarily for weight loss is inappropriate and risky. If appetite suppression occurs, monitor nutritional intake — ensure you're eating enough protein and micronutrients. For sustainable weight loss, focus on diet and exercise; modafinil is not a weight-loss drug. If you develop severe appetite suppression or malnutrition, consult your physician."
+ }
+ }
+ ]
+}
+</script><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/><style>
+/* ═══════════════════════════════════════════
+ arq. Blog Article
+ Design tokens from condition template
+ Mobile-first: base 430px. Desktop @ 768px+.
+ ═══════════════════════════════════════════ */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+ --bg:#faf9f5;--bg2:#f4f2ed;--surface:#eae8e3;
+ --card:#ffffff;--border:rgba(44,40,36,0.08);--border-hover:rgba(44,40,36,0.14);
+ --text:#1a1714;--text-90:rgba(26,23,20,0.9);--text-60:rgba(26,23,20,0.6);--text-30:rgba(26,23,20,0.3);--text-12:rgba(26,23,20,0.12);
+ --gold:#b8922e;--gold-light:#c9a23a;--gold-glow:rgba(184,146,46,0.08);--gold-border:rgba(184,146,46,0.25);
+ --dark:#1a1714;--deep:#0a0806;
+ --sans:'Sora',system-ui,sans-serif;
+ --serif:'DM Serif Display',Georgia,serif;
+ --mono:'IBM Plex Mono','SF Mono',monospace;
+ --ease:cubic-bezier(0.16,1,0.3,1);
+ --nav-h:60px;
+}
+
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--gold);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+em{font-style:italic;color:var(--gold)}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}
+.nav.at-top{background:transparent}
+.nav.scrolled{background:rgba(250,249,245,0.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 var(--border)}
+.nav.scrolled .nav-logo{color:var(--text)}
+.nav.scrolled .nav-hamburger span{background:var(--text)}
+.nav-logo{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--text);letter-spacing:.02em;transition:color .3s ease}
+.nav-logo .dot{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
+.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
+.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
+.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
+.nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
+.nav-hamburger:hover{background:rgba(26,23,20,0.06)}
+.nav.scrolled .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
+.nav-hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:1px;transition:background .3s ease}
+
+/* ─── MOTION SYSTEM ─── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-delay{transition-delay:.08s}
+.reveal-delay{transition-delay:.16s}
+.reveal-delay{transition-delay:.24s}
+.reveal-delay{transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ─── FOCUS RINGS ─── */
+a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* ─── UTILS ─── */
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;padding:10px 22px;border-radius:50px;transition:all .3s var(--ease);letter-spacing:0.01em;cursor:pointer;white-space:nowrap}
+.btn-light{background:#fff;color:var(--dark);box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.btn-light:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(0,0,0,0.22)}
+.btn-dark{background:var(--dark);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-1px)}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 6px 24px rgba(184,146,46,0.35)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.45)}
+.btn-gold i{margin-left:6px;transition:transform .25s}
+.btn-gold:hover i{transform:translateX(3px)}
+.btn-lg{padding:14px 28px;font-size:13px}
+
+/* ═══ ARTICLE HERO ═══ */
+.article-hero{position:relative;padding:calc(var(--nav-h) + 24px) 20px 32px;background:var(--bg);min-height:auto}
+.article-hero::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,rgba(250,249,245,0.95) 0%,rgba(244,242,237,0.92) 50%,rgba(234,232,227,0.9) 100%)}
+
+.article-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;position:relative;z-index:2}
+.article-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.6}
+
+.article-content{position:relative;z-index:2;max-width:720px;margin:0 auto}
+.article-h1{font-family:var(--serif);font-size:36px;font-weight:400;line-height:1.08;letter-spacing:.035em;margin-bottom:20px;color:var(--text)}
+.article-h1 em{color:var(--gold);font-style:italic}
+
+.article-meta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-size:12px;color:var(--text);padding:16px 0;border-bottom:1px solid var(--border);margin-bottom:24px}
+.article-meta-item{display:flex;align-items:center;gap:6px}
+.article-meta-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;background:var(--gold-glow);color:var(--gold);font-weight:600;font-size:11px}
+.article-meta-badge i{font-size:13px}
+
+/* ═══ ARTICLE BODY ═══ */
+.article-body{max-width:720px;margin:0 auto;padding:0 20px 56px}
+
+.article-body h2{font-family:var(--serif);font-size:26px;font-weight:400;line-height:1.1;letter-spacing:.025em;color:var(--text);margin:36px 0 12px;padding-top:12px}
+.article-body h2:first-child{margin-top:0}
+.article-body h2 em{color:var(--gold);font-style:italic}
+
+.article-body h3{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.1;letter-spacing:.015em;color:var(--text);margin:24px 0 8px}
+.article-body h3 em{color:var(--gold)}
+
+.article-body p{font-size:15px;line-height:1.75;color:var(--text);margin:0 0 16px;text-align:justify}
+.article-body p em{font-style:italic;color:var(--gold)}
+.article-body p strong{font-weight:600;color:var(--text)}
+
+.article-body ul,.article-body ol{margin:20px 0;padding-left:20px;font-size:15px;line-height:1.75;color:var(--text)}
+.article-body li{margin:8px 0}
+.article-body li em{color:var(--gold);font-style:italic}
+
+.article-body a{color:var(--gold);text-decoration:underline;transition:color .2s}
+.article-body a:hover{color:var(--gold-light)}
+
+/* TL;DR BOX */
+.tldr-box{background:var(--card);border:1.5px solid var(--gold-border);border-radius:16px;padding:24px 20px;margin:28px 0;box-shadow:0 4px 16px rgba(184,146,46,0.06)}
+.tldr-box .box-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:inline-flex;align-items:center;gap:8px}
+.tldr-box .box-eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
+.tldr-box h3{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.1;color:var(--text);margin-bottom:16px;margin-top:0}
+.tldr-box ul{margin:0;padding-left:20px}
+.tldr-box li{margin:8px 0;font-size:14px;line-height:1.6}
+.tldr-box li strong{color:var(--text);font-weight:600}
+.tldr-box li em{color:var(--gold);font-style:italic}
+
+/* CTA CARD */
+.cta-card{background:linear-gradient(135deg,rgba(184,146,46,0.08),rgba(184,146,46,0.03));border:1.5px solid var(--gold-border);border-radius:16px;padding:24px 20px;margin:28px 0;text-align:center}
+.cta-card p{font-size:14px;color:var(--text);margin:0}
+.cta-card a{color:var(--gold);font-weight:600;text-decoration:none;transition:all .2s}
+.cta-card a:hover{color:var(--gold-light);text-decoration:underline}
+
+/* ═══ FAQ ═══ */
+.faq{padding:56px 20px;background:var(--bg2)}
+.faq-head{text-align:center;margin-bottom:32px;max-width:720px;margin-left:auto;margin-right:auto}
+.faq-head .eyebrow{display:inline-flex;margin-bottom:12px;justify-content:center;width:100%}
+.faq-head h2{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1.1;letter-spacing:.025em;color:var(--text)}
+
+.faq-list{max-width:720px;margin:0 auto;list-style:none}
+.faq-item{border-top:1px solid var(--border)}
+.faq-item:last-child{border-bottom:1px solid var(--border)}
+.faq-item details{padding:20px 0;transition:padding .2s}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;cursor:pointer;font-size:14px;font-weight:500;color:var(--text);line-height:1.5}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:22px;color:var(--text);transition:transform .25s var(--ease),color .2s;font-weight:300;line-height:1;flex-shrink:0;margin-top:2px}
+.faq-item details[open] summary::after{transform:rotate(45deg);color:var(--gold)}
+.faq-ans{font-size:14px;color:var(--text);line-height:1.75;margin-top:14px;max-width:640px}
+.faq-ans em{color:var(--gold);font-style:italic}
+.faq-ans strong{color:var(--text);font-weight:600}
+
+/* ═══ DISCLAIMER ═══ */
+.medical-disclaimer{max-width:720px;margin:0 auto;padding:32px 20px;background:var(--bg);text-align:center}
+.disclaimer-box{background:rgba(184,146,46,0.04);border:1px solid var(--border);border-radius:12px;padding:20px;font-size:12px;color:var(--text);line-height:1.6;font-family:var(--mono)}
+.disclaimer-box strong{color:var(--text);font-weight:600}
+
+/* ═══ CTA — FOOTER ═══ */
+.cta-final{position:relative;padding:56px 20px 64px;background:var(--deep);color:#fff;overflow:hidden;border-radius:0;margin-top:0}
+.cta-final::before{content:'';position:absolute;top:0;left:50%;transform:translateX(%);width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(184,146,46,0.14) 0%,transparent 65%);pointer-events:none;animation:glowPulse 7s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:0.6;transform:translateX(%) scale(1)}50%{opacity:1;transform:translateX(%) scale(1.05)}}
+
+.cta-final-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;text-align:center}
+.cta-final .eyebrow-center{display:inline-flex;align-items:center;gap:10px;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+.cta-final .eyebrow-center::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+
+.cta-final h2{font-family:var(--serif);font-size:32px;font-weight:400;line-height:1.12;letter-spacing:.03em;margin-bottom:18px}
+.cta-final h2 em{color:var(--gold);font-style:italic}
+.cta-final-lede{font-size:14.5px;color:rgba(255,255,255,0.7);line-height:1.65;max-width:520px;margin:0 auto 36px}
+
+.cta-button-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.cta-button-group .btn{flex:1 1 auto;min-width:140px}
+
+.cta-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;font-size:12px;color:rgba(255,255,255,0.6);margin-top:24px}
+.cta-trust .item{display:flex;align-items:center;gap:6px}
+.cta-trust i{color:var(--gold);font-size:14px}
+
+/* ─── FOOTER ─── */
+.footer{padding:32px 20px;background:var(--deep);color:rgba(255,255,255,0.5);text-align:center;font-size:11px;font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase}
+.footer .logo{font-family:var(--serif);font-size:22px;color:#fff;text-transform:none;letter-spacing:.02em;margin-bottom:8px;display:inline-block;font-weight:700}
+.footer .logo .dot{color:var(--gold)}
+
+/* ═══ DESKTOP ═══ */
+@media(min-width:768px){
+ .article-h1{font-size:48px}
+ .article-body{padding:0 40px 72px}
+ .article-body h2{font-size:32px;margin:44px 0 16px}
+ .article-body h3{font-size:20px}
+ .article-body p{font-size:16px}
+ .article-body ul,.article-body ol{font-size:16px}
+ .tldr-box{padding:32px 28px}
+ .cta-final{padding:72px 32px 88px}
+ .cta-final h2{font-size:48px}
+ .cta-final-lede{font-size:16px}
+ .faq{padding:48px 40px}
+ .medical-disclaimer{padding:40px 40px}
+ .article-meta{font-size:13px}
+}
+
+/* ─── DROPDOWN MENU ─── */
+.dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.dropdown-overlay.open{opacity:1;pointer-events:auto}
+.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(380px,90vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:80px 28px 40px;box-shadow:-8px 0 40px rgba(0,0,0,0.12)}
+.dropdown-panel.open{transform:translateX(0)}
+.dropdown-close{position:absolute;top:16px;right:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:18px;transition:all .2s}
+.dropdown-close:hover{background:var(--surface)}
+.dropdown-section{margin-bottom:28px}
+.dropdown-section-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.dropdown-section-title::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
+.dropdown-links{display:flex;flex-wrap:wrap;gap:6px}
+.dropdown-link{display:inline-flex;align-items:center;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:var(--bg2);border:1px solid var(--border);transition:all .2s var(--ease)}
+.dropdown-link:hover{border-color:var(--gold-border);background:var(--gold-glow);color:var(--gold)}
+.dropdown-link.active{border-color:var(--gold);background:var(--gold-glow);color:var(--gold);font-weight:600}
+.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;justify-content:center;align-items:center;gap:6px;margin-top:8px;transition:all .3s var(--ease);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+
+/* ─── READ MORE FOLD ─── */
+.article-fold{max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0}
+.article-fold.expanded{max-height:none;opacity:1;overflow:visible}
+.read-more-wrap{text-align:center;padding:24px 0 8px;position:relative}
+.read-more-wrap::before{content:'';position:absolute;top:-60px;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none}
+.read-more-wrap.hidden{display:none}
+.read-more-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-size:13px;font-weight:600;color:var(--gold);background:var(--gold-glow);border:1.5px solid var(--gold-border);transition:all .3s var(--ease);cursor:pointer}
+.read-more-btn:hover{background:var(--gold);color:#fff;transform:translateY(-1px);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.read-more-btn i{transition:transform .3s}
+
+/* ─── RELATED ARTICLES ─── */
+.related{padding:32px 20px;background:var(--bg);border-top:1px solid var(--border)}
+.related-inner{max-width:720px;margin:0 auto}
+.related-head{margin-bottom:20px}
+.related-head h2{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:.02em}
+.related-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:520px){.related-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:768px){.related-grid{grid-template-columns:1fr 1fr 1fr}}
+.related-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 16px;transition:all .25s var(--ease)}
+.related-card:hover{border-color:var(--gold-border);box-shadow:0 4px 16px rgba(184,146,46,0.1);transform:translateY(-2px)}
+.related-card .rc-eyebrow{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.related-card .rc-title{font-family:var(--serif);font-size:15px;font-weight:400;color:var(--text);line-height:1.2;letter-spacing:.01em}
+
+/* ─── WAITLIST MODAL ─── */
+.waitlist-overlay{position:fixed;inset:0;z-index:2000;background:rgba(10,8,6,0.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.waitlist-overlay.open{opacity:1;pointer-events:auto}
+.waitlist-modal{background:var(--bg);border-radius:24px;padding:40px 28px;max-width:420px;width:100%;position:relative;transform:translateY(20px) scale(0.97);transition:transform .4s var(--ease);box-shadow:0 24px 80px rgba(0,0,0,0.2)}
+.waitlist-overlay.open .waitlist-modal{transform:translateY(0) scale(1)}
+.waitlist-modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:16px;transition:all .2s}
+.waitlist-modal-close:hover{background:var(--surface);color:var(--text)}
+.waitlist-modal h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.1;letter-spacing:.02em;margin-bottom:8px}
+.waitlist-modal h2 em{color:var(--gold);font-style:italic}
+.waitlist-modal .wl-sub{font-size:13px;color:var(--text);line-height:1.5;margin-bottom:24px}
+.waitlist-form{display:flex;flex-direction:column;gap:10px}
+.waitlist-input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);font-family:var(--sans);font-size:14px;color:var(--text);transition:border-color .2s}
+.waitlist-input:focus{outline:none;border-color:var(--gold)}
+.waitlist-input::placeholder{color:var(--text)}
+.waitlist-submit{width:100%;padding:14px;border-radius:50px;background:var(--gold);color:#fff;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .3s var(--ease);border:none;box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.waitlist-submit:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+.waitlist-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.waitlist-success{text-align:center;padding:20px 0}
+.waitlist-success i{font-size:48px;color:var(--gold);margin-bottom:12px;display:block}
+.waitlist-success h3{font-family:var(--serif);font-size:22px;margin-bottom:8px}
+.waitlist-success p{font-size:13px;color:var(--text)}
+.wl-trust{display:flex;justify-content:center;gap:16px;margin-top:16px;font-size:11px;color:var(--text)}
+.wl-trust span{display:flex;align-items:center;gap:4px}
+.wl-trust i{color:var(--gold);font-size:12px}
+
+/* ─── SPACING IMPROVEMENTS ─── */
+.article-body h2{margin:44px 0 16px;padding-top:16px}
+.article-body p{margin:0 0 20px}
+.article-body ul,.article-body ol{margin:20px 0 24px}
+.tldr-box{margin:32px 0}
+.cta-card{margin:36px 0}
+.faq{padding:64px 20px}
+
+</style></head><body><!-- ─── NAV ─── --><nav class="nav"><a href="/" class="nav-logo">arq<span class="dot">.</span></a><div class="nav-right"><a href="#cta" class="nav-link">Talk to a physician</a><button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav><!-- ─── DROPDOWN MENU ─── --><div class="dropdown-overlay" id="dropdownOverlay"></div><div class="dropdown-panel" id="dropdownPanel"><button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button><div class="dropdown-section"><div class="dropdown-section-title">Conditions</div><div class="dropdown-links"><a href="/pcos" class="dropdown-link">PCOS</a><a href="/thyroid" class="dropdown-link">Thyroid</a><a href="/diabetes" class="dropdown-link">Diabetes</a><a href="/weight-loss" class="dropdown-link">Weight Loss</a><a href="/hair-loss" class="dropdown-link">Hair Loss</a><a href="/testosterone" class="dropdown-link">Testosterone</a><a href="/vitamin-deficiency" class="dropdown-link">Vitamin Deficiency</a><a href="/fatigue" class="dropdown-link">Fatigue</a><a href="/sleep" class="dropdown-link">Sleep</a><a href="/skin" class="dropdown-link">Skincare</a><a href="/focus" class="dropdown-link">Focus</a><a href="/blood-pressure" class="dropdown-link">Blood Pressure</a><a href="/iv-infusions" class="dropdown-link">IV Infusions</a><a href="/recovery" class="dropdown-link">Recovery</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Sports</div><div class="dropdown-links"><a href="/pickleball" class="dropdown-link">Pickleball</a><a href="/padel" class="dropdown-link">Padel</a><a href="/runners" class="dropdown-link">Running</a><a href="/strength" class="dropdown-link">Strength</a><a href="/performance" class="dropdown-link">Performance</a><a href="/hyrox" class="dropdown-link">HyRox</a><a href="/endurance" class="dropdown-link">Endurance</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Learn</div><div class="dropdown-links"><a href="/blog/" class="dropdown-link">All Articles</a><a href="/blog/ozempic-india-guide" class="dropdown-link">Ozempic Guide</a><a href="/blog/pcos-symptoms-india" class="dropdown-link">PCOS Guide</a><a href="/blog/hba1c-test-guide" class="dropdown-link">HbA1c Test</a><a href="/blog/finasteride-india-guide" class="dropdown-link">Finasteride Guide</a><a href="/blog/tretinoin-indian-skin-guide" class="dropdown-link">Tretinoin Guide</a><a href="/blog/hrv-explained" class="dropdown-link">HRV Explained</a></div></div><div class="dropdown-section"><a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist. <i class="ph-bold ph-arrow-right"></i></a></div></div><!-- ═══ ARTICLE HERO ═══ --><section class="article-hero"><div class="article-content"><span class="article-eyebrow">Nootropic guide</span><h1 class="article-h1">Modafinil Side Effects: What to Know. <em>Before Starting</em></h1><div class="article-meta"><div class="article-meta-item"><i class="ph-fill ph-calendar"></i><span>April 16, 2026</span></div><div class="article-meta-item"><i class="ph-fill ph-user-circle"></i><span>arq. medical team</span></div><div class="article-meta-badge"><i class="ph-fill ph-stethoscope"></i>
+ Medically reviewed
+ </div></div></div></section><!-- ═══ ARTICLE BODY ═══ --><section class="article-body"><p><strong>Modafinil (Modalert, Modvigil) is everywhere in India — sold legally at pharmacies, used by students, professionals, shift workers, and biohackers chasing. <a href="/focus" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">focus</a>.</strong> It's effective. It does boost wakefulness, alertness, and focus for most people. But like all drugs, it has side effects, contraindications, and requires medical oversight. A 24-year-old with no cardiac history and a 60-year-old with hypertension have very different risk profiles. Understanding those differences before you pop a Modalert tablet is crucial.</p><!-- TL;DR --><div class="tldr-box"><span class="box-eyebrow">Key takeaways</span><h3>Modafinil side effects essentials</h3><ul><li><strong>Most common side effects</strong> Headache (15%), insomnia (if taken late), appetite suppression, nausea, dizziness, anxiety</li><li><strong>Rare but serious</strong> Stevens-Johnson Syndrome (SJS) — rash, blistering, stop immediately</li><li><strong>Cardiac risks</strong> Increased heart rate, blood pressure, rare myocardial infarction. Not safe if you have heart disease or arrhythmia.</li><li><strong>Drug interactions</strong> CYP3A4 inducer — reduces oral contraceptive efficacy, interacts with warfarin, carbamazepine</li><li><strong>Baseline bloodwork required</strong> Liver enzymes, kidney function, CBC, ECG if over 40</li><li><strong>Long-term considerations</strong> Tolerance, psychological dependence, <a href="/sleep" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">sleep</a> architecture disruption</li></ul></div><h2>What is Modafinil? How Does It Work?</h2><p>Modafinil is a eugeroic — a wakefulness-promoting agent. Unlike traditional stimulants (amphetamines, cocaine), modafinil's exact mechanism isn't fully understood, but research suggests it works by</p><ul><li><strong>Increasing dopamine</strong> Modafinil inhibits dopamine reuptake, raising dopamine levels in the prefrontal cortex (attention, motivation, focus)</li><li><strong>Increasing norepinephrine</strong> Promotes wakefulness and alertness</li><li><strong>Increasing histamine</strong> Promotes arousal</li><li><strong>Hypocretin/orexin signaling</strong> Regulates sleep-wake cycles</li></ul><p>Unlike amphetamines, modafinil doesn't produce euphoria, has lower abuse potential, and isn't as "harsh" on the system. FDA-approved for narcolepsy, sleep apnea, and shift work sleep disorder. Used off-label for ADHD, depression, <a href="/fatigue" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">fatigue</a>.</p><p><strong>Available in India</strong> Modalert (100mg, 200mg), Modvigil (100mg, 200mg), and various generics. depending on brand and quantity. Prescription required (Schedule H drug technically, though widely sold OTC).</p><div class="article-fold" id="articleFold"><h2>Common Side Effects (Frequency 15%)</h2><h3>Headache (15% of users)</h3><p>Most common. Ranges from mild to moderate, sometimes tension-type. Usually appears in first few days, may resolve with repeated use or hydration. If persistent, dose reduction or discontinuation helps. Keep hydrated — modafinil increases urinary output.</p><h3>Insomnia (10% of users)</h3><p>Modafinil's half-life is 12 hours. Taken at 8 AM, it's still active at 8 PM. If you're sensitive, this causes sleep onset insomnia (can't fall asleep for 1 hours) or fragmented sleep. Management: take modafinil before 2 PM (earlier is better). Avoid double-dosing; one tablet is usually sufficient. If insomnia persists, switch to earlier dosing or discontinue.</p><h3>Appetite Suppression (10% of users)</h3><p>Some users eat less, feel less hungry. Usually mild. Eat regular meals anyway — your body still needs fuel. If appetite suppression is severe (weight loss, malnutrition), stop or reduce dose. Not a reason to continue using modafinil.</p><h3>Nausea (5% of users)</h3><p>Usually mild, transient. Take with food if this happens. Resolve within a few days in most cases.</p><h3>Dizziness or Lightheadedness (3% of users)</h3><p>More common at higher doses. Don't drive if dizzy. Hydration and food help. Usually improves after day 2.</p><h3>Anxiety or Nervousness (5% of users)</h3><p>Modafinil can increase sympathetic tone (fight-or-flight activation). Users prone to anxiety may feel jittery, restless, or anxious. Dose reduction or discontinuation usually resolves this quickly. Don't take modafinil if you have untreated anxiety disorder.</p><h3>Dry Mouth (5% of users)</h3><p>Drink more water. Sugarless gum/lozenges can help.</p><h2>Rare But Serious Side Effects (<1%)</h2><h3>Stevens-Johnson Syndrome (SJS) — 1 per 1,000,000 users</h3><p>Life-threatening allergic skin reaction. Symptoms: rash (often starting on face/trunk, spreading), fever, blistering, mouth ulcers, eye involvement, internal mucosal involvement. Can progress to multi-organ failure. <strong>If you develop ANY unusual rash after starting modafinil, stop immediately and seek emergency care.</strong> SJS is rare but serious enough to mention.</p><h3>Liver Enzyme Elevation (Rare)</h3><p>Elevated AST, ALT reported in small percentage. Usually reversible upon discontinuation. This is why baseline liver function tests and quarterly monitoring matter for long-term use.</p><h3>Cardiac Events (Rare but Real)</h3><p>Modafinil increases heart rate and blood pressure. Rare cases of myocardial infarction (heart attack), arrhythmia, and sudden cardiac death have been reported, mostly in people with underlying cardiac disease. If you have any history of heart problems, modafinil is risky.</p><h3>Psychiatric Effects (Rare)</h3><p>Depression, mood changes, psychosis in susceptible individuals. People with history of psychosis, bipolar disorder, or schizophrenia should avoid modafinil.</p><h2>Who Should NOT Take Modafinil?</h2><ul><li><strong>Cardiac disease or arrhythmia</strong> Modafinil increases HR and BP. High risk.</li><li><strong>Uncontrolled hypertension</strong> Modafinil can elevate BP further.</li><li><strong>History of psychosis, bipolar disorder, or severe psychiatric illness</strong> Risk of mood destabilization.</li><li><strong>Liver disease or cirrhosis</strong> Can't metabolize it safely; hepatotoxicity risk.</li><li><strong>Pregnancy</strong> Insufficient safety data; teratogenicity unclear.</li><li><strong>Hypersensitivity to modafinil or armodafinil</strong> Risk of SJS.</li><li><strong>Untreated sleep apnea</strong> Modafinil masks apnea but doesn't treat it; dangerous.</li><li><strong>History of drug abuse or addiction</strong> Even low abuse potential can trigger relapse.</li></ul><h2>Bloodwork Before Starting Modafinil</h2><p><strong>Baseline (before starting)</strong></p><ul><li><strong>Liver function tests (AST, ALT, GGT, bilirubin)</strong> Modafinil is hepatically metabolized</li><li><strong>Kidney function (creatinine, eGFR, BUN)</strong> Baseline safety</li><li><strong>Complete blood count (CBC)</strong> Screen for anemia, infections</li><li><strong>Electrocardiogram (ECG)</strong> Essential if age >40 or cardiac risk factors</li><li><strong>Blood pressure</strong> Baseline for monitoring</li><li><strong>Fasting glucose</strong> Modafinil can affect glucose metabolism</li></ul><p><strong>Ongoing (for long-term use)</strong></p><ul><li><strong>Quarterly liver function tests</strong> Monitor for hepatotoxicity</li><li><strong>Annual ECG</strong> If you develop symptoms or age >50</li><li><strong>Blood pressure monitoring</strong> Regular checks</li></ul><h2>Modafinil Interactions with Other Drugs</h2><p><strong>Critical interactions</strong></p><p><strong>Oral Contraceptives</strong> Modafinil is a CYP3A4 inducer — it speeds up contraceptive metabolism, reducing efficacy. Women on birth control taking modafinil may have inadequate contraceptive coverage. <strong>Use backup contraception or switch to non-hormonal method.</strong></p><p><strong>Warfarin (blood thinner)</strong> Modafinil may reduce warfarin efficacy. If you're on warfarin, modafinil requires careful monitoring or avoidance.</p><p><strong>Carbamazepine or Phenytoin (anticonvulsants)</strong> Complex bidirectional interaction. Avoid combination or monitor closely.</p><p><strong>Avoid combining</strong> Other stimulants (amphetamine, caffeine in excess), SSRIs, other serotonergic drugs (risk of serotonin syndrome is low but possible).</p><h2>Long-Term Considerations</h2><h3>Tolerance</h3><p>Some users develop tolerance (needing higher doses for same effect). Tolerance develops over weeks to months in frequent users. Management: cycle use (e.g., 5 days on, 2 days off), or use intermittently rather than daily.</p><h3>Psychological Dependence</h3><p>Physical addiction is rare, but psychological dependence can develop — reliance on modafinil for focus, anxiety about stopping. Not life-threatening, but real. Use responsibly; don't use daily without breaks.</p><h3>Sleep Architecture Disruption</h3><p>Modafinil suppresses REM sleep and stage 2 sleep even if you "fall asleep." Long-term sleep disruption can impair memory consolidation, mood regulation, immune function. Take modafinil early in the day. Don't use chronically without breaks.</p><h3>When to Stop</h3><p>If you develop persistent headaches, cardiac symptoms (chest pain, palpitations, shortness of breath), mood changes, or any rash, stop immediately and consult a physician.</p><div class="cta-card"><p><strong>Considering modafinil?</strong> Get baseline testing first. Liver function, kidney function, cardiac status matter. <a href="#cta">Talk to an arq. physician before starting →</a></p></div><h2>arq.'s Approach: Safe Modafinil Use</h2><ul><li><strong>Comprehensive assessment</strong> Health history, cardiac risk, psychiatric history, medications</li><li><strong>Baseline bloodwork</strong> Liver, kidney, CBC, ECG (if indicated)</li><li><strong>Risk stratification</strong> Determine if modafinil is appropriate for you</li><li><strong>Dosing guidance</strong> Usually 100-200mg in morning, not daily long-term</li><li><strong>Drug interaction screening</strong> Check all current medications for interactions</li><li><strong>Ongoing monitoring</strong> Quarterly liver function tests, annual ECG if age >50</li><li><strong>Cycling protocol</strong> Recommendation for 5-days-on, 2-days-off to prevent tolerance and dependence</li></ul><p><strong>The goal</strong> Modafinil can be useful for focus and wakefulness, but only if it's safe for *you*. Not everyone should take it. Medical oversight prevents side effects and complications.</p></section><!-- ═══ FAQ ═══ --></div><!-- end article-fold --><div class="read-more-wrap" id="readMoreWrap"><button class="read-more-btn" id="readMoreBtn">
+ Continue reading. <i class="ph-bold ph-caret-down"></i></button></div><section class="faq"><div class="faq-head"><span class="eyebrow" style="justify-content: center; display: flex;">Questions</span><h2>Frequently asked about Modafinil</h2></div><ul class="faq-list"><li class="faq-item"><details><summary>Is modafinil the same as amphetamine?</summary><div class="faq-ans">No. Modafinil is not amphetamine. Amphetamines are stimulants that increase dopamine and norepinephrine dramatically — causing euphoria, addiction potential, and significant side effects. Modafinil's exact mechanism isn't fully understood, but it likely increases dopamine, histamine, and norepinephrine more subtly. Modafinil doesn't produce a 'high' and has lower addiction potential. It's considered a eugeroic (wakefulness-promoting agent), not a classic stimulant.</div></details></li><li class="faq-item"><details><summary>Can I take modafinil every day long-term?</summary><div class="faq-ans">Technically yes, but not without monitoring. Modafinil is approved for long-term use in narcolepsy (years, even decades). However, tolerance can develop (needing higher doses for same effect), and long-term neurological effects aren't fully understood. Many users benefit from cycling: use 5 days/week with 2 days off, or monthly breaks. This maintains efficacy and reduces tolerance. Baseline and quarterly liver function monitoring is essential for long-term use.</div></details></li><li class="faq-item"><details><summary>Does modafinil affect sleep architecture?</summary><div class="faq-ans">Yes. Modafinil taken late in the day (after 2 PM) can cause insomnia due to its long half-life (~12 hours). It suppresses REM sleep and stage 2 sleep, potentially affecting sleep quality even if you fall asleep. Long-term: disrupted sleep architecture can impair memory consolidation, emotional regulation, and immune function. Take modafinil early (7 AM) to minimize evening disruption. Never use modafinil if you have sleep disorders like sleep apnea unless treated.</div></details></li><li class="faq-item"><details><summary>What is Stevens-Johnson Syndrome and what's the real risk?</summary><div class="faq-ans">Stevens-Johnson Syndrome (SJS) is a rare but severe drug reaction (skin blistering, mucosal involvement, internal organ failure). Risk with modafinil is approximately 1 per 1,000,000 users — extremely rare. However, it's life-threatening if it occurs. Warning signs: unusual rash (especially target-like lesions), fever, blistering, mouth ulcers, eye involvement. If you develop a rash on modafinil, stop immediately and seek medical attention. Most people tolerate modafinil without issue, but this risk exists and shouldn't be ignored.</div></details></li><li class="faq-item"><details><summary>Does modafinil interact with contraceptive pills?</summary><div class="faq-ans">Yes. Modafinil is a CYP3A4 inducer — it speeds up the metabolism of oral contraceptives, potentially reducing their efficacy. Women on birth control taking modafinil should discuss backup contraception with their physician. Alternative methods (IUD, implant, barrier methods) may be safer. This is a real concern: inadequate contraceptive coverage = unintended pregnancy. Always disclose modafinil use to your OB-GYN.</div></details></li><li class="faq-item"><details><summary>Can modafinil cause dependency or addiction?</summary><div class="faq-ans">Low risk, but real. Modafinil is not a controlled substance in most countries, and abuse potential is lower than amphetamines. However, psychological dependence can develop — reliance on modafinil for focus, fear of stopping. Physical withdrawal is usually mild (fatigue, depressed mood) compared to amphetamines. Tolerance (needing higher doses) develops in some users. Cycling use or periodic breaks can prevent both. Don't use modafinil daily without breaks for extended periods without physician oversight.</div></details></li><li class="faq-item"><details><summary>What should I avoid while taking modafinil?</summary><div class="faq-ans">Avoid: alcohol (increases side effect risk), excess caffeine (additive stimulation, anxiety), driving if drowsy or having adverse reactions, and pregnancy (insufficient safety data). Be cautious with: other medications metabolized by CYP3A4 (check with your physician), warfarin (modafinil may interact), and phenytoin/carbamazepine (similar metabolism). Always disclose all medications and supplements to your physician before starting modafinil.</div></details></li><li class="faq-item"><details><summary>Is modafinil safe for people with cardiac disease?</summary><div class="faq-ans">No. Modafinil can increase heart rate and blood pressure. If you have arrhythmia, uncontrolled hypertension, left ventricular hypertrophy, or any cardiac disease, modafinil is contraindicated. Even in healthy people, rare cases of myocardial infarction have been reported. Baseline cardiac assessment (ECG) is wise before starting, especially if you're over 40 or have family history of heart disease. This isn't meant to scare — it's to inform.</div></details></li><li class="faq-item"><details><summary>Can modafinil help with weight loss?</summary><div class="faq-ans">Modafinil can suppress appetite (20% of users), sometimes leading to modest weight loss. However, using a prescription medication primarily for weight loss is inappropriate and risky. If appetite suppression occurs, monitor nutritional intake — ensure you're eating enough protein and micronutrients. For sustainable weight loss, focus on diet and exercise; modafinil is not a weight-loss drug. If you develop severe appetite suppression or malnutrition, consult your physician.</div></details></li></ul></section><!-- ═══ MEDICAL DISCLAIMER ═══ --><section class="medical-disclaimer"><div class="disclaimer-box"><strong>Medical Disclaimer</strong> This article is for educational purposes only and does not constitute medical advice. Modafinil is a prescription medication with potential side effects and serious contraindications. Only a qualified physician can determine if modafinil is safe for you. Baseline bloodwork and cardiac assessment are essential before starting. arq. is India's physician-led online clinic — our physicians conduct thorough evaluation before prescribing. This information reflects current medical evidence as of 2026.
+ </div></section><!-- ═══ CTA — FOOTER ═══ --><section class="cta-final" id="cta"><div class="cta-final-inner"><span class="eyebrow-center">Consider modafinil? Get assessed first</span><h2>Safe focus. <em>requires baseline data</em></h2><p class="cta-final-lede">Liver function, kidney function, cardiac status, drug interactions. Know if modafinil is right for you before you start.</p><div class="cta-button-group"><a href="https://arq.clinic/focus" class="btn btn-gold btn-lg">Get assessed. <i class="ph-bold ph-arrow-right"></i></a></div><div class="cta-trust"><div class="item"><i class="ph-fill ph-check-circle"></i>Baseline bloodwork</div><div class="item"><i class="ph-fill ph-check-circle"></i>ECG screening</div><div class="item"><i class="ph-fill ph-check-circle"></i>Physician oversight</div></div></div></section><section class="related"><div class="related-inner"><div class="related-head"><h2>Keep reading</h2></div><div class="related-grid"><a href="/focus" class="related-card"><div class="rc-eyebrow">Condition</div><div class="rc-title">Focus</div></a><a href="/blog/modafinil-legal-india" class="related-card"><div class="rc-eyebrow">Article</div><div class="rc-title">Modafinil Legal</div></a><a href="/blog/anxiety-medication-india" class="related-card"><div class="rc-eyebrow">Article</div><div class="rc-title">Anxiety Medication</div></a></div></div></section><!-- ─── FOOTER ─── --><footer class="footer"><div class="logo">arq<span class="dot">.</span></div><div>India's online clinic · © 2026</div></footer><script>
+// ─── Nav scroll transition ───
+const nav = document.querySelector('.nav');
+const setNav = () => nav.classList.toggle('scrolled', window.scrollY > 100);
+setNav();
+window.addEventListener('scroll', setNav, {passive:true});
+
+// ─── Scroll reveal ───
+const reveal = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+ entries.forEach(e => {
+ if(e.isIntersecting){
+ e.target.classList.add('in');
+ io.unobserve(e.target);
+ }
+ });
+}, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+
+reveal.forEach(el => io.observe(el));
+
+// ─── Smooth scroll for anchor links ───
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+ link.addEventListener('click', (e) => {
+ const target = document.querySelector(link.getAttribute('href'));
+ if(target) {
+ e.preventDefault();
+ target.scrollIntoView({behavior:'smooth'});
+ }
+ });
+});
+
+// ─── FAQ accordion ───
+document.querySelectorAll('.faq-item details').forEach(detail => {
+ detail.addEventListener('toggle', () => {
+ if(detail.open) {
+ detail.scrollIntoView({behavior:'smooth', block:'nearest'});
+ }
+ });
+});
+
+
+// ─── Dropdown menu ───
+const dropdownOverlay = document.getElementById('dropdownOverlay');
+const dropdownPanel = document.getElementById('dropdownPanel');
+const dropdownClose = document.getElementById('dropdownClose');
+const hamburger = document.querySelector('.nav-hamburger');
+
+function openDropdown() {
+ dropdownOverlay.classList.add('open');
+ dropdownPanel.classList.add('open');
+ document.body.style.overflow = 'hidden';
+}
+function closeDropdown() {
+ dropdownOverlay.classList.remove('open');
+ dropdownPanel.classList.remove('open');
+ document.body.style.overflow = '';
+}
+
+if (hamburger) hamburger.addEventListener('click', openDropdown);
+if (dropdownClose) dropdownClose.addEventListener('click', closeDropdown);
+if (dropdownOverlay) dropdownOverlay.addEventListener('click', closeDropdown);
+
+// Highlight current page in dropdown
+const currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+document.querySelectorAll('.dropdown-link').forEach(link => {
+ const href = link.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '');
+ if (currentPath === href || currentPath.endsWith(href)) {
+ link.classList.add('active');
+ }
+});
+
+// ─── Waitlist modal ───
+function openWaitlist() {
+ const ol = document.getElementById('waitlistOverlay');
+ if (ol) { ol.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeWaitlist() {
+ const ol = document.getElementById('waitlistOverlay');
+ if (ol) { ol.classList.remove('open'); document.body.style.overflow = ''; }
+}
+
+// Close on overlay click
+const wlOverlay = document.getElementById('waitlistOverlay');
+if (wlOverlay) wlOverlay.addEventListener('click', function(e) {
+ if (e.target === wlOverlay) closeWaitlist();
+});
+
+function submitWaitlist(e) {
+ e.preventDefault();
+ const btn = document.getElementById('wlSubmit');
+ const name = document.getElementById('wlName').value;
+ const email = document.getElementById('wlEmail').value;
+ const phone = document.getElementById('wlPhone').value;
+ btn.disabled = true;
+ btn.textContent = 'Joining...';
+
+ // Store to Google Sheets via Apps Script or simple endpoint
+ const data = { name, email, phone, page: window.location.pathname, ts: new Date().toISOString() };
+
+ // Try to send to a simple endpoint; fallback to localStorage
+ fetch('https://arq.clinic/api/waitlist', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify(data)
+ }).catch(() => {
+ // Fallback: store locally
+ const existing = JSON.parse(localStorage.getItem('arq_waitlist') || '[]');
+ existing.push(data);
+ localStorage.setItem('arq_waitlist', JSON.stringify(existing));
+ }).finally(() => {
+ document.getElementById('waitlistForm').style.display = 'none';
+ document.getElementById('waitlistSuccess').style.display = 'block';
+ setTimeout(closeWaitlist, 3000);
+ });
+}
+
+// Wire up all waitlist links
+document.querySelectorAll('a[href="#cta"], a[href="#"], .nav-link').forEach(link => {
+ const text = link.textContent.toLowerCase();
+ if (text.includes('waitlist') || text.includes('talk to')) {
+ link.addEventListener('click', function(e) {
+ e.preventDefault();
+ closeDropdown();
+ openWaitlist();
+ });
+ }
+});
+
+// ─── Read more fold ───
+const readMoreBtn = document.getElementById('readMoreBtn');
+const articleFold = document.getElementById('articleFold');
+const readMoreWrap = document.querySelector('.read-more-wrap');
+if (readMoreBtn && articleFold) {
+ readMoreBtn.addEventListener('click', function() {
+ articleFold.classList.add('expanded');
+ if (readMoreWrap) readMoreWrap.classList.add('hidden');
+ });
+}
+
+</script><!-- ─── WAITLIST MODAL ─── --><div class="waitlist-overlay" id="waitlistOverlay"><div class="waitlist-modal"><button class="waitlist-modal-close" onclick="closeWaitlist()" aria-label="Close"><i class="ph-bold ph-x"></i></button><div id="waitlistForm"><h2>Join the. <em>waitlist</em></h2><p class="wl-sub">100+ biomarkers. A dedicated physician. Protocol delivered to your door. Be first in line when we launch.</p><form class="waitlist-form" onsubmit="submitWaitlist(event)"><input type="text" class="waitlist-input" id="wlName" placeholder="Your name" required><input type="email" class="waitlist-input" id="wlEmail" placeholder="Your email" required><input type="tel" class="waitlist-input" id="wlPhone" placeholder="Phone (optional)"><button type="submit" class="waitlist-submit" id="wlSubmit">Join the waitlist</button></form><div class="wl-trust"><span><i class="ph-fill ph-lock"></i> DPDP-compliant</span><span><i class="ph-fill ph-shield-check"></i> No spam</span></div></div><div id="waitlistSuccess" class="waitlist-success" style="display:none"><i class="ph-fill ph-check-circle"></i><h3>You're on the list</h3><p>We'll reach out when it's your turn. Welcome to arq.</p></div></div></div></body></html>

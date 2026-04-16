@@ -1,0 +1,445 @@
+<!-- snippets/cart-drawer.liquid -->
+<div class="cart-drawer-overlay" id="cartOverlay" onclick="closeCartDrawer()"></div>
+
+<div class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" role="dialog" aria-modal="true">
+
+  <div class="cart-drawer__header">
+    <div class="cart-drawer__title">
+      <span class="t-label">Your order</span>
+    </div>
+    <button class="cart-drawer__close" onclick="closeCartDrawer()" aria-label="Close cart">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="cart-drawer__body" id="cartBody">
+    <!-- Populated by JS -->
+    <div class="cart-drawer__loading">
+      <div class="cart-drawer__spinner"></div>
+    </div>
+  </div>
+
+  <div class="cart-drawer__footer" id="cartFooter" style="display:none">
+
+    <!-- Clinical notice -->
+    <div class="cart-drawer__notice">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div>After payment, a licensed doctor calls you within 2 hours to issue your prescription. Your order ships same day once issued.</div>
+    </div>
+
+    <!-- Order summary -->
+    <div class="cart-drawer__summary">
+      <div class="cart-drawer__summary-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">—</span>
+      </div>
+      <div class="cart-drawer__summary-row">
+        <span>Doctor consultation</span>
+        <span class="text-gold">Included</span>
+      </div>
+      <div class="cart-drawer__summary-row">
+        <span>Delivery</span>
+        <span class="text-gold">Free</span>
+      </div>
+      <div class="cart-drawer__summary-row cart-drawer__summary-row--total">
+        <span>Total</span>
+        <span id="cartTotal">—</span>
+      </div>
+    </div>
+
+    <!-- Checkout button -->
+    <button class="btn btn-primary btn-full btn-lg" id="checkoutBtn" onclick="initiateCheckout()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Checkout securely
+    </button>
+
+    <div class="cart-drawer__pay-icons">
+      <span class="t-mono" style="font-size:7px;color:var(--cream-40);letter-spacing:0.08em">POWERED BY</span>
+      <span style="font-family:var(--mono);font-size:9px;color:var(--cream-70);letter-spacing:0.05em">Razorpay</span>
+      <span class="t-mono" style="font-size:7px;color:var(--cream-40)">UPI · Cards · NetBanking · EMI</span>
+    </div>
+
+    <div class="cart-drawer__privacy">
+      🔒 Discreet billing · "Dear One Technologies" on statement
+    </div>
+  </div>
+</div>
+
+<style>
+/* ── CART DRAWER ── */
+.cart-drawer-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  z-index: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.cart-drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+.cart-drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(420px, 100vw);
+  background: var(--ink);
+  border-left: 1px solid var(--cream-07);
+  z-index: 700;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.cart-drawer.open { transform: translateX(0); }
+
+.cart-drawer__header {
+  padding: 20px;
+  border-bottom: 1px solid var(--cream-07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.cart-drawer__title { display: flex; align-items: center; gap: 10px; }
+.cart-drawer__close {
+  background: none; border: none;
+  color: var(--cream-40);
+  padding: 6px;
+  transition: color 0.2s;
+}
+.cart-drawer__close:hover { color: var(--cream); }
+
+.cart-drawer__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.cart-drawer__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+}
+.cart-drawer__spinner {
+  width: 24px; height: 24px;
+  border: 2px solid var(--cream-07);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Cart items */
+.cart-item {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  border-bottom: 1px solid var(--cream-07);
+  transition: background 0.15s;
+}
+.cart-item:hover { background: var(--surface); }
+
+.cart-item__info { flex: 1; }
+.cart-item__name {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--cream);
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+.cart-item__variant {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+  margin-bottom: 6px;
+}
+.cart-item__type {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.cart-item__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.cart-item__price {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--cream);
+}
+.cart-item__remove {
+  background: none; border: none;
+  color: var(--cream-40);
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+.cart-item__remove:hover { color: var(--red); }
+
+/* Clinical badge on cart item */
+.cart-item__rx {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.cart-item__rx::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 2s infinite;
+}
+
+/* Empty cart */
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 32px;
+  text-align: center;
+  gap: 12px;
+}
+.cart-empty__title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--cream-40);
+}
+.cart-empty__sub { font-size: 13px; color: var(--cream-40); }
+
+/* Footer */
+.cart-drawer__footer {
+  border-top: 1px solid var(--cream-07);
+  padding: 20px;
+  flex-shrink: 0;
+  background: var(--surface);
+}
+.cart-drawer__notice {
+  display: flex;
+  gap: 10px;
+  background: var(--gold-lo);
+  border: 1px solid var(--gold-border);
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  font-size: 11px;
+  color: var(--cream-70);
+  line-height: 1.65;
+}
+.cart-drawer__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.cart-drawer__summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--cream-70);
+}
+.cart-drawer__summary-row--total {
+  padding-top: 10px;
+  border-top: 1px solid var(--cream-07);
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--cream);
+}
+.cart-drawer__pay-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px 0 8px;
+}
+.cart-drawer__privacy {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  color: var(--cream-40);
+}
+</style>
+
+<script>
+// ── CART DRAWER ──
+let cartData = null;
+
+function openCartDrawer() {
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  loadCart();
+}
+
+function closeCartDrawer() {
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('cartToggle')?.addEventListener('click', openCartDrawer);
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeCartDrawer(); });
+
+async function loadCart() {
+  const body = document.getElementById('cartBody');
+  const footer = document.getElementById('cartFooter');
+
+  try {
+    const res = await fetch('/cart.js');
+    cartData = await res.json();
+
+    if (cartData.item_count === 0) {
+      body.innerHTML = `
+        <div class="cart-empty">
+          <div class="cart-empty__title">Your cart is empty</div>
+          <div class="cart-empty__sub">Browse protocols to get started</div>
+          <a href="/collections/all" class="btn btn-secondary btn-sm" onclick="closeCartDrawer()" style="margin-top:12px">Browse protocols</a>
+        </div>`;
+      footer.style.display = 'none';
+      return;
+    }
+
+    // Render items
+    body.innerHTML = cartData.items.map(item => `
+      <div class="cart-item" data-line="${item.key}">
+        <div class="cart-item__info">
+          <div class="cart-item__name">${item.product_title}</div>
+          ${item.variant_title !== 'Default Title' ? `<div class="cart-item__variant">${item.variant_title}</div>` : ''}
+          <div class="cart-item__type">${item.properties?.purchase_type === 'subscribe' ? '↻ Monthly subscription' : '→ One-time'}</div>
+          <div class="cart-item__rx">Doctor consultation included</div>
+        </div>
+        <div class="cart-item__actions">
+          <div class="cart-item__price">${formatMoneyCart(item.final_price)}</div>
+          <button class="cart-item__remove" onclick="removeItem('${item.key}')">Remove</button>
+        </div>
+      </div>
+    `).join('');
+
+    // Update summary
+    document.getElementById('cartSubtotal').textContent = formatMoneyCart(cartData.original_total_price);
+    document.getElementById('cartTotal').textContent = formatMoneyCart(cartData.total_price);
+    footer.style.display = 'block';
+
+  } catch (err) {
+    body.innerHTML = `<div style="padding:32px;text-align:center;color:var(--cream-40);font-size:13px">Failed to load cart. <button onclick="loadCart()" style="background:none;border:none;color:var(--gold);font-family:var(--mono);font-size:11px;cursor:pointer">Retry</button></div>`;
+  }
+}
+
+async function removeItem(key) {
+  await fetch('/cart/change.js', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: key, quantity: 0 })
+  });
+  const cart = await fetch('/cart.js').then(r => r.json());
+  updateCartCount(cart.item_count);
+  loadCart();
+  showToast('Item removed');
+}
+
+function formatMoneyCart(cents) {
+  return '₹' + (cents / 100).toLocaleString('en-IN');
+}
+
+// ── RAZORPAY CHECKOUT ──
+async function initiateCheckout() {
+  if (!cartData || cartData.item_count === 0) return;
+
+  const btn = document.getElementById('checkoutBtn');
+  btn.disabled = true;
+  btn.textContent = 'Preparing checkout…';
+
+  try {
+    // Create Razorpay order via Shopify's checkout or your custom endpoint
+    // For Shopify + Razorpay, this calls your custom app's order creation endpoint
+    const orderRes = await fetch('/apps/arq-checkout/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        cart_token: window.arq.cartToken,
+        amount: cartData.total_price, // in paise
+        currency: 'INR',
+        customer_id: window.arq.customerId,
+      })
+    });
+
+    const order = await orderRes.json();
+    if (!order.id) throw new Error('Order creation failed');
+
+    // Open Razorpay
+    const rzp = new Razorpay({
+      key: window.arq.razorpayKey,
+      amount: order.amount,
+      currency: order.currency,
+      name: 'arq.clinic',
+      description: 'Your prescription protocol',
+      order_id: order.id,
+      image: '/cdn/shop/files/arq-logo.png',
+      prefill: {
+        name: '{{ customer.name | default: "" | escape }}',
+        email: '{{ customer.email | default: "" | escape }}',
+        contact: '{{ customer.phone | default: "" | escape }}',
+      },
+      theme: { color: '#c8973a', backdrop_color: 'rgba(12,11,9,0.95)' },
+      modal: {
+        ondismiss: () => {
+          btn.disabled = false;
+          btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Checkout securely`;
+        }
+      },
+      handler: async function(response) {
+        // Verify payment on your server
+        const verifyRes = await fetch('/apps/arq-checkout/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+            shopify_cart_token: window.arq.cartToken,
+          })
+        });
+
+        const verify = await verifyRes.json();
+
+        if (verify.success) {
+          // Redirect to Shopify order confirmation
+          window.location.href = verify.order_status_url || '/account/orders';
+        } else {
+          showToast('Payment verification failed. Contact us on WhatsApp.', 'error');
+          btn.disabled = false;
+        }
+      }
+    });
+
+    rzp.open();
+
+  } catch (err) {
+    console.error('Checkout error:', err);
+    // Fallback to Shopify native checkout
+    window.location.href = '/checkout';
+  }
+}
+</script>

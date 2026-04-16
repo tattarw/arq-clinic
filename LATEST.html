@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>arq. — Health, on your terms</title>
+<meta name="description" content="Talk to us about hair loss, weight management, skin, sexual health & more. Doctor-guided protocols delivered to your door. Start from ₹999/mo.">
+<meta name="theme-color" content="#faf9f5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="canonical" href="https://arq.clinic/">
+<meta property="og:title" content="arq. — Health, on your terms">
+<meta property="og:description" content="Talk to us privately about hair loss, weight, skin & more. Prescription protocols delivered to your door.">
+<meta property="og:url" content="https://arq.clinic/">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MedicalBusiness","name":"arq.","url":"https://arq.clinic","description":"Doctor-guided health protocols — hair, weight, skin, sexual health & more","telephone":"+91-9137307628","priceRange":"₹999 - ₹4999"}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════
+   arq. v9.1 — CARDS-FIRST + AI BOTTOM BAR
+   Mobile-first: base = 430px (iPhone 14 Pro Max)
+   Desktop: @media (min-width: 768px)
+   ═══════════════════════════════════════════ */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf9f5;--bg2:#f4f2ed;--surface:#eae8e3;
+  --card:#ffffff;--border:rgba(44,40,36,0.08);--border-hover:rgba(44,40,36,0.14);
+  --text:#1a1714;--text-90:rgba(26,23,20,0.9);--text-60:rgba(26,23,20,0.6);--text-30:rgba(26,23,20,0.3);--text-12:rgba(26,23,20,0.12);
+  --gold:#b8922e;--gold-light:#c9a23a;--gold-glow:rgba(184,146,46,0.08);--gold-border:rgba(184,146,46,0.25);
+  --dark:#1a1714;
+  --green:#22a85a;--green-bg:#edf7f0;
+  --blue:#3d7ed4;--blue-bg:#edf3fb;
+  --purple:#7c5ec9;--purple-bg:#f3f0fa;
+  --rose:#c95f6f;--rose-bg:#faf0f1;
+  --coral:#d4772a;--coral-bg:#faf3ed;
+  --teal:#2ba8b9;--teal-bg:#edf7f9;
+  --sans:'Sora',system-ui,sans-serif;
+  --serif:'DM Serif Display',Georgia,serif;
+  --mono:'IBM Plex Mono','SF Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --nav-h:48px;--announce-h:32px;
+  --top-offset:calc(var(--announce-h) + env(safe-area-inset-top, 0px));
+  --bottom-bar-h:140px;
+}
+
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth;overflow-x:hidden;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--gold);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer}
+[class^="ph-"]{display:inline-flex;align-items:center;justify-content:center}
+
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+
+
+/* ─── ANNOUNCE BAR ─── */
+.announce{position:fixed;top:0;left:0;right:0;z-index:1001;height:var(--announce-h);padding-top:env(safe-area-inset-top,0px);display:flex;align-items:center;justify-content:center;gap:6px;background:var(--gold);color:var(--dark);font-size:12px;font-weight:500}
+.announce a{font-size:11px;font-weight:600;background:rgba(0,0,0,0.12);padding:2px 10px;border-radius:20px;transition:background 0.2s}
+.announce a:hover{background:rgba(0,0,0,0.2)}
+
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:calc(var(--top-offset) + 6px);left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(250,249,245,0.95);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);border-radius:20px 20px 0 0}
+/* Gold strip behind nav to show rounded corners */
+.announce-bg{position:fixed;top:0;left:0;right:0;height:calc(var(--top-offset) + var(--nav-h) + 6px);background:var(--gold);z-index:999;pointer-events:none}
+.nav-logo{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--dark);letter-spacing:-0.02em}
+.nav-logo .dot{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-link{font-size:12px;font-weight:500;color:var(--text-60);padding:5px 14px;border:1.5px solid var(--border);border-radius:20px;transition:all 0.2s;background:none}
+.nav-link:hover{border-color:var(--dark);background:var(--dark);color:var(--bg)}
+.nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:6px;border:none;background:none}
+.nav-hamburger span{display:block;width:20px;height:2px;background:var(--dark);border-radius:1px;transition:all 0.3s}
+
+
+/* ─── MAIN ─── */
+.main{padding-top:calc(var(--top-offset) + var(--nav-h) + 6px);padding-bottom:var(--bottom-bar-h)}
+
+
+/* ─── HERO HEADER — compact ─── */
+.hero-header{padding:12px 20px 8px;width:100%}
+.hero-header h1{font-family:var(--serif);font-size:26px;font-weight:400;line-height:1.15;letter-spacing:-0.025em}
+.hero-header h1 .dot{color:var(--gold)}
+.hero-header p{font-size:13px;color:var(--text-60);margin-top:3px}
+
+
+/* ─── CATEGORY GRID — the hero content ─── */
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;width:100%;overflow:hidden;border-radius:0}
+
+.cat-card{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;text-decoration:none;color:#fff;min-height:180px;transition:transform 0.4s var(--ease),box-shadow 0.4s var(--ease)}
+.cat-card:active{transform:scale(0.98)}
+
+/* Featured = full width, taller */
+.cat-card.featured{grid-column:1/-1;min-height:200px;padding:20px}
+.cat-card.featured h3{font-size:22px}
+
+/* Category gradient backgrounds */
+.cat-card[data-cat="weight"]{background:linear-gradient(165deg,#f5ebe0 0%,#e8d5c0 60%,#dcc4a8 100%)}
+.cat-card[data-cat="hair"]{background:linear-gradient(165deg,#d5e0d0 0%,#a8c4a0 60%,#8eb888 100%)}
+.cat-card[data-cat="skin"]{background:linear-gradient(165deg,#f0e0e4 0%,#d4b0b8 60%,#c8a0aa 100%)}
+.cat-card[data-cat="sexual"]{background:linear-gradient(165deg,#e0ddf0 0%,#b8b0d4 60%,#a8a0c8 100%)}
+.cat-card[data-cat="pcos"]{background:linear-gradient(165deg,#d5eae8 0%,#a0c8c4 60%,#88b8b4 100%)}
+.cat-card[data-cat="focus"]{background:linear-gradient(165deg,#dde4f0 0%,#b0c0d4 60%,#a0b4c8 100%)}
+
+/* Image overlays */
+.cat-card-bg{position:absolute;inset:0;z-index:0}
+.cat-card-bg img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.6s}
+.cat-card-bg img.loaded{opacity:1}
+.cat-card-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 25%,rgba(0,0,0,0.5) 100%);z-index:1}
+
+.cat-card-content{position:relative;z-index:2}
+.cat-card-label{font-family:var(--sans);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px;opacity:0.8}
+.cat-card h3{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.15;letter-spacing:-0.015em}
+.cat-card-sub{font-size:11px;opacity:0.7;margin-top:3px}
+
+
+/* ─── AI BOTTOM BAR — fixed, always visible ─── */
+.ai-bar{position:fixed;bottom:0;left:0;right:0;z-index:900;background:var(--bg);border-top:1px solid var(--border);border-radius:20px 20px 0 0;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));transition:transform 0.4s var(--ease);box-shadow:0 -4px 20px rgba(0,0,0,0.04)}
+
+.ai-bar-chips{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-bottom:8px;padding:0 2px}
+.ai-bar-chips::-webkit-scrollbar{display:none}
+
+.ai-chip{display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:50px;border:1.5px solid var(--border);background:var(--card);font-size:12px;font-weight:500;color:var(--text);transition:all 0.3s var(--ease);cursor:pointer;white-space:nowrap;flex-shrink:0;-webkit-user-select:none;user-select:none}
+.ai-chip:active{transform:scale(0.96)}
+.ai-chip i{font-size:14px}
+.ai-chip[data-cat="hair"]{border-color:rgba(34,168,90,0.2)}.ai-chip[data-cat="hair"] i{color:var(--green)}
+.ai-chip[data-cat="weight"]{border-color:rgba(212,119,42,0.2)}.ai-chip[data-cat="weight"] i{color:var(--coral)}
+.ai-chip[data-cat="skin"]{border-color:rgba(201,95,111,0.2)}.ai-chip[data-cat="skin"] i{color:var(--rose)}
+.ai-chip[data-cat="sexual"]{border-color:rgba(124,94,201,0.2)}.ai-chip[data-cat="sexual"] i{color:var(--purple)}
+.ai-chip[data-cat="pcos"]{border-color:rgba(43,168,185,0.2)}.ai-chip[data-cat="pcos"] i{color:var(--teal)}
+.ai-chip[data-cat="focus"]{border-color:rgba(61,126,212,0.2)}.ai-chip[data-cat="focus"] i{color:var(--blue)}
+
+.ai-bar-input{position:relative;width:100%}
+.ai-bar-input textarea{width:100%;padding:12px 46px 12px 16px;font-family:var(--sans);font-size:14px;font-weight:400;color:var(--text);background:var(--card);border:1.5px solid var(--border);border-radius:16px;outline:none;transition:border-color 0.3s,box-shadow 0.3s;line-height:1.4;resize:none;min-height:46px;max-height:100px}
+.ai-bar-input textarea::placeholder{color:var(--text-30)}
+.ai-bar-input textarea:focus{border-color:var(--gold-border);box-shadow:0 2px 12px var(--gold-glow)}
+.ai-bar-send{position:absolute;right:6px;bottom:6px;width:34px;height:34px;border-radius:50%;border:none;background:var(--dark);color:var(--bg);display:flex;align-items:center;justify-content:center;opacity:0.25;transition:opacity 0.2s,transform 0.2s}
+.ai-bar-send.active{opacity:1}
+.ai-bar-send:active{transform:scale(0.92)}
+
+.ai-bar-trust{display:flex;align-items:center;justify-content:center;gap:12px;font-size:10px;color:var(--text-30);margin-top:6px;letter-spacing:0.01em}
+.ai-bar-trust i{font-size:11px;color:var(--gold);margin-right:2px}
+
+
+/* ─── AI CHAT OVERLAY — bottom sheet, ~55% height ─── */
+.ai-overlay{position:fixed;left:0;right:0;bottom:0;top:auto;height:55vh;max-height:480px;z-index:950;display:flex;flex-direction:column;background:var(--bg);border-radius:20px 20px 0 0;box-shadow:0 -8px 40px rgba(0,0,0,0.1);transform:translateY(100%);transition:transform 0.45s var(--ease);will-change:transform}
+.ai-overlay.open{transform:translateY(0)}
+/* Dim backdrop */
+.ai-backdrop{position:fixed;inset:0;z-index:949;background:rgba(0,0,0,0.25);opacity:0;pointer-events:none;transition:opacity 0.35s}
+.ai-backdrop.show{opacity:1;pointer-events:auto}
+
+.ai-overlay-header{display:flex;align-items:center;justify-content:space-between;padding:0 20px 10px;border-bottom:1px solid var(--border);flex-shrink:0}
+.ai-overlay-handle{width:36px;height:4px;border-radius:2px;background:var(--surface);margin:10px auto 10px;flex-shrink:0}
+.ai-overlay-title{font-family:var(--serif);font-size:16px;font-weight:400}
+.ai-overlay-title .dot{color:var(--gold)}
+.ai-overlay-actions{display:flex;gap:8px}
+.ai-overlay-close,.ai-overlay-minimize{width:30px;height:30px;border-radius:50%;border:none;background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--text);font-size:14px;cursor:pointer;transition:background 0.2s}
+.ai-overlay-close:active,.ai-overlay-minimize:active{background:var(--border)}
+
+.ai-overlay-msgs{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 20px;display:flex;flex-direction:column;gap:12px}
+
+.ai-msg{max-width:85%;padding:12px 16px;border-radius:18px;font-size:14px;line-height:1.5;animation:msgIn 0.35s var(--ease)}
+.ai-msg-bot{align-self:flex-start;background:var(--card);border:1px solid var(--border);color:var(--text);border-bottom-left-radius:4px}
+.ai-msg-user{align-self:flex-end;background:var(--dark);color:var(--bg);border-bottom-right-radius:4px}
+.ai-msg-bot .bot-label{font-family:var(--mono);font-size:9px;font-weight:500;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.ai-replies{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ai-reply-btn{padding:7px 13px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);font-size:12px;font-weight:500;color:var(--text);cursor:pointer;transition:all 0.2s}
+.ai-reply-btn:active{background:var(--gold-glow);border-color:var(--gold-border)}
+
+.ai-overlay-input{flex-shrink:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--border);background:var(--bg)}
+.ai-overlay-input-inner{position:relative}
+.ai-overlay-input textarea{width:100%;padding:12px 46px 12px 16px;font-family:var(--sans);font-size:14px;color:var(--text);background:var(--card);border:1.5px solid var(--border);border-radius:16px;outline:none;resize:none;min-height:46px;max-height:100px;line-height:1.4;transition:border-color 0.3s}
+.ai-overlay-input textarea:focus{border-color:var(--gold-border)}
+.ai-overlay-input .ai-bar-send{position:absolute;right:6px;bottom:6px}
+
+
+/* ─── STACKED SECTION SYSTEM — overlapping rounded cards ─── */
+.section-stack{position:relative;z-index:4;border-radius:0 0 20px 20px}
+.section-stack + .section-stack{margin-top:-16px}
+.section-stack:nth-child(2){z-index:3}
+.section-stack:nth-child(3){z-index:2}
+.section-stack:nth-child(4){z-index:1}
+
+/* ─── HOW IT WORKS — horizontal scroll steps ─── */
+.how{width:100%;padding:40px 0 36px;background:var(--card);overflow:hidden}
+.how-header{padding:0 20px;margin-bottom:20px}
+.how-header h2{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:-0.02em}
+.how-header h2 .dot{color:var(--gold)}
+.how-header p{font-size:13px;color:var(--text-60);margin-top:2px}
+
+.how-track{display:flex;gap:12px;padding:0 20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none}
+.how-track::-webkit-scrollbar{display:none}
+
+.how-card{flex:0 0 78%;max-width:300px;scroll-snap-align:start;border-radius:20px;padding:24px;position:relative;overflow:hidden;min-height:200px;display:flex;flex-direction:column}
+.how-card:nth-child(1){background:linear-gradient(145deg,#f0ede8 0%,#e4dfd8 100%)}
+.how-card:nth-child(2){background:linear-gradient(145deg,#edf0e8 0%,#dce4d6 100%)}
+.how-card:nth-child(3){background:linear-gradient(145deg,#e8edf0 0%,#d6dee8 100%)}
+
+.how-card-num{font-family:var(--serif);font-size:48px;color:var(--text-12);line-height:1;margin-bottom:auto}
+.how-card-icon{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--text);margin-bottom:12px}
+.how-card h3{font-family:var(--serif);font-size:19px;font-weight:400;letter-spacing:-0.01em;margin-bottom:4px}
+.how-card p{font-size:13px;color:var(--text-60);line-height:1.5}
+
+
+/* ─── DOCTORS — horizontal scroll with larger cards ─── */
+.doctors{width:100%;padding:40px 0 36px;background:var(--bg2);overflow:hidden}
+.doctors-header{padding:0 20px;margin-bottom:20px}
+.doctors-header h2{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:-0.02em}
+.doctors-header h2 .dot{color:var(--gold)}
+.doctors-header p{font-size:13px;color:var(--text-60);margin-top:2px}
+
+.doc-track{display:flex;gap:12px;padding:0 20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none}
+.doc-track::-webkit-scrollbar{display:none}
+
+.doc-card{flex:0 0 60%;max-width:240px;scroll-snap-align:start;background:var(--card);border-radius:20px;overflow:hidden;position:relative}
+.doc-card-img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.doc-card-info{padding:14px 16px}
+.doc-card-name{font-family:var(--sans);font-size:14px;font-weight:600;margin-bottom:2px}
+.doc-card-spec{font-size:11px;color:var(--text-60);margin-bottom:4px}
+.doc-card-cred{font-family:var(--mono);font-size:10px;color:var(--gold);font-weight:500}
+
+
+/* ─── SOCIAL PROOF — horizontal swipe carousel ─── */
+.proof{width:100%;padding:40px 0 36px;background:var(--card);overflow:hidden}
+.proof-header{padding:0 20px;margin-bottom:20px;display:flex;align-items:flex-end;justify-content:space-between}
+.proof-header h2{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:-0.02em}
+.proof-header h2 .dot{color:var(--gold)}
+.proof-nav{display:flex;gap:6px}
+.proof-nav button{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--text);font-size:14px;transition:all 0.2s}
+.proof-nav button:active{background:var(--surface)}
+.proof-nav button:disabled{opacity:0.25}
+
+.proof-track{display:flex;gap:14px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 20px 4px}
+.proof-track::-webkit-scrollbar{display:none}
+
+.proof-card{flex:0 0 85%;max-width:340px;scroll-snap-align:start;border-radius:20px;overflow:hidden;position:relative;min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;color:#fff}
+/* Category-tinted cards */
+.proof-card[data-cat="hair"]{background:linear-gradient(165deg,#b8d4b0 0%,#7aad70 50%,#5a8e52 100%)}
+.proof-card[data-cat="weight"]{background:linear-gradient(165deg,#e8d5c0 0%,#c8a880 50%,#b8946a 100%)}
+.proof-card[data-cat="pcos"]{background:linear-gradient(165deg,#a8d0cc 0%,#6aada6 50%,#4a948e 100%)}
+.proof-card[data-cat="skin"]{background:linear-gradient(165deg,#e0c0c8 0%,#c8909a 50%,#b07882 100%)}
+.proof-card[data-cat="sexual"]{background:linear-gradient(165deg,#c8c0e0 0%,#a090c8 50%,#8878b0 100%)}
+.proof-card[data-cat="focus"]{background:linear-gradient(165deg,#b8c8e0 0%,#88a0c8 50%,#7090b8 100%)}
+
+.proof-card-tag{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:50px;background:rgba(255,255,255,0.15);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:11px;font-weight:600;letter-spacing:0.03em;margin-bottom:16px;align-self:flex-start}
+
+.proof-card-quote{font-family:var(--serif);font-size:20px;font-weight:400;line-height:1.3;letter-spacing:-0.015em;margin-bottom:16px}
+.proof-card-quote::before{content:'\201C';font-size:32px;line-height:0;vertical-align:-8px;margin-right:2px;opacity:0.5}
+
+.proof-card-meta{display:flex;align-items:center;gap:10px}
+.proof-card-avatar{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0}
+.proof-card-info{display:flex;flex-direction:column}
+.proof-card-name{font-size:13px;font-weight:600;letter-spacing:0.01em}
+.proof-card-detail{font-size:11px;opacity:0.7}
+
+.proof-card-stat{position:absolute;top:20px;right:20px;text-align:right}
+.proof-card-stat-num{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1}
+.proof-card-stat-label{font-size:10px;opacity:0.7;text-transform:uppercase;letter-spacing:0.06em}
+
+.proof-dots{display:flex;justify-content:center;gap:6px;margin-top:16px;padding:0 20px}
+.proof-dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:all 0.3s}
+.proof-dot.active{width:20px;border-radius:3px;background:var(--gold)}
+
+
+/* ─── FOOTER ─── */
+.footer{width:100%;padding:32px 20px 28px;background:var(--dark);color:rgba(255,255,255,0.4);border-radius:20px 20px 0 0;position:relative;z-index:0}
+.footer-logo{font-family:var(--serif);font-size:22px;color:#fff;margin-bottom:12px}
+.footer-logo .dot{color:var(--gold)}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:24px;line-height:1.5}
+.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.4);transition:color 0.2s}
+.footer-links a:hover{color:#fff}
+.footer-bottom{display:flex;flex-direction:column;gap:8px;font-size:11px;color:rgba(255,255,255,0.25);border-top:1px solid rgba(255,255,255,0.06);padding-top:20px}
+
+
+/* ═══ DESKTOP ═══ */
+@media(min-width:768px){
+  :root{--nav-h:56px;--bottom-bar-h:0px}
+
+  .nav{padding:0 40px}
+  .hero-header{max-width:1200px;margin:0 auto;padding:20px 40px 12px}
+  .hero-header h1{font-size:32px}
+
+  .cat-grid{grid-template-columns:repeat(3,1fr);gap:6px;max-width:1200px;margin:0 auto;padding:0 40px}
+  .cat-card{min-height:280px;border-radius:16px}
+  .cat-card.featured{min-height:320px}
+  .cat-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.08)}
+
+  /* Desktop: AI bar becomes inline section, not fixed */
+  .ai-bar{position:relative;border-top:none;padding:24px 40px;max-width:720px;margin:32px auto 0;background:transparent}
+  .ai-bar-chips{justify-content:center;flex-wrap:wrap;overflow:visible}
+  .ai-chip{padding:10px 18px;font-size:13px}
+  .ai-chip:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.06)}
+
+  .how{padding:48px 0 36px}
+  .how-header{max-width:1200px;margin:0 auto 20px;padding:0 40px}
+  .how-track{padding:0 40px;gap:16px}
+  .how-card{flex:0 0 30%;max-width:360px}
+
+  .doctors{padding:48px 0 36px}
+  .doctors-header{max-width:1200px;margin:0 auto 20px;padding:0 40px}
+  .doc-track{padding:0 40px;gap:16px}
+  .doc-card{flex:0 0 22%;max-width:260px}
+
+  .proof{padding:48px 0 36px}
+  .proof-header{max-width:1200px;margin:0 auto 20px;padding:0 40px}
+  .proof-track{padding:0 40px;gap:16px}
+  .proof-card{flex:0 0 35%;max-width:400px}
+
+  .cta-banner{padding:80px 40px}
+  .cta-banner h2{font-size:36px}
+
+  .footer{padding:60px 40px 40px}
+  .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+  .footer-links{grid-template-columns:1fr;gap:10px}
+  .footer-bottom{max-width:1200px;margin:0 auto;flex-direction:row;justify-content:space-between}
+}
+
+
+/* ═══ ANIMATIONS ═══ */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+.typing-dots{display:inline-flex;gap:4px;padding:4px 0}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--text-30);animation:typingBounce 1.4s ease-in-out infinite}
+.typing-dots span:nth-child(2){animation-delay:0.2s}
+.typing-dots span:nth-child(3){animation-delay:0.4s}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE BAR -->
+<div class="announce">
+  <span>Free doctor consultation on your first visit</span>
+  <a href="#start">Start now →</a>
+</div>
+
+<!-- Gold strip behind nav (shows rounded corners) -->
+<div class="announce-bg"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo">arq<span class="dot">.</span></a>
+  <div class="nav-right">
+    <a href="/login" class="nav-link">Log in</a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- Compact hero header -->
+  <div class="hero-header">
+    <h1>Health, on your terms<span class="dot">.</span></h1>
+    <p>Doctor-guided protocols · delivered to your door</p>
+  </div>
+
+  <!-- CATEGORY GRID — fills the fold -->
+  <div class="cat-grid">
+    <a href="/protocols/weight" class="cat-card featured" data-cat="weight">
+      <div class="cat-card-bg"><img src="images/hero-weight.jpg" alt="Weight management" loading="eager"></div>
+      <div class="cat-card-content">
+        <span class="cat-card-label">Most popular</span>
+        <h3>Lose weight. Keep it off.</h3>
+        <span class="cat-card-sub">GLP-1 & Rx protocols →</span>
+      </div>
+    </a>
+    <a href="/protocols/hair" class="cat-card" data-cat="hair">
+      <div class="cat-card-bg"><img src="images/hero-hair.jpg" alt="Hair regrowth" loading="eager"></div>
+      <div class="cat-card-content">
+        <h3>Regrow your hair.</h3>
+        <span class="cat-card-sub">Finasteride & more →</span>
+      </div>
+    </a>
+    <a href="/protocols/skin" class="cat-card" data-cat="skin">
+      <div class="cat-card-bg"><img src="images/cat-skin.jpg" alt="Prescription skincare" loading="eager"></div>
+      <div class="cat-card-content">
+        <h3>Glow different.</h3>
+        <span class="cat-card-sub">Prescription skincare →</span>
+      </div>
+    </a>
+    <a href="/protocols/sexual-health" class="cat-card" data-cat="sexual">
+      <div class="cat-card-bg"><img src="images/cat-sexual.jpg" alt="Sexual health" loading="lazy"></div>
+      <div class="cat-card-content">
+        <h3>Have better sex.</h3>
+        <span class="cat-card-sub">Discreet & delivered →</span>
+      </div>
+    </a>
+    <a href="/protocols/pcos" class="cat-card" data-cat="pcos">
+      <div class="cat-card-bg"><img src="images/cat-pcos.jpg" alt="PCOS treatment" loading="lazy"></div>
+      <div class="cat-card-content">
+        <h3>Treat PCOS.</h3>
+        <span class="cat-card-sub">Hormonal protocols →</span>
+      </div>
+    </a>
+    <a href="/protocols/focus" class="cat-card" data-cat="focus">
+      <div class="cat-card-bg"><img src="images/cat-focus.jpg" alt="Focus & cognition" loading="lazy"></div>
+      <div class="cat-card-content">
+        <h3>Sharpen focus.</h3>
+        <span class="cat-card-sub">Cognitive protocols →</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- HOW IT WORKS — scrollable cards -->
+  <section class="how section-stack fade-up">
+    <div class="how-header">
+      <h2>How arq<span class="dot">.</span> works</h2>
+      <p>Three steps. That's it.</p>
+    </div>
+    <div class="how-track">
+      <div class="how-card">
+        <div class="how-card-num">01</div>
+        <div class="how-card-icon"><i class="ph-bold ph-chat-dots"></i></div>
+        <h3>Talk to us</h3>
+        <p>Tell our AI what's going on. It asks the right questions — privately, at your pace.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-card-num">02</div>
+        <div class="how-card-icon"><i class="ph-bold ph-stethoscope"></i></div>
+        <h3>Doctor reviews</h3>
+        <p>A licensed physician reviews your case and builds a personalised treatment plan.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-card-num">03</div>
+        <div class="how-card-icon"><i class="ph-bold ph-package"></i></div>
+        <h3>Delivered to you</h3>
+        <p>Prescription medications shipped discreetly to your door. Ongoing support included.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTORS — horizontal scroll cards -->
+  <section class="doctors section-stack fade-up">
+    <div class="doctors-header">
+      <h2>Real doctors<span class="dot">.</span></h2>
+      <p>Every protocol is created by licensed Indian physicians.</p>
+    </div>
+    <div class="doc-track">
+      <div class="doc-card">
+        <img class="doc-card-img" src="images/doc-priya-v2.jpg" alt="Dr. Priya" loading="lazy">
+        <div class="doc-card-info">
+          <div class="doc-card-name">Dr. Priya M.</div>
+          <div class="doc-card-spec">Dermatology</div>
+          <div class="doc-card-cred">AIIMS Delhi</div>
+        </div>
+      </div>
+      <div class="doc-card">
+        <img class="doc-card-img" src="images/doc-arjun-v2.jpg" alt="Dr. Arjun" loading="lazy">
+        <div class="doc-card-info">
+          <div class="doc-card-name">Dr. Arjun K.</div>
+          <div class="doc-card-spec">Endocrinology</div>
+          <div class="doc-card-cred">KEM Mumbai</div>
+        </div>
+      </div>
+      <div class="doc-card">
+        <img class="doc-card-img" src="images/doc-rohan-v2.jpg" alt="Dr. Rohan" loading="lazy">
+        <div class="doc-card-info">
+          <div class="doc-card-name">Dr. Rohan S.</div>
+          <div class="doc-card-spec">Internal Medicine</div>
+          <div class="doc-card-cred">CMC Vellore</div>
+        </div>
+      </div>
+      <div class="doc-card">
+        <img class="doc-card-img" src="images/doc-ananya-v2.jpg" alt="Dr. Ananya" loading="lazy">
+        <div class="doc-card-info">
+          <div class="doc-card-name">Dr. Ananya R.</div>
+          <div class="doc-card-spec">Gynaecology</div>
+          <div class="doc-card-cred">NIMHANS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF — swipeable carousel -->
+  <section class="proof section-stack fade-up">
+    <div class="proof-header">
+      <h2>People like you<span class="dot">.</span></h2>
+      <div class="proof-nav">
+        <button id="proofPrev" aria-label="Previous" disabled><i class="ph-bold ph-caret-left"></i></button>
+        <button id="proofNext" aria-label="Next"><i class="ph-bold ph-caret-right"></i></button>
+      </div>
+    </div>
+    <div class="proof-track" id="proofTrack">
+
+      <div class="proof-card" data-cat="hair">
+        <div class="proof-card-stat">
+          <div class="proof-card-stat-num">2 days</div>
+          <div class="proof-card-stat-label">to prescription</div>
+        </div>
+        <span class="proof-card-tag"><i class="ph-bold ph-plant"></i> Hair loss</span>
+        <div class="proof-card-quote">I was too embarrassed to talk to anyone. The AI made it so easy — prescription in hand in 2 days.</div>
+        <div class="proof-card-meta">
+          <div class="proof-card-avatar">V</div>
+          <div class="proof-card-info">
+            <span class="proof-card-name">Vikram</span>
+            <span class="proof-card-detail">29 · Bangalore</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-card" data-cat="pcos">
+        <div class="proof-card-stat">
+          <div class="proof-card-stat-num">6 mo</div>
+          <div class="proof-card-stat-label">regular cycles</div>
+        </div>
+        <span class="proof-card-tag"><i class="ph-bold ph-flower-lotus"></i> PCOS</span>
+        <div class="proof-card-quote">Finally someone who takes PCOS seriously and doesn't just say 'lose weight.' My doctor actually listened.</div>
+        <div class="proof-card-meta">
+          <div class="proof-card-avatar">M</div>
+          <div class="proof-card-info">
+            <span class="proof-card-name">Meera</span>
+            <span class="proof-card-detail">26 · Mumbai</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-card" data-cat="weight">
+        <div class="proof-card-stat">
+          <div class="proof-card-stat-num">–8 kg</div>
+          <div class="proof-card-stat-label">in 3 months</div>
+        </div>
+        <span class="proof-card-tag"><i class="ph-bold ph-scales"></i> Weight loss</span>
+        <div class="proof-card-quote">The protocol was simple and the regular check-ins kept me accountable. Nothing else worked like this.</div>
+        <div class="proof-card-meta">
+          <div class="proof-card-avatar">R</div>
+          <div class="proof-card-info">
+            <span class="proof-card-name">Rahul</span>
+            <span class="proof-card-detail">34 · Delhi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-card" data-cat="sexual">
+        <div class="proof-card-stat">
+          <div class="proof-card-stat-num">100%</div>
+          <div class="proof-card-stat-label">private process</div>
+        </div>
+        <span class="proof-card-tag"><i class="ph-bold ph-heart-half"></i> Sexual health</span>
+        <div class="proof-card-quote">Never had to say a word out loud. Typed my concern, got a real doctor's plan, meds at my door. Life-changing.</div>
+        <div class="proof-card-meta">
+          <div class="proof-card-avatar">A</div>
+          <div class="proof-card-info">
+            <span class="proof-card-name">Ankit</span>
+            <span class="proof-card-detail">31 · Hyderabad</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-card" data-cat="skin">
+        <div class="proof-card-stat">
+          <div class="proof-card-stat-num">8 wks</div>
+          <div class="proof-card-stat-label">clear skin</div>
+        </div>
+        <span class="proof-card-tag"><i class="ph-bold ph-drop-half-bottom"></i> Skin</span>
+        <div class="proof-card-quote">Tretinoin changed everything. My dermatologist at arq. built me a protocol that actually fit my skin type.</div>
+        <div class="proof-card-meta">
+          <div class="proof-card-avatar">P</div>
+          <div class="proof-card-info">
+            <span class="proof-card-name">Priyanka</span>
+            <span class="proof-card-detail">27 · Pune</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="proof-dots" id="proofDots">
+      <span class="proof-dot active"></span>
+      <span class="proof-dot"></span>
+      <span class="proof-dot"></span>
+      <span class="proof-dot"></span>
+      <span class="proof-dot"></span>
+    </div>
+  </section>
+
+
+</main>
+
+<!-- AI BOTTOM BAR — always visible on mobile -->
+<div class="ai-bar" id="aiBar">
+  <div class="ai-bar-chips">
+    <button class="ai-chip" data-cat="hair" data-prompt="I'm losing my hair and want to do something about it"><i class="ph-bold ph-plant"></i> Hair loss</button>
+    <button class="ai-chip" data-cat="weight" data-prompt="I want to lose weight but nothing seems to work"><i class="ph-bold ph-scales"></i> Weight</button>
+    <button class="ai-chip" data-cat="skin" data-prompt="I want better skin — acne, pigmentation, or anti-aging"><i class="ph-bold ph-drop-half-bottom"></i> Skin</button>
+    <button class="ai-chip" data-cat="sexual" data-prompt="I have concerns about my sexual health"><i class="ph-bold ph-heart-half"></i> Sexual health</button>
+    <button class="ai-chip" data-cat="pcos" data-prompt="I think I might have PCOS or hormonal issues"><i class="ph-bold ph-flower-lotus"></i> PCOS</button>
+    <button class="ai-chip" data-cat="focus" data-prompt="I can't focus and want to improve my concentration"><i class="ph-bold ph-lightning"></i> Focus</button>
+  </div>
+  <div class="ai-bar-input">
+    <textarea id="aiInput" placeholder="What's going on? Tell us anything..." rows="1"></textarea>
+    <button class="ai-bar-send" id="aiSend" aria-label="Send"><i class="ph-bold ph-arrow-up" style="font-size:16px"></i></button>
+  </div>
+  <div class="ai-bar-trust">
+    <span><i class="ph-fill ph-shield-check"></i>100% private</span>
+    <span><i class="ph-fill ph-lock-simple"></i>Encrypted</span>
+    <span><i class="ph-fill ph-user-circle"></i>Doctor reviewed</span>
+  </div>
+</div>
+
+<!-- Backdrop dim -->
+<div class="ai-backdrop" id="aiBackdrop"></div>
+
+<!-- AI CHAT OVERLAY — bottom sheet -->
+<div class="ai-overlay" id="aiOverlay">
+  <div class="ai-overlay-handle"></div>
+  <div class="ai-overlay-header">
+    <span class="ai-overlay-title">arq<span class="dot">.</span> assistant</span>
+    <div class="ai-overlay-actions">
+      <button class="ai-overlay-minimize" id="aiMinimize" aria-label="Minimize"><i class="ph-bold ph-minus"></i></button>
+      <button class="ai-overlay-close" id="aiClose" aria-label="Close"><i class="ph-bold ph-x"></i></button>
+    </div>
+  </div>
+  <div class="ai-overlay-msgs" id="aiMsgs"></div>
+  <div class="ai-overlay-input">
+    <div class="ai-overlay-input-inner">
+      <textarea id="chatInput" placeholder="Type a message..." rows="1"></textarea>
+      <button class="ai-bar-send" id="chatSend" aria-label="Send"><i class="ph-bold ph-arrow-up" style="font-size:16px"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">arq<span class="dot">.</span></div>
+      <p class="footer-tagline">Doctor-guided health protocols for hair, weight, skin, sexual health & more. Delivered discreetly across India.</p>
+    </div>
+    <div class="footer-links">
+      <a href="/about">About</a>
+      <a href="/protocols">All protocols</a>
+      <a href="/doctors">Our doctors</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/faq">FAQ</a>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy">Privacy policy</a>
+      <a href="/terms">Terms of service</a>
+      <a href="/contact">Contact us</a>
+      <a href="mailto:hello@arq.clinic">hello@arq.clinic</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 arq. clinic · All rights reserved</span>
+    <span>Licensed medical practice · Rx only</span>
+  </div>
+</footer>
+
+<script>
+/* ═══ arq. v9.1 — AI Bottom Bar + Chat Overlay ═══ */
+
+const aiInput = document.getElementById('aiInput');
+const aiSend = document.getElementById('aiSend');
+const chatInput = document.getElementById('chatInput');
+const chatSend = document.getElementById('chatSend');
+const aiOverlay = document.getElementById('aiOverlay');
+const aiMsgs = document.getElementById('aiMsgs');
+const aiClose = document.getElementById('aiClose');
+const aiMinimize = document.getElementById('aiMinimize');
+const aiBackdrop = document.getElementById('aiBackdrop');
+const aiBar = document.getElementById('aiBar');
+
+// Auto-resize textareas
+[aiInput, chatInput].forEach(ta => {
+  ta.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+    const sendBtn = this === aiInput ? aiSend : chatSend;
+    sendBtn.classList.toggle('active', this.value.trim().length > 0);
+  });
+});
+
+// Chip click
+document.querySelectorAll('.ai-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    const prompt = chip.dataset.prompt;
+    openChat(prompt);
+  });
+});
+
+// Send from bottom bar
+aiSend.addEventListener('click', () => {
+  const msg = aiInput.value.trim();
+  if (msg) openChat(msg);
+});
+aiInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    const msg = aiInput.value.trim();
+    if (msg) openChat(msg);
+  }
+});
+
+// Send from overlay
+chatSend.addEventListener('click', () => {
+  const msg = chatInput.value.trim();
+  if (msg) sendInChat(msg);
+});
+chatInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    const msg = chatInput.value.trim();
+    if (msg) sendInChat(msg);
+  }
+});
+
+// Close & minimize
+aiClose.addEventListener('click', closeChat);
+aiMinimize.addEventListener('click', minimizeChat);
+aiBackdrop.addEventListener('click', minimizeChat);
+
+function openChat(msg) {
+  aiMsgs.innerHTML = '';
+  aiOverlay.classList.add('open');
+  aiBackdrop.classList.add('show');
+  aiBar.style.transform = 'translateY(100%)';
+  aiInput.value = '';
+  aiInput.style.height = 'auto';
+  aiSend.classList.remove('active');
+  addMsg(msg, 'user');
+  respondToMsg(msg);
+  setTimeout(() => chatInput.focus(), 400);
+}
+
+function minimizeChat() {
+  // Collapse overlay back down, show bottom bar with a "resume" indicator
+  aiOverlay.classList.remove('open');
+  aiBackdrop.classList.remove('show');
+  aiBar.style.transform = '';
+  // Show a resume badge on the bottom bar
+  showResumeBadge();
+}
+
+function closeChat() {
+  aiOverlay.classList.remove('open');
+  aiBackdrop.classList.remove('show');
+  aiBar.style.transform = '';
+  hideResumeBadge();
+}
+
+function showResumeBadge() {
+  if (!document.getElementById('resumeBadge')) {
+    const badge = document.createElement('button');
+    badge.id = 'resumeBadge';
+    badge.innerHTML = '<i class="ph-bold ph-chat-dots" style="font-size:14px;margin-right:5px"></i> Continue chat';
+    badge.style.cssText = 'display:flex;align-items:center;padding:8px 16px;border-radius:50px;border:1.5px solid var(--gold-border);background:var(--gold-glow);font-family:var(--sans);font-size:12px;font-weight:600;color:var(--gold);cursor:pointer;margin:0 auto 8px;transition:all 0.2s';
+    badge.addEventListener('click', () => {
+      aiOverlay.classList.add('open');
+      aiBackdrop.classList.add('show');
+      aiBar.style.transform = 'translateY(100%)';
+      badge.remove();
+      setTimeout(() => chatInput.focus(), 400);
+    });
+    aiBar.insertBefore(badge, aiBar.firstChild);
+  }
+}
+
+function hideResumeBadge() {
+  const badge = document.getElementById('resumeBadge');
+  if (badge) badge.remove();
+}
+
+function sendInChat(msg) {
+  chatInput.value = '';
+  chatInput.style.height = 'auto';
+  chatSend.classList.remove('active');
+  addMsg(msg, 'user');
+  // Simple follow-up for demo
+  setTimeout(() => {
+    const t = addTyping();
+    setTimeout(() => {
+      t.remove();
+      addMsg("I understand. Let me pass this along to your doctor so they have the full picture. Anything else you'd like to add?", 'bot');
+    }, 1500);
+  }, 400);
+}
+
+// Chat responses by category
+const chatResponses = {
+  hair: {
+    reply: "I hear you — hair loss can feel really frustrating. Let me ask a couple of quick questions so I can point you in the right direction.",
+    followUp: "How long have you been noticing hair loss?",
+    options: ["Less than 6 months", "6-12 months", "Over a year", "Not sure"]
+  },
+  weight: {
+    reply: "You're not alone — and the good news is, there are clinically proven options now. Let me understand your situation better.",
+    followUp: "Have you tried any weight loss programs or medications before?",
+    options: ["Diet & exercise", "Medications", "This is new for me", "Rather not say"]
+  },
+  skin: {
+    reply: "Great that you're taking your skin seriously. The right prescription can make a huge difference.",
+    followUp: "What's your main skin concern?",
+    options: ["Acne", "Pigmentation", "Anti-aging", "General glow-up"]
+  },
+  sexual: {
+    reply: "Totally understand — this is one of the most common things people come to us about. Everything here is completely private.",
+    followUp: "What's the main concern?",
+    options: ["Erectile issues", "Low libido", "Premature concerns", "Prefer to explain"]
+  },
+  pcos: {
+    reply: "PCOS is still so poorly understood in mainstream healthcare. We take it seriously. Let me understand what you're experiencing.",
+    followUp: "Which symptoms bother you most?",
+    options: ["Irregular periods", "Weight gain", "Acne & hair growth", "Fertility"]
+  },
+  focus: {
+    reply: "Brain fog is more common than people think — and there are real solutions beyond 'trying harder.'",
+    followUp: "When do you notice focus issues most?",
+    options: ["Work / studying", "All day", "Afternoon slump", "Comes and goes"]
+  },
+  default: {
+    reply: "Thanks for sharing. Let me ask a couple of questions to understand your situation.",
+    followUp: "Which area is closest to what you're dealing with?",
+    options: ["Hair loss", "Weight", "Skin", "Sexual health", "PCOS", "Focus"]
+  }
+};
+
+function detectCategory(msg) {
+  const m = msg.toLowerCase();
+  if (/hair|bald|thin|receding|finasteride|minoxidil/i.test(m)) return 'hair';
+  if (/weight|fat|lose|diet|glp|ozempic|eating|kg|slim/i.test(m)) return 'weight';
+  if (/skin|acne|glow|pigment|wrinkle|tretinoin|dark spot/i.test(m)) return 'skin';
+  if (/sex|erect|ed |libido|premature|viagra|performance/i.test(m)) return 'sexual';
+  if (/pcos|hormone|period|ovary|fertility/i.test(m)) return 'pcos';
+  if (/focus|concentrat|brain fog|adhd|modafinil|cognitive/i.test(m)) return 'focus';
+  return 'default';
+}
+
+function respondToMsg(msg) {
+  const cat = detectCategory(msg);
+  const resp = chatResponses[cat];
+  setTimeout(() => {
+    const t = addTyping();
+    setTimeout(() => {
+      t.remove();
+      addMsg(resp.reply, 'bot');
+      setTimeout(() => {
+        const t2 = addTyping();
+        setTimeout(() => {
+          t2.remove();
+          addMsgWithOptions(resp.followUp, resp.options);
+        }, 1000);
+      }, 500);
+    }, 1200);
+  }, 400);
+}
+
+function addMsg(text, type) {
+  const div = document.createElement('div');
+  div.className = 'ai-msg ai-msg-' + type;
+  if (type === 'bot') {
+    div.innerHTML = '<div class="bot-label">arq. assistant</div>' + text;
+  } else {
+    div.textContent = text;
+  }
+  aiMsgs.appendChild(div);
+  aiMsgs.scrollTop = aiMsgs.scrollHeight;
+  return div;
+}
+
+function addMsgWithOptions(text, options) {
+  const div = document.createElement('div');
+  div.className = 'ai-msg ai-msg-bot';
+  let html = '<div class="bot-label">arq. assistant</div>' + text + '<div class="ai-replies">';
+  options.forEach(opt => {
+    html += '<button class="ai-reply-btn">' + opt + '</button>';
+  });
+  html += '</div>';
+  div.innerHTML = html;
+  aiMsgs.appendChild(div);
+  aiMsgs.scrollTop = aiMsgs.scrollHeight;
+  // Bind reply buttons
+  div.querySelectorAll('.ai-reply-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      handleReply(this);
+    });
+  });
+}
+
+function addTyping() {
+  const div = document.createElement('div');
+  div.className = 'ai-msg ai-msg-bot';
+  div.innerHTML = '<div class="bot-label">arq. assistant</div><div class="typing-dots"><span></span><span></span><span></span></div>';
+  aiMsgs.appendChild(div);
+  aiMsgs.scrollTop = aiMsgs.scrollHeight;
+  return div;
+}
+
+function handleReply(btn) {
+  const text = btn.textContent;
+  btn.closest('.ai-replies').querySelectorAll('.ai-reply-btn').forEach(b => {
+    b.disabled = true;
+    b.style.opacity = b === btn ? '1' : '0.3';
+  });
+  btn.style.borderColor = 'var(--gold)';
+  btn.style.background = 'var(--gold-glow)';
+  addMsg(text, 'user');
+  setTimeout(() => {
+    const t = addTyping();
+    setTimeout(() => {
+      t.remove();
+      const div = document.createElement('div');
+      div.className = 'ai-msg ai-msg-bot';
+      div.innerHTML = '<div class="bot-label">arq. assistant</div>Thanks for sharing that. Based on what you\'ve told me, I think we can really help.<br><br><strong>A doctor will review your case</strong> within 24 hours and create a personalised treatment plan.<br><br><a href="/signup" style="display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:14px;background:var(--dark);color:var(--bg);font-size:13px;font-weight:600;margin-top:2px">Continue to your plan <i class="ph-bold ph-arrow-right"></i></a>';
+      aiMsgs.appendChild(div);
+      aiMsgs.scrollTop = aiMsgs.scrollHeight;
+    }, 1500);
+  }, 400);
+}
+
+// Lazy load images
+document.querySelectorAll('.cat-card-bg img, .doc-card img').forEach(img => {
+  if (img.complete) { img.classList.add('loaded'); return; }
+  img.addEventListener('load', () => img.classList.add('loaded'));
+  img.addEventListener('error', () => img.style.display = 'none');
+});
+
+// Scroll animations
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+  document.querySelectorAll('.fade-up').forEach(el => {
+    ScrollTrigger.create({
+      trigger: el, start: 'top 90%',
+      onEnter: () => el.classList.add('visible'), once: true
+    });
+  });
+}
+
+// ─── Proof carousel ───
+const proofTrack = document.getElementById('proofTrack');
+const proofPrev = document.getElementById('proofPrev');
+const proofNext = document.getElementById('proofNext');
+const proofDots = document.querySelectorAll('.proof-dot');
+let currentProof = 0;
+const proofCards = proofTrack.querySelectorAll('.proof-card');
+
+function scrollToProof(i) {
+  currentProof = Math.max(0, Math.min(i, proofCards.length - 1));
+  proofCards[currentProof].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+  updateProofUI();
+}
+function updateProofUI() {
+  proofPrev.disabled = currentProof === 0;
+  proofNext.disabled = currentProof >= proofCards.length - 1;
+  proofDots.forEach((d, i) => d.classList.toggle('active', i === currentProof));
+}
+proofPrev.addEventListener('click', () => scrollToProof(currentProof - 1));
+proofNext.addEventListener('click', () => scrollToProof(currentProof + 1));
+// Sync dots on manual scroll
+proofTrack.addEventListener('scroll', () => {
+  const scrollLeft = proofTrack.scrollLeft;
+  const cardWidth = proofCards[0].offsetWidth + 14;
+  const idx = Math.round(scrollLeft / cardWidth);
+  if (idx !== currentProof) { currentProof = idx; updateProofUI(); }
+}, { passive: true });
+</script>
+
+</body>
+</html>

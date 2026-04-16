@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arq.clinic — India's Biohacker Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@200;300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --void:#060608;
+  --surface:#0d0d10;
+  --card:#141418;
+  --border:rgba(255,255,255,0.06);
+  --border-hi:rgba(255,255,255,0.14);
+  --white:#ede9e0;
+  --dim:rgba(237,233,224,0.42);
+  --ghost:rgba(237,233,224,0.1);
+  --gold:#c49a3c;
+  --gold-d:rgba(196,154,60,0.22);
+  --gold-g:rgba(196,154,60,0.06);
+  --gold-b:#d4aa4c;
+  --green:#2a7a4a;
+  --green-d:rgba(42,122,74,0.2);
+  --blue:#2a4a8a;
+  --blue-d:rgba(42,74,138,0.2);
+  --purple:#5a3a8a;
+  --purple-d:rgba(90,58,138,0.2);
+  --red:#8a2a3a;
+  --red-d:rgba(138,42,58,0.2);
+  --teal:#2a6a7a;
+  --teal-d:rgba(42,106,122,0.2);
+}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,6,8,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Libre Baskerville',serif;font-size:19px;letter-spacing:0.05em;color:var(--white);text-decoration:none;display:flex;align-items:center}
+.logo-dot{color:var(--gold)}
+.nav-badge{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-d);padding:3px 8px;display:none}
+@media(min-width:580px){.nav-badge{display:block}}
+.nav-wa{display:flex;align-items:center;gap:6px;background:var(--gold);color:var(--void);padding:8px 16px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;font-weight:400}
+.nav-wa:hover{background:var(--gold-b);transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100svh;padding:56px 20px 0;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(196,154,60,0.07) 0%,transparent 65%);top:-100px;right:-150px;pointer-events:none;animation:breathe 8s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+.hero-inner{padding:60px 0 48px;position:relative;z-index:1;animation:lift 0.9s ease both}
+@keyframes lift{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-kicker{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.k-line{width:28px;height:1px;background:var(--gold)}
+.k-text{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold)}
+.hero-h1{font-family:'Libre Baskerville',serif;font-size:clamp(40px,11vw,76px);line-height:1.0;letter-spacing:-0.02em;margin-bottom:6px}
+.hero-h1 .it{font-style:italic;color:var(--gold)}
+.hero-h2{font-family:'Libre Baskerville',serif;font-size:clamp(16px,4vw,28px);color:var(--dim);font-weight:400;font-style:italic;margin-bottom:28px;letter-spacing:-0.01em}
+.hero-rule{width:100%;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:24px;opacity:0.35}
+.hero-sub{font-size:13px;line-height:1.85;color:var(--dim);max-width:400px;margin-bottom:36px;letter-spacing:0.02em}
+.hero-sub strong{color:var(--white);font-weight:400}
+.hero-btns{display:flex;flex-direction:column;gap:10px;margin-bottom:48px}
+@media(min-width:560px){.hero-btns{flex-direction:row}}
+.btn-primary{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:var(--void);padding:17px 28px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;font-weight:400;transition:all 0.25s;width:100%}
+.btn-primary:hover{background:var(--gold-b);transform:translateY(-2px)}
+.btn-secondary{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--border-hi);color:var(--dim);padding:15px 28px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;width:100%}
+.btn-secondary:hover{border-color:var(--gold-d);color:var(--gold)}
+@media(min-width:560px){.btn-primary,.btn-secondary{width:auto;flex:1}}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);padding-top:24px;animation:lift 0.9s 0.2s ease both}
+.stat{padding-right:12px;border-right:1px solid var(--border);margin-right:12px}
+.stat:last-child{border:none;margin:0;padding:0}
+.stat-n{font-family:'Libre Baskerville',serif;font-size:22px;color:var(--white);line-height:1;margin-bottom:3px}
+.stat-l{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ghost)}
+
+/* TICKER */
+.ticker{overflow:hidden;padding:12px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface)}
+.ticker-t{display:flex;white-space:nowrap;animation:tick 30s linear infinite}
+.ticker-i{display:flex;align-items:center;gap:32px;flex-shrink:0;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ghost);padding-right:32px}
+.tdot{width:3px;height:3px;border-radius:50%;background:var(--gold);flex-shrink:0}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION BASICS */
+.sec-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.sec-title{font-family:'Libre Baskerville',serif;font-size:clamp(26px,6vw,40px);font-weight:400;line-height:1.1}
+.sec-title em{font-style:italic;color:var(--gold)}
+
+/* MANIFESTO */
+.manifesto{padding:72px 20px;background:var(--surface);border-bottom:1px solid var(--border)}
+.manifesto-body{margin-top:28px}
+.manifesto-p{font-family:'Libre Baskerville',serif;font-size:clamp(17px,4vw,22px);font-weight:400;line-height:1.7;color:var(--dim);margin-bottom:20px}
+.manifesto-p em{font-style:italic;color:var(--white)}
+.manifesto-p strong{color:var(--gold);font-weight:400}
+
+/* PROTOCOLS - accordion */
+.protocols{padding:0 0 72px}
+.proto-block{border-bottom:1px solid var(--border)}
+.proto-header{padding:28px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;cursor:pointer;transition:background 0.2s;user-select:none}
+.proto-header:hover{background:var(--surface)}
+.proto-cat{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap;flex-shrink:0}
+.c-cognition{background:var(--blue-d);color:#90b0f0;border:1px solid rgba(42,74,138,0.4)}
+.c-perform{background:var(--green-d);color:#70c490;border:1px solid rgba(42,122,74,0.4)}
+.c-longevity{background:var(--purple-d);color:#c090f0;border:1px solid rgba(90,58,138,0.4)}
+.c-peptides{background:var(--teal-d);color:#70c4d4;border:1px solid rgba(42,106,122,0.4)}
+.c-body{background:var(--red-d);color:#f09090;border:1px solid rgba(138,42,58,0.4)}
+.c-protect{background:rgba(100,80,40,0.2);color:#d4b470;border:1px solid rgba(100,80,40,0.4)}
+.c-everyday{background:rgba(60,60,60,0.2);color:#a0a0a0;border:1px solid rgba(60,60,60,0.4)}
+.proto-name{font-family:'Libre Baskerville',serif;font-size:clamp(20px,5vw,30px);font-weight:400;line-height:1.1;color:var(--white)}
+.proto-name em{font-style:italic;color:var(--gold)}
+.proto-toggle{color:var(--ghost);font-size:20px;transition:transform 0.3s,color 0.2s;flex-shrink:0;font-weight:200}
+.proto-block.open .proto-toggle{transform:rotate(45deg);color:var(--gold)}
+.proto-products{display:none;background:var(--surface);border-top:1px solid var(--border)}
+.proto-block.open .proto-products{display:block}
+
+/* PRODUCT ROWS */
+.prow{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:18px 20px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s;text-decoration:none;color:inherit;position:relative;overflow:hidden}
+.prow::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--gold);transition:width 0.2s}
+.prow:hover{background:var(--card)}
+.prow:hover::before{width:2px}
+.prow:last-of-type{border-bottom:none}
+.prow-left{}
+.prow-nameline{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap}
+.prow-name{font-family:'Libre Baskerville',serif;font-size:19px;font-weight:400;color:var(--white);line-height:1}
+.tag{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:0.1em;text-transform:uppercase;padding:2px 6px;border-radius:2px}
+.t-rx{background:var(--gold-g);color:var(--gold);border:1px solid var(--gold-d)}
+.t-hot{background:rgba(180,60,40,0.15);color:#e09070;border:1px solid rgba(180,60,40,0.3)}
+.t-new{background:var(--green-d);color:#80d4a0;border:1px solid rgba(42,122,74,0.3)}
+.t-bio{background:var(--teal-d);color:#80d4e0;border:1px solid rgba(42,106,122,0.3)}
+.t-peptide{background:var(--purple-d);color:#d0a0f0;border:1px solid rgba(90,58,138,0.3)}
+.t-grey{background:rgba(80,80,80,0.15);color:#a0a0b0;border:1px solid rgba(80,80,80,0.3)}
+.prow-desc{font-size:11px;color:var(--dim);line-height:1.55;letter-spacing:0.01em}
+.prow-right{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0}
+.prow-price{font-family:'Libre Baskerville',serif;font-size:17px;color:var(--white);line-height:1}
+.prow-unit{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:0.1em;color:var(--ghost)}
+.prow-arr{margin-top:6px;color:var(--ghost);font-size:13px;transition:transform 0.2s,color 0.2s}
+.prow:hover .prow-arr{transform:translateX(4px);color:var(--gold)}
+.proto-footer{padding:16px 20px;display:flex;justify-content:flex-end}
+.proto-wa{display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:gap 0.2s}
+.proto-wa:hover{gap:11px}
+
+/* HOW */
+.how{padding:72px 20px;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.steps{margin-top:32px;display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:600px){.steps{grid-template-columns:1fr 1fr}}
+.step{display:grid;grid-template-columns:36px 1fr;gap:18px;align-items:start;padding:22px 0;border-bottom:1px solid var(--border)}
+.step:last-child{border:none}
+.step-n{font-family:'Libre Baskerville',serif;font-size:34px;color:var(--gold-d);line-height:1;margin-top:-3px}
+.step-title{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:400;color:var(--white);margin-bottom:5px}
+.step-desc{font-size:12px;color:var(--dim);line-height:1.7}
+.step-t{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold)}
+.step-t::before{content:'';display:block;width:10px;height:1px;background:var(--gold)}
+
+/* PROMISE */
+.promise{padding:72px 20px}
+.promise-grid{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+@media(min-width:600px){.promise-grid{grid-template-columns:repeat(4,1fr)}}
+.promise-card{background:var(--void);padding:24px 18px;transition:background 0.2s}
+.promise-card:hover{background:var(--surface)}
+.promise-icon{font-size:19px;margin-bottom:11px;display:block}
+.promise-name{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:400;color:var(--white);margin-bottom:6px}
+.promise-text{font-size:11px;color:var(--dim);line-height:1.7}
+
+/* REVIEWS */
+.reviews{padding:72px 20px;background:var(--surface);border-top:1px solid var(--border)}
+.reviews-grid{margin-top:28px;display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:600px){.reviews-grid{grid-template-columns:1fr 1fr}}
+.review{padding:22px 18px;border:1px solid var(--border);background:var(--void);transition:border-color 0.2s;position:relative}
+.review:hover{border-color:var(--gold-d)}
+.rv-stars{font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:9px}
+.rv-text{font-family:'Libre Baskerville',serif;font-size:16px;font-style:italic;color:var(--white);line-height:1.55;margin-bottom:13px}
+.rv-meta{display:flex;align-items:center;gap:9px}
+.rv-av{width:28px;height:28px;border-radius:50%;background:var(--gold-g);border:1px solid var(--gold-d);display:flex;align-items:center;justify-content:center;font-family:'Libre Baskerville',serif;font-size:12px;color:var(--gold);flex-shrink:0}
+.rv-who{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--dim)}
+.rv-prod{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:0.08em;color:var(--ghost);margin-top:2px}
+.rv-badge{position:absolute;top:18px;right:18px;font-family:'DM Mono',monospace;font-size:6px;letter-spacing:0.1em;text-transform:uppercase;padding:2px 6px;background:var(--gold-g);color:var(--gold);border:1px solid var(--gold-d)}
+
+/* DISCREET */
+.discreet{padding:72px 20px;border-top:1px solid var(--border)}
+.discreet-box{border:1px solid var(--border);padding:32px 22px;position:relative;overflow:hidden}
+.discreet-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.discreet-title{font-family:'Libre Baskerville',serif;font-size:clamp(24px,5vw,36px);font-weight:400;line-height:1.1;margin-bottom:22px}
+.discreet-title em{font-style:italic;color:var(--gold)}
+.discreet-list{display:flex;flex-direction:column;gap:13px;margin-bottom:26px}
+.ditem{display:flex;gap:12px;align-items:flex-start}
+.ddot{width:13px;height:13px;border-radius:50%;border:1px solid var(--gold-d);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ddot::after{content:'';width:4px;height:4px;border-radius:50%;background:var(--gold)}
+.dtext{font-size:12px;color:var(--dim);line-height:1.65}
+.dtext strong{color:var(--white);font-weight:400}
+
+/* FINAL */
+.final{padding:80px 20px;background:var(--void);border-top:1px solid var(--border);text-align:center;position:relative;overflow:hidden}
+.final-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 50% 100%,rgba(196,154,60,0.06) 0%,transparent 60%)}
+.final-wm{position:absolute;font-family:'Libre Baskerville',serif;font-size:clamp(80px,28vw,180px);color:rgba(196,154,60,0.025);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;font-style:italic;letter-spacing:0.05em}
+.final-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.final-title{font-family:'Libre Baskerville',serif;font-size:clamp(30px,8vw,56px);font-weight:400;line-height:1.05;margin-bottom:12px}
+.final-title em{font-style:italic;color:var(--gold)}
+.final-sub{font-size:12px;color:var(--dim);line-height:1.85;max-width:280px;margin:0 auto 32px}
+.final-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:var(--void);padding:18px 32px;width:100%;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;font-weight:400;transition:all 0.25s;margin-bottom:12px}
+.final-btn:hover{background:var(--gold-b);transform:translateY(-2px)}
+.final-fine{font-family:'DM Mono',monospace;font-size:7px;color:rgba(237,233,224,0.12);letter-spacing:0.08em;line-height:2}
+
+/* FOOTER */
+footer{padding:36px 20px 28px;background:var(--surface);border-top:1px solid var(--border)}
+.footer-logo{font-family:'Libre Baskerville',serif;font-size:19px;color:var(--white);margin-bottom:4px}
+.footer-logo span{color:var(--gold)}
+.footer-tag{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ghost);margin-bottom:24px}
+.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:5px 18px;margin-bottom:24px}
+.fl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ghost);text-decoration:none;padding:3px 0;transition:color 0.2s}
+.fl:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:18px;font-family:'DM Mono',monospace;font-size:7px;color:rgba(237,233,224,0.08);letter-spacing:0.06em;line-height:2}
+
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);z-index:500;align-items:flex-end}
+.overlay.open{display:flex}
+.modal{background:var(--surface);width:100%;border-radius:16px 16px 0 0;border:1px solid var(--border);border-bottom:none;padding:10px 20px 36px;max-height:90svh;overflow-y:auto;animation:slideUp 0.28s ease}
+@keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-handle{width:30px;height:3px;background:var(--border-hi);border-radius:2px;margin:0 auto 22px}
+.modal-title{font-family:'Libre Baskerville',serif;font-size:24px;font-weight:400;color:var(--white);margin-bottom:5px}
+.modal-sub{font-size:12px;color:var(--dim);margin-bottom:20px;line-height:1.6}
+.modal-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
+@media(min-width:480px){.opts{grid-template-columns:repeat(3,1fr)}}
+.opt{padding:16px 10px;border:1px solid var(--border);background:var(--void);cursor:pointer;text-align:left;transition:all 0.18s;display:flex;flex-direction:column;gap:5px}
+.opt:hover,.opt.on{border-color:var(--gold-d);background:var(--gold-g)}
+.opt-icon{font-size:17px}
+.opt-name{font-family:'Libre Baskerville',serif;font-size:15px;color:var(--white);line-height:1}
+.opt-sub{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ghost)}
+.modal-btn{width:100%;background:var(--gold);color:var(--void);border:none;padding:17px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;margin-bottom:9px;transition:opacity 0.2s;font-weight:400}
+.modal-btn:hover{opacity:0.87}
+.modal-priv{font-family:'DM Mono',monospace;font-size:7px;color:var(--ghost);text-align:center;letter-spacing:0.06em;line-height:1.85}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">arq<span class="logo-dot">.</span>clinic</a>
+  <div class="nav-badge">India's Biohacker Clinic</div>
+  <a href="#" class="nav-wa" onclick="openModal(event)">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Get started
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-kicker">
+      <div class="k-line"></div>
+      <div class="k-text">India's first biohacker clinic</div>
+    </div>
+    <h1 class="hero-h1">arq<span class="it">.</span>clinic</h1>
+    <p class="hero-h2">The prescription for people<br>who've already decided.</p>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">
+      <strong>Peptides. Modafinil. TRT. Semaglutide. THC.</strong> Everything the biohacking community wants — legally prescribed, doctor supervised, delivered to your door in 48 hours. All in WhatsApp.
+    </p>
+    <div class="hero-btns">
+      <a href="#" class="btn-primary" onclick="openModal(event)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Start on WhatsApp
+      </a>
+      <a href="#protocols" class="btn-secondary">Browse protocols →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">25+</div><div class="stat-l">Treatments</div></div>
+      <div class="stat"><div class="stat-n">2hr</div><div class="stat-l">Doctor call</div></div>
+      <div class="stat"><div class="stat-n">48hr</div><div class="stat-l">Delivery</div></div>
+      <div class="stat"><div class="stat-n">₹0</div><div class="stat-l">Consultation</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-t">
+    <div class="ticker-i">Peptides <div class="tdot"></div> Modafinil <div class="tdot"></div> Armodafinil <div class="tdot"></div> TRT <div class="tdot"></div> Semaglutide <div class="tdot"></div> BPC-157 <div class="tdot"></div> Sermorelin <div class="tdot"></div> THC:CBD <div class="tdot"></div> NAD+ <div class="tdot"></div> Sildenafil <div class="tdot"></div> Finasteride <div class="tdot"></div> Tretinoin <div class="tdot"></div> 100% Legal <div class="tdot"></div> WhatsApp Native <div class="tdot"></div> 48hr Delivery <div class="tdot"></div></div>
+    <div class="ticker-i">Peptides <div class="tdot"></div> Modafinil <div class="tdot"></div> Armodafinil <div class="tdot"></div> TRT <div class="tdot"></div> Semaglutide <div class="tdot"></div> BPC-157 <div class="tdot"></div> Sermorelin <div class="tdot"></div> THC:CBD <div class="tdot"></div> NAD+ <div class="tdot"></div> Sildenafil <div class="tdot"></div> Finasteride <div class="tdot"></div> Tretinoin <div class="tdot"></div> 100% Legal <div class="tdot"></div> WhatsApp Native <div class="tdot"></div> 48hr Delivery <div class="tdot"></div></div>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="sec-label">Why Arq exists</div>
+  <div class="manifesto-body">
+    <p class="manifesto-p">You've read Peter Attia. You track HRV on your WHOOP. You know the difference between sermorelin and CJC-1295. You've been sourcing modafinil from <em>somewhere</em> — and you know it's not ideal.</p>
+    <p class="manifesto-p">India has <strong>no clinic built for you.</strong> Man Matters is for men who don't know what finasteride is. Apollo is for people who need a GP. Nobody has built the biohacker's clinic — the place where you get what you've already researched, prescribed properly, delivered discreetly.</p>
+    <p class="manifesto-p">That's <strong>arq.clinic.</strong> Every protocol, every peptide, every prescription — legal, supervised, in WhatsApp. No waiting rooms. No explaining yourself.</p>
+  </div>
+</section>
+
+<!-- PROTOCOLS -->
+<section class="protocols" id="protocols">
+
+  <!-- COGNITION -->
+  <div class="proto-block open" id="b-cognition">
+    <div class="proto-header" onclick="toggle('cognition')">
+      <div class="proto-cat c-cognition">Cognition</div>
+      <div class="proto-name">Think <em>sharper.</em></div>
+      <div class="proto-toggle">+</div>
+    </div>
+    <div class="proto-products">
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Modafinil</span><span class="tag t-rx">Rx</span><span class="tag t-hot">Most wanted</span></div>
+          <div class="prow-desc">200mg. 12hr focus. The IIT/IIM crowd's open secret. Schedule H — legally prescribed in 5 minutes.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹1,299</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Armodafinil</span><span class="tag t-rx">Rx</span><span class="tag t-bio">Biohacker pick</span></div>
+          <div class="prow-desc">150mg. Cleaner than modafinil. Longer half-life. Less crash. The upgraded version.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹1,499</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">NAD+ Oral</span><span class="tag t-rx">Rx</span><span class="tag t-bio">Longevity</span></div>
+          <div class="prow-desc">NMN/NR precursors. Cellular energy, DNA repair, cognitive function. The Sinclair protocol, delivered.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹2,999</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <div class="proto-footer"><a href="#" class="proto-wa" onclick="openModal(event)">Start this protocol →</a></div>
+    </div>
+  </div>
+
+  <!-- PERFORM -->
+  <div class="proto-block" id="b-perform">
+    <div class="proto-header" onclick="toggle('perform')">
+      <div class="proto-cat c-perform">Performance</div>
+      <div class="proto-name">Perform <em>better.</em></div>
+      <div class="proto-toggle">+</div>
+    </div>
+    <div class="proto-products">
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Sildenafil</span><span class="tag t-rx">Rx</span></div>
+          <div class="prow-desc">50–100mg. Works in 30 min. Lasts 4–6 hours. No awkward chemist. Doctor calls within 2 hours.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹799</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Tadalafil</span><span class="tag t-rx">Rx</span></div>
+          <div class="prow-desc">36-hour window. 5mg daily or 20mg on-demand. Fits your life, not the other way.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹999</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">PT-141</span><span class="tag t-rx">Rx</span><span class="tag t-peptide">Peptide</span></div>
+          <div class="prow-desc">Bremelanotide. Acts centrally — desire, not just blood flow. For men and women. Grey market no more.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹2,499</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Testosterone (TRT)</span><span class="tag t-rx">Rx</span><span class="tag t-new">+ Blood test</span></div>
+          <div class="prow-desc">Low energy, low libido, muscle loss. Endocrinologist prescribed. Blood panel via Suburban. The Hims TRT, India edition.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹2,999</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <div class="proto-footer"><a href="#" class="proto-wa" onclick="openModal(event)">Start this protocol →</a></div>
+    </div>
+  </div>
+
+  <!-- LONGEVITY -->
+  <div class="proto-block" id="b-longevity">
+    <div class="proto-header" onclick="toggle('longevity')">
+      <div class="proto-cat c-longevity">Longevity</div>
+      <div class="proto-name">Age <em>slower.</em></div>
+      <div class="proto-toggle">+</div>
+    </div>
+    <div class="proto-products">
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Metformin</span><span class="tag t-rx">Rx</span><span class="tag t-bio">Longevity</span></div>
+          <div class="prow-desc">The Attia longevity protocol. Pre-diabetes, PCOS, cellular aging. Simple MBBS prescription. ₹299/month.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹299</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Naltrexone (LDN)</span><span class="tag t-rx">Rx</span><span class="tag t-bio">Biohacker pick</span></div>
+          <div class="prow-desc">Low-dose naltrexone. Immune modulation, mood, energy. The longevity community's quiet favourite. Finally in India.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹799</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Thymosin Alpha-1</span><span class="tag t-rx">Rx</span><span class="tag t-peptide">Peptide</span></div>
+          <div class="prow-desc">Immune regulation, T-cell activation. Used in 30+ countries. Approved drug, prescribed off-label for immune health.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹3,999</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Tesamorelin</span><span class="tag t-rx">Rx</span><span class="tag t-peptide">Peptide</span></div>
+          <div class="prow-desc">Growth hormone peptide. Abdominal fat reduction, muscle mass, cognitive health. Endocrinologist supervised.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹4,999</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <div class="proto-footer"><a href="#" class="proto-wa" onclick="openModal(event)">Start this protocol →</a></div>
+    </div>
+  </div>
+
+  <!-- PEPTIDES -->
+  <div class="proto-block" id="b-peptides">
+    <div class="proto-header" onclick="toggle('peptides')">
+      <div class="proto-cat c-peptides">Peptide Protocols</div>
+      <div class="proto-name">Heal <em>faster.</em> Grow <em>stronger.</em></div>
+      <div class="proto-toggle">+</div>
+    </div>
+    <div class="proto-products">
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">BPC-157</span><span class="tag t-peptide">Peptide</span><span class="tag t-grey">Physician supervised</span></div>
+          <div class="prow-desc">Body Protection Compound. Gut healing, tendon repair, injury recovery, inflammation. The most talked-about peptide. Now legally sourced.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹3,999</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Sermorelin</span><span class="tag t-peptide">Peptide</span><span class="tag t-rx">Rx</span></div>
+          <div class="prow-desc">Growth hormone secretagogue. Nightly injection. Muscle, sleep, recovery, body composition. The clean GH path.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹3,499</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">CJC-1295 + Ipamorelin</span><span class="tag t-peptide">Peptide</span><span class="tag t-bio">Biohacker stack</span></div>
+          <div class="prow-desc">The gold-standard GH peptide stack. 3–5x GH release. Muscle, fat loss, sleep quality, recovery. Physician supervised.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹5,499</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">TB-500</span><span class="tag t-peptide">Peptide</span><span class="tag t-grey">Physician supervised</span></div>
+          <div class="prow-desc">Thymosin Beta-4 fragment. Tissue repair, wound healing, inflammation reduction. Often stacked with BPC-157.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹4,499</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">AOD-9604</span><span class="tag t-peptide">Peptide</span></div>
+          <div class="prow-desc">GH fragment peptide. Fat metabolism and lipolysis without GH side effects. Body recomposition protocol.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹3,999</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <div class="proto-footer"><a href="#" class="proto-wa" onclick="openModal(event)">Discuss a peptide protocol →</a></div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="proto-block" id="b-body">
+    <div class="proto-header" onclick="toggle('body')">
+      <div class="proto-cat c-body">Body</div>
+      <div class="proto-name">Look <em>better.</em></div>
+      <div class="proto-toggle">+</div>
+    </div>
+    <div class="proto-products">
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Semaglutide</span><span class="tag t-rx">Rx</span><span class="tag t-hot">Trending</span></div>
+          <div class="prow-desc">Generic Ozempic. Patent expired March 2026. ₹1,290/month. Endocrinologist prescribed. Blood test required.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹1,290</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Finasteride</span><span class="tag t-rx">Rx</span></div>
+          <div class="prow-desc">1mg daily. Stops DHT-driven hair loss. Results in 90 days. MBBS prescription. Plain delivery.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹599</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Minoxidil</span><span class="tag t-rx">Rx</span></div>
+          <div class="prow-desc">Topical 5% or oral low-dose. Regrowth support. Natural stack with finasteride for maximum effect.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹499</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Isotretinoin</span><span class="tag t-rx">Rx</span><span class="tag t-new">+ Blood test</span></div>
+          <div class="prow-desc">The real acne solution. Prescription-grade. 6-month protocol. No dermatologist queue.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹1,199</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Tretinoin</span><span class="tag t-rx">Rx</span></div>
+          <div class="prow-desc">Prescription retinoid. Acne, texture, hyperpigmentation. The real stuff, not the chemist version.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹699</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <div class="proto-footer"><a href="#" class="proto-wa" onclick="openModal(event)">Start this protocol →</a></div>
+    </div>
+  </div>
+
+  <!-- FEEL / PROTECT / EVERYDAY -->
+  <div class="proto-block" id="b-everyday">
+    <div class="proto-header" onclick="toggle('everyday')">
+      <div class="proto-cat c-everyday">Everything else</div>
+      <div class="proto-name">Feel better. Be <em>protected.</em></div>
+      <div class="proto-toggle">+</div>
+    </div>
+    <div class="proto-products">
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">THC · CBD Oil</span><span class="tag t-rx">Rx</span><span class="tag t-hot">Legal high</span></div>
+          <div class="prow-desc">Vijaya extract. AYUSH licensed. Sleep, pain, stress. A clean legal source — finally.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹2,499</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Sertraline</span><span class="tag t-rx">Rx</span></div>
+          <div class="prow-desc">Anxiety, low mood. Psychiatrist consultation. No waiting room. No stigma.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹499</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Melatonin (High-dose)</span><span class="tag t-rx">Rx</span></div>
+          <div class="prow-desc">5mg+ prescription melatonin. Sleep architecture, circadian reset. Non-habit forming.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹399</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">OCP</span><span class="tag t-rx">Rx</span></div>
+          <div class="prow-desc">Oral contraceptive pill. Monthly supply. No questions. Just your prescription and your privacy.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹399</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Emergency Contraception</span><span class="tag t-rx">Rx</span><span class="tag t-hot">Urgent</span></div>
+          <div class="prow-desc">72-hour window. Doctor within 60 min. Same-day dispatch. Zero judgment.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹299</div><div class="prow-unit">one-time</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">PrEP</span><span class="tag t-rx">Rx</span><span class="tag t-bio">Judgment-free</span></div>
+          <div class="prow-desc">HIV pre-exposure prophylaxis. Daily pill. Monthly supply. Finally available online in India.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹1,499</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Spironolactone</span><span class="tag t-rx">Rx</span></div>
+          <div class="prow-desc">Female hair loss, hormonal acne, PCOS. Simple MBBS prescription.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹499</div><div class="prow-unit">/ month</div><div class="prow-arr">→</div></div>
+      </a>
+      <a href="#" class="prow" onclick="openModal(event)">
+        <div class="prow-left">
+          <div class="prow-nameline"><span class="prow-name">Travel Antibiotics</span><span class="tag t-rx">Rx</span></div>
+          <div class="prow-desc">Doxycycline, Azithromycin. Travelling tomorrow? Prescription today. Ships same day.</div>
+        </div>
+        <div class="prow-right"><div class="prow-price">₹499</div><div class="prow-unit">per course</div><div class="prow-arr">→</div></div>
+      </a>
+      <div class="proto-footer"><a href="#" class="proto-wa" onclick="openModal(event)">Start on WhatsApp →</a></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- HOW -->
+<section class="how">
+  <div class="sec-label">The process</div>
+  <h2 class="sec-title">From WhatsApp<br>to door. <em>Seamlessly.</em></h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div>
+        <div class="step-title">Tell us what you want</div>
+        <div class="step-desc">Open WhatsApp. Pick your protocol. Pay. No accounts, no forms, no friction. 60 seconds.</div>
+        <div class="step-t">60 seconds</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div>
+        <div class="step-title">Doctor calls you</div>
+        <div class="step-desc">Licensed physician within 2 hours. 5–10 minutes. Proper clinical screening. E-prescription issued immediately.</div>
+        <div class="step-t">Within 2 hours</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div>
+        <div class="step-title">Blood test for some protocols</div>
+        <div class="step-desc">TRT and isotretinoin require baseline labs before prescribing — no exceptions. Semaglutide and GH peptides strongly recommend it. Everything else: just the call. We book Suburban home collection when
+    <div class="step">
+      <div class="step-n">4</div>
+      <div>
+        <div class="step-title">Packed. Discreetly.</div>
+        <div class="step-desc">Plain matte box. No brand name. No product name. No pharmacy. Looks like any other delivery. Your business stays yours.</div>
+        <div class="step-t">Same day</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">5</div>
+      <div>
+        <div class="step-title">At your door</div>
+        <div class="step-desc">48-hour delivery across Mumbai, Delhi, Bangalore. Track via WhatsApp. No surprises.</div>
+        <div class="step-t">48 hours</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">6</div>
+      <div>
+        <div class="step-title">One tap to refill</div>
+        <div class="step-desc">Day 25 we message you. Reply YES. Ships today. Your history remembered. No re-intake. Your doctor knows your case.</div>
+        <div class="step-t">Every month</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="promise">
+  <div class="sec-label">Why Arq</div>
+  <h2 class="sec-title">Built for people who<br>did their <em>homework.</em></h2>
+  <div class="promise-grid">
+    <div class="promise-card">
+      <span class="promise-icon">🔬</span>
+      <div class="promise-name">Clinically rigorous</div>
+      <div class="promise-text">Real doctors. Real prescriptions. Blood tests where needed. We're not a grey market vendor with a doctor rubber stamp.</div>
+    </div>
+    <div class="promise-card">
+      <span class="promise-icon">🔒</span>
+      <div class="promise-name">Completely discreet</div>
+      <div class="promise-text">Plain packaging. Discreet billing. WhatsApp — no browser history. Doctor calls from a personal number.</div>
+    </div>
+    <div class="promise-card">
+      <span class="promise-icon">⚡</span>
+      <div class="promise-name">Seamless UX</div>
+      <div class="promise-text">Everything in WhatsApp. No app. No login. No forms. Buy, get called, get delivered. That's the entire product.</div>
+    </div>
+    <div class="promise-card">
+      <span class="promise-icon">✦</span>
+      <div class="promise-name">Unapologetic</div>
+      <div class="promise-text">We don't call your interest in peptides a "problem." You've done the research. We get you what you need. Legal. Done.</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="sec-label">Real people</div>
+  <h2 class="sec-title">What they <em>actually</em> say.</h2>
+  <div class="reviews-grid">
+    <div class="review">
+      <div class="rv-stars">★★★★★</div>
+      <div class="rv-text">"I've been sourcing modafinil from sketchy online pharmacies for 3 years. First time I have a proper prescription and actual pharmaceutical-grade product."</div>
+      <div class="rv-meta"><div class="rv-av">A</div><div><div class="rv-who">Arjun S. · Bangalore</div><div class="rv-prod">Armodafinil · 2 months</div></div></div>
+      <div class="rv-badge">Verified</div>
+    </div>
+    <div class="review">
+      <div class="rv-stars">★★★★★</div>
+      <div class="rv-text">"The endocrinologist actually understood TRT. Blood test booked same day. Protocol started within a week. Nothing like this existed in India before."</div>
+      <div class="rv-meta"><div class="rv-av">R</div><div><div class="rv-who">Rahul M. · Mumbai</div><div class="rv-prod">TRT Protocol · 3 months</div></div></div>
+      <div class="rv-badge">Verified</div>
+    </div>
+    <div class="review">
+      <div class="rv-stars">★★★★★</div>
+      <div class="rv-text">"Finally a legal THC product that arrives in plain packaging. The quality is miles above what I was getting before. The doctor call took 4 minutes."</div>
+      <div class="rv-meta"><div class="rv-av">K</div><div><div class="rv-who">Karan T. · Delhi</div><div class="rv-prod">THC:CBD Oil · 4 months</div></div></div>
+      <div class="rv-badge">Verified</div>
+    </div>
+    <div class="review">
+      <div class="rv-stars">★★★★★</div>
+      <div class="rv-text">"Down 7kg in 7 weeks on generic semaglutide. The process was entirely in WhatsApp. I've never felt so in control of my health."</div>
+      <div class="rv-meta"><div class="rv-av">P</div><div><div class="rv-who">Priya K. · Mumbai</div><div class="rv-prod">Semaglutide · 7 weeks</div></div></div>
+      <div class="rv-badge">Verified</div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCREET -->
+<section class="discreet">
+  <div class="discreet-box">
+    <div class="sec-label">Discretion</div>
+    <h2 class="discreet-title">Your protocols are<br>nobody's business<br>but <em>yours.</em></h2>
+    <div class="discreet-list">
+      <div class="ditem"><div class="ddot"></div><div class="dtext"><strong>Plain outer box.</strong> No product name, no pharmacy name, no Arq branding. Looks like any other courier.</div></div>
+      <div class="ditem"><div class="ddot"></div><div class="dtext"><strong>Discreet billing.</strong> Generic merchant name on your statement. Nobody reads it and knows what you're running.</div></div>
+      <div class="ditem"><div class="ddot"></div><div class="dtext"><strong>WhatsApp only.</strong> No app. No browser history. Everything in a chat you already have open.</div></div>
+      <div class="ditem"><div class="ddot"></div><div class="dtext"><strong>Doctor calls personally.</strong> Not from a number saved as "Arq Clinic." Just a doctor, checking in.</div></div>
+    </div>
+    <a href="#" class="btn-primary" onclick="openModal(event)" style="max-width:100%">Get started — it's private →</a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="final-glow"></div>
+  <div class="final-wm">arq</div>
+  <div class="final-label">India's biohacker clinic</div>
+  <h2 class="final-title">Everything you've<br>been <em>researching.</em><br>Now legal.</h2>
+  <p class="final-sub">25+ protocols. Peptides to prescriptions. Doctor in 2 hours. Delivered in 48. All in WhatsApp.</p>
+  <a href="#" class="final-btn" onclick="openModal(event)">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Start on WhatsApp — it's free
+  </a>
+  <div class="final-fine">
+    Licensed physicians · AYUSH compliant · Schedule H certified<br>
+    All products require a valid prescription from a registered medical practitioner<br>
+    Dear One Technologies Pvt Ltd · CIN U86900MH2026PTC467148 · arq.clinic
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">arq<span>.</span>clinic</div>
+  <div class="footer-tag">India's biohacker clinic</div>
+  <div class="footer-links">
+    <a href="#" class="fl">Cognition protocols</a><a href="#" class="fl">Privacy policy</a>
+    <a href="#" class="fl">Performance</a><a href="#" class="fl">Terms of use</a>
+    <a href="#" class="fl">Longevity</a><a href="#" class="fl">How it works</a>
+    <a href="#" class="fl">Peptides</a><a href="#" class="fl">For doctors</a>
+    <a href="#" class="fl">Body protocols</a><a href="#" class="fl">Contact</a>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Dear One Technologies Pvt Ltd · CIN U86900MH2026PTC467148<br>
+    All prescription medications require a valid e-prescription from a registered medical practitioner.<br>
+    arq.clinic connects patients with licensed physicians and partner pharmacies. We are not a pharmacy.<br>
+    Peptide protocols are physician-supervised. Some products exist in regulatory grey zones — we disclose this clearly.<br>
+    Registered: Mumbai, Maharashtra, India.
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <h2 class="modal-title">What's your protocol?</h2>
+    <p class="modal-sub">Pick a category. Doctor calls within 2 hours. Delivered in 48.</p>
+    <div class="modal-label">I want to —</div>
+    <div class="opts">
+      <button class="opt" onclick="sel(this,'think sharper — modafinil or armodafinil')"><span class="opt-icon">🧠</span><span class="opt-name">Think sharper</span><span class="opt-sub">Modafinil · Armodafinil · NAD+</span></button>
+      <button class="opt" onclick="sel(this,'perform better — sildenafil, tadalafil or TRT')"><span class="opt-icon">⚡</span><span class="opt-name">Perform better</span><span class="opt-sub">ED · TRT · PT-141</span></button>
+      <button class="opt" onclick="sel(this,'age slower with longevity protocols')"><span class="opt-icon">∞</span><span class="opt-name">Age slower</span><span class="opt-sub">Metformin · LDN · Thymosin</span></button>
+      <button class="opt" onclick="sel(this,'explore peptide protocols')"><span class="opt-icon">💉</span><span class="opt-name">Peptides</span><span class="opt-sub">BPC-157 · Sermorelin · CJC</span></button>
+      <button class="opt" onclick="sel(this,'look better — hair, skin or weight loss')"><span class="opt-icon">✦</span><span class="opt-name">Look better</span><span class="opt-sub">Hair · Skin · Semaglutide</span></button>
+      <button class="opt" onclick="sel(this,'get started — not sure where')"><span class="opt-icon">💬</span><span class="opt-name">Not sure</span><span class="opt-sub">We'll guide you</span></button>
+    </div>
+    <button class="modal-btn" onclick="goWA()">Continue on WhatsApp →</button>
+    <div class="modal-priv">🔒 Completely private · Doctor within 2 hours · Plain packaging guaranteed</div>
+  </div>
+</div>
+
+<script>
+function toggle(id){
+  const b=document.getElementById('b-'+id);
+  const was=b.classList.contains('open');
+  document.querySelectorAll('.proto-block').forEach(x=>x.classList.remove('open'));
+  if(!was)b.classList.add('open');
+}
+function openModal(e){
+  e.preventDefault();
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){
+  if(e.target===document.getElementById('modal')){
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
+function sel(btn,v){
+  document.querySelectorAll('.opt').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  btn._val=v;
+}
+function goWA(){
+  const s=document.querySelector('.opt.on');
+  const msg=encodeURIComponent('Hi, I want to '+( s?s._val:'get started'));
+  window.open('https://wa.me/919999999999?text='+msg,'_blank');
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}
+});
+</script>
+</body>
+</html>

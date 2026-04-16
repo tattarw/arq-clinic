@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Your physician designs a custom protocol pack from scratch. 60-min deep-dive, bloodwork review, custom molecule selection, branded delivery. ₹4,999/month. India's first bespoke biohacking service.">
+	<meta property="og:title" content="Build Your Own Protocol — Bespoke Pack | arq.">
+	<meta property="og:description" content="Your physician designs a custom protocol pack from scratch. 60-min deep-dive, bloodwork review, custom molecule selection, branded delivery. ₹4,999/month. India's first bespoke biohacking service.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://arq.clinic/protocols/packs/bespoke">
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:title" content="Build Your Own Protocol — Bespoke Pack | arq.">
+	<meta property="twitter:description" content="Your physician designs a custom protocol pack from scratch. 60-min deep-dive, bloodwork review, custom molecule selection, branded delivery. ₹4,999/month.">
+	<link rel="canonical" href="https://arq.clinic/protocols/packs/bespoke">
+	<title>Build Your Own Protocol — Bespoke Pack | arq.</title>
+
+	<style>
+		/* CSS Variables */
+		:root {
+			--bg: #050505;
+			--bg2: #0a0a0a;
+			--surface: #111;
+			--gold: #c9a050;
+			--white: #e8e4dd;
+			--text-secondary: rgba(232, 228, 221, 0.7);
+			--border: rgba(255, 255, 255, 0.06);
+		}
+
+		/* Reset */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Fonts */
+		@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			background-color: var(--bg);
+			color: var(--white);
+			font-family: 'Inter', sans-serif;
+			font-size: 16px;
+			line-height: 1.6;
+			overflow-x: hidden;
+			position: relative;
+		}
+
+		body::before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image:
+				url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" seed="1"/></filter><rect width="100" height="100" fill="rgba(232,228,221,0.02)" filter="url(%23noise)"/></svg>');
+			pointer-events: none;
+			z-index: 1;
+		}
+
+		/* Scrollbar */
+		::-webkit-scrollbar {
+			width: 6px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: rgba(201, 160, 80, 0.4);
+			border-radius: 3px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: rgba(201, 160, 80, 0.6);
+		}
+
+		/* Selection */
+		::selection {
+			background-color: var(--gold);
+			color: var(--bg);
+		}
+
+		/* Canvas */
+		#particleCanvas {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			z-index: 0;
+		}
+
+		/* Content wrapper */
+		.content-wrapper {
+			position: relative;
+			z-index: 2;
+		}
+
+		/* Navigation */
+		nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 24px 40px;
+			border-bottom: 1px solid var(--border);
+			background: rgba(5, 5, 5, 0.7);
+			backdrop-filter: blur(20px);
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+
+		nav .logo {
+			font-family: 'Playfair Display', serif;
+			font-size: 24px;
+			font-weight: 600;
+			color: var(--white);
+			text-decoration: none;
+		}
+
+		nav a.cta {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 10px 20px;
+			background: var(--gold);
+			color: var(--bg);
+			border-radius: 4px;
+			font-weight: 600;
+			font-size: 14px;
+			text-decoration: none;
+			transition: all 0.3s ease;
+		}
+
+		nav a.cta:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 24px rgba(201, 160, 80, 0.3);
+		}
+
+		/* Hero Section */
+		.hero {
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 60px 40px;
+			text-align: center;
+			position: relative;
+		}
+
+		.hero-badge {
+			display: inline-block;
+			padding: 8px 16px;
+			border: 1px solid var(--gold);
+			border-radius: 20px;
+			font-size: 12px;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			color: var(--gold);
+			margin-bottom: 32px;
+		}
+
+		.hero h1 {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(48px, 6vw, 72px);
+			font-weight: 700;
+			line-height: 1.2;
+			margin-bottom: 24px;
+			max-width: 900px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.hero h1 em {
+			font-style: italic;
+			color: var(--gold);
+		}
+
+		.hero .subtitle {
+			font-size: 18px;
+			color: var(--text-secondary);
+			max-width: 700px;
+			margin: 0 auto 48px;
+			line-height: 1.8;
+		}
+
+		.hero-ctas {
+			display: flex;
+			gap: 20px;
+			justify-content: center;
+			flex-wrap: wrap;
+			margin-bottom: 32px;
+		}
+
+		.btn {
+			padding: 16px 32px;
+			border-radius: 4px;
+			font-weight: 600;
+			font-size: 15px;
+			text-decoration: none;
+			cursor: pointer;
+			border: none;
+			transition: all 0.3s ease;
+			font-family: 'Inter', sans-serif;
+		}
+
+		.btn-primary {
+			background: var(--gold);
+			color: var(--bg);
+		}
+
+		.btn-primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 12px 32px rgba(201, 160, 80, 0.4);
+		}
+
+		.btn-secondary {
+			background: transparent;
+			color: var(--white);
+			border: 1px solid var(--gold);
+		}
+
+		.btn-secondary:hover {
+			background: rgba(201, 160, 80, 0.1);
+		}
+
+		.guarantee-badge {
+			display: inline-block;
+			padding: 8px 16px;
+			background: rgba(201, 160, 80, 0.1);
+			border: 1px solid var(--gold);
+			border-radius: 4px;
+			font-size: 13px;
+			color: var(--gold);
+		}
+
+		/* Section */
+		section {
+			padding: 80px 40px;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.section-title {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(36px, 5vw, 56px);
+			font-weight: 600;
+			margin-bottom: 60px;
+			text-align: center;
+		}
+
+		/* What's Included */
+		.included-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+			gap: 32px;
+			margin-bottom: 40px;
+		}
+
+		.included-card {
+			background: rgba(17, 17, 17, 0.5);
+			border: 1px solid var(--border);
+			border-radius: 4px;
+			padding: 32px;
+			backdrop-filter: blur(20px);
+			opacity: 0;
+			transform: translateY(30px);
+		}
+
+		.included-card h3 {
+			font-family: 'Playfair Display', serif;
+			font-size: 18px;
+			color: var(--gold);
+			margin-bottom: 12px;
+		}
+
+		.included-card p {
+			color: var(--text-secondary);
+			line-height: 1.8;
+			font-size: 15px;
+		}
+
+		/* How It Works */
+		.how-it-works {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			gap: 24px;
+			margin-bottom: 40px;
+		}
+
+		.step {
+			background: rgba(17, 17, 17, 0.5);
+			border: 1px solid var(--border);
+			border-radius: 4px;
+			padding: 32px;
+			backdrop-filter: blur(20px);
+			text-align: center;
+			position: relative;
+			opacity: 0;
+			transform: translateY(30px);
+		}
+
+		.step::after {
+			content: '';
+			position: absolute;
+			right: -12px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 24px;
+			height: 1px;
+			background: var(--border);
+		}
+
+		.step:last-child::after {
+			display: none;
+		}
+
+		.step .step-number {
+			font-family: 'Playfair Display', serif;
+			font-size: 32px;
+			color: var(--gold);
+			font-weight: 700;
+			margin-bottom: 16px;
+		}
+
+		.step h3 {
+			font-weight: 600;
+			margin-bottom: 12px;
+		}
+
+		.step p {
+			color: var(--text-secondary);
+			font-size: 14px;
+			line-height: 1.7;
+		}
+
+		/* Who This Is For */
+		.usecases-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 32px;
+			margin-bottom: 40px;
+		}
+
+		.usecase {
+			background: rgba(17, 17, 17, 0.5);
+			border: 1px solid var(--border);
+			border-radius: 4px;
+			padding: 32px;
+			backdrop-filter: blur(20px);
+			opacity: 0;
+			transform: translateY(30px);
+		}
+
+		.usecase h3 {
+			font-family: 'Playfair Display', serif;
+			font-size: 18px;
+			color: var(--gold);
+			margin-bottom: 12px;
+		}
+
+		.usecase p {
+			color: var(--text-secondary);
+			line-height: 1.8;
+			font-size: 15px;
+		}
+
+		/* Pricing */
+		.pricing-container {
+			background: rgba(17, 17, 17, 0.5);
+			border: 1px solid var(--border);
+			border-radius: 4px;
+			padding: 60px 40px;
+			backdrop-filter: blur(20px);
+			max-width: 600px;
+			margin: 0 auto;
+			text-align: center;
+			opacity: 0;
+			transform: translateY(30px);
+		}
+
+		.price-main {
+			font-family: 'Playfair Display', serif;
+			font-size: 56px;
+			font-weight: 700;
+			color: var(--gold);
+			margin-bottom: 12px;
+		}
+
+		.price-period {
+			color: var(--text-secondary);
+			margin-bottom: 40px;
+			font-size: 15px;
+		}
+
+		.price-breakdown {
+			text-align: left;
+			margin-bottom: 40px;
+		}
+
+		.breakdown-item {
+			display: flex;
+			justify-content: space-between;
+			padding: 12px 0;
+			border-bottom: 1px solid var(--border);
+			font-size: 14px;
+			color: var(--text-secondary);
+		}
+
+		.breakdown-item:last-child {
+			border-bottom: none;
+		}
+
+		.breakdown-label {
+			color: var(--white);
+		}
+
+		.pricing-container > .btn-primary {
+			width: 100%;
+			margin-bottom: 24px;
+		}
+
+		.pricing-note {
+			color: var(--text-secondary);
+			font-size: 13px;
+			line-height: 1.6;
+		}
+
+		/* FAQ */
+		.faq-container {
+			max-width: 700px;
+			margin: 0 auto;
+		}
+
+		.faq-item {
+			border-bottom: 1px solid var(--border);
+			padding: 24px 0;
+			opacity: 0;
+			transform: translateY(30px);
+		}
+
+		.faq-item:last-child {
+			border-bottom: none;
+		}
+
+		.faq-question {
+			cursor: pointer;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-weight: 600;
+			color: var(--white);
+			user-select: none;
+		}
+
+		.faq-question:hover {
+			color: var(--gold);
+		}
+
+		.faq-icon {
+			font-size: 20px;
+			transition: transform 0.3s ease;
+			color: var(--gold);
+		}
+
+		.faq-item.active .faq-icon {
+			transform: rotate(180deg);
+		}
+
+		.faq-answer {
+			margin-top: 16px;
+			color: var(--text-secondary);
+			line-height: 1.8;
+			font-size: 15px;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.3s ease;
+		}
+
+		.faq-item.active .faq-answer {
+			max-height: 500px;
+		}
+
+		/* Footer */
+		footer {
+			border-top: 1px solid var(--border);
+			padding: 40px;
+			text-align: center;
+			color: var(--text-secondary);
+			font-size: 13px;
+		}
+
+		footer .logo {
+			font-family: 'Playfair Display', serif;
+			font-size: 20px;
+			color: var(--white);
+			margin-bottom: 16px;
+			display: block;
+		}
+
+		footer p {
+			margin-bottom: 8px;
+		}
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			nav {
+				padding: 16px 24px;
+			}
+
+			section {
+				padding: 60px 24px;
+			}
+
+			.hero {
+				padding: 40px 24px;
+				min-height: 85vh;
+			}
+
+			.hero-ctas {
+				flex-direction: column;
+				gap: 12px;
+			}
+
+			.btn {
+				width: 100%;
+				text-align: center;
+			}
+
+			.step::after {
+				display: none;
+			}
+
+			.how-it-works {
+				grid-template-columns: 1fr;
+			}
+
+			.pricing-container {
+				padding: 40px 24px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<canvas id="particleCanvas"></canvas>
+
+	<div class="content-wrapper">
+		<!-- Navigation -->
+		<nav>
+			<a href="/" class="logo">arq.</a>
+			<a href="https://wa.me/919000000000?text=I'd%20like%20to%20book%20a%20consultation" class="cta">Book Consultation</a>
+		</nav>
+
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="hero-badge">PREMIUM SERVICE</div>
+			<h1>Your Protocol, <em>Designed From Scratch</em></h1>
+			<p class="subtitle">Our physicians don't just pick from a menu. They design a bespoke protocol pack around your bloodwork, goals, and lifestyle — molecules, dosages, timing, everything.</p>
+			<div class="hero-ctas">
+				<button class="btn btn-primary" onclick="initiateRazorpay()">Book Your Consultation — ₹4,999</button>
+				<a href="https://wa.me/919000000000?text=I%20have%20questions%20about%20the%20bespoke%20protocol" class="btn btn-secondary">Have questions? Talk to us first</a>
+			</div>
+			<div class="guarantee-badge">100% refund if we can't design a protocol for your goals</div>
+		</section>
+
+		<!-- What's Included -->
+		<section>
+			<h2 class="section-title">What's Included</h2>
+			<div class="included-grid">
+				<div class="included-card">
+					<h3>60-min physician deep-dive</h3>
+					<p>Not a 5-minute checkbox. A real conversation about your history, goals, lifestyle, and what you've tried before.</p>
+				</div>
+				<div class="included-card">
+					<h3>Full bloodwork review</h3>
+					<p>Send us existing labs or we'll order a comprehensive panel. We design around your data, not guesswork.</p>
+				</div>
+				<div class="included-card">
+					<h3>Custom protocol design</h3>
+					<p>Your physician selects molecules, dosages, timing, and synergy supplements — tailored to your specific biology.</p>
+				</div>
+				<div class="included-card">
+					<h3>arq-branded pack delivery</h3>
+					<p>Your bespoke protocol ships as a single branded box. Rx molecules + supplements, clearly labelled with your dosage schedule.</p>
+				</div>
+				<div class="included-card">
+					<h3>30-day WhatsApp access</h3>
+					<p>Direct line to your prescribing physician. Ask questions, report side effects, adjust doses. No appointment needed.</p>
+				</div>
+				<div class="included-card">
+					<h3>Monthly protocol review</h3>
+					<p>Your physician reviews your progress every 30 days and adjusts the protocol based on how you're responding.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- How It Works -->
+		<section>
+			<h2 class="section-title">How It Works</h2>
+			<div class="how-it-works">
+				<div class="step">
+					<div class="step-number">1</div>
+					<h3>You pay ₹4,999</h3>
+					<p>Secure checkout. This covers your consultation, protocol design, and first month's medication.</p>
+				</div>
+				<div class="step">
+					<div class="step-number">2</div>
+					<h3>Physician calls you</h3>
+					<p>Within 24 hours. 60-minute deep dive into your goals, history, and bloodwork.</p>
+				</div>
+				<div class="step">
+					<div class="step-number">3</div>
+					<h3>Protocol designed</h3>
+					<p>Your physician designs a custom stack. You review and approve before anything ships.</p>
+				</div>
+				<div class="step">
+					<div class="step-number">4</div>
+					<h3>Pack delivered</h3>
+					<p>Your bespoke arq pack arrives within 72 hours. Clearly labelled, physician-approved.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Who This Is For -->
+		<section>
+			<h2 class="section-title">Who This Is For</h2>
+			<div class="usecases-grid">
+				<div class="usecase">
+					<h3>Stacking multiple goals</h3>
+					<p>Want focus AND longevity AND sleep optimization? A bespoke pack handles the drug interactions your physician needs to check.</p>
+				</div>
+				<div class="usecase">
+					<h3>Complex medical history</h3>
+					<p>On existing medications? Have chronic conditions? Your physician designs around your full picture, not just one molecule.</p>
+				</div>
+				<div class="usecase">
+					<h3>Performance athletes</h3>
+					<p>Need to optimize recovery, cognition, and hormones without WADA violations? Custom protocols avoid prohibited substances.</p>
+				</div>
+				<div class="usecase">
+					<h3>Already biohacking</h3>
+					<p>Taking 5 supplements from Amazon and want a physician to audit, upgrade, and consolidate into one clean protocol?</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Pricing -->
+		<section>
+			<h2 class="section-title">Pricing</h2>
+			<div class="pricing-container">
+				<div class="price-main">₹4,999</div>
+				<div class="price-period">/month</div>
+				<div class="price-breakdown">
+					<div class="breakdown-item">
+						<span class="breakdown-label">Physician consultation (₹2,000 value)</span>
+						<span>INCLUDED</span>
+					</div>
+					<div class="breakdown-item">
+						<span class="breakdown-label">Custom protocol design</span>
+						<span>INCLUDED</span>
+					</div>
+					<div class="breakdown-item">
+						<span class="breakdown-label">Rx medication + supplements</span>
+						<span>INCLUDED</span>
+					</div>
+					<div class="breakdown-item">
+						<span class="breakdown-label">Monthly physician review</span>
+						<span>INCLUDED</span>
+					</div>
+					<div class="breakdown-item">
+						<span class="breakdown-label">WhatsApp support</span>
+						<span>INCLUDED</span>
+					</div>
+				</div>
+				<button class="btn btn-primary" onclick="initiateRazorpay()">Start Your Bespoke Protocol →</button>
+				<p class="pricing-note">This is our most comprehensive service. Every protocol is designed by a licensed physician who reviews your case individually.</p>
+			</div>
+		</section>
+
+		<!-- FAQ -->
+		<section>
+			<h2 class="section-title">Frequently Asked Questions</h2>
+			<div class="faq-container">
+				<div class="faq-item">
+					<div class="faq-question">
+						<span>How is this different from the standard packs?</span>
+						<span class="faq-icon">⌄</span>
+					</div>
+					<div class="faq-answer">
+						Standard packs are pre-designed protocols for common goals. A bespoke protocol is designed from scratch by your physician based on your bloodwork, medical history, and specific goals. The molecules, dosages, and timing are all individualized.
+					</div>
+				</div>
+
+				<div class="faq-item">
+					<div class="faq-question">
+						<span>What if I'm already on medication?</span>
+						<span class="faq-icon">⌄</span>
+					</div>
+					<div class="faq-answer">
+						That's exactly who this is for. Your physician reviews drug interactions, adjusts dosages, and designs around your existing medications.
+					</div>
+				</div>
+
+				<div class="faq-item">
+					<div class="faq-question">
+						<span>Can I change my protocol later?</span>
+						<span class="faq-icon">⌄</span>
+					</div>
+					<div class="faq-answer">
+						Yes. Your monthly review is specifically for this. Your physician adjusts the protocol based on how you're responding, new bloodwork, or changing goals.
+					</div>
+				</div>
+
+				<div class="faq-item">
+					<div class="faq-question">
+						<span>What does ₹4,999/month cover?</span>
+						<span class="faq-icon">⌄</span>
+					</div>
+					<div class="faq-answer">
+						Everything. The physician consultation, protocol design, all medications and supplements in your custom pack, delivery, and 30-day WhatsApp access to your prescribing physician.
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer>
+			<span class="logo">arq.</span>
+			<p>Bespoke biohacking protocols designed by physicians. Molecules + measurement.</p>
+			<p>© 2026 arq.clinic. All rights reserved. | <a href="#" style="color: var(--gold); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--gold); text-decoration: none;">Terms of Service</a></p>
+			<p style="margin-top: 16px; font-size: 12px;">This is not medical advice. Consult a licensed physician before starting any protocol. arq.clinic connects you with licensed physicians who design personalized protocols.</p>
+		</footer>
+	</div>
+
+	<!-- Scripts -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+	<script>
+		gsap.registerPlugin(ScrollTrigger);
+
+		// Particle System
+		let scene, camera, renderer, material, geometry, particles;
+		let particlePositions = [];
+		let particleVelocities = [];
+		const particleCount = 150;
+		const connectionDistance = 150;
+		let mouseX = 0;
+		let mouseY = 0;
+
+		function initParticles() {
+			const canvas = document.getElementById('particleCanvas');
+			const width = window.innerWidth;
+			const height = window.innerHeight;
+
+			scene = new THREE.Scene();
+			camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+			camera.position.z = 400;
+
+			renderer = new THREE.WebGLRenderer({
+				canvas: canvas,
+				alpha: true,
+				antialias: true
+			});
+			renderer.setSize(width, height);
+			renderer.setPixelRatio(window.devicePixelRatio);
+			renderer.setClearColor(0x050505, 0);
+
+			// Particle geometry
+			geometry = new THREE.BufferGeometry();
+			const positions = new Float32Array(particleCount * 3);
+
+			for (let i = 0; i < particleCount; i++) {
+				positions[i * 3] = (Math.random() - 0.5) * 800;
+				positions[i * 3 + 1] = (Math.random() - 0.5) * 600;
+				positions[i * 3 + 2] = (Math.random() - 0.5) * 400;
+
+				particlePositions.push({
+					x: positions[i * 3],
+					y: positions[i * 3 + 1],
+					z: positions[i * 3 + 2]
+				});
+
+				particleVelocities.push({
+					x: (Math.random() - 0.5) * 0.5,
+					y: (Math.random() - 0.5) * 0.5,
+					z: (Math.random() - 0.5) * 0.5
+				});
+			}
+
+			geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+			// Material with custom shader
+			const vertexShader = `
+				void main() {
+					gl_PointSize = 2.0;
+					gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+				}
+			`;
+
+			const fragmentShader = `
+				void main() {
+					float dist = distance(gl_PointCoord, vec2(0.5));
+					if (dist > 0.5) discard;
+					gl_FragColor = vec4(0.788, 0.627, 0.314, 0.8);
+				}
+			`;
+
+			material = new THREE.ShaderMaterial({
+				vertexShader,
+				fragmentShader,
+				transparent: true,
+				blending: THREE.AdditiveBlending
+			});
+
+			particles = new THREE.Points(geometry, material);
+			scene.add(particles);
+
+			// Mouse tracking
+			document.addEventListener('mousemove', (e) => {
+				mouseX = (e.clientX / width) * 2 - 1;
+				mouseY = -(e.clientY / height) * 2 + 1;
+			});
+
+			// Resize handler
+			window.addEventListener('resize', () => {
+				const newWidth = window.innerWidth;
+				const newHeight = window.innerHeight;
+				camera.aspect = newWidth / newHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize(newWidth, newHeight);
+			});
+
+			animate();
+		}
+
+		function animate() {
+			requestAnimationFrame(animate);
+
+			const positions = geometry.attributes.position.array;
+
+			// Update particles
+			for (let i = 0; i < particleCount; i++) {
+				// Apply velocity
+				particlePositions[i].x += particleVelocities[i].x;
+				particlePositions[i].y += particleVelocities[i].y;
+				particlePositions[i].z += particleVelocities[i].z;
+
+				// Boundary wrapping
+				if (particlePositions[i].x > 400) particlePositions[i].x = -400;
+				if (particlePositions[i].x < -400) particlePositions[i].x = 400;
+				if (particlePositions[i].y > 300) particlePositions[i].y = -300;
+				if (particlePositions[i].y < -300) particlePositions[i].y = 300;
+
+				// Mouse repulsion
+				const mouseWorldX = mouseX * 400;
+				const mouseWorldY = mouseY * 300;
+				const dx = particlePositions[i].x - mouseWorldX;
+				const dy = particlePositions[i].y - mouseWorldY;
+				const dist = Math.sqrt(dx * dx + dy * dy);
+
+				if (dist < 150) {
+					const angle = Math.atan2(dy, dx);
+					const repulsion = 1 - (dist / 150);
+					particleVelocities[i].x += Math.cos(angle) * repulsion * 0.3;
+					particleVelocities[i].y += Math.sin(angle) * repulsion * 0.3;
+				}
+
+				// Damping
+				particleVelocities[i].x *= 0.98;
+				particleVelocities[i].y *= 0.98;
+
+				positions[i * 3] = particlePositions[i].x;
+				positions[i * 3 + 1] = particlePositions[i].y;
+				positions[i * 3 + 2] = particlePositions[i].z;
+			}
+
+			geometry.attributes.position.needsUpdate = true;
+
+			// Draw connection lines
+			const canvas = document.getElementById('particleCanvas');
+			const ctx = canvas.getContext('2d');
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+			for (let i = 0; i < particleCount; i++) {
+				for (let j = i + 1; j < particleCount; j++) {
+					const dx = particlePositions[j].x - particlePositions[i].x;
+					const dy = particlePositions[j].y - particlePositions[i].y;
+					const dist = Math.sqrt(dx * dx + dy * dy);
+
+					if (dist < connectionDistance) {
+						const screenX1 = canvas.width / 2 + particlePositions[i].x * (canvas.width / 800);
+						const screenY1 = canvas.height / 2 - particlePositions[i].y * (canvas.height / 600);
+						const screenX2 = canvas.width / 2 + particlePositions[j].x * (canvas.width / 800);
+						const screenY2 = canvas.height / 2 - particlePositions[j].y * (canvas.height / 600);
+
+						ctx.strokeStyle = `rgba(201, 160, 80, ${0.3 * (1 - dist / connectionDistance)})`;
+						ctx.lineWidth = 0.5;
+						ctx.beginPath();
+						ctx.moveTo(screenX1, screenY1);
+						ctx.lineTo(screenX2, screenY2);
+						ctx.stroke();
+					}
+				}
+			}
+
+			renderer.render(scene, camera);
+		}
+
+		// GSAP Animations
+		function animateOnScroll() {
+			const cards = document.querySelectorAll('.included-card, .step, .usecase, .faq-item, .pricing-container');
+
+			cards.forEach((card) => {
+				gsap.set(card, { opacity: 0, y: 30 });
+
+				ScrollTrigger.create({
+					trigger: card,
+					onEnter: () => {
+						gsap.to(card, {
+							opacity: 1,
+							y: 0,
+							duration: 0.8,
+							ease: 'power2.out'
+						});
+					},
+					once: true
+				});
+			});
+		}
+
+		// Razorpay Integration
+		function initiateRazorpay() {
+			const options = {
+				key: 'rzp_live_REPLACE_WITH_KEY',
+				amount: 499900, // ₹4,999 in paise
+				currency: 'INR',
+				name: 'arq.',
+				description: 'Bespoke Protocol — Custom Design',
+				handler: function(response) {
+					// Payment successful
+					window.location.href = 'https://wa.me/919000000000?text=Payment%20successful.%20Thank%20you%20for%20choosing%20arq.clinic';
+				},
+				prefill: {
+					name: '',
+					email: '',
+					contact: ''
+				},
+				notes: {
+					note_key_1: 'Bespoke Protocol Consultation'
+				},
+				theme: {
+					color: '#c9a050'
+				}
+			};
+
+			const rzp = new Razorpay(options);
+			rzp.open();
+		}
+
+		// FAQ Accordion
+		function setupFAQ() {
+			const faqItems = document.querySelectorAll('.faq-item');
+
+			faqItems.forEach((item) => {
+				const question = item.querySelector('.faq-question');
+				question.addEventListener('click', () => {
+					faqItems.forEach((other) => {
+						if (other !== item) {
+							other.classList.remove('active');
+						}
+					});
+
+					item.classList.toggle('active');
+				});
+			});
+		}
+
+		// Initialize on load
+		window.addEventListener('load', () => {
+			initParticles();
+			animateOnScroll();
+			setupFAQ();
+		});
+
+		// Handle page visibility
+		document.addEventListener('visibilitychange', () => {
+			if (document.hidden) {
+				renderer.setAnimationLoop(null);
+			} else {
+				animate();
+			}
+		});
+	</script>
+</body>
+</html>

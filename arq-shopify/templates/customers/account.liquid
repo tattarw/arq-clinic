@@ -1,0 +1,558 @@
+{% comment %} templates/customers/account.liquid {% endcomment %}
+
+{%- unless customer -%}
+  {% redirect_to '/account/login' %}
+{%- endunless -%}
+
+<div class="account-page container" style="padding: 40px 20px 80px; max-width: 720px;">
+
+  <!-- Header -->
+  <div class="account-header">
+    <div class="eyebrow">Your account</div>
+    <h1 class="t-headline" style="margin-bottom:4px">
+      {{ customer.first_name | default: 'Welcome back' }}<em>.</em>
+    </h1>
+    <p class="t-small">{{ customer.email }}</p>
+  </div>
+
+  <!-- Quick stats -->
+  <div class="account-stats">
+    <div class="account-stat">
+      <div class="account-stat__num">{{ customer.orders_count }}</div>
+      <div class="account-stat__label">Orders</div>
+    </div>
+    <div class="account-stat-sep"></div>
+    <div class="account-stat">
+      <div class="account-stat__num">
+        {{ customer.orders | where: 'tags', 'subscription' | size }}
+      </div>
+      <div class="account-stat__label">Active protocols</div>
+    </div>
+    <div class="account-stat-sep"></div>
+    <div class="account-stat">
+      <div class="account-stat__num">
+        {% assign total = 0 %}
+        {% for order in customer.orders %}
+          {% assign total = total | plus: order.total_price %}
+        {% endfor %}
+        ₹{{ total | divided_by: 100 | round }}
+      </div>
+      <div class="account-stat__label">Total spent</div>
+    </div>
+  </div>
+
+  <!-- TAB NAV -->
+  <div class="account-tabs">
+    <button class="account-tab account-tab--active" onclick="switchTab('orders', this)">Orders</button>
+    <button class="account-tab" onclick="switchTab('prescriptions', this)">Prescriptions</button>
+    <button class="account-tab" onclick="switchTab('subscriptions', this)">Refills</button>
+    <button class="account-tab" onclick="switchTab('profile', this)">Profile</button>
+  </div>
+
+  <!-- ── ORDERS TAB ── -->
+  <div class="account-tab-content" id="tab-orders">
+    {%- if customer.orders.size == 0 -%}
+      <div class="account-empty">
+        <div class="account-empty__title">No orders yet</div>
+        <div class="account-empty__sub">Your order history will appear here once you've made a purchase.</div>
+        <a href="/collections/all" class="btn btn-primary btn-sm" style="margin-top:16px">Browse protocols</a>
+      </div>
+    {%- else -%}
+      <div class="orders-list">
+        {%- for order in customer.orders -%}
+          {%- assign rx_status = order.note_attributes | where: 'name', 'prescription_status' | first -%}
+          {%- assign rx_status_val = rx_status.value | default: 'pending' -%}
+          {%- assign purchase_type_attr = order.note_attributes | where: 'name', 'purchase_type' | first -%}
+
+          <div class="order-card card">
+            <div class="order-card__header">
+              <div class="order-card__meta">
+                <div class="order-card__num">{{ order.name }}</div>
+                <div class="order-card__date">{{ order.created_at | date: "%d %b %Y" }}</div>
+              </div>
+              <div class="order-card__status-wrap">
+                {%- if rx_status_val == 'issued' -%}
+                  <span class="badge badge-active">Rx issued</span>
+                {%- elsif rx_status_val == 'pending' -%}
+                  <span class="badge badge-pending">Awaiting doctor</span>
+                {%- elsif rx_status_val == 'blood-hold' -%}
+                  <span class="badge badge-hold">Awaiting labs</span>
+                {%- else -%}
+                  <span class="badge badge-complete">Complete</span>
+                {%- endif -%}
+
+                {%- case order.fulfillment_status -%}
+                  {%- when 'fulfilled' -%}
+                    <span class="badge badge-shipped">Shipped</span>
+                  {%- when 'partial' -%}
+                    <span class="badge badge-pending">Partially shipped</span>
+                  {%- when null -%}
+                    {%- if rx_status_val == 'issued' -%}
+                      <span class="badge badge-pending">Processing</span>
+                    {%- endif -%}
+                {%- endcase -%}
+              </div>
+            </div>
+
+            <!-- Order items -->
+            <div class="order-items">
+              {%- for line_item in order.line_items -%}
+                <div class="order-item">
+                  <div class="order-item__name">{{ line_item.title }}</div>
+                  {%- if line_item.variant.title != 'Default Title' -%}
+                    <div class="order-item__variant">{{ line_item.variant.title }}</div>
+                  {%- endif -%}
+                  <div class="order-item__price">{{ line_item.final_price | money }}</div>
+                </div>
+              {%- endfor -%}
+            </div>
+
+            <!-- Prescription status timeline -->
+            {%- if rx_status_val == 'pending' -%}
+            <div class="order-rx-notice">
+              <div class="order-rx-notice__icon">📞</div>
+              <div>
+                <div class="order-rx-notice__title">Doctor calling soon</div>
+                <div class="order-rx-notice__body">A licensed physician will call you within 2 hours to issue your prescription. Make sure your phone is reachable.</div>
+              </div>
+            </div>
+            {%- elsif rx_status_val == 'blood-hold' -%}
+            <div class="order-rx-notice order-rx-notice--amber">
+              <div class="order-rx-notice__icon">🔬</div>
+              <div>
+                <div class="order-rx-notice__title">Awaiting blood test results</div>
+                <div class="order-rx-notice__body">Suburban Diagnostics has been notified for home collection. Your order will dispatch once your doctor reviews results.</div>
+              </div>
+            </div>
+            {%- elsif rx_status_val == 'issued' and order.fulfillment_status == null -%}
+            <div class="order-rx-notice order-rx-notice--green">
+              <div class="order-rx-notice__icon">✓</div>
+              <div>
+                <div class="order-rx-notice__title">Prescription issued — packing now</div>
+                <div class="order-rx-notice__body">Your e-prescription has been issued and your order is being packed. You'll receive a WhatsApp tracking update shortly.</div>
+              </div>
+            </div>
+            {%- endif -%}
+
+            <div class="order-card__footer">
+              <div class="order-card__total">
+                <span class="t-small">Total</span>
+                <span style="font-family:var(--serif);font-size:17px;color:var(--cream)">{{ order.total_price | money }}</span>
+              </div>
+              <a href="{{ order.customer_url }}" class="btn btn-secondary btn-sm">View order</a>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <!-- ── PRESCRIPTIONS TAB ── -->
+  <div class="account-tab-content hidden" id="tab-prescriptions">
+    <div class="account-section-header">
+      <h2 class="t-title">Your prescriptions</h2>
+      <p class="t-small mt-sm">E-prescriptions issued by your arq physicians. Valid for 12 months.</p>
+    </div>
+
+    <div id="prescriptionsList">
+      {%- assign has_rx = false -%}
+      {%- for order in customer.orders -%}
+        {%- assign rx_status = order.note_attributes | where: 'name', 'prescription_status' | first -%}
+        {%- if rx_status.value == 'issued' -%}
+          {%- assign has_rx = true -%}
+          {%- assign rx_number = order.note_attributes | where: 'name', 'prescription_number' | first -%}
+          {%- assign rx_doctor = order.note_attributes | where: 'name', 'doctor_name' | first -%}
+          {%- assign rx_date = order.note_attributes | where: 'name', 'prescription_date' | first -%}
+
+          <div class="rx-card card">
+            <div class="rx-card__header">
+              <div>
+                <div class="rx-card__product">
+                  {%- for line_item in order.line_items limit: 1 -%}
+                    {{ line_item.title }}
+                  {%- endfor -%}
+                </div>
+                <div class="rx-card__meta">
+                  Rx #{{ rx_number.value | default: order.order_number }}
+                  {%- if rx_doctor.value != blank -%} · Dr. {{ rx_doctor.value }}{%- endif -%}
+                  {%- if rx_date.value != blank -%} · {{ rx_date.value }}{%- endif -%}
+                </div>
+              </div>
+              <span class="badge badge-active">Valid</span>
+            </div>
+
+            <div class="rx-card__footer">
+              <a href="/apps/arq-rx/download/{{ order.order_number }}"
+                 class="btn btn-ghost btn-sm">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download Rx
+              </a>
+              <button class="btn btn-secondary btn-sm" onclick="reorderFromRx('{{ order.id }}')">
+                Reorder
+              </button>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- unless has_rx -%}
+        <div class="account-empty">
+          <div class="account-empty__title">No prescriptions yet</div>
+          <div class="account-empty__sub">Your e-prescriptions will appear here after your doctor consultation.</div>
+        </div>
+      {%- endunless -%}
+    </div>
+  </div>
+
+  <!-- ── SUBSCRIPTIONS TAB ── -->
+  <div class="account-tab-content hidden" id="tab-subscriptions">
+    <div class="account-section-header">
+      <h2 class="t-title">Monthly refills</h2>
+      <p class="t-small mt-sm">Your active subscription protocols. Refills ship automatically — you'll get a WhatsApp confirmation first.</p>
+    </div>
+
+    <!-- Subscriptions are managed via Recharge or custom app -->
+    <!-- This calls the app endpoint to render subscription data -->
+    <div id="subscriptionsList">
+      <div class="account-loading">
+        <div class="cart-drawer__spinner"></div>
+      </div>
+    </div>
+
+    <div class="subscription-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      To skip a month or cancel, message us on WhatsApp 5 days before your next billing date.
+      <a href="https://wa.me/{{ settings.whatsapp_number }}" class="text-gold" target="_blank">Chat now →</a>
+    </div>
+  </div>
+
+  <!-- ── PROFILE TAB ── -->
+  <div class="account-tab-content hidden" id="tab-profile">
+    <div class="account-section-header">
+      <h2 class="t-title">Your details</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr;gap:16px">
+      <div class="card" style="padding:24px">
+        <div class="t-label" style="margin-bottom:16px">Personal information</div>
+        <div class="profile-row">
+          <span class="profile-row__label">Name</span>
+          <span class="profile-row__val">{{ customer.name }}</span>
+        </div>
+        <div class="profile-row">
+          <span class="profile-row__label">Email</span>
+          <span class="profile-row__val">{{ customer.email }}</span>
+        </div>
+        <div class="profile-row">
+          <span class="profile-row__label">Phone</span>
+          <span class="profile-row__val">{{ customer.phone | default: '—' }}</span>
+        </div>
+        <a href="/account/edit" class="btn btn-secondary btn-sm" style="margin-top:16px">Edit profile</a>
+      </div>
+
+      {%- if customer.default_address -%}
+      <div class="card" style="padding:24px">
+        <div class="t-label" style="margin-bottom:16px">Delivery address</div>
+        <div class="t-body" style="font-size:13px">
+          {{ customer.default_address.address1 }}<br>
+          {%- if customer.default_address.address2 != blank -%}
+            {{ customer.default_address.address2 }}<br>
+          {%- endif -%}
+          {{ customer.default_address.city }}, {{ customer.default_address.province_code }} {{ customer.default_address.zip }}<br>
+          {{ customer.default_address.country }}
+        </div>
+        <a href="/account/addresses" class="btn btn-secondary btn-sm" style="margin-top:16px">Manage addresses</a>
+      </div>
+      {%- endif -%}
+
+      <div class="card" style="padding:24px">
+        <div class="t-label" style="margin-bottom:12px">Privacy & discretion</div>
+        <div class="t-small" style="margin-bottom:16px;line-height:1.8">
+          Your orders appear on your bank statement as <strong style="color:var(--cream-70)">Dear One Technologies</strong>. No product or brand names are ever visible on packaging or billing.
+        </div>
+        <div class="t-small">
+          <a href="{{ routes.account_logout_url }}" class="text-gold">Sign out →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+/* ── ACCOUNT PAGE ── */
+.account-header { margin-bottom: 28px; }
+.account-header .t-headline { letter-spacing: -0.02em; }
+.account-header .t-headline em { font-style: italic; color: var(--gold); }
+
+.account-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--cream-07);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.account-stat {
+  flex: 1;
+  padding: 20px 16px;
+  text-align: center;
+}
+.account-stat__num {
+  font-family: var(--serif);
+  font-size: 28px;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.account-stat__label {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+}
+.account-stat-sep {
+  width: 1px;
+  height: 48px;
+  background: var(--cream-07);
+  flex-shrink: 0;
+}
+
+/* Tabs */
+.account-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--cream-07);
+  margin-bottom: 28px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.account-tabs::-webkit-scrollbar { display: none; }
+.account-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--cream-40);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px 18px;
+  white-space: nowrap;
+  transition: all 0.2s;
+  margin-bottom: -1px;
+}
+.account-tab:hover { color: var(--cream-70); }
+.account-tab--active { color: var(--gold); border-bottom-color: var(--gold); }
+
+.account-tab-content { display: block; }
+.account-tab-content.hidden { display: none; }
+
+/* Order card */
+.order-card {
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.order-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--cream-07);
+  flex-wrap: wrap;
+}
+.order-card__num {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--cream);
+  margin-bottom: 2px;
+}
+.order-card__date {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+}
+.order-card__status-wrap { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.order-items { padding: 16px 20px; }
+.order-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--cream-04);
+}
+.order-item:last-child { border-bottom: none; }
+.order-item__name { font-size: 14px; color: var(--cream); }
+.order-item__variant {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+}
+.order-item__price {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--cream-70);
+  flex-shrink: 0;
+}
+
+.order-rx-notice {
+  display: flex;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(200,131,42,0.08);
+  border-top: 1px solid var(--amber-border);
+  font-size: 12px;
+  color: var(--cream-70);
+  line-height: 1.65;
+}
+.order-rx-notice--amber { background: rgba(200,131,42,0.08); border-top-color: var(--amber-border); }
+.order-rx-notice--green { background: rgba(42,122,74,0.08); border-top-color: var(--green-border); }
+.order-rx-notice__icon { font-size: 16px; flex-shrink: 0; }
+.order-rx-notice__title { font-weight: 400; color: var(--cream); margin-bottom: 3px; }
+
+.order-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-top: 1px solid var(--cream-07);
+  background: var(--ink);
+}
+.order-card__total { display: flex; flex-direction: column; gap: 2px; }
+
+/* Rx card */
+.rx-card { margin-bottom: 10px; padding: 20px; }
+.rx-card__header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.rx-card__product { font-family: var(--serif); font-size: 18px; color: var(--cream); margin-bottom: 4px; }
+.rx-card__meta { font-family: var(--mono); font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-40); }
+.rx-card__footer { display: flex; gap: 8px; }
+
+/* Profile */
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cream-07);
+  font-size: 13px;
+}
+.profile-row:last-of-type { border-bottom: none; }
+.profile-row__label { color: var(--cream-40); font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; }
+.profile-row__val { color: var(--cream-70); }
+
+/* Empty state */
+.account-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+.account-empty__title { font-family: var(--serif); font-size: 20px; font-style: italic; color: var(--cream-40); margin-bottom: 8px; }
+.account-empty__sub { font-size: 13px; color: var(--cream-40); }
+
+.account-loading { display: flex; align-items: center; justify-content: center; padding: 40px; }
+.account-section-header { margin-bottom: 20px; }
+
+.subscription-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--cream-07);
+  border-radius: var(--radius);
+  font-size: 12px;
+  color: var(--cream-40);
+  line-height: 1.65;
+}
+</style>
+
+<script>
+function switchTab(name, btn) {
+  // Hide all tabs
+  document.querySelectorAll('.account-tab-content').forEach(t => t.classList.add('hidden'));
+  document.querySelectorAll('.account-tab').forEach(b => b.classList.remove('account-tab--active'));
+
+  // Show selected
+  document.getElementById('tab-' + name).classList.remove('hidden');
+  btn.classList.add('account-tab--active');
+
+  // Load subscriptions on demand
+  if (name === 'subscriptions') loadSubscriptions();
+}
+
+async function loadSubscriptions() {
+  const list = document.getElementById('subscriptionsList');
+  try {
+    const res = await fetch('/apps/arq-subscriptions/list');
+    const data = await res.json();
+
+    if (!data.subscriptions || data.subscriptions.length === 0) {
+      list.innerHTML = `
+        <div class="account-empty">
+          <div class="account-empty__title">No active subscriptions</div>
+          <div class="account-empty__sub">When you subscribe to a protocol, your monthly refills will appear here.</div>
+          <a href="/collections/all" class="btn btn-primary btn-sm" style="margin-top:16px">Browse protocols</a>
+        </div>`;
+      return;
+    }
+
+    list.innerHTML = data.subscriptions.map(sub => `
+      <div class="card" style="padding:20px;margin-bottom:10px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
+          <div>
+            <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:3px">${sub.product_title}</div>
+            <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream-40)">
+              Next billing: ${sub.next_billing_date} · ₹${sub.price}/month
+            </div>
+          </div>
+          <span class="badge ${sub.status === 'active' ? 'badge-active' : 'badge-pending'}">${sub.status}</span>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-secondary btn-sm" onclick="skipRefill('${sub.id}')">Skip next</button>
+          <button class="btn btn-ghost btn-sm" onclick="cancelSub('${sub.id}')">Cancel</button>
+        </div>
+      </div>
+    `).join('');
+  } catch {
+    list.innerHTML = `<div style="padding:24px;text-align:center;font-size:13px;color:var(--cream-40)">
+      Manage your refills via <a href="https://wa.me/${window.arq.waNumber}" class="text-gold" target="_blank">WhatsApp →</a>
+    </div>`;
+  }
+}
+
+function reorderFromRx(orderId) {
+  // Add previous order's items to cart and open drawer
+  fetch(`/apps/arq-rx/reorder/${orderId}`, { method: 'POST' })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        updateCartCount(data.cart_count);
+        openCartDrawer();
+      }
+    });
+}
+
+function skipRefill(subId) {
+  if (!confirm('Skip your next refill? Your subscription will resume the following month.')) return;
+  fetch(`/apps/arq-subscriptions/skip/${subId}`, { method: 'POST' })
+    .then(() => { showToast('Next refill skipped', 'success'); loadSubscriptions(); });
+}
+
+function cancelSub(subId) {
+  if (!confirm('Cancel this protocol? You can resubscribe anytime.')) return;
+  fetch(`/apps/arq-subscriptions/cancel/${subId}`, { method: 'POST' })
+    .then(() => { showToast('Subscription cancelled'); loadSubscriptions(); });
+}
+</script>

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /account
+Disallow: /intake
+Disallow: /orders
+Disallow: /questionnaire-
+Disallow: /templates/
+Disallow: /design-iterations/
+Disallow: *-template.html
+Disallow: *-iteration.html
+
+Sitemap: https://arq.clinic/sitemap.xml

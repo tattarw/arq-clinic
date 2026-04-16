@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arq 360° — All Background Variations</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#faf9f5;--dark:#1a1714;--gold:#b8922e;--gold-light:#c9a23a;--sans:'Sora',system-ui,sans-serif;--serif:'DM Serif Display',Georgia,serif;--mono:'IBM Plex Mono','SF Mono',monospace;--ease:cubic-bezier(0.16,1,0.3,1)}
+body{background:#e8e6e1;font-family:var(--sans);padding:40px 20px;display:flex;flex-direction:column;align-items:center;gap:48px}
+h1{font-family:var(--sans);font-size:22px;font-weight:600;color:#333;letter-spacing:-0.02em}
+.subtitle{font-size:13px;color:#888;margin-top:4px}
+.label{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:12px}
+.label span{color:var(--gold);font-weight:600}
+.card-wrap{width:100%;max-width:1200px}
+.bento-365-wrap{position:relative;border-radius:20px;overflow:hidden;isolation:isolate}
+.bento-365{min-height:240px;padding:0;background:var(--dark);border:1px solid rgba(184,146,46,0.12);border-radius:20px;overflow:hidden;display:block;cursor:pointer;position:relative;text-decoration:none;transition:all 0.4s var(--ease)}
+.bento-365:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(44,40,36,0.15)}
+.bento-365 canvas{position:absolute;inset:0;z-index:0}
+.bento-365-inner{position:relative;z-index:2;padding:28px 32px;display:flex;flex-direction:row;align-items:flex-end;justify-content:space-between;min-height:240px;gap:24px}
+.bento-365-content{display:flex;flex-direction:column;align-items:flex-start;margin-top:auto}
+.bento-365-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;opacity:0.8}
+.bento-365-badge i{font-size:10px}
+.bento-365-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,38px);font-weight:400;color:#f5f1e8;line-height:1.1;letter-spacing:-0.02em;margin-bottom:6px}
+.bento-365-title span{color:var(--gold)}
+.bento-365-desc{font-size:13px;color:rgba(245,241,232,0.45);line-height:1.5;max-width:400px}
+.bento-365-right{flex-shrink:0}
+.bento-365-cta{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(184,146,46,0.15);border:1px solid rgba(184,146,46,0.2);cursor:pointer;transition:all 0.3s;padding:0}
+.bento-365:hover .bento-365-cta{background:rgba(184,146,46,0.25);border-color:rgba(184,146,46,0.4);transform:scale(1.08)}
+.bento-365-cta i{font-size:14px;color:var(--gold);transition:transform 0.25s}
+.bento-365:hover .bento-365-cta i{transform:translateX(2px)}
+</style>
+</head>
+<body>
+
+<div>
+  <h1>arq 360° — Background Variations</h1>
+  <p class="subtitle">Hover over each card to see mouse interaction</p>
+</div>
+
+<!-- 1. CURRENT — Particle Network -->
+<div class="card-wrap">
+  <div class="label"><span>Current</span> — Particle Network</div>
+  <div class="bento-365-wrap"><div class="bento-365" id="card1">
+    <canvas id="c1"></canvas>
+    <div class="bento-365-inner"><div class="bento-365-content">
+      <div class="bento-365-badge"><i class="ph-fill ph-diamond"></i> Comprehensive</div>
+      <h3 class="bento-365-title">arq <span>360°</span></h3>
+      <p class="bento-365-desc">Your hair, your weight, your sleep — they're connected. Your doctor should be too.</p>
+    </div><div class="bento-365-right"><span class="bento-365-cta"><i class="ph-bold ph-arrow-right"></i></span></div></div>
+  </div></div>
+</div>
+
+<!-- 2. Constellation Map -->
+<div class="card-wrap">
+  <div class="label"><span>Option A</span> — Constellation Map (7 protocol anchors)</div>
+  <div class="bento-365-wrap"><div class="bento-365" id="card2">
+    <canvas id="c2"></canvas>
+    <div class="bento-365-inner"><div class="bento-365-content">
+      <div class="bento-365-badge"><i class="ph-fill ph-diamond"></i> Comprehensive</div>
+      <h3 class="bento-365-title">arq <span>360°</span></h3>
+      <p class="bento-365-desc">Your hair, your weight, your sleep — they're connected. Your doctor should be too.</p>
+    </div><div class="bento-365-right"><span class="bento-365-cta"><i class="ph-bold ph-arrow-right"></i></span></div></div>
+  </div></div>
+</div>
+
+<!-- 3. Aurora Flow -->
+<div class="card-wrap">
+  <div class="label"><span>Option B</span> — Aurora / Gradient Flow</div>
+  <div class="bento-365-wrap"><div class="bento-365" id="card3">
+    <canvas id="c3"></canvas>
+    <div class="bento-365-inner"><div class="bento-365-content">
+      <div class="bento-365-badge"><i class="ph-fill ph-diamond"></i> Comprehensive</div>
+      <h3 class="bento-365-title">arq <span>360°</span></h3>
+      <p class="bento-365-desc">Your hair, your weight, your sleep — they're connected. Your doctor should be too.</p>
+    </div><div class="bento-365-right"><span class="bento-365-cta"><i class="ph-bold ph-arrow-right"></i></span></div></div>
+  </div></div>
+</div>
+
+<!-- 4. Breathing Pulse Rings -->
+<div class="card-wrap">
+  <div class="label"><span>Option C</span> — Breathing Pulse Rings</div>
+  <div class="bento-365-wrap"><div class="bento-365" id="card4">
+    <canvas id="c4"></canvas>
+    <div class="bento-365-inner"><div class="bento-365-content">
+      <div class="bento-365-badge"><i class="ph-fill ph-diamond"></i> Comprehensive</div>
+      <h3 class="bento-365-title">arq <span>360°</span></h3>
+      <p class="bento-365-desc">Your hair, your weight, your sleep — they're connected. Your doctor should be too.</p>
+    </div><div class="bento-365-right"><span class="bento-365-cta"><i class="ph-bold ph-arrow-right"></i></span></div></div>
+  </div></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// SHARED UTILITIES
+// ═══════════════════════════════════════════════
+function setupCanvas(canvasId, cardId) {
+  var canvas = document.getElementById(canvasId);
+  var ctx = canvas.getContext('2d');
+  var wrap = document.getElementById(cardId);
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var w, h;
+  var mouse = { x: -999, y: -999 };
+
+  function resize() {
+    var rect = wrap.getBoundingClientRect();
+    w = rect.width; h = rect.height;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  wrap.addEventListener('mousemove', function(e) {
+    var rect = wrap.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left; mouse.y = e.clientY - rect.top;
+  });
+  wrap.addEventListener('mouseleave', function() { mouse.x = -999; mouse.y = -999; });
+  window.addEventListener('resize', resize);
+  resize();
+
+  return { canvas: canvas, ctx: ctx, wrap: wrap, dpr: dpr, mouse: mouse, getW: function() { return w; }, getH: function() { return h; }, resize: resize };
+}
+
+// ═══════════════════════════════════════════════
+// 1. PARTICLE NETWORK (current)
+// ═══════════════════════════════════════════════
+(function() {
+  var s = setupCanvas('c1', 'card1');
+  var ctx = s.ctx, mouse = s.mouse;
+  var particles = [];
+  var COUNT = 55, CDIST = 140, MRAD = 180;
+  var R = 184, G = 146, B = 46;
+
+  function P() {
+    this.x = Math.random() * s.getW();
+    this.y = Math.random() * s.getH();
+    this.vx = (Math.random() - 0.5) * 0.35;
+    this.vy = (Math.random() - 0.5) * 0.35;
+    this.r = Math.random() * 1.8 + 0.6;
+    this.ba = Math.random() * 0.35 + 0.15;
+    this.a = this.ba;
+    this.p = Math.random() * Math.PI * 2;
+    this.ps = Math.random() * 0.008 + 0.004;
+  }
+
+  for (var i = 0; i < COUNT; i++) particles.push(new P());
+
+  (function draw() {
+    var w = s.getW(), h = s.getH();
+    ctx.clearRect(0, 0, w, h);
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i + 1; j < particles.length; j++) {
+        var dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
+        var d = Math.sqrt(dx * dx + dy * dy);
+        if (d < CDIST) {
+          var op = (1 - d / CDIST) * 0.12;
+          var mx = (particles[i].x + particles[j].x) / 2, my = (particles[i].y + particles[j].y) / 2;
+          var md = Math.sqrt((mx - mouse.x) * (mx - mouse.x) + (my - mouse.y) * (my - mouse.y));
+          if (md < MRAD) op += (1 - md / MRAD) * 0.12;
+          ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = 'rgba(' + R + ',' + G + ',' + B + ',' + op + ')'; ctx.lineWidth = 0.6; ctx.stroke();
+        }
+      }
+    }
+    for (var k = 0; k < particles.length; k++) {
+      var p = particles[k];
+      p.p += p.ps; p.a = p.ba + Math.sin(p.p) * 0.08;
+      var pdx = p.x - mouse.x, pdy = p.y - mouse.y, pd = Math.sqrt(pdx * pdx + pdy * pdy);
+      if (pd < MRAD) { var f = (1 - pd / MRAD) * 0.8; p.vx += pdx / pd * f * 0.03; p.vy += pdy / pd * f * 0.03; p.a = Math.min(p.a + f * 0.3, 0.8); }
+      p.x += p.vx; p.y += p.vy; p.vx *= 0.998; p.vy *= 0.998;
+      if (p.x < 0) { p.x = 0; p.vx *= -1 } if (p.x > w) { p.x = w; p.vx *= -1 }
+      if (p.y < 0) { p.y = 0; p.vy *= -1 } if (p.y > h) { p.y = h; p.vy *= -1 }
+      var gr = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+      gr.addColorStop(0, 'rgba(' + R + ',' + G + ',' + B + ',' + p.a * 0.5 + ')'); gr.addColorStop(1, 'rgba(' + R + ',' + G + ',' + B + ',0)');
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2); ctx.fillStyle = gr; ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = 'rgba(' + R + ',' + G + ',' + B + ',' + p.a + ')'; ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  })();
+})();
+
+// ═══════════════════════════════════════════════
+// 2. CONSTELLATION MAP — 7 protocol anchors
+// ═══════════════════════════════════════════════
+(function() {
+  var s = setupCanvas('c2', 'card2');
+  var ctx = s.ctx, mouse = s.mouse;
+  var anchors = [], satellites = [];
+  var MRAD = 200;
+  var protocols = [
+    { label: 'Hair', color: [184, 146, 46] },
+    { label: 'Weight', color: [201, 162, 58] },
+    { label: 'Sleep', color: [160, 140, 80] },
+    { label: 'Mind', color: [200, 170, 60] },
+    { label: 'Skin', color: [190, 150, 50] },
+    { label: 'Energy', color: [210, 175, 55] },
+    { label: 'Vitality', color: [175, 140, 40] }
+  ];
+
+  function init() {
+    var w = s.getW(), h = s.getH();
+    anchors = [];
+    // Place 7 anchors in a loose organic layout
+    var cx = w * 0.5, cy = h * 0.5;
+    var radius = Math.min(w, h) * 0.32;
+    for (var i = 0; i < 7; i++) {
+      var angle = (i / 7) * Math.PI * 2 - Math.PI / 2;
+      // Offset slightly for organic feel
+      var ox = (Math.random() - 0.5) * radius * 0.3;
+      var oy = (Math.random() - 0.5) * radius * 0.3;
+      anchors.push({
+        x: cx + Math.cos(angle) * radius + ox,
+        y: cy + Math.sin(angle) * radius + oy,
+        baseX: cx + Math.cos(angle) * radius + ox,
+        baseY: cy + Math.sin(angle) * radius + oy,
+        r: 3,
+        pulse: Math.random() * Math.PI * 2,
+        pulseSpeed: 0.012 + Math.random() * 0.008,
+        color: protocols[i].color,
+        label: protocols[i].label
+      });
+    }
+    // Satellites — smaller particles orbiting near anchors
+    satellites = [];
+    for (var j = 0; j < 35; j++) {
+      var ai = Math.floor(Math.random() * 7);
+      var dist = 30 + Math.random() * 80;
+      var a = Math.random() * Math.PI * 2;
+      satellites.push({
+        x: anchors[ai].baseX + Math.cos(a) * dist,
+        y: anchors[ai].baseY + Math.sin(a) * dist,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        r: Math.random() * 1.2 + 0.3,
+        alpha: Math.random() * 0.25 + 0.08,
+        anchorIdx: ai,
+        orbitAngle: a,
+        orbitSpeed: (Math.random() - 0.5) * 0.003,
+        orbitDist: dist
+      });
+    }
+  }
+
+  init();
+  window.addEventListener('resize', init);
+  var t = 0;
+
+  (function draw() {
+    var w = s.getW(), h = s.getH();
+    ctx.clearRect(0, 0, w, h);
+    t++;
+
+    // Gentle breathing motion for anchors
+    for (var i = 0; i < anchors.length; i++) {
+      var an = anchors[i];
+      an.pulse += an.pulseSpeed;
+      an.x = an.baseX + Math.sin(an.pulse) * 3;
+      an.y = an.baseY + Math.cos(an.pulse * 0.7) * 2;
+    }
+
+    // Draw connections between anchors (constellation lines)
+    for (var i = 0; i < anchors.length; i++) {
+      // Connect to next 2 anchors for a web pattern
+      for (var n = 1; n <= 2; n++) {
+        var j = (i + n) % anchors.length;
+        var dx = anchors[i].x - anchors[j].x, dy = anchors[i].y - anchors[j].y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        var op = 0.06 + Math.sin(t * 0.01 + i) * 0.02;
+        // Mouse brightening
+        var mx = (anchors[i].x + anchors[j].x) / 2, my = (anchors[i].y + anchors[j].y) / 2;
+        var md = Math.sqrt((mx - mouse.x) * (mx - mouse.x) + (my - mouse.y) * (my - mouse.y));
+        if (md < MRAD) op += (1 - md / MRAD) * 0.1;
+        ctx.beginPath();
+        ctx.moveTo(anchors[i].x, anchors[i].y);
+        // Slight curve for organic feel
+        var cpx = (anchors[i].x + anchors[j].x) / 2 + Math.sin(t * 0.005 + i + j) * 15;
+        var cpy = (anchors[i].y + anchors[j].y) / 2 + Math.cos(t * 0.005 + i + j) * 10;
+        ctx.quadraticCurveTo(cpx, cpy, anchors[j].x, anchors[j].y);
+        ctx.strokeStyle = 'rgba(184,146,46,' + op + ')';
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      }
+    }
+
+    // Draw satellite connections to their anchor
+    for (var k = 0; k < satellites.length; k++) {
+      var sat = satellites[k];
+      var an = anchors[sat.anchorIdx];
+      var dx = sat.x - an.x, dy = sat.y - an.y;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        ctx.beginPath(); ctx.moveTo(sat.x, sat.y); ctx.lineTo(an.x, an.y);
+        ctx.strokeStyle = 'rgba(184,146,46,' + (1 - dist / 120) * 0.06 + ')';
+        ctx.lineWidth = 0.4; ctx.stroke();
+      }
+    }
+
+    // Draw satellites
+    for (var k = 0; k < satellites.length; k++) {
+      var sat = satellites[k];
+      sat.orbitAngle += sat.orbitSpeed;
+      var an = anchors[sat.anchorIdx];
+      sat.x = an.x + Math.cos(sat.orbitAngle) * sat.orbitDist + sat.vx * t * 0.1;
+      sat.y = an.y + Math.sin(sat.orbitAngle) * sat.orbitDist + sat.vy * t * 0.1;
+      // Keep in bounds
+      if (sat.x < 0 || sat.x > w || sat.y < 0 || sat.y > h) {
+        sat.orbitAngle = Math.random() * Math.PI * 2;
+        sat.orbitDist = 30 + Math.random() * 80;
+        sat.vx = (Math.random() - 0.5) * 0.2;
+        sat.vy = (Math.random() - 0.5) * 0.2;
+      }
+      ctx.beginPath(); ctx.arc(sat.x, sat.y, sat.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(184,146,46,' + sat.alpha + ')';
+      ctx.fill();
+    }
+
+    // Draw anchor nodes (big, glowing)
+    for (var i = 0; i < anchors.length; i++) {
+      var an = anchors[i];
+      var pulseScale = 1 + Math.sin(an.pulse) * 0.25;
+      var c = an.color;
+
+      // Mouse interaction — grow on proximity
+      var adx = an.x - mouse.x, ady = an.y - mouse.y;
+      var adist = Math.sqrt(adx * adx + ady * ady);
+      var mouseBoost = adist < MRAD ? (1 - adist / MRAD) * 0.5 : 0;
+
+      // Outer glow
+      var glowR = (an.r + 12) * pulseScale;
+      var glow = ctx.createRadialGradient(an.x, an.y, 0, an.x, an.y, glowR);
+      glow.addColorStop(0, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (0.15 + mouseBoost * 0.2) + ')');
+      glow.addColorStop(1, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',0)');
+      ctx.beginPath(); ctx.arc(an.x, an.y, glowR, 0, Math.PI * 2);
+      ctx.fillStyle = glow; ctx.fill();
+
+      // Core
+      ctx.beginPath(); ctx.arc(an.x, an.y, an.r * (1 + mouseBoost * 0.5), 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (0.6 + mouseBoost * 0.4) + ')';
+      ctx.fill();
+
+      // Label on hover
+      if (adist < 60) {
+        ctx.font = '500 9px "IBM Plex Mono", monospace';
+        ctx.fillStyle = 'rgba(184,146,46,' + (0.7 + mouseBoost) + ')';
+        ctx.textAlign = 'center';
+        ctx.fillText(an.label.toUpperCase(), an.x, an.y - 14);
+      }
+    }
+
+    requestAnimationFrame(draw);
+  })();
+})();
+
+// ═══════════════════════════════════════════════
+// 3. AURORA / GRADIENT FLOW
+// ═══════════════════════════════════════════════
+(function() {
+  var s = setupCanvas('c3', 'card3');
+  var ctx = s.ctx, mouse = s.mouse;
+  var t = 0;
+
+  // Aurora bands
+  var bands = [
+    { y: 0.3, speed: 0.0008, amp: 40, width: 0.35, r: 184, g: 146, b: 46, alpha: 0.08 },
+    { y: 0.5, speed: 0.0012, amp: 50, width: 0.4, r: 201, g: 162, b: 58, alpha: 0.06 },
+    { y: 0.7, speed: 0.0006, amp: 35, width: 0.3, r: 160, g: 130, b: 50, alpha: 0.07 },
+    { y: 0.4, speed: 0.001, amp: 45, width: 0.25, r: 210, g: 175, b: 55, alpha: 0.05 },
+    { y: 0.6, speed: 0.0015, amp: 55, width: 0.35, r: 175, g: 140, b: 40, alpha: 0.06 }
+  ];
+
+  // Floating ember particles
+  var embers = [];
+  for (var i = 0; i < 20; i++) {
+    embers.push({
+      x: Math.random(),
+      y: Math.random(),
+      vy: -(Math.random() * 0.0003 + 0.0001),
+      r: Math.random() * 1.5 + 0.5,
+      alpha: Math.random() * 0.3 + 0.1,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.005
+    });
+  }
+
+  (function draw() {
+    var w = s.getW(), h = s.getH();
+    ctx.clearRect(0, 0, w, h);
+    t++;
+
+    // Mouse influence zone
+    var mx = mouse.x / w, my = mouse.y / h;
+    var mouseActive = mouse.x > 0 && mouse.y > 0;
+
+    // Draw aurora bands
+    for (var b = 0; b < bands.length; b++) {
+      var band = bands[b];
+      ctx.beginPath();
+
+      var baseY = band.y * h;
+      var bandH = band.width * h;
+
+      // Create flowing path
+      ctx.moveTo(-10, baseY + bandH);
+      for (var x = -10; x <= w + 10; x += 4) {
+        var nx = x / w;
+        var wave1 = Math.sin(nx * 3 + t * band.speed * 60) * band.amp;
+        var wave2 = Math.sin(nx * 5 - t * band.speed * 40) * band.amp * 0.5;
+        var wave3 = Math.sin(nx * 1.5 + t * band.speed * 20) * band.amp * 0.8;
+
+        // Mouse warping
+        var mouseWarp = 0;
+        if (mouseActive) {
+          var distX = Math.abs(nx - mx);
+          var distY = Math.abs((baseY + wave1) / h - my);
+          var dist = Math.sqrt(distX * distX + distY * distY);
+          if (dist < 0.3) mouseWarp = (1 - dist / 0.3) * 30;
+        }
+
+        var y = baseY + wave1 + wave2 + wave3 + mouseWarp;
+        ctx.lineTo(x, y);
+      }
+
+      // Close the band
+      ctx.lineTo(w + 10, baseY + bandH);
+      for (var x = w + 10; x >= -10; x -= 4) {
+        var nx = x / w;
+        var wave1 = Math.sin(nx * 3 + t * band.speed * 60 + 1) * band.amp * 0.6;
+        var wave2 = Math.sin(nx * 5 - t * band.speed * 40 + 2) * band.amp * 0.3;
+        var y = baseY + bandH + wave1 + wave2;
+        ctx.lineTo(x, y);
+      }
+
+      ctx.closePath();
+
+      // Gradient fill
+      var alpha = band.alpha;
+      if (mouseActive) {
+        var cdist = Math.sqrt((mx - 0.5) * (mx - 0.5) + (my - band.y) * (my - band.y));
+        if (cdist < 0.4) alpha += (1 - cdist / 0.4) * 0.04;
+      }
+
+      var grad = ctx.createLinearGradient(0, baseY - band.amp, 0, baseY + bandH + band.amp);
+      grad.addColorStop(0, 'rgba(' + band.r + ',' + band.g + ',' + band.b + ',0)');
+      grad.addColorStop(0.3, 'rgba(' + band.r + ',' + band.g + ',' + band.b + ',' + alpha + ')');
+      grad.addColorStop(0.5, 'rgba(' + band.r + ',' + band.g + ',' + band.b + ',' + alpha * 1.2 + ')');
+      grad.addColorStop(0.7, 'rgba(' + band.r + ',' + band.g + ',' + band.b + ',' + alpha + ')');
+      grad.addColorStop(1, 'rgba(' + band.r + ',' + band.g + ',' + band.b + ',0)');
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    // Draw floating embers
+    for (var i = 0; i < embers.length; i++) {
+      var e = embers[i];
+      e.y += e.vy;
+      e.x += Math.sin(t * 0.003 + i) * 0.0002;
+      e.pulse += e.pulseSpeed;
+      if (e.y < -0.05) { e.y = 1.05; e.x = Math.random(); }
+
+      var ex = e.x * w, ey = e.y * h;
+      var ea = e.alpha * (0.7 + Math.sin(e.pulse) * 0.3);
+
+      var eg = ctx.createRadialGradient(ex, ey, 0, ex, ey, e.r * 3);
+      eg.addColorStop(0, 'rgba(184,146,46,' + ea + ')');
+      eg.addColorStop(1, 'rgba(184,146,46,0)');
+      ctx.beginPath(); ctx.arc(ex, ey, e.r * 3, 0, Math.PI * 2);
+      ctx.fillStyle = eg; ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  })();
+})();
+
+// ═══════════════════════════════════════════════
+// 4. BREATHING PULSE RINGS
+// ═══════════════════════════════════════════════
+(function() {
+  var s = setupCanvas('c4', 'card4');
+  var ctx = s.ctx, mouse = s.mouse;
+  var t = 0;
+  var rings = [];
+  var RING_INTERVAL = 120; // frames between new rings
+  var MAX_RINGS = 8;
+
+  // Multiple pulse origins
+  var origins = [
+    { x: 0.65, y: 0.45 },  // Primary — right of center
+    { x: 0.25, y: 0.6 }    // Secondary — left lower
+  ];
+
+  function Ring(ox, oy) {
+    this.ox = ox; this.oy = oy;
+    this.birth = t;
+    this.maxRadius = Math.max(s.getW(), s.getH()) * 0.8;
+    this.speed = 0.4 + Math.random() * 0.15;
+  }
+
+  // Seed initial rings
+  for (var i = 0; i < 5; i++) {
+    var oi = i % origins.length;
+    var r = new Ring(origins[oi].x, origins[oi].y);
+    r.birth = t - i * RING_INTERVAL;
+    rings.push(r);
+  }
+
+  (function draw() {
+    var w = s.getW(), h = s.getH();
+    ctx.clearRect(0, 0, w, h);
+    t++;
+
+    // Spawn new ring
+    if (t % RING_INTERVAL === 0) {
+      var oi = Math.floor(t / RING_INTERVAL) % origins.length;
+      rings.push(new Ring(origins[oi].x, origins[oi].y));
+      if (rings.length > MAX_RINGS) rings.shift();
+    }
+
+    // Mouse ripple — spawn temporary ring at mouse pos
+    var mouseActive = mouse.x > 0 && mouse.y > 0;
+
+    // Draw rings
+    for (var i = 0; i < rings.length; i++) {
+      var ring = rings[i];
+      var age = (t - ring.birth) * ring.speed;
+      var radius = age * 1.2;
+      if (radius > ring.maxRadius) continue;
+
+      var life = radius / ring.maxRadius;
+      var alpha = (1 - life) * 0.12;
+
+      // Breathing modulation
+      var breathe = Math.sin(t * 0.015) * 0.03;
+      alpha += breathe;
+      if (alpha <= 0) continue;
+
+      var cx = ring.ox * w, cy = ring.oy * h;
+
+      // Mouse warping — rings distort slightly toward mouse
+      if (mouseActive) {
+        var mdx = mouse.x - cx, mdy = mouse.y - cy;
+        var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+        if (mdist < 250) {
+          var pull = (1 - mdist / 250) * 15;
+          cx += mdx / mdist * pull;
+          cy += mdy / mdist * pull;
+          alpha += (1 - mdist / 250) * 0.05;
+        }
+      }
+
+      // Draw ring with slight glow
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(184,146,46,' + alpha + ')';
+      ctx.lineWidth = 1.5 * (1 - life * 0.7);
+      ctx.stroke();
+
+      // Inner glow ring
+      if (life < 0.5) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(184,146,46,' + alpha * 0.3 + ')';
+        ctx.lineWidth = 4 * (1 - life);
+        ctx.stroke();
+      }
+    }
+
+    // Center glow at each origin (like a heartbeat source)
+    for (var o = 0; o < origins.length; o++) {
+      var ox = origins[o].x * w, oy = origins[o].y * h;
+      var breatheR = 8 + Math.sin(t * 0.015 + o * Math.PI) * 3;
+      var breatheA = 0.12 + Math.sin(t * 0.015 + o * Math.PI) * 0.05;
+
+      var cg = ctx.createRadialGradient(ox, oy, 0, ox, oy, breatheR * 3);
+      cg.addColorStop(0, 'rgba(184,146,46,' + breatheA + ')');
+      cg.addColorStop(1, 'rgba(184,146,46,0)');
+      ctx.beginPath(); ctx.arc(ox, oy, breatheR * 3, 0, Math.PI * 2);
+      ctx.fillStyle = cg; ctx.fill();
+
+      ctx.beginPath(); ctx.arc(ox, oy, 2, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(184,146,46,' + (breatheA + 0.2) + ')';
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  })();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arq 360° Card — Dark vs Light Comparison</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#faf9f5;--dark:#1a1714;--gold:#b8922e;--gold-light:#c9a23a;--sans:'Sora',system-ui,sans-serif;--serif:'DM Serif Display',Georgia,serif;--mono:'IBM Plex Mono','SF Mono',monospace;--ease:cubic-bezier(0.16,1,0.3,1)}
+body{background:#e8e6e1;font-family:var(--sans);padding:40px 20px;display:flex;flex-direction:column;align-items:center;gap:48px}
+h1{font-family:var(--sans);font-size:20px;font-weight:600;color:#333;letter-spacing:-0.02em}
+.label{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:12px}
+.card-wrap{width:100%;max-width:1200px}
+
+/* Shared card styles */
+.bento-365-wrap{position:relative;border-radius:20px;overflow:hidden;isolation:isolate}
+.bento-365{min-height:220px;padding:0;border-radius:20px;overflow:hidden;display:block;cursor:pointer;position:relative;text-decoration:none;transition:all 0.4s var(--ease)}
+.bento-365:hover{transform:translateY(-4px)}
+.bento-365-canvas{position:absolute;inset:0;z-index:0}
+.bento-365-inner{position:relative;z-index:2;padding:28px 32px;display:flex;flex-direction:row;align-items:flex-end;justify-content:space-between;min-height:220px;gap:24px}
+.bento-365-content{display:flex;flex-direction:column;align-items:flex-start;margin-top:auto}
+.bento-365-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;opacity:0.8}
+.bento-365-badge i{font-size:10px}
+.bento-365-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,38px);font-weight:400;line-height:1.1;letter-spacing:-0.02em;margin-bottom:6px}
+.bento-365-title span{color:var(--gold)}
+.bento-365-desc{font-size:13px;line-height:1.5;max-width:400px}
+.bento-365-right{flex-shrink:0}
+.bento-365-cta{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;padding:0}
+.bento-365:hover .bento-365-cta{transform:scale(1.08)}
+.bento-365-cta i{font-size:14px;color:var(--gold);transition:transform 0.25s}
+.bento-365:hover .bento-365-cta i{transform:translateX(2px)}
+
+/* ═══ DARK VERSION ═══ */
+.dark .bento-365{background:var(--dark);border:1px solid rgba(184,146,46,0.12)}
+.dark .bento-365:hover{box-shadow:0 20px 60px rgba(44,40,36,0.15)}
+.dark .bento-365-title{color:#f5f1e8}
+.dark .bento-365-desc{color:rgba(245,241,232,0.45)}
+.dark .bento-365-cta{background:rgba(184,146,46,0.15);border:1px solid rgba(184,146,46,0.2)}
+.dark .bento-365:hover .bento-365-cta{background:rgba(184,146,46,0.25);border-color:rgba(184,146,46,0.4)}
+
+/* ═══ LIGHT VERSION ═══ */
+.light .bento-365{background:#f8f6f1;border:1px solid rgba(184,146,46,0.18)}
+.light .bento-365:hover{box-shadow:0 20px 60px rgba(184,146,46,0.12)}
+.light .bento-365-title{color:var(--dark)}
+.light .bento-365-desc{color:rgba(26,23,20,0.45)}
+.light .bento-365-cta{background:rgba(184,146,46,0.12);border:1px solid rgba(184,146,46,0.25)}
+.light .bento-365:hover .bento-365-cta{background:rgba(184,146,46,0.2);border-color:rgba(184,146,46,0.45)}
+</style>
+</head>
+<body>
+
+<h1>arq 360° Card — Particle Network Comparison</h1>
+
+<!-- DARK VERSION -->
+<div class="card-wrap dark">
+  <div class="label">Version A — Dark</div>
+  <div class="bento-365-wrap">
+    <div class="bento-365" id="card-dark">
+      <canvas class="bento-365-canvas" id="canvasDark"></canvas>
+      <div class="bento-365-inner">
+        <div class="bento-365-content">
+          <div class="bento-365-badge"><i class="ph-fill ph-diamond"></i> Comprehensive</div>
+          <h3 class="bento-365-title">arq <span>360°</span></h3>
+          <p class="bento-365-desc">Your hair, your weight, your sleep — they're connected. Your doctor should be too.</p>
+        </div>
+        <div class="bento-365-right"><span class="bento-365-cta"><i class="ph-bold ph-arrow-right"></i></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHT VERSION -->
+<div class="card-wrap light">
+  <div class="label">Version B — Light</div>
+  <div class="bento-365-wrap">
+    <div class="bento-365" id="card-light">
+      <canvas class="bento-365-canvas" id="canvasLight"></canvas>
+      <div class="bento-365-inner">
+        <div class="bento-365-content">
+          <div class="bento-365-badge"><i class="ph-fill ph-diamond"></i> Comprehensive</div>
+          <h3 class="bento-365-title">arq <span>360°</span></h3>
+          <p class="bento-365-desc">Your hair, your weight, your sleep — they're connected. Your doctor should be too.</p>
+        </div>
+        <div class="bento-365-right"><span class="bento-365-cta"><i class="ph-bold ph-arrow-right"></i></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function createParticleNetwork(canvasId, cardId, config) {
+  var canvas = document.getElementById(canvasId);
+  var ctx = canvas.getContext('2d');
+  var wrap = document.getElementById(cardId);
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var w, h;
+  var mouse = { x: -999, y: -999 };
+  var particles = [];
+
+  var PARTICLE_COUNT = config.count || 55;
+  var CONNECT_DIST = config.connectDist || 140;
+  var MOUSE_RADIUS = 180;
+  var R = config.r, G = config.g, B = config.b;
+  var baseAlphaMin = config.baseAlphaMin || 0.15;
+  var baseAlphaRange = config.baseAlphaRange || 0.35;
+  var lineOpacity = config.lineOpacity || 0.12;
+
+  function resize() {
+    var rect = wrap.getBoundingClientRect();
+    w = rect.width; h = rect.height;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function Particle() {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.vx = (Math.random() - 0.5) * 0.35;
+    this.vy = (Math.random() - 0.5) * 0.35;
+    this.r = Math.random() * 1.8 + 0.6;
+    this.baseAlpha = Math.random() * baseAlphaRange + baseAlphaMin;
+    this.alpha = this.baseAlpha;
+    this.pulse = Math.random() * Math.PI * 2;
+    this.pulseSpeed = Math.random() * 0.008 + 0.004;
+  }
+
+  function init() {
+    resize();
+    particles = [];
+    for (var i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i + 1; j < particles.length; j++) {
+        var dx = particles[i].x - particles[j].x;
+        var dy = particles[i].y - particles[j].y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < CONNECT_DIST) {
+          var opacity = (1 - dist / CONNECT_DIST) * lineOpacity;
+          var mx = (particles[i].x + particles[j].x) / 2;
+          var my = (particles[i].y + particles[j].y) / 2;
+          var mdx = mx - mouse.x, mdy = my - mouse.y;
+          var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (mdist < MOUSE_RADIUS) opacity += (1 - mdist / MOUSE_RADIUS) * lineOpacity;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = 'rgba(' + R + ',' + G + ',' + B + ',' + opacity + ')';
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+
+    for (var k = 0; k < particles.length; k++) {
+      var p = particles[k];
+      p.pulse += p.pulseSpeed;
+      p.alpha = p.baseAlpha + Math.sin(p.pulse) * 0.08;
+
+      var pdx = p.x - mouse.x, pdy = p.y - mouse.y;
+      var pdist = Math.sqrt(pdx * pdx + pdy * pdy);
+      if (pdist < MOUSE_RADIUS) {
+        var force = (1 - pdist / MOUSE_RADIUS) * 0.8;
+        p.vx += pdx / pdist * force * 0.03;
+        p.vy += pdy / pdist * force * 0.03;
+        p.alpha = Math.min(p.alpha + force * 0.3, 0.8);
+      }
+
+      p.x += p.vx; p.y += p.vy;
+      p.vx *= 0.998; p.vy *= 0.998;
+
+      if (p.x < 0) { p.x = 0; p.vx *= -1 }
+      if (p.x > w) { p.x = w; p.vx *= -1 }
+      if (p.y < 0) { p.y = 0; p.vy *= -1 }
+      if (p.y > h) { p.y = h; p.vy *= -1 }
+
+      var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+      grad.addColorStop(0, 'rgba(' + R + ',' + G + ',' + B + ',' + p.alpha * 0.5 + ')');
+      grad.addColorStop(1, 'rgba(' + R + ',' + G + ',' + B + ',0)');
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+      ctx.fillStyle = grad; ctx.fill();
+
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + R + ',' + G + ',' + B + ',' + p.alpha + ')';
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  wrap.addEventListener('mousemove', function (e) {
+    var rect = wrap.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left; mouse.y = e.clientY - rect.top;
+  });
+  wrap.addEventListener('mouseleave', function () { mouse.x = -999; mouse.y = -999; });
+  window.addEventListener('resize', resize);
+
+  init(); draw();
+}
+
+// Dark version — warm gold on charcoal
+createParticleNetwork('canvasDark', 'card-dark', {
+  r: 184, g: 146, b: 46,
+  count: 55, connectDist: 140,
+  baseAlphaMin: 0.15, baseAlphaRange: 0.35,
+  lineOpacity: 0.12
+});
+
+// Light version — deeper gold on cream
+createParticleNetwork('canvasLight', 'card-light', {
+  r: 160, g: 126, b: 32,
+  count: 55, connectDist: 140,
+  baseAlphaMin: 0.25, baseAlphaRange: 0.4,
+  lineOpacity: 0.2
+});
+</script>
+</body>
+</html>

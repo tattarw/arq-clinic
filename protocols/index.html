@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocol Library — arq.</title>
+<meta name="description" content="26 all-inclusive protocols from arq. Doctor consultation, prescription, medication, delivery. One monthly price. No surprises.">
+<meta name="keywords" content="protocols, modafinil, semaglutide, testosterone, BPC-157, finasteride, metformin, rapamycin, NMN, peptides, all-inclusive">
+<meta property="og:title" content="Protocol Library — arq.">
+<meta property="og:description" content="26 all-inclusive protocols. Every protocol includes doctor consultation, prescription, medication, and delivery.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arq.clinic/protocols/">
+<meta property="og:site_name" content="arq.">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Protocol Library — arq.">
+<meta name="twitter:description" content="26 all-inclusive protocols from arq. Doctor consultation, prescription, medication, delivery.">
+<link rel="canonical" href="https://arq.clinic/protocols/">
+<meta name="theme-color" content="#050505">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#050505;
+  --bg2:#0a0a0a;
+  --surface:#111;
+  --surface2:#161616;
+  --card:#141414;
+  --card-hover:#1a1a1a;
+  --border:rgba(255,255,255,0.06);
+  --border-hover:rgba(255,255,255,0.12);
+
+  --white:#e8e4dd;
+  --white-90:rgba(232,228,221,0.9);
+  --white-60:rgba(232,228,221,0.6);
+  --white-30:rgba(232,228,221,0.3);
+  --white-12:rgba(232,228,221,0.12);
+  --white-06:rgba(232,228,221,0.06);
+
+  --gold:#c9a050;
+  --gold-light:#d4b06a;
+  --gold-dim:rgba(201,160,80,0.6);
+  --gold-glow:rgba(201,160,80,0.08);
+  --gold-glow2:rgba(201,160,80,0.15);
+  --gold-border:rgba(201,160,80,0.2);
+
+  --blue:#5b9cf5;
+  --blue-dim:rgba(91,156,245,0.15);
+  --green:#3ecf71;
+  --green-dim:rgba(62,207,113,0.15);
+  --purple:#a78bfa;
+  --purple-dim:rgba(167,139,250,0.15);
+  --red:#f87171;
+  --red-dim:rgba(248,113,113,0.15);
+  --cyan:#67e8f9;
+  --cyan-dim:rgba(103,232,249,0.15);
+  --orange:#fb923c;
+  --orange-dim:rgba(251,146,60,0.15);
+  --pink:#f472b6;
+  --pink-dim:rgba(244,114,182,0.15);
+
+  --sans:'Inter',system-ui,sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+  --mono:'JetBrains Mono','SF Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{background:var(--bg);color:var(--white);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden}
+
+/* Noise overlay */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;
+}
+
+::selection{background:var(--gold);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold-glow);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+/* ═══ NAV ═══ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:64px;padding:0 clamp(20px,4vw,48px);
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(5,5,5,0.6);
+  backdrop-filter:blur(40px) saturate(180%);
+  -webkit-backdrop-filter:blur(40px) saturate(180%);
+  border-bottom:1px solid transparent;
+  transition:all 0.6s var(--ease);
+}
+.nav.scrolled{background:rgba(5,5,5,0.95);border-color:var(--border)}
+
+.nav-logo{
+  font-family:var(--serif);font-size:24px;font-weight:600;
+  letter-spacing:0.02em;color:var(--white);
+  cursor:pointer;transition:opacity 0.3s;
+}
+.nav-logo:hover{opacity:0.7}
+.nav-logo span{color:var(--gold)}
+
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-link{
+  font-size:13px;font-weight:500;letter-spacing:0.04em;
+  color:var(--white-60);transition:color 0.3s;cursor:pointer;
+  text-transform:uppercase;
+}
+.nav-link:hover{color:var(--white)}
+.nav-link.active{color:var(--gold)}
+
+.nav-cta{
+  display:flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--gold),#d4ad5e);color:var(--bg);
+  padding:10px 22px;border-radius:8px;
+  font-size:13px;font-weight:600;letter-spacing:0.02em;
+  border:none;cursor:pointer;transition:all 0.3s;
+  box-shadow:0 0 20px rgba(201,160,80,0.15);
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 4px 30px rgba(201,160,80,0.3)}
+
+@media(max-width:768px){.nav-links{display:none}}
+
+/* ═══ HERO ═══ */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:120px clamp(20px,5vw,48px) 80px;
+  position:relative;overflow:hidden;text-align:center;
+  background:linear-gradient(180deg,rgba(20,20,20,0.4) 0%,rgba(5,5,5,0) 100%);
+}
+
+#hero-canvas{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  z-index:0;opacity:0.6;
+}
+
+.hero-content{position:relative;z-index:2}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 20px;border-radius:100px;
+  background:rgba(201,160,80,0.06);
+  border:1px solid rgba(201,160,80,0.15);
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:40px;
+  backdrop-filter:blur(10px);
+}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+.hero-h1{
+  font-family:var(--serif);
+  font-size:clamp(48px,8vw,96px);
+  font-weight:400;line-height:0.98;
+  letter-spacing:-0.04em;
+  color:var(--white);margin-bottom:24px;
+}
+.hero-h1 em{font-style:italic;color:var(--gold)}
+
+.hero-sub{
+  font-size:clamp(15px,1.8vw,19px);
+  color:var(--white-60);line-height:1.7;
+  max-width:740px;margin:0 auto 56px;font-weight:300;
+}
+
+/* ═══ PROTOCOL BUNDLES SECTION ═══ */
+.bundles-section{
+  position:relative;z-index:5;margin-bottom:120px;
+}
+
+.bundles-header{
+  text-align:center;margin-bottom:60px;
+}
+
+.bundles-header h2{
+  font-family:var(--serif);
+  font-size:clamp(32px,4vw,56px);
+  font-weight:400;line-height:1.1;
+  letter-spacing:-0.02em;
+  color:var(--white);margin-bottom:16px;
+}
+
+.bundles-header p{
+  font-size:16px;color:var(--white-60);
+  max-width:600px;margin:0 auto;
+}
+
+.bundles-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+  gap:24px;
+}
+
+.bundle-card{
+  position:relative;
+  background:rgba(20,20,20,0.4);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(201,160,80,0.2);
+  border-radius:16px;
+  padding:40px;
+  overflow:hidden;
+  transition:all 0.4s var(--ease);
+  cursor:pointer;
+}
+
+.bundle-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at top right,rgba(201,160,80,0.1),transparent);
+  opacity:0;transition:opacity 0.4s var(--ease);
+  pointer-events:none;
+}
+
+.bundle-card:hover{
+  border-color:rgba(201,160,80,0.4);
+  background:rgba(25,25,25,0.5);
+  transform:translateY(-8px);
+}
+
+.bundle-card:hover::before{opacity:1}
+
+.bundle-badge{
+  display:inline-block;
+  padding:6px 16px;border-radius:6px;
+  background:rgba(201,160,80,0.1);
+  border:1px solid rgba(201,160,80,0.3);
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+}
+
+.bundle-name{
+  font-family:var(--serif);
+  font-size:clamp(24px,3vw,32px);
+  font-weight:400;line-height:1.2;
+  color:var(--white);margin-bottom:12px;
+}
+
+.bundle-price{
+  font-family:var(--mono);
+  font-size:clamp(20px,2.5vw,28px);
+  font-weight:600;color:var(--gold);
+  margin-bottom:16px;
+}
+
+.bundle-desc{
+  font-size:15px;color:var(--white-60);
+  line-height:1.6;margin-bottom:28px;
+}
+
+.bundle-includes{
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:20px;
+}
+
+.bundle-includes summary{
+  font-size:13px;font-weight:600;
+  color:var(--white-90);cursor:pointer;
+  display:flex;align-items:center;gap:8px;
+  text-transform:uppercase;letter-spacing:0.05em;
+  user-select:none;
+}
+
+.bundle-includes summary::after{
+  content:'▼';font-size:10px;
+  transition:transform 0.3s var(--ease);
+}
+
+.bundle-includes[open] summary::after{
+  transform:rotate(180deg);
+}
+
+.bundle-includes-list{
+  margin-top:16px;list-style:none;
+}
+
+.bundle-includes-list li{
+  font-size:13px;color:var(--white-60);
+  margin-bottom:8px;padding-left:20px;
+  position:relative;
+}
+
+.bundle-includes-list li::before{
+  content:'→';position:absolute;left:0;
+  color:var(--gold);font-weight:600;
+}
+
+.bundle-cta-container{
+  display:flex;flex-direction:column;gap:12px;margin-top:28px;
+}
+
+.bundle-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 24px;border-radius:10px;
+  font-size:14px;font-weight:600;letter-spacing:0.02em;
+  border:none;cursor:pointer;transition:all 0.3s;
+}
+
+.bundle-checkout-btn{
+  background:linear-gradient(135deg,var(--gold),#d4ad5e);
+  color:var(--bg);
+  box-shadow:0 4px 15px rgba(201,160,80,0.2);
+}
+
+.bundle-checkout-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 25px rgba(201,160,80,0.3);
+}
+
+.bundle-checkout-btn svg{
+  width:16px;height:16px;
+}
+
+.bundle-whatsapp-btn{
+  background:transparent;
+  color:var(--gold);
+  border:1px solid rgba(201,160,80,0.4);
+  font-size:13px;
+}
+
+.bundle-whatsapp-btn:hover{
+  background:rgba(201,160,80,0.1);
+  border-color:rgba(201,160,80,0.6);
+}
+
+.bundle-whatsapp-btn svg{
+  width:14px;height:14px;
+}
+
+/* ═══ CATEGORY FILTERS ═══ */
+.filters-section{
+  position:relative;z-index:5;margin-bottom:60px;
+}
+
+.filters-container{
+  display:flex;align-items:center;gap:12px;
+  overflow-x:auto;padding-bottom:12px;
+  scroll-behavior:smooth;
+}
+.filters-container::-webkit-scrollbar{height:4px}
+.filters-container::-webkit-scrollbar-thumb{background:var(--gold-glow)}
+
+.filter-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:24px;
+  background:var(--surface);border:1px solid var(--border);
+  font-size:13px;font-weight:500;letter-spacing:0.02em;
+  color:var(--white-60);cursor:pointer;transition:all 0.3s;
+  white-space:nowrap;flex-shrink:0;
+}
+.filter-pill:hover{
+  border-color:var(--gold-border);background:var(--card);color:var(--white);
+}
+.filter-pill.active{
+  background:var(--gold);color:var(--bg);border-color:var(--gold);
+}
+.filter-pill svg{width:16px;height:16px}
+
+/* ═══ PROTOCOL GRID ═══ */
+.protocols-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:24px;margin-bottom:80px;
+}
+
+.protocol-card{
+  position:relative;
+  background:rgba(20,20,20,0.4);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--border);border-radius:16px;
+  padding:28px;overflow:hidden;
+  transition:all 0.4s var(--ease);
+  cursor:pointer;display:flex;flex-direction:column;
+}
+
+.protocol-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at top right,var(--gold-glow),transparent);
+  opacity:0;transition:opacity 0.4s var(--ease);
+  pointer-events:none;
+}
+
+.protocol-card:hover{
+  border-color:var(--gold-border);
+  background:rgba(25,25,25,0.6);
+  transform:translateY(-8px);
+}
+
+.protocol-card:hover::before{opacity:1}
+
+.protocol-card.cognition{--category-color:var(--blue)}
+.protocol-card.performance{--category-color:var(--orange)}
+.protocol-card.longevity{--category-color:var(--green)}
+.protocol-card.peptides{--category-color:var(--purple)}
+.protocol-card.body{--category-color:var(--red)}
+.protocol-card.supplements{--category-color:var(--cyan)}
+.protocol-card.feel-protect{--category-color:var(--pink)}
+
+.protocol-header{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  margin-bottom:16px;
+}
+
+.protocol-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:6px;
+  background:var(--category-color);background:color-mix(in srgb,var(--category-color) 15%,transparent);
+  border:1px solid color-mix(in srgb,var(--category-color) 30%,transparent);
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:0.05em;text-transform:uppercase;
+  color:var(--category-color);flex-shrink:0;
+}
+
+.protocol-badge svg{width:12px;height:12px}
+
+.protocol-status{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:6px 10px;border-radius:6px;
+  background:rgba(62,207,113,0.15);
+  border:1px solid rgba(62,207,113,0.3);
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:0.05em;text-transform:uppercase;
+  color:var(--green);flex-shrink:0;
+}
+
+.protocol-status svg{width:8px;height:8px;animation:pulse-dot 2s infinite}
+
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:0.3}}
+
+.protocol-rx{
+  display:inline-block;
+  padding:4px 10px;border-radius:4px;
+  background:rgba(201,160,80,0.1);
+  border:1px solid rgba(201,160,80,0.2);
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:0.05em;
+  color:var(--gold);
+}
+
+.protocol-name{
+  font-family:var(--serif);
+  font-size:clamp(18px,2vw,24px);
+  font-weight:400;line-height:1.2;
+  color:var(--white);margin-bottom:12px;
+}
+
+.protocol-price{
+  font-family:var(--mono);
+  font-size:clamp(18px,2vw,24px);
+  font-weight:600;color:var(--gold);
+  margin-bottom:16px;line-height:1;
+}
+
+.protocol-price span{
+  font-size:12px;color:var(--white-60);font-weight:400;
+  display:block;margin-top:4px;
+}
+
+.protocol-desc{
+  font-size:13px;color:var(--white-60);
+  line-height:1.6;margin-bottom:20px;flex-grow:1;
+}
+
+.protocol-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.protocol-cta{
+  font-size:12px;font-weight:600;color:var(--gold);
+  letter-spacing:0.05em;text-transform:uppercase;
+  transition:all 0.3s;display:flex;align-items:center;gap:4px;
+}
+
+.protocol-cta:hover{gap:8px}
+
+/* ═══ HOW IT WORKS ═══ */
+.how-it-works{
+  background:linear-gradient(135deg,rgba(201,160,80,0.05),rgba(201,160,80,0.02));
+  border:1px solid rgba(201,160,80,0.1);
+  border-radius:16px;
+  padding:60px clamp(20px,5vw,48px);
+  margin-bottom:80px;
+  position:relative;overflow:hidden;
+}
+
+.how-it-works::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at right,rgba(201,160,80,0.08),transparent);
+  pointer-events:none;
+}
+
+.how-it-works-content{
+  position:relative;z-index:2;max-width:1200px;margin:0 auto;
+}
+
+.how-it-works h3{
+  font-family:var(--serif);
+  font-size:clamp(28px,3.5vw,44px);
+  font-weight:400;letter-spacing:-0.02em;
+  color:var(--white);margin-bottom:48px;text-align:center;
+}
+
+.how-it-works-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:32px;
+}
+
+.how-step{
+  text-align:center;
+}
+
+.how-step-num{
+  font-family:var(--serif);
+  font-size:48px;font-weight:600;
+  color:var(--gold);margin-bottom:16px;
+}
+
+.how-step-title{
+  font-size:16px;font-weight:600;color:var(--white);
+  margin-bottom:12px;letter-spacing:0.02em;
+}
+
+.how-step-desc{
+  font-size:13px;color:var(--white-60);line-height:1.6;
+}
+
+/* ═══ TRUST BAR ═══ */
+.trust-bar{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:32px;margin-bottom:80px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:32px;
+}
+
+.trust-item{
+  display:flex;align-items:center;gap:12px;
+}
+
+.trust-item svg{
+  width:24px;height:24px;color:var(--gold);flex-shrink:0;
+}
+
+.trust-item-content{
+  flex:1;
+}
+
+.trust-item-title{
+  font-size:13px;font-weight:600;color:var(--white);
+  letter-spacing:0.05em;text-transform:uppercase;
+}
+
+.trust-item-desc{
+  font-size:12px;color:var(--white-60);margin-top:4px;
+}
+
+/* ═══ BOTTOM CTA ═══ */
+.bottom-cta{
+  background:linear-gradient(135deg,rgba(201,160,80,0.1),rgba(201,160,80,0.05));
+  border:1px solid rgba(201,160,80,0.2);
+  border-radius:16px;
+  padding:60px clamp(20px,5vw,48px);
+  margin-bottom:80px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+
+.bottom-cta::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle,rgba(201,160,80,0.1),transparent);
+  pointer-events:none;
+}
+
+.bottom-cta-content{
+  position:relative;z-index:2;max-width:600px;margin:0 auto;
+}
+
+.bottom-cta h3{
+  font-family:var(--serif);
+  font-size:clamp(28px,3.5vw,44px);
+  font-weight:400;letter-spacing:-0.02em;
+  color:var(--white);margin-bottom:24px;
+}
+
+.bottom-cta-btn{
+  display:inline-flex;align-items:center;gap:12px;
+  background:linear-gradient(135deg,var(--gold),#d4ad5e);
+  color:var(--bg);padding:16px 40px;
+  border-radius:10px;font-size:15px;font-weight:600;
+  letter-spacing:0.02em;border:none;cursor:pointer;
+  transition:all 0.3s;box-shadow:0 4px 20px rgba(201,160,80,0.2);
+}
+
+.bottom-cta-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 40px rgba(201,160,80,0.3);
+}
+
+/* ═══ FOOTER ═══ */
+.footer{
+  border-top:1px solid var(--border);
+  padding:60px clamp(20px,5vw,48px) 40px;
+  background:linear-gradient(180deg,rgba(5,5,5,0),rgba(5,5,5,0.5));
+}
+
+.footer-content{
+  max-width:1200px;margin:0 auto;
+}
+
+.footer-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:48px;margin-bottom:48px;
+}
+
+.footer-col h4{
+  font-family:var(--serif);font-size:16px;font-weight:600;
+  color:var(--white);margin-bottom:20px;letter-spacing:0.02em;
+}
+
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:12px}
+.footer-col a{
+  font-size:13px;color:var(--white-60);transition:color 0.3s;
+}
+.footer-col a:hover{color:var(--gold)}
+
+.footer-disclaimer{
+  border-top:1px solid var(--border);
+  padding-top:32px;
+  font-size:11px;color:var(--white-60);line-height:1.8;
+  max-width:800px;
+}
+
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:24px;border-top:1px solid var(--border);
+  margin-top:32px;
+  flex-wrap:wrap;gap:16px;
+}
+
+.footer-copy{
+  font-size:12px;color:var(--white-60);
+}
+
+.footer-links{
+  display:flex;align-items:center;gap:24px;
+}
+
+.footer-links a{
+  font-size:12px;color:var(--white-60);transition:color 0.3s;
+}
+
+.footer-links a:hover{color:var(--white)}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.fade-in-up{
+  opacity:0;animation:fadeInUp 0.8s var(--ease) forwards;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .protocols-grid{grid-template-columns:1fr}
+  .bundles-grid{grid-template-columns:1fr}
+  .how-it-works-grid{grid-template-columns:1fr}
+  .trust-bar{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .footer-links{flex-direction:column;align-items:flex-start}
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="navbar">
+  <div class="nav-logo">ar<span>q</span></div>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/protocols" class="nav-link active">Protocols</a>
+    <a href="/#how-it-works" class="nav-link">How it Works</a>
+  </div>
+  <button class="nav-cta" onclick="window.location.href='https://wa.me/919876543210?text=I%20want%20to%20talk%20to%20a%20doctor';">
+    <span>Get Started</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span>26 Protocols Available</span>
+    </div>
+    <h1 class="hero-h1">The <em>Protocol</em> Library</h1>
+    <p class="hero-sub">Every protocol includes a doctor consultation, prescription, medication, and delivery. One price. No surprises.</p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main>
+
+<!-- PROTOCOL PACKS -->
+<section class="bundles-section" style="padding:0 clamp(20px,5vw,48px);max-width:1400px;margin:0 auto;">
+  <div class="bundles-header">
+    <h2>arq Protocol Packs</h2>
+    <p>Rx molecule + targeted supplements in one monthly box. Doctor consultation, prescription, everything included.</p>
+  </div>
+
+  <div class="bundles-grid">
+    <!-- arq Focus -->
+    <div class="bundle-card fade-in-up">
+      <div class="bundle-badge" style="background:rgba(201,160,80,0.15);color:#c9a050;border-color:rgba(201,160,80,0.3)">Protocol Pack</div>
+      <h3 class="bundle-name">arq Focus</h3>
+      <p class="bundle-price">₹4,999<span>/month</span></p>
+      <p class="bundle-desc">12-hour clarity. Modafinil + 3 nootropic supplements for sustained cognitive performance.</p>
+      <details class="bundle-includes">
+        <summary>What's included</summary>
+        <ul class="bundle-includes-list">
+          <li>Modafinil 200mg (Rx, 30 tabs)</li>
+          <li>L-Theanine 200mg (30 caps)</li>
+          <li>Alpha-GPC 300mg (30 caps)</li>
+          <li>Magnesium Glycinate 400mg (30 caps)</li>
+        </ul>
+      </details>
+      <div class="bundle-cta-container">
+        <a href="/protocols/packs/arq-focus.html" class="bundle-btn bundle-checkout-btn" style="text-decoration:none;text-align:center">
+          View protocol details →
+        </a>
+      </div>
+    </div>
+
+    <!-- arq Longevity -->
+    <div class="bundle-card fade-in-up">
+      <div class="bundle-badge" style="background:rgba(201,160,80,0.15);color:#c9a050;border-color:rgba(201,160,80,0.3)">Protocol Pack</div>
+      <h3 class="bundle-name">arq Longevity</h3>
+      <p class="bundle-price">₹5,999<span>/month</span></p>
+      <p class="bundle-desc">The protocol longevity researchers actually follow. 4 pathways of aging, one box.</p>
+      <details class="bundle-includes">
+        <summary>What's included</summary>
+        <ul class="bundle-includes-list">
+          <li>Metformin ER 500mg (Rx, 60 tabs)</li>
+          <li>NMN 500mg (30 caps)</li>
+          <li>Resveratrol 500mg (30 caps)</li>
+          <li>Omega-3 EPA/DHA 1000mg (30 caps)</li>
+        </ul>
+      </details>
+      <div class="bundle-cta-container">
+        <a href="/protocols/packs/arq-longevity.html" class="bundle-btn bundle-checkout-btn" style="text-decoration:none;text-align:center">
+          View protocol details →
+        </a>
+      </div>
+    </div>
+
+    <!-- arq Hair -->
+    <div class="bundle-card fade-in-up">
+      <div class="bundle-badge" style="background:rgba(201,160,80,0.15);color:#c9a050;border-color:rgba(201,160,80,0.3)">Protocol Pack</div>
+      <h3 class="bundle-name">arq Hair</h3>
+      <p class="bundle-price">₹1,999<span>/month</span></p>
+      <p class="bundle-desc">Dual DHT blocking — systemic Rx + peripheral supplements + growth co-factors.</p>
+      <details class="bundle-includes">
+        <summary>What's included</summary>
+        <ul class="bundle-includes-list">
+          <li>Finasteride 1mg (Rx, 30 tabs)</li>
+          <li>Biotin 10mg (30 caps)</li>
+          <li>Saw Palmetto 320mg (30 caps)</li>
+          <li>Zinc Picolinate 30mg (30 caps)</li>
+        </ul>
+      </details>
+      <div class="bundle-cta-container">
+        <a href="/protocols/packs/arq-hair.html" class="bundle-btn bundle-checkout-btn" style="text-decoration:none;text-align:center">
+          View protocol details →
+        </a>
+      </div>
+    </div>
+
+    <!-- arq Edge -->
+    <div class="bundle-card fade-in-up">
+      <div class="bundle-badge" style="background:rgba(201,160,80,0.15);color:#c9a050;border-color:rgba(201,160,80,0.3)">Protocol Pack</div>
+      <h3 class="bundle-name">arq Edge</h3>
+      <p class="bundle-price">₹2,499<span>/month</span></p>
+      <p class="bundle-desc">Complete male performance. PDE5 inhibition + nitric oxide + testosterone support.</p>
+      <details class="bundle-includes">
+        <summary>What's included</summary>
+        <ul class="bundle-includes-list">
+          <li>Sildenafil 50mg (Rx, 8 tabs)</li>
+          <li>L-Citrulline 3g (30 servings)</li>
+          <li>Zinc 30mg (30 caps)</li>
+          <li>Ashwagandha KSM-66 600mg (30 caps)</li>
+        </ul>
+      </details>
+      <div class="bundle-cta-container">
+        <a href="/protocols/packs/arq-edge.html" class="bundle-btn bundle-checkout-btn" style="text-decoration:none;text-align:center">
+          View protocol details →
+        </a>
+      </div>
+    </div>
+
+    <!-- arq Sleep -->
+    <div class="bundle-card fade-in-up">
+      <div class="bundle-badge" style="background:rgba(201,160,80,0.15);color:#c9a050;border-color:rgba(201,160,80,0.3)">Protocol Pack</div>
+      <h3 class="bundle-name">arq Sleep</h3>
+      <p class="bundle-price">₹2,499<span>/month</span></p>
+      <p class="bundle-desc">Huberman-inspired sleep architecture. Endocannabinoid + circadian + neuronal + thermoregulation.</p>
+      <details class="bundle-includes">
+        <summary>What's included</summary>
+        <ul class="bundle-includes-list">
+          <li>CBD:THC Oil 10ml (Rx)</li>
+          <li>Melatonin 5mg (Rx, 30 tabs)</li>
+          <li>Magnesium Threonate 2g (30 servings)</li>
+          <li>Glycine 3g (30 servings)</li>
+          <li>Apigenin 50mg (30 caps)</li>
+        </ul>
+      </details>
+      <div class="bundle-cta-container">
+        <a href="/protocols/packs/arq-sleep.html" class="bundle-btn bundle-checkout-btn" style="text-decoration:none;text-align:center">
+          View protocol details →
+        </a>
+      </div>
+    </div>
+
+    <!-- arq Skin -->
+    <div class="bundle-card fade-in-up">
+      <div class="bundle-badge" style="background:rgba(201,160,80,0.15);color:#c9a050;border-color:rgba(201,160,80,0.3)">Protocol Pack</div>
+      <h3 class="bundle-name">arq Skin</h3>
+      <p class="bundle-price">₹2,499<span>/month</span></p>
+      <p class="bundle-desc">The complete dermatologist protocol. Rx retinoid + barrier repair + antioxidant + SPF.</p>
+      <details class="bundle-includes">
+        <summary>What's included</summary>
+        <ul class="bundle-includes-list">
+          <li>Tretinoin 0.05% (Rx, 30g tube)</li>
+          <li>Niacinamide 10% serum (30ml)</li>
+          <li>Vitamin C 15% serum (30ml)</li>
+          <li>SPF 50 sunscreen (50ml)</li>
+        </ul>
+      </details>
+      <div class="bundle-cta-container">
+        <a href="/protocols/packs/arq-skin.html" class="bundle-btn bundle-checkout-btn" style="text-decoration:none;text-align:center">
+          View protocol details →
+        </a>
+      </div>
+    </div>
+
+    <!-- arq Recomp -->
+    <div class="bundle-card fade-in-up">
+      <div class="bundle-badge" style="background:rgba(201,160,80,0.15);color:#c9a050;border-color:rgba(201,160,80,0.3)">Protocol Pack</div>
+      <h3 class="bundle-name">arq Recomp</h3>
+      <p class="bundle-price">₹5,999<span>/month</span></p>
+      <p class="bundle-desc">GLP-1 appetite control + 3 metabolic support compounds for body composition.</p>
+      <details class="bundle-includes">
+        <summary>What's included</summary>
+        <ul class="bundle-includes-list">
+          <li>Semaglutide (Rx injectable)</li>
+          <li>Berberine 500mg (30 caps)</li>
+          <li>Chromium Picolinate 200mcg (30 caps)</li>
+          <li>Psyllium Husk 5g (30 servings)</li>
+        </ul>
+      </details>
+      <div class="bundle-cta-container">
+        <a href="/protocols/packs/arq-recomp.html" class="bundle-btn bundle-checkout-btn" style="text-decoration:none;text-align:center">
+          View protocol details →
+        </a>
+      </div>
+    </div>
+
+    <!-- Build Your Own -->
+    <div class="bundle-card fade-in-up" style="border:1px dashed var(--gold-border);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:320px">
+      <div style="width:56px;height:56px;border-radius:14px;background:rgba(201,160,80,0.08);border:1px solid rgba(201,160,80,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a050" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+      </div>
+      <h3 class="bundle-name">Build Your Own</h3>
+      <p class="bundle-desc" style="max-width:260px">None of these fit your goals? Our physicians will design a bespoke protocol pack tailored to your specific needs.</p>
+      <div class="bundle-cta-container" style="margin-top:auto">
+        <a href="/protocols/packs/bespoke.html" class="bundle-btn bundle-checkout-btn" style="text-decoration:none;text-align:center;background:transparent;border:1px solid rgba(201,160,80,0.3);color:#c9a050">
+          From ₹4,999/mo →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<section class="filters-section" style="padding:80px clamp(20px,5vw,48px) 0;max-width:1400px;margin:0 auto;">
+  <div class="filters-container" id="filterContainer">
+    <button class="filter-pill active" data-filter="all">All Protocols</button>
+    <button class="filter-pill" data-filter="cognition">
+      <svg fill="none" width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12a9 9 0 11-18 0 9 9 0 0118 0m-5.36 5.36l-.707.707M5.663 7.637l.707.707"/></svg>
+      Cognition
+    </button>
+    <button class="filter-pill" data-filter="performance">
+      <svg fill="none" width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      Performance
+    </button>
+    <button class="filter-pill" data-filter="longevity">
+      <svg fill="none" width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Longevity
+    </button>
+    <button class="filter-pill" data-filter="peptides">
+      <svg fill="none" width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 13a3.5 3.5 0 01-3.5-3.5V8a3.5 3.5 0 017 0v1.5a3.5 3.5 0 01-3.5 3.5z"/></svg>
+      Peptides
+    </button>
+    <button class="filter-pill" data-filter="body">
+      <svg fill="none" width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+      Body
+    </button>
+    <button class="filter-pill" data-filter="supplements">
+      <svg fill="none" width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.5 13v-5.5A2.5 2.5 0 0017 5h-8a2.5 2.5 0 00-2.5 2.5v5.5M21 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6m18 0h-3V8a3 3 0 00-3-3h-4a3 3 0 00-3 3v5h-3"/></svg>
+      Supplements
+    </button>
+    <button class="filter-pill" data-filter="feel-protect">
+      <svg fill="none" width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m7.5-4.5a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Feel/Protect
+    </button>
+  </div>
+</section>
+
+<!-- PROTOCOLS GRID -->
+<section style="padding:0 clamp(20px,5vw,48px) 80px;max-width:1400px;margin:0 auto;">
+  <div class="protocols-grid" id="protocolsGrid">
+    <!-- Cards will be inserted by JavaScript -->
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works" style="margin:80px clamp(20px,5vw,48px);">
+  <div class="how-it-works-content">
+    <h3>How It Works</h3>
+    <div class="how-it-works-grid">
+      <div class="how-step">
+        <div class="how-step-num">1</div>
+        <div class="how-step-title">Buy Protocol</div>
+        <div class="how-step-desc">Choose a protocol and subscribe. All-inclusive monthly fee.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">2</div>
+        <div class="how-step-title">Doctor Calls</div>
+        <div class="how-step-desc">Licensed physician calls within 2 hours. Assessment & clearance.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">3</div>
+        <div class="how-step-title">Rx Issued</div>
+        <div class="how-step-desc">Digital prescription delivered to your dashboard immediately.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">4</div>
+        <div class="how-step-title">Delivered</div>
+        <div class="how-step-desc">Parcel ships within 24 hours. Discreet, pan-India delivery.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust-bar" style="margin:0 clamp(20px,5vw,48px) 80px;max-width:1400px;margin-left:auto;margin-right:auto;">
+  <div class="trust-item">
+    <svg fill="none" width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <div class="trust-item-content">
+      <div class="trust-item-title">Licensed Physicians</div>
+      <div class="trust-item-desc">GMC/MCI registered doctors only</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <svg fill="none" width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <div class="trust-item-content">
+      <div class="trust-item-title">Pan-India Delivery</div>
+      <div class="trust-item-desc">Discreet, tracked shipping</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <svg fill="none" width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <div class="trust-item-content">
+      <div class="trust-item-title">Rx-first Always</div>
+      <div class="trust-item-desc">No prescription, no shipment</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <svg fill="none" width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <div class="trust-item-content">
+      <div class="trust-item-title">2hr Doctor Callback</div>
+      <div class="trust-item-desc">Guaranteed response time</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta" style="margin:0 clamp(20px,5vw,48px) 80px;max-width:1400px;margin-left:auto;margin-right:auto;">
+  <div class="bottom-cta-content">
+    <h3>Ready to get started?</h3>
+    <p style="color:var(--white-60);margin:16px 0 32px;font-size:15px;">Choose a protocol bundle above or talk to a doctor to find the perfect stack for your health goals.</p>
+    <button class="bottom-cta-btn" onclick="window.location.href='https://wa.me/919876543210?text=I%20want%20to%20learn%20more%20about%20the%20protocol%20bundles%20and%20book%20a%20consultation';">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      Schedule Consultation
+    </button>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/protocols">Protocols</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#team">Team</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/disclaimer">Medical Disclaimer</a></li>
+          <li><a href="/licensing">Licensing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://twitter.com/arq">Twitter</a></li>
+          <li><a href="https://instagram.com/arq">Instagram</a></li>
+          <li><a href="https://linkedin.com/company/arq">LinkedIn</a></li>
+          <li><a href="mailto:hello@arq.health">Email</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-disclaimer">
+      <strong>Medical Disclaimer:</strong> arq protocols are prescribed by licensed physicians. All medications are FDA/DCGI approved. This is not medical advice. Individual results vary. Consult your doctor before starting any protocol. arq operates under AYUSH/DCGI regulations for pharmaceutical distribution in India. Telemedicine consultations comply with MCI guidelines. Not available in all states. By using arq, you agree to our terms and medical disclaimer.
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 arq. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/disclaimer">Medical Disclaimer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCHEMA MARKUP -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "arq Protocol Library",
+  "description": "26 all-inclusive medical protocols for optimization. Doctor consultation, prescription, medication, delivery included.",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Modafinil 200mg",
+      "description": "The gold standard wakefulness agent. 12-hour clarity, zero jitters.",
+      "url": "/protocols/modalert-200.html",
+      "offers": {
+        "@type": "Offer",
+        "price": "1799",
+        "priceCurrency": "INR",
+        "priceValidUntil": "2027-04-04"
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// ═══ NAVIGATION SCROLL ═══
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// ═══ THREE.JS HERO CANVAS ═══
+let scene, camera, renderer, particles;
+
+function initCanvas() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  camera.position.z = 30;
+
+  // Create particle geometry
+  const geometry = new THREE.BufferGeometry();
+  const count = 1000;
+  const positions = new Float32Array(count * 3);
+
+  for (let i = 0; i < count * 3; i += 3) {
+    positions[i] = (Math.random() - 0.5) * 100;
+    positions[i + 1] = (Math.random() - 0.5) * 100;
+    positions[i + 2] = (Math.random() - 0.5) * 100;
+  }
+
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+  const material = new THREE.PointsMaterial({
+    color: 0xc9a050,
+    size: 0.1,
+    sizeAttenuation: true,
+    transparent: true,
+    opacity: 0.6,
+  });
+
+  particles = new THREE.Points(geometry, material);
+  scene.add(particles);
+
+  // Animation loop
+  const animate = () => {
+    requestAnimationFrame(animate);
+    particles.rotation.x += 0.0001;
+    particles.rotation.y += 0.0002;
+    renderer.render(scene, camera);
+  };
+  animate();
+
+  // Handle resize
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+}
+
+initCanvas();
+
+// ═══ PROTOCOL DATA ═══
+const protocols = [
+  // COGNITION
+  {
+    id: 1,
+    name: 'Modafinil 200mg',
+    category: 'cognition',
+    price: '1,799',
+    description: 'The gold standard wakefulness agent. 12-hour clarity, zero jitters.',
+    rx: true,
+    url: '/protocols/modalert-200.html'
+  },
+  {
+    id: 2,
+    name: 'Armodafinil 150mg',
+    category: 'cognition',
+    price: '1,999',
+    description: "Modafinil's cleaner cousin. R-enantiomer, longer half-life, smoother curve.",
+    rx: true,
+    url: '/protocols/waklert-150.html'
+  },
+  {
+    id: 3,
+    name: 'NMN 500mg',
+    category: 'supplements',
+    price: '2,999',
+    description: 'NAD+ precursor. Cellular energy for cognitive performance.',
+    rx: false,
+    url: '/protocols/nmn.html'
+  },
+
+  // PERFORMANCE
+  {
+    id: 4,
+    name: 'Sildenafil 50mg',
+    category: 'performance',
+    price: '999',
+    description: 'Clinically proven PDE5 inhibitor. Discreet, doctor-supervised, delivered.',
+    rx: true,
+    url: '/protocols/sildenafil.html'
+  },
+  {
+    id: 5,
+    name: 'Tadalafil 20mg',
+    category: 'performance',
+    price: '1,199',
+    description: 'The weekend option. 36-hour window. Daily low-dose available.',
+    rx: true,
+    url: '/protocols/tadalafil.html'
+  },
+  {
+    id: 6,
+    name: 'PT-141 (Bremelanotide)',
+    category: 'peptides',
+    price: '3,499',
+    description: "Central-acting. Works on the brain, not blood flow. For when PDE5s aren't enough.",
+    rx: true,
+    url: '/protocols/pt-141.html'
+  },
+  {
+    id: 7,
+    name: 'Testosterone (TRT)',
+    category: 'performance',
+    price: '3,499',
+    description: 'Hormone optimization. Full protocol: bloodwork, endocrinologist, monitoring.',
+    rx: true,
+    url: '/protocols/trt.html'
+  },
+
+  // LONGEVITY
+  {
+    id: 8,
+    name: 'Metformin ER',
+    category: 'longevity',
+    price: '499',
+    description: '60+ years of safety data. AMPK activator. Central to the TAME trial.',
+    rx: true,
+    url: '/protocols/metformin.html'
+  },
+  {
+    id: 9,
+    name: 'Naltrexone LDN',
+    category: 'longevity',
+    price: '999',
+    description: 'Low-dose naltrexone. Immune modulation, inflammation reduction, pain management.',
+    rx: true,
+    url: '/protocols/naltrexone-ldn.html'
+  },
+  {
+    id: 10,
+    name: 'Rapamycin',
+    category: 'longevity',
+    price: '4,999',
+    description: 'The mTOR inhibitor that extended lifespan in every organism tested.',
+    rx: true,
+    url: '/protocols/rapamycin.html'
+  },
+  {
+    id: 11,
+    name: 'Thymosin Alpha-1',
+    category: 'longevity',
+    price: '4,999',
+    description: 'Immune system architect. Thymic peptide for deep immune optimization.',
+    rx: true,
+    url: '/protocols/thymosin-alpha.html'
+  },
+  {
+    id: 12,
+    name: 'Tesamorelin',
+    category: 'peptides',
+    price: '5,999',
+    description: 'GH peptide for visceral fat reduction. FDA-approved mechanism.',
+    rx: true,
+    url: '/protocols/tesamorelin.html'
+  },
+
+  // PEPTIDES
+  {
+    id: 13,
+    name: 'BPC-157',
+    category: 'peptides',
+    price: '3,999',
+    description: 'The tissue repair peptide. 100+ studies. Gut, tendon, ligament recovery.',
+    rx: true,
+    url: '/protocols/bpc-157.html'
+  },
+  {
+    id: 14,
+    name: 'TB-500',
+    category: 'peptides',
+    price: '4,999',
+    description: 'Systemic repair. 43-amino acid chain for angiogenesis and healing.',
+    rx: true,
+    url: '/protocols/tb-500.html'
+  },
+  {
+    id: 15,
+    name: 'Sermorelin',
+    category: 'peptides',
+    price: '3,999',
+    description: 'GH secretagogue. Stimulates natural growth hormone production.',
+    rx: true,
+    url: '/protocols/sermorelin.html'
+  },
+  {
+    id: 16,
+    name: 'CJC-1295 + Ipamorelin',
+    category: 'peptides',
+    price: '5,999',
+    description: 'Gold standard GH stack. Synergistic peptide combination.',
+    rx: true,
+    url: '/protocols/cjc-ipamorelin.html'
+  },
+  {
+    id: 17,
+    name: 'AOD-9604',
+    category: 'peptides',
+    price: '3,999',
+    description: 'Fat metabolism peptide. GH fragment without the GH side effects.',
+    rx: true,
+    url: '/protocols/aod-9604.html'
+  },
+
+  // BODY
+  {
+    id: 18,
+    name: 'Semaglutide',
+    category: 'body',
+    price: '2,499',
+    description: 'The molecule that changed body composition forever. GLP-1 agonist.',
+    rx: true,
+    url: '/protocols/semaglutide.html'
+  },
+  {
+    id: 19,
+    name: 'Finasteride 1mg',
+    category: 'body',
+    price: '799',
+    description: 'DHT blocker. The clinical gold standard for androgenetic alopecia.',
+    rx: true,
+    url: '/protocols/finasteride.html'
+  },
+  {
+    id: 20,
+    name: 'Minoxidil 5%',
+    category: 'body',
+    price: '699',
+    description: 'FDA-approved vasodilator for hair regrowth. No prescription needed.',
+    rx: false,
+    url: '/protocols/minoxidil.html'
+  },
+  {
+    id: 21,
+    name: 'Isotretinoin 20mg',
+    category: 'body',
+    price: '1,499',
+    description: 'Nuclear option for acne. Dermatologist-supervised 6-month protocol.',
+    rx: true,
+    url: '/protocols/isotretinoin.html'
+  },
+  {
+    id: 22,
+    name: 'Tretinoin 0.05%',
+    category: 'body',
+    price: '899',
+    description: 'The gold standard retinoid. Anti-aging, acne, skin texture.',
+    rx: true,
+    url: '/protocols/tretinoin.html'
+  },
+
+  // FEEL / PROTECT
+  {
+    id: 23,
+    name: 'THC:CBD Oil',
+    category: 'feel-protect',
+    price: '2,999',
+    description: 'Vijaya extract. BAMS physician supervised. Pain, sleep, anxiety.',
+    rx: true,
+    url: '/protocols/thc-cbd.html'
+  },
+  {
+    id: 24,
+    name: 'PrEP (Tenofovir/FTC)',
+    category: 'feel-protect',
+    price: '1,999',
+    description: 'HIV prevention. Judgment-free. Monthly subscription.',
+    rx: true,
+    url: '/protocols/prep.html'
+  },
+  {
+    id: 25,
+    name: 'Sertraline 50mg',
+    category: 'feel-protect',
+    price: '699',
+    description: 'SSRI for anxiety and depression. Psychiatrist-supervised.',
+    rx: true,
+    url: '/protocols/sertraline.html'
+  },
+  {
+    id: 26,
+    name: 'Melatonin 5mg',
+    category: 'feel-protect',
+    price: '499',
+    description: 'High-dose prescription melatonin. Circadian rhythm optimization.',
+    rx: true,
+    url: '/protocols/melatonin.html'
+  }
+];
+
+// ═══ RENDER PROTOCOLS ═══
+function renderProtocols(filter = 'all') {
+  const grid = document.getElementById('protocolsGrid');
+  grid.innerHTML = '';
+
+  const filtered = filter === 'all' ? protocols : protocols.filter(p => p.category === filter);
+
+  filtered.forEach((protocol, index) => {
+    const card = document.createElement('div');
+    card.className = `protocol-card ${protocol.category} fade-in-up`;
+    card.style.animationDelay = `${index * 0.05}s`;
+
+    const rxBadge = protocol.rx ? '<span class="protocol-rx">Rx</span>' : '<span class="protocol-rx" style="background:rgba(62,207,113,0.1);color:var(--green);border-color:rgba(62,207,113,0.3);">OTC</span>';
+
+    card.innerHTML = `
+      <div class="protocol-header">
+        <div>
+          <div class="protocol-badge">
+            <svg fill="currentColor" width="16" height="16" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/></svg>
+            ${protocol.category.charAt(0).toUpperCase() + protocol.category.slice(1).replace('-', ' ')}
+          </div>
+        </div>
+        ${rxBadge}
+      </div>
+      <h3 class="protocol-name">${protocol.name}</h3>
+      <div class="protocol-price">₹${protocol.price}<span>/month</span></div>
+      <p class="protocol-desc">${protocol.description}</p>
+      <div class="protocol-footer">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div class="protocol-status">
+            <svg fill="currentColor" width="16" height="16" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/></svg>
+            Available
+          </div>
+        </div>
+        <a href="${protocol.url}" class="protocol-cta">
+          View Protocol <span>→</span>
+        </a>
+      </div>
+    `;
+
+    grid.appendChild(card);
+
+    // Scroll animation
+    gsap.set(card, { opacity: 0, y: 30 });
+    ScrollTrigger.create({
+      trigger: card,
+      onEnter: () => {
+        gsap.to(card, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' });
+      },
+      once: true
+    });
+  });
+}
+
+renderProtocols();
+
+// ═══ FILTER FUNCTIONALITY ═══
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    const filter = pill.dataset.filter;
+    renderProtocols(filter);
+  });
+});
+
+// ═══ INITIAL ANIMATIONS ═══
+gsap.from('.hero-content', {
+  opacity: 0,
+  y: 30,
+  duration: 1,
+  ease: 'power2.out'
+});
+
+document.querySelectorAll('.bundle-card').forEach((card, i) => {
+  gsap.set(card, { opacity: 0, y: 30 });
+  ScrollTrigger.create({
+    trigger: card,
+    onEnter: () => {
+      gsap.to(card, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: i * 0.1 });
+    },
+    once: true
+  });
+});
+
+// ═══ SMOOTH SCROLL ═══
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// ═══ RAZORPAY CHECKOUT ═══
+function openRazorpayCheckout(bundleName, amountInPaise) {
+  const options = {
+    key: "rzp_live_REPLACE_WITH_KEY",
+    amount: amountInPaise,
+    currency: "INR",
+    name: "arq.",
+    description: bundleName,
+    handler: function(response) {
+      // Payment successful
+      const paymentId = response.razorpay_payment_id;
+      const message = `Payment successful! Payment ID: ${paymentId}. Let's schedule your doctor consultation to get started.`;
+      const encodedMessage = encodeURIComponent(message);
+      window.location.href = `https://wa.me/919876543210?text=${encodedMessage}`;
+    },
+    prefill: {
+      name: "",
+      email: "",
+      contact: ""
+    },
+    theme: {
+      color: "#c9a050"
+    },
+    modal: {
+      ondismiss: function() {
+        console.log('Checkout closed');
+      }
+    }
+  };
+
+  const rzp = new Razorpay(options);
+  rzp.open();
+}
+</script>
+
+</body>
+</html>

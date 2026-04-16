@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arq.clinic Email Templates</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .template-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+        .template-label {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            font-family: 'Epilogue', sans-serif;
+        }
+        .divider {
+            border-top: 2px solid #d4af37;
+            margin: 60px 0;
+        }
+
+        /* Email template styles */
+        .email-wrapper {
+            background-color: #1a1a1a;
+            color: #e8e8e8;
+            font-family: 'Georgia', Georgia, serif;
+            line-height: 1.6;
+        }
+        .email-header {
+            background-color: #0f0f0f;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+        .email-header h1 {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #d4af37;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        .email-body {
+            padding: 40px 30px;
+            background-color: #1a1a1a;
+        }
+        .email-body h2 {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 18px;
+            color: #d4af37;
+            margin-top: 0;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+        .email-body h3 {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 14px;
+            color: #d4af37;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .email-body p {
+            margin: 0 0 15px 0;
+            color: #e8e8e8;
+            font-size: 14px;
+        }
+        .email-body a {
+            color: #d4af37;
+            text-decoration: none;
+            border-bottom: 1px solid #d4af37;
+        }
+        .email-body a:hover {
+            color: #e8d4b0;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #d4af37;
+            color: #1a1a1a;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-family: 'Epilogue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin: 20px 0;
+            border-radius: 2px;
+        }
+        .cta-button:hover {
+            background-color: #e8d4b0;
+        }
+        .info-box {
+            background-color: #242424;
+            border-left: 3px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        .info-box strong {
+            color: #d4af37;
+        }
+        .email-footer {
+            background-color: #0f0f0f;
+            padding: 30px;
+            text-align: center;
+            border-top: 2px solid #d4af37;
+            font-size: 12px;
+            color: #999;
+        }
+        .email-footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+        .product-list {
+            background-color: #242424;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 2px;
+        }
+        .product-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+        }
+        .product-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .product-name {
+            font-family: 'Epilogue', sans-serif;
+            font-weight: 600;
+            color: #d4af37;
+            font-size: 14px;
+        }
+        .product-detail {
+            font-size: 13px;
+            color: #b0b0b0;
+            margin-top: 3px;
+        }
+        .product-price {
+            font-family: 'Epilogue', sans-serif;
+            font-weight: 600;
+            color: #e8e8e8;
+            margin-top: 3px;
+        }
+        .timeline {
+            background-color: #242424;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+        }
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .timeline-week {
+            font-family: 'Epilogue', sans-serif;
+            font-weight: 600;
+            color: #d4af37;
+            font-size: 13px;
+        }
+        .timeline-text {
+            font-size: 13px;
+            color: #b0b0b0;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- TEMPLATE 1: WELCOME EMAIL -->
+<div class="template-container">
+    <div class="template-label">Template 1: Welcome Email (Post-Signup)</div>
+    <div class="email-wrapper">
+        <div class="email-header">
+            <h1>arq</h1>
+        </div>
+        <div class="email-body">
+            <h2>Welcome to arq.</h2>
+            <p>You've just joined India's first prescription biohacking platform. Here's what happens next.</p>
+
+            <h3>Step 1: Doctor Consultation</h3>
+            <p>We pair you with a licensed physician who reviews your health profile. This isn't cursory—they'll assess your baseline labs, medications, and goals to ensure every compound is safe and appropriate for you.</p>
+            <p><strong>Expected timeline:</strong> 1-2 business days</p>
+
+            <h3>Step 2: Prescription & Approval</h3>
+            <p>If approved, you'll receive a prescription and detailed dosing protocol. We email the protocol alongside shipping confirmation.</p>
+
+            <h3>Step 3: Delivery</h3>
+            <p>All peptides ship cold chain. Small, discreet packaging. Temperature-monitored throughout.</p>
+
+            <p style="margin-top: 30px;">Questions? Reply to this email or visit our <a href="#">FAQ</a>.</p>
+
+            <a href="#" class="cta-button">Start Your Consultation</a>
+
+            <h3 style="margin-top: 40px;">Why arq Exists</h3>
+            <p>Most biohacking platforms hide behind "supplements." We don't. Everything here is prescription-backed, sourced from verified manufacturers, and transparent about risk.</p>
+            <p>Biohacking isn't mystical. It's applied biology. We're just giving you the tools.</p>
+        </div>
+        <div class="email-footer">
+            <p>arq.clinic | India's First Prescription Biohacking Platform</p>
+            <p><a href="#">Unsubscribe</a> | <a href="#">Settings</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TEMPLATE 2: ORDER CONFIRMATION -->
+<div class="template-container">
+    <div class="template-label">Template 2: Order Confirmation</div>
+    <div class="email-wrapper">
+        <div class="email-header">
+            <h1>Order Confirmed</h1>
+        </div>
+        <div class="email-body">
+            <p>Thank you. Your order has been confirmed and is being prepared for shipment.</p>
+
+            <h3>Order Summary</h3>
+            <div class="product-list">
+                <div class="product-item">
+                    <div class="product-name">Modafinil 200mg</div>
+                    <div class="product-detail">Sun Pharma Modalert | 30 tablets | ₹2,500/month</div>
+                    <div class="product-price">₹2,500</div>
+                </div>
+                <div class="product-item">
+                    <div class="product-name">BPC-157 Peptide</div>
+                    <div class="product-detail">Compounded | 2mg/vial | 5 vials</div>
+                    <div class="product-price">₹8,999</div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>Order ID:</strong> ARQ-2024-001847<br>
+                <strong>Order Date:</strong> April 4, 2026<br>
+                <strong>Total:</strong> ₹11,499
+            </div>
+
+            <h3>What Happens Now</h3>
+            <p><strong>1. Quality Check (Today)</strong><br>Our pharmacists verify purity and potency of each compound.</p>
+            <p><strong>2. Cold Chain Packing (Tomorrow)</strong><br>Products are placed in temperature-controlled packaging with ice packs.</p>
+            <p><strong>3. Shipment (Within 24 Hours)</strong><br>We'll email you tracking details as soon as your order ships.</p>
+
+            <h3>Dosing Protocol</h3>
+            <p>Your doctor has prescribed the following:</p>
+            <div class="info-box">
+                <strong>Modafinil:</strong> 200mg once daily, before 10am. Take with breakfast. Half-life ~15 hours; avoid afternoon doses.<br><br>
+                <strong>BPC-157:</strong> 500 mcg daily via subcutaneous injection. Store at 2-8°C. Use insulin syringe.
+            </div>
+
+            <h3>Storage Instructions</h3>
+            <p><strong>Peptides (BPC-157):</strong> Refrigerate immediately upon arrival at 2-8°C. Once reconstituted, use within 30 days.</p>
+            <p><strong>Modafinil:</strong> Room temperature, away from moisture. Keep in original packaging.</p>
+
+            <h3>Questions?</h3>
+            <p>Reply to this email or contact support@arq.clinic. We respond within 4 hours.</p>
+
+            <a href="#" class="cta-button">Track Your Order</a>
+        </div>
+        <div class="email-footer">
+            <p>arq.clinic | India's First Prescription Biohacking Platform</p>
+            <p><a href="#">Unsubscribe</a> | <a href="#">Settings</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TEMPLATE 3: DOCTOR ASSIGNED NOTIFICATION -->
+<div class="template-container">
+    <div class="template-label">Template 3: Doctor Assigned Notification</div>
+    <div class="email-wrapper">
+        <div class="email-header">
+            <h1>Your Doctor is Ready</h1>
+        </div>
+        <div class="email-body">
+            <p>A licensed physician has been assigned to your consultation. Here's who they are.</p>
+
+            <div class="info-box">
+                <strong>Dr. Priya Sharma, MD</strong><br>
+                Functional Medicine Specialist | 12 years experience<br>
+                Subspecialty: Longevity, Performance Optimization<br>
+                <br>
+                <strong>Credentials:</strong> MBBS (Delhi), Fellowship in Functional Medicine (AAFM)<br>
+                <strong>Languages:</strong> English, Hindi
+            </div>
+
+            <h3>Next Steps</h3>
+            <p>Dr. Sharma will review your health profile within 24 hours. You'll receive a message with:</p>
+            <p>• Initial assessment questions (if needed)<br>
+            • Lab work recommendations (if applicable)<br>
+            • Treatment protocol options</p>
+
+            <h3>What to Expect</h3>
+            <p>This isn't a 5-minute consultation. Dr. Sharma will spend time understanding your baseline, goals, and any contraindications. If she has questions, she'll reach out.</p>
+
+            <p style="margin-top: 30px;">You can message Dr. Sharma anytime on your dashboard. Average response time: 2 hours.</p>
+
+            <a href="#" class="cta-button">View Your Consultation</a>
+        </div>
+        <div class="email-footer">
+            <p>arq.clinic | India's First Prescription Biohacking Platform</p>
+            <p><a href="#">Unsubscribe</a> | <a href="#">Settings</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TEMPLATE 4: PRESCRIPTION APPROVED & SHIPPING -->
+<div class="template-container">
+    <div class="template-label">Template 4: Prescription Approved + Shipping Notice</div>
+    <div class="email-wrapper">
+        <div class="email-header">
+            <h1>Prescription Approved</h1>
+        </div>
+        <div class="email-body">
+            <p>Dr. Sharma has reviewed your profile and approved your prescription. Your order is now in our pharmacy and will ship today.</p>
+
+            <div class="info-box">
+                <strong>Prescription Status:</strong> ✓ Approved<br>
+                <strong>Approval Time:</strong> April 5, 2026, 11:30am<br>
+                <strong>Expected Shipment:</strong> April 5, 2026, 5pm IST
+            </div>
+
+            <h3>Your Approved Protocol</h3>
+            <div class="product-list">
+                <div class="product-item">
+                    <div class="product-name">Modafinil 200mg</div>
+                    <div class="product-detail">Daily dosing. Take at 8-10am with breakfast.</div>
+                    <div class="product-detail" style="color: #d4af37; margin-top: 5px;"><strong>Dosage:</strong> 200mg once daily</div>
+                </div>
+                <div class="product-item">
+                    <div class="product-name">BPC-157 Peptide</div>
+                    <div class="product-detail">Subcutaneous injection. Reconstitute with bacteriostatic water.</div>
+                    <div class="product-detail" style="color: #d4af37; margin-top: 5px;"><strong>Dosage:</strong> 500 mcg daily for 8 weeks, then assess</div>
+                </div>
+            </div>
+
+            <h3>Monitoring Schedule</h3>
+            <p>Dr. Sharma wants to check in:</p>
+            <p>• Week 2: How are you tolerating the dosage?<br>
+            • Week 4: Any side effects? Efficacy assessment.<br>
+            • Week 8: Consider adjustments or continuation.</p>
+
+            <h3>Before Your Package Arrives</h3>
+            <p><strong>Peptide Storage:</strong> Refrigerator should be 2-8°C (not the freezer). Confirm you have space.</p>
+            <p><strong>Injection Supplies:</strong> We include insulin syringes. If you need additional supplies, reply to this email.</p>
+            <p><strong>Tracking:</strong> You'll receive a separate email within 2 hours with your tracking link.</p>
+
+            <a href="#" class="cta-button">View Dosing Protocol</a>
+        </div>
+        <div class="email-footer">
+            <p>arq.clinic | India's First Prescription Biohacking Platform</p>
+            <p><a href="#">Unsubscribe</a> | <a href="#">Settings</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TEMPLATE 5: DELIVERY CONFIRMATION -->
+<div class="template-container">
+    <div class="template-label">Template 5: Delivery Confirmation</div>
+    <div class="email-wrapper">
+        <div class="email-header">
+            <h1>Your Package Has Arrived</h1>
+        </div>
+        <div class="email-body">
+            <p>Delivered at 4:32pm on April 7, 2026.</p>
+
+            <div class="info-box">
+                <strong>Tracking:</strong> ARQSHIP-2026-001847<br>
+                <strong>Shipped from:</strong> arq Pharmacy, Bangalore<br>
+                <strong>Recipient:</strong> Your Address<br>
+                <strong>Cold Chain Status:</strong> ✓ Maintained (4.2°C average)
+            </div>
+
+            <h3>Inspection Checklist</h3>
+            <p>Before you begin, verify:</p>
+            <p>✓ Package is intact (no obvious damage)<br>
+            ✓ Ice packs are cold or semi-frozen (indicates proper cold chain)<br>
+            ✓ All vials are labeled with product name and lot number<br>
+            ✓ You received 2 vials of BPC-157 + 1 box of Modafinil (30 tablets)</p>
+
+            <h3>Immediate Actions</h3>
+            <p><strong>1. Refrigerate peptides immediately.</strong> BPC-157 must go to 2-8°C within 2 hours of delivery.</p>
+            <p><strong>2. Store Modafinil at room temperature</strong> in a dry, dark place. Keep in original packaging.</p>
+            <p><strong>3. Do not reconstitute peptides yet.</strong> Wait until you're ready to begin dosing (within 48 hours of delivery is fine).</p>
+
+            <h3>First Dose Timing</h3>
+            <p>You can start taking Modafinil tomorrow morning (with breakfast). Start BPC-157 injections after your first successful dose of Modafinil.</p>
+
+            <div class="info-box">
+                <strong>Recommended Day 1 Timeline:</strong><br>
+                8:00am - Take 200mg Modafinil with breakfast<br>
+                4:00pm - Note onset (should feel effects by now)<br>
+                Tomorrow at same time - Consider first BPC-157 injection
+            </div>
+
+            <h3>Injection Instructions (BPC-157)</h3>
+            <p><strong>Reconstitution:</strong> Add 2mL of bacteriostatic water to 2mg vial. Wait 10 minutes for peptide to fully dissolve.</p>
+            <p><strong>Injection site:</strong> Abdomen, thigh, or arm. Rotate sites daily.</p>
+            <p><strong>Timing:</strong> Inject at the same time daily (e.g., 9pm).</p>
+
+            <a href="#" class="cta-button">View Full Injection Guide</a>
+
+            <h3>Questions or Concerns?</h3>
+            <p>Reply to this email immediately. Do not begin dosing if something feels wrong (damaged vials, unusual color, etc.).</p>
+
+            <p style="margin-top: 30px;">We'll check in with you on Day 7 and Day 30 to track efficacy and side effects. You can also message Dr. Sharma anytime from your dashboard.</p>
+        </div>
+        <div class="email-footer">
+            <p>arq.clinic | India's First Prescription Biohacking Platform</p>
+            <p><a href="#">Unsubscribe</a> | <a href="#">Settings</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TEMPLATE 6: REFILL REMINDER (DAY 25) -->
+<div class="template-container">
+    <div class="template-label">Template 6: Refill Reminder (Day 25)</div>
+    <div class="email-wrapper">
+        <div class="email-header">
+            <h1>Your Refill is Ready</h1>
+        </div>
+        <div class="email-body">
+            <p>It's been 25 days. Time to place your next order.</p>
+
+            <div class="info-box">
+                <strong>Last Order Date:</strong> April 7, 2026<br>
+                <strong>Your Current Subscription:</strong> Modafinil 200mg (monthly), BPC-157 (8-week cycle)<br>
+                <strong>Next Order Date:</strong> May 7, 2026
+            </div>
+
+            <h3>Quick Reorder</h3>
+            <p>If you want to continue with the same protocol, we can auto-ship your next order with one click. No need to go through doctor approval again (unless your prescription expires).</p>
+
+            <a href="#" class="cta-button">Reorder Now</a>
+
+            <h3>Want to Adjust?</h3>
+            <p>If you'd like to change dosage, add/remove compounds, or pause, message Dr. Sharma from your dashboard. Response time: 4 hours.</p>
+
+            <h3>How's It Going?</h3>
+            <p>Quick feedback: Have you noticed any side effects? How's the Modafinil working? This helps Dr. Sharma optimize your next prescription.</p>
+
+            <a href="#" class="cta-button">Share Feedback</a>
+
+            <h3>Subscription Options</h3>
+            <p><strong>Monthly Auto-Refill:</strong> Saves 5% + free shipping. Pause anytime.</p>
+            <p><strong>One-Time Order:</strong> Full price. Manual reorder each month.</p>
+
+            <p style="margin-top: 30px;">Your subscription can be managed from your dashboard anytime.</p>
+        </div>
+        <div class="email-footer">
+            <p>arq.clinic | India's First Prescription Biohacking Platform</p>
+            <p><a href="#">Unsubscribe</a> | <a href="#">Settings</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TEMPLATE 7: SUBSCRIPTION PAUSED -->
+<div class="template-container">
+    <div class="template-label">Template 7: Subscription Paused Confirmation</div>
+    <div class="email-wrapper">
+        <div class="email-header">
+            <h1>Subscription Paused</h1>
+        </div>
+        <div class="email-body">
+            <p>Your subscription has been paused. You won't be charged until you resume.</p>
+
+            <div class="info-box">
+                <strong>Paused Date:</strong> April 15, 2026<br>
+                <strong>Pause Duration:</strong> Indefinite (you control this)<br>
+                <strong>Paused Items:</strong> Modafinil 200mg (monthly), BPC-157 (cycle)<br>
+                <strong>Next Charge Date:</strong> None until you resume
+            </div>
+
+            <h3>Why People Pause</h3>
+            <p>• Finished their 8-week cycle and want to assess results<br>
+            • Taking a break to reset tolerance<br>
+            • Temporary financial reasons<br>
+            • Switching to a different protocol</p>
+
+            <h3>When You're Ready</h3>
+            <p>Simply log in to your dashboard and click "Resume Subscription." You'll start charging on the first Monday after you resume.</p>
+
+            <p style="margin-top: 20px;">If you want to make changes to your subscription (different dosage, different compounds), message Dr. Sharma. She'll update your prescription before resuming.</p>
+
+            <a href="#" class="cta-button">Manage Subscription</a>
+
+            <h3>Feedback</h3>
+            <p>We'd love to know: Did Modafinil work for you? Any side effects? Would you change anything? This helps us serve future users better.</p>
+
+            <a href="#" class="cta-button">Share Your Experience</a>
+
+            <p style="margin-top: 40px; font-size: 13px; color: #999;">Your prescription remains valid for 12 months from the approval date. After that, Dr. Sharma will need to review your health profile again.</p>
+        </div>
+        <div class="email-footer">
+            <p>arq.clinic | India's First Prescription Biohacking Platform</p>
+            <p><a href="#">Unsubscribe</a> | <a href="#">Settings</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TEMPLATE 8: REFERRAL INVITATION -->
+<div class="template-container">
+    <div class="template-label">Template 8: Referral Invitation Email</div>
+    <div class="email-wrapper">
+        <div class="email-header">
+            <h1>Earn ₹200 Per Referral</h1>
+        </div>
+        <div class="email-body">
+            <p>You've been with arq for 30 days. If you're happy with the results, we'd love for you to share it.</p>
+
+            <h3>Here's How It Works</h3>
+            <div class="info-box">
+                <strong>1. Share Your Code</strong><br>
+                Your unique referral code: <strong style="color: #d4af37;">ARQUSER-4K2N9</strong><br>
+                Send it to a friend via WhatsApp, email, or copy the link below.<br><br>
+
+                <strong>2. Your Friend Signs Up</strong><br>
+                They use your code during signup. They get ₹200 credit on their first order.<br><br>
+
+                <strong>3. You Earn ₹200</strong><br>
+                Once they place their first order, ₹200 is credited to your account automatically.<br><br>
+
+                <strong>Maximum Earning:</strong> ₹2,000/month (10 successful referrals)
+            </div>
+
+            <h3>Share Your Referral Link</h3>
+            <a href="#" class="cta-button">Copy Referral Link</a>
+
+            <h3>Why We Do This</h3>
+            <p>Word-of-mouth is how trust spreads. People trust their friends more than ads. We reward that because it's honest.</p>
+
+            <h3>What Can You Tell Them?</h3>
+            <p>• "I've been taking Modafinil from arq for a month. 200mg, doctor-prescribed, legit sourcing."<br>
+            • "They do peptides. Cold chain, verified manufacturers, super transparent."<br>
+            • "The doctor consultation is thorough—not just a rubber stamp."</p>
+
+            <p style="margin-top: 30px;"><strong>Keep it real.</strong> Only refer people you think actually want biohacking. We don't need vanity referrals.</p>
+
+            <a href="#" class="cta-button">View Your Referrals</a>
+
+            <h3>Your Current Balance</h3>
+            <div class="info-box">
+                <strong>Referral Credits:</strong> ₹0<br>
+                <strong>Successful Referrals:</strong> 0<br>
+                <strong>Pending Referrals:</strong> 0
+            </div>
+
+            <p style="margin-top: 20px; font-size: 13px;">Credits apply automatically at checkout and don't expire. You can use them on any product.</p>
+        </div>
+        <div class="email-footer">
+            <p>arq.clinic | India's First Prescription Biohacking Platform</p>
+            <p><a href="#">Unsubscribe</a> | <a href="#">Settings</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

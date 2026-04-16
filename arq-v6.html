@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>arq. — Physician-Guided Health Optimization</title>
+<meta name="description" content="Doctor-guided protocols for cognition, performance, longevity & body composition. Licensed physicians. Prescription-only. Pan-India delivery. Start from ₹499/mo.">
+<meta name="theme-color" content="#050505">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="canonical" href="https://arq.clinic/">
+<meta property="og:title" content="arq. — Physician-Guided Health Optimization">
+<meta property="og:description" content="Doctor-guided protocols for cognition, performance, longevity & body composition. Prescription-only. Delivered to your door.">
+<meta property="og:url" content="https://arq.clinic/">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MedicalBusiness","name":"arq.","url":"https://arq.clinic","description":"Physician-Guided Health Optimization Platform","telephone":"+91-9137307628","priceRange":"₹499 - ₹8999"}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<style>
+/* ══════════════════════════════════════════════════════════════
+   ARQ V6 — THE DEFINITIVE VERSION
+   V3's dark soul + V5's content depth + Hims-level execution
+   ══════════════════════════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#050505;--bg2:#0a0a0a;--surface:#111;--surface2:#161616;
+  --card:#141414;--card-hover:#1a1a1a;
+  --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
+  --white:#e8e4dd;--white-90:rgba(232,228,221,0.9);--white-60:rgba(232,228,221,0.6);
+  --white-30:rgba(232,228,221,0.3);--white-12:rgba(232,228,221,0.12);--white-06:rgba(232,228,221,0.06);
+  --gold:#c9a050;--gold-light:#d4b06a;--gold-dim:rgba(201,160,80,0.6);
+  --gold-glow:rgba(201,160,80,0.08);--gold-glow2:rgba(201,160,80,0.15);--gold-border:rgba(201,160,80,0.2);
+  --green:#3ecf71;--green-dim:rgba(62,207,113,0.15);
+  --blue:#5b9cf5;--blue-dim:rgba(91,156,245,0.12);
+  --purple:#a78bfa;--purple-dim:rgba(167,139,250,0.12);
+  --red:#f87171;--red-dim:rgba(248,113,113,0.12);
+  --cyan:#67e8f9;--cyan-dim:rgba(103,232,249,0.12);
+  --orange:#fb923c;--orange-dim:rgba(251,146,60,0.12);
+  --sans:'Inter',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;
+  --mono:'JetBrains Mono','SF Mono',monospace;--ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden}
+
+/* Noise overlay */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+
+::selection{background:var(--gold);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--white-12);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--white-30)}
+[class^="ph-"]{display:inline-flex;align-items:center;justify-content:center}
+
+/* ═══ NAV ═══ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;background:rgba(5,5,5,0.6);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border-bottom:1px solid transparent;transition:all 0.6s var(--ease)}
+.nav.scrolled{background:rgba(5,5,5,0.95);border-color:var(--border)}
+.nav-logo{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:0.02em;color:var(--white);cursor:pointer;transition:opacity 0.3s}
+.nav-logo:hover{opacity:0.7}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-link{font-size:13px;font-weight:500;letter-spacing:0.04em;color:var(--white-60);transition:color 0.3s;cursor:pointer;text-transform:uppercase}
+.nav-link:hover{color:var(--white)}
+.nav-cta{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),#d4ad5e);color:var(--bg);padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;letter-spacing:0.02em;border:none;cursor:pointer;transition:all 0.3s;box-shadow:0 0 20px rgba(201,160,80,0.15)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 4px 30px rgba(201,160,80,0.3)}
+.nav-cta svg{width:16px;height:16px}
+.nav-hamburger{display:none;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent;padding:0}
+.nav-hamburger span{display:block;width:20px;height:2px;background:var(--white);position:relative;transition:all 0.3s}
+.nav-hamburger span::before,.nav-hamburger span::after{content:'';position:absolute;left:0;width:20px;height:2px;background:var(--white);transition:all 0.3s}
+.nav-hamburger span::before{top:-6px}
+.nav-hamburger span::after{top:6px}
+.nav-hamburger.open span{background:transparent}
+.nav-hamburger.open span::before{top:0;transform:rotate(45deg)}
+.nav-hamburger.open span::after{top:0;transform:rotate(-45deg)}
+@media(max-width:900px){.nav-links{display:none}.nav-hamburger{display:flex}}
+
+/* Mobile menu */
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(5,5,5,0.98);z-index:999;padding:32px 24px;flex-direction:column;gap:8px;backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-menu a{display:flex;align-items:center;gap:12px;padding:16px 0;font-size:18px;font-weight:500;color:var(--white-60);border-bottom:1px solid var(--border);transition:color 0.3s}
+.mobile-menu a:last-of-type{border-bottom:none}
+.mobile-menu a:active{color:var(--gold)}
+.mobile-menu .mm-cta{margin-top:24px;display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 24px;border-radius:12px;background:linear-gradient(135deg,var(--gold),#d4ad5e);color:var(--bg);font-size:16px;font-weight:700;border:none}
+
+/* Sticky Mobile CTA */
+.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;padding:12px 16px;padding-bottom:max(12px,env(safe-area-inset-bottom));background:rgba(5,5,5,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--border)}
+.sticky-cta-inner{display:flex;gap:10px;max-width:600px;margin:0 auto}
+.sticky-cta-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:10px;font-size:14px;font-weight:700;border:none;cursor:pointer;transition:all 0.3s;-webkit-tap-highlight-color:transparent}
+.sticky-cta-btn.primary{background:linear-gradient(135deg,var(--gold),#d4ad5e);color:var(--bg)}
+.sticky-cta-btn.secondary{background:var(--white-06);border:1px solid var(--border);color:var(--white)}
+.sticky-cta-btn svg{width:18px;height:18px;flex-shrink:0}
+
+/* ═══ HERO ═══ */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px clamp(20px,5vw,48px) 80px;position:relative;overflow:hidden;text-align:center}
+#hero-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;opacity:0.85}
+.hero-content{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 20px;border-radius:100px;background:rgba(201,160,80,0.06);border:1px solid rgba(201,160,80,0.15);font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:40px;backdrop-filter:blur(10px)}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-h1{font-family:var(--serif);font-size:clamp(48px,8vw,100px);font-weight:400;line-height:0.95;letter-spacing:-0.04em;color:var(--white);margin-bottom:28px}
+.hero-h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:clamp(15px,1.6vw,19px);color:var(--white-60);line-height:1.7;max-width:560px;margin:0 auto 48px;font-weight:300}
+
+/* Search */
+.search-container{width:100%;max-width:640px;position:relative;z-index:10;margin:0 auto}
+.search-box{width:100%;background:rgba(17,17,17,0.8);border:1px solid var(--border-hover);border-radius:14px;display:flex;align-items:center;padding:0 22px;height:60px;transition:all 0.4s var(--ease);gap:12px;backdrop-filter:blur(20px)}
+.search-box:focus-within{border-color:var(--gold-border);box-shadow:0 0 0 4px var(--gold-glow),0 24px 80px rgba(0,0,0,0.5);background:rgba(20,20,20,0.95)}
+.search-box svg{color:var(--white-30);flex-shrink:0;transition:color 0.3s}
+.search-box:focus-within svg{color:var(--gold)}
+.search-box input{flex:1;background:none;border:none;outline:none;font-family:var(--sans);font-size:15px;color:var(--white);font-weight:400}
+.search-box input::placeholder{color:var(--white-30)}
+.search-kbd{font-family:var(--mono);font-size:10px;color:var(--white-30);padding:3px 8px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);flex-shrink:0}
+
+.quick-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.qtag{padding:7px 16px;border-radius:8px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.02em;background:var(--white-06);border:1px solid var(--border);color:var(--white-60);cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+.qtag:hover{background:var(--gold-glow);border-color:var(--gold-border);color:var(--gold)}
+
+/* Hero Stats */
+.hero-stats{display:flex;align-items:center;gap:0;margin-top:56px}
+.hero-stat{display:flex;flex-direction:column;align-items:center;padding:0 clamp(20px,3vw,48px)}
+.hero-stat:not(:last-child){border-right:1px solid var(--border)}
+.hero-stat-val{font-family:var(--mono);font-size:clamp(22px,3vw,32px);font-weight:600;color:var(--white);letter-spacing:-0.02em}
+.hero-stat-label{font-size:11px;color:var(--white-30);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px}
+
+/* ═══ GLOW LINE DIVIDER ═══ */
+.glow-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);margin:0}
+
+/* ═══ SECTION BASES ═══ */
+section{padding:clamp(80px,14vh,140px) clamp(20px,5vw,48px)}
+.section-tag{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:inline-flex;align-items:center;gap:8px}
+.section-tag::before{content:'';width:20px;height:1px;background:var(--gold)}
+.section-h2{font-family:var(--serif);font-size:clamp(34px,5.5vw,64px);font-weight:400;line-height:1.08;letter-spacing:-0.03em;color:var(--white);margin-bottom:20px}
+.section-h2 em{font-style:italic;color:var(--gold)}
+.section-p{font-size:clamp(15px,1.5vw,18px);color:var(--white-60);max-width:600px;line-height:1.7;font-weight:300}
+.section-center{text-align:center;max-width:1200px;margin:0 auto}
+.section-center .section-p{margin:0 auto}
+
+/* ═══ BENTO GRID — Premium dark cards with character ═══ */
+.bento-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.bento-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:1200px;margin:48px auto 0}
+/* Row 1: 20% taller */
+.bento-grid .bento-card:nth-child(-n+3){min-height:280px}
+.bento-grid .bento-card:nth-child(-n+3) .bento-title{font-size:clamp(24px,2.6vw,32px)}
+
+.bento-card{position:relative;border-radius:20px;overflow:hidden;padding:32px 28px 28px;display:flex;flex-direction:column;justify-content:space-between;min-height:220px;cursor:pointer;border:1px solid var(--border);transition:all 0.45s var(--ease)}
+.bento-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4);border-color:var(--border-hover)}
+
+/* Glass shine on top edge */
+.bento-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);z-index:3}
+
+/* Animated glow orb */
+.bento-glow{position:absolute;width:180px;height:180px;border-radius:50%;filter:blur(60px);opacity:0.15;pointer-events:none;transition:opacity 0.5s}
+.bento-card:hover .bento-glow{opacity:0.25}
+
+/* Card backgrounds */
+.bento-focus{background:linear-gradient(145deg,#0d1a2e,#0a1220)}
+.bento-focus .bento-glow{background:#5b9cf5;top:-40px;right:-40px}
+.bento-weight{background:linear-gradient(145deg,#2a0f18,#1a0a10)}
+.bento-weight .bento-glow{background:#f87171;top:-40px;right:-40px}
+.bento-hair{background:linear-gradient(145deg,#0d2418,#081a10)}
+.bento-hair .bento-glow{background:#3ecf71;top:-40px;right:-40px}
+.bento-performance{background:linear-gradient(145deg,#231508,#1a0f04)}
+.bento-performance .bento-glow{background:#fb923c;top:-40px;right:-40px}
+.bento-longevity{background:linear-gradient(145deg,#150d30,#0e0820)}
+.bento-longevity .bento-glow{background:#a78bfa;top:-40px;right:-40px}
+.bento-sleep{background:linear-gradient(145deg,#0a0d24,#06081a)}
+.bento-sleep .bento-glow{background:#67e8f9;top:-40px;right:-40px}
+
+.bento-inner{position:relative;z-index:2;display:flex;flex-direction:column;height:100%}
+.bento-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:auto}
+.bento-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.08);transition:all 0.4s var(--ease)}
+.bento-card:hover .bento-icon{border-color:rgba(255,255,255,0.15);transform:scale(1.05)}
+.bento-stat{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.04em;padding:5px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03);backdrop-filter:blur(10px)}
+
+.bento-focus .bento-icon{background:var(--blue-dim);color:var(--blue)}
+.bento-focus .bento-stat{color:var(--blue)}
+.bento-weight .bento-icon{background:var(--red-dim);color:var(--red)}
+.bento-weight .bento-stat{color:var(--red)}
+.bento-hair .bento-icon{background:var(--green-dim);color:var(--green)}
+.bento-hair .bento-stat{color:var(--green)}
+.bento-performance .bento-icon{background:var(--orange-dim);color:var(--orange)}
+.bento-performance .bento-stat{color:var(--orange)}
+.bento-longevity .bento-icon{background:var(--purple-dim);color:var(--purple)}
+.bento-longevity .bento-stat{color:var(--purple)}
+.bento-sleep .bento-icon{background:var(--cyan-dim);color:var(--cyan)}
+.bento-sleep .bento-stat{color:var(--cyan)}
+
+.bento-bottom{text-align:left}
+.bento-title{font-family:var(--serif);font-size:clamp(20px,2.2vw,26px);font-weight:500;color:#fff;margin-bottom:8px;letter-spacing:-0.01em;line-height:1.15}
+.bento-benefit{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.6;max-width:280px}
+.bento-cta{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:0;font-size:13px;font-weight:600;letter-spacing:0.02em;color:rgba(255,255,255,0.4);background:none;border:none;transition:color 0.25s}
+.bento-cta i{font-size:14px;transition:transform 0.25s}
+.bento-card:hover .bento-cta{color:var(--gold)}
+.bento-card:hover .bento-cta i{transform:translateX(4px)}
+
+@media(max-width:900px){.bento-grid{grid-template-columns:1fr 1fr}.bento-grid .bento-card:nth-child(-n+3){min-height:220px}}
+@media(max-width:600px){.bento-grid{grid-template-columns:1fr 1fr;gap:8px}.bento-card{min-height:170px;padding:20px 18px;border-radius:16px}.bento-title{font-size:17px}.bento-benefit{font-size:12px;-webkit-line-clamp:2;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}.bento-icon{width:36px;height:36px;font-size:16px}.bento-stat{font-size:9px;padding:3px 8px}}
+
+/* ═══ TRUST BAR ═══ */
+.trust-bar{padding:32px 0;background:var(--bg2);border-bottom:1px solid var(--border);overflow:hidden}
+.trust-track{display:flex;align-items:center;gap:48px;justify-content:center;flex-wrap:wrap;padding:0 clamp(20px,5vw,48px)}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;color:var(--white-60);white-space:nowrap}
+.trust-item .t-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--gold-glow);border:1px solid var(--gold-border);font-size:16px;color:var(--gold)}
+
+/* ═══ HOW IT WORKS ═══ */
+.how-section{background:var(--bg)}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:64px;background:var(--border);border-radius:16px;overflow:hidden}
+.how-card{background:var(--bg);padding:40px 32px;position:relative;overflow:hidden;transition:background 0.4s}
+.how-card:hover{background:var(--bg2)}
+.how-num{font-family:var(--mono);font-size:64px;font-weight:700;color:rgba(201,160,80,0.06);position:absolute;top:-8px;right:12px;line-height:1}
+.how-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--gold-glow2);border:1px solid var(--gold-border);font-size:22px;margin-bottom:20px;color:var(--gold);transition:all 0.3s var(--ease)}
+.how-card:hover .how-icon{background:rgba(201,160,80,0.2);border-color:var(--gold)}
+.how-title{font-family:var(--sans);font-size:16px;font-weight:600;color:var(--white);margin-bottom:8px}
+.how-desc{font-size:14px;color:var(--white-60);line-height:1.6}
+@media(max-width:900px){.how-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.how-grid{grid-template-columns:1fr}}
+
+
+/* ═══ DOCTORS ═══ */
+.doctors-section{background:var(--bg);border-top:1px solid var(--border)}
+.doc-header{max-width:1200px;margin:0 auto 48px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px}
+.doc-header-text{max-width:560px}
+.doc-scroll{display:flex;gap:20px;max-width:1200px;margin:0 auto;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:16px;scrollbar-width:none}
+.doc-scroll::-webkit-scrollbar{display:none}
+.doc-card{flex:0 0 240px;scroll-snap-align:start;border-radius:20px;overflow:hidden;background:var(--surface);border:1px solid var(--border);transition:all 0.3s var(--ease);cursor:pointer}
+.doc-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.3);border-color:var(--gold-border)}
+.doc-card-img{width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--surface2)}
+.doc-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s var(--ease)}
+.doc-card:hover .doc-card-img img{transform:scale(1.04)}
+.doc-card-info{padding:20px}
+.doc-card-name{font-size:16px;font-weight:700;color:var(--white);margin-bottom:4px}
+.doc-card-title{font-size:13px;color:var(--gold);font-weight:600;margin-bottom:8px}
+.doc-card-spec{font-size:12px;color:var(--white-60);line-height:1.5}
+.doc-features{display:flex;gap:20px;max-width:1200px;margin:48px auto 0;flex-wrap:wrap;justify-content:center}
+.doc-feat{display:flex;align-items:center;gap:10px;padding:12px 24px;border-radius:100px;background:var(--white-06);border:1px solid var(--border);font-size:13px;font-weight:500;color:var(--white-60)}
+.doc-feat i{font-size:18px;color:var(--gold)}
+@media(max-width:900px){.doc-header{flex-direction:column;align-items:flex-start}.doc-card{flex:0 0 200px}}
+
+/* ═══ TESTIMONIALS ═══ */
+.testimonials-section{background:var(--bg2);border-top:1px solid var(--border)}
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1200px;margin:48px auto 0}
+.test-card{padding:32px;border-radius:20px;background:var(--surface);border:1px solid var(--border);transition:all 0.4s var(--ease)}
+.test-card:hover{border-color:var(--gold-border);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.3)}
+.test-stars{color:var(--gold);font-size:16px;margin-bottom:20px;display:flex;gap:2px}
+.test-text{font-size:16px;color:var(--white-60);line-height:1.75;margin-bottom:24px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:14px}
+.test-avatar{width:44px;height:44px;border-radius:12px;background:var(--gold-glow2);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:14px;font-weight:600;color:var(--gold)}
+.test-name{font-size:14px;font-weight:600;color:var(--white)}
+.test-meta{font-size:12px;color:var(--white-30);margin-top:2px}
+@media(max-width:900px){.testimonials{grid-template-columns:1fr}}
+
+/* ═══ MEMBERSHIP ═══ */
+.membership-section{background:var(--bg)}
+.mem-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,8vw,100px);align-items:center;max-width:1200px;margin:0 auto}
+.mem-checklist{display:flex;flex-direction:column;gap:10px;margin:36px 0 40px}
+.mem-check{display:flex;align-items:center;gap:14px;padding:20px 24px;background:var(--white-06);border-radius:16px;border:1px solid var(--border);font-size:15px;font-weight:500;color:var(--white)}
+.mem-check i{font-size:22px;color:var(--gold);flex-shrink:0}
+.mem-check-sub{font-size:12px;color:var(--white-30);font-weight:400;margin-left:auto}
+.mem-visual{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mem-img{border-radius:16px;overflow:hidden;aspect-ratio:3/4;background:var(--surface2)}
+.mem-img img{width:100%;height:100%;object-fit:cover}
+.mem-img-full{grid-column:span 2;aspect-ratio:16/9}
+@media(max-width:900px){.mem-layout{grid-template-columns:1fr;gap:48px}.mem-visual{display:none}}
+
+/* ═══ FAQ ═══ */
+.faq-section{background:var(--bg2);border-top:1px solid var(--border)}
+.faq-list{max-width:860px;margin:48px auto 0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:24px 0;background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:17px;font-weight:600;color:var(--white);text-align:left;gap:16px}
+.faq-btn i{font-size:20px;transition:transform 0.3s;color:var(--white-30);flex-shrink:0}
+.faq-item.open .faq-btn i{transform:rotate(180deg)}
+.faq-content{max-height:0;overflow:hidden;transition:max-height 0.4s var(--ease)}
+.faq-item.open .faq-content{max-height:500px}
+.faq-inner{padding:0 0 24px;font-size:15px;color:var(--white-60);line-height:1.75}
+
+/* ═══ CTA ═══ */
+.cta-section{text-align:center;position:relative;overflow:hidden;background:var(--bg)}
+.cta-section::before{content:'';position:absolute;width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,160,80,0.06) 0%,transparent 60%);pointer-events:none}
+.cta-box{max-width:700px;margin:0 auto;padding:64px 48px;border-radius:20px;background:rgba(20,20,20,0.6);border:1px solid var(--gold-border);backdrop-filter:blur(20px);position:relative;z-index:2}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim),transparent)}
+.cta-h2{font-family:var(--serif);font-size:clamp(36px,5vw,56px);font-weight:400;line-height:1.08;letter-spacing:-0.03em;color:var(--white);margin-bottom:16px}
+.cta-h2 em{font-style:italic;color:var(--gold)}
+.cta-p{font-size:clamp(15px,1.3vw,18px);color:var(--white-60);line-height:1.7;margin-bottom:36px;font-weight:300}
+.cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold),#d4ad5e);color:var(--bg);padding:14px 32px;border-radius:10px;font-size:15px;font-weight:700;border:none;cursor:pointer;transition:all 0.3s;box-shadow:0 0 30px rgba(201,160,80,0.15)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(201,160,80,0.3)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);padding:14px 32px;border-radius:10px;font-size:15px;font-weight:500;border:1px solid var(--white-12);cursor:pointer;transition:all 0.3s}
+.btn-ghost:hover{border-color:var(--gold-border);color:var(--gold);background:var(--gold-glow)}
+.cta-guarantee{margin-top:24px;font-family:var(--mono);font-size:12px;color:var(--white-30);display:flex;align-items:center;gap:8px;justify-content:center}
+.cta-guarantee i{color:var(--gold);font-size:16px}
+
+/* ═══ FOOTER ═══ */
+footer{padding:64px clamp(20px,5vw,48px) 32px;background:var(--bg2);border-top:1px solid var(--border)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto 48px}
+.footer-brand .footer-logo{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--white);margin-bottom:12px}
+.footer-brand .footer-logo span{color:var(--gold)}
+.footer-brand p{font-size:14px;color:var(--white-30);line-height:1.6;max-width:300px}
+.footer-col h4{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--white-30);margin-bottom:16px}
+.footer-col a{display:block;font-size:14px;color:var(--white-60);padding:4px 0;transition:color 0.2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-social{display:flex;gap:12px;margin-top:20px}
+.footer-social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--white-06);border:1px solid var(--border);color:var(--white-30);font-size:18px;transition:all 0.3s}
+.footer-social a:hover{border-color:var(--gold-border);color:var(--gold);background:var(--gold-glow)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:32px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+.footer-legal{font-size:12px;color:var(--white-30);max-width:800px;line-height:1.6}
+.footer-copy{font-size:12px;color:var(--white-30)}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr}
+  .nav-hamburger{display:flex}.sticky-cta{display:block}
+  .hero{min-height:calc(100dvh - 64px);padding:100px 20px 80px}
+  .hero-h1{font-size:clamp(38px,11vw,56px)}
+  .hero-sub{font-size:15px;margin-bottom:32px}
+  .search-box{height:52px;padding:0 16px;border-radius:12px}.search-kbd{display:none}
+  .hero-stats{flex-wrap:wrap;margin-top:32px}
+  .hero-stat{width:50%;padding:14px 0}
+  .hero-stat:nth-child(odd){border-right:1px solid var(--border)}
+  .hero-stat:nth-child(1),.hero-stat:nth-child(2){border-bottom:1px solid var(--border)}
+  .hero-stat:not(:last-child){border-right:none}
+  .hero-stat:nth-child(odd){border-right:1px solid var(--border)}
+  .trust-track{gap:16px;justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:0 20px}
+  .trust-track::-webkit-scrollbar{display:none}
+  footer{padding-bottom:96px}
+}
+@media(max-width:480px){
+  .nav{height:56px;padding:0 16px}.nav-logo{font-size:22px}
+  .nav-cta{padding:8px 16px;font-size:12px;border-radius:6px}
+  .hero{padding:80px 16px 60px}
+  .quick-tags{gap:6px;margin-top:12px}.qtag{padding:6px 12px;font-size:10px}
+  section{padding:clamp(48px,10vh,80px) 16px}
+  .footer-grid{grid-template-columns:1fr}
+}
+@media(hover:none){
+  .bento-card:hover{transform:none;box-shadow:none}
+  .bento-card:active{transform:scale(0.98);transition:transform 0.1s}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+  <a href="/" class="nav-logo">arq<span>.</span></a>
+  <div class="nav-links">
+    <a href="#protocols" class="nav-link">Protocols</a>
+    <a href="#how" class="nav-link">How it works</a>
+    <a href="#doctors" class="nav-link">Physicians</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+    <a href="https://wa.me/919137307628?text=I'd%20like%20to%20book%20a%20consultation" class="nav-cta" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Book Consultation
+    </a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#protocols" onclick="closeMobileMenu()">Protocols</a>
+  <a href="#how" onclick="closeMobileMenu()">How it works</a>
+  <a href="#doctors" onclick="closeMobileMenu()">Physicians</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="https://wa.me/919137307628?text=I'd%20like%20to%20book%20a%20consultation" class="mm-cta" target="_blank" rel="noopener">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+    Book Consultation on WhatsApp
+  </a>
+</div>
+
+<!-- Sticky Mobile CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-cta-inner">
+    <a href="https://wa.me/919137307628?text=I'd%20like%20to%20book%20a%20consultation" class="sticky-cta-btn primary" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+      Book Consultation
+    </a>
+    <a href="#protocols" class="sticky-cta-btn secondary">Browse Protocols</a>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> Physician-Guided Health Optimization</div>
+    <h1 class="hero-h1">Your Health,<br><em>Upgraded.</em></h1>
+    <p class="hero-sub">Doctor-guided protocols for cognition, performance, longevity, and body composition. Prescription-only. Delivered to your door.</p>
+
+    <div class="search-container">
+      <div class="search-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="Search protocols — focus, weight management, hair, sleep..." id="search-input">
+        <span class="search-kbd">⌘K</span>
+      </div>
+      <div class="quick-tags">
+        <a href="#protocols" class="qtag">Focus & Cognition</a>
+        <a href="#protocols" class="qtag">Weight Management</a>
+        <a href="#protocols" class="qtag">Hair Health</a>
+        <a href="#protocols" class="qtag">Performance</a>
+        <a href="#protocols" class="qtag">Longevity</a>
+        <a href="#protocols" class="qtag">Sleep</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">6</div>
+        <div class="hero-stat-label">Categories</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">Licensed</div>
+        <div class="hero-stat-label">Physicians</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">Rx Only</div>
+        <div class="hero-stat-label">Prescription Required</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">Pan-India</div>
+        <div class="hero-stat-label">Delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BENTO PROTOCOL CARDS ═══ -->
+<section class="bento-section" id="protocols">
+  <div class="section-center">
+    <div class="section-tag">Protocol Categories</div>
+    <h2 class="section-h2">What do you want to <em>optimize?</em></h2>
+    <p class="section-p">Six physician-supervised categories. Each requires a doctor's evaluation before prescribing.</p>
+  </div>
+  <div class="bento-grid">
+    <div class="bento-card bento-focus">
+      <div class="bento-glow"></div>
+      <div class="bento-inner">
+        <div class="bento-top">
+          <div class="bento-icon"><i class="ph-fill ph-brain"></i></div>
+          <div class="bento-stat">Rx protocol</div>
+        </div>
+        <div class="bento-bottom">
+          <h3 class="bento-title">Focus &<br>Cognition</h3>
+          <p class="bento-benefit">Physician-guided protocols to support sustained attention and mental clarity.</p>
+          <div class="bento-cta">Explore Protocol <i class="ph-bold ph-arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="bento-card bento-weight">
+      <div class="bento-glow"></div>
+      <div class="bento-inner">
+        <div class="bento-top">
+          <div class="bento-icon"><i class="ph-fill ph-fire-simple"></i></div>
+          <div class="bento-stat">Rx protocol</div>
+        </div>
+        <div class="bento-bottom">
+          <h3 class="bento-title">Weight<br>Management</h3>
+          <p class="bento-benefit">Physician-supervised protocols for medically guided weight management.</p>
+          <div class="bento-cta">Explore Protocol <i class="ph-bold ph-arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="bento-card bento-hair">
+      <div class="bento-glow"></div>
+      <div class="bento-inner">
+        <div class="bento-top">
+          <div class="bento-icon"><i class="ph-fill ph-leaf"></i></div>
+          <div class="bento-stat">Rx protocol</div>
+        </div>
+        <div class="bento-bottom">
+          <h3 class="bento-title">Hair<br>Health</h3>
+          <p class="bento-benefit">Clinically studied approaches to hair preservation and restoration, guided by a dermatologist.</p>
+          <div class="bento-cta">Explore Protocol <i class="ph-bold ph-arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="bento-card bento-performance">
+      <div class="bento-glow"></div>
+      <div class="bento-inner">
+        <div class="bento-top">
+          <div class="bento-icon"><i class="ph-fill ph-lightning"></i></div>
+          <div class="bento-stat">Rx protocol</div>
+        </div>
+        <div class="bento-bottom">
+          <h3 class="bento-title">Vitality &<br>Performance</h3>
+          <p class="bento-benefit">Hormone and wellness protocols supervised by an endocrinologist. Bloodwork required.</p>
+          <div class="bento-cta">Explore Protocol <i class="ph-bold ph-arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="bento-card bento-longevity">
+      <div class="bento-glow"></div>
+      <div class="bento-inner">
+        <div class="bento-top">
+          <div class="bento-icon"><i class="ph-fill ph-dna"></i></div>
+          <div class="bento-stat">Rx protocol</div>
+        </div>
+        <div class="bento-bottom">
+          <h3 class="bento-title">Longevity &<br>Healthspan</h3>
+          <p class="bento-benefit">Evidence-informed protocols targeting age-related biomarkers. Physician-monitored.</p>
+          <div class="bento-cta">Explore Protocol <i class="ph-bold ph-arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="bento-card bento-sleep">
+      <div class="bento-glow"></div>
+      <div class="bento-inner">
+        <div class="bento-top">
+          <div class="bento-icon"><i class="ph-fill ph-moon-stars"></i></div>
+          <div class="bento-stat">Rx protocol</div>
+        </div>
+        <div class="bento-bottom">
+          <h3 class="bento-title">Sleep<br>Quality</h3>
+          <p class="bento-benefit">Physician-guided protocols to support restorative sleep. Evaluation required.</p>
+          <div class="bento-cta">Explore Protocol <i class="ph-bold ph-arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST BAR ═══ -->
+<div class="trust-bar">
+  <div class="trust-track">
+    <div class="trust-item"><div class="t-icon"><i class="ph-bold ph-stethoscope"></i></div> Doctor consultation required</div>
+    <div class="trust-item"><div class="t-icon"><i class="ph-bold ph-pill"></i></div> Prescription-only medications</div>
+    <div class="trust-item"><div class="t-icon"><i class="ph-bold ph-shield-check"></i></div> Licensed physician evaluation</div>
+    <div class="trust-item"><div class="t-icon"><i class="ph-bold ph-lock-simple"></i></div> Discreet & secure</div>
+    <div class="trust-item"><div class="t-icon"><i class="ph-bold ph-package"></i></div> Pan-India delivery</div>
+  </div>
+</div>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="how-section" id="how">
+  <div class="section-tag">Process</div>
+  <h2 class="section-h2">How <em>arq</em> works</h2>
+  <p class="section-p">Four steps from protocol selection to your doorstep. Every prescription requires a licensed physician's evaluation.</p>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <div class="how-icon"><i class="ph-bold ph-cursor-click"></i></div>
+      <div class="how-title">Choose your protocol</div>
+      <div class="how-desc">Browse our catalog of evidence-based molecules. Full transparency on dosing, research, and pricing.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <div class="how-icon"><i class="ph-bold ph-stethoscope"></i></div>
+      <div class="how-title">Doctor consultation</div>
+      <div class="how-desc">Connect with a licensed physician who evaluates your medical history, bloodwork, and goals.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <div class="how-icon"><i class="ph-bold ph-file-text"></i></div>
+      <div class="how-title">Prescription issued</div>
+      <div class="how-desc">If medically appropriate, your physician issues a valid prescription. No auto-approvals.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">04</div>
+      <div class="how-icon"><i class="ph-bold ph-package"></i></div>
+      <div class="how-title">Ships to your door</div>
+      <div class="how-desc">Pharmaceutical-grade molecules from licensed pharmacies. Temperature-controlled. Pan-India in 48hrs.</div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-line"></div>
+
+<!-- ═══ DOCTORS ═══ -->
+<section class="doctors-section" id="doctors">
+  <div class="doc-header">
+    <div class="doc-header-text">
+      <div class="section-tag">Physicians</div>
+      <h2 class="section-h2">Real doctors.<br><em>Real oversight.</em></h2>
+    </div>
+    <a href="https://wa.me/919137307628?text=I'd%20like%20to%20book%20a%20consultation" class="btn-gold" target="_blank" rel="noopener"><i class="ph-bold ph-arrow-right"></i> Get Evaluated</a>
+  </div>
+  <div class="doc-features" style="margin-top:0">
+    <div class="doc-feat"><i class="ph-bold ph-graduation-cap"></i> All physicians MBBS+ qualified</div>
+    <div class="doc-feat"><i class="ph-bold ph-identification-card"></i> MCI / NMC registered</div>
+    <div class="doc-feat"><i class="ph-bold ph-stethoscope"></i> Specialist evaluation per category</div>
+    <div class="doc-feat"><i class="ph-bold ph-chat-centered-dots"></i> Ongoing physician follow-up</div>
+  </div>
+  <p style="max-width:700px;margin:32px auto 0;text-align:center;font-size:14px;color:var(--white-30);line-height:1.7">Our network includes internal medicine, dermatology, endocrinology, psychiatry, and sports medicine specialists. You'll be matched with a relevant physician based on your protocol. All credentials are verified before onboarding.</p>
+</section>
+
+<!-- Testimonials section removed — will be added when real verified reviews are available -->
+
+<!-- ═══ MEMBERSHIP ═══ -->
+<section class="membership-section">
+  <div class="mem-layout">
+    <div>
+      <div class="section-tag">Complete Care</div>
+      <h2 class="section-h2">More than <em>molecules.</em></h2>
+      <p class="section-p" style="margin-bottom:0">Every arq protocol includes ongoing physician oversight — from initial evaluation through follow-up care.</p>
+      <div class="mem-checklist">
+        <div class="mem-check"><i class="ph-bold ph-user-circle-check"></i> Personalized treatment plans <span class="mem-check-sub">Included</span></div>
+        <div class="mem-check"><i class="ph-bold ph-arrows-clockwise"></i> Monthly dosage adjustments <span class="mem-check-sub">Included</span></div>
+        <div class="mem-check"><i class="ph-bold ph-chat-centered-dots"></i> Direct physician messaging <span class="mem-check-sub">WhatsApp</span></div>
+        <div class="mem-check"><i class="ph-bold ph-drop-half-bottom"></i> Bloodwork guidance <span class="mem-check-sub">Quarterly</span></div>
+        <div class="mem-check"><i class="ph-bold ph-truck"></i> Free pan-India shipping <span class="mem-check-sub">48hrs</span></div>
+      </div>
+      <a href="#cta" class="btn-gold"><i class="ph-bold ph-arrow-right"></i> Start Your Protocol</a>
+    </div>
+    <div class="mem-visual">
+      <div class="mem-img"><img src="images/lifestyle-morning.png" alt="Morning wellness routine" loading="lazy"></div>
+      <div class="mem-img"><img src="images/doctor-female-new.png" alt="Physician consultation" loading="lazy"></div>
+      <div class="mem-img mem-img-full"><img src="images/product-shot-new.png" alt="arq protocol packaging" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-line"></div>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section" id="faq">
+  <div class="section-center">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-h2">Common <em>questions.</em></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-btn" onclick="this.parentElement.classList.toggle('open')">Is arq.clinic legal in India? <i class="ph-bold ph-caret-down"></i></button>
+      <div class="faq-content"><div class="faq-inner">arq operates as a technology platform connecting patients with licensed healthcare providers. All prescription medications require evaluation and approval by a licensed physician. Physicians on arq make independent medical decisions. Individual treatment is subject to medical eligibility.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="this.parentElement.classList.toggle('open')">How is this different from buying supplements online? <i class="ph-bold ph-caret-down"></i></button>
+      <div class="faq-content"><div class="faq-inner">arq protocols involve prescription medications that require a licensed physician's evaluation. You cannot access these medications without a valid prescription — and we do not auto-approve anyone. Your physician independently decides whether a protocol is medically appropriate for you.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="this.parentElement.classList.toggle('open')">What if the doctor doesn't approve my protocol? <i class="ph-bold ph-caret-down"></i></button>
+      <div class="faq-content"><div class="faq-inner">That's the point — not everyone qualifies. If our physician determines a protocol isn't medically appropriate for you, you get a 100% refund on your consultation fee. No questions asked. Your safety comes first.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="this.parentElement.classList.toggle('open')">How fast is delivery? <i class="ph-bold ph-caret-down"></i></button>
+      <div class="faq-content"><div class="faq-inner">48 hours pan-India after your prescription is issued. All shipments are temperature-controlled and discreetly packaged. We ship from licensed pharmacies — never from unregulated sources.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="this.parentElement.classList.toggle('open')">Can I cancel anytime? <i class="ph-bold ph-caret-down"></i></button>
+      <div class="faq-content"><div class="faq-inner">Yes. All arq subscriptions can be paused or cancelled anytime via WhatsApp. No lock-in contracts, no cancellation fees. If you're not seeing results, your physician will help adjust before you consider stopping.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="this.parentElement.classList.toggle('open')">Do you ship to my city? <i class="ph-bold ph-caret-down"></i></button>
+      <div class="faq-content"><div class="faq-inner">We deliver across India — every state, every pin code. Metro cities (Mumbai, Delhi, Bangalore, Hyderabad, Chennai, Pune) typically receive deliveries within 24-36 hours.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="this.parentElement.classList.toggle('open')">Where do you source your molecules? <i class="ph-bold ph-caret-down"></i></button>
+      <div class="faq-content"><div class="faq-inner">All medications are sourced from licensed Indian pharmacies and verified manufacturers. We never source from grey markets or unregulated suppliers.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section" id="cta">
+  <div class="cta-box">
+    <h2 class="cta-h2">Your biology won't<br>optimize <em>itself.</em></h2>
+    <p class="cta-p">Physician-guided protocols for cognition, body composition, and longevity. Starting at ₹499/month.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/919137307628?text=I'd%20like%20to%20start%20a%20protocol" class="btn-gold" target="_blank" rel="noopener"><i class="ph-bold ph-whatsapp-logo"></i> Start Your Protocol</a>
+      <a href="https://wa.me/919137307628?text=I%20have%20a%20question%20about%20arq" class="btn-ghost" target="_blank" rel="noopener"><i class="ph-bold ph-chat-centered-dots"></i> Talk to Us</a>
+    </div>
+    <div class="cta-guarantee"><i class="ph-bold ph-shield-check"></i> 100% refund if not medically approved</div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">arq<span>.</span></div>
+      <p>Physician-guided health optimization. Doctor-supervised protocols for cognition, performance, longevity, and body composition.</p>
+      <div class="footer-social" style="margin-top:24px">
+        <a href="#" aria-label="Twitter"><i class="ph-bold ph-twitter-logo"></i></a>
+        <a href="#" aria-label="Instagram"><i class="ph-bold ph-instagram-logo"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="ph-bold ph-linkedin-logo"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Protocols</h4>
+      <a href="#protocols">Focus & Cognition</a>
+      <a href="#protocols">Weight Management</a>
+      <a href="#protocols">Hair Health</a>
+      <a href="#protocols">Performance</a>
+      <a href="#protocols">Longevity</a>
+      <a href="#protocols">Sleep Quality</a>
+    </div>
+    <div class="footer-col">
+      <h4>Learn</h4>
+      <a href="#how">How It Works</a>
+      <a href="#doctors">Our Physicians</a>
+      <a href="/blog/">Science Blog</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about/">About arq</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms of Service</a>
+      <a href="mailto:hello@arq.clinic">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-legal">arq.clinic is a technology platform connecting patients with licensed healthcare providers. All prescriptions require independent physician evaluation. arq does not guarantee prescription issuance, specific outcomes, or results. Individual results may vary. This website does not provide medical advice — consult your physician. Prescription medications are dispensed by licensed pharmacies only.</p>
+    <p class="footer-copy">© 2026 arq.clinic. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// ─── MOBILE MENU ───
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('hamburger').addEventListener('click',function(){
+  var mm=document.getElementById('mobile-menu');
+  var isOpen=mm.classList.toggle('open');
+  this.classList.toggle('open');
+  document.body.style.overflow=isOpen?'hidden':'';
+});
+
+// ─── NAV SCROLL ───
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+});
+
+// ─── FAQ TOGGLE (backup for onclick) ───
+document.querySelectorAll('.faq-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){this.parentElement.classList.toggle('open')});
+});
+
+// ─── SMOOTH SCROLL ───
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var target=document.querySelector(a.getAttribute('href'));
+    if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+// ─── THREE.JS: HERO PARTICLE FIELD + DOUBLE HELIX MOLECULE ───
+(function(){
+  try{
+  var canvas=document.getElementById('hero-canvas');
+  if(!canvas) return;
+  var renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+
+  var scene=new THREE.Scene();
+  var camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,1000);
+  camera.position.z=30;
+
+  // Particle system — 1500 golden dust particles
+  var particleCount=1500;
+  var positions=new Float32Array(particleCount*3);
+  var velocities=new Float32Array(particleCount*3);
+  var sizes=new Float32Array(particleCount);
+  for(var i=0;i<particleCount;i++){
+    positions[i*3]=(Math.random()-0.5)*60;
+    positions[i*3+1]=(Math.random()-0.5)*60;
+    positions[i*3+2]=(Math.random()-0.5)*40;
+    velocities[i*3]=(Math.random()-0.5)*0.01;
+    velocities[i*3+1]=(Math.random()-0.5)*0.01;
+    velocities[i*3+2]=(Math.random()-0.5)*0.005;
+    sizes[i]=Math.random()*2+0.5;
+  }
+  var particleGeo=new THREE.BufferGeometry();
+  particleGeo.setAttribute('position',new THREE.BufferAttribute(positions,3));
+  particleGeo.setAttribute('size',new THREE.BufferAttribute(sizes,1));
+
+  var particleMat=new THREE.ShaderMaterial({
+    uniforms:{uTime:{value:0},uMouse:{value:new THREE.Vector2(0,0)},uColor:{value:new THREE.Color(0xc9a050)}},
+    vertexShader:'attribute float size;uniform float uTime;uniform vec2 uMouse;varying float vAlpha;void main(){vec3 pos=position;pos.x+=sin(uTime*0.3+position.y*0.5)*0.3;pos.y+=cos(uTime*0.2+position.x*0.3)*0.3;vec4 mvPos=modelViewMatrix*vec4(pos,1.0);float dist=length(mvPos.xy-uMouse*10.0);float repulsion=smoothstep(5.0,0.0,dist)*2.0;mvPos.xy+=normalize(mvPos.xy-uMouse*10.0+0.001)*repulsion;gl_Position=projectionMatrix*mvPos;gl_PointSize=size*(20.0/-mvPos.z);vAlpha=smoothstep(40.0,5.0,-mvPos.z)*0.6;}',
+    fragmentShader:'uniform vec3 uColor;varying float vAlpha;void main(){float d=length(gl_PointCoord-0.5);if(d>0.5)discard;float alpha=smoothstep(0.5,0.1,d)*vAlpha;gl_FragColor=vec4(uColor,alpha);}',
+    transparent:true,depthWrite:false,blending:THREE.AdditiveBlending
+  });
+  var particles=new THREE.Points(particleGeo,particleMat);
+  scene.add(particles);
+
+  // Connection lines between nearby particles
+  var lineGeo=new THREE.BufferGeometry();
+  var linePositions=new Float32Array(particleCount*6);
+  lineGeo.setAttribute('position',new THREE.BufferAttribute(linePositions,3));
+  var lineMat=new THREE.LineBasicMaterial({color:0xc9a050,transparent:true,opacity:0.04,blending:THREE.AdditiveBlending});
+  var lines=new THREE.LineSegments(lineGeo,lineMat);
+  scene.add(lines);
+
+  // Double helix molecular structure
+  var molGroup=new THREE.Group();
+  scene.add(molGroup);
+  var atomMat=new THREE.MeshPhongMaterial({color:0xc9a050,emissive:0x332200,shininess:80,transparent:true,opacity:0.7});
+  var bondMat=new THREE.MeshPhongMaterial({color:0x444444,emissive:0x111111,transparent:true,opacity:0.4});
+  var atomPositions_arr=[];
+
+  for(var j=0;j<20;j++){
+    var t=j/20*Math.PI*4;
+    var ax=Math.cos(t)*4,ay=(j-10)*0.8,az=Math.sin(t)*4;
+    atomPositions_arr.push(new THREE.Vector3(ax,ay,az));
+    var sphere=new THREE.Mesh(new THREE.SphereGeometry(0.25+Math.random()*0.15,16,16),atomMat.clone());
+    sphere.position.set(ax,ay,az);
+    sphere.material.opacity=0.4+Math.random()*0.3;
+    molGroup.add(sphere);
+
+    if(j>0){
+      var prev=atomPositions_arr[j-1];
+      var bondDir=new THREE.Vector3().subVectors(sphere.position,prev);
+      var bondLen=bondDir.length();
+      var bond=new THREE.Mesh(new THREE.CylinderGeometry(0.04,0.04,bondLen,6),bondMat);
+      var bondMid=new THREE.Vector3().lerpVectors(prev,sphere.position,0.5);
+      bond.position.copy(bondMid);bond.lookAt(sphere.position);bond.rotateX(Math.PI/2);
+      molGroup.add(bond);
+    }
+
+    // Second strand
+    var x2=Math.cos(t+Math.PI)*4,z2=Math.sin(t+Math.PI)*4;
+    var sphere2=new THREE.Mesh(new THREE.SphereGeometry(0.2+Math.random()*0.1,16,16),atomMat.clone());
+    sphere2.position.set(x2,ay,z2);
+    sphere2.material.color=new THREE.Color(0x5b9cf5);
+    sphere2.material.emissive=new THREE.Color(0x112244);
+    sphere2.material.opacity=0.3+Math.random()*0.3;
+    molGroup.add(sphere2);
+
+    // Rungs
+    if(j%2===0){
+      var rung=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,8,4),new THREE.MeshPhongMaterial({color:0x333333,transparent:true,opacity:0.2}));
+      rung.position.set((ax+x2)/2,ay,(az+z2)/2);
+      rung.lookAt(new THREE.Vector3(x2,ay,z2));
+      rung.rotateX(Math.PI/2);
+      molGroup.add(rung);
+    }
+  }
+  molGroup.position.set(12,-2,-5);
+  molGroup.rotation.z=0.3;
+
+  // Lighting
+  scene.add(new THREE.AmbientLight(0x222222));
+  var pl1=new THREE.PointLight(0xc9a050,1.5,50);pl1.position.set(10,10,10);scene.add(pl1);
+  var pl2=new THREE.PointLight(0x5b9cf5,0.8,50);pl2.position.set(-10,-5,10);scene.add(pl2);
+
+  // Mouse tracking
+  var mouseX=0,mouseY=0;
+  document.addEventListener('mousemove',function(e){
+    mouseX=(e.clientX/window.innerWidth)*2-1;
+    mouseY=-(e.clientY/window.innerHeight)*2+1;
+  });
+
+  // Animate
+  function animate(){
+    requestAnimationFrame(animate);
+    var time=performance.now()*0.001;
+    particleMat.uniforms.uTime.value=time;
+    particleMat.uniforms.uMouse.value.set(mouseX,mouseY);
+
+    var pos=particleGeo.attributes.position.array;
+    for(var k=0;k<particleCount;k++){
+      pos[k*3]+=velocities[k*3];pos[k*3+1]+=velocities[k*3+1];pos[k*3+2]+=velocities[k*3+2];
+      if(Math.abs(pos[k*3])>30)velocities[k*3]*=-1;
+      if(Math.abs(pos[k*3+1])>30)velocities[k*3+1]*=-1;
+      if(Math.abs(pos[k*3+2])>20)velocities[k*3+2]*=-1;
+    }
+    particleGeo.attributes.position.needsUpdate=true;
+
+    var lp=lineGeo.attributes.position.array;var lineIdx=0;
+    for(var m=0;m<Math.min(particleCount,200);m++){
+      for(var n=m+1;n<Math.min(particleCount,200);n++){
+        var dx=pos[m*3]-pos[n*3],dy=pos[m*3+1]-pos[n*3+1],dz=pos[m*3+2]-pos[n*3+2];
+        if(dx*dx+dy*dy+dz*dz<25&&lineIdx<linePositions.length-6){
+          lp[lineIdx++]=pos[m*3];lp[lineIdx++]=pos[m*3+1];lp[lineIdx++]=pos[m*3+2];
+          lp[lineIdx++]=pos[n*3];lp[lineIdx++]=pos[n*3+1];lp[lineIdx++]=pos[n*3+2];
+        }
+      }
+    }
+    for(var z=lineIdx;z<linePositions.length;z++)lp[z]=0;
+    lineGeo.attributes.position.needsUpdate=true;
+    lineGeo.setDrawRange(0,lineIdx/3);
+
+    molGroup.rotation.y=time*0.15;
+    molGroup.rotation.x=Math.sin(time*0.1)*0.1;
+    molGroup.position.y=Math.sin(time*0.3)*0.5-2;
+
+    camera.position.x+=(mouseX*2-camera.position.x)*0.02;
+    camera.position.y+=(mouseY*1-camera.position.y)*0.02;
+    camera.lookAt(0,0,0);
+
+    renderer.render(scene,camera);
+  }
+  animate();
+
+  window.addEventListener('resize',function(){
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+  });
+  }catch(e){console.warn('Hero 3D error:',e)}
+})();
+
+// ─── GSAP ANIMATIONS ───
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero stagger
+gsap.from('.hero-badge',{y:30,opacity:0,duration:1,delay:0.2,ease:'power3.out'});
+gsap.from('.hero-h1',{y:40,opacity:0,duration:1,delay:0.4,ease:'power3.out'});
+gsap.from('.hero-sub',{y:30,opacity:0,duration:1,delay:0.6,ease:'power3.out'});
+gsap.from('.search-container',{y:30,opacity:0,duration:1,delay:0.8,ease:'power3.out'});
+gsap.from('.quick-tags',{y:20,opacity:0,duration:0.8,delay:1.0,ease:'power3.out'});
+gsap.from('.hero-stats',{y:30,opacity:0,duration:0.8,delay:1.2,ease:'power3.out'});
+
+// Section headers
+document.querySelectorAll('.section-tag,.section-h2,.section-p').forEach(function(el){
+  gsap.set(el,{y:40,opacity:0});
+  ScrollTrigger.create({trigger:el,start:'top 90%',onEnter:function(){gsap.to(el,{y:0,opacity:1,duration:0.8,ease:'power3.out'})},once:true});
+});
+
+// Bento cards stagger
+document.querySelectorAll('.bento-card').forEach(function(card,i){
+  gsap.set(card,{y:50,opacity:0});
+  ScrollTrigger.create({trigger:card,start:'top 92%',onEnter:function(){gsap.to(card,{y:0,opacity:1,duration:0.7,delay:i*0.1,ease:'power3.out'})},once:true});
+});
+
+// How cards
+document.querySelectorAll('.how-card').forEach(function(card,i){
+  gsap.set(card,{y:50,opacity:0});
+  ScrollTrigger.create({trigger:card,start:'top 92%',onEnter:function(){gsap.to(card,{y:0,opacity:1,duration:0.7,delay:i*0.12,ease:'power3.out'})},once:true});
+});
+
+// Doctor cards
+document.querySelectorAll('.doc-card').forEach(function(card,i){
+  gsap.set(card,{y:40,opacity:0});
+  ScrollTrigger.create({trigger:card,start:'top 92%',onEnter:function(){gsap.to(card,{y:0,opacity:1,duration:0.7,delay:i*0.12,ease:'power3.out'})},once:true});
+});
+
+// Testimonials
+document.querySelectorAll('.test-card').forEach(function(card,i){
+  gsap.set(card,{y:40,opacity:0});
+  ScrollTrigger.create({trigger:card,start:'top 92%',onEnter:function(){gsap.to(card,{y:0,opacity:1,duration:0.7,delay:i*0.12,ease:'power3.out'})},once:true});
+});
+
+// Membership checks
+document.querySelectorAll('.mem-check').forEach(function(el,i){
+  gsap.set(el,{x:-30,opacity:0});
+  ScrollTrigger.create({trigger:el,start:'top 92%',onEnter:function(){gsap.to(el,{x:0,opacity:1,duration:0.6,delay:i*0.1,ease:'power3.out'})},once:true});
+});
+
+// CTA box
+gsap.set('.cta-box',{y:40,opacity:0,scale:0.97});
+ScrollTrigger.create({trigger:'.cta-section',start:'top 85%',onEnter:function(){gsap.to('.cta-box',{y:0,opacity:1,scale:1,duration:0.8,ease:'power3.out'})},once:true});
+
+// Trust bar items
+document.querySelectorAll('.trust-item').forEach(function(item,i){
+  gsap.set(item,{y:20,opacity:0});
+  ScrollTrigger.create({trigger:item,start:'top 95%',onEnter:function(){gsap.to(item,{y:0,opacity:1,duration:0.5,delay:i*0.08,ease:'power3.out'})},once:true});
+});
+
+// Animated counter
+document.querySelectorAll('.hero-stat-val[data-count]').forEach(function(el){
+  var target=parseInt(el.dataset.count);
+  gsap.to({val:0},{val:target,duration:2,delay:1.4,ease:'power2.out',onUpdate:function(){el.textContent=Math.round(this.targets()[0].val)+'+'}});
+});
+
+// Tilt on bento cards (desktop)
+if(window.matchMedia('(hover:hover)').matches){
+  document.querySelectorAll('.bento-card').forEach(function(card){
+    card.addEventListener('mousemove',function(e){
+      var rect=card.getBoundingClientRect();
+      var x=(e.clientX-rect.left)/rect.width-0.5;
+      var y=(e.clientY-rect.top)/rect.height-0.5;
+      card.style.transform='translateY(-4px) perspective(800px) rotateX('+(-y*5)+'deg) rotateY('+(x*5)+'deg)';
+    });
+    card.addEventListener('mouseleave',function(){
+      card.style.transform='translateY(0) perspective(800px) rotateX(0) rotateY(0)';
+    });
+  });
+}
+</script>
+</body>
+</html>

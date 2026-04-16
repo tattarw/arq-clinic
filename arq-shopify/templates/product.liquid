@@ -1,0 +1,665 @@
+{% comment %} templates/product.liquid {% endcomment %}
+
+{%- assign product = product -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign doctor_type    = product.metafields.arq.doctor_type | default: 'MBBS physician' -%}
+{%- assign blood_required = product.metafields.arq.blood_required | default: false -%}
+{%- assign kit_name       = product.metafields.arq.kit_name -%}
+{%- assign dose           = product.metafields.arq.dose -%}
+{%- assign legal_status   = product.metafields.arq.legal_status -%}
+{%- assign consult_time   = product.metafields.arq.consult_time | default: '2 hours' -%}
+{%- assign delivery_time  = product.metafields.arq.delivery_time | default: '48 hours' -%}
+{%- assign subscription_eligible = product.metafields.arq.subscription | default: true -%}
+
+<div class="product-page">
+  <div class="container">
+
+    <!-- BREADCRUMB -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/" class="breadcrumb__link">Home</a>
+      <span class="breadcrumb__sep">·</span>
+      <a href="/collections/{{ product.type | handleize }}" class="breadcrumb__link">{{ product.type }}</a>
+      <span class="breadcrumb__sep">·</span>
+      <span class="breadcrumb__current">{{ product.title }}</span>
+    </nav>
+
+    <div class="product-layout">
+
+      <!-- LEFT: Info -->
+      <div class="product-info">
+
+        <div class="eyebrow">{{ product.type }}</div>
+
+        <h1 class="product-info__name animate-up">{{ product.title }}</h1>
+
+        {%- if kit_name != blank -%}
+          <div class="product-info__kit animate-up animate-up-1">
+            {{ kit_name }}
+            {%- if dose != blank -%} · {{ dose }}{%- endif -%}
+          </div>
+        {%- endif -%}
+
+        <div class="divider-gold mt-md mb-lg"></div>
+
+        <!-- Tags -->
+        <div class="product-info__tags animate-up animate-up-1">
+          <span class="tag tag-rx">Rx included</span>
+          {%- if doctor_type contains 'Endocrinologist' -%}
+            <span class="tag tag-endo">Endocrinologist</span>
+          {%- elsif doctor_type contains 'Psychiatrist' -%}
+            <span class="tag tag-mbbs">Psychiatrist</span>
+          {%- else -%}
+            <span class="tag tag-mbbs">MBBS physician</span>
+          {%- endif -%}
+          {%- if blood_required -%}
+            <span class="tag tag-blood">Blood test required</span>
+          {%- endif -%}
+          {%- if product.tags contains 'peptide' -%}
+            <span class="tag tag-peptide">Peptide protocol</span>
+          {%- endif -%}
+          {%- if product.tags contains 'physician-supervised' -%}
+            <span class="tag tag-grey">Physician supervised</span>
+          {%- endif -%}
+        </div>
+
+        <!-- Description -->
+        <div class="product-info__desc animate-up animate-up-2">
+          {{ product.description }}
+        </div>
+
+        <!-- Variant selector (if multiple variants e.g. dose strengths) -->
+        {%- if product.variants.size > 1 -%}
+        <div class="product-info__variants animate-up animate-up-2">
+          <div class="field-label" style="margin-bottom:10px">Select dose</div>
+          <div class="variant-options" id="variantOptions">
+            {%- for variant in product.variants -%}
+              <button
+                class="variant-btn {% if variant.id == current_variant.id %}variant-btn--active{% endif %} {% unless variant.available %}variant-btn--sold-out{% endunless %}"
+                data-variant-id="{{ variant.id }}"
+                data-price="{{ variant.price }}"
+                data-compare-price="{{ variant.compare_at_price }}"
+                {%- unless variant.available -%}disabled{%- endunless -%}
+              >
+                {{ variant.title }}
+                {%- unless variant.available -%}
+                  <span class="variant-btn__oos">—</span>
+                {%- endunless -%}
+              </button>
+            {%- endfor -%}
+          </div>
+        </div>
+        {%- endif -%}
+
+        <!-- Price block -->
+        <div class="price-block animate-up animate-up-2" id="priceBlock">
+          <div class="price-block__label t-label" style="margin-bottom:6px">Monthly price</div>
+
+          <div class="price-block__row">
+            <div class="price-block__price" id="productPrice">
+              {{ current_variant.price | money }}
+            </div>
+            {%- if current_variant.compare_at_price > current_variant.price -%}
+              <div class="price-block__compare" id="comparePrice">
+                {{ current_variant.compare_at_price | money }}
+              </div>
+            {%- endif -%}
+          </div>
+
+          <div class="price-block__unit">per month · consultation included · free delivery</div>
+
+          <div class="price-block__divider"></div>
+
+          <div class="price-block__consult">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="flex-shrink:0;margin-top:1px">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 11.92a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9a16 16 0 0 0 5.91 5.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z"/>
+            </svg>
+            <div>
+              <strong>{{ doctor_type }}</strong> calls you within {{ consult_time }} of purchase. E-prescription issued on the call.
+              {%- if blood_required -%}
+                <br>Blood test home collection via Suburban Diagnostics — booked automatically.
+              {%- else -%}
+                No blood test required for this protocol.
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+
+        <!-- Purchase type: one-time vs subscription -->
+        {%- if subscription_eligible -%}
+        <div class="purchase-type animate-up animate-up-3" id="purchaseType">
+          <button class="purchase-type__option purchase-type__option--active" id="subscribeOpt" onclick="setPurchaseType('subscribe')">
+            <div class="purchase-type__radio"></div>
+            <div class="purchase-type__content">
+              <div class="purchase-type__title">Subscribe & save</div>
+              <div class="purchase-type__desc">Monthly refill via WhatsApp. One tap to reorder. Cancel anytime.</div>
+            </div>
+            <div class="purchase-type__badge">Recommended</div>
+          </button>
+          <button class="purchase-type__option" id="onetimeOpt" onclick="setPurchaseType('one-time')">
+            <div class="purchase-type__radio"></div>
+            <div class="purchase-type__content">
+              <div class="purchase-type__title">One-time purchase</div>
+              <div class="purchase-type__desc">Single month. No commitment.</div>
+            </div>
+          </button>
+        </div>
+        {%- endif -%}
+
+        <!-- Add to cart -->
+        <form id="addToCartForm" class="animate-up animate-up-3">
+          <input type="hidden" name="id" id="variantInput" value="{{ current_variant.id }}">
+          <input type="hidden" name="quantity" value="1">
+          <input type="hidden" name="properties[purchase_type]" id="purchaseTypeInput" value="subscribe">
+
+          {%- if current_variant.available -%}
+            <button type="submit" class="btn btn-primary btn-full btn-lg" id="addToCartBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+              Add to cart — {{ current_variant.price | money }}
+            </button>
+          {%- else -%}
+            <button type="button" class="btn btn-secondary btn-full btn-lg" disabled>
+              Out of stock
+            </button>
+          {%- endif -%}
+        </form>
+
+        <div class="product-info__reassurance animate-up animate-up-4">
+          <div class="reassurance-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Plain packaging · Discreet billing</span>
+          </div>
+          <div class="reassurance-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Doctor calls within {{ consult_time }}</span>
+          </div>
+          <div class="reassurance-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Delivered in {{ delivery_time }}</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Protocol details + steps -->
+      <div class="product-sidebar">
+
+        <!-- What happens next -->
+        <div class="protocol-steps card">
+          <div class="protocol-steps__header">
+            <div class="t-label">What happens next</div>
+          </div>
+          <div class="protocol-steps__body">
+
+            <div class="protocol-step">
+              <div class="protocol-step__num">1</div>
+              <div class="protocol-step__content">
+                <div class="protocol-step__title">You buy</div>
+                <div class="protocol-step__body">Pay via UPI or card. Takes 60 seconds. Your order is placed.</div>
+                <div class="protocol-step__time">Now</div>
+              </div>
+            </div>
+
+            <div class="protocol-step">
+              <div class="protocol-step__num">2</div>
+              <div class="protocol-step__content">
+                <div class="protocol-step__title">{{ doctor_type }} calls</div>
+                <div class="protocol-step__body">5–10 minutes. They screen, advise, and issue your e-prescription immediately. No lecture.</div>
+                <div class="protocol-step__time">Within {{ consult_time }}</div>
+              </div>
+            </div>
+
+            {%- if blood_required -%}
+            <div class="protocol-step">
+              <div class="protocol-step__num">3</div>
+              <div class="protocol-step__content">
+                <div class="protocol-step__title">Blood test</div>
+                <div class="protocol-step__body">Suburban Diagnostics home collection. Booked automatically. Results reviewed by your doctor before dispatch.</div>
+                <div class="protocol-step__time">Next morning</div>
+              </div>
+            </div>
+            {%- endif -%}
+
+            <div class="protocol-step">
+              <div class="protocol-step__num">{{ blood_required | condition: '4', '3' }}</div>
+              <div class="protocol-step__content">
+                <div class="protocol-step__title">Packed. Discreetly.</div>
+                <div class="protocol-step__body">Plain matte box. No brand name. No product name. Your address — that's all anyone can see.</div>
+                <div class="protocol-step__time">Same day</div>
+              </div>
+            </div>
+
+            <div class="protocol-step protocol-step--last">
+              <div class="protocol-step__num">{{ blood_required | condition: '5', '4' }}</div>
+              <div class="protocol-step__content">
+                <div class="protocol-step__title">At your door</div>
+                <div class="protocol-step__body">Mumbai, Delhi, Bangalore. Track on WhatsApp.</div>
+                <div class="protocol-step__time">Within {{ delivery_time }}</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Legal status -->
+        {%- if legal_status != blank -%}
+        <div class="product-legal card">
+          <div class="product-legal__label t-label">Legal status</div>
+          <div class="product-legal__text">{{ legal_status }}</div>
+          <div class="product-legal__fine">
+            All arq products require a valid e-prescription from a registered medical practitioner.
+            arq.clinic connects patients with licensed physicians — we are not a pharmacy.
+          </div>
+        </div>
+        {%- endif -%}
+
+        <!-- WhatsApp CTA -->
+        <button class="product-wa-cta" onclick="openWAModal('{{ product.title | escape }}')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Have questions? Ask on WhatsApp
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Related products -->
+    {%- if product.metafields.arq.related_products != blank -%}
+    <div class="related-products mt-xl">
+      <h3 class="t-title mb-lg">Often taken together</h3>
+      <div class="related-grid">
+        {% assign related_handles = product.metafields.arq.related_products | split: ',' %}
+        {% for handle in related_handles %}
+          {% assign rel = all_products[handle | strip] %}
+          {% if rel != blank %}
+            {% render 'product-card', product: rel %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+<style>
+/* ── PRODUCT PAGE ── */
+.product-page { padding: 20px 0 80px; }
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.breadcrumb__link { color: var(--cream-40); transition: color 0.2s; }
+.breadcrumb__link:hover { color: var(--cream-70); }
+.breadcrumb__sep { color: var(--cream-15); }
+.breadcrumb__current { color: var(--cream-40); }
+
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+@media (min-width: 860px) {
+  .product-layout { grid-template-columns: 1fr 380px; gap: 60px; align-items: start; }
+}
+
+/* Product info */
+.product-info__name {
+  font-family: var(--serif);
+  font-size: clamp(36px, 8vw, 56px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.product-info__kit {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+  margin-bottom: 0;
+}
+.product-info__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+.product-info__desc {
+  font-size: 15px;
+  color: var(--cream-70);
+  line-height: 1.85;
+  margin-bottom: 28px;
+  max-width: 520px;
+}
+.product-info__desc strong { color: var(--cream); font-weight: 400; }
+
+/* Variants */
+.variant-options { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.variant-btn {
+  background: var(--surface);
+  border: 1px solid var(--cream-15);
+  color: var(--cream-70);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  transition: all 0.18s;
+}
+.variant-btn:hover { border-color: var(--cream-40); color: var(--cream); }
+.variant-btn--active { border-color: var(--gold); color: var(--gold); background: var(--gold-lo); }
+.variant-btn--sold-out { opacity: 0.35; cursor: not-allowed; }
+
+/* Price block */
+.price-block {
+  background: var(--surface);
+  border: 1px solid var(--cream-07);
+  padding: 24px 20px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.price-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+.price-block__row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+.price-block__price {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--cream);
+}
+.price-block__compare {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--cream-40);
+  text-decoration: line-through;
+}
+.price-block__unit {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--cream-40);
+  margin-bottom: 16px;
+}
+.price-block__divider { height: 1px; background: var(--cream-07); margin-bottom: 14px; }
+.price-block__consult {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--cream-40);
+  line-height: 1.65;
+}
+.price-block__consult strong { color: var(--gold); font-weight: 400; }
+
+/* Purchase type */
+.purchase-type { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.purchase-type__option {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--cream-15);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.18s;
+  position: relative;
+}
+.purchase-type__option:hover { border-color: var(--cream-40); }
+.purchase-type__option--active { border-color: var(--gold); background: var(--gold-lo); }
+.purchase-type__radio {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid var(--cream-40);
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all 0.18s;
+  position: relative;
+}
+.purchase-type__option--active .purchase-type__radio {
+  border-color: var(--gold);
+}
+.purchase-type__option--active .purchase-type__radio::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.purchase-type__title { font-size: 13px; color: var(--cream); font-weight: 400; margin-bottom: 2px; }
+.purchase-type__desc { font-size: 11px; color: var(--cream-40); line-height: 1.5; }
+.purchase-type__badge {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--bg);
+  padding: 3px 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Add to cart form */
+#addToCartForm { margin-bottom: 16px; }
+
+/* Reassurance */
+.product-info__reassurance {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.reassurance-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+}
+.reassurance-item svg { flex-shrink: 0; }
+
+/* Protocol steps */
+.protocol-steps { margin-bottom: 16px; }
+.protocol-steps__header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--cream-07);
+}
+.protocol-steps__body { padding: 8px 0; }
+
+.protocol-step {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--cream-07);
+}
+.protocol-step--last { border-bottom: none; }
+.protocol-step__num {
+  font-family: var(--serif);
+  font-size: 28px;
+  color: rgba(200,151,58,0.18);
+  line-height: 1;
+  margin-top: -2px;
+}
+.protocol-step__title {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 3px;
+}
+.protocol-step__body {
+  font-size: 11px;
+  color: var(--cream-40);
+  line-height: 1.65;
+}
+.protocol-step__time {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.protocol-step__time::before {
+  content: '';
+  display: block;
+  width: 10px; height: 1px;
+  background: var(--gold);
+}
+
+/* Legal */
+.product-legal {
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+.product-legal__label { margin-bottom: 8px; }
+.product-legal__text { font-size: 13px; color: var(--cream-70); margin-bottom: 10px; }
+.product-legal__fine { font-size: 11px; color: var(--cream-40); line-height: 1.65; }
+
+/* WA CTA */
+.product-wa-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  border: 1px solid var(--cream-07);
+  color: var(--cream-40);
+  padding: 14px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: all 0.2s;
+}
+.product-wa-cta:hover { border-color: var(--gold-border); color: var(--gold); }
+
+/* Related */
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--cream-07);
+}
+</style>
+
+<script>
+// ── VARIANT SWITCHER ──
+const variantBtns  = document.querySelectorAll('.variant-btn');
+const variantInput = document.getElementById('variantInput');
+const priceEl      = document.getElementById('productPrice');
+const compareEl    = document.getElementById('comparePrice');
+const addToCartBtn = document.getElementById('addToCartBtn');
+
+variantBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    variantBtns.forEach(b => b.classList.remove('variant-btn--active'));
+    btn.classList.add('variant-btn--active');
+    variantInput.value = btn.dataset.variantId;
+
+    // Update price display
+    const price = parseInt(btn.dataset.price);
+    const compare = parseInt(btn.dataset.comparePrice);
+    if (priceEl) priceEl.textContent = formatMoney(price);
+    if (compareEl) {
+      compareEl.textContent = compare ? formatMoney(compare) : '';
+      compareEl.classList.toggle('hidden', !compare || compare <= price);
+    }
+    if (addToCartBtn) {
+      addToCartBtn.innerHTML = addToCartBtn.innerHTML.replace(/₹[\d,]+/, formatMoney(price));
+    }
+  });
+});
+
+// ── PURCHASE TYPE ──
+function setPurchaseType(type) {
+  const subBtn  = document.getElementById('subscribeOpt');
+  const oneBtn  = document.getElementById('onetimeOpt');
+  const input   = document.getElementById('purchaseTypeInput');
+
+  if (type === 'subscribe') {
+    subBtn?.classList.add('purchase-type__option--active');
+    oneBtn?.classList.remove('purchase-type__option--active');
+  } else {
+    oneBtn?.classList.add('purchase-type__option--active');
+    subBtn?.classList.remove('purchase-type__option--active');
+  }
+  if (input) input.value = type;
+}
+
+// ── ADD TO CART ──
+const form = document.getElementById('addToCartForm');
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('addToCartBtn');
+    const originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span style="opacity:0.6">Adding…</span>';
+
+    const formData = new FormData(form);
+    const body = JSON.stringify({
+      id: formData.get('id'),
+      quantity: 1,
+      properties: {
+        purchase_type: formData.get('properties[purchase_type]') || 'subscribe',
+        _doctor_required: 'true',
+        _prescription_status: 'pending',
+      }
+    });
+
+    try {
+      const res = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body
+      });
+
+      if (!res.ok) throw new Error('Add to cart failed');
+
+      const cart = await fetch('/cart.js').then(r => r.json());
+      updateCartCount(cart.item_count);
+
+      // Open cart drawer
+      openCartDrawer();
+      showToast('Added to cart', 'success');
+
+    } catch (err) {
+      showToast('Something went wrong. Please try again.', 'error');
+      console.error(err);
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = originalText;
+    }
+  });
+}
+
+function formatMoney(cents) {
+  return '₹' + (cents / 100).toLocaleString('en-IN');
+}
+</script>

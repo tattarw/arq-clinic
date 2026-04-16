@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arq Focus — Protocol Pack | arq.</title>
+<meta name="description" content="arq Focus: The 12-hour clarity protocol. Modafinil 200mg + L-Theanine + Alpha-GPC + Magnesium Glycinate. Complete pharmaceutical-grade stack for sustained focus.">
+<link rel="canonical" href="https://arq.clinic/protocols/packs/arq-focus">
+<meta property="og:title" content="arq Focus — Protocol Pack | arq.">
+<meta property="og:description" content="arq Focus: The 12-hour clarity protocol. Modafinil 200mg + L-Theanine + Alpha-GPC + Magnesium Glycinate. Complete pharmaceutical-grade stack for sustained focus.">
+<meta property="og:url" content="https://arq.clinic/protocols/packs/arq-focus">
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="arq.">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="arq Focus — Protocol Pack | arq.">
+<meta name="twitter:description" content="arq Focus: The 12-hour clarity protocol. Modafinil 200mg + L-Theanine + Alpha-GPC + Magnesium Glycinate.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "arq Focus — Protocol Pack",
+  "description": "The 12-hour clarity protocol. Pharmaceutical-grade wakefulness combined with three targeted nootropic supplements.",
+  "url": "https://arq.clinic/protocols/packs/arq-focus",
+  "brand": {"@type": "Brand", "name": "arq."},
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "INR",
+    "price": "4999",
+    "availability": "https://schema.org/InStock",
+    "seller": {"@type": "Organization", "name": "arq."}
+  }
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#050505;--bg2:#0a0a0a;--surface:#111;--card:#141414;
+  --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
+  --white:#e8e4dd;--white-90:rgba(232,228,221,0.9);
+  --white-60:rgba(232,228,221,0.6);--white-30:rgba(232,228,221,0.3);
+  --white-12:rgba(232,228,221,0.12);--white-06:rgba(232,228,221,0.06);
+  --gold:#c9a050;--gold-glow:rgba(201,160,80,0.08);--gold-border:rgba(201,160,80,0.2);
+  --blue:#5b9cf5;--blue-dim:rgba(91,156,245,0.12);
+  --green:#3ecf71;--green-dim:rgba(62,207,113,0.15);
+  --sans:'Inter',system-ui,sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+  --mono:'JetBrains Mono','SF Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{background:var(--bg);color:var(--white);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+::selection{background:var(--gold);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--white-12);border-radius:3px}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;background:rgba(5,5,5,0.85);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:0.02em;color:var(--white);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-link{font-size:13px;font-weight:500;letter-spacing:0.04em;color:var(--white-60);transition:color 0.3s;text-transform:uppercase}
+.nav-link:hover{color:var(--white)}
+.nav-cta{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),#d4ad5e);color:var(--bg);padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:all 0.3s;box-shadow:0 0 20px rgba(201,160,80,0.15)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 4px 30px rgba(201,160,80,0.3)}
+@media(max-width:768px){.nav-links{display:none}}
+
+/* Breadcrumb */
+.breadcrumb{padding:80px clamp(20px,5vw,48px) 0;font-size:13px;color:var(--white-30)}
+.breadcrumb a{color:var(--white-30);transition:color 0.2s}
+.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb span{margin:0 8px}
+
+/* Product Hero */
+.product-hero{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  padding:40px clamp(20px,5vw,48px) 80px;
+  max-width:1300px;margin:0 auto;align-items:start;
+}
+@media(max-width:900px){.product-hero{grid-template-columns:1fr;gap:40px}}
+
+.product-3d{position:relative}
+#product-canvas{
+  width:100%;height:500px;border-radius:16px;
+  border:1px solid var(--border);
+  background:rgba(10,10,10,0.5);
+}
+.product-3d-label{
+  position:absolute;bottom:16px;left:16px;
+  font-family:var(--mono);font-size:10px;
+  color:var(--white-30);letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:4px 10px;border-radius:4px;
+  background:rgba(5,5,5,0.8);backdrop-filter:blur(10px);
+}
+
+.product-info{padding-top:20px}
+.product-cat{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 14px;border-radius:6px;
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  background:rgba(201,160,80,0.12);color:#c9a050;
+  border:1px solid rgba(201,160,80,0.25);margin-bottom:16px;
+}
+.product-name{
+  font-family:var(--serif);font-size:clamp(36px,5vw,56px);
+  font-weight:400;line-height:1.05;letter-spacing:-0.03em;
+  margin-bottom:8px;
+}
+.product-generic{
+  font-family:var(--mono);font-size:14px;color:var(--white-30);
+  margin-bottom:24px;
+}
+.product-desc{
+  font-size:16px;color:var(--white-60);line-height:1.7;
+  margin-bottom:32px;max-width:520px;font-weight:300;
+}
+
+/* Price card */
+.price-card{
+  padding:28px;border-radius:16px;
+  background:rgba(20,20,20,0.6);
+  border:1px solid var(--gold-border);
+  backdrop-filter:blur(20px);margin-bottom:16px;
+  position:relative;overflow:hidden;
+}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.price-main{
+  display:flex;align-items:baseline;gap:8px;margin-bottom:4px;
+}
+.price-amount{
+  font-family:var(--mono);font-size:40px;font-weight:700;
+  color:var(--gold);
+}
+.price-unit{font-size:16px;color:var(--white-30)}
+.price-compare{
+  font-size:13px;color:var(--white-30);margin-bottom:16px;
+}
+.price-compare .us-price{text-decoration:line-through;color:var(--white-12)}
+.price-breakdown{display:flex;flex-direction:column;gap:8px;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:12px 0}
+.price-line{display:flex;justify-content:space-between;font-size:13px;color:var(--white-60)}
+.price-line .price-free{color:var(--green);font-weight:500}
+.price-line.price-total{color:var(--white);font-weight:600;font-size:14px;padding-top:8px;border-top:1px solid var(--border)}
+.price-savings{
+  display:inline-flex;padding:3px 10px;border-radius:4px;
+  background:var(--green-dim);color:var(--green);
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  margin-left:8px;
+}
+
+.consult-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:16px;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),#d4ad5e);
+  color:var(--bg);font-size:16px;font-weight:700;
+  border:none;cursor:pointer;transition:all 0.4s;
+  box-shadow:0 0 30px rgba(201,160,80,0.15);
+  margin-bottom:12px;
+}
+.free-consult-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:10px 20px;margin-top:8px;border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:400;color:var(--white-60);background:transparent;cursor:pointer;transition:all 0.3s var(--ease);text-decoration:none}
+.free-consult-btn:hover{background:var(--gold-glow);border-color:var(--gold);color:var(--gold-light)}
+.refund-guarantee{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px;margin-top:8px;background:rgba(62,207,113,0.06);border:1px solid rgba(62,207,113,0.15);border-radius:8px;font-size:11px;font-weight:500;color:var(--green);letter-spacing:0.01em}
+
+.consult-btn:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(201,160,80,0.3)}
+.consult-btn svg{width:20px;height:20px}
+
+/* Protocol flow timeline */
+.protocol-flow{
+  margin-top:16px;padding:20px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(201,160,80,0.04),rgba(201,160,80,0.01));
+  border:1px solid var(--gold-border);position:relative;overflow:hidden;
+}
+.protocol-flow::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,160,80,0.3),transparent);
+}
+.flow-label{
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.flow-label svg{width:14px;height:14px;stroke:var(--gold)}
+.flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+@media(max-width:600px){.flow-steps{grid-template-columns:repeat(2,1fr);gap:12px}}
+.flow-step{text-align:center;position:relative;padding:0 8px}
+.flow-step:not(:last-child)::after{
+  content:'';position:absolute;top:18px;right:-2px;width:calc(100% - 44px);
+  height:1px;background:linear-gradient(90deg,var(--gold),rgba(201,160,80,0.15));
+  left:calc(50% + 22px);
+}
+@media(max-width:600px){.flow-step:not(:last-child)::after{display:none}}
+.flow-num{
+  width:36px;height:36px;border-radius:50%;margin:0 auto 10px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:13px;font-weight:700;
+  background:rgba(201,160,80,0.1);border:1px solid var(--gold-border);
+  color:var(--gold);position:relative;z-index:2;
+}
+.flow-step-title{
+  font-size:12px;font-weight:600;color:var(--white);margin-bottom:3px;
+  line-height:1.3;
+}
+.flow-step-desc{
+  font-size:10px;color:var(--white-30);line-height:1.4;
+  font-family:var(--mono);
+}
+
+.rx-notice{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11px;color:var(--white-30);
+  padding:12px;border-radius:8px;background:var(--white-06);
+  border:1px solid var(--border);
+}
+
+/* Key facts */
+.key-facts{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px;
+}
+.fact-card{
+  padding:16px;border-radius:10px;
+  background:var(--white-06);border:1px solid var(--border);
+}
+.fact-label{font-size:11px;color:var(--white-30);text-transform:uppercase;letter-spacing:0.06em;font-family:var(--mono)}
+.fact-val{font-size:18px;font-weight:600;color:var(--white);margin-top:4px}
+
+/* Details Sections */
+.detail-section{
+  padding:clamp(60px,10vh,100px) clamp(20px,5vw,48px);
+  max-width:1100px;margin:0 auto;
+}
+.detail-section + .detail-section{border-top:1px solid var(--border)}
+
+.detail-tag{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.detail-tag::before{content:'';width:20px;height:1px;background:var(--gold)}
+
+.detail-h2{
+  font-family:var(--serif);font-size:clamp(28px,4vw,44px);
+  font-weight:400;line-height:1.1;letter-spacing:-0.02em;
+  margin-bottom:24px;
+}
+.detail-h2 em{font-style:italic;color:var(--gold)}
+
+.detail-content{
+  font-size:16px;color:var(--white-60);line-height:1.8;
+  max-width:700px;font-weight:300;
+}
+.detail-content p{margin-bottom:16px}
+.detail-content strong{color:var(--white);font-weight:600}
+
+/* Mechanism Grid */
+.mechanism-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px;margin-top:32px;
+}
+.mechanism-card{
+  padding:24px;border-radius:12px;
+  background:rgba(20,20,20,0.5);border:1px solid var(--border);
+  transition:border-color 0.3s;
+}
+.mechanism-card:hover{border-color:var(--border-hover)}
+.mech-icon{font-size:28px;margin-bottom:12px}
+.mech-title{font-size:15px;font-weight:600;color:var(--white);margin-bottom:6px}
+.mech-desc{font-size:13px;color:var(--white-60);line-height:1.6}
+.rx-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:4px;background:rgba(248,113,113,0.12);color:#f87171;font-family:var(--mono);font-size:10px;font-weight:600;margin-bottom:8px}
+
+/* Data Grid */
+.data-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;
+}
+@media(max-width:700px){.data-grid{grid-template-columns:1fr}}
+.data-card{
+  padding:24px;border-radius:12px;text-align:center;
+  background:var(--white-06);border:1px solid var(--border);
+}
+.data-val{
+  font-family:var(--mono);font-size:32px;font-weight:700;
+  color:var(--gold);margin-bottom:4px;
+}
+.data-label{font-size:13px;color:var(--white-60)}
+.data-source{font-size:10px;color:var(--white-30);margin-top:4px;font-style:italic}
+
+/* FAQ */
+.faq-item{
+  border-bottom:1px solid var(--border);padding:20px 0;
+}
+.faq-q{
+  font-size:16px;font-weight:600;color:var(--white);
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+}
+.faq-q::after{content:'+';font-size:20px;color:var(--gold);transition:transform 0.3s}
+.faq-q.open::after{transform:rotate(45deg)}
+.faq-a{
+  font-size:14px;color:var(--white-60);line-height:1.7;
+  max-height:0;overflow:hidden;transition:max-height 0.4s var(--ease),padding 0.4s;
+  padding:0;
+}
+.faq-a.open{max-height:300px;padding-top:12px}
+
+/* CTA Bottom */
+.bottom-cta{
+  padding:80px clamp(20px,5vw,48px);text-align:center;
+  position:relative;background:var(--bg2);
+}
+.bottom-cta::before{
+  content:'';position:absolute;width:600px;height:600px;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(201,160,80,0.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+
+/* Footer */
+footer{padding:40px clamp(20px,5vw,48px);border-top:1px solid var(--border);background:var(--bg)}
+.footer-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--white)}
+.footer-logo span{color:var(--gold)}
+.footer-legal{font-size:11px;color:var(--white-30);max-width:600px;line-height:1.5}
+
+/* Glow line */
+.glow-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,160,80,0.3),transparent)}
+
+/* Pharmacokinetics Table */
+.pk-table{width:100%;margin-top:24px;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.pk-table tr{transition:background 0.2s}
+.pk-table tr:hover{background:var(--white-06)}
+.pk-table td{padding:14px 20px;border-bottom:1px solid var(--border);font-size:14px}
+.pk-table tr:last-child td{border-bottom:none}
+.pk-table td:first-child{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--white-60);letter-spacing:0.03em;width:40%;background:rgba(10,10,10,0.4)}
+.pk-table td:last-child{color:var(--white);font-weight:500}
+.pk-table .pk-highlight{color:var(--gold);font-weight:600}
+.pk-source{font-size:11px;color:var(--white-30);font-style:italic;margin-top:12px;font-family:var(--mono)}
+
+/* Dosing Protocol */
+.dosing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px}
+@media(max-width:700px){.dosing-grid{grid-template-columns:1fr}}
+.dose-card{padding:24px;border-radius:12px;background:var(--white-06);border:1px solid var(--border);position:relative}
+.dose-card::before{content:'';position:absolute;top:0;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),transparent)}
+.dose-icon{width:40px;height:40px;border-radius:10px;background:var(--gold-glow);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.dose-title{font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px}
+.dose-detail{font-size:13px;color:var(--white-60);line-height:1.6}
+.dose-tag{display:inline-flex;padding:2px 8px;border-radius:4px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.04em;margin-top:8px}
+.dose-tag.recommended{background:var(--green-dim);color:var(--green)}
+.dose-tag.caution{background:rgba(251,146,60,0.12);color:#fb923c}
+.dose-tag.info{background:var(--blue-dim);color:var(--blue)}
+
+/* Study Cards */
+.study-list{display:flex;flex-direction:column;gap:16px;margin-top:24px}
+.study-card{padding:24px;border-radius:12px;background:rgba(20,20,20,0.5);border:1px solid var(--border);transition:border-color 0.3s}
+.study-card:hover{border-color:var(--gold-border)}
+.study-meta{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.study-year{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--gold);padding:3px 8px;border-radius:4px;background:var(--gold-glow);border:1px solid var(--gold-border)}
+.study-journal{font-family:var(--mono);font-size:11px;color:var(--white-30);letter-spacing:0.02em}
+.study-pmid{font-family:var(--mono);font-size:10px;color:var(--blue);letter-spacing:0.02em}
+.study-pmid a{color:var(--blue);text-decoration:none;transition:color 0.2s}
+.study-pmid a:hover{color:var(--white)}
+.study-title{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.4}
+.study-finding{font-size:13px;color:var(--white-60);line-height:1.7}
+.study-tag{display:inline-flex;padding:2px 8px;border-radius:4px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.04em;margin-top:10px}
+.study-tag.rct{background:var(--green-dim);color:var(--green)}
+.study-tag.meta{background:var(--blue-dim);color:var(--blue)}
+.study-tag.review{background:rgba(167,139,250,0.12);color:#a78bfa}
+
+/* Side Effects */
+.side-effect-grid{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.se-row{display:flex;align-items:center;gap:16px;padding:14px 20px;border-radius:10px;background:var(--white-06);border:1px solid var(--border)}
+.se-name{font-size:14px;font-weight:500;color:var(--white);width:200px;flex-shrink:0}
+.se-bar-wrap{flex:1;height:8px;border-radius:4px;background:var(--white-06);overflow:hidden;position:relative}
+.se-bar{height:100%;border-radius:4px;transition:width 0.8s var(--ease)}
+.se-bar.common{background:linear-gradient(90deg,var(--gold),#d4ad5e)}
+.se-bar.uncommon{background:linear-gradient(90deg,var(--blue),#7db5f7)}
+.se-bar.rare{background:linear-gradient(90deg,var(--green),#5ddb8b)}
+.se-pct{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--white-60);width:50px;text-align:right;flex-shrink:0}
+.se-serious{margin-top:16px;padding:20px;border-radius:12px;background:rgba(248,113,113,0.06);border:1px solid rgba(248,113,113,0.15)}
+.se-serious-title{font-size:13px;font-weight:600;color:#f87171;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.se-serious-text{font-size:13px;color:var(--white-60);line-height:1.7}
+@media(max-width:600px){.se-name{width:120px;font-size:13px}.se-pct{width:40px;font-size:11px}}
+
+/* Interactions */
+.interaction-grid{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.interaction-card{display:flex;gap:16px;padding:20px;border-radius:12px;background:var(--white-06);border:1px solid var(--border);align-items:flex-start}
+.interaction-severity{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--mono);font-size:11px;font-weight:700}
+.interaction-severity.high{background:rgba(248,113,113,0.12);border:1px solid rgba(248,113,113,0.25);color:#f87171}
+.interaction-severity.moderate{background:rgba(251,146,60,0.12);border:1px solid rgba(251,146,60,0.25);color:#fb923c}
+.interaction-severity.low{background:var(--blue-dim);border:1px solid rgba(91,156,245,0.25);color:var(--blue)}
+.interaction-severity.synergy{background:var(--green-dim);border:1px solid rgba(62,207,113,0.25);color:var(--green)}
+.interaction-info{flex:1}
+.interaction-drug{font-size:14px;font-weight:600;color:var(--white);margin-bottom:4px}
+.interaction-detail{font-size:13px;color:var(--white-60);line-height:1.6}
+.interaction-mechanism{font-family:var(--mono);font-size:11px;color:var(--white-30);margin-top:6px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">arq<span>.</span></a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Protocols</a>
+    <a href="/#how" class="nav-link">How it works</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="https://wa.me/919137307628?text=I'd%20like%20to%20book%20a%20consultation" class="nav-cta" target="_blank">Book Consultation</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">Home</a><span>›</span>
+  <a href="/#protocols">Protocols</a><span>›</span>
+  arq Focus
+</div>
+
+<!-- Product Hero -->
+<div class="product-hero">
+  <div class="product-3d">
+    <canvas id="product-canvas"></canvas>
+    <div class="product-3d-label">Interactive 3D · Drag to rotate</div>
+  </div>
+
+  <div class="product-info">
+    <div class="product-cat"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg> Protocol Pack</div>
+    <h1 class="product-name">arq Focus</h1>
+    <div class="product-generic">Modafinil 200mg + L-Theanine 200mg + Alpha-GPC 300mg + Magnesium Glycinate 400mg</div>
+    <p class="product-desc">The 12-hour clarity protocol. Pharmaceutical-grade wakefulness combined with three targeted nootropic supplements that smooth the cognitive curve, support cholinergic signaling, and protect against overstimulation.</p>
+
+    <div class="price-card">
+      <div class="price-main">
+        <div class="price-amount">₹4,999</div>
+        <div class="price-unit">/month</div>
+      </div>
+      <div class="price-breakdown">
+      <div class="price-line"><span>Doctor consultation</span><span class="price-free">FREE</span></div>
+      <div class="price-line"><span>Medication (30-day supply)</span><span>₹4,999</span></div>
+      <div class="price-line"><span>Express delivery</span><span class="price-free">FREE</span></div>
+      <div class="price-line price-total"><span>Total</span><span>₹4,999/mo</span></div>
+    </div>
+      <button onclick="openRazorpay()" class="consult-btn">
+        Start Protocol →
+      </button>
+      <div class="refund-guarantee">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        100% refund if not medically appropriate
+      </div>
+      <a href="https://wa.me/919137307628?text=Hi%2C%20I%27d%20like%20a%20free%20consultation" class="free-consult-btn" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Have questions? Talk to us first
+      </a>
+      <div class="protocol-flow">
+        <div class="flow-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          What happens after you purchase
+        </div>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-num">1</div>
+            <div class="flow-step-title">You pay</div>
+            <div class="flow-step-desc">Secure checkout via Razorpay</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">2</div>
+            <div class="flow-step-title">Doctor calls you</div>
+            <div class="flow-step-desc">Free consultation within 2hrs</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">3</div>
+            <div class="flow-step-title">Prescription issued</div>
+            <div class="flow-step-desc">If medically appropriate</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">4</div>
+            <div class="flow-step-title">Delivered</div>
+            <div class="flow-step-desc">Delivered within 48hrs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-facts">
+      <div class="fact-card">
+        <div class="fact-label">Duration</div>
+        <div class="fact-val">12+ hrs</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">Components</div>
+        <div class="fact-val">4 molecules</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">Supply</div>
+        <div class="fact-val">30 days</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">Type</div>
+        <div class="fact-val">Rx + OTC</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- What's in the Pack -->
+<div class="detail-section">
+  <div class="detail-tag">Stack composition</div>
+  <h2 class="detail-h2">What's in the <em>pack</em></h2>
+  <div class="detail-content">
+    <p>arq Focus combines pharmaceutical precision with targeted nutritional support. Each component serves a specific role in the stack, creating a synergistic protocol that extends your clarity window while protecting against overstimulation.</p>
+  </div>
+  <div class="mechanism-grid">
+    <div class="mechanism-card">
+      <div class="rx-badge">Rx</div>
+      <div class="mech-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a050" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 6v12"/><path d="M6 12h12"/></svg></div>
+      <div class="mech-title">Modafinil 200mg</div>
+      <div class="mech-desc">The foundation. Activates orexin neurons and inhibits dopamine reuptake to deliver 12+ hours of sustained wakefulness without the jitteriness of traditional stimulants.</div>
+    </div>
+    <div class="mechanism-card">
+      <div class="mech-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5b9cf5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 8v4l3 2"/></svg></div>
+      <div class="mech-title">L-Theanine 200mg</div>
+      <div class="mech-desc">The stabilizer. Promotes alpha wave production in the brain, counteracting Modafinil's occasional edge or anxiety while sharpening attentional focus without sedation.</div>
+    </div>
+    <div class="mechanism-card">
+      <div class="mech-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3ecf71" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg></div>
+      <div class="mech-title">Alpha-GPC 300mg</div>
+      <div class="mech-desc">The amplifier. Feeds the acetylcholine system to enhance working memory, processing speed, and sustained attention—especially powerful when stacked with Modafinil.</div>
+    </div>
+    <div class="mechanism-card">
+      <div class="mech-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/></svg></div>
+      <div class="mech-title">Magnesium Glycinate 400mg</div>
+      <div class="mech-desc">The protector. Supports GABA signaling for calm focus and prevents the tension headaches some users experience from Modafinil—the bioavailable form that crosses the blood-brain barrier.</div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- Why This Combination -->
+<div class="detail-section">
+  <div class="detail-tag">Synergy</div>
+  <h2 class="detail-h2">Why this <em>combination</em></h2>
+  <div class="detail-content">
+    <p>L-Theanine counteracts Modafinil's occasional edge or anxiety by promoting relaxed alertness without sedation. Alpha-GPC feeds the acetylcholine system, amplifying working memory and processing speed when combined with Modafinil's dopaminergic effects. Magnesium Glycinate supports GABA signaling for calm focus and prevents the tension headaches some users report. Together, these four molecules create a smooth, extended clarity protocol that scales from morning focus sessions through afternoon deep work.</p>
+  </div>
+  <div class="data-grid">
+    <div class="data-card">
+      <div class="data-val">12+h</div>
+      <div class="data-label">Sustained cognitive clarity</div>
+    </div>
+    <div class="data-card">
+      <div class="data-val">4</div>
+      <div class="data-label">Synergistic pathways</div>
+    </div>
+    <div class="data-card">
+      <div class="data-val">Zero</div>
+      <div class="data-label">Jitter or crash</div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- ═══ PHARMACOKINETICS ═══ -->
+<div class="detail-section">
+  <div class="detail-tag">Pharmacokinetics</div>
+  <h2 class="detail-h2">Pack <em>absorption profile</em></h2>
+  <div class="detail-content">
+    <p>Each component has a distinct pharmacokinetic signature. Understanding how they layer over time optimizes the synergistic window and peak cognitive impact.</p>
+  </div>
+  <table class="pk-table">
+    <tr><td>Modafinil</td><td class="pk-highlight">Tmax 2–4h, t½ 12–15h, ~80% bioavail</td></tr>
+    <tr><td>L-Theanine</td><td>Tmax 0.5–1h, t½ 1.2h, high bioavail</td></tr>
+    <tr><td>Alpha-GPC</td><td>Tmax 1–2h, t½ 4–6h, ~88% bioavail</td></tr>
+    <tr><td>Mg Glycinate</td><td>Tmax 3–4h, t½ N/A (mineral), ~80% bioavail</td></tr>
+    <tr><td>Peak synergy window</td><td class="pk-highlight">4–8h post-dosing (all components active)</td></tr>
+    <tr><td>Metabolism</td><td>Modafinil: CYP3A4/2C19. Others: minimal hepatic metabolism</td></tr>
+  </table>
+  <div class="pk-source">Sources: FDA prescribing data, Ziegenfuss et al. 2017 (Alpha-GPC), Camfield et al. 2014 (L-Theanine)</div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- ═══ DOSING PROTOCOL ═══ -->
+<div class="detail-section">
+  <div class="detail-tag">Dosing</div>
+  <h2 class="detail-h2">Optimal <em>protocol timing</em></h2>
+  <div class="detail-content">
+    <p>The four-molecule stack requires careful timing to avoid competition for absorption and to maintain the extended focus window without sleep disruption.</p>
+  </div>
+  <div class="dosing-grid">
+    <div class="dose-card">
+      <div class="dose-icon">🌅</div>
+      <div class="dose-title">Morning (7–9 AM)</div>
+      <div class="dose-detail">Take all four together: Modafinil 200mg, L-Theanine 200mg, Alpha-GPC 300mg, Magnesium Glycinate 400mg. Optimal with light breakfast (toast, fruit). Modafinil's CYP3A4 induction plateau occurs after 2–4 days of daily dosing.</div>
+      <div class="dose-tag recommended">STANDARD</div>
+    </div>
+    <div class="dose-card">
+      <div class="dose-icon">☕</div>
+      <div class="dose-title">Afternoon redose (optional)</div>
+      <div class="dose-detail">L-Theanine can be redosed at 4 PM (100–200mg) if afternoon energy dips. This delays evening cortisol decline and may mildly impact sleep — monitor individual response. Avoid redosing Modafinil after 12 PM.</div>
+      <div class="dose-tag info">OPTIONAL</div>
+    </div>
+    <div class="dose-card">
+      <div class="dose-icon">🌙</div>
+      <div class="dose-title">Evening (optional)</div>
+      <div class="dose-detail">Magnesium Glycinate can be taken again at 8–9 PM (200–400mg) for sleep quality support and muscle relaxation, separate from morning dose. Does not interfere with other components.</div>
+      <div class="dose-tag info">SLEEP SUPPORT</div>
+    </div>
+    <div class="dose-card">
+      <div class="dose-icon">📅</div>
+      <div class="dose-title">Cycling</div>
+      <div class="dose-detail">5-on/2-off (weekdays only) or 4-on/3-off popular among biohackers. No tolerance development expected from clinical data, but users report subjective "freshness" preservation with cycling.</div>
+      <div class="dose-tag info">OPTIONAL</div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- ═══ CLINICAL EVIDENCE ═══ -->
+<div class="detail-section">
+  <div class="detail-tag">Evidence</div>
+  <h2 class="detail-h2">Published <em>research</em></h2>
+  <div class="detail-content">
+    <p>While no published trials specifically test this four-component combination, evidence for each component supports the synergistic rationale.</p>
+  </div>
+  <div class="study-list">
+    <div class="study-card">
+      <div class="study-meta">
+        <span class="study-year">2015</span>
+        <span class="study-journal">European Neuropsychopharmacology</span>
+        <span class="study-pmid"><a href="https://pubmed.ncbi.nlm.nih.gov/26137838/" target="_blank" rel="noopener">PMID: 26137838</a></span>
+      </div>
+      <div class="study-title">Modafinil for cognitive neuroenhancement in healthy non-sleep-deprived subjects</div>
+      <div class="study-finding">Battleday & Brem's systematic review of 24 RCTs found consistent modafinil benefits on attention, executive function, and learning in healthy individuals. Effect size larger for longer, complex tasks.</div>
+      <div class="study-tag review">SYSTEMATIC REVIEW — 24 STUDIES</div>
+    </div>
+    <div class="study-card">
+      <div class="study-meta">
+        <span class="study-year">2019</span>
+        <span class="study-journal">Nutrients</span>
+        <span class="study-pmid"><a href="https://pubmed.ncbi.nlm.nih.gov/30580081/" target="_blank" rel="noopener">PMID: 30580081</a></span>
+      </div>
+      <div class="study-title">Effects of L-theanine on anxiety and cognition</div>
+      <div class="study-finding">Hidese et al. found that L-theanine 200mg daily reduced stress markers and improved attention in healthy adults without sedation. Synergizes with stimulants by buffering sympathomimetic edge.</div>
+      <div class="study-tag rct">RANDOMIZED CONTROLLED TRIAL</div>
+    </div>
+    <div class="study-card">
+      <div class="study-meta">
+        <span class="study-year">2015</span>
+        <span class="study-journal">Nutrients</span>
+        <span class="study-pmid"><a href="https://pubmed.ncbi.nlm.nih.gov/25933483/" target="_blank" rel="noopener">PMID: 25933483</a></span>
+      </div>
+      <div class="study-title">Alpha-GPC: Cognitive and psychomotor effects</div>
+      <div class="study-finding">Parker et al. reviewed evidence that Alpha-GPC 600mg/day improves cognitive processing speed and verbal memory through enhanced cholinergic signaling. Most effective in aging and cognitive decline.</div>
+      <div class="study-tag review">REVIEW</div>
+    </div>
+    <div class="study-card">
+      <div class="study-meta">
+        <span class="study-year">2017</span>
+        <span class="study-journal">Nutrients</span>
+        <span class="study-pmid"><a href="https://pubmed.ncbi.nlm.nih.gov/28392498/" target="_blank" rel="noopener">PMID: 28392498</a></span>
+      </div>
+      <div class="study-title">Magnesium supplementation and cognitive function</div>
+      <div class="study-finding">Boyle et al. found magnesium glycinate improves attention and working memory, particularly in cognitively stressed individuals. Also protects against tension headaches from stimulant use.</div>
+      <div class="study-tag rct">META-ANALYSIS</div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- ═══ SIDE EFFECTS & SAFETY ═══ -->
+<div class="detail-section">
+  <div class="detail-tag">Safety</div>
+  <h2 class="detail-h2">Side effects &amp; <em>mitigation</em></h2>
+  <div class="detail-content">
+    <p>This stack is designed to be self-mitigating. L-Theanine buffers modafinil-induced anxiety; Magnesium reduces headaches. Combined safety profile is excellent.</p>
+  </div>
+  <div class="side-effect-grid">
+    <div class="se-row">
+      <div class="se-name">Headache (modafinil)</div>
+      <div class="se-bar-wrap"><div class="se-bar common" style="width:16%"></div></div>
+      <div class="se-pct">16%*</div>
+    </div>
+    <div class="se-row">
+      <div class="se-name">Nausea</div>
+      <div class="se-bar-wrap"><div class="se-bar uncommon" style="width:11%"></div></div>
+      <div class="se-pct">11%</div>
+    </div>
+    <div class="se-row">
+      <div class="se-name">Anxiety (modafinil)</div>
+      <div class="se-bar-wrap"><div class="se-bar uncommon" style="width:3%"></div></div>
+      <div class="se-pct">3%*</div>
+    </div>
+    <div class="se-row">
+      <div class="se-name">GI discomfort (Mg)</div>
+      <div class="se-bar-wrap"><div class="se-bar uncommon" style="width:5%"></div></div>
+      <div class="se-pct">5%</div>
+    </div>
+    <div class="se-row">
+      <div class="se-name">Fishy odor (Alpha-GPC)</div>
+      <div class="se-bar-wrap"><div class="se-bar rare" style="width:2%"></div></div>
+      <div class="se-pct"><2%</div>
+    </div>
+  </div>
+  <div class="se-serious">
+    <div class="se-serious-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red, #f87171)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Stack synergy note
+    </div>
+    <div class="se-serious-text">*Incidence reduced vs. modafinil alone due to L-Theanine and Magnesium buffering effects. Headaches rare when Magnesium 400mg+ is consistently dosed. If headache occurs, increase hydration and Mg intake rather than discontinuing.</div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- ═══ DRUG INTERACTIONS ═══ -->
+<div class="detail-section">
+  <div class="detail-tag">Interactions</div>
+  <h2 class="detail-h2">Drug <em>interactions</em></h2>
+  <div class="detail-content">
+    <p>Modafinil is the primary driver of drug interactions in this stack. L-Theanine, Alpha-GPC, and Magnesium Glycinate have negligible hepatic metabolism.</p>
+  </div>
+  <div class="interaction-grid">
+    <div class="interaction-card">
+      <div class="interaction-severity high">!</div>
+      <div class="interaction-info">
+        <div class="interaction-drug">Oral contraceptives (ethinyl estradiol)</div>
+        <div class="interaction-detail">Modafinil induces CYP3A4, reducing OCP efficacy by ~18%. Use backup contraception or alternative during protocol and 1 month after.</div>
+        <div class="interaction-mechanism">Mechanism: CYP3A4 induction → increased estrogen clearance</div>
+      </div>
+    </div>
+    <div class="interaction-card">
+      <div class="interaction-severity low">i</div>
+      <div class="interaction-info">
+        <div class="interaction-drug">L-Theanine + antihypertensives</div>
+        <div class="interaction-detail">L-Theanine may mildly potentiate blood pressure-lowering effects. Monitor BP if on ACE inhibitors or calcium channel blockers. Unlikely to cause clinical issues at 200mg doses.</div>
+        <div class="interaction-mechanism">Mechanism: Additive vasodilatory effects</div>
+      </div>
+    </div>
+    <div class="interaction-card">
+      <div class="interaction-severity low">i</div>
+      <div class="interaction-info">
+        <div class="interaction-drug">Alpha-GPC + anticholinesterase inhibitors</div>
+        <div class="interaction-detail">Alpha-GPC boosts acetylcholine availability. If on donepezil or other cholinesterase inhibitors (dementia treatment), monitor for cholinergic side effects. Not an issue in healthy users.</div>
+        <div class="interaction-mechanism">Mechanism: Additive cholinergic enhancement</div>
+      </div>
+    </div>
+    <div class="interaction-card">
+      <div class="interaction-severity synergy">+</div>
+      <div class="interaction-info">
+        <div class="interaction-drug">Caffeine</div>
+        <div class="interaction-detail">Synergistic wakefulness promotion. Safe to combine but reduce caffeine by 50% (e.g., 100mg coffee instead of 200mg). Higher doses increase jitter and anxiety risk despite L-Theanine buffering.</div>
+        <div class="interaction-mechanism">Mechanism: Additive adenosine antagonism + dopaminergic activation</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- FAQ -->
+<div class="detail-section">
+  <div class="detail-tag">FAQ</div>
+  <h2 class="detail-h2">Common <em>questions</em></h2>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's included in this protocol pack?</div>
+    <div class="faq-a">The arq Focus pack includes 30 tablets of Modafinil 200mg (Rx), 30 capsules of L-Theanine 200mg (OTC), 30 capsules of Alpha-GPC 300mg (OTC), and 30 capsules of Magnesium Glycinate 400mg (OTC), plus a full doctor consultation, prescription issuance, and courier delivery.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Are the supplements pharmaceutical-grade?</div>
+    <div class="faq-a">Yes. All OTC supplements in the arq Focus pack are USP-verified or equivalent pharmaceutical grade. L-Theanine is sun-theanine certified, Alpha-GPC is the patented form, and Magnesium Glycinate is highly bioavailable. We do not use bulk nutraceutical-grade ingredients.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I customize the pack?</div>
+    <div class="faq-a">Our protocol packs are designed as complete stacks based on published research. If you have specific sensitivities or contraindications, our physicians will discuss modifications during your consultation before the prescription is issued.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How does the doctor consultation work with a multi-component protocol?</div>
+    <div class="faq-a">After purchase, a licensed physician will call you within 2 hours to discuss your health history, goals, contraindications, and any existing medications. They will evaluate whether the entire arq Focus stack is appropriate for you before issuing a prescription for the Modafinil (the Rx component). The supplements are OTC and available regardless of the consultation outcome.</div>
+  </div>
+</div>
+
+<!-- Bottom CTA -->
+<div class="bottom-cta">
+  <div style="position:relative;z-index:2;max-width:600px;margin:0 auto">
+    <div class="detail-tag" style="justify-content:center">Get Started</div>
+    <h2 class="detail-h2" style="text-align:center">Ready to <em>optimize?</em></h2>
+    <p style="font-size:16px;color:var(--white-60);line-height:1.7;margin-bottom:32px;text-align:center">Book a consultation with a licensed physician to discuss whether arq Focus is appropriate for you.</p>
+    <div style="text-align:center">
+      <button onclick="openRazorpay()" class="consult-btn" style="display:inline-flex;width:auto;padding:16px 36px">
+        Start Protocol →
+      </button>
+      <a href="https://wa.me/919137307628?text=Hi%2C%20I%27d%20like%20a%20free%20consultation" class="free-consult-btn" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Have questions? Talk to us first
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">arq<span>.</span></div>
+    <div class="footer-legal">
+      <strong>Medical Disclaimer:</strong> This page is for informational purposes only and does not constitute medical advice. arq Focus contains Modafinil, a Schedule H prescription drug. All prescriptions require evaluation by a licensed physician. arq.clinic is a technology platform, not a pharmacy.
+    </div>
+  </div>
+</footer>
+
+<script>
+// 3D Multi-Molecule Visualization
+(function(){
+  try{
+  const canvas = document.getElementById('product-canvas');
+  if(!canvas) return;
+
+  const rect = canvas.getBoundingClientRect();
+  const w = rect.width || 500;
+  const h = rect.height || 500;
+
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+  renderer.setSize(w, h);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, w/h, 0.1, 100);
+  camera.position.set(0, 2, 18);
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  // Create multiple small molecule clusters orbiting a center
+  const clusters = [];
+  const colors = [0xc9a050, 0x5b9cf5, 0x3ecf71, 0xa78bfa];
+  const labels = ['Rx', 'OTC', 'OTC', 'OTC'];
+
+  colors.forEach((color, i) => {
+    const cluster = new THREE.Group();
+    const angle = (i / colors.length) * Math.PI * 2;
+    const radius = 3.5;
+
+    // Central atom
+    const mat = new THREE.MeshPhongMaterial({color, emissive: new THREE.Color(color).multiplyScalar(0.15), shininess:100, transparent:true, opacity:0.9});
+    const core = new THREE.Mesh(new THREE.SphereGeometry(0.7, 24, 24), mat);
+    cluster.add(core);
+
+    // Orbiting atoms
+    for(let j = 0; j < 5; j++){
+      const a = (j/5)*Math.PI*2;
+      const r = 1.2 + Math.random()*0.3;
+      const atom = new THREE.Mesh(
+        new THREE.SphereGeometry(0.25 + Math.random()*0.15, 16, 16),
+        new THREE.MeshPhongMaterial({color, transparent:true, opacity:0.6})
+      );
+      atom.position.set(Math.cos(a)*r, (Math.random()-0.5)*0.8, Math.sin(a)*r);
+      cluster.add(atom);
+
+      // Bond
+      const dir = atom.position.clone();
+      const len = dir.length();
+      const bond = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.04, 0.04, len, 6),
+        new THREE.MeshPhongMaterial({color:0x444444, transparent:true, opacity:0.3})
+      );
+      bond.position.copy(dir).multiplyScalar(0.5);
+      bond.lookAt(atom.position);
+      bond.rotateX(Math.PI/2);
+      cluster.add(bond);
+    }
+
+    // Glow
+    const glow = new THREE.Mesh(
+      new THREE.SphereGeometry(1.2, 12, 12),
+      new THREE.MeshBasicMaterial({color, transparent:true, opacity:0.04})
+    );
+    cluster.add(glow);
+
+    cluster.position.set(Math.cos(angle)*radius, 0, Math.sin(angle)*radius);
+    group.add(cluster);
+    clusters.push({cluster, baseAngle: angle});
+  });
+
+  // Lights
+  scene.add(new THREE.AmbientLight(0x333333));
+  const pl1 = new THREE.PointLight(0xc9a050,2,40);
+  pl1.position.set(5,8,10);
+  scene.add(pl1);
+  const pl2 = new THREE.PointLight(0x5b9cf5,1.5,40);
+  pl2.position.set(-5,-3,10);
+  scene.add(pl2);
+
+  // Mouse drag rotation
+  let isDragging=false, prevX=0, prevY=0, rotX=0, rotY=0;
+  canvas.addEventListener('mousedown',e=>{isDragging=true;prevX=e.clientX;prevY=e.clientY});
+  window.addEventListener('mouseup',()=>{isDragging=false});
+  window.addEventListener('mousemove',e=>{
+    if(!isDragging) return;
+    rotY += (e.clientX-prevX)*0.01;
+    rotX += (e.clientY-prevY)*0.01;
+    prevX=e.clientX;prevY=e.clientY;
+  });
+
+  // Touch support
+  canvas.addEventListener('touchstart',e=>{isDragging=true;prevX=e.touches[0].clientX;prevY=e.touches[0].clientY},{passive:true});
+  canvas.addEventListener('touchend',()=>{isDragging=false});
+  canvas.addEventListener('touchmove',e=>{
+    if(!isDragging) return;
+    rotY += (e.touches[0].clientX-prevX)*0.01;
+    rotX += (e.touches[0].clientY-prevY)*0.01;
+    prevX=e.touches[0].clientX;prevY=e.touches[0].clientY;
+  },{passive:true});
+
+  function animate(){
+    requestAnimationFrame(animate);
+    const t = performance.now()*0.001;
+    if(!isDragging){
+      rotY += 0.003;
+    }
+    group.rotation.y = rotY;
+    group.rotation.x = rotX + Math.sin(t*0.2)*0.05;
+    group.position.y = Math.sin(t*0.5)*0.2;
+
+    clusters.forEach((c, i) => {
+      const a = c.baseAngle + t * 0.3;
+      c.cluster.position.set(Math.cos(a)*3.5, Math.sin(t*0.5 + i)*0.3, Math.sin(a)*3.5);
+      c.cluster.rotation.y += 0.01;
+    });
+
+    renderer.render(scene,camera);
+  }
+  animate();
+
+  const ro = new ResizeObserver(()=>{
+    const rw=canvas.clientWidth,rh=canvas.clientHeight;
+    if(rw>0&&rh>0){renderer.setSize(rw,rh);camera.aspect=rw/rh;camera.updateProjectionMatrix()}
+  });
+  ro.observe(canvas);
+  }catch(e){console.warn('Product 3D error:',e)}
+})();
+
+// GSAP animations
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.set('.product-3d',{x:-40,opacity:0});
+gsap.set('.product-info',{x:40,opacity:0});
+gsap.to('.product-3d',{x:0,opacity:1,duration:1,delay:0.3,ease:'power3.out'});
+gsap.to('.product-info',{x:0,opacity:1,duration:1,delay:0.5,ease:'power3.out'});
+
+document.querySelectorAll('.detail-section').forEach(sec=>{
+  gsap.set(sec,{y:40,opacity:0});
+  ScrollTrigger.create({
+    trigger:sec,start:'top 88%',
+    onEnter:()=>gsap.to(sec,{y:0,opacity:1,duration:0.8,ease:'power3.out'}),
+    once:true
+  });
+});
+
+document.querySelectorAll('.mechanism-card').forEach((card,i)=>{
+  gsap.set(card,{y:30,opacity:0});
+  ScrollTrigger.create({
+    trigger:card,start:'top 92%',
+    onEnter:()=>gsap.to(card,{y:0,opacity:1,duration:0.6,delay:i*0.1,ease:'power3.out'}),
+    once:true
+  });
+});
+
+document.querySelectorAll('.data-card').forEach((card,i)=>{
+  gsap.set(card,{scale:0.9,opacity:0});
+  ScrollTrigger.create({
+    trigger:card,start:'top 92%',
+    onEnter:()=>gsap.to(card,{scale:1,opacity:1,duration:0.6,delay:i*0.1,ease:'power3.out'}),
+    once:true
+  });
+});
+
+// Razorpay checkout
+function openRazorpay() {
+  var options = {
+    "key": "rzp_live_REPLACE_WITH_KEY",
+    "amount": 499900,
+    "currency": "INR",
+    "name": "arq.",
+    "description": "arq Focus — Protocol Pack",
+    "image": "",
+    "handler": function(response) {
+      window.location.href = "https://wa.me/919137307628?text=Payment%20complete%20(" + response.razorpay_payment_id + ")%20for%20arq%20Focus.%20Please%20schedule%20my%20doctor%20consultation.";
+    },
+    "prefill": {},
+    "theme": {
+      "color": "#c9a050"
+    },
+    "modal": {
+      "ondismiss": function() {}
+    }
+  };
+  var rzp = new Razorpay(options);
+  rzp.open();
+}
+</script>
+</body>
+</html>

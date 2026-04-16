@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Journal | arq. — Evidence-based guides on health, hormones, and optimization in India</title>
+<meta name="description" content="Physician-reviewed articles on health, hormones, and optimization in India. Explore guides on weight loss, hair health, skincare, hormones, focus, performance, and longevity.">
+<meta name="theme-color" content="#faf9f5">
+<link rel="canonical" href="https://arq.clinic/blog/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="The Journal | arq. — Evidence-based guides on health and optimization">
+<meta property="og:description" content="Physician-reviewed articles on health, hormones, and optimization in India.">
+<meta property="og:url" content="https://arq.clinic/blog/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://arq.clinic/og-blog.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Journal | arq.">
+<meta name="twitter:description" content="Physician-reviewed health and optimization guides for India.">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/>
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "The Journal | arq.",
+  "description": "Evidence-based physician-reviewed health guides for India",
+  "url": "https://arq.clinic/blog/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "arq.clinic",
+    "logo": "https://arq.clinic/logo.png"
+  }
+}
+</script>
+
+<style>
+/* ═══════════════════════════════════════════
+   arq. Blog Index — Light Cream Design System
+   Mobile-first: base 430px. Desktop @ 768px+.
+   ═══════════════════════════════════════════ */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#faf9f5;--bg2:#f4f2ed;--surface:#eae8e3;
+  --card:#ffffff;--border:rgba(44,40,36,0.08);--border-hover:rgba(44,40,36,0.14);
+  --text:#1a1714;--text-90:rgba(26,23,20,0.9);--text-60:rgba(26,23,20,0.6);--text-30:rgba(26,23,20,0.3);--text-12:rgba(26,23,20,0.12);
+  --gold:#b8922e;--gold-light:#c9a23a;--gold-glow:rgba(184,146,46,0.08);--gold-border:rgba(184,146,46,0.25);
+  --dark:#1a1714;--deep:#0a0806;
+  --sans:'Sora',system-ui,sans-serif;
+  --serif:'DM Serif Display',Georgia,serif;
+  --mono:'IBM Plex Mono','SF Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --nav-h:60px;
+}
+
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--gold);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold-light)}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}
+.nav.scrolled{background:rgba(250,249,245,0.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 var(--border)}
+.nav-logo{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--text);letter-spacing:-0.02em;transition:color .3s ease}
+.nav-logo .dot{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
+.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
+.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
+.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
+.nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
+.nav-hamburger:hover{background:rgba(26,23,20,0.06)}
+.nav-hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:1px;transition:background .3s ease}
+
+/* ─── FOCUS RINGS ─── */
+a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* ─── EYEBROW ─── */
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+
+/* ─── HERO SECTION ─── */
+.hero{padding:calc(var(--nav-h) + 32px) 20px 40px;position:relative;z-index:10}
+.hero-inner{max-width:720px;margin:0 auto;text-align:center}
+.hero-eyebrow{margin-bottom:12px;justify-content:center;display:inline-flex;width:100%}
+.hero-title{font-family:var(--serif);font-size:40px;font-weight:400;line-height:1.08;letter-spacing:-0.035em;margin-bottom:16px;color:var(--text)}
+.hero-title em{color:var(--gold);font-style:italic}
+.hero-subtitle{font-size:15px;line-height:1.75;color:var(--text-60);margin:0}
+
+/* ─── ARTICLES GRID ─── */
+.articles-container{padding:40px 20px 64px;position:relative;z-index:10}
+.articles-inner{max-width:1200px;margin:0 auto}
+
+.category-section{margin-bottom:56px}
+.category-section:last-child{margin-bottom:0}
+.category-title{font-family:var(--serif);font-size:24px;font-weight:400;line-height:1.1;letter-spacing:-0.025em;color:var(--text);margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+
+.articles-grid{display:grid;grid-template-columns:1fr;gap:20px}
+
+@media(min-width:520px){
+  .articles-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(min-width:768px){
+  .articles-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+.article-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:all .3s var(--ease);cursor:pointer;position:relative;overflow:hidden}
+.article-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(184,146,46,0.04) 0%,transparent 100%);opacity:0;transition:opacity .3s var(--ease);pointer-events:none}
+.article-card:hover{border-color:var(--gold-border);box-shadow:0 8px 32px rgba(184,146,46,0.1);transform:translateY(-4px)}
+.article-card:hover::before{opacity:1}
+
+.article-category{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;background:var(--gold-glow);color:var(--gold);font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;width:fit-content}
+
+.article-title{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.2;letter-spacing:-0.015em;color:var(--text);margin-bottom:10px;flex-grow:1}
+
+.article-excerpt{font-size:13px;line-height:1.6;color:var(--text-60);margin:0;display:line-clamp:2;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.article-footer{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-30);margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-family:var(--mono)}
+
+.arrow-icon{color:var(--gold);transition:transform .3s var(--ease)}
+.article-card:hover .arrow-icon{transform:translateX(3px)}
+
+/* ─── NEWSLETTER ─── */
+.newsletter{padding:40px 20px;background:var(--bg2);margin-top:24px;position:relative;z-index:10}
+.newsletter-inner{max-width:640px;margin:0 auto;text-align:center}
+.newsletter h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.1;letter-spacing:-0.02em;margin-bottom:12px;color:var(--text)}
+.newsletter p{font-size:14px;color:var(--text-60);line-height:1.6;margin:0}
+
+/* ─── FOOTER ─── */
+.footer{padding:32px 20px;background:var(--deep);color:rgba(255,255,255,0.5);text-align:center;font-size:11px;font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;position:relative;z-index:10}
+.footer .logo{font-family:var(--serif);font-size:22px;color:#fff;text-transform:none;letter-spacing:-0.02em;margin-bottom:8px;display:inline-block;font-weight:700}
+.footer .logo .dot{color:var(--gold)}
+.footer-text{margin-top:12px;line-height:1.6}
+
+/* ─── DROPDOWN MENU ─── */
+.dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.dropdown-overlay.open{opacity:1;pointer-events:auto}
+.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(380px,90vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:80px 28px 40px;box-shadow:-8px 0 40px rgba(0,0,0,0.12)}
+.dropdown-panel.open{transform:translateX(0)}
+.dropdown-close{position:absolute;top:16px;right:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:18px;transition:all .2s}
+.dropdown-close:hover{background:var(--surface)}
+.dropdown-section{margin-bottom:28px}
+.dropdown-section-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.dropdown-section-title::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
+.dropdown-links{display:flex;flex-wrap:wrap;gap:6px}
+.dropdown-link{display:inline-flex;align-items:center;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:var(--bg2);border:1px solid var(--border);transition:all .2s var(--ease)}
+.dropdown-link:hover{border-color:var(--gold-border);background:var(--gold-glow);color:var(--gold)}
+.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;justify-content:center;align-items:center;gap:6px;margin-top:8px;transition:all .3s var(--ease);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+
+/* ─── WAITLIST MODAL ─── */
+.waitlist-overlay{position:fixed;inset:0;z-index:2000;background:rgba(10,8,6,0.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.waitlist-overlay.open{opacity:1;pointer-events:auto}
+.waitlist-modal{background:var(--bg);border-radius:24px;padding:40px 28px;max-width:420px;width:100%;position:relative;transform:translateY(20px) scale(0.97);transition:transform .4s var(--ease);box-shadow:0 24px 80px rgba(0,0,0,0.2)}
+.waitlist-overlay.open .waitlist-modal{transform:translateY(0) scale(1)}
+.waitlist-modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text-60);font-size:16px;transition:all .2s}
+.waitlist-modal-close:hover{background:var(--surface);color:var(--text)}
+.waitlist-modal h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.1;letter-spacing:-0.02em;margin-bottom:8px}
+.waitlist-modal h2 em{color:var(--gold);font-style:italic}
+.waitlist-modal .wl-sub{font-size:13px;color:var(--text-60);line-height:1.5;margin-bottom:24px}
+.waitlist-form{display:flex;flex-direction:column;gap:10px}
+.waitlist-input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);font-family:var(--sans);font-size:14px;color:var(--text);transition:border-color .2s}
+.waitlist-input:focus{outline:none;border-color:var(--gold)}
+.waitlist-input::placeholder{color:var(--text-30)}
+.waitlist-submit{width:100%;padding:14px;border-radius:50px;background:var(--gold);color:#fff;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .3s var(--ease);border:none;box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.waitlist-submit:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+.waitlist-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.waitlist-success{text-align:center;padding:20px 0}
+.waitlist-success i{font-size:48px;color:var(--gold);margin-bottom:12px;display:block}
+.waitlist-success h3{font-family:var(--serif);font-size:22px;margin-bottom:8px}
+.waitlist-success p{font-size:13px;color:var(--text-60)}
+
+/* ─── DESKTOP ─── */
+@media(min-width:768px){
+  .hero{padding:calc(var(--nav-h) + 48px) 40px 56px}
+  .hero-title{font-size:48px}
+  .articles-container{padding:56px 40px 80px}
+  .category-title{font-size:28px;margin-bottom:32px;padding-bottom:20px}
+  .article-card{padding:28px 24px}
+  .article-title{font-size:20px}
+  .article-excerpt{font-size:14px}
+  .newsletter{padding:56px 40px}
+  .newsletter h2{font-size:32px}
+  .footer{padding:40px}
+}
+
+/* ─── MOTION ─── */
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav class="nav" id="mainNav">
+  <a href="/" class="nav-logo">arq<span class="dot">.</span></a>
+  <div class="nav-right">
+    <a href="#waitlist" class="nav-link" onclick="openWaitlist(event)">Join waitlist</a>
+    <button class="nav-hamburger" aria-label="Menu" id="hamburgerBtn">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── DROPDOWN MENU ─── -->
+<div class="dropdown-overlay" id="dropdownOverlay"></div>
+<div class="dropdown-panel" id="dropdownPanel">
+  <button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
+
+  <div class="dropdown-section">
+    <div class="dropdown-section-title">Explore</div>
+    <div class="dropdown-links">
+      <a href="/" class="dropdown-link">Home</a>
+      <a href="/blog/" class="dropdown-link active">Journal</a>
+      <a href="#" class="dropdown-link">Conditions</a>
+      <a href="#" class="dropdown-link">Tests</a>
+    </div>
+  </div>
+
+  <div class="dropdown-section">
+    <div class="dropdown-section-title">Popular Guides</div>
+    <div class="dropdown-links">
+      <a href="ozempic-india-guide.html" class="dropdown-link">Ozempic Guide</a>
+      <a href="pcos-symptoms-india.html" class="dropdown-link">PCOS Guide</a>
+      <a href="finasteride-india-guide.html" class="dropdown-link">Finasteride Guide</a>
+      <a href="tretinoin-indian-skin-guide.html" class="dropdown-link">Tretinoin Guide</a>
+      <a href="hba1c-test-guide.html" class="dropdown-link">HbA1c Test</a>
+      <a href="trt-india.html" class="dropdown-link">TRT Guide</a>
+    </div>
+  </div>
+
+  <div class="dropdown-section">
+    <a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow" style="justify-content:center;display:inline-flex;width:100%">The Journal</span>
+    <h1 class="hero-title">Evidence-based guides</h1>
+    <p class="hero-subtitle">Physician-reviewed articles on health, hormones, and optimization in India</p>
+  </div>
+</section>
+
+<!-- ═══ ARTICLES GRID ═══ -->
+<section class="articles-container">
+  <div class="articles-inner">
+
+    <!-- WEIGHT & METABOLISM -->
+    <div class="category-section">
+      <h2 class="category-title">Weight & Metabolism</h2>
+      <div class="articles-grid">
+        <a href="ozempic-india-guide.html" class="article-card">
+          <span class="article-category">Weight Loss</span>
+          <h3 class="article-title">Ozempic in India: The Complete Guide</h3>
+          <p class="article-excerpt">How to access Ozempic in India safely. Dosing, side effects, legal status, and how it works at the molecular level.</p>
+          <div class="article-footer">
+            <span>9 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="ozempic-weight-loss-india.html" class="article-card">
+          <span class="article-category">Weight Loss</span>
+          <h3 class="article-title">Ozempic for Weight Loss in India</h3>
+          <p class="article-excerpt">Using GLP-1 agonists for body composition. Realistic expectations, protocol design, and what actually happens after you stop.</p>
+          <div class="article-footer">
+            <span>10 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="semaglutide-india.html" class="article-card">
+          <span class="article-category">Weight Loss</span>
+          <h3 class="article-title">Semaglutide in India</h3>
+          <p class="article-excerpt">Sourcing and using generic semaglutide. Mechanism, dosing protocols, and side effect management for India.</p>
+          <div class="article-footer">
+            <span>9 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="semaglutide-vs-tirzepatide.html" class="article-card">
+          <span class="article-category">Weight Loss</span>
+          <h3 class="article-title">Semaglutide vs Tirzepatide</h3>
+          <p class="article-excerpt">Head-to-head comparison of two GLP-1 agonists. Mechanism differences, efficacy, and which is right for your goals.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="wegovy-vs-ozempic-india.html" class="article-card">
+          <span class="article-category">Weight Loss</span>
+          <h3 class="article-title">Wegovy vs Ozempic in India</h3>
+          <p class="article-excerpt">What's the difference? Dosing, formulation, cost, and which one to choose based on your needs.</p>
+          <div class="article-footer">
+            <span>7 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="insulin-resistance-india.html" class="article-card">
+          <span class="article-category">Metabolism</span>
+          <h3 class="article-title">Insulin Resistance in India</h3>
+          <p class="article-excerpt">Understanding insulin resistance. Tests you actually need, lifestyle interventions, and when medication makes sense.</p>
+          <div class="article-footer">
+            <span>9 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="prediabetes-india.html" class="article-card">
+          <span class="article-category">Metabolism</span>
+          <h3 class="article-title">Prediabetes in India</h3>
+          <p class="article-excerpt">What prediabetes means, reversibility, and evidence-based interventions before you become diabetic.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- HAIR HEALTH -->
+    <div class="category-section">
+      <h2 class="category-title">Hair</h2>
+      <div class="articles-grid">
+        <a href="finasteride-india-guide.html" class="article-card">
+          <span class="article-category">Hair Loss</span>
+          <h3 class="article-title">Finasteride in India: How to Get a Prescription</h3>
+          <p class="article-excerpt">Complete guide to finasteride 1mg. Efficacy, bloodwork requirements, side effects, and how arq. prescribes safely.</p>
+          <div class="article-footer">
+            <span>10 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="minoxidil-finasteride-combo.html" class="article-card">
+          <span class="article-category">Hair Loss</span>
+          <h3 class="article-title">Minoxidil + Finasteride Combo</h3>
+          <p class="article-excerpt">Why combination therapy works better. Synergistic mechanisms, dosing, and expected outcomes from dual treatment.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="oral-minoxidil-india-guide.html" class="article-card">
+          <span class="article-category">Hair Loss</span>
+          <h3 class="article-title">Oral Minoxidil in India: Complete Guide</h3>
+          <p class="article-excerpt">Oral minoxidil for hair loss. Efficacy vs topical, dosing, side effects, and how to source it in India.</p>
+          <div class="article-footer">
+            <span>9 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="topical-finasteride-india.html" class="article-card">
+          <span class="article-category">Hair Loss</span>
+          <h3 class="article-title">Topical Finasteride in India</h3>
+          <p class="article-excerpt">Topical finasteride for hair loss. Efficacy, systemic absorption, and when to choose it over oral formulation.</p>
+          <div class="article-footer">
+            <span>7 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- SKIN -->
+    <div class="category-section">
+      <h2 class="category-title">Skin</h2>
+      <div class="articles-grid">
+        <a href="tretinoin-indian-skin-guide.html" class="article-card">
+          <span class="article-category">Skincare</span>
+          <h3 class="article-title">Tretinoin: Indian Skin Guide</h3>
+          <p class="article-excerpt">Getting tretinoin prescribed in India. How it works, dosing from 0.025% to 0.1%, side effects, and skin type considerations.</p>
+          <div class="article-footer">
+            <span>10 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="tretinoin-prescription-india.html" class="article-card">
+          <span class="article-category">Skincare</span>
+          <h3 class="article-title">Tretinoin Prescription in India</h3>
+          <p class="article-excerpt">How to get tretinoin prescribed in India. Dosing, monitoring, and what bloodwork you might need.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="tretinoin-purging-guide.html" class="article-card">
+          <span class="article-category">Skincare</span>
+          <h3 class="article-title">Tretinoin Purging: Complete Guide</h3>
+          <p class="article-excerpt">Understanding tretinoin purging. Why it happens, how long it lasts, and how to manage it without stopping treatment.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- HORMONES & FERTILITY -->
+    <div class="category-section">
+      <h2 class="category-title">Hormones & Fertility</h2>
+      <div class="articles-grid">
+        <a href="trt-india.html" class="article-card">
+          <span class="article-category">Hormones</span>
+          <h3 class="article-title">TRT in India: Legal Pathways</h3>
+          <p class="article-excerpt">Navigate TRT in India. Legal pathways, finding TRT-friendly doctors, and available protocols and compounds.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="pcos-symptoms-india.html" class="article-card">
+          <span class="article-category">Hormones</span>
+          <h3 class="article-title">PCOS Symptoms in India</h3>
+          <p class="article-excerpt">Understanding PCOS. Symptoms, diagnosis, and why early detection matters for treatment outcomes.</p>
+          <div class="article-footer">
+            <span>9 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="pcos-treatment-india.html" class="article-card">
+          <span class="article-category">Hormones</span>
+          <h3 class="article-title">PCOS Treatment in India</h3>
+          <p class="article-excerpt">Evidence-based PCOS treatment. Lifestyle, medication, and fertility considerations for Indian women.</p>
+          <div class="article-footer">
+            <span>9 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="can-pcos-be-cured.html" class="article-card">
+          <span class="article-category">Hormones</span>
+          <h3 class="article-title">Can PCOS Be Cured?</h3>
+          <p class="article-excerpt">Is PCOS reversible? What the research says and realistic expectations from lifestyle and medical interventions.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="pcod-vs-pcos.html" class="article-card">
+          <span class="article-category">Hormones</span>
+          <h3 class="article-title">PCOD vs PCOS</h3>
+          <p class="article-excerpt">Understanding the terminology. PCOD, PCOS, and why the distinction matters (or doesn't).</p>
+          <div class="article-footer">
+            <span>7 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="sexual-health-blood-test-india.html" class="article-card">
+          <span class="article-category">Hormones</span>
+          <h3 class="article-title">Sexual Health Blood Tests in India</h3>
+          <p class="article-excerpt">Tests for sexual dysfunction. Hormones, vascular health, and what bloodwork actually predicts erectile quality.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="ed-prescription-india.html" class="article-card">
+          <span class="article-category">Sexual Health</span>
+          <h3 class="article-title">ED Prescription in India</h3>
+          <p class="article-excerpt">Getting erectile dysfunction treatment in India. Sildenafil, tadalafil, and lifestyle interventions.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="sildenafil-vs-tadalafil-india.html" class="article-card">
+          <span class="article-category">Sexual Health</span>
+          <h3 class="article-title">Sildenafil vs Tadalafil in India</h3>
+          <p class="article-excerpt">Comparing PDE5 inhibitors. Onset, duration, side effects, and which is better for your situation.</p>
+          <div class="article-footer">
+            <span>7 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="tadalafil-5mg-daily-guide.html" class="article-card">
+          <span class="article-category">Sexual Health</span>
+          <h3 class="article-title">Tadalafil 5mg Daily Guide</h3>
+          <p class="article-excerpt">Daily tadalafil for ED. Efficacy, benefits over as-needed dosing, and what to expect long-term.</p>
+          <div class="article-footer">
+            <span>7 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="dapoxetine-india.html" class="article-card">
+          <span class="article-category">Sexual Health</span>
+          <h3 class="article-title">Dapoxetine in India</h3>
+          <p class="article-excerpt">Dapoxetine for premature ejaculation. How it works, dosing, and evidence-based expectations.</p>
+          <div class="article-footer">
+            <span>7 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- FOCUS & SLEEP -->
+    <div class="category-section">
+      <h2 class="category-title">Focus & Sleep</h2>
+      <div class="articles-grid">
+        <a href="modafinil-legal-india.html" class="article-card">
+          <span class="article-category">Focus</span>
+          <h3 class="article-title">Is Modafinil Legal in India?</h3>
+          <p class="article-excerpt">Modafinil's legal status in India. How to get it prescribed, pharmacology, and use for focus and wakefulness.</p>
+          <div class="article-footer">
+            <span>6 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="modafinil-vs-armodafinil.html" class="article-card">
+          <span class="article-category">Focus</span>
+          <h3 class="article-title">Modafinil vs Armodafinil</h3>
+          <p class="article-excerpt">Head-to-head comparison. Onset time, duration, mechanism, and how to pick based on your schedule.</p>
+          <div class="article-footer">
+            <span>7 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="modafinil-side-effects.html" class="article-card">
+          <span class="article-category">Focus</span>
+          <h3 class="article-title">Modafinil Side Effects</h3>
+          <p class="article-excerpt">What to expect from modafinil. Headaches, anxiety, tolerance, and how to minimize side effects.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="sleep-blood-test-india.html" class="article-card">
+          <span class="article-category">Sleep</span>
+          <h3 class="article-title">Sleep Blood Tests in India</h3>
+          <p class="article-excerpt">Biomarkers that affect sleep quality. Magnesium, iron, B12, and hormones that control your sleep.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="hrv-explained.html" class="article-card">
+          <span class="article-category">Recovery</span>
+          <h3 class="article-title">HRV Explained</h3>
+          <p class="article-excerpt">What heart rate variability is and what it actually tells you about recovery, stress, and sleep quality.</p>
+          <div class="article-footer">
+            <span>7 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- RECOVERY & PERFORMANCE -->
+    <div class="category-section">
+      <h2 class="category-title">Recovery & Performance</h2>
+      <div class="articles-grid">
+        <a href="peptide-therapy-india.html" class="article-card">
+          <span class="article-category">Peptides</span>
+          <h3 class="article-title">Peptide Therapy in India</h3>
+          <p class="article-excerpt">Understanding peptides. BPC-157, TB-500, GHRP-6, and how they work for recovery and performance.</p>
+          <div class="article-footer">
+            <span>9 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="bpc-157-india.html" class="article-card">
+          <span class="article-category">Peptides</span>
+          <h3 class="article-title">BPC-157: What Science Says</h3>
+          <p class="article-excerpt">BPC-157's mechanism for tissue repair and gut health. Legality in India, sourcing, and evidence-based expectations.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="nad-supplement-india.html" class="article-card">
+          <span class="article-category">Longevity</span>
+          <h3 class="article-title">NAD+ Supplement in India</h3>
+          <p class="article-excerpt">NAD+ boosters like NMN and NR. How they work, evidence, dosing, and what to expect from supplementation.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="nmn-vs-nr-india.html" class="article-card">
+          <span class="article-category">Longevity</span>
+          <h3 class="article-title">NMN vs NR in India</h3>
+          <p class="article-excerpt">Comparing NAD+ precursors. Nicotinamide mononucleotide vs nicotinamide riboside bioavailability and efficacy.</p>
+          <div class="article-footer">
+            <span>7 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="iv-drip-therapy-india.html" class="article-card">
+          <span class="article-category">Performance</span>
+          <h3 class="article-title">IV Drip Therapy in India</h3>
+          <p class="article-excerpt">IV nutrition and hydration. Myers' cocktail, glutathione, and whether IV therapy is worth it for you.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- LONGEVITY -->
+    <div class="category-section">
+      <h2 class="category-title">Longevity</h2>
+      <div class="articles-grid">
+        <a href="longevity-blood-tests-india.html" class="article-card">
+          <span class="article-category">Longevity</span>
+          <h3 class="article-title">Longevity Blood Tests in India</h3>
+          <p class="article-excerpt">Testing for healthspan. Biomarkers that predict aging, disease risk, and longevity outcomes.</p>
+          <div class="article-footer">
+            <span>9 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="peter-attia-longevity-stack-india.html" class="article-card">
+          <span class="article-category">Longevity</span>
+          <h3 class="article-title">Peter Attia's Longevity Stack for India</h3>
+          <p class="article-excerpt">Breaking down Attia's evidence-based protocol. Mapping it to what's accessible and legal in India.</p>
+          <div class="article-footer">
+            <span>9 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="full-body-checkup-india.html" class="article-card">
+          <span class="article-category">Testing</span>
+          <h3 class="article-title">Full Body Checkup in India</h3>
+          <p class="article-excerpt">What a comprehensive health checkup actually includes. Tests that matter and what you can skip.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="hba1c-test-guide.html" class="article-card">
+          <span class="article-category">Testing</span>
+          <h3 class="article-title">HbA1c Test Guide</h3>
+          <p class="article-excerpt">Understanding HbA1c. What it measures, normal ranges, and what your number actually means for health.</p>
+          <div class="article-footer">
+            <span>7 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="thyroid-test-guide.html" class="article-card">
+          <span class="article-category">Testing</span>
+          <h3 class="article-title">Thyroid Test Guide</h3>
+          <p class="article-excerpt">Thyroid testing in India. TSH, free T3, free T4, and why they all matter for your health.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="vitamin-d-deficiency-india.html" class="article-card">
+          <span class="article-category">Deficiency</span>
+          <h3 class="article-title">Vitamin D Deficiency in India</h3>
+          <p class="article-excerpt">Despite sun exposure, Indians are vitamin D deficient. Why, testing, supplementation, and safe dosing.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="vitamin-b12-deficiency-india.html" class="article-card">
+          <span class="article-category">Deficiency</span>
+          <h3 class="article-title">Vitamin B12 Deficiency in India</h3>
+          <p class="article-excerpt">B12 deficiency is rampant. Causes in India, symptoms, testing, and treatment options.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="iron-deficiency-india.html" class="article-card">
+          <span class="article-category">Deficiency</span>
+          <h3 class="article-title">Iron Deficiency in India</h3>
+          <p class="article-excerpt">Iron deficiency: prevalence, symptoms, testing, and supplementation strategies for Indians.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- LEGAL & REGULATORY -->
+    <div class="category-section">
+      <h2 class="category-title">Legal & Regulatory</h2>
+      <div class="articles-grid">
+        <a href="telemedicine-legal-india.html" class="article-card">
+          <span class="article-category">Legal</span>
+          <h3 class="article-title">Is Telemedicine Legal in India?</h3>
+          <p class="article-excerpt">Telemedicine regulations in India 2026. What's legal, gray areas, and how arq. provides remote consultations.</p>
+          <div class="article-footer">
+            <span>6 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="biohacking-india.html" class="article-card">
+          <span class="article-category">Biohacking</span>
+          <h3 class="article-title">Biohacking in India</h3>
+          <p class="article-excerpt">What's legal, what's gray. Biohacking culture and the Indian regulatory environment for optimization.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="anxiety-medication-india.html" class="article-card">
+          <span class="article-category">Psychiatry</span>
+          <h3 class="article-title">Anxiety Medication in India</h3>
+          <p class="article-excerpt">Getting anxiety treatment prescribed in India. SSRIs, anxiolytics, and legal options.</p>
+          <div class="article-footer">
+            <span>8 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+
+        <a href="propranolol-anxiety-india.html" class="article-card">
+          <span class="article-category">Psychiatry</span>
+          <h3 class="article-title">Propranolol for Anxiety in India</h3>
+          <p class="article-excerpt">Propranolol for performance anxiety. How it works, dosing, and availability in India.</p>
+          <div class="article-footer">
+            <span>7 min read</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ NEWSLETTER ═══ -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <h2>Stay updated</h2>
+    <p>Get new guides and updates on evidence-based health optimization delivered to your inbox.</p>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="logo">arq<span class="dot">.</span></div>
+  <div class="footer-text">
+    Science-backed health optimization for India.<br>
+    &copy; 2026 arq.clinic. All rights reserved.<br>
+    <br>
+    All prescription medications require a doctor consultation.<br>
+    Not medical advice. Consult your arq. physician.
+  </div>
+</footer>
+
+<!-- ─── WAITLIST MODAL ─── -->
+<div class="waitlist-overlay" id="waitlistOverlay">
+  <div class="waitlist-modal">
+    <button class="waitlist-modal-close" id="waitlistClose" aria-label="Close"><i class="ph-bold ph-x"></i></button>
+    <h2>Join the waitlist <em>→</em></h2>
+    <p class="wl-sub">Early access to new guides, personalized protocols, and physician consultations.</p>
+    <form class="waitlist-form" id="waitlistForm" onsubmit="submitWaitlist(event)">
+        <input type="hidden" name="source" id="wlSource" value="blog-index">
+        
+      <input type="email" class="waitlist-input" placeholder="your@email.com" required>
+      <button type="submit" class="waitlist-submit">Join waitlist</button>
+    </form>
+  </div>
+</div>
+
+<script>
+// Navigation scroll effect
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Dropdown menu
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const dropdownOverlay = document.getElementById('dropdownOverlay');
+const dropdownPanel = document.getElementById('dropdownPanel');
+const dropdownClose = document.getElementById('dropdownClose');
+const dropdownLinks = document.querySelectorAll('.dropdown-link');
+
+hamburgerBtn.addEventListener('click', () => {
+  dropdownOverlay.classList.add('open');
+  dropdownPanel.classList.add('open');
+});
+
+function closeDropdown() {
+  dropdownOverlay.classList.remove('open');
+  dropdownPanel.classList.remove('open');
+}
+
+dropdownClose.addEventListener('click', closeDropdown);
+dropdownOverlay.addEventListener('click', closeDropdown);
+
+// Close dropdown when clicking a link
+dropdownLinks.forEach(link => {
+  link.addEventListener('click', closeDropdown);
+});
+
+// Waitlist modal
+const waitlistOverlay = document.getElementById('waitlistOverlay');
+const waitlistClose = document.getElementById('waitlistClose');
+
+function openWaitlist(event) {
+  if (event) event.preventDefault();
+  waitlistOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeWaitlist() {
+  waitlistOverlay.classList.remove('open');
+  document.body.style.overflow = 'auto';
+}
+
+waitlistClose.addEventListener('click', closeWaitlist);
+waitlistOverlay.addEventListener('click', (e) => {
+  if (e.target === waitlistOverlay) closeWaitlist();
+});
+
+function submitWaitlist(event) {
+  event.preventDefault();
+  const email = event.target.querySelector('input[type="email"]').value;
+  alert(`Thanks for joining! We'll be in touch at ${email}`);
+  event.target.reset();
+  closeWaitlist();
+}
+</script>
+</body>
+</html>

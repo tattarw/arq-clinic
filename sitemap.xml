@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://arq.clinic/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Condition Pages -->
+  <url><loc>https://arq.clinic/pcos</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/thyroid</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/diabetes</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/weight-loss</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/hair-loss</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/testosterone</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/vitamin-deficiency</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/fatigue</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/sleep</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/skin</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/focus</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/blood-pressure</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/panel</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/hrv</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/recovery</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://arq.clinic/iv-infusions</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- Sports Pages -->
+  <url><loc>https://arq.clinic/pickleball</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/padel</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/runners</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/strength</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/performance</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/hyrox</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/endurance</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Blog Index -->
+  <url><loc>https://arq.clinic/blog/</loc><lastmod>2026-04-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- Blog Posts — Tier 1 (highest search volume) -->
+  <url><loc>https://arq.clinic/blog/pcos-symptoms-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/blog/ozempic-india-guide</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/blog/hba1c-test-guide</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/blog/sildenafil-vs-tadalafil-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/blog/oral-minoxidil-india-guide</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/blog/full-body-checkup-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/blog/vitamin-d-deficiency-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/blog/vitamin-b12-deficiency-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/blog/tretinoin-indian-skin-guide</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arq.clinic/blog/finasteride-india-guide</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Blog Posts — Tier 2 -->
+  <url><loc>https://arq.clinic/blog/iron-deficiency-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/insulin-resistance-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/pcos-treatment-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/thyroid-test-guide</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/semaglutide-vs-tirzepatide</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/semaglutide-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/pcod-vs-pcos</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/can-pcos-be-cured</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/prediabetes-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/ozempic-weight-loss-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/modafinil-legal-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/modafinil-side-effects</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/modafinil-vs-armodafinil</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/trt-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/longevity-blood-tests-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/sleep-blood-test-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/sexual-health-blood-test-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/iv-drip-therapy-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arq.clinic/blog/peptide-therapy-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Blog Posts — Tier 3 -->
+  <url><loc>https://arq.clinic/blog/tadalafil-5mg-daily-guide</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/ed-prescription-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/anxiety-medication-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/tretinoin-purging-guide</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/tretinoin-prescription-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/hrv-explained</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/topical-finasteride-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/minoxidil-finasteride-combo</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/propranolol-anxiety-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/wegovy-vs-ozempic-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/dapoxetine-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/nad-supplement-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/nmn-vs-nr-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/biohacking-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/bpc-157-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/peter-attia-longevity-stack-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://arq.clinic/blog/telemedicine-legal-india</loc><lastmod>2026-04-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+</urlset>

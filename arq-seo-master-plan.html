@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arq.clinic — SEO Master Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Epilogue:wght@200;300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08080a;--surface:#14141a;--card:#1c1c24;--lift:#242430;
+  --cream:#f0ebe0;--cream-70:rgba(240,235,224,0.7);--cream-40:rgba(240,235,224,0.4);--cream-15:rgba(240,235,224,0.15);--cream-07:rgba(240,235,224,0.07);
+  --gold:#c8973a;--gold-hi:#dba84a;--gold-lo:rgba(200,151,58,0.1);--gold-border:rgba(200,151,58,0.25);
+  --green:#2a7a4a;--green-lo:rgba(42,122,74,0.15);--green-b:rgba(42,122,74,0.3);
+  --amber:#c8832a;--amber-lo:rgba(200,131,42,0.15);--amber-b:rgba(200,131,42,0.3);
+  --red:#a83030;--red-lo:rgba(168,48,48,0.15);--red-b:rgba(168,48,48,0.3);
+  --blue-lo:rgba(42,74,138,0.15);--blue-b:rgba(42,74,138,0.3);
+  --serif:'Playfair Display',serif;--sans:'Epilogue',sans-serif;--mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* GRAIN */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;mix-blend-mode:overlay}
+
+/* NAV */
+.doc-nav{position:sticky;top:0;z-index:100;background:rgba(8,8,10,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--cream-07);padding:0 20px;overflow-x:auto;scrollbar-width:none}
+.doc-nav::-webkit-scrollbar{display:none}
+.doc-nav-inner{display:flex;gap:0;white-space:nowrap;max-width:1000px;margin:0 auto}
+.nav-link{font-family:var(--mono);font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream-40);padding:14px 16px;border-bottom:2px solid transparent;transition:all 0.2s;text-decoration:none;display:block}
+.nav-link:hover{color:var(--cream-70)}
+.nav-link.on{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* LAYOUT */
+.doc{max-width:960px;margin:0 auto;padding:0 20px}
+
+/* COVER */
+.cover{padding:60px 20px 48px;border-bottom:1px solid var(--cream-07);position:relative;overflow:hidden;max-width:960px;margin:0 auto}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(var(--cream-07) 1px,transparent 1px),linear-gradient(90deg,var(--cream-07) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.cover-glow{position:absolute;width:500px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(200,151,58,0.06) 0%,transparent 65%);top:-100px;right:-80px;pointer-events:none}
+.cover-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:12px;position:relative}
+.cover-eyebrow::before{content:'';width:20px;height:1px;background:var(--gold)}
+.cover-title{font-family:var(--serif);font-size:clamp(34px,7vw,60px);font-weight:400;line-height:1.05;letter-spacing:-0.02em;margin-bottom:8px;position:relative}
+.cover-title em{font-style:italic;color:var(--gold)}
+.cover-sub{font-family:var(--serif);font-size:clamp(15px,3vw,20px);color:var(--cream-40);font-style:italic;margin-bottom:28px;position:relative}
+.cover-meta-row{display:flex;flex-wrap:wrap;gap:12px;position:relative}
+.cover-meta-chip{font-family:var(--mono);font-size:8px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--cream-15);color:var(--cream-40);padding:6px 14px;border-radius:2px}
+.cover-meta-chip.gold{border-color:var(--gold-border);color:var(--gold);background:var(--gold-lo)}
+
+/* SECTIONS */
+.section{padding:56px 0;border-bottom:1px solid var(--cream-07)}
+.sec-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.sec-eyebrow::before{content:'';width:18px;height:1px;background:var(--gold)}
+.sec-title{font-family:var(--serif);font-size:clamp(26px,5vw,40px);font-weight:400;line-height:1.1;letter-spacing:-0.015em;margin-bottom:20px}
+.sec-title em{font-style:italic;color:var(--gold)}
+.sec-body{font-size:14px;color:var(--cream-70);line-height:1.85;max-width:640px;margin-bottom:28px}
+.sec-body strong{color:var(--cream);font-weight:400}
+
+/* KEY INSIGHT BOX */
+.insight{background:var(--gold-lo);border:1px solid var(--gold-border);padding:20px 22px;margin:24px 0;position:relative;overflow:hidden}
+.insight::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.5}
+.insight-label{font-family:var(--mono);font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.insight-text{font-family:var(--serif);font-size:18px;font-style:italic;color:var(--cream);line-height:1.5}
+
+/* TABLES */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:12px}
+.data-table th{font-family:var(--mono);font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream-40);padding:10px 12px;border-bottom:1px solid var(--cream-15);text-align:left;white-space:nowrap;background:var(--surface)}
+.data-table th.right{text-align:right}
+.data-table td{padding:10px 12px;border-bottom:1px solid var(--cream-07);color:var(--cream-70);vertical-align:middle}
+.data-table td.right{text-align:right;font-family:var(--mono)}
+.data-table tr:hover td{background:var(--surface)}
+.data-table tr:last-child td{border-bottom:none}
+.kw-name{color:var(--cream);font-size:13px}
+
+/* DIFFICULTY PILL */
+.diff{display:inline-block;font-family:var(--mono);font-size:8px;letter-spacing:0.06em;padding:3px 8px;border-radius:12px;white-space:nowrap}
+.diff-easy{background:var(--green-lo);color:#70c490;border:1px solid var(--green-b)}
+.diff-med{background:var(--amber-lo);color:#e8a050;border:1px solid var(--amber-b)}
+.diff-hard{background:var(--red-lo);color:#e08080;border:1px solid var(--red-b)}
+
+/* OPPORTUNITY BADGE */
+.opp{font-family:var(--mono);font-size:7px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 7px;border-radius:2px}
+.opp-now{background:var(--green-lo);color:#70c490;border:1px solid var(--green-b)}
+.opp-q2{background:var(--gold-lo);color:var(--gold);border:1px solid var(--gold-border)}
+.opp-q3{background:var(--blue-lo);color:#90b0e0;border:1px solid var(--blue-b)}
+
+/* CONTENT CARDS */
+.content-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:24px 0}
+@media(min-width:600px){.content-grid{grid-template-columns:1fr 1fr}}
+.content-card{background:var(--surface);border:1px solid var(--cream-07);padding:20px 18px;transition:border-color 0.2s;position:relative;overflow:hidden}
+.content-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--gold);transition:width 0.2s}
+.content-card:hover{border-color:var(--cream-15)}
+.content-card:hover::before{width:2px}
+.cc-type{font-family:var(--mono);font-size:7px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.cc-title{font-family:var(--serif);font-size:17px;color:var(--cream);margin-bottom:6px;line-height:1.3}
+.cc-meta{font-size:11px;color:var(--cream-40);line-height:1.6}
+.cc-vol{font-family:var(--mono);font-size:9px;color:var(--cream-40);margin-top:8px}
+
+/* COMPETITIVE TABLE */
+.comp-row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--cream-07)}
+.comp-row:last-child{border:none}
+.comp-domain{font-family:var(--serif);font-size:17px;color:var(--cream);min-width:160px}
+.comp-bar-wrap{flex:1;height:6px;background:var(--cream-07);border-radius:3px;overflow:hidden}
+.comp-bar{height:100%;border-radius:3px;background:var(--gold);transition:width 0.5s ease}
+.comp-num{font-family:var(--mono);font-size:10px;color:var(--cream-40);min-width:80px;text-align:right}
+.comp-crime{font-size:11px;color:var(--cream-40);padding:8px 0 0 0;line-height:1.6;font-style:italic}
+
+/* CALENDAR */
+.cal-month{margin-bottom:28px}
+.cal-month-title{font-family:var(--serif);font-size:22px;color:var(--cream);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.cal-month-num{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:0.1em}
+.cal-items{display:flex;flex-direction:column;gap:1px;background:var(--cream-07);border-radius:2px;overflow:hidden}
+.cal-item{background:var(--surface);padding:14px 16px;display:grid;grid-template-columns:80px 1fr auto;gap:12px;align-items:start}
+.cal-item-type{font-family:var(--mono);font-size:7px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 7px;border-radius:2px;white-space:nowrap;align-self:flex-start}
+.ct-product{background:var(--gold-lo);color:var(--gold);border:1px solid var(--gold-border)}
+.ct-blog{background:var(--blue-lo);color:#90b0e0;border:1px solid var(--blue-b)}
+.ct-comparison{background:rgba(90,42,138,0.15);color:#c090e0;border:1px solid rgba(90,42,138,0.3)}
+.ct-guide{background:var(--green-lo);color:#70c490;border:1px solid var(--green-b)}
+.cal-item-title{font-size:13px;color:var(--cream);line-height:1.4}
+.cal-item-kw{font-family:var(--mono);font-size:8px;color:var(--cream-40);margin-top:3px}
+.cal-item-vol{font-family:var(--mono);font-size:9px;color:var(--cream-40);text-align:right;white-space:nowrap}
+
+/* PAID STRATEGY */
+.paid-card{background:var(--surface);border:1px solid var(--cream-07);padding:22px 20px;margin-bottom:10px}
+.paid-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.paid-card-name{font-family:var(--serif);font-size:20px;color:var(--cream)}
+.paid-verdict{font-family:var(--mono);font-size:8px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px}
+.pv-yes{background:var(--green-lo);color:#70c490;border:1px solid var(--green-b)}
+.pv-no{background:var(--red-lo);color:#e08080;border:1px solid var(--red-b)}
+.pv-later{background:var(--amber-lo);color:#e8a050;border:1px solid var(--amber-b)}
+.paid-card-body{font-size:13px;color:var(--cream-70);line-height:1.75}
+
+/* PRIORITY MATRIX */
+.matrix{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--cream-07);margin:24px 0;border-radius:2px;overflow:hidden}
+.matrix-cell{background:var(--surface);padding:22px 18px}
+.matrix-cell-label{font-family:var(--mono);font-size:8px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px}
+.matrix-cell-label.green{color:#70c490}
+.matrix-cell-label.amber{color:#e8a050}
+.matrix-cell-label.blue{color:#90b0e0}
+.matrix-cell-label.dim{color:var(--cream-40)}
+.matrix-items{display:flex;flex-direction:column;gap:7px}
+.matrix-item{font-size:12px;color:var(--cream-70);display:flex;gap:7px;align-items:flex-start;line-height:1.5}
+.matrix-item::before{content:'→';color:var(--cream-40);flex-shrink:0;font-family:var(--serif)}
+.matrix-item strong{color:var(--cream);font-weight:400}
+
+/* DIVIDER */
+.rule{width:100%;height:1px;background:var(--cream-07);margin:32px 0}
+.rule-gold{width:100%;height:1px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0.3;margin:32px 0}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="doc-nav">
+  <div class="doc-nav-inner">
+    <a href="#overview" class="nav-link on">Overview</a>
+    <a href="#findings" class="nav-link">Key Findings</a>
+    <a href="#keywords" class="nav-link">Keyword Map</a>
+    <a href="#competitors" class="nav-link">Competitors</a>
+    <a href="#content" class="nav-link">Content Plan</a>
+    <a href="#calendar" class="nav-link">6-Month Calendar</a>
+    <a href="#paid" class="nav-link">Paid Search</a>
+    <a href="#priorities" class="nav-link">Priorities</a>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="cover" id="overview">
+  <div class="cover-grid"></div>
+  <div class="cover-glow"></div>
+  <div class="cover-eyebrow">SEO Master Plan</div>
+  <h1 class="cover-title">arq.clinic<br><em>Search Strategy</em></h1>
+  <p class="cover-sub">Built from live SEMrush data · India database · April 2026</p>
+  <div class="cover-meta-row">
+    <div class="cover-meta-chip gold">Real SEMrush data</div>
+    <div class="cover-meta-chip">India (IN) database</div>
+    <div class="cover-meta-chip">50 keywords analysed</div>
+    <div class="cover-meta-chip">8 competitors mapped</div>
+    <div class="cover-meta-chip">6-month content calendar</div>
+  </div>
+</div>
+
+<!-- KEY FINDINGS -->
+<div class="doc">
+<section class="section" id="findings">
+  <div class="sec-eyebrow">01 · Key Findings</div>
+  <h2 class="sec-title">What the data<br><em>actually says.</em></h2>
+
+  <div class="insight">
+    <div class="insight-label">The biggest insight</div>
+    <div class="insight-text">The market is almost entirely unsearched — and that's the opportunity. BPC-157 India (590/mo) is the highest-volume biohacker keyword in India. Nobody owns it. Arq can.</div>
+  </div>
+
+  <div class="sec-body">
+    <p>This isn't a crowded SEO market. Most prescription and biohacker keywords in India have <strong>low to zero keyword difficulty</strong> — meaning Arq can rank with good content alone, without needing hundreds of backlinks or months of domain authority building.</p>
+    <br>
+    <p>The reason: nobody has built this category yet. Man Matters ranks for shampoo and derma rollers. Traya ranks for vitamin E capsules. <strong>The biohacker/prescription-online space in India is a completely empty playing field.</strong></p>
+  </div>
+
+  <!-- Key numbers grid -->
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--cream-07);border-radius:2px;overflow:hidden;margin:28px 0">
+    <div style="background:var(--surface);padding:22px 18px">
+      <div style="font-family:var(--serif);font-size:40px;color:var(--cream);line-height:1;margin-bottom:5px">590</div>
+      <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold)">Monthly searches</div>
+      <div style="font-size:12px;color:var(--cream-40);margin-top:5px">BPC-157 India — nobody owns this</div>
+    </div>
+    <div style="background:var(--surface);padding:22px 18px">
+      <div style="font-family:var(--serif);font-size:40px;color:var(--cream);line-height:1;margin-bottom:5px">KD 0</div>
+      <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold)">Keyword difficulty</div>
+      <div style="font-size:12px;color:var(--cream-40);margin-top:5px">Most Arq keywords — near-zero competition</div>
+    </div>
+    <div style="background:var(--surface);padding:22px 18px">
+      <div style="font-family:var(--serif);font-size:40px;color:var(--cream);line-height:1;margin-bottom:5px">18,100</div>
+      <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold)">Monthly searches</div>
+      <div style="font-size:12px;color:var(--cream-40);margin-top:5px">"modalert 100" — huge modafinil-aware audience</div>
+    </div>
+    <div style="background:var(--surface);padding:22px 18px">
+      <div style="font-family:var(--serif);font-size:40px;color:var(--cream);line-height:1;margin-bottom:5px">165k</div>
+      <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold)">Monthly searches</div>
+      <div style="font-size:12px;color:var(--cream-40);margin-top:5px">"ozempic" in India — massive awareness, no legal source</div>
+    </div>
+  </div>
+
+  <div class="insight" style="background:var(--green-lo);border-color:var(--green-b)">
+    <div class="insight-label" style="color:#70c490">The ozempic opportunity</div>
+    <div class="insight-text" style="font-size:16px">"Ozempic" gets 165,000 searches/month in India (KD 89 — hard). But "semaglutide price india", "generic ozempic india" — zero competition. Arq writes the definitive guides for these, captures the bottom-of-funnel searcher who already knows what they want.</div>
+  </div>
+
+  <div class="insight" style="background:var(--amber-lo);border-color:var(--amber-b)">
+    <div class="insight-label" style="color:#e8a050">The modafinil audience is huge and underserved</div>
+    <div class="insight-text" style="font-size:16px">"Modalert 100" gets 18,100/month. "Modafinil tablet" gets 6,600. "Modalert" gets 4,400. These are people who already know the product — they just need a legal source. That's Arq's entire value proposition in one keyword cluster.</div>
+  </div>
+</section>
+
+<!-- KEYWORD MAP -->
+<section class="section" id="keywords">
+  <div class="sec-eyebrow">02 · Keyword Map</div>
+  <h2 class="sec-title">Every keyword<br><em>Arq should own.</em></h2>
+  <div class="sec-body">All data pulled live from SEMrush India database. Sorted by opportunity — not just volume. Low difficulty + clear commercial intent = Arq's fastest wins.</div>
+
+  <!-- TIER 1: Own immediately -->
+  <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#70c490;margin-bottom:10px;display:flex;align-items:center;gap:8px">
+    <span style="width:8px;height:8px;border-radius:50%;background:#70c490;flex-shrink:0"></span>
+    Tier 1 — Own immediately (low difficulty, clear intent)
+  </div>
+  <div style="overflow-x:auto;margin-bottom:28px">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Keyword</th>
+        <th class="right">Volume/mo</th>
+        <th class="right">KD</th>
+        <th class="right">CPC</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="kw-name">BPC-157 india</span></td><td class="right">590</td><td class="right"><span class="diff diff-easy">18 Easy</span></td><td class="right">$0.23</td><td><span class="opp opp-now">Product page</span></td></tr>
+      <tr><td><span class="kw-name">bpc 157 peptide</span></td><td class="right">1,000</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td class="right">$0.22</td><td><span class="opp opp-now">Blog guide</span></td></tr>
+      <tr><td><span class="kw-name">bpc 157 uses</span></td><td class="right">590</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td class="right">$0.34</td><td><span class="opp opp-now">Blog guide</span></td></tr>
+      <tr><td><span class="kw-name">bpc 157 side effects</span></td><td class="right">480</td><td class="right"><span class="diff diff-easy">38 Easy</span></td><td class="right">$0</td><td><span class="opp opp-now">Blog guide</span></td></tr>
+      <tr><td><span class="kw-name">nootropics india</span></td><td class="right">210</td><td class="right"><span class="diff diff-easy">28 Easy</span></td><td class="right">$0.28</td><td><span class="opp opp-now">Category page</span></td></tr>
+      <tr><td><span class="kw-name">modafinil prescription india</span></td><td class="right">90</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td class="right">$0</td><td><span class="opp opp-now">Blog guide</span></td></tr>
+      <tr><td><span class="kw-name">naltrexone india</span></td><td class="right">110</td><td class="right"><span class="diff diff-easy">26 Easy</span></td><td class="right">$0</td><td><span class="opp opp-now">Product page</span></td></tr>
+      <tr><td><span class="kw-name">testosterone replacement therapy india</span></td><td class="right">90</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td class="right">$0</td><td><span class="opp opp-now">Blog guide</span></td></tr>
+      <tr><td><span class="kw-name">buy modafinil india</span></td><td class="right">70</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td class="right">$0</td><td><span class="opp opp-now">Blog + product</span></td></tr>
+      <tr><td><span class="kw-name">armodafinil india</span></td><td class="right">40</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td class="right">$0</td><td><span class="opp opp-now">Product page</span></td></tr>
+      <tr><td><span class="kw-name">tadalafil online india</span></td><td class="right">40</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td class="right">$0</td><td><span class="opp opp-now">Product page</span></td></tr>
+      <tr><td><span class="kw-name">sermorelin india</span></td><td class="right">20</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td class="right">$0</td><td><span class="opp opp-now">Product page</span></td></tr>
+      <tr><td><span class="kw-name">armodafinil vs modafinil</span></td><td class="right">320</td><td class="right"><span class="diff diff-easy">38 Easy</span></td><td class="right">$0</td><td><span class="opp opp-now">Comparison blog</span></td></tr>
+      <tr><td><span class="kw-name">online doctor prescription india</span></td><td class="right">30</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td class="right">$0</td><td><span class="opp opp-now">How it works page</span></td></tr>
+      <tr><td><span class="kw-name">biohacking india</span></td><td class="right">20</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td class="right">$0</td><td><span class="opp opp-now">Brand blog</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- TIER 2: High volume, build toward -->
+  <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px">
+    <span style="width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0"></span>
+    Tier 2 — High volume adjacent keywords (harder, worth the effort)
+  </div>
+  <div style="overflow-x:auto;margin-bottom:28px">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Keyword</th>
+        <th class="right">Volume/mo</th>
+        <th class="right">KD</th>
+        <th class="right">CPC</th>
+        <th>Strategy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="kw-name">modalert 100</span></td><td class="right">18,100</td><td class="right"><span class="diff diff-easy">24 Easy</span></td><td class="right">$0.26</td><td><span class="opp opp-q2">Informational blog</span></td></tr>
+      <tr><td><span class="kw-name">modalert</span></td><td class="right">4,400</td><td class="right"><span class="diff diff-easy">27 Easy</span></td><td class="right">$0.97</td><td><span class="opp opp-q2">Comparison article</span></td></tr>
+      <tr><td><span class="kw-name">modafinil tablet</span></td><td class="right">6,600</td><td class="right"><span class="diff diff-med">50 Med</span></td><td class="right">$0</td><td><span class="opp opp-q2">Product page SEO</span></td></tr>
+      <tr><td><span class="kw-name">finasteride 1mg</span></td><td class="right">27,100</td><td class="right"><span class="diff diff-easy">39 Easy</span></td><td class="right">$0.19</td><td><span class="opp opp-q2">Product + blog</span></td></tr>
+      <tr><td><span class="kw-name">finasteride tablets</span></td><td class="right">12,100</td><td class="right"><span class="diff diff-easy">40 Easy</span></td><td class="right">$0</td><td><span class="opp opp-q2">Product page</span></td></tr>
+      <tr><td><span class="kw-name">study drugs</span></td><td class="right">1,300</td><td class="right"><span class="diff diff-easy">42 Easy</span></td><td class="right">$0.10</td><td><span class="opp opp-q2">Blog: legal study drugs</span></td></tr>
+      <tr><td><span class="kw-name">cognitive enhancers</span></td><td class="right">720</td><td class="right"><span class="diff diff-med">55 Med</span></td><td class="right">$0.11</td><td><span class="opp opp-q2">Blog article</span></td></tr>
+      <tr><td><span class="kw-name">nootropic drugs</span></td><td class="right">1,600</td><td class="right"><span class="diff diff-hard">83 Hard</span></td><td class="right">$0.09</td><td><span class="opp opp-q3">Long term</span></td></tr>
+      <tr><td><span class="kw-name">ozempic injection</span></td><td class="right">22,200</td><td class="right"><span class="diff diff-hard">77 Hard</span></td><td class="right">$22.23</td><td><span class="opp opp-q3">Long term / paid</span></td></tr>
+      <tr><td><span class="kw-name">weight loss medication</span></td><td class="right">18,100</td><td class="right"><span class="diff diff-hard">83 Hard</span></td><td class="right">$0.07</td><td><span class="opp opp-q3">Long term</span></td></tr>
+      <tr><td><span class="kw-name">is finasteride safe</span></td><td class="right">590</td><td class="right"><span class="diff diff-med">63 Med</span></td><td class="right">$0</td><td><span class="opp opp-q2">Blog: honest guide</span></td></tr>
+      <tr><td><span class="kw-name">topical finasteride</span></td><td class="right">3,600</td><td class="right"><span class="diff diff-easy">27 Easy</span></td><td class="right">$0</td><td><span class="opp opp-q2">Product + blog</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- TIER 3: Brand defence -->
+  <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#90b0e0;margin-bottom:10px;display:flex;align-items:center;gap:8px">
+    <span style="width:8px;height:8px;border-radius:50%;background:#90b0e0;flex-shrink:0"></span>
+    Tier 3 — Brand building & awareness keywords
+  </div>
+  <div style="overflow-x:auto">
+  <table class="data-table">
+    <thead>
+      <tr><th>Keyword</th><th class="right">Volume/mo</th><th class="right">KD</th><th>Why it matters</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="kw-name">biohacker facility</span></td><td class="right">210</td><td class="right"><span class="diff diff-easy">10 Easy</span></td><td>CPC $1.11 — shows commercial intent exists</td></tr>
+      <tr><td><span class="kw-name">online doctor consultation</span></td><td class="right">33,100</td><td class="right"><span class="diff diff-med">47 Med</span></td><td>Man Matters ranks #71 — gap for Arq</td></tr>
+      <tr><td><span class="kw-name">what is semaglutide</span></td><td class="right">170</td><td class="right"><span class="diff diff-hard">88 Hard</span></td><td>Top of funnel — own the education</td></tr>
+      <tr><td><span class="kw-name">is semaglutide available in india</span></td><td class="right">50</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td>Perfect Arq content — YES, here's how</td></tr>
+      <tr><td><span class="kw-name">what is bpc 157</span></td><td class="right">90</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td>Easiest win — zero competition</td></tr>
+      <tr><td><span class="kw-name">is telemedicine legal in india</span></td><td class="right">20</td><td class="right"><span class="diff diff-easy">0 Easy</span></td><td>Credibility + brand trust page</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- COMPETITORS -->
+<section class="section" id="competitors">
+  <div class="sec-eyebrow">03 · Competitor Analysis</div>
+  <h2 class="sec-title">What they rank for.<br><em>What they don't.</em></h2>
+
+  <div class="sec-body">Man Matters gets massive organic traffic — but for <strong>shampoo, derma rollers, and hair gummies.</strong> Not for prescription drugs. Not for biohacking. Not for modafinil or peptides. Their domain authority is high but their keyword relevance to Arq's customer is zero.</div>
+
+  <div style="margin:28px 0">
+    <div class="comp-row">
+      <div class="comp-domain">Man Matters</div>
+      <div class="comp-bar-wrap"><div class="comp-bar" style="width:100%"></div></div>
+      <div class="comp-num">Very high traffic</div>
+    </div>
+    <div style="font-size:12px;color:var(--cream-40);padding:0 0 12px 172px;font-style:italic">Top keywords: ketoconazole shampoo (301k), minoxidil (201k), derma roller (135k). Ranks #71 for "online doctor consultation" — their prescription offering is an afterthought.</div>
+
+    <div class="comp-row">
+      <div class="comp-domain">Traya.health</div>
+      <div class="comp-bar-wrap"><div class="comp-bar" style="width:80%"></div></div>
+      <div class="comp-num">High traffic</div>
+    </div>
+    <div style="font-size:12px;color:var(--cream-40);padding:0 0 12px 172px;font-style:italic">Top keywords: vitamin E capsule (368k), traya brand (165k). Entirely Ayurveda/supplement play. No prescription angle. No biohacker content. Can't touch Arq's territory.</div>
+
+    <div class="comp-row">
+      <div class="comp-domain">Qurist.in</div>
+      <div class="comp-bar-wrap"><div class="comp-bar" style="width:20%"></div></div>
+      <div class="comp-num">Low traffic</div>
+    </div>
+    <div style="font-size:12px;color:var(--cream-40);padding:0 0 12px 172px;font-style:italic">Top keywords: mostly "gold bee CBD" — a competitor brand. Their own SEO is weak. They rank for sleeping tablets and period pain, but not for any biohacker keywords. The cannabis prescription space is wide open.</div>
+
+    <div class="comp-row">
+      <div class="comp-domain">arq.clinic</div>
+      <div class="comp-bar-wrap"><div class="comp-bar" style="width:3%;background:var(--gold)"></div></div>
+      <div class="comp-num" style="color:var(--gold)">Not yet ranked</div>
+    </div>
+    <div style="font-size:12px;color:var(--cream-40);padding:0 0 0 172px;font-style:italic">New domain. Zero authority. But zero competition in the target keywords means authority matters less than content quality and relevance.</div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">The conclusion</div>
+    <div class="insight-text">Man Matters has domain authority but wrong content. Arq has no authority but perfect content opportunity. In a low-competition niche, <em>relevance beats authority.</em> Arq can rank for biohacker keywords that Man Matters never wrote about.</div>
+  </div>
+</section>
+
+<!-- CONTENT PLAN -->
+<section class="section" id="content">
+  <div class="sec-eyebrow">04 · Content Strategy</div>
+  <h2 class="sec-title">What to write<br><em>and why.</em></h2>
+
+  <div class="sec-body">
+    Two types of content. <strong>Product pages</strong> that rank for commercial intent searches ("buy modafinil india," "BPC-157 india"). And <strong>editorial blog posts</strong> that rank for informational searches and build brand trust. Both feed each other.
+  </div>
+
+  <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream-40);margin-bottom:14px">The blog: arq/protocol</div>
+
+  <div class="content-grid">
+
+    <div class="content-card">
+      <div class="cc-type ct-blog">High priority · Launch</div>
+      <div class="cc-title">Is Modafinil Legal in India? The Honest Answer.</div>
+      <div class="cc-meta">The question every biohacker is asking. The answer is yes, with a prescription. Arq is the answer. Rank for "modafinil prescription india," "buy modafinil india." Own the FAQ every grey market buyer is reading.</div>
+      <div class="cc-vol">Target: modafinil prescription india (90/mo) · buy modafinil india (70/mo) · KD 0</div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-type ct-comparison">High priority · Launch</div>
+      <div class="cc-title">Modafinil vs Armodafinil: Which One Should You Take?</div>
+      <div class="cc-meta">High commercial intent. The person searching this is ready to buy — they just need to pick. Arq sells both. This page converts directly. Comparison content + product CTA.</div>
+      <div class="cc-vol">Target: armodafinil vs modafinil (320/mo) · KD 38 · cpc $0</div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-type ct-guide">High priority · Launch</div>
+      <div class="cc-title">BPC-157 in India: What It Is, Is It Legal, Where to Get It</div>
+      <div class="cc-meta">590 searches/month for "BPC-157 india." KD 18 — very winnable. Nobody has written a good Indian-specific guide. This is Arq's single biggest organic SEO opportunity right now.</div>
+      <div class="cc-vol">Target: BPC-157 india (590/mo) · bpc 157 peptide (1,000/mo) · bpc 157 uses (590/mo)</div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-type ct-blog">High priority · Month 1</div>
+      <div class="cc-title">Generic Semaglutide in India: Everything You Need to Know</div>
+      <div class="cc-meta">Patent expired March 2026. Enormous searches for "ozempic" (165k) but most are informational. "Is semaglutide available in india" has KD 0. Arq owns this question with one well-written page.</div>
+      <div class="cc-vol">Target: is semaglutide available in india (50/mo) · semaglutide price india · KD 0</div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-type ct-guide">Month 1</div>
+      <div class="cc-title">TRT in India: How to Get Testosterone Prescribed Legally</div>
+      <div class="cc-meta">"Testosterone replacement therapy india" gets 90/mo at KD 0. There is no good content on this topic in India. First mover wins. Guide + product CTA. Blood test flow explained.</div>
+      <div class="cc-vol">Target: testosterone replacement therapy india (90/mo) · TRT india (50/mo)</div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-type ct-comparison">Month 1</div>
+      <div class="cc-title">Modalert vs Generic Modafinil: Is There a Difference?</div>
+      <div class="cc-meta">"Modalert 100" gets 18,100/month at KD 24. This is a massive audience of existing modafinil users. They know what they want. Arq gives them a legal, premium version of it.</div>
+      <div class="cc-vol">Target: modalert 100 (18,100/mo) · modalert (4,400/mo) · KD 24–27</div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-type ct-blog">Month 2</div>
+      <div class="cc-title">Finasteride in India: Dose, Side Effects, Where to Get It</div>
+      <div class="cc-meta">"Finasteride 1mg" gets 27,100/month. "Is finasteride safe" gets 590 at KD 63. The questions are real and the audience is large. A comprehensive, honest guide beats Man Matters' product-first content.</div>
+      <div class="cc-vol">Target: finasteride 1mg (27,100/mo) · is finasteride safe (590/mo) · KD 39–63</div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-type ct-guide">Month 2</div>
+      <div class="cc-title">Biohacking in India: The 2026 Starter Guide</div>
+      <div class="cc-meta">"Biohacking india" is 20/mo but KD 0. "Biohacking meaning" is 1,300/mo. The content builds brand identity and attracts the core Arq customer — the Huberman listener. Long-form, authoritative.</div>
+      <div class="cc-vol">Target: biohacking india (20/mo) · nootropics india (210/mo) · study drugs (1,300/mo)</div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-type ct-guide">Month 2</div>
+      <div class="cc-title">Is Telemedicine Legal in India? Can a Doctor Prescribe Online?</div>
+      <div class="cc-meta">Credibility page that answers the exact doubt holding Arq's customer back. "Is telemedicine legal in india" KD 0. Cites the 2020 Telemedicine Practice Guidelines. Converts doubters.</div>
+      <div class="cc-vol">Target: is telemedicine legal in india (20/mo) · online doctor prescription india (30/mo)</div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-type ct-blog">Month 3</div>
+      <div class="cc-title">Peter Attia's Longevity Stack: What's Legal in India?</div>
+      <div class="cc-meta">Cultural shortcut. Attia listeners are Arq's core customer. The article covers metformin, rapamycin, NAD+, berberine — and links to Arq products where available. Brand + SEO + conversion.</div>
+      <div class="cc-vol">Target: metformin longevity · longevity supplements india · naltrexone india (110/mo)</div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-type ct-guide">Month 3</div>
+      <div class="cc-title">Peptide Protocols in India: What's Available, What's Legal</div>
+      <div class="cc-meta">Comprehensive guide to the full peptide landscape — BPC-157, sermorelin, CJC-1295, TB-500. Arq as the featured source. Ranks for all peptide keywords simultaneously.</div>
+      <div class="cc-vol">Target: sermorelin india (20/mo) · BPC-157 side effects (480/mo) · peptide therapy</div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-type ct-comparison">Month 4</div>
+      <div class="cc-title">Man Matters vs Arq: Why Biohackers Choose Differently</div>
+      <div class="cc-meta">Comparison content for "man matters alternative" (no data but implied searches). Positions Arq's premium, biohacker-first model against Man Matters' mass-market approach. Converts their dissatisfied customers.</div>
+      <div class="cc-vol">Target: man matters alternative · online doctor consultation (33,100/mo)</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 6-MONTH CALENDAR -->
+<section class="section" id="calendar">
+  <div class="sec-eyebrow">05 · Content Calendar</div>
+  <h2 class="sec-title">6 months.<br><em>Week by week.</em></h2>
+  <div class="sec-body">One piece of content per week. Mix of product pages (commercial intent) and blog articles (informational). Product pages are faster to write, blog posts build authority over time.</div>
+
+  <!-- Month 1 -->
+  <div class="cal-month">
+    <div class="cal-month-title"><span class="cal-month-num">Month 1</span> Foundation — own every zero-competition keyword</div>
+    <div class="cal-items">
+      <div class="cal-item"><div class="cal-item-type ct-product">Product page</div><div><div class="cal-item-title">BPC-157 product page + India guide</div><div class="cal-item-kw">bpc 157 india · bpc 157 peptide · bpc 157 uses</div></div><div class="cal-item-vol">1,000–590 vol</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-blog">Blog</div><div><div class="cal-item-title">Is Modafinil Legal in India? The Complete Guide</div><div class="cal-item-kw">modafinil prescription india · buy modafinil india</div></div><div class="cal-item-vol">90–70 vol</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-comparison">Comparison</div><div><div class="cal-item-title">Modafinil vs Armodafinil — which should you take?</div><div class="cal-item-kw">armodafinil vs modafinil · armodafinil india</div></div><div class="cal-item-vol">320–40 vol</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-guide">Guide</div><div><div class="cal-item-title">Generic Semaglutide India — the complete 2026 guide</div><div class="cal-item-kw">is semaglutide available in india · semaglutide price india</div></div><div class="cal-item-vol">50–0 vol · KD 0</div></div>
+    </div>
+  </div>
+
+  <!-- Month 2 -->
+  <div class="cal-month">
+    <div class="cal-month-title"><span class="cal-month-num">Month 2</span> Performance — high-volume adjacent keywords</div>
+    <div class="cal-items">
+      <div class="cal-item"><div class="cal-item-type ct-product">Product page</div><div><div class="cal-item-title">Modalert vs legal modafinil — arq comparison</div><div class="cal-item-kw">modalert 100 (18,100) · modalert (4,400)</div></div><div class="cal-item-vol">18,100 vol</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-guide">Guide</div><div><div class="cal-item-title">TRT in India: Getting Testosterone Prescribed Legally</div><div class="cal-item-kw">testosterone replacement therapy india (90) · TRT india (50)</div></div><div class="cal-item-vol">90–50 vol</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-blog">Blog</div><div><div class="cal-item-title">Is Telemedicine Legal in India? (Yes — here's how)</div><div class="cal-item-kw">is telemedicine legal in india · online doctor prescription india</div></div><div class="cal-item-vol">20–30 vol · KD 0</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-guide">Guide</div><div><div class="cal-item-title">Finasteride in India: The Honest Hair Loss Guide</div><div class="cal-item-kw">finasteride 1mg (27,100) · is finasteride safe (590)</div></div><div class="cal-item-vol">27,100 vol</div></div>
+    </div>
+  </div>
+
+  <!-- Month 3 -->
+  <div class="cal-month">
+    <div class="cal-month-title"><span class="cal-month-num">Month 3</span> Authority — biohacker identity content</div>
+    <div class="cal-items">
+      <div class="cal-item"><div class="cal-item-type ct-blog">Blog</div><div><div class="cal-item-title">Biohacking India 2026: The Starter Guide</div><div class="cal-item-kw">biohacking india · nootropics india (210) · study drugs (1,300)</div></div><div class="cal-item-vol">1,300 vol</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-guide">Guide</div><div><div class="cal-item-title">Peptide Protocols in India: What's Legal, What Works</div><div class="cal-item-kw">sermorelin india · bpc 157 side effects (480) · peptide therapy</div></div><div class="cal-item-vol">480–590 vol</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-blog">Blog</div><div><div class="cal-item-title">Peter Attia's Longevity Stack: What's Legal in India</div><div class="cal-item-kw">naltrexone india (110) · metformin longevity</div></div><div class="cal-item-vol">110 vol</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-product">Product page</div><div><div class="cal-item-title">Finasteride + Minoxidil — the complete stack</div><div class="cal-item-kw">topical finasteride (3,600) · finasteride tablets (12,100)</div></div><div class="cal-item-vol">3,600–12,100 vol</div></div>
+    </div>
+  </div>
+
+  <!-- Month 4–6 summary -->
+  <div class="cal-month">
+    <div class="cal-month-title"><span class="cal-month-num">Month 4–6</span> Scale — long-form, competitive keywords, comparison content</div>
+    <div class="cal-items">
+      <div class="cal-item"><div class="cal-item-type ct-comparison">Comparison</div><div><div class="cal-item-title">Man Matters vs Arq — why biohackers choose differently</div><div class="cal-item-kw">online doctor consultation (33,100)</div></div><div class="cal-item-vol">33,100 vol</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-guide">Guide</div><div><div class="cal-item-title">What Is BPC-157? Complete India Guide (Science + Sourcing)</div><div class="cal-item-kw">what is bpc 157 (90) · how to take bpc 157 (20)</div></div><div class="cal-item-vol">90 vol · KD 0</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-blog">Blog</div><div><div class="cal-item-title">Smart Drugs in India: What's Legal, What Actually Works</div><div class="cal-item-kw">study drugs (1,300) · cognitive enhancers (720)</div></div><div class="cal-item-vol">1,300–720 vol</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-guide">Guide</div><div><div class="cal-item-title">THC and CBD in India: The Legal Guide (Vijaya Extract)</div><div class="cal-item-kw">THC oil india legal · CBD oil prescription india</div></div><div class="cal-item-vol">Growing fast</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-blog">Blog</div><div><div class="cal-item-title">Sermorelin vs HGH: Why the Peptide is Better (in India)</div><div class="cal-item-kw">sermorelin india (20) · growth hormone india</div></div><div class="cal-item-vol">Low vol, high intent</div></div>
+      <div class="cal-item"><div class="cal-item-type ct-comparison">Comparison</div><div><div class="cal-item-title">Ozempic vs Generic Semaglutide India: Full Comparison</div><div class="cal-item-kw">ozempic (165,000) — aspirational; target long-tail</div></div><div class="cal-item-vol">Long term</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAID SEARCH -->
+<section class="section" id="paid">
+  <div class="sec-eyebrow">06 · Paid Search Strategy</div>
+  <h2 class="sec-title">When to pay.<br><em>When not to.</em></h2>
+
+  <div class="sec-body">Most Arq keywords have <strong>CPC of $0</strong> — nobody is bidding. That's unusual and temporary. It means organic is the right play now. But a few categories warrant paid spend from day one.</div>
+
+  <div class="paid-card">
+    <div class="paid-card-header">
+      <div class="paid-card-name">Modafinil / Armodafinil</div>
+      <span class="paid-verdict pv-no">Don't bid yet</span>
+    </div>
+    <div class="paid-card-body">CPC is $0 on all modafinil keywords. Zero advertiser competition. Google likely restricts pharmaceutical advertising on these terms anyway. Organic is the play. Write great content. Rank for free.</div>
+  </div>
+
+  <div class="paid-card">
+    <div class="paid-card-header">
+      <div class="paid-card-name">Finasteride / Hair loss</div>
+      <span class="paid-verdict pv-later">Bid in Month 3</span>
+    </div>
+    <div class="paid-card-body">"Finasteride 1mg" CPC $0.19. "Minoxidil online" CPC $0.31. "Hairgrow tablet" CPC $0.18. Low CPCs, high commercial intent. Man Matters spends heavily here. Worth a ₹15,000/month test budget in Month 3 once the product pages are live and converting.</div>
+  </div>
+
+  <div class="paid-card">
+    <div class="paid-card-header">
+      <div class="paid-card-name">BPC-157 / Peptides</div>
+      <span class="paid-verdict pv-yes">Bid now — small budget</span>
+    </div>
+    <div class="paid-card-body">"BPC 157 uses" CPC $0.34. "BPC 157 peptide" CPC $0.22. "BPC 157 india" CPC $0.23. Very low CPC. High intent. Nobody else bidding. A ₹5,000/month budget captures every serious searcher. Run this from launch.</div>
+  </div>
+
+  <div class="paid-card">
+    <div class="paid-card-header">
+      <div class="paid-card-name">Semaglutide / Ozempic</div>
+      <span class="paid-verdict pv-no">Don't bid</span>
+    </div>
+    <div class="paid-card-body">"Ozempic injection" CPC $22.23. Completely uneconomic. Google may restrict GLP-1 ads. Organic content is the play here — "generic semaglutide india," "is semaglutide available in india" are zero-competition organic wins.</div>
+  </div>
+
+  <div class="paid-card">
+    <div class="paid-card-header">
+      <div class="paid-card-name">Online doctor / Telemedicine</div>
+      <span class="paid-verdict pv-later">Bid in Month 2</span>
+    </div>
+    <div class="paid-card-body">"Online prescription india" CPC $0.20. "Online doctor consultation" CPC $0.36. These are broad but targetable. Small budget, tight geo (Mumbai, Delhi, Bangalore). ₹10,000/month test.</div>
+  </div>
+
+  <div class="insight" style="margin-top:28px">
+    <div class="insight-label">Paid strategy summary</div>
+    <div class="insight-text">Month 1: ₹5,000/month on BPC-157 keywords only. Month 2: Add ₹10,000 on telemedicine/online prescription. Month 3: Add ₹15,000 on finasteride/hair loss. Total launch paid budget: <em>₹30,000/month maximum.</em> Organic is the real play.</div>
+  </div>
+</section>
+
+<!-- PRIORITIES -->
+<section class="section" id="priorities">
+  <div class="sec-eyebrow">07 · Priority Matrix</div>
+  <h2 class="sec-title">Do this.<br><em>In this order.</em></h2>
+
+  <div class="matrix">
+    <div class="matrix-cell">
+      <div class="matrix-cell-label green">✓ Do first — Month 1</div>
+      <div class="matrix-items">
+        <div class="matrix-item"><strong>BPC-157 India guide</strong> — 590/mo, KD 18, nobody owns it</div>
+        <div class="matrix-item"><strong>Is Modafinil Legal blog</strong> — highest commercial intent, KD 0</div>
+        <div class="matrix-item"><strong>Modafinil vs Armodafinil</strong> — 320/mo, ready-to-buy audience</div>
+        <div class="matrix-item"><strong>Semaglutide India guide</strong> — zero competition, post-patent timing</div>
+        <div class="matrix-item"><strong>Start BPC-157 Google Ads</strong> — CPC $0.23, ₹5k/month budget</div>
+      </div>
+    </div>
+    <div class="matrix-cell">
+      <div class="matrix-cell-label" style="color:var(--gold)">→ Month 2–3</div>
+      <div class="matrix-items">
+        <div class="matrix-item"><strong>Modalert vs legal modafinil</strong> — 18,100/mo, KD 24</div>
+        <div class="matrix-item"><strong>Finasteride guide</strong> — 27,100/mo, KD 39</div>
+        <div class="matrix-item"><strong>TRT in India guide</strong> — 90/mo but zero competition</div>
+        <div class="matrix-item"><strong>Biohacking India 2026</strong> — brand identity + nootropics traffic</div>
+        <div class="matrix-item"><strong>Telemedicine is legal</strong> — credibility + converts doubters</div>
+      </div>
+    </div>
+    <div class="matrix-cell">
+      <div class="matrix-cell-label" style="color:#90b0e0">→ Month 4–6</div>
+      <div class="matrix-items">
+        <div class="matrix-item"><strong>Man Matters vs Arq comparison</strong> — targets their frustrated users</div>
+        <div class="matrix-item"><strong>Peptide protocols master guide</strong> — owns the full cluster</div>
+        <div class="matrix-item"><strong>Peter Attia stack India</strong> — brand positioning + organic</div>
+        <div class="matrix-item"><strong>Study drugs India</strong> — 1,300/mo, academic season targeting</div>
+        <div class="matrix-item"><strong>THC/CBD Vijaya guide</strong> — growing awareness, legal angle</div>
+      </div>
+    </div>
+    <div class="matrix-cell">
+      <div class="matrix-cell-label dim">⊘ Don't bother yet</div>
+      <div class="matrix-items">
+        <div class="matrix-item"><strong>Ozempic / weight loss medication</strong> — KD 77–89, need authority first</div>
+        <div class="matrix-item"><strong>Nootropic drugs</strong> — KD 83, established players dominate</div>
+        <div class="matrix-item"><strong>Generic "medicine" / "pharmacy"</strong> — wrong audience</div>
+        <div class="matrix-item"><strong>Any Hindi keywords</strong> — wrong customer for Arq</div>
+        <div class="matrix-item"><strong>Paid for semaglutide/ozempic</strong> — CPC $22, uneconomic</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--cream-07);padding:24px 20px;margin-top:24px">
+    <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">The single most important thing</div>
+    <div style="font-family:var(--serif);font-size:20px;color:var(--cream);line-height:1.5">
+      Write the BPC-157 India guide this week. 590 searches/month, KD 18, CPC $0.23 — and <em>nobody has written a good one.</em> One well-optimised article can rank #1 in India within 60 days. That's the first organic customer arq gets for free.
+    </div>
+  </div>
+
+  <div style="margin-top:28px;padding:20px;background:var(--surface);border:1px solid var(--cream-07)">
+    <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream-40);margin-bottom:16px">Technical SEO checklist (do before any content)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="font-size:12px;color:var(--cream-70);display:flex;gap:8px"><span style="color:var(--gold)">→</span>Submit arq.clinic to Google Search Console</div>
+      <div style="font-size:12px;color:var(--cream-70);display:flex;gap:8px"><span style="color:var(--gold)">→</span>Create XML sitemap, submit to Google</div>
+      <div style="font-size:12px;color:var(--cream-70);display:flex;gap:8px"><span style="color:var(--gold)">→</span>Set up Google Analytics 4</div>
+      <div style="font-size:12px;color:var(--cream-70);display:flex;gap:8px"><span style="color:var(--gold)">→</span>Install Shopify SEO app (Smart SEO or SEOnt)</div>
+      <div style="font-size:12px;color:var(--cream-70);display:flex;gap:8px"><span style="color:var(--gold)">→</span>Meta titles: [Product] — prescribed online | arq.clinic</div>
+      <div style="font-size:12px;color:var(--cream-70);display:flex;gap:8px"><span style="color:var(--gold)">→</span>Canonical URLs on all product variants</div>
+      <div style="font-size:12px;color:var(--cream-70);display:flex;gap:8px"><span style="color:var(--gold)">→</span>Schema markup: MedicalWebPage, Drug, FAQPage</div>
+      <div style="font-size:12px;color:var(--cream-70);display:flex;gap:8px"><span style="color:var(--gold)">→</span>Page speed: aim for &lt;2.5s LCP on mobile</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- FOOTER -->
+<div style="border-top:1px solid var(--cream-07);padding:32px 20px;margin-top:0">
+  <div style="max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <div style="font-family:var(--serif);font-size:18px;color:var(--cream)">ar<span style="color:var(--gold)">q</span>.clinic</div>
+    <div style="font-family:var(--mono);font-size:7px;color:var(--cream-40);letter-spacing:0.08em;text-align:right;line-height:2">
+      SEO data sourced from SEMrush API · India (IN) database · April 2026<br>
+      Dear One Technologies Pvt Ltd · arq.clinic
+    </div>
+  </div>
+</div>
+
+<script>
+// Active nav
+const sections = document.querySelectorAll('section[id], div[id]');
+const links = document.querySelectorAll('.nav-link');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      const id = e.target.id;
+      links.forEach(l => {
+        l.classList.remove('on');
+        if(l.getAttribute('href')==='#'+id) {
+          l.classList.add('on');
+          l.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+        }
+      });
+    }
+  });
+}, {threshold:0.2, rootMargin:'-10% 0px -65% 0px'});
+sections.forEach(s => s.id && io.observe(s));
+</script>
+</body>
+</html>

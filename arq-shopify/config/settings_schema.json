@@ -1,0 +1,90 @@
+{
+  "name": "arq.clinic Theme Settings",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp number (with country code)",
+      "default": "+919999999999",
+      "info": "e.g. +919876543210"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_message",
+      "label": "Default WhatsApp greeting",
+      "default": "Hi, I want to get started with arq"
+    },
+    {
+      "type": "header",
+      "content": "Razorpay"
+    },
+    {
+      "type": "text",
+      "id": "razorpay_key_id",
+      "label": "Razorpay Key ID",
+      "info": "Live key from Razorpay dashboard. Never use test key in production."
+    },
+    {
+      "type": "header",
+      "content": "Announcement Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "announcement_active",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "Free delivery across Mumbai, Delhi & Bangalore · Doctor consultation included with every order"
+    },
+    {
+      "type": "header",
+      "content": "Homepage"
+    },
+    {
+      "type": "textarea",
+      "id": "featured_products",
+      "label": "Featured product handles (comma separated)",
+      "info": "e.g. modafinil,sildenafil,semaglutide"
+    },
+    {
+      "type": "header",
+      "content": "Clinical Settings"
+    },
+    {
+      "type": "text",
+      "id": "doctor_sla_hours",
+      "label": "Doctor callback SLA",
+      "default": "2",
+      "info": "Hours. Shown in UI copy."
+    },
+    {
+      "type": "text",
+      "id": "delivery_sla_hours",
+      "label": "Delivery SLA",
+      "default": "48",
+      "info": "Hours. Shown in UI copy."
+    },
+    {
+      "type": "header",
+      "content": "Social"
+    },
+    {
+      "type": "url",
+      "id": "social_instagram",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "social_youtube",
+      "label": "YouTube URL"
+    }
+  ]
+}

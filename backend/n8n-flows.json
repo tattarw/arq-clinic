@@ -1,0 +1,1081 @@
+{
+  "version": 1,
+  "workflows": [
+    {
+      "name": "New Order Flow",
+      "id": "new-order-flow",
+      "description": "Shopify webhook → Doctor assignment (round-robin) → WhatsApp notification to doctor → Callback scheduling → Prescription status tracking",
+      "nodes": [
+        {
+          "parameters": {
+            "events": "orders/create"
+          },
+          "name": "Shopify Webhook",
+          "type": "n8n-nodes-base.shopifyTrigger",
+          "typeVersion": 1,
+          "position": [100, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "INSERT INTO orders (shopify_order_id, customer_id, order_number, total_price, currency, order_status, created_at) VALUES ($1, $2, $3, $4, $5, $6, NOW()) RETURNING *;",
+            "queryParameters": "={{$node[\"Shopify Webhook\"].json[\"id\"]}},={{$node[\"Shopify Webhook\"].json[\"customer\"][\"id\"]}},={{$node[\"Shopify Webhook\"].json[\"order_number\"]}},={{$node[\"Shopify Webhook\"].json[\"total_price\"]}},={{$node[\"Shopify Webhook\"].json[\"currency\"]}},pending"
+          },
+          "name": "Store Order",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [300, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "SELECT id, specialty, availability_status, assigned_orders_count FROM doctors WHERE specialty = $1 AND availability_status = 'available' ORDER BY assigned_orders_count ASC LIMIT 1;",
+            "queryParameters": "={{$node[\"Store Order\"].json[0][\"specialty\"] || \"MBBS\"}}"
+          },
+          "name": "Get Next Doctor (Round-Robin)",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [500, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "INSERT INTO order_assignments (order_id, doctor_id, assigned_at, sla_deadline) VALUES ($1, $2, NOW(), NOW() + INTERVAL '2 hours') RETURNING *;",
+            "queryParameters": "={{$node[\"Store Order\"].json[0][\"id\"]}},={{$node[\"Get Next Doctor (Round-Robin)\"].json[0][\"id\"]}}"
+          },
+          "name": "Assign Doctor",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [700, 200]
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "={{$env.WHATSAPP_API_URL}}/messages",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.WHATSAPP_API_TOKEN}}"
+            },
+            "sendBody": true,
+            "bodyParameters": {
+              "messaging_product": "whatsapp",
+              "to": "={{$node[\"Get Next Doctor (Round-Robin)\"].json[0][\"phone_number\"]}}",
+              "type": "template",
+              "template": {
+                "name": "doctor_callback_notification",
+                "language": {
+                  "code": "en"
+                },
+                "parameters": {
+                  "body": {
+                    "parameters": [
+                      {
+                        "type": "text",
+                        "text": "={{$node[\"Store Order\"].json[0][\"customer_name\"]}}"
+                      },
+                      {
+                        "type": "text",
+                        "text": "={{$node[\"Store Order\"].json[0][\"order_number\"]}}"
+                      },
+                      {
+                        "type": "text",
+                        "text": "30 minutes"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "name": "Send Doctor Notification",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [900, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "INSERT INTO callback_schedules (order_id, doctor_id, scheduled_at, status) VALUES ($1, $2, NOW() + INTERVAL '30 minutes', 'scheduled') RETURNING *;",
+            "queryParameters": "={{$node[\"Store Order\"].json[0][\"id\"]}},={{$node[\"Get Next Doctor (Round-Robin)\"].json[0][\"id\"]}}"
+          },
+          "name": "Schedule Callback",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1100, 200]
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "={{$env.WHATSAPP_API_URL}}/messages",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.WHATSAPP_API_TOKEN}}"
+            },
+            "sendBody": true,
+            "bodyParameters": {
+              "messaging_product": "whatsapp",
+              "to": "={{$node[\"Store Order\"].json[0][\"customer_phone\"]}}",
+              "type": "template",
+              "template": {
+                "name": "order_confirmation",
+                "language": {
+                  "code": "en"
+                },
+                "parameters": {
+                  "body": {
+                    "parameters": [
+                      {
+                        "type": "text",
+                        "text": "={{$node[\"Store Order\"].json[0][\"order_number\"]}}"
+                      },
+                      {
+                        "type": "text",
+                        "text": "30 minutes"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "name": "Notify Customer",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [1300, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "UPDATE orders SET order_status = 'assigned' WHERE id = $1;",
+            "queryParameters": "={{$node[\"Store Order\"].json[0][\"id\"]}}"
+          },
+          "name": "Update Order Status",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1500, 200]
+        }
+      ],
+      "connections": {
+        "Shopify Webhook": {
+          "main": [[{ "node": "Store Order", "type": "main", "index": 0 }]]
+        },
+        "Store Order": {
+          "main": [[{ "node": "Get Next Doctor (Round-Robin)", "type": "main", "index": 0 }]]
+        },
+        "Get Next Doctor (Round-Robin)": {
+          "main": [[{ "node": "Assign Doctor", "type": "main", "index": 0 }]]
+        },
+        "Assign Doctor": {
+          "main": [[{ "node": "Send Doctor Notification", "type": "main", "index": 0 }]]
+        },
+        "Send Doctor Notification": {
+          "main": [[{ "node": "Schedule Callback", "type": "main", "index": 0 }]]
+        },
+        "Schedule Callback": {
+          "main": [[{ "node": "Notify Customer", "type": "main", "index": 0 }]]
+        },
+        "Notify Customer": {
+          "main": [[{ "node": "Update Order Status", "type": "main", "index": 0 }]]
+        }
+      }
+    },
+    {
+      "name": "Doctor Callback Flow",
+      "id": "doctor-callback-flow",
+      "description": "Doctor completes consult → E-prescription generated → Order approved/denied → WhatsApp notification to customer",
+      "nodes": [
+        {
+          "parameters": {
+            "events": "callback.completed"
+          },
+          "name": "Callback Webhook",
+          "type": "n8n-nodes-base.webhookTrigger",
+          "typeVersion": 1,
+          "position": [100, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "SELECT * FROM callback_schedules WHERE id = $1;",
+            "queryParameters": "={{$node[\"Callback Webhook\"].json[\"callback_id\"]}}"
+          },
+          "name": "Get Callback Details",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [300, 200]
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "={{$env.PRESCRIPTION_SERVICE_URL}}/generate",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.PRESCRIPTION_SERVICE_TOKEN}}"
+            },
+            "sendBody": true,
+            "bodyParameters": {
+              "order_id": "={{$node[\"Get Callback Details\"].json[0][\"order_id\"]}}",
+              "doctor_id": "={{$node[\"Get Callback Details\"].json[0][\"doctor_id\"]}}",
+              "medicines": "={{$node[\"Callback Webhook\"].json[\"medicines\"]}}",
+              "dosage": "={{$node[\"Callback Webhook\"].json[\"dosage\"]}}",
+              "duration": "={{$node[\"Callback Webhook\"].json[\"duration\"]}}",
+              "notes": "={{$node[\"Callback Webhook\"].json[\"notes\"]}}"
+            }
+          },
+          "name": "Generate E-Prescription",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [500, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "INSERT INTO prescriptions (order_id, doctor_id, prescription_url, status, created_at) VALUES ($1, $2, $3, 'pending_approval', NOW()) RETURNING *;",
+            "queryParameters": "={{$node[\"Get Callback Details\"].json[0][\"order_id\"]}},={{$node[\"Get Callback Details\"].json[0][\"doctor_id\"]}},={{$node[\"Generate E-Prescription\"].json[\"prescription_url\"]}}"
+          },
+          "name": "Store Prescription",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [700, 200]
+        },
+        {
+          "parameters": {
+            "conditions": {
+              "conditions": [
+                {
+                  "value1": "={{$node[\"Callback Webhook\"].json[\"approval_status\"]}}",
+                  "condition": "equals",
+                  "value2": "approved"
+                }
+              ]
+            }
+          },
+          "name": "Check Approval Status",
+          "type": "n8n-nodes-base.if",
+          "typeVersion": 1,
+          "position": [900, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "UPDATE orders SET order_status = 'approved' WHERE id = $1; UPDATE prescriptions SET status = 'approved' WHERE order_id = $1;",
+            "queryParameters": "={{$node[\"Store Prescription\"].json[0][\"order_id\"]}}"
+          },
+          "name": "Update Status - Approved",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1100, 150]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "UPDATE orders SET order_status = 'denied', denial_reason = $2 WHERE id = $1; UPDATE prescriptions SET status = 'rejected', rejection_reason = $2 WHERE order_id = $1;",
+            "queryParameters": "={{$node[\"Store Prescription\"].json[0][\"order_id\"]}},={{$node[\"Callback Webhook\"].json[\"denial_reason\"]}}"
+          },
+          "name": "Update Status - Denied",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1100, 250]
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "={{$env.WHATSAPP_API_URL}}/messages",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.WHATSAPP_API_TOKEN}}"
+            },
+            "sendBody": true,
+            "bodyParameters": {
+              "messaging_product": "whatsapp",
+              "to": "={{$node[\"Get Callback Details\"].json[0][\"customer_phone\"]}}",
+              "type": "template",
+              "template": {
+                "name": "prescription_approved_shipping",
+                "language": {
+                  "code": "en"
+                },
+                "parameters": {
+                  "body": {
+                    "parameters": [
+                      {
+                        "type": "text",
+                        "text": "={{$node[\"Get Callback Details\"].json[0][\"order_number\"]}}"
+                      },
+                      {
+                        "type": "text",
+                        "text": "1-2 business days"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "name": "Notify - Prescription Approved",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [1300, 150]
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "={{$env.WHATSAPP_API_URL}}/messages",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.WHATSAPP_API_TOKEN}}"
+            },
+            "sendBody": true,
+            "bodyParameters": {
+              "messaging_product": "whatsapp",
+              "to": "={{$node[\"Get Callback Details\"].json[0][\"customer_phone\"]}}",
+              "type": "template",
+              "template": {
+                "name": "prescription_denied",
+                "language": {
+                  "code": "en"
+                },
+                "parameters": {
+                  "body": {
+                    "parameters": [
+                      {
+                        "type": "text",
+                        "text": "={{$node[\"Callback Webhook\"].json[\"denial_reason\"]}}"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "name": "Notify - Prescription Denied",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [1300, 250]
+        }
+      ],
+      "connections": {
+        "Callback Webhook": {
+          "main": [[{ "node": "Get Callback Details", "type": "main", "index": 0 }]]
+        },
+        "Get Callback Details": {
+          "main": [[{ "node": "Generate E-Prescription", "type": "main", "index": 0 }]]
+        },
+        "Generate E-Prescription": {
+          "main": [[{ "node": "Store Prescription", "type": "main", "index": 0 }]]
+        },
+        "Store Prescription": {
+          "main": [[{ "node": "Check Approval Status", "type": "main", "index": 0 }]]
+        },
+        "Check Approval Status": {
+          "main": [
+            [{ "node": "Update Status - Approved", "type": "main", "index": 0 }],
+            [{ "node": "Update Status - Denied", "type": "main", "index": 0 }]
+          ]
+        },
+        "Update Status - Approved": {
+          "main": [[{ "node": "Notify - Prescription Approved", "type": "main", "index": 0 }]]
+        },
+        "Update Status - Denied": {
+          "main": [[{ "node": "Notify - Prescription Denied", "type": "main", "index": 0 }]]
+        }
+      }
+    },
+    {
+      "name": "Fulfillment Flow",
+      "id": "fulfillment-flow",
+      "description": "Prescription approved → Shipping label generated → Tracking update → Delivery confirmation",
+      "nodes": [
+        {
+          "parameters": {
+            "events": "order.approved"
+          },
+          "name": "Order Approved Webhook",
+          "type": "n8n-nodes-base.webhookTrigger",
+          "typeVersion": 1,
+          "position": [100, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "SELECT o.*, oi.product_id, oi.quantity FROM orders o JOIN order_items oi ON o.id = oi.order_id WHERE o.id = $1;",
+            "queryParameters": "={{$node[\"Order Approved Webhook\"].json[\"order_id\"]}}"
+          },
+          "name": "Get Order Details",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [300, 200]
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "={{$env.FULFILLMENT_API_URL}}/shipments/create",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.FULFILLMENT_API_TOKEN}}"
+            },
+            "sendBody": true,
+            "bodyParameters": {
+              "order_id": "={{$node[\"Get Order Details\"].json[0][\"id\"]}}",
+              "customer_name": "={{$node[\"Get Order Details\"].json[0][\"customer_name\"]}}",
+              "customer_phone": "={{$node[\"Get Order Details\"].json[0][\"customer_phone\"]}}",
+              "shipping_address": "={{$node[\"Get Order Details\"].json[0][\"shipping_address\"]}}",
+              "items": "={{$node[\"Get Order Details\"].json}}"
+            }
+          },
+          "name": "Generate Shipping Label",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [500, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "INSERT INTO shipments (order_id, tracking_number, carrier, status, label_url, created_at) VALUES ($1, $2, $3, 'label_generated', $4, NOW()) RETURNING *;",
+            "queryParameters": "={{$node[\"Get Order Details\"].json[0][\"id\"]}},={{$node[\"Generate Shipping Label\"].json[\"tracking_number\"]}},={{$node[\"Generate Shipping Label\"].json[\"carrier\"]}},={{$node[\"Generate Shipping Label\"].json[\"label_url\"]}}"
+          },
+          "name": "Store Shipment",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [700, 200]
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "={{$env.WHATSAPP_API_URL}}/messages",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.WHATSAPP_API_TOKEN}}"
+            },
+            "sendBody": true,
+            "bodyParameters": {
+              "messaging_product": "whatsapp",
+              "to": "={{$node[\"Get Order Details\"].json[0][\"customer_phone\"]}}",
+              "type": "template",
+              "template": {
+                "name": "shipment_created",
+                "language": {
+                  "code": "en"
+                },
+                "parameters": {
+                  "body": {
+                    "parameters": [
+                      {
+                        "type": "text",
+                        "text": "={{$node[\"Store Shipment\"].json[0][\"tracking_number\"]}}"
+                      },
+                      {
+                        "type": "text",
+                        "text": "={{$node[\"Store Shipment\"].json[0][\"carrier\"]}}"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "name": "Notify - Shipment Created",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [900, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "UPDATE orders SET order_status = 'shipped', shipped_at = NOW() WHERE id = $1;",
+            "queryParameters": "={{$node[\"Get Order Details\"].json[0][\"id\"]}}"
+          },
+          "name": "Update Order Status",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1100, 200]
+        },
+        {
+          "parameters": {
+            "interval": [30, "minutes"]
+          },
+          "name": "Poll Tracking Status",
+          "type": "n8n-nodes-base.interval",
+          "typeVersion": 1,
+          "position": [1300, 200]
+        },
+        {
+          "parameters": {
+            "method": "GET",
+            "url": "={{$env.FULFILLMENT_API_URL}}/shipments/{{$node[\"Store Shipment\"].json[0][\"tracking_number\"]}}/status",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.FULFILLMENT_API_TOKEN}}"
+            }
+          },
+          "name": "Get Tracking Update",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [1500, 200]
+        },
+        {
+          "parameters": {
+            "conditions": {
+              "conditions": [
+                {
+                  "value1": "={{$node[\"Get Tracking Update\"].json[\"status\"]}}",
+                  "condition": "equals",
+                  "value2": "delivered"
+                }
+              ]
+            }
+          },
+          "name": "Check Delivery Status",
+          "type": "n8n-nodes-base.if",
+          "typeVersion": 1,
+          "position": [1700, 200]
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "={{$env.WHATSAPP_API_URL}}/messages",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.WHATSAPP_API_TOKEN}}"
+            },
+            "sendBody": true,
+            "bodyParameters": {
+              "messaging_product": "whatsapp",
+              "to": "={{$node[\"Get Order Details\"].json[0][\"customer_phone\"]}}",
+              "type": "template",
+              "template": {
+                "name": "delivery_confirmation",
+                "language": {
+                  "code": "en"
+                },
+                "parameters": {
+                  "body": {
+                    "parameters": [
+                      {
+                        "type": "text",
+                        "text": "={{$node[\"Get Order Details\"].json[0][\"order_number\"]}}"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "name": "Notify - Delivery Confirmed",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [1900, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "UPDATE orders SET order_status = 'delivered', delivered_at = NOW() WHERE id = $1;",
+            "queryParameters": "={{$node[\"Get Order Details\"].json[0][\"id\"]}}"
+          },
+          "name": "Mark Delivered",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [2100, 200]
+        }
+      ],
+      "connections": {
+        "Order Approved Webhook": {
+          "main": [[{ "node": "Get Order Details", "type": "main", "index": 0 }]]
+        },
+        "Get Order Details": {
+          "main": [[{ "node": "Generate Shipping Label", "type": "main", "index": 0 }]]
+        },
+        "Generate Shipping Label": {
+          "main": [[{ "node": "Store Shipment", "type": "main", "index": 0 }]]
+        },
+        "Store Shipment": {
+          "main": [[{ "node": "Notify - Shipment Created", "type": "main", "index": 0 }]]
+        },
+        "Notify - Shipment Created": {
+          "main": [[{ "node": "Update Order Status", "type": "main", "index": 0 }]]
+        },
+        "Update Order Status": {
+          "main": [[{ "node": "Poll Tracking Status", "type": "main", "index": 0 }]]
+        },
+        "Poll Tracking Status": {
+          "main": [[{ "node": "Get Tracking Update", "type": "main", "index": 0 }]]
+        },
+        "Get Tracking Update": {
+          "main": [[{ "node": "Check Delivery Status", "type": "main", "index": 0 }]]
+        },
+        "Check Delivery Status": {
+          "main": [[{ "node": "Notify - Delivery Confirmed", "type": "main", "index": 0 }]]
+        },
+        "Notify - Delivery Confirmed": {
+          "main": [[{ "node": "Mark Delivered", "type": "main", "index": 0 }]]
+        }
+      }
+    },
+    {
+      "name": "Refill Flow",
+      "id": "refill-flow",
+      "description": "Day 25 reminder → Customer confirms/skips → Auto-reorder if confirmed → Doctor re-verification (every 3rd refill)",
+      "nodes": [
+        {
+          "parameters": {
+            "cronExpression": "0 10 * * *"
+          },
+          "name": "Daily Check for Refills",
+          "type": "n8n-nodes-base.cron",
+          "typeVersion": 1,
+          "position": [100, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "SELECT s.*, u.phone_number, p.id as prescription_id FROM subscriptions s JOIN users u ON s.customer_id = u.id JOIN orders o ON s.id = o.subscription_id JOIN prescriptions p ON o.id = p.order_id WHERE DATE(s.next_refill_date) = CURRENT_DATE - INTERVAL '5 days' AND s.status = 'active';",
+            "queryParameters": ""
+          },
+          "name": "Get Refills Due in 5 Days",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [300, 200]
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "={{$env.WHATSAPP_API_URL}}/messages",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.WHATSAPP_API_TOKEN}}"
+            },
+            "sendBody": true,
+            "bodyParameters": {
+              "messaging_product": "whatsapp",
+              "to": "={{$node[\"Get Refills Due in 5 Days\"].json[0][\"phone_number\"]}}",
+              "type": "template",
+              "template": {
+                "name": "refill_reminder_day25",
+                "language": {
+                  "code": "en"
+                },
+                "parameters": {
+                  "body": {
+                    "parameters": [
+                      {
+                        "type": "text",
+                        "text": "5 days"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "name": "Send Refill Reminder",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [500, 200]
+        },
+        {
+          "parameters": {
+            "events": "refill.confirmed"
+          },
+          "name": "Refill Confirmed Webhook",
+          "type": "n8n-nodes-base.webhookTrigger",
+          "typeVersion": 1,
+          "position": [700, 150]
+        },
+        {
+          "parameters": {
+            "events": "refill.skipped"
+          },
+          "name": "Refill Skipped Webhook",
+          "type": "n8n-nodes-base.webhookTrigger",
+          "typeVersion": 1,
+          "position": [700, 250]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "SELECT refill_count FROM subscriptions WHERE id = $1;",
+            "queryParameters": "={{$node[\"Refill Confirmed Webhook\"].json[\"subscription_id\"]}}"
+          },
+          "name": "Check Refill Count",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [900, 150]
+        },
+        {
+          "parameters": {
+            "conditions": {
+              "conditions": [
+                {
+                  "value1": "={{$node[\"Check Refill Count\"].json[0][\"refill_count\"] % 3}}",
+                  "condition": "equals",
+                  "value2": "0"
+                }
+              ]
+            }
+          },
+          "name": "Is 3rd Refill?",
+          "type": "n8n-nodes-base.if",
+          "typeVersion": 1,
+          "position": [1100, 150]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "INSERT INTO orders (customer_id, subscription_id, order_status, refill_order, created_at) VALUES ($1, $2, 'pending', true, NOW()) RETURNING id;",
+            "queryParameters": "={{$node[\"Refill Confirmed Webhook\"].json[\"customer_id\"]}},={{$node[\"Refill Confirmed Webhook\"].json[\"subscription_id\"]}}"
+          },
+          "name": "Auto Create Refill Order",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1100, 250]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "SELECT doctor_id FROM prescriptions WHERE subscription_id = $1 ORDER BY created_at DESC LIMIT 1;",
+            "queryParameters": "={{$node[\"Refill Confirmed Webhook\"].json[\"subscription_id\"]}}"
+          },
+          "name": "Get Original Doctor",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1300, 150]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "INSERT INTO doctor_verifications (order_id, doctor_id, verification_status, created_at) VALUES ($1, $2, 'pending', NOW()) RETURNING *;",
+            "queryParameters": "={{$node[\"Auto Create Refill Order\"].json[0][\"id\"]}},={{$node[\"Get Original Doctor\"].json[0][\"doctor_id\"]}}"
+          },
+          "name": "Create Doctor Verification Task",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1500, 150]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "UPDATE subscriptions SET refill_count = refill_count + 1, next_refill_date = CURRENT_DATE + INTERVAL '30 days' WHERE id = $1;",
+            "queryParameters": "={{$node[\"Refill Confirmed Webhook\"].json[\"subscription_id\"]}}"
+          },
+          "name": "Update Subscription",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1700, 150]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "UPDATE subscriptions SET next_refill_date = CURRENT_DATE + INTERVAL '30 days' WHERE id = $1;",
+            "queryParameters": "={{$node[\"Refill Skipped Webhook\"].json[\"subscription_id\"]}}"
+          },
+          "name": "Update Subscription - Skipped",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1000, 250]
+        }
+      ],
+      "connections": {
+        "Daily Check for Refills": {
+          "main": [[{ "node": "Get Refills Due in 5 Days", "type": "main", "index": 0 }]]
+        },
+        "Get Refills Due in 5 Days": {
+          "main": [[{ "node": "Send Refill Reminder", "type": "main", "index": 0 }]]
+        },
+        "Refill Confirmed Webhook": {
+          "main": [[{ "node": "Check Refill Count", "type": "main", "index": 0 }]]
+        },
+        "Refill Skipped Webhook": {
+          "main": [[{ "node": "Update Subscription - Skipped", "type": "main", "index": 0 }]]
+        },
+        "Check Refill Count": {
+          "main": [
+            [{ "node": "Is 3rd Refill?", "type": "main", "index": 0 }],
+            [{ "node": "Auto Create Refill Order", "type": "main", "index": 0 }]
+          ]
+        },
+        "Is 3rd Refill?": {
+          "main": [[{ "node": "Get Original Doctor", "type": "main", "index": 0 }]]
+        },
+        "Get Original Doctor": {
+          "main": [[{ "node": "Create Doctor Verification Task", "type": "main", "index": 0 }]]
+        },
+        "Create Doctor Verification Task": {
+          "main": [[{ "node": "Update Subscription", "type": "main", "index": 0 }]]
+        },
+        "Auto Create Refill Order": {
+          "main": [[{ "node": "Update Subscription", "type": "main", "index": 0 }]]
+        }
+      }
+    },
+    {
+      "name": "Win-Back Flow",
+      "id": "winback-flow",
+      "description": "Churned subscriber → Day 7 follow-up → Day 14 offer → Day 30 final reach-out",
+      "nodes": [
+        {
+          "parameters": {
+            "events": "subscription.cancelled"
+          },
+          "name": "Subscription Cancelled Webhook",
+          "type": "n8n-nodes-base.webhookTrigger",
+          "typeVersion": 1,
+          "position": [100, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "SELECT * FROM users WHERE id = $1;",
+            "queryParameters": "={{$node[\"Subscription Cancelled Webhook\"].json[\"customer_id\"]}}"
+          },
+          "name": "Get Customer Details",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [300, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "INSERT INTO winback_campaigns (customer_id, campaign_stage, created_at, stage_1_scheduled_at) VALUES ($1, 'stage_1', NOW(), NOW() + INTERVAL '7 days') RETURNING *;",
+            "queryParameters": "={{$node[\"Get Customer Details\"].json[0][\"id\"]}}"
+          },
+          "name": "Create Winback Campaign",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [500, 200]
+        },
+        {
+          "parameters": {
+            "cronExpression": "0 10 * * *"
+          },
+          "name": "Check Winback Schedule",
+          "type": "n8n-nodes-base.cron",
+          "typeVersion": 1,
+          "position": [700, 200]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "SELECT * FROM winback_campaigns WHERE campaign_stage = 'stage_1' AND stage_1_scheduled_at <= NOW();",
+            "queryParameters": ""
+          },
+          "name": "Get Stage 1 Campaigns",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [900, 200]
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "={{$env.WHATSAPP_API_URL}}/messages",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.WHATSAPP_API_TOKEN}}"
+            },
+            "sendBody": true,
+            "bodyParameters": {
+              "messaging_product": "whatsapp",
+              "to": "={{$node[\"Get Stage 1 Campaigns\"].json[0][\"customer_phone\"]}}",
+              "type": "template",
+              "template": {
+                "name": "winback_day7",
+                "language": {
+                  "code": "en"
+                },
+                "parameters": {
+                  "body": {
+                    "parameters": [
+                      {
+                        "type": "text",
+                        "text": "={{$node[\"Get Stage 1 Campaigns\"].json[0][\"customer_name\"]}}"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "name": "Send Day 7 Message",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [1100, 150]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "UPDATE winback_campaigns SET campaign_stage = 'stage_2', stage_2_scheduled_at = NOW() + INTERVAL '7 days' WHERE id = $1;",
+            "queryParameters": "={{$node[\"Get Stage 1 Campaigns\"].json[0][\"id\"]}}"
+          },
+          "name": "Move to Stage 2",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1300, 150]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "SELECT * FROM winback_campaigns WHERE campaign_stage = 'stage_2' AND stage_2_scheduled_at <= NOW();",
+            "queryParameters": ""
+          },
+          "name": "Get Stage 2 Campaigns",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [900, 300]
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "={{$env.WHATSAPP_API_URL}}/messages",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.WHATSAPP_API_TOKEN}}"
+            },
+            "sendBody": true,
+            "bodyParameters": {
+              "messaging_product": "whatsapp",
+              "to": "={{$node[\"Get Stage 2 Campaigns\"].json[0][\"customer_phone\"]}}",
+              "type": "template",
+              "template": {
+                "name": "winback_day14",
+                "language": {
+                  "code": "en"
+                },
+                "parameters": {
+                  "body": {
+                    "parameters": [
+                      {
+                        "type": "text",
+                        "text": "20% discount"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "name": "Send Day 14 Offer",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [1100, 300]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "UPDATE winback_campaigns SET campaign_stage = 'stage_3', stage_3_scheduled_at = NOW() + INTERVAL '16 days' WHERE id = $1;",
+            "queryParameters": "={{$node[\"Get Stage 2 Campaigns\"].json[0][\"id\"]}}"
+          },
+          "name": "Move to Stage 3",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1300, 300]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "SELECT * FROM winback_campaigns WHERE campaign_stage = 'stage_3' AND stage_3_scheduled_at <= NOW();",
+            "queryParameters": ""
+          },
+          "name": "Get Stage 3 Campaigns",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [900, 450]
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "={{$env.WHATSAPP_API_URL}}/messages",
+            "authentication": "bearerToken",
+            "sendHeaders": true,
+            "headerParameters": {
+              "Authorization": "={{$env.WHATSAPP_API_TOKEN}}"
+            },
+            "sendBody": true,
+            "bodyParameters": {
+              "messaging_product": "whatsapp",
+              "to": "={{$node[\"Get Stage 3 Campaigns\"].json[0][\"customer_phone\"]}}",
+              "type": "template",
+              "template": {
+                "name": "winback_day30",
+                "language": {
+                  "code": "en"
+                },
+                "parameters": {
+                  "body": {
+                    "parameters": [
+                      {
+                        "type": "text",
+                        "text": "{{$node[\"Get Stage 3 Campaigns\"].json[0][\"customer_name\"]}}"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "name": "Send Day 30 Final Offer",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4,
+          "position": [1100, 450]
+        },
+        {
+          "parameters": {
+            "operation": "executeQuery",
+            "query": "UPDATE winback_campaigns SET campaign_stage = 'completed', completed_at = NOW() WHERE id = $1;",
+            "queryParameters": "={{$node[\"Get Stage 3 Campaigns\"].json[0][\"id\"]}}"
+          },
+          "name": "Mark Campaign Complete",
+          "type": "n8n-nodes-base.postgres",
+          "typeVersion": 1,
+          "position": [1300, 450]
+        }
+      ],
+      "connections": {
+        "Subscription Cancelled Webhook": {
+          "main": [[{ "node": "Get Customer Details", "type": "main", "index": 0 }]]
+        },
+        "Get Customer Details": {
+          "main": [[{ "node": "Create Winback Campaign", "type": "main", "index": 0 }]]
+        },
+        "Create Winback Campaign": {
+          "main": []
+        },
+        "Check Winback Schedule": {
+          "main": [
+            [{ "node": "Get Stage 1 Campaigns", "type": "main", "index": 0 }],
+            [{ "node": "Get Stage 2 Campaigns", "type": "main", "index": 0 }],
+            [{ "node": "Get Stage 3 Campaigns", "type": "main", "index": 0 }]
+          ]
+        },
+        "Get Stage 1 Campaigns": {
+          "main": [[{ "node": "Send Day 7 Message", "type": "main", "index": 0 }]]
+        },
+        "Send Day 7 Message": {
+          "main": [[{ "node": "Move to Stage 2", "type": "main", "index": 0 }]]
+        },
+        "Get Stage 2 Campaigns": {
+          "main": [[{ "node": "Send Day 14 Offer", "type": "main", "index": 0 }]]
+        },
+        "Send Day 14 Offer": {
+          "main": [[{ "node": "Move to Stage 3", "type": "main", "index": 0 }]]
+        },
+        "Get Stage 3 Campaigns": {
+          "main": [[{ "node": "Send Day 30 Final Offer", "type": "main", "index": 0 }]]
+        },
+        "Send Day 30 Final Offer": {
+          "main": [[{ "node": "Mark Campaign Complete", "type": "main", "index": 0 }]]
+        }
+      }
+    }
+  ]
+}

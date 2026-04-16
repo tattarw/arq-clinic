@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Intake Form - arq.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #111;
+            --card: #141414;
+            --gold: #c9a050;
+            --white: #e8e4dd;
+            --border: rgba(201, 160, 80, 0.15);
+            --gold-glow: 0 0 20px rgba(201, 160, 80, 0.3);
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2'/%3E%3C/filter%3E%3Crect width='100' height='100' fill='%23050505' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 0 max(20px, env(safe-area-inset-left));
+            padding-right: max(20px, env(safe-area-inset-right));
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            z-index: 2;
+        }
+
+        .nav-logo:hover {
+            opacity: 0.8;
+            transition: opacity 0.3s var(--ease);
+        }
+
+        .nav-back {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            transition: all 0.3s var(--ease);
+            z-index: 2;
+        }
+
+        .nav-back:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: var(--gold-glow);
+        }
+
+        /* Main Container */
+        main {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            margin-top: 70px;
+            padding: 40px max(20px, env(safe-area-inset-left));
+            padding-right: max(20px, env(safe-area-inset-right));
+            padding-bottom: max(60px, calc(40px + env(safe-area-inset-bottom)));
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Progress Bar */
+        .progress-wrapper {
+            margin-bottom: 50px;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: rgba(201, 160, 80, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), rgba(201, 160, 80, 0.7));
+            width: 0%;
+            transition: width 0.6s var(--ease);
+            border-radius: 2px;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .progress-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(201, 160, 80, 0.1);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--white);
+            transition: all 0.3s var(--ease);
+        }
+
+        .progress-step.active .progress-dot {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--bg);
+            box-shadow: var(--gold-glow);
+        }
+
+        .progress-step.completed .progress-dot {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--bg);
+        }
+
+        .progress-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(232, 228, 221, 0.6);
+            text-align: center;
+            transition: color 0.3s var(--ease);
+            max-width: 80px;
+        }
+
+        .progress-step.active .progress-label,
+        .progress-step.completed .progress-label {
+            color: var(--gold);
+        }
+
+        /* Form Wrapper */
+        .form-wrapper {
+            position: relative;
+        }
+
+        .form-step {
+            opacity: 0;
+            transform: translateX(100px);
+            pointer-events: none;
+            transition: all 0.5s var(--ease);
+            position: absolute;
+            width: 100%;
+        }
+
+        .form-step.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+            position: relative;
+        }
+
+        .form-step.exit-left {
+            transform: translateX(-100px);
+        }
+
+        /* Card Styles */
+        .form-card {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        .form-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .form-card .subtitle {
+            font-size: 14px;
+            color: rgba(232, 228, 221, 0.6);
+            margin-bottom: 30px;
+        }
+
+        /* Form Fields */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: var(--white);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(232, 228, 221, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s var(--ease);
+        }
+
+        input[type="text"]::placeholder,
+        input[type="email"]::placeholder,
+        input[type="number"]::placeholder,
+        textarea::placeholder {
+            color: rgba(232, 228, 221, 0.4);
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(232, 228, 221, 0.08);
+            box-shadow: var(--gold-glow);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Pill Buttons */
+        .pill-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            padding: 10px 20px;
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            background: transparent;
+            color: var(--white);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
+            font-size: 14px;
+            white-space: nowrap;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pill:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .pill.active {
+            background: var(--gold);
+            color: var(--bg);
+            border-color: var(--gold);
+            box-shadow: var(--gold-glow);
+        }
+
+        /* Checkbox Grid */
+        .checkbox-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(232, 228, 221, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
+        }
+
+        .checkbox-item:hover {
+            background: rgba(201, 160, 80, 0.05);
+            border-color: var(--gold);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--gold);
+            min-width: 20px;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        /* Multi-select Grid */
+        .multi-select-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .multi-select-item {
+            position: relative;
+        }
+
+        .multi-select-item input[type="checkbox"] {
+            display: none;
+        }
+
+        .multi-select-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(232, 228, 221, 0.02);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
+            font-weight: 500;
+        }
+
+        .multi-select-item input[type="checkbox"]:checked + .multi-select-label {
+            background: rgba(201, 160, 80, 0.15);
+            border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: inset 0 0 10px rgba(201, 160, 80, 0.1);
+        }
+
+        /* Dropdown Row */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-row-3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        /* Select Dropdowns */
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23c9a050' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+        }
+
+        /* Slider */
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(201, 160, 80, 0.2);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+            box-shadow: var(--gold-glow);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+            border: none;
+            box-shadow: var(--gold-glow);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 12px;
+            color: rgba(232, 228, 221, 0.6);
+        }
+
+        .slider-value {
+            text-align: center;
+            font-weight: 600;
+            color: var(--gold);
+            margin-top: 12px;
+        }
+
+        /* BMI Display */
+        .bmi-display {
+            background: rgba(201, 160, 80, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .bmi-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .bmi-category {
+            font-size: 12px;
+            color: rgba(232, 228, 221, 0.6);
+            margin-top: 4px;
+        }
+
+        /* Buttons */
+        .form-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 50px;
+            justify-content: space-between;
+        }
+
+        button {
+            flex: 1;
+            padding: 16px 24px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            box-shadow: var(--gold-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-disabled:hover {
+            background: var(--gold);
+            transform: none;
+        }
+
+        /* Review Step */
+        .review-section {
+            background: rgba(201, 160, 80, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .review-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .review-section .edit-btn {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 6px 12px;
+            font-size: 12px;
+            flex: 0;
+            margin: 0;
+        }
+
+        .review-section .edit-btn:hover {
+            background: rgba(201, 160, 80, 0.1);
+        }
+
+        .review-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(201, 160, 80, 0.1);
+            font-size: 14px;
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-label {
+            color: rgba(232, 228, 221, 0.6);
+        }
+
+        .review-value {
+            color: var(--white);
+            font-weight: 500;
+            text-align: right;
+            flex: 1;
+            padding-left: 16px;
+        }
+
+        /* Consent */
+        .consent-wrapper {
+            background: rgba(201, 160, 80, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+
+        .consent-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+
+        .consent-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .consent-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .consent-item label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Success State */
+        .success-screen {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(201, 160, 80, 0.2);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 40px;
+        }
+
+        .success-screen h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+
+        .success-screen p {
+            color: rgba(232, 228, 221, 0.7);
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: confetti-fall 3s ease-out forwards;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotateZ(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(600px) rotateZ(360deg);
+            }
+        }
+
+        /* Error Message */
+        .error-message {
+            color: #ff6b6b;
+            font-size: 12px;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .form-group.error input,
+        .form-group.error select,
+        .form-group.error textarea {
+            border-color: #ff6b6b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                padding: 20px max(16px, env(safe-area-inset-left));
+                padding-right: max(16px, env(safe-area-inset-right));
+                margin-top: 60px;
+            }
+
+            nav {
+                height: 60px;
+                padding: 0 max(16px, env(safe-area-inset-left));
+            }
+
+            .nav-logo {
+                font-size: 24px;
+            }
+
+            .form-card {
+                padding: 30px 20px;
+                min-height: auto;
+            }
+
+            .form-card h2 {
+                font-size: 26px;
+            }
+
+            .form-row,
+            .form-row-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-label {
+                font-size: 11px;
+                max-width: 70px;
+            }
+
+            .form-buttons {
+                gap: 12px;
+            }
+
+            button {
+                padding: 14px 16px;
+                font-size: 14px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 16px max(12px, env(safe-area-inset-left));
+                padding-right: max(12px, env(safe-area-inset-right));
+            }
+
+            nav {
+                padding: 0 max(12px, env(safe-area-inset-left));
+                padding-right: max(12px, env(safe-area-inset-right));
+            }
+
+            .form-card {
+                padding: 24px 16px;
+                border-radius: 16px;
+            }
+
+            .form-card h2 {
+                font-size: 22px;
+            }
+
+            .progress-steps {
+                gap: 8px;
+            }
+
+            .progress-dot {
+                width: 36px;
+                height: 36px;
+                font-size: 12px;
+            }
+
+            .progress-label {
+                font-size: 10px;
+            }
+
+            .pill {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .review-section h3 {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .review-section .edit-btn {
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .pill-group {
+                gap: 8px;
+            }
+
+            .pill {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .form-card h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav-logo">arq.</a>
+        <a href="/account.html" class="nav-back">← Back to Account</a>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="progress-wrapper">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-steps" id="progressSteps">
+                    <div class="progress-step active" data-step="1">
+                        <div class="progress-dot">1</div>
+                        <div class="progress-label">Personal</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="progress-dot">2</div>
+                        <div class="progress-label">Medical History</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="progress-dot">3</div>
+                        <div class="progress-label">Lifestyle</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="progress-dot">4</div>
+                        <div class="progress-label">Protocols</div>
+                    </div>
+                    <div class="progress-step" data-step="5">
+                        <div class="progress-dot">5</div>
+                        <div class="progress-label">Review</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-wrapper">
+                <!-- Step 1: Personal Information -->
+                <div class="form-step active" data-step="1">
+                    <div class="form-card">
+                        <h2>Personal Information</h2>
+                        <p class="subtitle">Let's start with the basics.</p>
+
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="Enter your full name">
+                            <div class="error-message">Full name is required</div>
+                        </div>
+
+                        <div class="form-row-3">
+                            <div class="form-group">
+                                <label for="dobDay">Day</label>
+                                <select id="dobDay">
+                                    <option value="">Select day</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dobMonth">Month</label>
+                                <select id="dobMonth">
+                                    <option value="">Select month</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dobYear">Year</label>
+                                <select id="dobYear">
+                                    <option value="">Select year</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Sex</label>
+                            <div class="pill-group" id="sexGroup">
+                                <button type="button" class="pill" data-value="male">Male</button>
+                                <button type="button" class="pill" data-value="female">Female</button>
+                                <button type="button" class="pill" data-value="other">Other</button>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="height">Height (cm)</label>
+                                <input type="number" id="height" placeholder="170" min="100" max="300">
+                                <div class="error-message">Please enter a valid height</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="weight">Weight (kg)</label>
+                                <input type="number" id="weight" placeholder="75" min="20" max="500">
+                                <div class="error-message">Please enter a valid weight</div>
+                            </div>
+                        </div>
+
+                        <div id="bmiContainer"></div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn-secondary btn-disabled" id="backBtn1" style="opacity: 0; pointer-events: none;">← Back</button>
+                        <button type="button" class="btn-primary" id="nextBtn1">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Medical History -->
+                <div class="form-step" data-step="2">
+                    <div class="form-card">
+                        <h2>Medical History</h2>
+                        <p class="subtitle">Help us understand your health background.</p>
+
+                        <div class="form-group">
+                            <label>Known Medical Conditions</label>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="conditions" value="diabetes">
+                                    <span>Diabetes</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="conditions" value="hypertension">
+                                    <span>Hypertension</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="conditions" value="thyroid">
+                                    <span>Thyroid Disorder</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="conditions" value="heart">
+                                    <span>Heart Disease</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="conditions" value="liver">
+                                    <span>Liver Disease</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="conditions" value="kidney">
+                                    <span>Kidney Disease</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="conditions" value="asthma">
+                                    <span>Asthma/COPD</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="conditions" value="mental">
+                                    <span>Mental Health Condition</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="conditions" value="seizure">
+                                    <span>Seizure Disorder</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="conditions" value="clotting">
+                                    <span>Blood Clotting Disorder</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="conditions" value="none">
+                                    <span>None</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="medications">Current Medications</label>
+                            <textarea id="medications" placeholder="List all medications including supplements..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="allergies">Known Allergies</label>
+                            <textarea id="allergies" placeholder="Drug allergies, food allergies, etc."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="surgeries">Previous Surgeries (Optional)</label>
+                            <textarea id="surgeries" placeholder="List any previous surgeries..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn-secondary" id="backBtn2">← Back</button>
+                        <button type="button" class="btn-primary" id="nextBtn2">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Lifestyle & Habits -->
+                <div class="form-step" data-step="3">
+                    <div class="form-card">
+                        <h2>Lifestyle & Habits</h2>
+                        <p class="subtitle">Tell us about your daily routines.</p>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="exercise">Exercise Frequency</label>
+                                <select id="exercise">
+                                    <option value="">Select frequency</option>
+                                    <option value="never">Never</option>
+                                    <option value="1-2">1-2x per week</option>
+                                    <option value="3-4">3-4x per week</option>
+                                    <option value="5+">5+ times per week</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="diet">Diet Type</label>
+                                <select id="diet">
+                                    <option value="">Select diet type</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="non-veg">Non-vegetarian</option>
+                                    <option value="keto">Keto</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="alcohol">Alcohol Consumption</label>
+                                <select id="alcohol">
+                                    <option value="">Select frequency</option>
+                                    <option value="never">Never</option>
+                                    <option value="occasionally">Occasionally</option>
+                                    <option value="regularly">Regularly</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="smoking">Smoking Status</label>
+                                <select id="smoking">
+                                    <option value="">Select status</option>
+                                    <option value="never">Never</option>
+                                    <option value="former">Former</option>
+                                    <option value="current">Current</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sleep">Sleep Hours Per Night</label>
+                            <select id="sleep">
+                                <option value="">Select hours</option>
+                                <option value="<5">Less than 5 hours</option>
+                                <option value="5-6">5-6 hours</option>
+                                <option value="6-7">6-7 hours</option>
+                                <option value="7-8">7-8 hours</option>
+                                <option value="8+">8+ hours</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stress">Stress Level</label>
+                            <div class="pill-group" id="stressGroup">
+                                <button type="button" class="pill" data-value="1">Low</button>
+                                <button type="button" class="pill" data-value="2">Moderate</button>
+                                <button type="button" class="pill" data-value="3">High</button>
+                                <button type="button" class="pill" data-value="4">Very High</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn-secondary" id="backBtn3">← Back</button>
+                        <button type="button" class="btn-primary" id="nextBtn3">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Protocol Interest -->
+                <div class="form-step" data-step="4">
+                    <div class="form-card">
+                        <h2>Protocol Interest</h2>
+                        <p class="subtitle">Which protocols interest you?</p>
+
+                        <div class="form-group">
+                            <label>Interested Categories</label>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="protocols" value="cognition">
+                                    <span>🧠 Cognition (Modafinil, Armodafinil)</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="protocols" value="performance">
+                                    <span>⚡ Performance (Sildenafil, Tadalafil, PT-141)</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="protocols" value="longevity">
+                                    <span>⏰ Longevity (Metformin, Rapamycin, NMN, Semaglutide)</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="protocols" value="body">
+                                    <span>💪 Body (TRT, Finasteride, Minoxidil)</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="protocols" value="skin">
+                                    <span>✨ Skin (Isotretinoin, Tretinoin)</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="protocols" value="sleep">
+                                    <span>😴 Sleep & Mood (Melatonin, Sertraline, LDN)</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="protocols" value="other">
+                                    <span>🔬 Other (PrEP, THC/CBD)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Primary Health Goals</label>
+                            <div class="pill-group" id="goalsGroup">
+                                <button type="button" class="pill" data-value="focus">Focus & Productivity</button>
+                                <button type="button" class="pill" data-value="performance">Physical Performance</button>
+                                <button type="button" class="pill" data-value="anti-aging">Anti-aging</button>
+                                <button type="button" class="pill" data-value="weight">Weight Management</button>
+                                <button type="button" class="pill" data-value="hair">Hair Growth</button>
+                                <button type="button" class="pill" data-value="skin">Skin Health</button>
+                                <button type="button" class="pill" data-value="sleep">Better Sleep</button>
+                                <button type="button" class="pill" data-value="stress">Stress Management</button>
+                                <button type="button" class="pill" data-value="sexual">Sexual Health</button>
+                                <button type="button" class="pill" data-value="wellness">General Wellness</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Additional Notes for Physician (Optional)</label>
+                            <textarea id="notes" placeholder="Any additional information you'd like to share..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn-secondary" id="backBtn4">← Back</button>
+                        <button type="button" class="btn-primary" id="nextBtn4">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Review & Submit -->
+                <div class="form-step" data-step="5">
+                    <div class="form-card">
+                        <h2>Review & Submit</h2>
+                        <p class="subtitle">Please review your information before submitting.</p>
+
+                        <div id="reviewSummary"></div>
+
+                        <div class="consent-wrapper">
+                            <div class="consent-item">
+                                <input type="checkbox" id="consentAccuracy">
+                                <label for="consentAccuracy">I confirm this information is accurate and consent to its use by arq.clinic physicians for protocol evaluation.</label>
+                            </div>
+                            <div class="consent-item">
+                                <input type="checkbox" id="consentContact">
+                                <label for="consentContact">I understand that a physician will review my intake and may contact me for additional information.</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn-secondary" id="backBtn5">← Back</button>
+                        <button type="button" class="btn-primary" id="submitBtn">Submit Intake Form →</button>
+                    </div>
+                </div>
+
+                <!-- Success Screen -->
+                <div class="form-step" data-step="success">
+                    <div class="form-card success-screen">
+                        <div class="success-icon">✓</div>
+                        <h2>Intake Complete</h2>
+                        <p>Thank you for completing your medical intake form. Our physicians will review your information and may reach out within 24-48 hours with personalized protocol recommendations.</p>
+                        <p style="font-size: 13px; color: rgba(232, 228, 221, 0.5);">You can return to update your intake at any time.</p>
+                        <div style="display: flex; gap: 16px; margin-top: 40px;">
+                            <button type="button" class="btn-primary" id="homeBtn" style="flex: 1;">Return to Account</button>
+                            <button type="button" class="btn-secondary" id="updateBtn" style="flex: 1;">Update Intake</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Check authentication
+        function checkAuth() {
+            const user = localStorage.getItem('arq_user');
+            if (!user) {
+                window.location.href = '/account.html';
+                return false;
+            }
+            return true;
+        }
+
+        // Initialize form data
+        const formData = {
+            fullName: '',
+            dob: { day: '', month: '', year: '' },
+            sex: '',
+            height: '',
+            weight: '',
+            conditions: [],
+            medications: '',
+            allergies: '',
+            surgeries: '',
+            exercise: '',
+            diet: '',
+            alcohol: '',
+            smoking: '',
+            sleep: '',
+            stress: '',
+            protocols: [],
+            goals: [],
+            notes: '',
+            consent1: false,
+            consent2: false
+        };
+
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!checkAuth()) return;
+
+            // Populate dropdowns
+            populateDateDropdowns();
+
+            // Load draft data
+            loadDraftData();
+
+            // Check if already submitted
+            const submitted = localStorage.getItem('arq_intake');
+            if (submitted) {
+                showSuccessScreen();
+            }
+
+            // Event listeners
+            setupPillButtons();
+            setupFormValidation();
+            setupNavigationButtons();
+            setupWeightHeightCalculation();
+            setupGoalsGroup();
+        });
+
+        function populateDateDropdowns() {
+            // Days
+            const daySelect = document.getElementById('dobDay');
+            for (let i = 1; i <= 31; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = String(i).padStart(2, '0');
+                daySelect.appendChild(option);
+            }
+
+            // Years
+            const yearSelect = document.getElementById('dobYear');
+            const currentYear = new Date().getFullYear();
+            for (let i = currentYear; i >= 1920; i--) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                yearSelect.appendChild(option);
+            }
+        }
+
+        function setupPillButtons() {
+            document.querySelectorAll('.pill-group').forEach(group => {
+                const pills = group.querySelectorAll('.pill');
+                pills.forEach(pill => {
+                    pill.addEventListener('click', function() {
+                        const isMultiSelect = this.parentElement.id === 'goalsGroup';
+
+                        if (isMultiSelect) {
+                            this.classList.toggle('active');
+                        } else {
+                            pills.forEach(p => p.classList.remove('active'));
+                            this.classList.add('active');
+                        }
+
+                        updateFormData();
+                    });
+                });
+            });
+        }
+
+        function setupGoalsGroup() {
+            // Handle multi-select pills for goals
+            document.getElementById('goalsGroup').addEventListener('click', function(e) {
+                if (e.target.classList.contains('pill')) {
+                    e.target.classList.toggle('active');
+                    updateFormData();
+                }
+            });
+        }
+
+        function setupFormValidation() {
+            // Input change handlers
+            document.getElementById('fullName').addEventListener('change', updateFormData);
+            document.getElementById('dobDay').addEventListener('change', updateFormData);
+            document.getElementById('dobMonth').addEventListener('change', updateFormData);
+            document.getElementById('dobYear').addEventListener('change', updateFormData);
+            document.getElementById('height').addEventListener('change', updateFormData);
+            document.getElementById('weight').addEventListener('change', updateFormData);
+            document.getElementById('medications').addEventListener('change', updateFormData);
+            document.getElementById('allergies').addEventListener('change', updateFormData);
+            document.getElementById('surgeries').addEventListener('change', updateFormData);
+            document.getElementById('exercise').addEventListener('change', updateFormData);
+            document.getElementById('diet').addEventListener('change', updateFormData);
+            document.getElementById('alcohol').addEventListener('change', updateFormData);
+            document.getElementById('smoking').addEventListener('change', updateFormData);
+            document.getElementById('sleep').addEventListener('change', updateFormData);
+            document.getElementById('notes').addEventListener('change', updateFormData);
+            document.getElementById('consentAccuracy').addEventListener('change', updateFormData);
+            document.getElementById('consentContact').addEventListener('change', updateFormData);
+
+            // Condition checkboxes
+            document.querySelectorAll('input[name="conditions"]').forEach(checkbox => {
+                checkbox.addEventListener('change', updateFormData);
+            });
+
+            // Protocol checkboxes
+            document.querySelectorAll('input[name="protocols"]').forEach(checkbox => {
+                checkbox.addEventListener('change', updateFormData);
+            });
+
+            // Stress slider
+            document.querySelectorAll('#stressGroup .pill').forEach(pill => {
+                pill.addEventListener('click', updateFormData);
+            });
+        }
+
+        function setupNavigationButtons() {
+            // Step 1
+            document.getElementById('nextBtn1').addEventListener('click', () => nextStep(1));
+
+            // Step 2
+            document.getElementById('backBtn2').addEventListener('click', () => prevStep(2));
+            document.getElementById('nextBtn2').addEventListener('click', () => nextStep(2));
+
+            // Step 3
+            document.getElementById('backBtn3').addEventListener('click', () => prevStep(3));
+            document.getElementById('nextBtn3').addEventListener('click', () => nextStep(3));
+
+            // Step 4
+            document.getElementById('backBtn4').addEventListener('click', () => prevStep(4));
+            document.getElementById('nextBtn4').addEventListener('click', () => nextStep(4));
+
+            // Step 5
+            document.getElementById('backBtn5').addEventListener('click', () => prevStep(5));
+            document.getElementById('submitBtn').addEventListener('click', submitForm);
+
+            // Success screen
+            document.getElementById('homeBtn').addEventListener('click', () => {
+                window.location.href = '/account.html';
+            });
+
+            document.getElementById('updateBtn').addEventListener('click', () => {
+                localStorage.removeItem('arq_intake');
+                currentStep = 1;
+                loadDraftData();
+                showStep(1);
+            });
+        }
+
+        function setupWeightHeightCalculation() {
+            const heightInput = document.getElementById('height');
+            const weightInput = document.getElementById('weight');
+
+            heightInput.addEventListener('input', calculateBMI);
+            weightInput.addEventListener('input', calculateBMI);
+        }
+
+        function calculateBMI() {
+            const height = parseFloat(document.getElementById('height').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+
+            if (height && weight && height > 0 && weight > 0) {
+                const heightInMeters = height / 100;
+                const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(1);
+
+                let category = '';
+                if (bmi < 18.5) category = 'Underweight';
+                else if (bmi < 25) category = 'Normal weight';
+                else if (bmi < 30) category = 'Overweight';
+                else category = 'Obese';
+
+                const container = document.getElementById('bmiContainer');
+                container.innerHTML = `
+                    <div class="bmi-display">
+                        <div class="bmi-value">${bmi}</div>
+                        <div class="bmi-category">${category}</div>
+                    </div>
+                `;
+            }
+        }
+
+        function updateFormData() {
+            formData.fullName = document.getElementById('fullName').value;
+            formData.dob.day = document.getElementById('dobDay').value;
+            formData.dob.month = document.getElementById('dobMonth').value;
+            formData.dob.year = document.getElementById('dobYear').value;
+
+            const activeSexPill = document.querySelector('#sexGroup .pill.active');
+            formData.sex = activeSexPill ? activeSexPill.dataset.value : '';
+
+            formData.height = document.getElementById('height').value;
+            formData.weight = document.getElementById('weight').value;
+
+            formData.conditions = Array.from(document.querySelectorAll('input[name="conditions"]:checked'))
+                .map(cb => cb.value);
+
+            formData.medications = document.getElementById('medications').value;
+            formData.allergies = document.getElementById('allergies').value;
+            formData.surgeries = document.getElementById('surgeries').value;
+
+            formData.exercise = document.getElementById('exercise').value;
+            formData.diet = document.getElementById('diet').value;
+            formData.alcohol = document.getElementById('alcohol').value;
+            formData.smoking = document.getElementById('smoking').value;
+            formData.sleep = document.getElementById('sleep').value;
+
+            const activeStressPill = document.querySelector('#stressGroup .pill.active');
+            formData.stress = activeStressPill ? activeStressPill.dataset.value : '';
+
+            formData.protocols = Array.from(document.querySelectorAll('input[name="protocols"]:checked'))
+                .map(cb => cb.value);
+
+            formData.goals = Array.from(document.querySelectorAll('#goalsGroup .pill.active'))
+                .map(pill => pill.dataset.value);
+
+            formData.notes = document.getElementById('notes').value;
+
+            formData.consent1 = document.getElementById('consentAccuracy').checked;
+            formData.consent2 = document.getElementById('consentContact').checked;
+
+            saveDraftData();
+        }
+
+        function saveDraftData() {
+            localStorage.setItem('arq_intake_draft', JSON.stringify(formData));
+        }
+
+        function loadDraftData() {
+            const draft = localStorage.getItem('arq_intake_draft');
+            if (draft) {
+                Object.assign(formData, JSON.parse(draft));
+                populateFormFields();
+            } else {
+                // Pre-fill name from user data
+                const user = JSON.parse(localStorage.getItem('arq_user') || '{}');
+                if (user.name) {
+                    formData.fullName = user.name;
+                    document.getElementById('fullName').value = user.name;
+                }
+            }
+        }
+
+        function populateFormFields() {
+            document.getElementById('fullName').value = formData.fullName;
+            document.getElementById('dobDay').value = formData.dob.day;
+            document.getElementById('dobMonth').value = formData.dob.month;
+            document.getElementById('dobYear').value = formData.dob.year;
+
+            if (formData.sex) {
+                document.querySelector(`#sexGroup .pill[data-value="${formData.sex}"]`).classList.add('active');
+            }
+
+            document.getElementById('height').value = formData.height;
+            document.getElementById('weight').value = formData.weight;
+            if (formData.height && formData.weight) calculateBMI();
+
+            formData.conditions.forEach(condition => {
+                const checkbox = document.querySelector(`input[name="conditions"][value="${condition}"]`);
+                if (checkbox) checkbox.checked = true;
+            });
+
+            document.getElementById('medications').value = formData.medications;
+            document.getElementById('allergies').value = formData.allergies;
+            document.getElementById('surgeries').value = formData.surgeries;
+
+            document.getElementById('exercise').value = formData.exercise;
+            document.getElementById('diet').value = formData.diet;
+            document.getElementById('alcohol').value = formData.alcohol;
+            document.getElementById('smoking').value = formData.smoking;
+            document.getElementById('sleep').value = formData.sleep;
+
+            if (formData.stress) {
+                document.querySelector(`#stressGroup .pill[data-value="${formData.stress}"]`).classList.add('active');
+            }
+
+            formData.protocols.forEach(protocol => {
+                const checkbox = document.querySelector(`input[name="protocols"][value="${protocol}"]`);
+                if (checkbox) checkbox.checked = true;
+            });
+
+            formData.goals.forEach(goal => {
+                const pill = document.querySelector(`#goalsGroup .pill[data-value="${goal}"]`);
+                if (pill) pill.classList.add('active');
+            });
+
+            document.getElementById('notes').value = formData.notes;
+            document.getElementById('consentAccuracy').checked = formData.consent1;
+            document.getElementById('consentContact').checked = formData.consent2;
+        }
+
+        function validateStep(step) {
+            let isValid = true;
+
+            if (step === 1) {
+                const fullName = document.getElementById('fullName').value.trim();
+                const height = parseFloat(document.getElementById('height').value);
+                const weight = parseFloat(document.getElementById('weight').value);
+
+                if (!fullName) {
+                    showError('fullName');
+                    isValid = false;
+                } else {
+                    clearError('fullName');
+                }
+
+                if (!height || height < 100 || height > 300) {
+                    showError('height');
+                    isValid = false;
+                } else {
+                    clearError('height');
+                }
+
+                if (!weight || weight < 20 || weight > 500) {
+                    showError('weight');
+                    isValid = false;
+                } else {
+                    clearError('weight');
+                }
+            }
+
+            return isValid;
+        }
+
+        function showError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const group = field.closest('.form-group');
+            if (group) group.classList.add('error');
+        }
+
+        function clearError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const group = field.closest('.form-group');
+            if (group) group.classList.remove('error');
+        }
+
+        function nextStep(currentStepNum) {
+            if (!validateStep(currentStepNum)) return;
+
+            updateFormData();
+            currentStep = currentStepNum + 1;
+
+            if (currentStep === totalSteps) {
+                generateReviewSummary();
+            }
+
+            showStep(currentStep);
+        }
+
+        function prevStep(currentStepNum) {
+            currentStep = currentStepNum - 1;
+            showStep(currentStep);
+        }
+
+        function showStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.form-step').forEach(s => {
+                s.classList.remove('active', 'exit-left');
+            });
+
+            // Show current step
+            const activeStep = document.querySelector(`.form-step[data-step="${step}"]`);
+            if (activeStep) {
+                activeStep.classList.add('active');
+            }
+
+            // Update progress
+            updateProgress(step);
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function updateProgress(step) {
+            const percentage = ((step - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+
+            document.querySelectorAll('.progress-step').forEach((progressStep, index) => {
+                const stepNum = index + 1;
+                progressStep.classList.remove('active', 'completed');
+
+                if (stepNum === step) {
+                    progressStep.classList.add('active');
+                } else if (stepNum < step) {
+                    progressStep.classList.add('completed');
+                }
+            });
+        }
+
+        function generateReviewSummary() {
+            const reviewHTML = `
+                <div class="review-section">
+                    <h3>Personal Information <button type="button" class="edit-btn" onclick="goToStep(1)">Edit</button></h3>
+                    <div class="review-item">
+                        <span class="review-label">Name</span>
+                        <span class="review-value">${formData.fullName}</span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Date of Birth</span>
+                        <span class="review-value">${formData.dob.day}/${formData.dob.month}/${formData.dob.year}</span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Sex</span>
+                        <span class="review-value">${formData.sex.charAt(0).toUpperCase() + formData.sex.slice(1)}</span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Height / Weight</span>
+                        <span class="review-value">${formData.height} cm / ${formData.weight} kg</span>
+                    </div>
+                </div>
+
+                <div class="review-section">
+                    <h3>Medical History <button type="button" class="edit-btn" onclick="goToStep(2)">Edit</button></h3>
+                    <div class="review-item">
+                        <span class="review-label">Conditions</span>
+                        <span class="review-value">${formData.conditions.length > 0 ? formData.conditions.join(', ') : 'None selected'}</span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Medications</span>
+                        <span class="review-value">${formData.medications || 'Not specified'}</span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Allergies</span>
+                        <span class="review-value">${formData.allergies || 'Not specified'}</span>
+                    </div>
+                </div>
+
+                <div class="review-section">
+                    <h3>Lifestyle <button type="button" class="edit-btn" onclick="goToStep(3)">Edit</button></h3>
+                    <div class="review-item">
+                        <span class="review-label">Exercise</span>
+                        <span class="review-value">${formData.exercise || 'Not specified'}</span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Diet</span>
+                        <span class="review-value">${formData.diet || 'Not specified'}</span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Sleep</span>
+                        <span class="review-value">${formData.sleep || 'Not specified'}</span>
+                    </div>
+                </div>
+
+                <div class="review-section">
+                    <h3>Protocols & Goals <button type="button" class="edit-btn" onclick="goToStep(4)">Edit</button></h3>
+                    <div class="review-item">
+                        <span class="review-label">Interested Protocols</span>
+                        <span class="review-value">${formData.protocols.length > 0 ? formData.protocols.join(', ') : 'None selected'}</span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Health Goals</span>
+                        <span class="review-value">${formData.goals.length > 0 ? formData.goals.join(', ') : 'None selected'}</span>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('reviewSummary').innerHTML = reviewHTML;
+        }
+
+        function goToStep(step) {
+            currentStep = step;
+            showStep(step);
+        }
+
+        function submitForm() {
+            if (!formData.consent1 || !formData.consent2) {
+                alert('Please confirm both consent statements to proceed.');
+                return;
+            }
+
+            // Save completed intake
+            localStorage.setItem('arq_intake', JSON.stringify(formData));
+            localStorage.removeItem('arq_intake_draft');
+
+            // Show success
+            showSuccessScreen();
+            playConfetti();
+        }
+
+        function showSuccessScreen() {
+            currentStep = 'success';
+            showStep('success');
+        }
+
+        function playConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.delay = (Math.random() * 0.5) + 's';
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 3500);
+            }
+        }
+    </script>
+</body>
+</html>

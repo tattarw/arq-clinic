@@ -1,0 +1,299 @@
+{% comment %} snippets/footer.liquid {% endcomment %}
+<footer class="arq-footer">
+  <div class="container">
+    <div class="arq-footer__top">
+      <div class="arq-footer__brand">
+        <div class="arq-footer__logo">ar<span>q</span>.clinic</div>
+        <div class="arq-footer__tagline">India's biohacker clinic</div>
+        <p class="arq-footer__about">
+          Legally prescribed. Doctor supervised. Delivered in 48 hours. All in WhatsApp.
+        </p>
+      </div>
+      <div class="arq-footer__links">
+        <div class="arq-footer__col">
+          <div class="arq-footer__col-title">Protocols</div>
+          <a href="/collections/cognition" class="arq-footer__link">Cognition</a>
+          <a href="/collections/performance" class="arq-footer__link">Performance</a>
+          <a href="/collections/longevity" class="arq-footer__link">Longevity</a>
+          <a href="/collections/peptides" class="arq-footer__link">Peptides</a>
+          <a href="/collections/body" class="arq-footer__link">Body</a>
+          <a href="/collections/all" class="arq-footer__link">Browse all</a>
+        </div>
+        <div class="arq-footer__col">
+          <div class="arq-footer__col-title">Company</div>
+          <a href="/pages/how-it-works" class="arq-footer__link">How it works</a>
+          <a href="/pages/about" class="arq-footer__link">About arq</a>
+          <a href="/pages/for-doctors" class="arq-footer__link">For doctors</a>
+          <a href="/pages/legal" class="arq-footer__link">Legal status</a>
+          <a href="mailto:hello@arq.clinic" class="arq-footer__link">Contact</a>
+        </div>
+        <div class="arq-footer__col">
+          <div class="arq-footer__col-title">Account</div>
+          <a href="/account/login" class="arq-footer__link">Sign in</a>
+          <a href="/account/register" class="arq-footer__link">Register</a>
+          <a href="/account" class="arq-footer__link">My orders</a>
+          <a href="/pages/privacy" class="arq-footer__link">Privacy</a>
+          <a href="/pages/terms" class="arq-footer__link">Terms</a>
+          <a href="/pages/refunds" class="arq-footer__link">Refunds</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="arq-footer__bottom">
+      <div class="arq-footer__legal">
+        © 2026 Dear One Technologies Pvt Ltd · CIN U86900MH2026PTC467148 · Mumbai<br>
+        All prescription medications require a valid e-prescription from a registered medical practitioner.<br>
+        arq.clinic connects patients with licensed physicians. We are not a pharmacy or diagnostic lab.
+      </div>
+      <div class="arq-footer__wa">
+        <a href="https://wa.me/{{ settings.whatsapp_number }}" target="_blank" class="arq-footer__wa-btn" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.arq-footer {
+  padding: 56px 0 32px;
+  background: var(--surface);
+  border-top: 1px solid var(--cream-07);
+  margin-top: 0;
+}
+.arq-footer__top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--cream-07);
+}
+@media (min-width: 700px) {
+  .arq-footer__top { grid-template-columns: 280px 1fr; }
+}
+.arq-footer__logo {
+  font-family: var(--serif);
+  font-size: 21px;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.arq-footer__logo span { color: var(--gold); }
+.arq-footer__tagline {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+  margin-bottom: 16px;
+}
+.arq-footer__about { font-size: 13px; color: var(--cream-40); line-height: 1.7; }
+
+.arq-footer__links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 500px) { .arq-footer__links { grid-template-columns: 1fr 1fr; } }
+
+.arq-footer__col-title {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.arq-footer__link {
+  display: block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+  padding: 4px 0;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+.arq-footer__link:hover { color: var(--cream-70); }
+
+.arq-footer__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.arq-footer__legal {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.06em;
+  color: rgba(242,236,224,0.12);
+  line-height: 2;
+}
+.arq-footer__wa-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+  border: 1px solid var(--cream-15);
+  padding: 10px 16px;
+  border-radius: 2px;
+  transition: all 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.arq-footer__wa-btn:hover { border-color: var(--gold-border); color: var(--gold); }
+</style>
+
+{% comment %} snippets/whatsapp-modal.liquid {% endcomment %}
+<div class="wa-modal-overlay" id="waModalOverlay" onclick="maybeCloseWAModal(event)">
+  <div class="wa-modal" role="dialog" aria-modal="true" aria-label="Start on WhatsApp">
+    <div class="wa-modal__handle"></div>
+    <h2 class="wa-modal__title">What are you after?</h2>
+    <p class="wa-modal__sub">Pick a category. Doctor calls within 2 hours. Delivered in 48.</p>
+
+    <div class="wa-modal__label t-label" style="margin-bottom:12px">I want to —</div>
+
+    <div class="wa-modal__opts" id="waOpts">
+      <button class="wa-opt" onclick="selWAOpt(this,'think sharper — modafinil or armodafinil')">
+        <span class="wa-opt__icon">🧠</span>
+        <span class="wa-opt__name">Think sharper</span>
+        <span class="wa-opt__sub">Modafinil · Armodafinil · NAD+</span>
+      </button>
+      <button class="wa-opt" onclick="selWAOpt(this,'perform better — sildenafil, tadalafil or TRT')">
+        <span class="wa-opt__icon">⚡</span>
+        <span class="wa-opt__name">Perform better</span>
+        <span class="wa-opt__sub">ED · TRT · PT-141</span>
+      </button>
+      <button class="wa-opt" onclick="selWAOpt(this,'age slower with longevity protocols')">
+        <span class="wa-opt__icon">∞</span>
+        <span class="wa-opt__name">Age slower</span>
+        <span class="wa-opt__sub">Metformin · LDN · Thymosin</span>
+      </button>
+      <button class="wa-opt" onclick="selWAOpt(this,'explore peptide protocols')">
+        <span class="wa-opt__icon">💉</span>
+        <span class="wa-opt__name">Peptides</span>
+        <span class="wa-opt__sub">BPC-157 · Sermorelin · CJC</span>
+      </button>
+      <button class="wa-opt" onclick="selWAOpt(this,'look better — hair, skin or weight loss')">
+        <span class="wa-opt__icon">✦</span>
+        <span class="wa-opt__name">Look better</span>
+        <span class="wa-opt__sub">Hair · Skin · Semaglutide</span>
+      </button>
+      <button class="wa-opt" onclick="selWAOpt(this,'get started')">
+        <span class="wa-opt__icon">💬</span>
+        <span class="wa-opt__name">Not sure yet</span>
+        <span class="wa-opt__sub">We'll guide you</span>
+      </button>
+    </div>
+
+    <button class="btn btn-primary btn-full" onclick="goToWA()" style="margin-bottom:10px">
+      Continue on WhatsApp →
+    </button>
+    <div style="text-align:center;font-family:var(--mono);font-size:7px;color:var(--cream-40);letter-spacing:0.06em;line-height:2">
+      🔒 Completely private · Doctor within 2 hours · Plain packaging
+    </div>
+  </div>
+</div>
+
+<style>
+.wa-modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(16px);
+  z-index: 800;
+  align-items: flex-end;
+}
+.wa-modal-overlay.open { display: flex; }
+
+.wa-modal {
+  background: var(--surface);
+  width: 100%;
+  border-radius: 14px 14px 0 0;
+  border: 1px solid var(--cream-07);
+  border-bottom: none;
+  padding: 8px 20px 40px;
+  max-height: 92svh;
+  overflow-y: auto;
+  animation: slideUp 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.wa-modal__handle {
+  width: 32px; height: 3px;
+  background: var(--cream-15);
+  border-radius: 2px;
+  margin: 8px auto 20px;
+}
+.wa-modal__title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.wa-modal__sub { font-size: 13px; color: var(--cream-40); margin-bottom: 20px; line-height: 1.6; }
+
+.wa-modal__opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.wa-opt {
+  padding: 16px 12px;
+  border: 1px solid var(--cream-07);
+  background: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.18s;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 2px;
+}
+.wa-opt:hover, .wa-opt--selected {
+  border-color: var(--gold-border);
+  background: var(--gold-lo);
+}
+.wa-opt__icon { font-size: 18px; }
+.wa-opt__name { font-family: var(--serif); font-size: 16px; color: var(--cream); line-height: 1.1; }
+.wa-opt__sub { font-family: var(--mono); font-size: 7px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-40); }
+</style>
+
+<script>
+let waSelectedVal = '';
+
+function openWAModal(productName) {
+  document.getElementById('waModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (productName) {
+    waSelectedVal = `get ${productName}`;
+  }
+}
+function closeWAModal() {
+  document.getElementById('waModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  waSelectedVal = '';
+  document.querySelectorAll('.wa-opt').forEach(b => b.classList.remove('wa-opt--selected'));
+}
+function maybeCloseWAModal(e) {
+  if (e.target.id === 'waModalOverlay') closeWAModal();
+}
+function selWAOpt(btn, val) {
+  document.querySelectorAll('.wa-opt').forEach(b => b.classList.remove('wa-opt--selected'));
+  btn.classList.add('wa-opt--selected');
+  waSelectedVal = val;
+}
+function goToWA() {
+  const msg = encodeURIComponent('Hi, I want to ' + (waSelectedVal || 'get started with arq'));
+  window.open(`https://wa.me/{{ settings.whatsapp_number }}?text=${msg}`, '_blank');
+  closeWAModal();
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeWAModal(); });
+</script>

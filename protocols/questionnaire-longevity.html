@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Longevity Protocol | arq.clinic</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232c2824'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23b8922e'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Serif+Display:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --dark: #2c2824;
+      --gold: #b8922e;
+      --gold-light: #c9a23a;
+      --gold-glow: rgba(184, 146, 46, 0.07);
+      --card: #ffffff;
+      --border: rgba(44, 40, 36, 0.08);
+      --text-secondary: rgba(44, 40, 36, 0.55);
+      --text-tertiary: rgba(44, 40, 36, 0.35);
+      --transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
+      --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      background-color: var(--bg);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* ===== LAYOUT ===== */
+    .questionnaire-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px 16px;
+      background-color: var(--bg);
+      position: relative;
+      z-index: 40;
+    }
+
+    .header-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--dark);
+      letter-spacing: -0.3px;
+    }
+
+    .header-logo span { color: var(--gold); }
+
+    .header-back {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: var(--dark);
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background-color 200ms ease;
+    }
+
+    .header-back:hover { background-color: rgba(44, 40, 36, 0.05); }
+    .header-back:disabled { opacity: 0.2; cursor: not-allowed; }
+    .header-back:disabled:hover { background-color: transparent; }
+
+    .progress-bar-container {
+      position: relative;
+      height: 3px;
+      background-color: var(--border);
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+      width: 5%;
+      transition: width 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .screen-container {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .screen {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 400ms var(--transition-timing), transform 400ms var(--transition-timing);
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .screen.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+    .screen.prev {
+      opacity: 0;
+      transform: translateX(-60px);
+    }
+
+    .screen-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .screen-content::-webkit-scrollbar { width: 0; }
+
+    /* ===== TYPOGRAPHY ===== */
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--dark);
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .question-subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .subtext {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    /* ===== OPTIONS ===== */
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .option {
+      position: relative;
+      padding: 20px 22px;
+      background-color: var(--card);
+      border: 1.5px solid rgba(44, 40, 36, 0.12);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 200ms var(--transition-timing);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 15px;
+      color: var(--dark);
+      font-weight: 500;
+      user-select: none;
+      min-height: 60px;
+    }
+
+    .option:active { transform: scale(0.98); }
+
+    .option.selected {
+      border-color: var(--gold);
+      background-color: rgba(184, 146, 46, 0.04);
+      box-shadow: 0 0 0 1px var(--gold);
+    }
+
+    .option-indicator {
+      width: 22px;
+      height: 22px;
+      border: 2px solid rgba(44, 40, 36, 0.15);
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: all 200ms var(--transition-timing);
+      background-color: var(--card);
+      margin-left: 16px;
+    }
+
+    .option.selected .option-indicator {
+      border-color: var(--gold);
+      background: var(--gold);
+      box-shadow: inset 0 0 0 4px var(--card);
+    }
+
+    .option-check {
+      width: 22px;
+      height: 22px;
+      border: 2px solid rgba(44, 40, 36, 0.15);
+      border-radius: 6px;
+      flex-shrink: 0;
+      transition: all 200ms var(--transition-timing);
+      background-color: var(--card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 16px;
+    }
+
+    .option.selected .option-check {
+      border-color: var(--gold);
+      background-color: var(--gold);
+    }
+
+    .option-check::after {
+      content: '✓';
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 150ms var(--transition-timing);
+    }
+
+    .option.selected .option-check::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .option-text { flex: 1; }
+
+    /* ===== FORM INPUTS ===== */
+    .form-group { margin-bottom: 20px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 16px 18px;
+      border: 1.5px solid rgba(44, 40, 36, 0.12);
+      border-radius: 12px;
+      font-family: 'Sora', sans-serif;
+      font-size: 16px;
+      color: var(--dark);
+      background-color: var(--card);
+      transition: border-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px var(--gold-glow);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+      font-family: 'Sora', sans-serif;
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* ===== INFO CARDS ===== */
+    .info-card {
+      padding: 18px 20px;
+      background: linear-gradient(135deg, rgba(184, 146, 46, 0.06) 0%, rgba(184, 146, 46, 0.02) 100%);
+      border: 1px solid rgba(184, 146, 46, 0.15);
+      border-radius: 12px;
+      margin-top: 24px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .info-card-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--gold);
+      font-size: 11px;
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    /* ===== IMAGES ===== */
+    .image-container {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 28px;
+      background-color: rgba(44, 40, 36, 0.03);
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0;
+      animation: fadeIn 600ms ease-out 100ms forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(1.02); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .image-container.circular {
+      border-radius: 50%;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 28px;
+      border: 3px solid rgba(184, 146, 46, 0.2);
+      aspect-ratio: 1 / 1;
+    }
+
+    /* ===== BUTTONS ===== */
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px 28px;
+      padding-bottom: max(20px, var(--safe-area-inset-bottom));
+      background: linear-gradient(to top, var(--bg) 60%, transparent);
+      margin-top: auto;
+    }
+
+    .button {
+      padding: 17px 28px;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Sora', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 200ms var(--transition-timing);
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      letter-spacing: -0.2px;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      background-color: var(--dark);
+      color: white;
+    }
+
+    .button.primary:hover:not(:disabled) {
+      background-color: #1a1a1a;
+      box-shadow: 0 8px 28px rgba(44, 40, 36, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .button.primary:active:not(:disabled) { transform: scale(0.98); }
+
+    .button.primary:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .button.secondary {
+      background-color: transparent;
+      color: var(--dark);
+      border: 1.5px solid rgba(44, 40, 36, 0.12);
+    }
+
+    .button.secondary:hover:not(:disabled) {
+      border-color: var(--gold);
+      background-color: var(--gold-glow);
+    }
+
+    .button.whatsapp {
+      background-color: #25d366;
+      color: white;
+      gap: 10px;
+    }
+
+    .button.whatsapp:hover:not(:disabled) {
+      background-color: #1faa50;
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .button-text-link {
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 14px;
+      padding: 8px 0;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 500;
+      text-align: center;
+      display: block;
+    }
+
+    /* ===== INTERSTITIAL ===== */
+    .interstitial-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex: 1;
+      gap: 28px;
+      padding: 20px 0;
+    }
+
+    .interstitial-text {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--dark);
+      max-width: 340px;
+    }
+
+    .word-fade {
+      display: inline;
+      opacity: 0;
+      animation: wordFadeIn 400ms var(--transition-timing) forwards;
+    }
+
+    @keyframes wordFadeIn {
+      to { opacity: 1; }
+    }
+
+    .progress-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .progress-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: rgba(44, 40, 36, 0.12);
+    }
+
+    .progress-dot.active { background-color: var(--gold); }
+
+    /* ===== CHECKMARK ANIMATION ===== */
+    .checkmark-container {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+
+    .checkmark-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: scaleIn 400ms var(--transition-timing) forwards;
+      transform: scale(0);
+    }
+
+    @keyframes scaleIn {
+      to { transform: scale(1); }
+    }
+
+    .checkmark-circle svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .checkmark-path {
+      stroke: white;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      stroke-dasharray: 50;
+      stroke-dashoffset: 50;
+      animation: checkDraw 500ms ease-out 300ms forwards;
+    }
+
+    @keyframes checkDraw {
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* ===== LOADING SCREEN ===== */
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      min-height: 100%;
+    }
+
+    .loading-spinner {
+      width: 120px;
+      height: 120px;
+      position: relative;
+    }
+
+    .loading-spinner svg {
+      width: 120px;
+      height: 120px;
+      animation: spinnerRotate 1.8s linear infinite;
+    }
+
+    .loading-spinner circle {
+      fill: none;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 280;
+      stroke-dashoffset: 80;
+    }
+
+    @keyframes spinnerRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-text-container {
+      text-align: center;
+    }
+
+    .loading-text {
+      font-size: 16px;
+      color: var(--dark);
+      font-weight: 500;
+      min-height: 24px;
+      transition: opacity 300ms ease;
+    }
+
+    .loading-text.fade { opacity: 0; }
+
+    .loading-subtitle {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    /* ===== FEATURE STEPS ===== */
+    .feature-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 28px;
+    }
+
+    .feature-step {
+      display: flex;
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .feature-step:last-child { border-bottom: none; }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .step-content { flex: 1; padding-top: 2px; }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ===== STAT CARDS ===== */
+    .stat-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      padding: 20px 16px;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* ===== PRODUCT CARD ===== */
+    .product-card {
+      background: linear-gradient(145deg, #3a3530 0%, #2c2824 100%);
+      border-radius: 20px;
+      padding: 28px 24px;
+      margin-bottom: 24px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(184, 146, 46, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .product-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(184, 146, 46, 0.2);
+      border-radius: 20px;
+      font-size: 11px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+    }
+
+    .product-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .product-desc {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 180px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .product-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .product-feature-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px;
+      color: white;
+      font-weight: 700;
+    }
+
+    /* ===== TREATMENT TABLE ===== */
+    .treatment-table {
+      padding: 20px;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 24px;
+    }
+
+    .table-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .table-row:last-child { border-bottom: none; }
+
+    .table-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .table-value {
+      font-size: 15px;
+      color: var(--dark);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* ===== EXPANDABLE ===== */
+    .expandable {
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: var(--card);
+    }
+
+    .expandable-header {
+      padding: 18px 20px;
+      background-color: var(--card);
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      font-family: 'Sora', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 200ms ease;
+    }
+
+    .expandable-header:hover { background-color: rgba(44, 40, 36, 0.02); }
+
+    .expandable-header::after {
+      content: '+';
+      font-size: 18px;
+      color: var(--text-tertiary);
+      transition: transform 200ms var(--transition-timing);
+      font-weight: 400;
+    }
+
+    .expandable.open .expandable-header::after {
+      content: '−';
+    }
+
+    .expandable-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms var(--transition-timing);
+    }
+
+    .expandable.open .expandable-content {
+      max-height: 2000px;
+    }
+
+    .expandable-text {
+      padding: 0 20px 20px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    /* ===== CONSENT ===== */
+    .checkbox-wrapper {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin: 24px 0;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(184, 146, 46, 0.05) 0%, rgba(184, 146, 46, 0.02) 100%);
+      border-radius: 12px;
+    }
+
+    .checkbox-input {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      margin-top: 2px;
+      border-radius: 6px;
+      cursor: pointer;
+      accent-color: var(--gold);
+    }
+
+    .checkbox-label {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    .checkbox-label a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ===== TRUST BADGES ===== */
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 16px 0;
+      margin-top: 12px;
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-tertiary);
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.3px;
+    }
+
+    .trust-badge svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 520px) {
+      .screen-content {
+        padding: 44px 36px;
+        margin: 0 auto;
+        max-width: 520px;
+        width: 100%;
+      }
+
+      h2 { font-size: 30px; }
+
+      .button-container {
+        padding: 24px 36px;
+        max-width: 520px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+
+    @media (max-height: 640px) {
+      h2 { margin-bottom: 4px; font-size: 22px; }
+      .question-subtitle { margin-bottom: 20px; }
+      .screen-content { padding: 24px 24px; }
+      .option { min-height: 52px; padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="questionnaire-container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-logo">arq<span>.</span></div>
+      <button class="header-back" id="backBtn" aria-label="Go back">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- SCREENS -->
+    <div class="screen-container">
+
+      <!-- Screen 1: Welcome -->
+      <div class="screen active" data-screen="0">
+        <div class="screen-content">
+          <div class="interstitial-content">
+            <div class="image-container" style="width: 100%; aspect-ratio: 3/4; max-height: 42vh; border-radius: 24px;">
+              <img src="/images/questionnaire/longevity-welcome.png" alt="Welcome" loading="eager">
+            </div>
+            <div class="interstitial-text" id="welcomeText">Let's design your longevity protocol. A few questions about your health goals and biology — then we'll build your personalised plan.</div>
+            <div class="trust-row">
+              <div class="trust-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg>
+                Encrypted
+              </div>
+              <div class="trust-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                HIPAA-grade
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="button primary" onclick="nextScreen()">Get started</button>
+        </div>
+      </div>
+
+      <!-- Screen 2: Primary Longevity Goal -->
+      <div class="screen" data-screen="1">
+        <div class="screen-content">
+          <h2>What is your primary longevity goal?</h2>
+          <div class="question-subtitle">Longevity medicine is personalized to your priorities.</div>
+          <div class="options-grid" id="screen1Options">
+            <div class="option" data-value="slow-aging">
+              <span class="option-text">Slow biological aging</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="metabolic-health">
+              <span class="option-text">Optimize metabolic health</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="cognitive-decline">
+              <span class="option-text">Prevent cognitive decline</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="cardiovascular">
+              <span class="option-text">Improve cardiovascular health</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="healthspan-optimization">
+              <span class="option-text">Overall healthspan optimization</span>
+              <div class="option-indicator"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 3: Current Health Status -->
+      <div class="screen" data-screen="2">
+        <div class="screen-content">
+          <h2>How would you rate your current health?</h2>
+          <div class="options-grid" id="screen2Options">
+            <div class="option" data-value="excellent">
+              <span class="option-text">Excellent</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="good">
+              <span class="option-text">Good</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="fair">
+              <span class="option-text">Fair</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="poor">
+              <span class="option-text">Poor</span>
+              <div class="option-indicator"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 4: Physical Activity -->
+      <div class="screen" data-screen="3">
+        <div class="screen-content">
+          <h2>How physically active are you?</h2>
+          <div class="options-grid" id="screen3Options">
+            <div class="option" data-value="sedentary">
+              <span class="option-text">Sedentary</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="lightly-active">
+              <span class="option-text">Lightly active</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="moderately-active">
+              <span class="option-text">Moderately active</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="very-active">
+              <span class="option-text">Very active</span>
+              <div class="option-indicator"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 5: Current Diet -->
+      <div class="screen" data-screen="4">
+        <div class="screen-content">
+          <h2>What is your current diet like?</h2>
+          <div class="options-grid" id="screen4Options">
+            <div class="option" data-value="standard-diet">
+              <span class="option-text">Standard diet</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="mediterranean">
+              <span class="option-text">Mediterranean or plant-forward</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="low-carb">
+              <span class="option-text">Low-carb or keto</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="intermittent-fasting">
+              <span class="option-text">Intermittent fasting</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="calorie-restricted">
+              <span class="option-text">Calorie-restricted</span>
+              <div class="option-indicator"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 6: Biomarker Tracking -->
+      <div class="screen" data-screen="5">
+        <div class="screen-content">
+          <h2>Do you currently track any biomarkers?</h2>
+          <div class="question-subtitle">Select all that apply.</div>
+          <div class="options-grid" id="screen5Options">
+            <div class="option multi" data-value="blood-glucose">
+              <span class="option-text">Blood glucose</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="blood-pressure">
+              <span class="option-text">Blood pressure</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="heart-rate-variability">
+              <span class="option-text">Heart rate variability</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="sleep-quality">
+              <span class="option-text">Sleep quality</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="body-composition">
+              <span class="option-text">Body composition</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="none-biomarkers">
+              <span class="option-text">None of these</span>
+              <div class="option-check"></div>
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="button primary" onclick="nextScreen()" id="screen5ContinueBtn">Continue</button>
+        </div>
+      </div>
+
+      <!-- Screen 7: Transition Interstitial -->
+      <div class="screen" data-screen="6">
+        <div class="screen-content">
+          <div class="interstitial-content">
+            <div class="image-container circular">
+              <img src="/images/questionnaire/health-info-transition.png" alt="Health info" loading="lazy">
+            </div>
+            <div class="interstitial-text" id="transitionText">Now let's understand your health profile for the safest and most effective protocol.</div>
+            <div class="progress-dots">
+              <div class="progress-dot active"></div>
+              <div class="progress-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="button primary" onclick="nextScreen()">Continue</button>
+        </div>
+      </div>
+
+      <!-- Screen 8: Date of Birth -->
+      <div class="screen" data-screen="7">
+        <div class="screen-content">
+          <h2>When were you born?</h2>
+          <div class="form-group">
+            <label class="label">Date of birth</label>
+            <input type="date" id="dobInput">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="button primary" onclick="nextScreen()" id="screen7ContinueBtn" disabled>Continue</button>
+        </div>
+      </div>
+
+      <!-- Screen 9: Biological Sex -->
+      <div class="screen" data-screen="8">
+        <div class="screen-content">
+          <h2>What is your biological sex?</h2>
+          <div class="question-subtitle">Longevity protocols differ by sex — this ensures personalized optimization.</div>
+          <div class="options-grid" id="screen8Options">
+            <div class="option" data-value="male">
+              <span class="option-text">Male</span>
+              <div class="option-indicator"></div>
+            </div>
+            <div class="option" data-value="female">
+              <span class="option-text">Female</span>
+              <div class="option-indicator"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 10: Height & Weight -->
+      <div class="screen" data-screen="9">
+        <div class="screen-content">
+          <h2>What is your height and weight?</h2>
+          <div class="question-subtitle">This helps determine metabolic baseline and protocol personalization.</div>
+          <div class="input-row">
+            <div class="form-group">
+              <label class="label">Height (cm)</label>
+              <input type="number" id="heightInput" placeholder="170" min="100" max="250">
+            </div>
+            <div class="form-group">
+              <label class="label">Weight (kg)</label>
+              <input type="number" id="weightInput" placeholder="75" min="30" max="300">
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="button primary" onclick="nextScreen()" id="screen9ContinueBtn" disabled>Continue</button>
+        </div>
+      </div>
+
+      <!-- Screen 11: Medical Diagnoses -->
+      <div class="screen" data-screen="10">
+        <div class="screen-content">
+          <h2>Have you been diagnosed with any of the following?</h2>
+          <div class="question-subtitle">Select all that apply.</div>
+          <div class="options-grid" id="screen10Options">
+            <div class="option multi" data-value="type2-diabetes">
+              <span class="option-text">Type 2 diabetes</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="high-bp-diagnosis">
+              <span class="option-text">High blood pressure</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="high-cholesterol">
+              <span class="option-text">High cholesterol</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="heart-disease">
+              <span class="option-text">Heart disease</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="autoimmune">
+              <span class="option-text">Autoimmune condition</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="none-longevity-diagnoses">
+              <span class="option-text">None</span>
+              <div class="option-check"></div>
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="button primary" onclick="nextScreen()" id="screen10ContinueBtn">Continue</button>
+        </div>
+      </div>
+
+      <!-- Screen 12: Current Medications/Supplements -->
+      <div class="screen" data-screen="11">
+        <div class="screen-content">
+          <h2>Are you currently taking any medications or supplements?</h2>
+          <div class="question-subtitle">Select all that apply.</div>
+          <div class="options-grid" id="screen11Options">
+            <div class="option multi" data-value="metformin-longevity">
+              <span class="option-text">Metformin</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="rapamycin">
+              <span class="option-text">Rapamycin</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="nad-precursors">
+              <span class="option-text">NAD+ precursors (NMN, NR)</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="resveratrol">
+              <span class="option-text">Resveratrol</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="omega3">
+              <span class="option-text">Omega-3s</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="statins">
+              <span class="option-text">Statins</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="none-longevity-meds">
+              <span class="option-text">None</span>
+              <div class="option-check"></div>
+            </div>
+            <div class="option multi" data-value="other-longevity">
+              <span class="option-text">Other</span>
+              <div class="option-check"></div>
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="button primary" onclick="nextScreen()" id="screen11ContinueBtn">Continue</button>
+        </div>
+      </div>
+
+      <!-- Screen 13: Loading -->
+      <div class="screen" data-screen="12">
+        <div class="screen-content">
+          <div class="loading-container">
+            <div class="loading-spinner">
+              <svg viewBox="0 0 120 120">
+                <defs>
+                  <linearGradient id="spinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color: #b8922e" />
+                    <stop offset="50%" style="stop-color: #c9a23a" />
+                    <stop offset="100%" style="stop-color: #2c2824" />
+                  </linearGradient>
+                </defs>
+                <circle cx="60" cy="60" r="50" stroke="url(#spinGrad)" />
+              </svg>
+            </div>
+            <div class="loading-text-container">
+              <div class="loading-text" id="loadingText">Analysing your profile...</div>
+              <div class="loading-subtitle">This takes a few seconds</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 14: Eligibility Confirmed -->
+      <div class="screen" data-screen="13">
+        <div class="screen-content">
+          <div style="text-align: center; padding-top: 20px;">
+            <div class="checkmark-container">
+              <div class="checkmark-circle">
+                <svg viewBox="0 0 24 24">
+                  <path class="checkmark-path" d="M5 12l5 5L19 7" />
+                </svg>
+              </div>
+            </div>
+            <h2 style="text-align: center;">Great news — you're likely eligible.</h2>
+            <p class="subtext" style="text-align: center;">Based on your answers, you may qualify for our physician-supervised longevity protocol. A licensed physician will review your complete profile.</p>
+          </div>
+          <div class="image-container" style="aspect-ratio: 16/9; max-height: 30vh; border-radius: 20px;">
+            <img src="/images/questionnaire/weight-eligible.png" alt="Eligible" loading="lazy">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="button primary" onclick="nextScreen()">See your protocol →</button>
+        </div>
+      </div>
+
+      <!-- Screen 15: How It Works -->
+      <div class="screen" data-screen="14">
+        <div class="screen-content">
+          <h2>How it works</h2>
+          <div class="question-subtitle">Evidence-based longevity medicine, personalized to you.</div>
+
+          <div class="image-container" style="aspect-ratio: 16/9; max-height: 28vh; border-radius: 16px; margin-bottom: 24px;">
+            <img src="/images/questionnaire/weight-science.png" alt="Longevity Science" loading="lazy">
+          </div>
+
+          <div class="feature-steps">
+            <div class="feature-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <div class="step-title">Comprehensive biomarker panel</div>
+                <div class="step-desc">Full blood panel plus biological age assessment to establish your aging baseline.</div>
+              </div>
+            </div>
+            <div class="feature-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <div class="step-title">Physician-designed longevity protocol</div>
+                <div class="step-desc">Evidence-based interventions targeting your specific aging pathways and health goals.</div>
+              </div>
+            </div>
+            <div class="feature-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <div class="step-title">Quarterly monitoring & optimization</div>
+                <div class="step-desc">Track biological age, adjust protocol based on results, and refine your longevity strategy.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-cards">
+            <div class="stat-card">
+              <div class="stat-number">4.2<span style="font-size: 20px;">yr</span></div>
+              <div class="stat-label">average biological age reduction*</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">87%</div>
+              <div class="stat-label">improved biomarkers*</div>
+            </div>
+          </div>
+          <div style="font-size: 11px; color: var(--text-tertiary); text-align: center;">*Based on physician-supervised longevity protocols</div>
+        </div>
+        <div class="button-container">
+          <button class="button primary" onclick="nextScreen()">View your protocol →</button>
+        </div>
+      </div>
+
+      <!-- Screen 16: Protocol Details -->
+      <div class="screen" data-screen="15">
+        <div class="screen-content">
+          <h2>Your protocol</h2>
+          <div class="question-subtitle">Personalised by your physician based on your profile.</div>
+
+          <div class="product-card">
+            <div class="product-tag">Longevity Protocol</div>
+            <div class="product-name">Healthspan Optimization</div>
+            <div class="product-desc">Physician-prescribed evidence-based interventions to slow aging and optimize your biological age.</div>
+            <div class="product-image">
+              <img src="/images/questionnaire/longevity-treatment-card.png" alt="Treatment" loading="lazy">
+            </div>
+            <div class="product-features">
+              <div class="product-feature">
+                <div class="product-feature-icon">✓</div>
+                <span>FDA-approved, evidence-based compounds</span>
+              </div>
+              <div class="product-feature">
+                <div class="product-feature-icon">✓</div>
+                <span>Quarterly biological age tracking</span>
+              </div>
+              <div class="product-feature">
+                <div class="product-feature-icon">✓</div>
+                <span>Physician optimization & support</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="treatment-table">
+            <div class="table-row">
+              <div class="table-label">Type</div>
+              <div class="table-value">Oral + injectable</div>
+            </div>
+            <div class="table-row">
+              <div class="table-label">Frequency</div>
+              <div class="table-value">As prescribed</div>
+            </div>
+            <div class="table-row">
+              <div class="table-label">Results in</div>
+              <div class="table-value">3–6 months*</div>
+            </div>
+            <div class="table-row">
+              <div class="table-label">Starting from</div>
+              <div class="table-value" style="color: var(--gold); font-size: 17px;">₹2,499/mo</div>
+            </div>
+          </div>
+
+          <div class="expandable">
+            <button class="expandable-header" onclick="toggleExpandable(this)">Active ingredients</button>
+            <div class="expandable-content">
+              <div class="expandable-text">
+                <strong>Metformin:</strong> mTOR inhibitor that extends healthy lifespan and improves metabolic health.<br><br>
+                <strong>NMN:</strong> NAD+ precursor that supports mitochondrial function and cellular energy production.<br><br>
+                <strong>Rapamycin:</strong> Immunosuppressant with senolytic properties that helps clear aging cells.
+              </div>
+            </div>
+          </div>
+
+          <div class="expandable">
+            <button class="expandable-header" onclick="toggleExpandable(this)">What to expect</button>
+            <div class="expandable-content">
+              <div class="expandable-text">
+                <strong>Month 1–2:</strong> Baseline biomarkers established. Energy levels may improve. Nutrient optimization begins.<br><br>
+                <strong>Month 3–6:</strong> Metabolic markers improve. Blood glucose, cholesterol, and inflammation typically decrease. First biological age assessment at 3 months.<br><br>
+                <strong>Month 6+:</strong> Sustained optimization. Quarterly monitoring tracks improvements. Protocol adjusted based on results.
+              </div>
+            </div>
+          </div>
+
+          <div class="expandable">
+            <button class="expandable-header" onclick="toggleExpandable(this)">Potential side effects</button>
+            <div class="expandable-content">
+              <div class="expandable-text">
+                <strong>Common:</strong> Mild gastrointestinal effects, occasionally altered appetite. Most resolve within 1–2 weeks.<br><br>
+                <strong>Rare:</strong> Immune system changes, lipid shifts, injectable site reactions. Your physician monitors all biomarkers.<br><br>
+                <em>All side effects are discussed in detail during your physician consultation.</em>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="button primary" onclick="nextScreen()">Continue with this protocol</button>
+          <button class="button secondary" onclick="nextScreen()">Explore other options</button>
+        </div>
+      </div>
+
+      <!-- Screen 17: Contact & Shipping -->
+      <div class="screen" data-screen="16">
+        <div class="screen-content">
+          <h2>Almost there — where should we deliver?</h2>
+          <div class="question-subtitle">Your information is encrypted and shared only with your assigned physician.</div>
+
+          <div class="form-group">
+            <label class="label">Full name</label>
+            <input type="text" id="nameInput" placeholder="Your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="label">Phone number</label>
+            <input type="tel" id="phoneInput" placeholder="+91 98765 43210" required>
+          </div>
+
+          <div class="form-group">
+            <label class="label">Email</label>
+            <input type="email" id="emailInput" placeholder="you@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="label">Pin code</label>
+            <input type="text" id="pinInput" placeholder="110001" maxlength="6" required>
+          </div>
+
+          <div class="form-group">
+            <label class="label">Full address</label>
+            <textarea id="addressInput" placeholder="Enter your complete delivery address" required></textarea>
+          </div>
+
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="consentCheckbox" class="checkbox-input">
+            <label for="consentCheckbox" class="checkbox-label">
+              I consent to a telehealth consultation with a licensed physician and agree to <a href="#">arq's Terms of Service</a> and <a href="#">Privacy Policy</a>.
+            </label>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="button primary" onclick="submitForm()" id="submitBtn" disabled>Submit & get matched with a physician</button>
+        </div>
+      </div>
+
+      <!-- Screen 18: Confirmation -->
+      <div class="screen" data-screen="17">
+        <div class="screen-content">
+          <div style="text-align: center; padding-top: 32px;">
+            <div class="checkmark-container">
+              <div class="checkmark-circle">
+                <svg viewBox="0 0 24 24">
+                  <path class="checkmark-path" d="M5 12l5 5L19 7" />
+                </svg>
+              </div>
+            </div>
+            <h2 style="text-align: center;">You're in.</h2>
+            <p class="subtext" style="text-align: center; margin-bottom: 28px;">A physician will review your profile within 24 hours. We'll reach out on WhatsApp to confirm your protocol and schedule your biomarker assessment.</p>
+          </div>
+
+          <div class="image-container" style="aspect-ratio: 16/9; max-height: 30vh; border-radius: 20px;">
+            <img src="/images/questionnaire/success-celebration.png" alt="Success" loading="lazy">
+          </div>
+
+          <div class="trust-row" style="margin-top: 0;">
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg>
+              256-bit encrypted
+            </div>
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              24hr response
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <a href="https://wa.me/919137307628?text=Hi%20arq%2C%20I%20just%20completed%20the%20longevity%20protocol%20questionnaire.%20I%27m%20ready%20to%20start%20my%20personalized%20treatment." class="button whatsapp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chat with us on WhatsApp
+          </a>
+          <a href="/index.html" class="button-text-link">Return to arq.clinic</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ===== STATE =====
+    let currentStep = 0;
+    const totalSteps = 18;
+
+    const formData = {
+      longevityGoal: null,
+      currentHealth: null,
+      physicalActivity: null,
+      diet: null,
+      biomarkers: [],
+      dateOfBirth: null,
+      biologicalSex: null,
+      height: null,
+      weight: null,
+      diagnoses: [],
+      medications: [],
+      fullName: null,
+      phone: null,
+      email: null,
+      pinCode: null,
+      address: null
+    };
+
+    // ===== LOADING TEXT ANIMATION =====
+    const loadingMessages = [
+      'Analysing your profile...',
+      'Calculating biological age...',
+      'Personalising recommendations...'
+    ];
+
+    function animateLoadingText() {
+      const el = document.getElementById('loadingText');
+      if (!el) return;
+      let i = 0;
+      const interval = setInterval(() => {
+        i++;
+        if (i >= loadingMessages.length) { clearInterval(interval); return; }
+        el.classList.add('fade');
+        setTimeout(() => {
+          el.textContent = loadingMessages[i];
+          el.classList.remove('fade');
+        }, 300);
+      }, 1100);
+    }
+
+    // ===== INTERSTITIAL TEXT ANIMATION =====
+    function animateInterstitialText(elementId) {
+      const element = document.getElementById(elementId);
+      if (!element) return;
+      const text = element.innerText;
+      const words = text.split(' ');
+      element.innerHTML = '';
+      words.forEach((word, index) => {
+        const span = document.createElement('span');
+        span.className = 'word-fade';
+        span.textContent = word + ' ';
+        span.style.animationDelay = `${index * 55}ms`;
+        element.appendChild(span);
+      });
+    }
+
+    // ===== NAVIGATION =====
+    function nextScreen() {
+      if (currentStep < totalSteps - 1) {
+        currentStep++;
+        updateScreen();
+      }
+    }
+
+    function prevScreen() {
+      if (currentStep > 0) {
+        currentStep--;
+        updateScreen();
+      }
+    }
+
+    function updateScreen() {
+      const screens = document.querySelectorAll('.screen');
+      screens.forEach((screen, index) => {
+        screen.classList.remove('active', 'prev');
+        if (index === currentStep) screen.classList.add('active');
+        else if (index < currentStep) screen.classList.add('prev');
+      });
+
+      updateProgressBar();
+      updateBackButton();
+      attachEventListeners();
+
+      if (currentStep === 0) setTimeout(() => animateInterstitialText('welcomeText'), 150);
+      else if (currentStep === 6) setTimeout(() => animateInterstitialText('transitionText'), 150);
+
+      // Loading screen auto-advance + text animation
+      if (currentStep === 12) {
+        animateLoadingText();
+        setTimeout(() => nextScreen(), 3800);
+      }
+    }
+
+    function updateProgressBar() {
+      const progress = ((currentStep + 1) / totalSteps) * 100;
+      document.getElementById('progressBar').style.width = progress + '%';
+    }
+
+    function updateBackButton() {
+      document.getElementById('backBtn').disabled = currentStep === 0;
+    }
+
+    document.getElementById('backBtn').addEventListener('click', prevScreen);
+
+    // ===== OPTION HANDLING =====
+    function attachEventListeners() {
+      const activeScreen = document.querySelector('.screen.active');
+      if (!activeScreen) return;
+
+      activeScreen.querySelectorAll('.option:not(.multi)').forEach(option => {
+        option.onclick = function() {
+          this.parentElement.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+          this.classList.add('selected');
+          storeData(currentStep, this.dataset.value);
+          setTimeout(() => nextScreen(), 350);
+        };
+      });
+
+      activeScreen.querySelectorAll('.option.multi').forEach(option => {
+        option.onclick = function() {
+          const value = this.dataset.value;
+
+          if (value.includes('none')) {
+            if (!this.classList.contains('selected')) {
+              this.parentElement.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+            }
+            this.classList.toggle('selected');
+          } else {
+            this.classList.toggle('selected');
+            const noneOpt = Array.from(this.parentElement.querySelectorAll('.option')).find(o => o.dataset.value.includes('none'));
+            if (noneOpt && this.classList.contains('selected')) noneOpt.classList.remove('selected');
+          }
+
+          storeMultiSelectData(currentStep);
+        };
+      });
+
+      attachFormListeners();
+    }
+
+    // ===== DATA STORAGE =====
+    function storeData(screenIndex, value) {
+      const mapping = {
+        1: 'longevityGoal', 2: 'currentHealth', 3: 'physicalActivity', 4: 'diet', 8: 'biologicalSex'
+      };
+      if (mapping[screenIndex]) formData[mapping[screenIndex]] = value;
+    }
+
+    function storeMultiSelectData(screenIndex) {
+      const mapping = { 5: 'biomarkers', 10: 'diagnoses', 11: 'medications' };
+      if (!mapping[screenIndex]) return;
+
+      const activeScreen = document.querySelector('.screen.active');
+      const selected = activeScreen.querySelectorAll('.option.selected');
+      formData[mapping[screenIndex]] = Array.from(selected).map(o => o.dataset.value);
+    }
+
+    // ===== FORM VALIDATION =====
+    function attachFormListeners() {
+      const dobInput = document.getElementById('dobInput');
+      if (dobInput) {
+        dobInput.onchange = () => {
+          formData.dateOfBirth = dobInput.value;
+          const btn = document.getElementById('screen7ContinueBtn');
+          if (btn) btn.disabled = !dobInput.value;
+        };
+      }
+
+      const heightInput = document.getElementById('heightInput');
+      const weightInput = document.getElementById('weightInput');
+      if (heightInput && weightInput) {
+        const handler = () => {
+          formData.height = parseFloat(heightInput.value);
+          formData.weight = parseFloat(weightInput.value);
+          const btn = document.getElementById('screen9ContinueBtn');
+          if (btn) btn.disabled = !(heightInput.value && weightInput.value && parseFloat(heightInput.value) > 0 && parseFloat(weightInput.value) > 0);
+        };
+        heightInput.oninput = handler;
+        weightInput.oninput = handler;
+      }
+
+      // Contact form
+      const fields = ['nameInput', 'phoneInput', 'emailInput', 'pinInput', 'addressInput'];
+      fields.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.oninput = validateContactForm;
+      });
+      const consent = document.getElementById('consentCheckbox');
+      if (consent) consent.onchange = validateContactForm;
+    }
+
+    function validateContactForm() {
+      const name = document.getElementById('nameInput');
+      const phone = document.getElementById('phoneInput');
+      const email = document.getElementById('emailInput');
+      const pin = document.getElementById('pinInput');
+      const address = document.getElementById('addressInput');
+      const consent = document.getElementById('consentCheckbox');
+      const btn = document.getElementById('submitBtn');
+      if (btn) {
+        btn.disabled = !(
+          name && name.value.trim() &&
+          phone && phone.value.trim() &&
+          email && email.value.includes('@') &&
+          pin && pin.value.length === 6 &&
+          address && address.value.trim() &&
+          consent && consent.checked
+        );
+      }
+    }
+
+    // ===== EXPANDABLE =====
+    function toggleExpandable(header) {
+      header.parentElement.classList.toggle('open');
+    }
+
+    // ===== SUBMIT =====
+    function submitForm() {
+      formData.fullName = document.getElementById('nameInput').value;
+      formData.phone = document.getElementById('phoneInput').value;
+      formData.email = document.getElementById('emailInput').value;
+      formData.pinCode = document.getElementById('pinInput').value;
+      formData.address = document.getElementById('addressInput').value;
+
+      console.log('Form Data:', formData);
+      nextScreen();
+    }
+
+    // ===== INIT =====
+    updateScreen();
+  </script>
+</body>
+</html>

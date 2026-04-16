@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arq — Brand Identity System</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Epilogue:wght@200;300;400;500;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  /* Core palette */
+  --void:#08080a;
+  --ink:#0f0f12;
+  --surface:#16161a;
+  --card:#1e1e24;
+  --lift:#26262e;
+
+  /* Borders */
+  --b0:rgba(255,255,255,0.04);
+  --b1:rgba(255,255,255,0.08);
+  --b2:rgba(255,255,255,0.14);
+
+  /* Text */
+  --white:#f0ebe0;
+  --white-70:rgba(240,235,224,0.7);
+  --white-40:rgba(240,235,224,0.4);
+  --white-15:rgba(240,235,224,0.15);
+
+  /* Gold — the only accent */
+  --gold:#c8973a;
+  --gold-hi:#dba84a;
+  --gold-lo:rgba(200,151,58,0.15);
+  --gold-border:rgba(200,151,58,0.25);
+
+  /* Functional */
+  --serif:'Playfair Display',serif;
+  --sans:'Epilogue',sans-serif;
+  --mono:'DM Mono',monospace;
+
+  --radius:2px;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--void);
+  color:var(--white);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ─── GRAIN OVERLAY ─── */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:1000;
+  mix-blend-mode:overlay;
+}
+
+/* ─── COVER PAGE ─── */
+.cover{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:40px 28px;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--b1);
+}
+
+.cover-grid{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(var(--b0) 1px, transparent 1px),
+    linear-gradient(90deg, var(--b0) 1px, transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+}
+
+.cover-glow{
+  position:absolute;
+  width:500px;height:500px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(200,151,58,0.06) 0%, transparent 65%);
+  top:-120px;right:-80px;
+  pointer-events:none;
+  animation:glow-pulse 7s ease-in-out infinite;
+}
+@keyframes glow-pulse{
+  0%,100%{opacity:0.5;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.08)}
+}
+
+.cover-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:relative;
+}
+
+.cover-label{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+.cover-confidential{
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--white-40);
+  border:1px solid var(--b2);
+  padding:4px 10px;
+}
+
+.cover-center{
+  position:relative;
+  padding:60px 0;
+}
+
+.cover-wordmark{
+  font-family:var(--serif);
+  font-size:clamp(72px,18vw,140px);
+  font-weight:400;
+  letter-spacing:-0.02em;
+  line-height:1;
+  color:var(--white);
+  margin-bottom:0;
+}
+
+.cover-wordmark span{
+  color:var(--gold);
+}
+
+.cover-rule{
+  width:100%;
+  height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  margin:24px 0;
+  opacity:0.4;
+}
+
+.cover-tagline{
+  font-family:var(--serif);
+  font-size:clamp(18px,4vw,28px);
+  font-weight:400;
+  font-style:italic;
+  color:var(--white-70);
+  letter-spacing:0.01em;
+}
+
+.cover-bottom{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  position:relative;
+}
+
+.cover-meta{
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:0.1em;
+  color:var(--white-40);
+  line-height:2;
+}
+
+.cover-ver{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:0.1em;
+  color:var(--gold);
+}
+
+/* ─── NAVIGATION ─── */
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(8,8,10,0.9);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--b1);
+  padding:0 20px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+nav::-webkit-scrollbar{display:none}
+
+.nav-inner{
+  display:flex;
+  gap:0;
+  white-space:nowrap;
+  min-width:max-content;
+}
+
+.nav-link{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--white-40);
+  text-decoration:none;
+  padding:16px 18px;
+  border-bottom:2px solid transparent;
+  transition:all 0.2s;
+  display:block;
+}
+.nav-link:hover{color:var(--white-70)}
+.nav-link.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ─── SECTIONS ─── */
+.section{
+  padding:72px 28px;
+  border-bottom:1px solid var(--b1);
+  max-width:720px;
+  margin:0 auto;
+}
+
+.section-full{
+  padding:72px 28px;
+  border-bottom:1px solid var(--b1);
+}
+
+.section-inner{
+  max-width:720px;
+  margin:0 auto;
+}
+
+/* ─── SECTION HEADERS ─── */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.eyebrow::before{
+  content:'';
+  display:block;
+  width:24px;
+  height:1px;
+  background:var(--gold);
+}
+
+.section-title{
+  font-family:var(--serif);
+  font-size:clamp(32px,6vw,52px);
+  font-weight:400;
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  margin-bottom:24px;
+}
+.section-title em{
+  font-style:italic;
+  color:var(--gold);
+}
+
+.section-body{
+  font-size:15px;
+  color:var(--white-70);
+  line-height:1.85;
+  max-width:560px;
+}
+
+.section-body strong{
+  color:var(--white);
+  font-weight:400;
+}
+
+/* ─── PULL QUOTE ─── */
+.pull-quote{
+  padding:32px 0;
+  border-top:1px solid var(--b1);
+  border-bottom:1px solid var(--b1);
+  margin:40px 0;
+}
+
+.pull-quote-text{
+  font-family:var(--serif);
+  font-size:clamp(22px,4vw,32px);
+  font-weight:400;
+  font-style:italic;
+  color:var(--white);
+  line-height:1.4;
+  letter-spacing:-0.01em;
+}
+
+.pull-quote-text em{
+  color:var(--gold);
+  font-style:normal;
+}
+
+/* ─── INSIGHT CARDS ─── */
+.cards{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  background:var(--b1);
+  margin:32px 0;
+}
+
+.card{
+  background:var(--ink);
+  padding:28px 24px;
+  transition:background 0.2s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:0;
+  background:var(--gold);
+  transition:width 0.25s ease;
+}
+
+.card:hover{background:var(--surface)}
+.card:hover::before{width:2px}
+
+.card-num{
+  font-family:var(--serif);
+  font-size:40px;
+  color:rgba(200,151,58,0.12);
+  line-height:1;
+  margin-bottom:10px;
+}
+
+.card-title{
+  font-family:var(--serif);
+  font-size:20px;
+  font-weight:400;
+  color:var(--white);
+  margin-bottom:8px;
+}
+
+.card-body{
+  font-size:13px;
+  color:var(--white-70);
+  line-height:1.75;
+}
+
+/* ─── PERSONA ─── */
+.persona-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1px;
+  background:var(--b1);
+  margin:32px 0;
+}
+
+@media(min-width:600px){
+  .persona-grid{grid-template-columns:1fr 1fr}
+}
+
+.persona-cell{
+  background:var(--ink);
+  padding:24px 20px;
+}
+
+.persona-cell-label{
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:10px;
+}
+
+.persona-cell-content{
+  font-size:13px;
+  color:var(--white-70);
+  line-height:1.75;
+}
+
+.persona-cell-content strong{
+  color:var(--white);
+  font-weight:400;
+  display:block;
+  margin-bottom:4px;
+}
+
+/* ─── BRAND PILLARS ─── */
+.pillars{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  margin:32px 0;
+}
+
+.pillar{
+  padding:28px 24px;
+  border:1px solid var(--b1);
+  background:var(--ink);
+  position:relative;
+}
+
+.pillar::after{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:var(--gold);
+  opacity:0.6;
+}
+
+.pillar-word{
+  font-family:var(--serif);
+  font-size:32px;
+  font-weight:400;
+  font-style:italic;
+  color:var(--gold);
+  margin-bottom:4px;
+}
+
+.pillar-counter{
+  font-family:var(--serif);
+  font-size:16px;
+  color:var(--white-40);
+  margin-bottom:14px;
+  font-style:italic;
+}
+
+.pillar-body{
+  font-size:13px;
+  color:var(--white-70);
+  line-height:1.8;
+}
+
+.pillar-body strong{
+  color:var(--white);
+  font-weight:400;
+}
+
+/* ─── COLOR SYSTEM ─── */
+.color-system{
+  margin:32px 0;
+}
+
+.color-swatches{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  background:var(--b1);
+  margin-bottom:24px;
+}
+
+.swatch{
+  display:flex;
+  align-items:stretch;
+  height:80px;
+}
+
+.swatch-block{
+  width:80px;
+  flex-shrink:0;
+}
+
+.swatch-info{
+  background:var(--ink);
+  flex:1;
+  padding:16px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:4px;
+}
+
+.swatch-name{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--white);
+}
+
+.swatch-hex{
+  font-family:var(--mono);
+  font-size:9px;
+  color:var(--white-40);
+  letter-spacing:0.08em;
+}
+
+.swatch-use{
+  font-size:11px;
+  color:var(--white-40);
+  margin-top:2px;
+}
+
+/* ─── TYPOGRAPHY SYSTEM ─── */
+.type-system{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  background:var(--b1);
+  margin:32px 0;
+}
+
+.type-row{
+  background:var(--ink);
+  padding:24px 20px;
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:20px;
+  align-items:start;
+}
+
+.type-label{
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--white-40);
+  padding-top:4px;
+}
+
+.type-specimen{
+  font-family:var(--serif);
+  color:var(--white);
+}
+
+.type-specimen.display{font-size:clamp(36px,7vw,60px);font-weight:400;line-height:1.05;letter-spacing:-0.02em}
+.type-specimen.headline{font-size:clamp(24px,4vw,36px);font-weight:400;line-height:1.1;letter-spacing:-0.01em}
+.type-specimen.body-serif{font-size:18px;font-weight:400;line-height:1.6;font-style:italic}
+
+.type-specimen.body-sans{
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:300;
+  line-height:1.7;
+  color:var(--white-70);
+}
+
+.type-specimen.mono-label{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+/* ─── VOICE EXAMPLES ─── */
+.voice-examples{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  margin:32px 0;
+}
+
+.voice-pair{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--b1);
+}
+
+.voice-bad{
+  background:#0f0a0a;
+  padding:20px 18px;
+}
+
+.voice-good{
+  background:var(--ink);
+  padding:20px 18px;
+}
+
+.voice-tag{
+  font-family:var(--mono);
+  font-size:7px;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.voice-tag.bad{color:#8a3a3a}
+.voice-tag.good{color:var(--gold)}
+
+.voice-text{
+  font-size:13px;
+  line-height:1.65;
+  color:var(--white-70);
+}
+
+.voice-text em{
+  font-style:normal;
+  color:var(--white);
+}
+
+/* ─── NEVER / ALWAYS ─── */
+.never-always{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--b1);
+  margin:32px 0;
+}
+
+.never-col{
+  background:#0d0808;
+  padding:28px 20px;
+}
+
+.always-col{
+  background:var(--ink);
+  padding:28px 20px;
+}
+
+.col-header{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+
+.col-header.never{color:#8a3a3a}
+.col-header.always{color:var(--gold)}
+
+.col-items{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.col-item{
+  font-size:13px;
+  color:var(--white-70);
+  line-height:1.5;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.col-item::before{
+  content:'—';
+  flex-shrink:0;
+  color:var(--white-40);
+  font-family:var(--serif);
+}
+
+/* ─── PRODUCT NAMING ─── */
+.naming-grid{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  background:var(--b1);
+  margin:32px 0;
+}
+
+.naming-row{
+  background:var(--ink);
+  padding:20px 20px;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:20px;
+  align-items:start;
+}
+
+.naming-product{
+  font-family:var(--serif);
+  font-size:17px;
+  font-weight:400;
+  color:var(--white);
+}
+
+.naming-arq{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:4px;
+}
+
+.naming-desc{
+  font-size:12px;
+  color:var(--white-40);
+  line-height:1.5;
+}
+
+/* ─── TAGLINE SYSTEM ─── */
+.taglines{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  background:var(--b1);
+  margin:32px 0;
+}
+
+.tagline-row{
+  background:var(--ink);
+  padding:24px 20px;
+  display:grid;
+  grid-template-columns:100px 1fr;
+  gap:16px;
+  align-items:center;
+}
+
+.tagline-context{
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--white-40);
+}
+
+.tagline-text{
+  font-family:var(--serif);
+  font-size:clamp(16px,3vw,22px);
+  font-weight:400;
+  font-style:italic;
+  color:var(--white);
+}
+
+.tagline-text em{
+  font-style:normal;
+  color:var(--gold);
+}
+
+/* ─── EXPERIENCE PRINCIPLES ─── */
+.exp-principles{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1px;
+  background:var(--b1);
+  margin:32px 0;
+}
+
+@media(min-width:500px){
+  .exp-principles{grid-template-columns:1fr 1fr}
+}
+
+.exp-card{
+  background:var(--ink);
+  padding:28px 22px;
+  transition:background 0.2s;
+}
+
+.exp-card:hover{background:var(--surface)}
+
+.exp-icon{font-size:22px;margin-bottom:14px;display:block}
+
+.exp-title{
+  font-family:var(--serif);
+  font-size:20px;
+  font-weight:400;
+  color:var(--white);
+  margin-bottom:8px;
+  line-height:1.2;
+}
+
+.exp-title em{
+  font-style:italic;
+  color:var(--gold);
+}
+
+.exp-body{
+  font-size:12px;
+  color:var(--white-40);
+  line-height:1.75;
+}
+
+/* ─── COMPETITOR MAP ─── */
+.comp-map{
+  position:relative;
+  border:1px solid var(--b1);
+  margin:32px 0;
+  padding:0;
+  overflow:hidden;
+  background:var(--ink);
+}
+
+.comp-map-inner{
+  padding:40px 20px;
+  position:relative;
+}
+
+.comp-grid-lines{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(var(--b1) 1px, transparent 1px),
+    linear-gradient(90deg, var(--b1) 1px, transparent 1px);
+  background-size:25% 25%;
+  pointer-events:none;
+}
+
+.comp-axes{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.comp-axis-h{
+  position:absolute;
+  top:50%;left:0;right:0;
+  height:1px;
+  background:var(--b2);
+  transform:translateY(-50%);
+}
+
+.comp-axis-v{
+  position:absolute;
+  left:50%;top:0;bottom:0;
+  width:1px;
+  background:var(--b2);
+  transform:translateX(-50%);
+}
+
+.comp-axis-label{
+  position:absolute;
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--white-40);
+}
+
+.comp-dot{
+  position:absolute;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  transform:translate(-50%,-50%);
+  cursor:default;
+}
+
+.comp-dot-mark{
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--white-40);
+  border:2px solid var(--surface);
+}
+
+.comp-dot.arq .comp-dot-mark{
+  background:var(--gold);
+  width:14px;height:14px;
+  box-shadow:0 0 20px rgba(200,151,58,0.4);
+}
+
+.comp-dot-name{
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:0.08em;
+  color:var(--white-40);
+  white-space:nowrap;
+}
+
+.comp-dot.arq .comp-dot-name{
+  color:var(--gold);
+  font-size:9px;
+}
+
+.comp-map-area{
+  height:280px;
+  position:relative;
+}
+
+/* ─── FINAL PAGE ─── */
+.finale{
+  min-height:60vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:80px 28px;
+  position:relative;
+  overflow:hidden;
+}
+
+.finale-glow{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 100%, rgba(200,151,58,0.06) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+.finale-wm{
+  position:absolute;
+  font-family:var(--serif);
+  font-size:clamp(100px,28vw,200px);
+  color:rgba(200,151,58,0.03);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  white-space:nowrap;
+  font-style:italic;
+}
+
+.finale-label{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:20px;
+}
+
+.finale-title{
+  font-family:var(--serif);
+  font-size:clamp(32px,7vw,56px);
+  font-weight:400;
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  margin-bottom:20px;
+}
+
+.finale-title em{
+  font-style:italic;
+  color:var(--gold);
+}
+
+.finale-sub{
+  font-size:13px;
+  color:var(--white-40);
+  max-width:340px;
+  line-height:1.8;
+}
+
+/* ─── SEPARATOR ─── */
+.sep{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin:40px 0;
+}
+.sep-line{flex:1;height:1px;background:var(--b1)}
+.sep-dot{
+  width:4px;height:4px;border-radius:50%;
+  background:var(--gold);opacity:0.4;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     COVER
+════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-glow"></div>
+
+  <div class="cover-top">
+    <div class="cover-label">Brand Identity System — Version 1.0</div>
+    <div class="cover-confidential">Confidential</div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-wordmark">ar<span>q</span></div>
+    <div class="cover-rule"></div>
+    <div class="cover-tagline">Your body. Your call.</div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-meta">
+      Dear One Technologies Pvt Ltd<br>
+      arq.clinic &nbsp;·&nbsp; Mumbai, India<br>
+      April 2026
+    </div>
+    <div class="cover-ver">v1.0</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#strategy" class="nav-link active">Strategy</a>
+    <a href="#customer" class="nav-link">Customer</a>
+    <a href="#idea" class="nav-link">Brand Idea</a>
+    <a href="#pillars" class="nav-link">Pillars</a>
+    <a href="#voice" class="nav-link">Voice</a>
+    <a href="#visual" class="nav-link">Visual</a>
+    <a href="#typography" class="nav-link">Typography</a>
+    <a href="#colour" class="nav-link">Colour</a>
+    <a href="#naming" class="nav-link">Naming</a>
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#landscape" class="nav-link">Landscape</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     01 — BRAND STRATEGY
+════════════════════════════════════════ -->
+<section class="section" id="strategy">
+  <div class="eyebrow">01 &nbsp; Brand Strategy</div>
+  <h2 class="section-title">The real<br><em>problem.</em></h2>
+
+  <div class="section-body">
+    <p>India's entire medical system is built on a single assumption: the doctor knows best. The patient arrives with symptoms. The doctor decides the solution. The pharmacist enforces the gate.</p>
+    <br>
+    <p>But a new kind of person has emerged. <strong>Someone who has done the research. Who listens to Huberman. Who knows the difference between modafinil and armodafinil. Who has already decided what they need.</strong> And yet — they still have to perform illness to get it.</p>
+    <br>
+    <p>The pharmacist's raised eyebrow. The GP who won't prescribe what you've asked for. The guilt of mixing a prescription item into an OTC order, hoping nobody notices. The feeling of being treated like you're trying to get away with something — when actually, you just know what you want.</p>
+    <br>
+    <p><strong>That feeling is the problem Arq solves.</strong> Not access. Not convenience. The feeling.</p>
+  </div>
+
+  <div class="pull-quote">
+    <div class="pull-quote-text">
+      "You shouldn't have to perform illness<br>to get what you <em>already know</em> you need."
+    </div>
+  </div>
+
+  <div class="section-body">
+    <p>The opportunity isn't to build a better pharmacy. It's to build the first healthcare brand that <strong>respects the informed patient</strong> — that treats knowing what you want as a credential, not a threat.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     02 — THE CUSTOMER
+════════════════════════════════════════ -->
+<section class="section" id="customer">
+  <div class="eyebrow">02 &nbsp; The Customer</div>
+  <h2 class="section-title">Meet<br><em>Karan.</em></h2>
+
+  <div class="section-body">
+    <p>He's 31. Works in product or finance. Mumbai or Bangalore. He has opinions about sleep architecture and tracks his HRV on a WHOOP. He's read the Attia newsletter. He takes creatine and magnesium glycinate and knows exactly why.</p>
+    <br>
+    <p>He's been googling "buy armodafinil India" for six months. He knows the chemist near his office stocks it, but the last time he tried, the pharmacist asked for a prescription in a way that made him feel like a criminal. So he stopped trying.</p>
+    <br>
+    <p>He doesn't want a doctor's opinion. He wants a doctor's signature. There's a difference, and nobody in India has ever acknowledged it.</p>
+  </div>
+
+  <div class="persona-grid">
+    <div class="persona-cell">
+      <div class="persona-cell-label">What he listens to</div>
+      <div class="persona-cell-content">
+        <strong>Huberman Lab. Peter Attia. Lex Fridman.</strong>
+        Podcasts where smart people talk about optimising the body like a system, not managing it like a problem.
+      </div>
+    </div>
+    <div class="persona-cell">
+      <div class="persona-cell-label">What he spends on</div>
+      <div class="persona-cell-content">
+        <strong>WHOOP. Creatine. AG1.</strong>
+        Premium things that work. He doesn't hunt for the cheapest option — he hunts for the right one.
+      </div>
+    </div>
+    <div class="persona-cell">
+      <div class="persona-cell-label">What he's afraid of</div>
+      <div class="persona-cell-content">
+        <strong>Being treated like a patient.</strong>
+        Being told he needs to justify what he wants. Being made to feel like he's doing something wrong when he's actually doing the homework.
+      </div>
+    </div>
+    <div class="persona-cell">
+      <div class="persona-cell-label">What he can't admit</div>
+      <div class="persona-cell-content">
+        <strong>He's been ordering modafinil from grey market sites.</strong>
+        He's not proud of it. He'd pay more for something clean, legal, and delivered without theatre.
+      </div>
+    </div>
+    <div class="persona-cell">
+      <div class="persona-cell-label">What he wants</div>
+      <div class="persona-cell-content">
+        <strong>To be treated like an adult.</strong>
+        A system that says: you've done the research, we'll handle the paperwork.
+      </div>
+    </div>
+    <div class="persona-cell">
+      <div class="persona-cell-label">What he tells friends</div>
+      <div class="persona-cell-content">
+        <strong>"You have to try this."</strong>
+        When he finds something that actually works, he becomes a missionary. Word of mouth is his media channel.
+      </div>
+    </div>
+  </div>
+
+  <div class="section-body">
+    <p>Karan is also <strong>Priya</strong> — 29, works in consulting, PCOS diagnosis she manages herself because no gynecologist has ever given her a satisfying answer. She wants spironolactone and tretinoin and doesn't want to explain herself to anyone. She'll find Arq through Karan. And she'll stay longer.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     03 — THE BRAND IDEA
+════════════════════════════════════════ -->
+<section class="section" id="idea">
+  <div class="eyebrow">03 &nbsp; The Brand Idea</div>
+  <h2 class="section-title">Your body.<br><em>Your call.</em></h2>
+
+  <div class="section-body">
+    <p>Four words. Everything flows from them.</p>
+    <br>
+    <p><strong>"Your body"</strong> — ownership. Not your doctor's body. Not the pharmacist's call to make. Yours. This is a radical statement in the context of Indian healthcare, where the system is built on the premise that the professional knows best.</p>
+    <br>
+    <p><strong>"Your call"</strong> — authority. And a deliberate double meaning. The call you make as the decision-maker. And the doctor's call that comes after you buy — the 5-minute conversation that turns your decision into a legal prescription. The process is encoded in the tagline itself.</p>
+  </div>
+
+  <div class="pull-quote">
+    <div class="pull-quote-text">
+      "Your body. Your call." isn't a wellness slogan.<br>
+      It's a <em>transfer of power.</em>
+    </div>
+  </div>
+
+  <div class="section-body">
+    <p>What makes this brand idea durable is that it works at every level simultaneously:</p>
+    <br>
+    <p><strong>Functionally</strong> — it describes exactly what Arq does. You decide. The doctor calls. It ships.</p>
+    <br>
+    <p><strong>Emotionally</strong> — it restores the dignity that the pharmacist's raised eyebrow took away. You're not asking permission. You're exercising a right.</p>
+    <br>
+    <p><strong>Culturally</strong> — in a country where healthcare is built on deference, this is genuinely radical. Not dangerous radical. Quietly, confidently radical.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     04 — BRAND PILLARS
+════════════════════════════════════════ -->
+<section class="section" id="pillars">
+  <div class="eyebrow">04 &nbsp; Brand Pillars</div>
+  <h2 class="section-title">What Arq<br><em>stands for.</em></h2>
+
+  <div class="pillars">
+
+    <div class="pillar">
+      <div class="pillar-word">Informed</div>
+      <div class="pillar-counter">not naive</div>
+      <div class="pillar-body">
+        Arq's customer has done the research. Arq meets them there — never explains what they already know, never talks down, never adds unnecessary medical theatre. <strong>The brand assumes intelligence.</strong> It uses the right terminology without condescension. It shares the science without the sermon.
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-word">Unapologetic</div>
+      <div class="pillar-counter">not reckless</div>
+      <div class="pillar-body">
+        Wanting semaglutide isn't a confession. Wanting modafinil isn't shameful. Wanting THC:CBD isn't suspicious. <strong>Arq never frames desire as a problem to be solved.</strong> There is no "struggling with" in Arq's vocabulary. You want something. Arq gets it for you. That's the entire interaction.
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-word">Rigorous</div>
+      <div class="pillar-counter">not paranoid</div>
+      <div class="pillar-body">
+        The doctor call isn't theatre. Blood tests for TRT aren't bureaucracy. Arq is medically serious because its customers are medically serious. <strong>Clinical rigour is a service, not a hurdle.</strong> The brand's credibility depends on being genuinely careful — which makes the freedom it offers feel earned, not reckless.
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-word">Discreet</div>
+      <div class="pillar-counter">not secretive</div>
+      <div class="pillar-body">
+        Plain packaging isn't about hiding. It's about respecting that health is private. <strong>Arq doesn't make customers feel they're doing something illicit.</strong> Discretion is a service premium that signals maturity. The brand is openly confident about what it sells — it's the delivery that stays quiet.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     05 — VOICE & TONE
+════════════════════════════════════════ -->
+<section class="section" id="voice">
+  <div class="eyebrow">05 &nbsp; Voice & Tone</div>
+  <h2 class="section-title">How Arq<br><em>speaks.</em></h2>
+
+  <div class="section-body">
+    <p>Arq sounds like that friend. The one who happens to be a doctor but doesn't act like one at dinner. The one you WhatsApp with a question and who gives you a straight answer without a disclaimer. Knowledgeable without being clinical. Direct without being cold. Occasionally dry. Never preachy.</p>
+    <br>
+    <p><strong>The test:</strong> would a 31-year-old product manager in Bangalore roll his eyes reading this? If yes, rewrite it.</p>
+  </div>
+
+  <div class="sep"><div class="sep-line"></div><div class="sep-dot"></div><div class="sep-line"></div></div>
+
+  <div class="voice-examples">
+
+    <div class="voice-pair">
+      <div class="voice-bad">
+        <div class="voice-tag bad">❌ Not Arq</div>
+        <div class="voice-text">Are you struggling with erectile dysfunction? You're not alone. Our licensed doctors can help you reclaim your confidence.</div>
+      </div>
+      <div class="voice-good">
+        <div class="voice-tag good">✓ Arq</div>
+        <div class="voice-text"><em>Sildenafil. Works in 30 minutes. Doctor calls within 2 hours. Plain box, no awkward chemist.</em></div>
+      </div>
+    </div>
+
+    <div class="voice-pair">
+      <div class="voice-bad">
+        <div class="voice-tag bad">❌ Not Arq</div>
+        <div class="voice-text">Please consult your arq. physician before starting any new medication. Individual results may vary. This is not medical advice.</div>
+      </div>
+      <div class="voice-good">
+        <div class="voice-tag good">✓ Arq</div>
+        <div class="voice-text"><em>A licensed doctor reviews every order. That's not a disclaimer — it's the product.</em></div>
+      </div>
+    </div>
+
+    <div class="voice-pair">
+      <div class="voice-bad">
+        <div class="voice-tag bad">❌ Not Arq</div>
+        <div class="voice-text">Experience the transformative power of holistic wellness with our curated range of natural supplements.</div>
+      </div>
+      <div class="voice-good">
+        <div class="voice-tag good">✓ Arq</div>
+        <div class="voice-text"><em>BPC-157. Physician supervised. Legally sourced. Finally.</em></div>
+      </div>
+    </div>
+
+    <div class="voice-pair">
+      <div class="voice-bad">
+        <div class="voice-tag bad">❌ Not Arq</div>
+        <div class="voice-text">We believe everyone deserves access to quality healthcare. Our mission is to democratize wellness for all Indians.</div>
+      </div>
+      <div class="voice-good">
+        <div class="voice-tag good">✓ Arq</div>
+        <div class="voice-text"><em>You already knew what you needed. We just made it possible to get it.</em></div>
+      </div>
+    </div>
+
+    <div class="voice-pair">
+      <div class="voice-bad">
+        <div class="voice-tag bad">❌ Not Arq</div>
+        <div class="voice-text">Hair loss is a sensitive topic that affects millions of men. Our compassionate team is here to support your journey.</div>
+      </div>
+      <div class="voice-good">
+        <div class="voice-tag good">✓ Arq</div>
+        <div class="voice-text"><em>Finasteride. 1mg daily. Results in 90 days. No journey required.</em></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sep"><div class="sep-line"></div><div class="sep-dot"></div><div class="sep-line"></div></div>
+
+  <div class="never-always">
+    <div class="never-col">
+      <div class="col-header never">Arq never says</div>
+      <div class="col-items">
+        <div class="col-item">Struggling with</div>
+        <div class="col-item">Suffering from</div>
+        <div class="col-item">Consult your arq. physician before</div>
+        <div class="col-item">Holistic / natural / wellness</div>
+        <div class="col-item">Your journey / transformation</div>
+        <div class="col-item">We understand how you feel</div>
+        <div class="col-item">India's leading / trusted by thousands</div>
+        <div class="col-item">Clinically proven (without citation)</div>
+        <div class="col-item">Reclaim your confidence</div>
+        <div class="col-item">Results may vary</div>
+      </div>
+    </div>
+    <div class="always-col">
+      <div class="col-header always">Arq always says</div>
+      <div class="col-items">
+        <div class="col-item">The product name. The dose. The effect.</div>
+        <div class="col-item">What happens next, precisely</div>
+        <div class="col-item">The price, upfront</div>
+        <div class="col-item">Doctor calls within X hours</div>
+        <div class="col-item">Plain packaging</div>
+        <div class="col-item">Legal. Prescribed. Delivered.</div>
+        <div class="col-item">Your body. Your call.</div>
+        <div class="col-item">Finally (when earned)</div>
+        <div class="col-item">No [X] required</div>
+        <div class="col-item">We'll handle the paperwork</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-body">
+    <p><strong>The WhatsApp voice is slightly warmer.</strong> In chat, Arq is the smart friend. "Hey. What are you after?" — not a form, not a menu. A conversation starter that respects that the customer already knows. The bot never says "I'm sorry to hear that." It says "Got it. Here's what we can do."</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     06 — VISUAL IDENTITY
+════════════════════════════════════════ -->
+<section class="section" id="visual">
+  <div class="eyebrow">06 &nbsp; Visual Identity</div>
+  <h2 class="section-title">What Arq<br><em>looks like.</em></h2>
+
+  <div class="section-body">
+    <p>The visual tension in Arq's brand idea — clinical and rebellious — has a direct visual equivalent: <strong>the precision of a lab report combined with the restraint of a luxury editorial.</strong></p>
+    <br>
+    <p>Not clinical white. Not wellness green. Not luxury black-and-gold that reads pharmaceutical gala. Something more honest than all of those. Dark, matte, precise. The kind of packaging you leave on your desk rather than hiding in a drawer.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-num">I</div>
+      <div class="card-title">Restraint is the loudest statement</div>
+      <div class="card-body">Every competitor shouts. Man Matters uses bright photography and bold headlines. Traya uses warm Ayurvedic tones. Arq uses negative space, precise type, and one gold accent. The restraint communicates confidence. It says: we don't need to convince you.</div>
+    </div>
+    <div class="card">
+      <div class="card-num">II</div>
+      <div class="card-title">Type does the heavy lifting</div>
+      <div class="card-body">No illustrative icons. No lifestyle photography. No before-and-after. A Playfair Display serif — elegant but with edges — and a clean grotesque. The serif carries the editorial intelligence. The grotesque carries the precision. Together they're a biohacker's bedside table: part journal, part lab notebook.</div>
+    </div>
+    <div class="card">
+      <div class="card-num">III</div>
+      <div class="card-title">One colour rule</div>
+      <div class="card-body">Near-black everything. One gold accent — used exactly once per composition, never twice. The gold is not decorative. It marks the thing that matters most on the page. The brand idea. The product name. The price. The call to action. Everything else is dark.</div>
+    </div>
+    <div class="card">
+      <div class="card-num">IV</div>
+      <div class="card-title">The packaging is the brand</div>
+      <div class="card-body">Matte black outer box. No product name visible outside. Gold "arq" stamp on the seal — a wax-seal reference that suggests something premium and private. Inside: clean white inner packaging, product name in Playfair, dosage in DM Mono. The unboxing is the brand experience.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     07 — TYPOGRAPHY
+════════════════════════════════════════ -->
+<section class="section" id="typography">
+  <div class="eyebrow">07 &nbsp; Typography</div>
+  <h2 class="section-title">The type<br><em>system.</em></h2>
+
+  <div class="type-system">
+
+    <div class="type-row">
+      <div class="type-label">Display<br>Playfair Display<br>400 / Italic</div>
+      <div class="type-specimen display">Your body.<br><em>Your call.</em></div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-label">Headline<br>Playfair Display<br>400</div>
+      <div class="type-specimen headline">Sildenafil. Prescribed. Delivered.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-label">Editorial<br>Playfair Display<br>400 Italic</div>
+      <div class="type-specimen body-serif">The doctor who calls isn't a gatekeeper. He's the last step in a process you already started.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-label">Body<br>Epilogue<br>300</div>
+      <div class="type-specimen body-sans">Arq connects informed patients with licensed physicians. You decide what you need. We make the prescription happen. The doctor calls within 2 hours. Your order ships the same day.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-label">Label<br>DM Mono<br>400</div>
+      <div class="type-specimen mono-label">Schedule H · Physician supervised · 48hr delivery</div>
+    </div>
+
+  </div>
+
+  <div class="section-body">
+    <p><strong>The hierarchy is always the same:</strong> DM Mono labels set the context. Epilogue body carries the information. Playfair Display makes the statement. The display font appears rarely — on packaging, hero headlines, pull quotes. Its scarcity is its power.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     08 — COLOUR
+════════════════════════════════════════ -->
+<section class="section" id="colour">
+  <div class="eyebrow">08 &nbsp; Colour System</div>
+  <h2 class="section-title">The<br><em>palette.</em></h2>
+
+  <div class="color-system">
+    <div class="color-swatches">
+
+      <div class="swatch">
+        <div class="swatch-block" style="background:#08080a"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Void</div>
+          <div class="swatch-hex">#08080A</div>
+          <div class="swatch-use">Primary background. The ground everything sits on.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-block" style="background:#16161a"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Surface</div>
+          <div class="swatch-hex">#16161A</div>
+          <div class="swatch-use">Elevated backgrounds. Cards, sections, nav.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-block" style="background:#f0ebe0"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warm White</div>
+          <div class="swatch-hex">#F0EBE0</div>
+          <div class="swatch-use">Primary text. Slightly warm — never cold white. Approachable.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-block" style="background:#c8973a"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Arq Gold</div>
+          <div class="swatch-hex">#C8973A</div>
+          <div class="swatch-use">The only accent. Used once per composition. For the most important thing on the page.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-block" style="background:rgba(240,235,224,0.4)"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Dim White</div>
+          <div class="swatch-hex">White / 40%</div>
+          <div class="swatch-use">Secondary text, descriptions, supporting copy. Hierarchy through opacity.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-block" style="background:rgba(255,255,255,0.07)"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Ghost</div>
+          <div class="swatch-hex">White / 7%</div>
+          <div class="swatch-use">Borders, dividers, subtle structure. Creates depth without competing.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-body">
+      <p><strong>The colour rule:</strong> Gold appears exactly once per layout — on the one element that matters most. If it appears twice, it appears zero times effectively. Restraint is the discipline that makes it powerful.</p>
+      <br>
+      <p><strong>Never use:</strong> bright white (#ffffff), any green (wellness signal), any blue (pharma signal), purple gradients. These are category conventions Arq explicitly rejects.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     09 — PRODUCT NAMING
+════════════════════════════════════════ -->
+<section class="section" id="naming">
+  <div class="eyebrow">09 &nbsp; Product Naming</div>
+  <h2 class="section-title">What things<br><em>are called.</em></h2>
+
+  <div class="section-body">
+    <p>Arq never hides what it sells. The product name is the product name — no euphemisms, no invented brand names for generic drugs. <strong>The transparency is the premium.</strong> You know exactly what you're getting.</p>
+    <br>
+    <p>Products are named by their molecule first, descriptor second. The Arq prefix can be used for brand kits: Arq Focus, Arq Perform, Arq Recover. But the molecule name always appears prominently.</p>
+  </div>
+
+  <div class="naming-grid">
+
+    <div class="naming-row">
+      <div>
+        <div class="naming-product">Modafinil</div>
+        <div class="naming-arq">arq / focus</div>
+      </div>
+      <div class="naming-desc">Never "smart drug kit" or "cognitive support." It's modafinil. Arq Focus is the optional brand layer for the kit packaging.</div>
+    </div>
+
+    <div class="naming-row">
+      <div>
+        <div class="naming-product">Sildenafil</div>
+        <div class="naming-arq">arq / perform</div>
+      </div>
+      <div class="naming-desc">Never "men's wellness" or "performance support." It's sildenafil. No euphemism. The naming respects the customer's intelligence.</div>
+    </div>
+
+    <div class="naming-row">
+      <div>
+        <div class="naming-product">Semaglutide</div>
+        <div class="naming-arq">arq / lean</div>
+      </div>
+      <div class="naming-desc">The kit name contextualises without hiding. The molecule name leads everywhere that matters.</div>
+    </div>
+
+    <div class="naming-row">
+      <div>
+        <div class="naming-product">THC · CBD Oil</div>
+        <div class="naming-arq">arq / unwind</div>
+      </div>
+      <div class="naming-desc">AYUSH-licensed Vijaya extract. The kit name signals effect without being clinical. The formulation is always stated clearly.</div>
+    </div>
+
+    <div class="naming-row">
+      <div>
+        <div class="naming-product">BPC-157</div>
+        <div class="naming-arq">arq / recover</div>
+      </div>
+      <div class="naming-desc">Physician supervised. The molecule name and the kit name work together — one precise, one evocative.</div>
+    </div>
+
+    <div class="naming-row">
+      <div>
+        <div class="naming-product">CJC-1295 + Ipamorelin</div>
+        <div class="naming-arq">arq / build</div>
+      </div>
+      <div class="naming-desc">The stack is named plainly. The kit name provides the shorthand without obscuring what's inside.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     10 — EXPERIENCE PRINCIPLES
+════════════════════════════════════════ -->
+<section class="section" id="experience">
+  <div class="eyebrow">10 &nbsp; Experience Principles</div>
+  <h2 class="section-title">Every<br><em>touchpoint.</em></h2>
+
+  <div class="section-body">
+    <p>Brand isn't a logo or a tagline. It's the sum of every interaction a customer has with Arq — from the first Instagram ad to the unboxing to the refill reminder. Each one must carry the brand idea forward.</p>
+  </div>
+
+  <div class="exp-principles">
+
+    <div class="exp-card">
+      <span class="exp-icon">📲</span>
+      <div class="exp-title">The WhatsApp<br><em>opening.</em></div>
+      <div class="exp-body">First message: "Hey. What are you after?" — not "Welcome to Arq! How can we help you today?" The brand voice in one line. Assumes the customer has already decided.</div>
+    </div>
+
+    <div class="exp-card">
+      <span class="exp-icon">📞</span>
+      <div class="exp-title">The doctor<br><em>call.</em></div>
+      <div class="exp-body">Brisk, specific, respectful. 3–5 minutes for most products. The doctor asks questions, not lectures. Never says "are you sure about this?" — says "here's what you need to know." Ends with: "Your prescription is issued. You'll get a tracking update shortly."</div>
+    </div>
+
+    <div class="exp-card">
+      <span class="exp-icon">📦</span>
+      <div class="exp-title">The<br><em>unboxing.</em></div>
+      <div class="exp-body">Matte black outer. Gold "arq" seal. Plain courier label. Inside: white inner box, product name in Playfair, dosage in DM Mono, one card — the protocol card — with dosing, timing, what to expect. No leaflets. No warnings as cover pages. Clean.</div>
+    </div>
+
+    <div class="exp-card">
+      <span class="exp-icon">💬</span>
+      <div class="exp-title">The refill<br><em>message.</em></div>
+      <div class="exp-body">Day 25: "Your next month's supply — same order?" One tap YES. Ships today. No re-intake. The message doesn't ask how you're feeling. It assumes you know what you're doing, because you do.</div>
+    </div>
+
+    <div class="exp-card">
+      <span class="exp-icon">🧾</span>
+      <div class="exp-title">The billing<br><em>name.</em></div>
+      <div class="exp-body">"Dear One Technologies" on the bank statement. Not "Arq Health" or "Arq Clinic." The holding company name — generic, unmemorable, private. Discretion encoded in the billing infrastructure.</div>
+    </div>
+
+    <div class="exp-card">
+      <span class="exp-icon">📋</span>
+      <div class="exp-title">The protocol<br><em>card.</em></div>
+      <div class="exp-body">Every order includes a single card: product name, dose, timing, one thing to know, one thing to watch. Designed like a well-edited page from a Field Notes notebook. Not a pharmaceutical insert. An informed person's reference.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     11 — COMPETITIVE LANDSCAPE
+════════════════════════════════════════ -->
+<section class="section" id="landscape">
+  <div class="eyebrow">11 &nbsp; Competitive Landscape</div>
+  <h2 class="section-title">Where Arq<br><em>lives.</em></h2>
+
+  <div class="section-body">
+    <p>Every Indian health brand clusters in the same place: functional, accessible, slightly clinical, designed to reduce shame by pretending the condition is normal. None of them are built for someone who is proud of what they're taking.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-title">Man Matters / Mosaic</div>
+      <div class="card-body">₹342 Cr revenue. The category leader. Functional, clinical, value-positioned. Their positioning crime: they tell you that your condition is common and nothing to be ashamed of — which paradoxically reminds you that you should be ashamed of it. They treat the customer as a patient managing a problem, not a person with a preference.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Traya</div>
+      <div class="card-body">₹236 Cr. Hair loss specialist. Strong at clinical authority and results guarantee. Ayurveda positioning limits their ceiling — they can never own the modafinil or peptide customer. Single vertical brand.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Qurist</div>
+      <div class="card-body">The closest thing to Arq's cannabis vertical. AYUSH-licensed, prescription model, home delivery. But functional brand, poor UX, 3-day doctor callback. Premium positioning gap is wide open.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Bold Care</div>
+      <div class="card-body">Celebrity-dependent (Ranveer Singh), sexual wellness only, can't expand. No medical rigour — a brand without a clinic. The anti-shame positioning is right but the execution is surface level.</div>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <div class="pull-quote-text">
+      <em>Arq's white space:</em> premium, medically rigorous,<br>product-first, biohacker-native.<br>Nobody is there. Nobody is close.
+    </div>
+  </div>
+
+  <div class="section-body">
+    <p>The Hims comparison is useful but not the aspiration. Hims built scale through shame reduction. <strong>Arq is built on something more durable: respect.</strong> It doesn't tell customers their problem is common. It tells them their knowledge is valid.</p>
+    <br>
+    <p>That's a different customer. A harder customer to acquire and an impossible customer to lose.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TAGLINE SYSTEM
+════════════════════════════════════════ -->
+<section class="section">
+  <div class="eyebrow">12 &nbsp; Tagline System</div>
+  <h2 class="section-title">The words<br><em>that work.</em></h2>
+
+  <div class="taglines">
+
+    <div class="tagline-row">
+      <div class="tagline-context">Master tagline</div>
+      <div class="tagline-text"><em>Your body. Your call.</em></div>
+    </div>
+
+    <div class="tagline-row">
+      <div class="tagline-context">Homepage hero</div>
+      <div class="tagline-text">The prescription for people who've <em>already decided.</em></div>
+    </div>
+
+    <div class="tagline-row">
+      <div class="tagline-context">WhatsApp CTA</div>
+      <div class="tagline-text">What you want. <em>Legal. Delivered.</em></div>
+    </div>
+
+    <div class="tagline-row">
+      <div class="tagline-context">Packaging</div>
+      <div class="tagline-text"><em>arq.</em> Your body. Your call.</div>
+    </div>
+
+    <div class="tagline-row">
+      <div class="tagline-context">Category — cognition</div>
+      <div class="tagline-text">Think sharper. <em>No waiting room required.</em></div>
+    </div>
+
+    <div class="tagline-row">
+      <div class="tagline-context">Category — peptides</div>
+      <div class="tagline-text">Everything you've been <em>researching.</em> Now legal.</div>
+    </div>
+
+    <div class="tagline-row">
+      <div class="tagline-context">Category — cannabis</div>
+      <div class="tagline-text">Finally a <em>legal</em> high. AYUSH licensed. Doctor approved.</div>
+    </div>
+
+    <div class="tagline-row">
+      <div class="tagline-context">Discretion</div>
+      <div class="tagline-text">Your health is nobody's business <em>but yours.</em></div>
+    </div>
+
+    <div class="tagline-row">
+      <div class="tagline-context">Doctor call</div>
+      <div class="tagline-text">The doctor calls <em>you.</em> Within 2 hours.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FINALE
+════════════════════════════════════════ -->
+<div class="finale">
+  <div class="finale-glow"></div>
+  <div class="finale-wm">arq</div>
+  <div class="finale-label">The brand idea</div>
+  <h2 class="finale-title">Your body.<br><em>Your call.</em></h2>
+  <p class="finale-sub">India's first healthcare brand built for the person who already knows. Medically rigorous. Completely unapologetic. The doctor calls you.</p>
+</div>
+
+<script>
+// Active nav on scroll
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + id) {
+          link.classList.add('active');
+          link.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+        }
+      });
+    }
+  });
+}, {threshold: 0.3, rootMargin:'-10% 0px -60% 0px'});
+
+sections.forEach(s => s.id && observer.observe(s));
+</script>
+
+</body>
+</html>

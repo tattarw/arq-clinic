@@ -1,0 +1,445 @@
+{
+  "templates": [
+    {
+      "name": "order_confirmation",
+      "category": "TRANSACTIONAL",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Hi {{1}}, your order #{{2}} has been confirmed! Your doctor will call you within {{3}}. Keep your phone handy.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [
+        {
+          "name": "customer_name",
+          "type": "text"
+        },
+        {
+          "name": "order_number",
+          "type": "text"
+        },
+        {
+          "name": "callback_time",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Track Order",
+          "url": "https://arq.clinic/orders/{{order_id}}"
+        }
+      ]
+    },
+    {
+      "name": "doctor_callback_notification",
+      "category": "TRANSACTIONAL",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Hi, you have a callback scheduled for customer {{1}} (Order #{{2}}). Please call within {{3}}. SLA Deadline: critical.",
+      "footerText": "arq.clinic - Doctor Platform",
+      "parameters": [
+        {
+          "name": "customer_name",
+          "type": "text"
+        },
+        {
+          "name": "order_number",
+          "type": "text"
+        },
+        {
+          "name": "time_window",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "View Details",
+          "url": "https://doctor.arq.clinic/orders/{{order_id}}"
+        }
+      ]
+    },
+    {
+      "name": "prescription_approved_shipping",
+      "category": "TRANSACTIONAL",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Great news! Your prescription for order #{{1}} has been approved. Your medicines will be shipped within {{2}}. You'll receive a tracking number shortly.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [
+        {
+          "name": "order_number",
+          "type": "text"
+        },
+        {
+          "name": "shipping_timeline",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Track Shipment",
+          "url": "https://arq.clinic/orders/{{order_id}}/tracking"
+        }
+      ]
+    },
+    {
+      "name": "prescription_denied",
+      "category": "TRANSACTIONAL",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "We couldn't approve your prescription due to: {{1}}. Please contact support or schedule a follow-up consultation with our doctor.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [
+        {
+          "name": "denial_reason",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Schedule Consultation",
+          "url": "https://arq.clinic/consult"
+        },
+        {
+          "type": "PHONE_NUMBER",
+          "text": "Call Support",
+          "phoneNumber": "+919876543210"
+        }
+      ]
+    },
+    {
+      "name": "shipment_created",
+      "category": "TRANSACTIONAL",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Your order is on the way! Tracking number: {{1}}\nCarrier: {{2}}\n\nYou can track your package in real-time.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [
+        {
+          "name": "tracking_number",
+          "type": "text"
+        },
+        {
+          "name": "carrier_name",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Track Package",
+          "url": "https://arq.clinic/tracking/{{tracking_number}}"
+        }
+      ]
+    },
+    {
+      "name": "delivery_confirmation",
+      "category": "TRANSACTIONAL",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "✅ Your order #{{1}} has been delivered! We hope you're happy with your prescription. Don't forget to follow the dosage instructions provided.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [
+        {
+          "name": "order_number",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Rate Experience",
+          "url": "https://arq.clinic/feedback/{{order_id}}"
+        }
+      ]
+    },
+    {
+      "name": "refill_reminder_day25",
+      "category": "MARKETING",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Hey! Your refill is due in {{1}}. Confirm now to ensure continuous supply of your prescription without any gaps.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [
+        {
+          "name": "days_until_refill",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Confirm Refill",
+          "url": "https://arq.clinic/refill/confirm/{{subscription_id}}"
+        },
+        {
+          "type": "URL",
+          "text": "Skip for Now",
+          "url": "https://arq.clinic/refill/skip/{{subscription_id}}"
+        }
+      ]
+    },
+    {
+      "name": "subscription_paused",
+      "category": "TRANSACTIONAL",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Your subscription has been paused. You can resume anytime without losing your doctor history or custom dosage notes.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Resume Subscription",
+          "url": "https://arq.clinic/subscription/resume/{{subscription_id}}"
+        }
+      ]
+    },
+    {
+      "name": "subscription_cancelled",
+      "category": "TRANSACTIONAL",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Your subscription has been cancelled. We're sorry to see you go! If you have feedback or need anything, please reach out to support.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [],
+      "buttons": [
+        {
+          "type": "PHONE_NUMBER",
+          "text": "Contact Support",
+          "phoneNumber": "+919876543210"
+        }
+      ]
+    },
+    {
+      "name": "referral_code_share",
+      "category": "MARKETING",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Share your referral code {{1}} with friends and earn ₹500 credits for each successful signup! They get 20% off their first order too.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [
+        {
+          "name": "referral_code",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Share Now",
+          "url": "https://arq.clinic/ref/{{referral_code}}"
+        },
+        {
+          "type": "URL",
+          "text": "View Earnings",
+          "url": "https://arq.clinic/referrals/earnings"
+        }
+      ]
+    },
+    {
+      "name": "winback_day7",
+      "category": "MARKETING",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Hi {{1}}, we miss you! Your prescription biohacking journey doesn't have to end. Restart your subscription anytime - your doctor history is waiting.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [
+        {
+          "name": "customer_name",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Restart Subscription",
+          "url": "https://arq.clinic/subscription/restart"
+        }
+      ]
+    },
+    {
+      "name": "winback_day14",
+      "category": "MARKETING",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Come back and get {{1}} off your next order! Use code COMEBACK at checkout. Your personalized prescription is still valid.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [
+        {
+          "name": "discount_percentage",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Claim Offer",
+          "url": "https://arq.clinic/comeback?code=COMEBACK"
+        }
+      ]
+    },
+    {
+      "name": "winback_day30",
+      "category": "MARKETING",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "{{1}}, this is our final offer: 30% off + free priority shipping on your next order. We genuinely want to help with your health goals.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [
+        {
+          "name": "customer_name",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Reactivate Now",
+          "url": "https://arq.clinic/final-offer?code=FINAL30"
+        }
+      ]
+    },
+    {
+      "name": "doctor_verification_required",
+      "category": "TRANSACTIONAL",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Your 3rd refill needs doctor verification. This is a standard safety check. Your doctor will review and approve it within 2 hours.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "View Status",
+          "url": "https://arq.clinic/refills/status"
+        }
+      ]
+    },
+    {
+      "name": "callback_reminder",
+      "category": "TRANSACTIONAL",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Reminder: Your doctor will call you within the next 30 minutes. Please be available and keep your phone handy.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Reschedule Call",
+          "url": "https://arq.clinic/reschedule-callback"
+        }
+      ]
+    },
+    {
+      "name": "sla_escalation_notification",
+      "category": "TRANSACTIONAL",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "SLA Alert: Urgent callback required for order {{1}}. Time remaining: {{2}}. Please prioritize this consultation.",
+      "footerText": "arq.clinic - Doctor Platform",
+      "parameters": [
+        {
+          "name": "order_number",
+          "type": "text"
+        },
+        {
+          "name": "time_remaining",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "name": "payment_failed",
+      "category": "TRANSACTIONAL",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "Your payment for order #{{1}} failed. Please retry with a different payment method. We'll retry automatically in 6 hours.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [
+        {
+          "name": "order_number",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Retry Payment",
+          "url": "https://arq.clinic/payment/retry/{{order_id}}"
+        }
+      ]
+    },
+    {
+      "name": "consultation_feedback",
+      "category": "MARKETING",
+      "language": "en",
+      "headerType": "NONE",
+      "bodyText": "How was your consultation with {{1}}? Your feedback helps us maintain quality care and assists our doctors in improving service.",
+      "footerText": "arq.clinic - Prescription Biohacking Platform",
+      "parameters": [
+        {
+          "name": "doctor_name",
+          "type": "text"
+        }
+      ],
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Rate (5 Stars)",
+          "url": "https://arq.clinic/feedback/{{assignment_id}}/rate/5"
+        },
+        {
+          "type": "URL",
+          "text": "Rate (1-4 Stars)",
+          "url": "https://arq.clinic/feedback/{{assignment_id}}/rate"
+        }
+      ]
+    }
+  ],
+  "templateGroups": {
+    "transactional": [
+      "order_confirmation",
+      "doctor_callback_notification",
+      "prescription_approved_shipping",
+      "prescription_denied",
+      "shipment_created",
+      "delivery_confirmation",
+      "subscription_paused",
+      "subscription_cancelled",
+      "doctor_verification_required",
+      "callback_reminder",
+      "sla_escalation_notification",
+      "payment_failed"
+    ],
+    "marketing": [
+      "refill_reminder_day25",
+      "referral_code_share",
+      "winback_day7",
+      "winback_day14",
+      "winback_day30",
+      "consultation_feedback"
+    ]
+  },
+  "defaultVariables": {
+    "company_name": "arq.clinic",
+    "company_phone": "+919876543210",
+    "support_email": "support@arq.clinic",
+    "website": "https://arq.clinic"
+  },
+  "usage": {
+    "description": "WhatsApp Business Message Templates for arq.clinic",
+    "implementation": "Use Meta's WhatsApp Business API (cloud version) to send these templates",
+    "notes": [
+      "All templates must be pre-approved by Meta before sending",
+      "Template variables are marked with {{variable_name}}",
+      "Personalisation is recommended for higher engagement",
+      "Messages must comply with WhatsApp policies (no spam, clickbaiting)",
+      "Commercial templates may have higher costs per message",
+      "Set up proper opt-in/opt-out mechanisms for marketing messages"
+    ]
+  }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0c0b09">
+
+  <title>
+    {%- if template == 'index' -%}
+      arq.clinic — Your body. Your call.
+    {%- elsif page_title contains shop.name -%}
+      {{ page_title }}
+    {%- else -%}
+      {{ page_title }} — arq.clinic
+    {%- endif -%}
+  </title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- else -%}
+    <meta name="description" content="India's first biohacker clinic. Peptides, prescriptions, and protocols — legally prescribed, doctor supervised, delivered in 48 hours. All in WhatsApp.">
+  {%- endif -%}
+
+  <!-- OG -->
+  <meta property="og:title" content="{{ page_title }} — arq.clinic">
+  <meta property="og:description" content="{{ page_description | default: shop.description | escape }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="arq.clinic">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Epilogue:wght@200;300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- Design system -->
+  {{ 'arq.css' | asset_url | stylesheet_tag }}
+
+  <!-- Razorpay -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+
+  {{ content_for_header }}
+
+  <style>
+    /* Inline critical CSS for nav */
+    nav.arq-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      height: var(--nav-h);
+      background: rgba(12,11,9,0.90);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--cream-07);
+      display: flex; align-items: center;
+      padding: 0 20px;
+      transition: border-color 0.3s;
+    }
+    body { padding-top: var(--nav-h); }
+  </style>
+</head>
+
+<body class="template-{{ template | replace: '.', '-' }} {% if customer %}logged-in{% else %}logged-out{% endif %}">
+
+  <!-- ─── ANNOUNCEMENT BAR ─── -->
+  {%- if settings.announcement_active -%}
+  <div class="announcement-bar">
+    <div class="announcement-bar__inner container">
+      <span class="t-mono" style="font-size:9px;letter-spacing:0.14em;color:var(--cream-70);">
+        {{ settings.announcement_text }}
+      </span>
+    </div>
+  </div>
+  {%- endif -%}
+
+  <!-- ─── NAV ─── -->
+  {% render 'nav' %}
+
+  <!-- ─── MAIN ─── -->
+  <main id="main" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  <!-- ─── FOOTER ─── -->
+  {% render 'footer' %}
+
+  <!-- ─── CART DRAWER ─── -->
+  {% render 'cart-drawer' %}
+
+  <!-- ─── WHATSAPP MODAL ─── -->
+  {% render 'whatsapp-modal' %}
+
+  <!-- ─── TOAST ─── -->
+  <div id="arq-toast" class="arq-toast" role="alert" aria-live="polite"></div>
+
+  <script>
+    // Global arq object
+    window.arq = {
+      shopUrl: "{{ shop.url }}",
+      cartToken: "{{ cart.token }}",
+      customerId: {% if customer %}"{{ customer.id }}"{% else %}null{% endif %},
+      waNumber: "{{ settings.whatsapp_number | default: '+919999999999' }}",
+      razorpayKey: "{{ settings.razorpay_key_id }}",
+      currency: "{{ cart.currency.iso_code }}",
+      moneyFormat: "{{ shop.money_format }}",
+    };
+
+    // Toast utility
+    window.showToast = function(msg, type='info', duration=3500) {
+      const t = document.getElementById('arq-toast');
+      t.textContent = msg;
+      t.className = `arq-toast arq-toast--${type} arq-toast--visible`;
+      clearTimeout(t._timer);
+      t._timer = setTimeout(() => t.classList.remove('arq-toast--visible'), duration);
+    };
+  </script>
+
+  {{ content_for_layout }}
+
+</body>
+</html>

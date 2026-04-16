@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arq. — Flat + Dimension Illustrations v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#faf9f5;--card:#ffffff;--dark:#2c2824;--sans:'Inter',sans-serif;--serif:'Playfair Display',serif;--gold:#b8922e}
+body{font-family:var(--sans);background:var(--bg);color:var(--dark)}
+
+.page-header{padding:48px 40px 32px;max-width:1280px;margin:0 auto}
+.page-header h1{font-family:var(--serif);font-size:32px;font-weight:400;letter-spacing:-0.03em;margin-bottom:6px}
+.page-header h1 em{font-style:italic;color:var(--gold)}
+.page-header p{font-size:14px;color:rgba(44,40,36,0.5);line-height:1.6;max-width:680px}
+
+.bento-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:10px;max-width:1280px;margin:0 auto;padding:0 40px 80px;
+}
+.b-hair{grid-column:1/3;grid-row:1/3}
+.b-mens{grid-column:3;grid-row:1}
+.b-focus{grid-column:4;grid-row:1}
+.b-sleep{grid-column:3;grid-row:2}
+.b-anxiety{grid-column:4;grid-row:2}
+.b-womens{grid-column:1;grid-row:3}
+.b-longevity{grid-column:2;grid-row:3}
+.b-weight{grid-column:3/5;grid-row:3/5}
+.b-skin{grid-column:1/3;grid-row:4}
+
+.bc{border-radius:18px;padding:24px;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:170px;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer}
+.bc:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(44,40,36,0.08)}
+.b-hair,.b-weight{min-height:360px;justify-content:flex-end}
+.b-skin{min-height:140px}
+
+/* Card backgrounds */
+.b-hair{background:linear-gradient(155deg,#eef8f2,#ddf0e5);color:#1a6b3a}
+.b-focus{background:linear-gradient(155deg,#eaf0fc,#dbe6f8);color:#2456a0}
+.b-weight{background:linear-gradient(155deg,#fcece8,#f8e0d8);color:#b84030}
+.b-sleep{background:linear-gradient(155deg,#eceaf8,#e2def4);color:#4a3ea8}
+.b-mens{background:linear-gradient(155deg,#faf0e0,#f4e6cc);color:#926818}
+.b-womens{background:linear-gradient(155deg,#fceef6,#f8e2ec);color:#a0305e}
+.b-anxiety{background:linear-gradient(155deg,#eaf4ee,#ddeee4);color:#3a7a58}
+.b-longevity{background:linear-gradient(155deg,#f0eafa,#e6def6);color:#5830a0}
+.b-skin{background:linear-gradient(155deg,#faf0e6,#f4e6d6);color:#a07020}
+
+.card-label{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;opacity:0.45;margin-bottom:4px}
+.card-title{font-family:var(--serif);font-size:17px;font-weight:600;letter-spacing:-0.02em;margin-bottom:3px;line-height:1.2}
+.b-hair .card-title,.b-weight .card-title{font-size:22px;margin-bottom:5px}
+.card-desc{font-size:12px;line-height:1.5;opacity:0.55;max-width:260px}
+
+/* Illustration positioning */
+.ill{position:absolute;pointer-events:none}
+.b-hair .ill{top:12px;right:12px;width:58%;height:60%}
+.b-weight .ill{top:10px;right:10px;width:55%;height:58%}
+.b-mens .ill,.b-focus .ill,.b-sleep .ill,.b-anxiety .ill,.b-womens .ill,.b-longevity .ill{top:8px;right:8px;width:52%;height:55%}
+.b-skin .ill{top:8px;right:16px;width:35%;height:80%}
+.ill svg{width:100%;height:100%;overflow:visible}
+
+@media(max-width:900px){
+  .bento-grid{grid-template-columns:1fr 1fr;padding:0 20px 60px}
+  .b-hair{grid-column:1/3;grid-row:1;min-height:260px}
+  .b-mens{grid-column:1;grid-row:2}.b-focus{grid-column:2;grid-row:2}
+  .b-sleep{grid-column:1;grid-row:3}.b-anxiety{grid-column:2;grid-row:3}
+  .b-womens{grid-column:1;grid-row:4}.b-longevity{grid-column:2;grid-row:4}
+  .b-weight{grid-column:1/3;grid-row:5;min-height:260px}
+  .b-skin{grid-column:1/3;grid-row:6}
+}
+</style>
+</head>
+<body>
+<div class="page-header">
+  <h1>arq. <em>flat + dimension</em> v2</h1>
+  <p>Product-forward illustrations with soft shadows, layered compositions, and recognizable healthcare objects. Each illustration uses the card's exact color palette at varying opacities for cohesion.</p>
+</div>
+
+<div class="bento-grid">
+
+<!-- ══════════════════════════════════════ HAIR (large) ══════════════════════════════════════ -->
+<div class="bc b-hair">
+  <div class="ill">
+    <svg viewBox="0 0 240 220" fill="none">
+      <defs>
+        <filter id="s1"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0d5a28" flood-opacity="0.12"/></filter>
+        <filter id="s1s"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0d5a28" flood-opacity="0.1"/></filter>
+        <linearGradient id="bottle1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2aaa5a" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#1a8a42" stop-opacity="0.25"/>
+        </linearGradient>
+        <linearGradient id="bottle1cap" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a7a3a" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#1a6a32" stop-opacity="0.35"/>
+        </linearGradient>
+        <linearGradient id="pill1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#e8f5ee" stop-opacity="0.8"/>
+        </linearGradient>
+        <linearGradient id="pill1b" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#28a858" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#1a8a3e" stop-opacity="0.4"/>
+        </linearGradient>
+        <linearGradient id="leaf1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#2aaa5a" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="#1a8a42" stop-opacity="0.12"/>
+        </linearGradient>
+      </defs>
+      <!-- Main bottle -->
+      <rect x="75" y="55" width="52" height="120" rx="8" fill="url(#bottle1)" filter="url(#s1)"/>
+      <rect x="75" y="55" width="52" height="120" rx="8" fill="none" stroke="#1a8a42" stroke-width="0.5" opacity="0.15"/>
+      <!-- Bottle highlight -->
+      <rect x="80" y="60" width="12" height="105" rx="4" fill="white" opacity="0.08"/>
+      <!-- Cap -->
+      <rect x="82" y="35" width="38" height="24" rx="5" fill="url(#bottle1cap)" filter="url(#s1s)"/>
+      <rect x="88" y="30" width="26" height="8" rx="3" fill="#1a6a32" opacity="0.3"/>
+      <!-- Label area -->
+      <rect x="82" y="100" width="38" height="30" rx="3" fill="white" opacity="0.12"/>
+      <text x="101" y="114" font-family="Inter" font-size="6" font-weight="700" fill="#1a7a3a" opacity="0.35" text-anchor="middle">arq.</text>
+      <text x="101" y="123" font-family="Inter" font-size="4" font-weight="500" fill="#1a7a3a" opacity="0.2" text-anchor="middle">HAIR Rx</text>
+
+      <!-- Capsule 1 — foreground, angled -->
+      <g transform="rotate(-25 175 85)" filter="url(#s1s)">
+        <rect x="155" y="78" width="40" height="16" rx="8" fill="url(#pill1)"/>
+        <rect x="155" y="78" width="20" height="16" rx="8" fill="url(#pill1b)"/>
+      </g>
+      <!-- Capsule 2 — smaller, different angle -->
+      <g transform="rotate(15 170 135)" filter="url(#s1s)">
+        <rect x="155" y="128" width="34" height="14" rx="7" fill="url(#pill1)"/>
+        <rect x="155" y="128" width="17" height="14" rx="7" fill="url(#pill1b)"/>
+      </g>
+      <!-- Round tablet -->
+      <circle cx="190" cy="170" r="11" fill="white" opacity="0.7" filter="url(#s1s)"/>
+      <circle cx="190" cy="170" r="11" fill="none" stroke="#1a8a42" stroke-width="0.5" opacity="0.12"/>
+      <line x1="184" y1="170" x2="196" y2="170" stroke="#1a8a42" stroke-width="0.5" opacity="0.12"/>
+
+      <!-- Decorative leaf — back layer -->
+      <path d="M25 130 C50 100, 90 95, 75 130 C65 155, 35 160, 25 130Z" fill="url(#leaf1)"/>
+      <path d="M28 132 C45 112, 70 108, 62 128" stroke="#1a8a42" stroke-width="0.6" fill="none" opacity="0.12"/>
+      <!-- Small leaf -->
+      <path d="M160 45 C172 35, 188 38, 182 50 C178 58, 168 58, 160 50Z" fill="#1a9a4a" opacity="0.1"/>
+      <path d="M162 48 C170 42, 178 42, 176 48" stroke="#1a8a42" stroke-width="0.4" fill="none" opacity="0.1"/>
+
+      <!-- Tiny scattered dots — molecular feel -->
+      <circle cx="210" cy="55" r="2.5" fill="#1a9a4a" opacity="0.1"/>
+      <circle cx="220" cy="75" r="1.8" fill="#1a9a4a" opacity="0.08"/>
+      <circle cx="35" cy="80" r="2" fill="#1a9a4a" opacity="0.07"/>
+      <circle cx="15" cy="110" r="1.5" fill="#1a9a4a" opacity="0.06"/>
+    </svg>
+  </div>
+  <div class="card-label">Rx Protocol</div>
+  <div class="card-title">Hair Health</div>
+  <div class="card-desc">Clinically studied approaches to hair preservation and restoration.</div>
+</div>
+
+<!-- ══════════════════════════════════════ MEN'S ══════════════════════════════════════ -->
+<div class="bc b-mens">
+  <div class="ill">
+    <svg viewBox="0 0 130 130" fill="none">
+      <defs>
+        <filter id="sm"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#6a4810" flood-opacity="0.15"/></filter>
+        <filter id="sms"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#6a4810" flood-opacity="0.1"/></filter>
+        <linearGradient id="mbot" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d4a030" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#b08020" stop-opacity="0.28"/>
+        </linearGradient>
+      </defs>
+      <!-- Bottle -->
+      <rect x="20" y="30" width="38" height="72" rx="6" fill="url(#mbot)" filter="url(#sm)"/>
+      <rect x="20" y="30" width="38" height="72" rx="6" stroke="#a07018" stroke-width="0.5" fill="none" opacity="0.12"/>
+      <rect x="24" y="34" width="8" height="62" rx="3" fill="white" opacity="0.06"/>
+      <!-- Cap -->
+      <rect x="26" y="18" width="26" height="16" rx="4" fill="#b08020" opacity="0.35" filter="url(#sms)"/>
+      <rect x="30" y="14" width="18" height="6" rx="2" fill="#a07018" opacity="0.25"/>
+      <!-- Label -->
+      <rect x="26" y="65" width="26" height="18" rx="2" fill="white" opacity="0.12"/>
+      <text x="39" y="76" font-family="Inter" font-size="5" font-weight="700" fill="#a07018" opacity="0.3" text-anchor="middle">arq.</text>
+
+      <!-- Blister pack -->
+      <g transform="rotate(-10 90 50)" filter="url(#sms)">
+        <rect x="70" y="30" width="36" height="46" rx="4" fill="#c48a20" opacity="0.1"/>
+        <rect x="70" y="30" width="36" height="46" rx="4" stroke="#a07018" stroke-width="0.4" fill="none" opacity="0.08"/>
+        <!-- Pill bumps -->
+        <circle cx="80" cy="42" r="5" fill="#c48a20" opacity="0.12"/>
+        <circle cx="80" cy="42" r="5" fill="none" stroke="white" stroke-width="0.3" opacity="0.15"/>
+        <circle cx="96" cy="42" r="5" fill="#c48a20" opacity="0.12"/>
+        <circle cx="96" cy="42" r="5" fill="none" stroke="white" stroke-width="0.3" opacity="0.15"/>
+        <circle cx="80" cy="57" r="5" fill="#c48a20" opacity="0.1"/>
+        <circle cx="80" cy="57" r="5" fill="none" stroke="white" stroke-width="0.3" opacity="0.12"/>
+        <circle cx="96" cy="57" r="5" fill="#c48a20" opacity="0.1"/>
+        <circle cx="96" cy="57" r="5" fill="none" stroke="white" stroke-width="0.3" opacity="0.12"/>
+        <circle cx="80" cy="70" r="5" fill="#c48a20" opacity="0.08"/>
+        <circle cx="96" cy="70" r="5" fill="#c48a20" opacity="0.08"/>
+      </g>
+
+      <!-- Capsule loose -->
+      <g transform="rotate(20 85 100)" filter="url(#sms)">
+        <rect x="72" y="95" width="26" height="11" rx="5.5" fill="white" opacity="0.75"/>
+        <rect x="72" y="95" width="13" height="11" rx="5.5" fill="#c48a20" opacity="0.35"/>
+      </g>
+
+      <circle cx="115" cy="22" r="2" fill="#c48a20" opacity="0.08"/>
+      <circle cx="10" cy="55" r="1.5" fill="#c48a20" opacity="0.06"/>
+    </svg>
+  </div>
+  <div class="card-title">Men's Health</div>
+  <div class="card-desc">Testosterone, vitality & wellness</div>
+</div>
+
+<!-- ══════════════════════════════════════ FOCUS ══════════════════════════════════════ -->
+<div class="bc b-focus">
+  <div class="ill">
+    <svg viewBox="0 0 130 130" fill="none">
+      <defs>
+        <filter id="sf"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1a4a8a" flood-opacity="0.12"/></filter>
+        <filter id="sfs"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#1a4a8a" flood-opacity="0.08"/></filter>
+        <linearGradient id="fbot" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#4a8ad4" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#2b6cc4" stop-opacity="0.22"/>
+        </linearGradient>
+      </defs>
+      <!-- Tall slim bottle (nootropic style) -->
+      <rect x="15" y="25" width="32" height="80" rx="5" fill="url(#fbot)" filter="url(#sf)"/>
+      <rect x="19" y="29" width="6" height="70" rx="2.5" fill="white" opacity="0.06"/>
+      <!-- Dropper cap -->
+      <rect x="22" y="14" width="18" height="14" rx="3" fill="#2b6cc4" opacity="0.3" filter="url(#sfs)"/>
+      <circle cx="31" cy="10" r="5" fill="#2b6cc4" opacity="0.2"/>
+      <line x1="31" y1="28" x2="31" y2="48" stroke="#2b6cc4" stroke-width="1" opacity="0.12"/>
+      <circle cx="31" cy="50" r="2.5" fill="#2b6cc4" opacity="0.15"/>
+      <!-- Label -->
+      <rect x="20" y="70" width="22" height="14" rx="2" fill="white" opacity="0.12"/>
+      <text x="31" y="79" font-family="Inter" font-size="4.5" font-weight="700" fill="#2b6cc4" opacity="0.3" text-anchor="middle">arq.</text>
+
+      <!-- Round pill stack -->
+      <ellipse cx="80" cy="90" rx="18" ry="5" fill="#2b6cc4" opacity="0.06"/>
+      <circle cx="80" cy="82" r="12" fill="white" opacity="0.65" filter="url(#sfs)"/>
+      <circle cx="80" cy="82" r="12" stroke="#2b6cc4" stroke-width="0.4" fill="none" opacity="0.1"/>
+      <line x1="73" y1="82" x2="87" y2="82" stroke="#2b6cc4" stroke-width="0.4" opacity="0.1"/>
+      <!-- Second pill behind -->
+      <circle cx="76" cy="74" r="10" fill="white" opacity="0.4" filter="url(#sfs)"/>
+      <circle cx="76" cy="74" r="10" stroke="#2b6cc4" stroke-width="0.3" fill="none" opacity="0.06"/>
+
+      <!-- Brain outline — subtle background -->
+      <path d="M75 20 C60 22, 52 35, 55 48 C50 52, 48 58, 52 66" stroke="#2b6cc4" stroke-width="0.8" fill="none" opacity="0.08" stroke-dasharray="2 2"/>
+      <path d="M75 20 C90 22, 98 35, 95 48 C100 52, 102 58, 98 66" stroke="#2b6cc4" stroke-width="0.8" fill="none" opacity="0.08" stroke-dasharray="2 2"/>
+
+      <!-- Molecular dots -->
+      <circle cx="108" cy="35" r="3" fill="#2b6cc4" opacity="0.08"/>
+      <circle cx="115" cy="50" r="2" fill="#2b6cc4" opacity="0.06"/>
+      <circle cx="100" cy="25" r="1.5" fill="#2b6cc4" opacity="0.07"/>
+      <line x1="108" y1="37" x2="115" y2="49" stroke="#2b6cc4" stroke-width="0.4" opacity="0.05"/>
+    </svg>
+  </div>
+  <div class="card-title">Focus & Cognition</div>
+  <div class="card-desc">Mental clarity & sustained attention</div>
+</div>
+
+<!-- ══════════════════════════════════════ SLEEP ══════════════════════════════════════ -->
+<div class="bc b-sleep">
+  <div class="ill">
+    <svg viewBox="0 0 130 130" fill="none">
+      <defs>
+        <filter id="ss"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#2a2080" flood-opacity="0.12"/></filter>
+        <filter id="sss"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#2a2080" flood-opacity="0.08"/></filter>
+        <linearGradient id="sbot" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#7a6adc" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#5b4fc9" stop-opacity="0.22"/>
+        </linearGradient>
+      </defs>
+      <!-- Melatonin bottle — short wide -->
+      <rect x="10" y="42" width="42" height="60" rx="7" fill="url(#sbot)" filter="url(#ss)"/>
+      <rect x="14" y="46" width="8" height="50" rx="3" fill="white" opacity="0.06"/>
+      <rect x="17" y="30" width="28" height="16" rx="4" fill="#5b4fc9" opacity="0.3" filter="url(#sss)"/>
+      <rect x="21" y="26" width="20" height="6" rx="2" fill="#5b4fc9" opacity="0.22"/>
+      <!-- Label -->
+      <rect x="16" y="68" width="30" height="16" rx="2" fill="white" opacity="0.1"/>
+      <text x="31" y="78" font-family="Inter" font-size="4.5" font-weight="700" fill="#5b4fc9" opacity="0.25" text-anchor="middle">arq.</text>
+
+      <!-- Gummy / supplement shapes -->
+      <g filter="url(#sss)">
+        <rect x="70" y="65" width="28" height="12" rx="6" fill="white" opacity="0.65"/>
+        <rect x="70" y="65" width="14" height="12" rx="6" fill="#5b4fc9" opacity="0.3"/>
+      </g>
+      <g transform="rotate(-35 95 90)" filter="url(#sss)">
+        <rect x="82" y="84" width="24" height="10" rx="5" fill="white" opacity="0.5"/>
+        <rect x="82" y="84" width="12" height="10" rx="5" fill="#5b4fc9" opacity="0.25"/>
+      </g>
+
+      <!-- Moon — subtle background element -->
+      <circle cx="95" cy="28" r="16" fill="#5b4fc9" opacity="0.08"/>
+      <circle cx="103" cy="22" r="13" fill="#eceaf8"/>
+      <!-- Stars -->
+      <circle cx="70" cy="18" r="2" fill="#5b4fc9" opacity="0.12"/>
+      <circle cx="60" cy="30" r="1.2" fill="#5b4fc9" opacity="0.08"/>
+      <circle cx="115" cy="48" r="1.5" fill="#5b4fc9" opacity="0.1"/>
+
+      <!-- Tiny z's -->
+      <text x="108" y="22" font-family="Inter" font-size="8" font-weight="600" fill="#5b4fc9" opacity="0.08">z</text>
+      <text x="116" y="15" font-family="Inter" font-size="5.5" font-weight="600" fill="#5b4fc9" opacity="0.06">z</text>
+    </svg>
+  </div>
+  <div class="card-title">Sleep Quality</div>
+  <div class="card-desc">Restorative sleep protocols</div>
+</div>
+
+<!-- ══════════════════════════════════════ ANXIETY ══════════════════════════════════════ -->
+<div class="bc b-anxiety">
+  <div class="ill">
+    <svg viewBox="0 0 130 130" fill="none">
+      <defs>
+        <filter id="sa"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1a5a38" flood-opacity="0.12"/></filter>
+        <filter id="sas"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#1a5a38" flood-opacity="0.08"/></filter>
+        <linearGradient id="adrop" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#5aaa80" stop-opacity="0.28"/>
+          <stop offset="100%" stop-color="#3a8a62" stop-opacity="0.2"/>
+        </linearGradient>
+      </defs>
+      <!-- Dropper bottle — amber style -->
+      <rect x="18" y="38" width="34" height="65" rx="5" fill="url(#adrop)" filter="url(#sa)"/>
+      <rect x="22" y="42" width="6" height="55" rx="2.5" fill="white" opacity="0.06"/>
+      <!-- Dropper -->
+      <rect x="25" y="22" width="20" height="20" rx="3" fill="#3a8a62" opacity="0.3" filter="url(#sas)"/>
+      <circle cx="35" cy="18" r="6" fill="#3a8a62" opacity="0.18"/>
+      <line x1="35" y1="42" x2="35" y2="60" stroke="#4a9a72" stroke-width="1.2" opacity="0.12"/>
+      <!-- Droplet -->
+      <ellipse cx="35" cy="64" rx="3" ry="4" fill="#4a9a72" opacity="0.2"/>
+
+      <!-- Small bottle 2 -->
+      <rect x="68" y="55" width="26" height="48" rx="5" fill="#4a9a72" opacity="0.12" filter="url(#sas)"/>
+      <rect x="68" y="55" width="26" height="48" rx="5" stroke="#3a7a58" stroke-width="0.4" fill="none" opacity="0.08"/>
+      <rect x="73" y="48" width="16" height="10" rx="3" fill="#3a8a62" opacity="0.18"/>
+      <rect x="72" y="72" width="18" height="12" rx="1.5" fill="white" opacity="0.08"/>
+
+      <!-- Breathing circles — background -->
+      <circle cx="100" cy="30" r="15" stroke="#4a9a72" stroke-width="0.6" fill="none" opacity="0.06"/>
+      <circle cx="100" cy="30" r="9" stroke="#4a9a72" stroke-width="0.5" fill="none" opacity="0.08"/>
+      <circle cx="100" cy="30" r="3.5" fill="#4a9a72" opacity="0.08"/>
+
+      <!-- Leaf accent -->
+      <path d="M95 80 C105 72, 118 76, 112 88 C108 96, 98 95, 95 88Z" fill="#4a9a72" opacity="0.08"/>
+
+      <circle cx="115" cy="55" r="1.5" fill="#4a9a72" opacity="0.06"/>
+    </svg>
+  </div>
+  <div class="card-title">Anxiety & Stress</div>
+  <div class="card-desc">Evidence-based stress management</div>
+</div>
+
+<!-- ══════════════════════════════════════ WOMEN'S ══════════════════════════════════════ -->
+<div class="bc b-womens">
+  <div class="ill">
+    <svg viewBox="0 0 130 130" fill="none">
+      <defs>
+        <filter id="sw"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#6a1a3a" flood-opacity="0.12"/></filter>
+        <filter id="sws"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#6a1a3a" flood-opacity="0.08"/></filter>
+        <linearGradient id="wbot" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d45a8a" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#c43a7a" stop-opacity="0.22"/>
+        </linearGradient>
+      </defs>
+      <!-- Bottle — rounded feminine shape -->
+      <rect x="15" y="35" width="36" height="65" rx="8" fill="url(#wbot)" filter="url(#sw)"/>
+      <rect x="19" y="39" width="7" height="55" rx="3" fill="white" opacity="0.06"/>
+      <rect x="22" y="22" width="22" height="16" rx="4" fill="#c43a7a" opacity="0.3" filter="url(#sws)"/>
+      <rect x="26" y="18" width="14" height="6" rx="2" fill="#c43a7a" opacity="0.22"/>
+      <!-- Label -->
+      <rect x="21" y="62" width="24" height="16" rx="2" fill="white" opacity="0.1"/>
+      <text x="33" y="72" font-family="Inter" font-size="4.5" font-weight="700" fill="#c43a7a" opacity="0.25" text-anchor="middle">arq.</text>
+
+      <!-- Blister pack — pink -->
+      <g transform="rotate(8 85 42)" filter="url(#sws)">
+        <rect x="62" y="22" width="44" height="38" rx="4" fill="#c43a7a" opacity="0.08"/>
+        <rect x="62" y="22" width="44" height="38" rx="4" stroke="#c43a7a" stroke-width="0.3" fill="none" opacity="0.06"/>
+        <circle cx="73" cy="33" r="4.5" fill="#c43a7a" opacity="0.1"/>
+        <circle cx="73" cy="33" r="4.5" stroke="white" stroke-width="0.3" fill="none" opacity="0.12"/>
+        <circle cx="87" cy="33" r="4.5" fill="#c43a7a" opacity="0.1"/>
+        <circle cx="87" cy="33" r="4.5" stroke="white" stroke-width="0.3" fill="none" opacity="0.12"/>
+        <circle cx="100" cy="33" r="4.5" fill="#c43a7a" opacity="0.08"/>
+        <circle cx="73" cy="48" r="4.5" fill="#c43a7a" opacity="0.08"/>
+        <circle cx="87" cy="48" r="4.5" fill="#c43a7a" opacity="0.08"/>
+        <circle cx="100" cy="48" r="4.5" fill="#c43a7a" opacity="0.06"/>
+      </g>
+
+      <!-- Soft capsule -->
+      <g transform="rotate(-20 82 92)" filter="url(#sws)">
+        <rect x="68" y="86" width="28" height="12" rx="6" fill="white" opacity="0.6"/>
+        <rect x="68" y="86" width="14" height="12" rx="6" fill="#c43a7a" opacity="0.3"/>
+      </g>
+
+      <!-- Flower accent -->
+      <circle cx="108" cy="85" r="6" fill="#c43a7a" opacity="0.06"/>
+      <circle cx="108" cy="85" r="3" fill="#c43a7a" opacity="0.08"/>
+      <circle cx="112" cy="95" r="1.5" fill="#c43a7a" opacity="0.05"/>
+    </svg>
+  </div>
+  <div class="card-title">Women's Health</div>
+  <div class="card-desc">Hormonal wellness & reproductive health</div>
+</div>
+
+<!-- ══════════════════════════════════════ LONGEVITY ══════════════════════════════════════ -->
+<div class="bc b-longevity">
+  <div class="ill">
+    <svg viewBox="0 0 130 130" fill="none">
+      <defs>
+        <filter id="sl"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#3a1880" flood-opacity="0.12"/></filter>
+        <filter id="sls"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#3a1880" flood-opacity="0.08"/></filter>
+        <linearGradient id="lbot" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#8a60d8" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#7040c0" stop-opacity="0.22"/>
+        </linearGradient>
+      </defs>
+      <!-- Sleek bottle -->
+      <rect x="15" y="30" width="34" height="75" rx="6" fill="url(#lbot)" filter="url(#sl)"/>
+      <rect x="19" y="34" width="6" height="65" rx="2.5" fill="white" opacity="0.06"/>
+      <rect x="22" y="18" width="20" height="16" rx="3.5" fill="#7040c0" opacity="0.3" filter="url(#sls)"/>
+      <rect x="26" y="14" width="12" height="6" rx="2" fill="#7040c0" opacity="0.22"/>
+      <!-- Label -->
+      <rect x="20" y="70" width="24" height="14" rx="2" fill="white" opacity="0.1"/>
+
+      <!-- DNA helix background -->
+      <path d="M70 15 C80 28, 100 28, 100 42 C100 56, 70 56, 70 70 C70 84, 100 84, 100 98" stroke="#7040c0" stroke-width="1.2" fill="none" opacity="0.08"/>
+      <path d="M100 15 C90 28, 70 28, 70 42 C70 56, 100 56, 100 70 C100 84, 70 84, 70 98" stroke="#7040c0" stroke-width="1.2" fill="none" opacity="0.08"/>
+      <!-- Rungs -->
+      <line x1="74" y1="28" x2="96" y2="28" stroke="#7040c0" stroke-width="0.5" opacity="0.06"/>
+      <line x1="72" y1="42" x2="98" y2="42" stroke="#7040c0" stroke-width="0.5" opacity="0.06"/>
+      <line x1="74" y1="56" x2="96" y2="56" stroke="#7040c0" stroke-width="0.5" opacity="0.06"/>
+      <line x1="72" y1="70" x2="98" y2="70" stroke="#7040c0" stroke-width="0.5" opacity="0.06"/>
+      <line x1="74" y1="84" x2="96" y2="84" stroke="#7040c0" stroke-width="0.5" opacity="0.06"/>
+
+      <!-- Capsules -->
+      <g transform="rotate(-10 90 110)" filter="url(#sls)">
+        <rect x="72" y="104" width="30" height="12" rx="6" fill="white" opacity="0.6"/>
+        <rect x="72" y="104" width="15" height="12" rx="6" fill="#7040c0" opacity="0.3"/>
+      </g>
+
+      <!-- Node dots on helix -->
+      <circle cx="85" cy="28" r="2.5" fill="#7040c0" opacity="0.12"/>
+      <circle cx="85" cy="56" r="2.5" fill="#7040c0" opacity="0.1"/>
+      <circle cx="85" cy="84" r="2.5" fill="#7040c0" opacity="0.08"/>
+    </svg>
+  </div>
+  <div class="card-title">Longevity</div>
+  <div class="card-desc">Age-related biomarker protocols</div>
+</div>
+
+<!-- ══════════════════════════════════════ WEIGHT (large) ══════════════════════════════════════ -->
+<div class="bc b-weight">
+  <div class="ill">
+    <svg viewBox="0 0 240 220" fill="none">
+      <defs>
+        <filter id="swt"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#802818" flood-opacity="0.12"/></filter>
+        <filter id="swts"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#802818" flood-opacity="0.08"/></filter>
+        <linearGradient id="pen1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e87058" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#d04830" stop-opacity="0.25"/>
+        </linearGradient>
+        <linearGradient id="pen1cap" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#c84030" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#b03828" stop-opacity="0.35"/>
+        </linearGradient>
+      </defs>
+      <!-- GLP-1 injection pen — main product -->
+      <rect x="60" y="28" width="28" height="140" rx="14" fill="url(#pen1)" filter="url(#swt)"/>
+      <rect x="60" y="28" width="28" height="140" rx="14" stroke="#c04830" stroke-width="0.5" fill="none" opacity="0.12"/>
+      <!-- Pen highlight -->
+      <rect x="64" y="34" width="6" height="125" rx="3" fill="white" opacity="0.06"/>
+      <!-- Pen cap top -->
+      <rect x="65" y="14" width="18" height="18" rx="4" fill="url(#pen1cap)" filter="url(#swts)"/>
+      <rect x="68" y="8" width="12" height="8" rx="3" fill="#b03828" opacity="0.3"/>
+      <!-- Pen needle base -->
+      <rect x="68" y="168" width="12" height="22" rx="2" fill="#e05a3a" opacity="0.2"/>
+      <line x1="74" y1="190" x2="74" y2="200" stroke="#e05a3a" stroke-width="1" opacity="0.15"/>
+      <!-- Dose window -->
+      <rect x="67" y="80" width="14" height="30" rx="2" fill="white" opacity="0.15"/>
+      <text x="74" y="98" font-family="Inter" font-size="7" font-weight="700" fill="#c04830" opacity="0.3" text-anchor="middle">0.5</text>
+      <!-- Label -->
+      <rect x="65" y="120" width="18" height="20" rx="2" fill="white" opacity="0.1"/>
+      <text x="74" y="132" font-family="Inter" font-size="5" font-weight="700" fill="#c04830" opacity="0.25" text-anchor="middle">arq.</text>
+
+      <!-- Bottle secondary -->
+      <rect x="120" y="60" width="40" height="90" rx="7" fill="#e05a3a" opacity="0.12" filter="url(#swts)"/>
+      <rect x="120" y="60" width="40" height="90" rx="7" stroke="#c04830" stroke-width="0.4" fill="none" opacity="0.08"/>
+      <rect x="124" y="64" width="8" height="78" rx="3" fill="white" opacity="0.04"/>
+      <rect x="128" y="48" width="24" height="16" rx="4" fill="#c04830" opacity="0.2"/>
+      <rect x="126" y="100" width="28" height="18" rx="2" fill="white" opacity="0.08"/>
+      <text x="140" y="112" font-family="Inter" font-size="5" font-weight="700" fill="#c04830" opacity="0.2" text-anchor="middle">GLP-1</text>
+
+      <!-- Capsules scattered -->
+      <g transform="rotate(-30 195 100)" filter="url(#swts)">
+        <rect x="178" y="92" width="36" height="15" rx="7.5" fill="white" opacity="0.65"/>
+        <rect x="178" y="92" width="18" height="15" rx="7.5" fill="#e05a3a" opacity="0.35"/>
+      </g>
+      <g transform="rotate(15 185 145)" filter="url(#swts)">
+        <rect x="170" y="138" width="30" height="13" rx="6.5" fill="white" opacity="0.5"/>
+        <rect x="170" y="138" width="15" height="13" rx="6.5" fill="#e05a3a" opacity="0.28"/>
+      </g>
+
+      <!-- Scale icon — background -->
+      <circle cx="198" cy="185" r="18" fill="#e05a3a" opacity="0.05"/>
+      <circle cx="198" cy="185" r="12" stroke="#e05a3a" stroke-width="0.8" fill="none" opacity="0.06"/>
+      <line x1="198" y1="177" x2="198" y2="185" stroke="#e05a3a" stroke-width="1" opacity="0.08"/>
+      <line x1="192" y1="180" x2="198" y2="185" stroke="#e05a3a" stroke-width="0.6" opacity="0.06"/>
+
+      <!-- Dot accents -->
+      <circle cx="22" cy="55" r="2.5" fill="#e05a3a" opacity="0.06"/>
+      <circle cx="15" cy="90" r="1.8" fill="#e05a3a" opacity="0.05"/>
+      <circle cx="225" cy="40" r="2" fill="#e05a3a" opacity="0.07"/>
+    </svg>
+  </div>
+  <div class="card-label">Rx Protocol</div>
+  <div class="card-title">Weight Management</div>
+  <div class="card-desc">Physician-supervised protocols for medically guided weight management.</div>
+</div>
+
+<!-- ══════════════════════════════════════ SKIN (wide) ══════════════════════════════════════ -->
+<div class="bc b-skin">
+  <div class="ill">
+    <svg viewBox="0 0 140 120" fill="none">
+      <defs>
+        <filter id="sk"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#7a4a10" flood-opacity="0.12"/></filter>
+        <filter id="sks"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#7a4a10" flood-opacity="0.08"/></filter>
+        <linearGradient id="serum" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e0a848" stop-opacity="0.28"/>
+          <stop offset="100%" stop-color="#d4943a" stop-opacity="0.2"/>
+        </linearGradient>
+      </defs>
+      <!-- Serum bottle — tall elegant -->
+      <rect x="12" y="25" width="28" height="72" rx="5" fill="url(#serum)" filter="url(#sk)"/>
+      <rect x="16" y="29" width="5" height="62" rx="2" fill="white" opacity="0.06"/>
+      <rect x="18" y="12" width="16" height="16" rx="3" fill="#d4943a" opacity="0.28" filter="url(#sks)"/>
+      <circle cx="26" cy="9" r="4.5" fill="#d4943a" opacity="0.18"/>
+      <!-- Dropper line -->
+      <line x1="26" y1="28" x2="26" y2="44" stroke="#d4943a" stroke-width="0.8" opacity="0.12"/>
+      <ellipse cx="26" cy="46" rx="2" ry="2.5" fill="#d4943a" opacity="0.15"/>
+      <!-- Label -->
+      <rect x="16" y="68" width="20" height="12" rx="1.5" fill="white" opacity="0.1"/>
+      <text x="26" y="76" font-family="Inter" font-size="4" font-weight="700" fill="#d4943a" opacity="0.25" text-anchor="middle">arq.</text>
+
+      <!-- Cream jar -->
+      <rect x="55" y="48" width="38" height="32" rx="6" fill="#d4943a" opacity="0.12" filter="url(#sk)"/>
+      <rect x="55" y="48" width="38" height="32" rx="6" stroke="#b07828" stroke-width="0.4" fill="none" opacity="0.06"/>
+      <rect x="58" y="40" width="32" height="12" rx="3" fill="#d4943a" opacity="0.2" filter="url(#sks)"/>
+      <!-- Cream surface -->
+      <ellipse cx="74" cy="58" rx="14" ry="3" fill="white" opacity="0.08"/>
+
+      <!-- Tube -->
+      <g transform="rotate(-15 115 55)" filter="url(#sks)">
+        <rect x="100" y="20" width="22" height="60" rx="11" fill="#d4943a" opacity="0.12"/>
+        <rect x="100" y="20" width="22" height="60" rx="11" stroke="#b07828" stroke-width="0.3" fill="none" opacity="0.06"/>
+        <rect x="104" y="72" width="14" height="8" rx="2" fill="#d4943a" opacity="0.18"/>
+        <ellipse cx="111" cy="82" rx="3" ry="1.5" fill="#d4943a" opacity="0.12"/>
+      </g>
+
+      <!-- Sparkle -->
+      <circle cx="52" cy="22" r="2.5" fill="#d4943a" opacity="0.12"/>
+      <line x1="52" y1="18" x2="52" y2="26" stroke="#d4943a" stroke-width="0.5" opacity="0.1"/>
+      <line x1="48" y1="22" x2="56" y2="22" stroke="#d4943a" stroke-width="0.5" opacity="0.1"/>
+
+      <circle cx="135" cy="90" r="1.5" fill="#d4943a" opacity="0.06"/>
+    </svg>
+  </div>
+  <div class="card-title">Skin & Dermatology</div>
+  <div class="card-desc">Evidence-based skincare and dermatological protocols.</div>
+</div>
+
+</div>
+
+</body>
+</html>

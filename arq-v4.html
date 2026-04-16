@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="arq.clinic — India's first prescription biohacking clinic. Doctor-supervised protocols for focus, sleep, weight, hair, performance, and longevity.">
+    <title>arq.clinic | Your body. Your call.</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Epilogue:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* ============ RESET & DEFAULTS ============ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Epilogue', sans-serif;
+            background-color: #08080A;
+            color: #F0EBE0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise' /%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Selection color */
+        ::selection {
+            background-color: #C8973A;
+            color: #08080A;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #08080A;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #C8973A;
+            border-radius: 3px;
+        }
+
+        /* ============ TYPOGRAPHY ============ */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        .section-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.875rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #C8973A;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-gold {
+            color: #C8973A;
+            font-style: italic;
+        }
+
+        /* ============ BUTTONS ============ */
+        button, .btn {
+            font-family: 'Epilogue', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.875rem 1.75rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #C8973A;
+            color: #08080A;
+        }
+
+        .btn-primary:hover {
+            background-color: #e0b050;
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(200, 151, 58, 0.3);
+        }
+
+        .btn-ghost {
+            background-color: transparent;
+            border: 1.5px solid #C8973A;
+            color: #C8973A;
+        }
+
+        .btn-ghost:hover {
+            background-color: rgba(200, 151, 58, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* ============ NAVIGATION ============ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background-color: rgba(8, 8, 10, 0.8);
+            backdrop-filter: blur(40px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            transition: border-bottom 0.3s ease;
+        }
+
+        nav.scrolled {
+            border-bottom: 1px solid rgba(200, 151, 58, 0.2);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #F0EBE0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo::after {
+            content: '●';
+            color: #C8973A;
+            font-size: 0.8rem;
+        }
+
+        .nav-center {
+            display: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-center {
+                display: flex;
+            }
+        }
+
+        .nav-center a {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            color: #F0EBE0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            text-transform: capitalize;
+        }
+
+        .nav-center a:hover {
+            color: #C8973A;
+        }
+
+        .nav-right {
+            display: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-right {
+                display: flex;
+            }
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        @media (min-width: 1024px) {
+            .hamburger {
+                display: none;
+            }
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: #F0EBE0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background-color: rgba(8, 8, 10, 0.95);
+            backdrop-filter: blur(40px);
+            z-index: 999;
+            padding: 2rem;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.95rem;
+            color: #F0EBE0;
+            text-decoration: none;
+            text-transform: capitalize;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+            margin-top: 64px;
+            overflow: hidden;
+        }
+
+        #heroCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-style: italic;
+            color: #C8973A;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #F0EBE0;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 640px) {
+            .hero-ctas {
+                flex-direction: row;
+            }
+        }
+
+        .hero-trust {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            color: #A0A0A0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(200, 151, 58, 0.1);
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-trust {
+                flex-direction: row;
+                gap: 2rem;
+            }
+        }
+
+        .hero-trust span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-trust span::before {
+            content: '●';
+            color: #C8973A;
+        }
+
+        /* ============ SECTIONS ============ */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            section {
+                padding: 6rem 4rem;
+            }
+        }
+
+        section h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        /* ============ PROTOCOLS SECTION ============ */
+        .protocols-section {
+            background-color: #08080A;
+        }
+
+        .protocols-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .protocols-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .protocols-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        .protocol-card {
+            background: rgba(15, 15, 15, 0.6);
+            border: 1px solid rgba(200, 151, 58, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+            text-decoration: none;
+            color: #F0EBE0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .protocol-card:active {
+            transform: scale(0.98);
+        }
+
+        @media (hover: hover) {
+            .protocol-card:hover {
+                transform: translateY(-8px);
+                border-color: var(--card-color, #C8973A);
+                box-shadow: 0 20px 50px rgba(200, 151, 58, 0.15);
+                background: rgba(15, 15, 15, 0.8);
+            }
+        }
+
+        .protocol-icon {
+            width: 48px;
+            height: 48px;
+            font-size: 2rem;
+        }
+
+        .protocol-card h3 {
+            text-align: left;
+            font-size: 1.5rem;
+        }
+
+        .protocol-price {
+            font-family: 'DM Mono', monospace;
+            font-size: 1rem;
+            color: #C8973A;
+            text-align: left;
+        }
+
+        /* Card-specific colors */
+        .protocol-card.focus { --card-color: #5b9cf5; }
+        .protocol-card.sleep { --card-color: #9b7dd9; }
+        .protocol-card.weight { --card-color: #4ade80; }
+        .protocol-card.hair { --card-color: #f97316; }
+        .protocol-card.performance { --card-color: #ef4444; }
+        .protocol-card.longevity { --card-color: #C8973A; }
+
+        /* ============ HOW IT WORKS ============ */
+        .how-it-works {
+            background-color: #0a0a0c;
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .how-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .how-step {
+            text-align: center;
+        }
+
+        .how-step-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #C8973A;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        .how-step h3 {
+            margin-bottom: 1rem;
+        }
+
+        .how-step p {
+            color: #B0B0B0;
+            font-size: 1rem;
+        }
+
+        .how-footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(200, 151, 58, 0.1);
+            color: #C8973A;
+            font-weight: 600;
+        }
+
+        /* ============ DIFFERENCE SECTION ============ */
+        .difference-section {
+            background: linear-gradient(135deg, rgba(8,8,10,1) 0%, rgba(15,15,20,1) 50%, rgba(8,8,10,1) 100%);
+        }
+
+        .difference-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .difference-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 4rem;
+            }
+        }
+
+        .difference-column h3 {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.6;
+        }
+
+        .difference-column.wrong h3 {
+            color: #666;
+        }
+
+        .difference-column.right h3 {
+            color: #C8973A;
+        }
+
+        .difference-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(200, 151, 58, 0.1);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .difference-item:last-child {
+            border-bottom: none;
+        }
+
+        .difference-column.wrong .difference-item {
+            text-decoration: line-through;
+            color: #666;
+        }
+
+        .difference-column.right .difference-item {
+            color: #F0EBE0;
+            font-weight: 500;
+        }
+
+        /* ============ STATS BAR ============ */
+        .stats-bar {
+            background: rgba(15, 15, 15, 0.8);
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(200, 151, 58, 0.1);
+            border-bottom: 1px solid rgba(200, 151, 58, 0.1);
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #C8973A;
+        }
+
+        .stat-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            color: #A0A0A0;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ============ PROTOCOLS LIBRARY ============ */
+        .protocols-library {
+            background-color: #08080A;
+        }
+
+        .protocols-scroll {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-bottom: 1rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .protocol-item {
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            background: rgba(15, 15, 15, 0.6);
+            border: 1px solid rgba(200, 151, 58, 0.2);
+            border-radius: 16px;
+            padding: 1.75rem;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #F0EBE0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .protocol-item:active {
+            transform: scale(0.98);
+        }
+
+        @media (hover: hover) {
+            .protocol-item:hover {
+                border-color: #C8973A;
+                background: rgba(15, 15, 15, 0.8);
+            }
+        }
+
+        .protocol-item.focus { border-left-color: #5b9cf5; }
+        .protocol-item.sleep { border-left-color: #9b7dd9; }
+        .protocol-item.weight { border-left-color: #4ade80; }
+        .protocol-item.hair { border-left-color: #f97316; }
+        .protocol-item.performance { border-left-color: #ef4444; }
+        .protocol-item.longevity { border-left-color: #C8973A; }
+
+        .protocol-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .protocol-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            background: rgba(200, 151, 58, 0.1);
+            color: #C8973A;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            width: fit-content;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .protocol-desc {
+            font-size: 0.95rem;
+            color: #B0B0B0;
+            line-height: 1.5;
+        }
+
+        .protocol-price-item {
+            font-family: 'DM Mono', monospace;
+            color: #C8973A;
+            font-weight: 600;
+        }
+
+        .protocol-link {
+            color: #C8973A;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* ============ BLOG SECTION ============ */
+        .blog-section {
+            background-color: #0a0a0c;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .blog-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .blog-card {
+            background: rgba(15, 15, 15, 0.6);
+            border: 1px solid rgba(200, 151, 58, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-decoration: none;
+            color: #F0EBE0;
+            transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .blog-card:active {
+            transform: scale(0.98);
+        }
+
+        @media (hover: hover) {
+            .blog-card:hover {
+                border-color: #C8973A;
+                background: rgba(15, 15, 15, 0.8);
+                transform: translateY(-4px);
+            }
+        }
+
+        .blog-card h3 {
+            line-height: 1.4;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(200, 151, 58, 0.1);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            color: #A0A0A0;
+        }
+
+        .blog-category {
+            background: rgba(200, 151, 58, 0.1);
+            color: #C8973A;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .blog-read-more {
+            color: #C8973A;
+            font-weight: 600;
+        }
+
+        .blog-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(200, 151, 58, 0.1);
+        }
+
+        .blog-footer a {
+            color: #C8973A;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* ============ BOTTOM CTA ============ */
+        .bottom-cta {
+            background: radial-gradient(ellipse 600px 400px at center, rgba(200, 151, 58, 0.08), transparent);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(200, 151, 58, 0.1);
+            border-bottom: 1px solid rgba(200, 151, 58, 0.1);
+        }
+
+        .bottom-cta h2 {
+            margin-bottom: 1rem;
+        }
+
+        .bottom-cta-subtitle {
+            font-size: 1.1rem;
+            color: #B0B0B0;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bottom-cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .bottom-cta-buttons {
+                flex-direction: row;
+            }
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background-color: #000000;
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(200, 151, 58, 0.1);
+            padding-bottom: max(2rem, env(safe-area-inset-bottom));
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: #F0EBE0;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            color: #A0A0A0;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #A0A0A0;
+            text-decoration: none;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: #C8973A;
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(200, 151, 58, 0.1);
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .footer-disclaimer {
+            font-size: 0.8rem;
+            color: #555;
+            line-height: 1.6;
+            margin: 2rem 0 0;
+            padding: 2rem 0 0;
+            border-top: 1px solid rgba(200, 151, 58, 0.1);
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @media (prefers-reduced-motion: no-preference) {
+            .fade-in {
+                opacity: 0;
+            }
+
+            .count-up {
+                font-variant-numeric: tabular-nums;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* Touch optimization */
+        -webkit-tap-highlight-color: transparent;
+
+        button:active,
+        a:active {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Safe area support */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(0px, env(safe-area-inset-left));
+                padding-right: max(0px, env(safe-area-inset-right));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-logo">arq.</div>
+        <div class="nav-center">
+            <a href="#protocols">Protocols</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#blog">Science</a>
+            <a href="#physicians">Physicians</a>
+        </div>
+        <div class="nav-right">
+            <a href="https://wa.me/919137307628" class="btn btn-primary">Start →</a>
+        </div>
+        <button class="hamburger" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#protocols">Protocols</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#blog">Science</a>
+        <a href="#physicians">Physicians</a>
+        <a href="https://wa.me/919137307628" class="btn btn-primary">Start →</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <canvas id="heroCanvas"></canvas>
+        <div class="hero-content">
+            <h1>Your body.<br><span class="hero-tagline">Your call.</span></h1>
+            <p class="hero-subtitle">India's first prescription biohacking clinic. Doctor-supervised protocols for focus, sleep, weight, hair, performance, and longevity.</p>
+            <div class="hero-ctas">
+                <a href="#protocols" class="btn btn-primary">Find Your Protocol →</a>
+                <a href="https://wa.me/919137307628" class="btn btn-ghost">Talk to a Doctor</a>
+            </div>
+            <div class="hero-trust">
+                <span>NMC-Registered Physicians</span>
+                <span>100% Refund if Not Approved</span>
+                <span>Ships in 48h</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROTOCOLS -->
+    <section class="protocols-section" id="protocols">
+        <div class="section-tag">PROTOCOLS</div>
+        <h2>What do you want to <span class="highlight-gold">optimize</span>?</h2>
+
+        <div class="protocols-grid">
+            <a href="/protocols/packs/arq-focus.html" class="protocol-card focus">
+                <div class="protocol-icon">🧠</div>
+                <h3>I want to focus better</h3>
+                <div class="protocol-price">From ₹1,799/month</div>
+            </a>
+
+            <a href="/protocols/packs/arq-sleep.html" class="protocol-card sleep">
+                <div class="protocol-icon">🌙</div>
+                <h3>I want to sleep better</h3>
+                <div class="protocol-price">From ₹1,499/month</div>
+            </a>
+
+            <a href="/protocols/semaglutide.html" class="protocol-card weight">
+                <div class="protocol-icon">⚖️</div>
+                <h3>I want to lose weight</h3>
+                <div class="protocol-price">From ₹2,999/month</div>
+            </a>
+
+            <a href="/protocols/packs/arq-hair.html" class="protocol-card hair">
+                <div class="protocol-icon">💇</div>
+                <h3>I want to keep my hair</h3>
+                <div class="protocol-price">From ₹999/month</div>
+            </a>
+
+            <a href="/protocols/packs/arq-edge.html" class="protocol-card performance">
+                <div class="protocol-icon">⚡</div>
+                <h3>I want better performance</h3>
+                <div class="protocol-price">From ₹1,499/month</div>
+            </a>
+
+            <a href="/protocols/packs/arq-longevity.html" class="protocol-card longevity">
+                <div class="protocol-icon">∞</div>
+                <h3>I want to live longer</h3>
+                <div class="protocol-price">From ₹1,999/month</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-tag">PROCESS</div>
+        <h2>Three steps. <span class="highlight-gold">That's it.</span></h2>
+
+        <div class="how-grid">
+            <div class="how-step">
+                <div class="how-step-number">1</div>
+                <h3>Choose your outcome</h3>
+                <p>Tell us what you want to optimize. Our quiz finds the right protocol for you.</p>
+            </div>
+
+            <div class="how-step">
+                <div class="how-step-number">2</div>
+                <h3>Doctor calls you</h3>
+                <p>A licensed physician calls within 2 hours. 7-minute consultation. No lectures.</p>
+            </div>
+
+            <div class="how-step">
+                <div class="how-step-number">3</div>
+                <h3>Protocol delivered</h3>
+                <p>Approved? Ships in 48 hours. Discreet packaging. Monthly subscription.</p>
+            </div>
+        </div>
+
+        <div class="how-footer">
+            Not approved? 100% refund. No questions.
+        </div>
+    </section>
+
+    <!-- DIFFERENCE -->
+    <section class="difference-section">
+        <div class="section-tag">WHY ARQ</div>
+        <h2>Built for people who <span class="highlight-gold">already know</span></h2>
+
+        <div class="difference-grid">
+            <div class="difference-column wrong">
+                <h3>What they do</h3>
+                <div class="difference-item">Are you sure this is right for you?</div>
+                <div class="difference-item">Clinical-grade wellness journey</div>
+                <div class="difference-item">This product may help some users</div>
+                <div class="difference-item">Consult your doctor before use</div>
+            </div>
+
+            <div class="difference-column right">
+                <h3>What arq says</h3>
+                <div class="difference-item">Your doctor will confirm on the call.</div>
+                <div class="difference-item">30 tablets. Pharmaceutical-grade. Delivered.</div>
+                <div class="difference-item">Mechanism: DAT inhibition. Onset: 30–60 min.</div>
+                <div class="difference-item">Doctor consultation is included. Always.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="stat-number count-up" data-target="26">26</div>
+            <div class="stat-label">Protocols</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number count-up" data-target="6">6</div>
+            <div class="stat-label">Specialties</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">48h</div>
+            <div class="stat-label">Avg Delivery</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Refund if Declined</div>
+        </div>
+    </div>
+
+    <!-- PROTOCOL LIBRARY -->
+    <section class="protocols-library" id="catalog">
+        <div class="section-tag">CATALOG</div>
+        <h2>The <span class="highlight-gold">protocol</span> library</h2>
+
+        <div class="protocols-scroll">
+            <a href="/protocols/modafinil.html" class="protocol-item focus">
+                <div class="protocol-name">Modafinil 200mg</div>
+                <div class="protocol-badge">Rx</div>
+                <div class="protocol-desc">The gold standard wakefulness agent</div>
+                <div class="protocol-price-item">₹1,799/mo</div>
+                <div class="protocol-link">Read more →</div>
+            </a>
+
+            <a href="/protocols/semaglutide.html" class="protocol-item weight">
+                <div class="protocol-name">Semaglutide</div>
+                <div class="protocol-badge">Rx</div>
+                <div class="protocol-desc">GLP-1 agonist. Body composition, redefined</div>
+                <div class="protocol-price-item">₹2,999/mo</div>
+                <div class="protocol-link">Read more →</div>
+            </a>
+
+            <a href="/protocols/finasteride.html" class="protocol-item hair">
+                <div class="protocol-name">Finasteride 1mg</div>
+                <div class="protocol-badge">Rx</div>
+                <div class="protocol-desc">DHT blocker. The clinical standard for hair</div>
+                <div class="protocol-price-item">₹999/mo</div>
+                <div class="protocol-link">Read more →</div>
+            </a>
+
+            <a href="/protocols/sildenafil.html" class="protocol-item performance">
+                <div class="protocol-name">Sildenafil 50mg</div>
+                <div class="protocol-badge">Rx</div>
+                <div class="protocol-desc">PDE5 inhibitor. Discreet. Doctor-supervised</div>
+                <div class="protocol-price-item">₹1,499/mo</div>
+                <div class="protocol-link">Read more →</div>
+            </a>
+
+            <a href="/protocols/metformin.html" class="protocol-item longevity">
+                <div class="protocol-name">Metformin ER</div>
+                <div class="protocol-badge">Rx</div>
+                <div class="protocol-desc">AMPK activator. 60+ years of safety data</div>
+                <div class="protocol-price-item">₹499/mo</div>
+                <div class="protocol-link">Read more →</div>
+            </a>
+
+            <a href="/protocols/tretinoin.html" class="protocol-item performance">
+                <div class="protocol-name">Tretinoin 0.05%</div>
+                <div class="protocol-badge">Rx</div>
+                <div class="protocol-desc">The gold standard retinoid</div>
+                <div class="protocol-price-item">₹899/mo</div>
+                <div class="protocol-link">Read more →</div>
+            </a>
+
+            <a href="/protocols/rapamycin.html" class="protocol-item longevity">
+                <div class="protocol-name">Rapamycin</div>
+                <div class="protocol-badge">Rx</div>
+                <div class="protocol-desc">mTOR inhibitor. Lifespan extension</div>
+                <div class="protocol-price-item">₹4,999/mo</div>
+                <div class="protocol-link">Read more →</div>
+            </a>
+
+            <a href="/protocols/nmn.html" class="protocol-item longevity">
+                <div class="protocol-name">NMN 500mg</div>
+                <div class="protocol-badge">OTC</div>
+                <div class="protocol-desc">NAD+ precursor. Cellular energy</div>
+                <div class="protocol-price-item">₹2,999/mo</div>
+                <div class="protocol-link">Read more →</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- BLOG / INTELLIGENCE -->
+    <section class="blog-section" id="blog">
+        <div class="section-tag">INTELLIGENCE</div>
+        <h2>The <span class="highlight-gold">protocol</span> briefing</h2>
+
+        <div class="blog-grid">
+            <a href="/blog/modafinil-legal-india.html" class="blog-card">
+                <h3>Is Modafinil Legal in India?</h3>
+                <div class="blog-meta">
+                    <span class="blog-category">Cognition</span>
+                    <span class="blog-read-time">6 min</span>
+                </div>
+                <div class="blog-read-more">Read →</div>
+            </a>
+
+            <a href="/blog/semaglutide-india.html" class="blog-card">
+                <h3>Generic Semaglutide: The Complete Guide</h3>
+                <div class="blog-meta">
+                    <span class="blog-category">Body</span>
+                    <span class="blog-read-time">9 min</span>
+                </div>
+                <div class="blog-read-more">Read →</div>
+            </a>
+
+            <a href="/blog/peter-attia-longevity-stack-india.html" class="blog-card">
+                <h3>Peter Attia's Longevity Stack for India</h3>
+                <div class="blog-meta">
+                    <span class="blog-category">Longevity</span>
+                    <span class="blog-read-time">9 min</span>
+                </div>
+                <div class="blog-read-more">Read →</div>
+            </a>
+        </div>
+
+        <div class="blog-footer">
+            <a href="/blog/">Read all articles →</a>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="bottom-cta">
+        <h2>Your body. Your call.</h2>
+        <p class="bottom-cta-subtitle">India's first biohacker prescription clinic. Doctor-supervised. Evidence-based. Delivered.</p>
+        <div class="bottom-cta-buttons">
+            <a href="#protocols" class="btn btn-primary">Find Your Protocol →</a>
+            <a href="https://wa.me/919137307628" class="btn btn-ghost">Talk to a Doctor</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>arq.</h4>
+                <p>India's first biohacker prescription clinic.</p>
+                <a href="https://wa.me/919137307628">Message us</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Protocols</h4>
+                <a href="/protocols/packs/arq-focus.html">Focus</a>
+                <a href="/protocols/packs/arq-sleep.html">Sleep</a>
+                <a href="/protocols/semaglutide.html">Weight</a>
+                <a href="/protocols/packs/arq-hair.html">Hair</a>
+                <a href="/protocols/packs/arq-edge.html">Performance</a>
+                <a href="/protocols/packs/arq-longevity.html">Longevity</a>
+                <a href="#catalog">All Protocols</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#blog">Science</a>
+                <a href="#physicians">Physicians</a>
+                <a href="#about">About</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacy-policy.html">Privacy Policy</a>
+                <a href="/terms-of-service.html">Terms of Service</a>
+                <a href="/medical-disclaimer.html">Medical Disclaimer</a>
+            </div>
+        </div>
+
+        <div class="footer-divider">
+            <div class="footer-bottom">
+                <span>© 2026 Dear One Technologies Pvt. Ltd.</span>
+                <span>hello@arq.clinic</span>
+            </div>
+
+            <div class="footer-disclaimer">
+                All prescription medications require a licensed physician consultation. arq.clinic is a consultation-first platform. 100% refund if not medically approved. This is not medical advice.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Register ScrollTrigger with GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // ============ NAVIGATION ============
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const nav = document.querySelector('nav');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Nav scroll state
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // ============ THREE.JS HERO ============
+        const canvas = document.getElementById('heroCanvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+
+        camera.position.z = 50;
+
+        // Molecular lattice
+        const nodes = [];
+        const nodeCount = 150;
+        const nodeGeometry = new THREE.SphereGeometry(0.8, 8, 8);
+        const nodeMaterial = new THREE.MeshPhongMaterial({
+            color: 0xC8973A,
+            emissive: 0xC8973A,
+            emissiveIntensity: 0.4,
+            shininess: 100
+        });
+
+        // Create nodes
+        for (let i = 0; i < nodeCount; i++) {
+            const mesh = new THREE.Mesh(nodeGeometry, nodeMaterial);
+            const x = (Math.random() - 0.5) * 100;
+            const y = (Math.random() - 0.5) * 100;
+            const z = (Math.random() - 0.5) * 100;
+            mesh.position.set(x, y, z);
+            mesh.scale.set(0.5, 0.5, 0.5);
+            scene.add(mesh);
+            nodes.push({ mesh, x, y, z });
+        }
+
+        // Create connections
+        const lineGeometry = new THREE.BufferGeometry();
+        const linePositions = [];
+        const lineArray = [];
+
+        for (let i = 0; i < nodeCount; i++) {
+            for (let j = i + 1; j < nodeCount; j++) {
+                const dx = nodes[i].x - nodes[j].x;
+                const dy = nodes[i].y - nodes[j].y;
+                const dz = nodes[i].z - nodes[j].z;
+                const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                if (dist < 30) {
+                    linePositions.push(nodes[i].x, nodes[i].y, nodes[i].z);
+                    linePositions.push(nodes[j].x, nodes[j].y, nodes[j].z);
+                    lineArray.push(j);
+                }
+            }
+        }
+
+        lineGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(linePositions), 3));
+        const lineMaterial = new THREE.LineBasicMaterial({ color: 0xC8973A, linewidth: 0.5, transparent: true, opacity: 0.3 });
+        const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+        scene.add(lines);
+
+        // Lighting
+        const light = new THREE.PointLight(0xC8973A, 1, 200);
+        light.position.set(30, 30, 30);
+        scene.add(light);
+
+        const ambientLight = new THREE.AmbientLight(0x404040);
+        scene.add(ambientLight);
+
+        // Mouse parallax
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // Animation loop
+        function animateHero() {
+            requestAnimationFrame(animateHero);
+
+            // Rotate scene based on mouse
+            scene.rotation.x += (mouseY * 0.05 - scene.rotation.x) * 0.05;
+            scene.rotation.y += (mouseX * 0.05 - scene.rotation.y) * 0.05;
+
+            // Gentle auto-rotation
+            scene.rotation.z += 0.0001;
+
+            // Fade effect at hero bottom
+            const opacity = Math.max(0, 1 - (window.scrollY / window.innerHeight) * 2);
+            renderer.setClearColor(0x000000, opacity);
+
+            renderer.render(scene, camera);
+        }
+
+        animateHero();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // ============ COUNTER ANIMATION ============
+        const countElements = document.querySelectorAll('.count-up');
+        const countsAnimated = new Set();
+
+        countElements.forEach(el => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !countsAnimated.has(el)) {
+                        countsAnimated.add(el);
+                        const target = parseInt(el.getAttribute('data-target'));
+                        let current = 0;
+                        const increment = target / 60;
+
+                        const counter = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                el.textContent = target;
+                                clearInterval(counter);
+                            } else {
+                                el.textContent = Math.floor(current);
+                            }
+                        }, 30);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(el);
+        });
+
+        // ============ SCROLL ANIMATIONS ============
+        const fadeElements = document.querySelectorAll('.protocols-section h2, .how-it-works h2, .difference-section h2, .protocols-library h2, .blog-section h2, .bottom-cta h2');
+
+        fadeElements.forEach((el, index) => {
+            gsap.set(el, { opacity: 0, y: 20 });
+            ScrollTrigger.create({
+                trigger: el,
+                onEnter: () => {
+                    gsap.to(el, {
+                        duration: 0.8,
+                        opacity: 1,
+                        y: 0,
+                        ease: 'cubic-bezier(0.16,1,0.3,1)'
+                    });
+                }
+            });
+        });
+
+        // Fade protocol cards on scroll
+        const protocolCards = document.querySelectorAll('.protocol-card, .protocol-item, .blog-card');
+        protocolCards.forEach((card, index) => {
+            gsap.set(card, { opacity: 0, y: 30 });
+            ScrollTrigger.create({
+                trigger: card,
+                onEnter: () => {
+                    gsap.to(card, {
+                        duration: 0.6,
+                        opacity: 1,
+                        y: 0,
+                        delay: index * 0.05,
+                        ease: 'cubic-bezier(0.16,1,0.3,1)'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

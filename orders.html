@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>My Orders • arq.clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Dark theme */
+            --bg: #050505;
+            --bg2: #0a0a0a;
+            --surface: #111;
+            --surface2: #161616;
+            --card: #141414;
+            --card-hover: #1a1a1a;
+
+            /* Gold accent */
+            --gold: #c9a050;
+            --gold-light: #d4b06a;
+            --gold-dim: rgba(201, 160, 80, 0.6);
+            --gold-glow: rgba(201, 160, 80, 0.08);
+            --gold-border: rgba(201, 160, 80, 0.2);
+
+            /* Warm white */
+            --white: #e8e4dd;
+            --white-90: rgba(232, 228, 221, 0.9);
+            --white-60: rgba(232, 228, 221, 0.6);
+            --white-30: rgba(232, 228, 221, 0.3);
+            --white-12: rgba(232, 228, 221, 0.12);
+            --white-06: rgba(232, 228, 221, 0.06);
+
+            /* Status colors */
+            --green: #3ecf71;
+            --green-dim: rgba(62, 207, 113, 0.15);
+            --blue: #5b9cf5;
+            --blue-dim: rgba(91, 156, 245, 0.12);
+            --cyan: #22d3ee;
+            --cyan-dim: rgba(34, 211, 238, 0.12);
+            --orange: #fb923c;
+            --orange-dim: rgba(251, 147, 60, 0.12);
+            --red: #f87171;
+            --red-dim: rgba(248, 113, 113, 0.12);
+
+            /* Borders */
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 255, 255, 0.12);
+
+            /* Animation */
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+            /* Safe area insets */
+            --safe-top: max(env(safe-area-inset-top), 0px);
+            --safe-bottom: max(env(safe-area-inset-bottom), 0px);
+            --safe-left: max(env(safe-area-inset-left), 0px);
+            --safe-right: max(env(safe-area-inset-right), 0px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise' /%3E%3C/filter%3E%3Crect width='400' height='400' fill='rgba(255,255,255,0.02)' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+        /* Content flows above noise */
+        main, nav {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 0 var(--safe-left) 0 var(--safe-right);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--white);
+            transition: color 200ms var(--ease);
+        }
+
+        .nav-logo:hover {
+            color: var(--gold);
+        }
+
+        .nav-logo .dot {
+            color: var(--gold);
+            display: inline;
+        }
+
+        .nav-back {
+            font-size: 14px;
+            color: var(--white-60);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 200ms var(--ease);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-back:hover {
+            color: var(--gold);
+        }
+
+        /* Main content */
+        main {
+            padding-top: calc(64px + var(--safe-top));
+            padding-bottom: var(--safe-bottom);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* Header section */
+        .page-header {
+            padding: 48px 0 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            color: var(--white-60);
+            font-weight: 400;
+        }
+
+        /* Tabs */
+        .tabs-container {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            scrollbar-width: none;
+        }
+
+        .tabs-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            background: transparent;
+            border: none;
+            color: var(--white-60);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            position: relative;
+            transition: color 200ms var(--ease);
+            border-radius: 0;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab:hover {
+            color: var(--white);
+        }
+
+        .tab.active {
+            color: var(--gold);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .tab-badge {
+            font-size: 12px;
+            background: var(--gold-glow);
+            color: var(--gold);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Orders list */
+        .orders-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Order card */
+        .order-card {
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.4) 0%, rgba(22, 22, 22, 0.2) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 200ms var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .order-card:hover {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.5) 0%, rgba(22, 22, 22, 0.3) 100%);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .order-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .order-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.5px;
+        }
+
+        .order-date {
+            font-size: 14px;
+            color: var(--white-60);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .status-physician-review {
+            background: var(--blue-dim);
+            color: var(--blue);
+            border: 1px solid rgba(91, 156, 245, 0.3);
+        }
+
+        .status-approved {
+            background: var(--gold-glow);
+            color: var(--gold);
+            border: 1px solid var(--gold-border);
+        }
+
+        .status-processing {
+            background: var(--orange-dim);
+            color: var(--orange);
+            border: 1px solid rgba(251, 147, 60, 0.3);
+        }
+
+        .status-shipped {
+            background: var(--cyan-dim);
+            color: var(--cyan);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+        }
+
+        .status-out-for-delivery {
+            background: var(--green-dim);
+            color: var(--green);
+            border: 1px solid rgba(62, 207, 113, 0.3);
+        }
+
+        .status-delivered {
+            background: var(--green-dim);
+            color: var(--green);
+            border: 1px solid rgba(62, 207, 113, 0.3);
+        }
+
+        .status-cancelled {
+            background: var(--red-dim);
+            color: var(--red);
+            border: 1px solid rgba(248, 113, 113, 0.3);
+        }
+
+        .order-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .order-items {
+            grid-column: 1 / -1;
+        }
+
+        .order-items-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--white-60);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .order-item {
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--white-06);
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 14px;
+            color: var(--white);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .item-qty {
+            font-size: 12px;
+            color: var(--white-60);
+        }
+
+        .item-price {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            color: var(--gold);
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .order-total {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .total-label {
+            font-size: 14px;
+            color: var(--white-60);
+            font-weight: 600;
+        }
+
+        .total-amount {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tracking-number {
+            font-size: 13px;
+            color: var(--white-60);
+        }
+
+        .tracking-number-value {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--white);
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 200ms var(--ease);
+        }
+
+        .tracking-number-value:hover {
+            color: var(--gold);
+        }
+
+        .expand-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--white-60);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 200ms var(--ease);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            min-height: 44px;
+        }
+
+        .expand-btn:hover {
+            border-color: var(--border-hover);
+            color: var(--gold);
+        }
+
+        .expand-btn.expanded {
+            color: var(--gold);
+            border-color: var(--gold-border);
+        }
+
+        .expand-icon {
+            font-size: 12px;
+            transition: transform 200ms var(--ease);
+        }
+
+        .expand-btn.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Timeline section */
+        .order-timeline {
+            display: none;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .order-timeline.expanded {
+            display: block;
+            animation: slideDown 400ms var(--ease);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .timeline-step {
+            display: flex;
+            gap: 16px;
+        }
+
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--white-12);
+            border: 2px solid var(--white-30);
+            flex-shrink: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+
+        .timeline-dot.completed {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .timeline-dot.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 8px var(--gold-glow);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 8px var(--gold-glow);
+            }
+            50% {
+                box-shadow: 0 0 0 12px var(--gold-glow);
+            }
+        }
+
+        .timeline-dot.completed::after {
+            content: '✓';
+            color: var(--bg);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-top: 2px;
+        }
+
+        .timeline-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .timeline-step.future .timeline-title {
+            color: var(--white-60);
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: var(--white-60);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Help section */
+        .order-help {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .help-link {
+            font-size: 13px;
+            color: var(--gold);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 200ms var(--ease);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 600;
+        }
+
+        .help-link:hover {
+            color: var(--gold-light);
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 80px 16px;
+        }
+
+        .empty-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .empty-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .empty-subtitle {
+            font-size: 16px;
+            color: var(--white-60);
+            margin-bottom: 24px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gold);
+            color: var(--bg);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 200ms var(--ease);
+            min-height: 44px;
+        }
+
+        .cta-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* Pull to refresh indicator */
+        .pull-to-refresh {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--white-60);
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 300ms var(--ease);
+        }
+
+        .pull-to-refresh.visible {
+            opacity: 1;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 12px;
+                height: 56px;
+            }
+
+            .nav-logo {
+                font-size: 18px;
+            }
+
+            main {
+                padding-top: calc(56px + var(--safe-top));
+            }
+
+            .page-header {
+                padding: 32px 0 24px;
+                margin-bottom: 24px;
+            }
+
+            .page-title {
+                font-size: 32px;
+            }
+
+            .page-subtitle {
+                font-size: 14px;
+            }
+
+            .order-card {
+                padding: 16px;
+            }
+
+            .order-card-header {
+                margin-bottom: 12px;
+            }
+
+            .order-summary {
+                grid-template-columns: 1fr;
+            }
+
+            .item-name {
+                font-size: 13px;
+            }
+
+            .item-qty {
+                font-size: 11px;
+            }
+
+            .total-amount {
+                font-size: 16px;
+            }
+
+            .order-footer {
+                gap: 8px;
+            }
+
+            .empty-state {
+                padding: 60px 16px;
+            }
+
+            .empty-title {
+                font-size: 24px;
+            }
+
+            .empty-subtitle {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+
+            .page-subtitle {
+                font-size: 13px;
+            }
+
+            .order-id {
+                font-size: 12px;
+            }
+
+            .order-date {
+                font-size: 12px;
+            }
+
+            .status-badge {
+                font-size: 11px;
+                padding: 5px 10px;
+            }
+
+            .order-card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .order-summary {
+                gap: 12px;
+            }
+
+            .order-item {
+                padding: 6px 0;
+            }
+
+            .item-name {
+                font-size: 13px;
+            }
+
+            .item-qty {
+                font-size: 11px;
+            }
+
+            .item-price {
+                font-size: 12px;
+            }
+
+            .total-label {
+                font-size: 12px;
+            }
+
+            .total-amount {
+                font-size: 15px;
+            }
+
+            .order-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .tracking-number {
+                font-size: 12px;
+            }
+
+            .expand-btn {
+                width: 100%;
+                justify-content: center;
+                font-size: 11px;
+            }
+
+            .timeline {
+                gap: 16px;
+            }
+
+            .timeline-dot {
+                width: 20px;
+                height: 20px;
+            }
+
+            .timeline-title {
+                font-size: 13px;
+            }
+
+            .timeline-date {
+                font-size: 11px;
+            }
+
+            .tabs-container {
+                margin-bottom: 20px;
+            }
+
+            .tab {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .tab-badge {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .page-title {
+                font-size: 24px;
+                line-height: 1.2;
+            }
+
+            .status-badge {
+                font-size: 10px;
+            }
+
+            .order-id {
+                font-size: 11px;
+            }
+
+            .item-name {
+                font-size: 12px;
+            }
+
+            .total-amount {
+                font-size: 14px;
+            }
+
+            .expand-btn {
+                font-size: 10px;
+                padding: 5px 10px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            nav, .pull-to-refresh {
+                display: none;
+            }
+
+            .order-card {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="/" class="nav-logo">arq<span class="dot">.</span></a>
+        <a href="/account.html" class="nav-back">← Back</a>
+    </nav>
+
+    <!-- Main content -->
+    <main>
+        <div class="container">
+            <!-- Header -->
+            <section class="page-header">
+                <h1 class="page-title">My Orders</h1>
+                <p class="page-subtitle">Track your protocols from prescription to delivery</p>
+            </section>
+
+            <!-- Tabs -->
+            <div class="tabs-container" id="tabsContainer">
+                <button class="tab active" data-filter="all">
+                    All
+                    <span class="tab-badge" data-badge="all">3</span>
+                </button>
+                <button class="tab" data-filter="processing">
+                    Processing
+                    <span class="tab-badge" data-badge="processing">1</span>
+                </button>
+                <button class="tab" data-filter="shipped">
+                    Shipped
+                    <span class="tab-badge" data-badge="shipped">1</span>
+                </button>
+                <button class="tab" data-filter="delivered">
+                    Delivered
+                    <span class="tab-badge" data-badge="delivered">1</span>
+                </button>
+                <button class="tab" data-filter="cancelled">
+                    Cancelled
+                    <span class="tab-badge" data-badge="cancelled">0</span>
+                </button>
+            </div>
+
+            <!-- Pull to refresh indicator -->
+            <div class="pull-to-refresh" id="pullRefresh">↓ Pull to refresh</div>
+
+            <!-- Orders list -->
+            <div class="orders-list" id="ordersList"></div>
+        </div>
+    </main>
+
+    <script>
+        // ============================================================================
+        // APP STATE & INITIALIZATION
+        // ============================================================================
+
+        const APP = {
+            currentFilter: 'all',
+            orders: [],
+
+            init() {
+                this.checkAuth();
+                this.loadOrders();
+                this.renderOrders();
+                this.attachEventListeners();
+                this.setupTouchGestures();
+            },
+
+            checkAuth() {
+                const user = localStorage.getItem('arq_user');
+                if (!user) {
+                    window.location.href = '/account.html';
+                    return;
+                }
+            },
+
+            loadOrders() {
+                let orders = localStorage.getItem('arq_orders');
+                if (orders) {
+                    this.orders = JSON.parse(orders);
+                } else {
+                    // Initialize with demo data
+                    this.orders = this.getDemoOrders();
+                    localStorage.setItem('arq_orders', JSON.stringify(this.orders));
+                }
+            },
+
+            getDemoOrders() {
+                const today = new Date();
+                const yesterday = new Date(today);
+                yesterday.setDate(yesterday.getDate() - 1);
+                const twoAgo = new Date(today);
+                twoAgo.setDate(twoAgo.getDate() - 3);
+
+                return [
+                    {
+                        id: 'ARQ-260401-001',
+                        date: twoAgo.toISOString().split('T')[0],
+                        status: 'delivered',
+                        items: [
+                            { name: 'Modalert 200mg', quantity: 10, price: 890 }
+                        ],
+                        total: 890,
+                        timeline: [
+                            { step: 'Order Placed', completed: true, date: '2026-04-01 10:30 AM' },
+                            { step: 'Physician Review', completed: true, date: '2026-04-01 2:15 PM' },
+                            { step: 'Approved', completed: true, date: '2026-04-01 3:45 PM' },
+                            { step: 'Dispensed', completed: true, date: '2026-04-02 9:00 AM' },
+                            { step: 'Shipped', completed: true, date: '2026-04-02 11:30 AM' },
+                            { step: 'Out for Delivery', completed: true, date: '2026-04-03 8:00 AM' },
+                            { step: 'Delivered', completed: true, date: '2026-04-03 5:45 PM' }
+                        ],
+                        tracking: null
+                    },
+                    {
+                        id: 'ARQ-260403-001',
+                        date: yesterday.toISOString().split('T')[0],
+                        status: 'shipped',
+                        items: [
+                            { name: 'ARQ Focus Pack', quantity: 1, price: 2490 }
+                        ],
+                        total: 2490,
+                        timeline: [
+                            { step: 'Order Placed', completed: true, date: '2026-04-03 11:20 AM' },
+                            { step: 'Physician Review', completed: true, date: '2026-04-03 1:00 PM' },
+                            { step: 'Approved', completed: true, date: '2026-04-03 2:30 PM' },
+                            { step: 'Dispensed', completed: true, date: '2026-04-03 4:00 PM' },
+                            { step: 'Shipped', completed: true, active: true, date: '2026-04-03 6:15 PM' },
+                            { step: 'Out for Delivery', completed: false, date: null },
+                            { step: 'Delivered', completed: false, date: null }
+                        ],
+                        tracking: 'COURIER-2026-401729'
+                    },
+                    {
+                        id: 'ARQ-260404-001',
+                        date: today.toISOString().split('T')[0],
+                        status: 'processing',
+                        items: [
+                            { name: 'Finasteride 1mg', quantity: 30, price: 450 }
+                        ],
+                        total: 450,
+                        timeline: [
+                            { step: 'Order Placed', completed: true, date: '2026-04-04 9:10 AM' },
+                            { step: 'Physician Review', completed: false, active: true, date: null },
+                            { step: 'Approved', completed: false, date: null },
+                            { step: 'Dispensed', completed: false, date: null },
+                            { step: 'Shipped', completed: false, date: null },
+                            { step: 'Out for Delivery', completed: false, date: null },
+                            { step: 'Delivered', completed: false, date: null }
+                        ],
+                        tracking: null
+                    }
+                ];
+            }
+        };
+
+        // ============================================================================
+        // RENDERING
+        // ============================================================================
+
+        function getStatusLabel(status) {
+            const labels = {
+                'processing': 'Physician Review',
+                'shipped': 'Shipped',
+                'delivered': 'Delivered',
+                'cancelled': 'Cancelled'
+            };
+            return labels[status] || status;
+        }
+
+        function getStatusBadgeClass(status) {
+            const classes = {
+                'processing': 'status-physician-review',
+                'shipped': 'status-shipped',
+                'delivered': 'status-delivered',
+                'cancelled': 'status-cancelled'
+            };
+            return classes[status] || '';
+        }
+
+        function getFilterCategory(status) {
+            return status;
+        }
+
+        function renderOrders() {
+            const ordersList = document.getElementById('ordersList');
+            let filteredOrders = APP.orders;
+
+            // Filter orders
+            if (APP.currentFilter !== 'all') {
+                filteredOrders = APP.orders.filter(order => getFilterCategory(order.status) === APP.currentFilter);
+            }
+
+            // Update tab counts
+            updateTabCounts();
+
+            if (filteredOrders.length === 0) {
+                ordersList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📦</div>
+                        <h2 class="empty-title">No orders yet</h2>
+                        <p class="empty-subtitle">Browse our protocols and start your optimization journey</p>
+                        <a href="/" class="cta-button">Browse Protocols →</a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Sort orders by date (newest first)
+            filteredOrders.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            ordersList.innerHTML = filteredOrders.map(order => renderOrderCard(order)).join('');
+
+            // Attach event listeners to expand buttons
+            document.querySelectorAll('.expand-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleTimeline(btn);
+                });
+            });
+
+            // Attach event listeners to help links
+            document.querySelectorAll('.help-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const phone = '919876543210'; // Example WhatsApp number
+                    window.open(`https://wa.me/${phone}?text=Hi,%20I%20need%20help%20with%20my%20order`, '_blank');
+                });
+            });
+
+            // Attach event listeners to tracking numbers
+            document.querySelectorAll('.tracking-number-value').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tracking = e.target.textContent;
+                    // Open courier tracking (example URL)
+                    window.open(`https://www.shiprocket.in/track-order/${tracking}`, '_blank');
+                });
+            });
+        }
+
+        function renderOrderCard(order) {
+            const statusLabel = getStatusLabel(order.status);
+            const statusBadgeClass = getStatusBadgeClass(order.status);
+            const date = new Date(order.date);
+            const formattedDate = date.toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: '2-digit' });
+
+            let html = `
+                <div class="order-card" data-order-id="${order.id}">
+                    <div class="order-card-header">
+                        <div>
+                            <div class="order-id">${order.id}</div>
+                            <div class="order-date">${formattedDate}</div>
+                        </div>
+                        <div class="status-badge ${statusBadgeClass}">${statusLabel}</div>
+                    </div>
+
+                    <div class="order-summary">
+                        <div class="order-items">
+                            <div class="order-items-title">Items</div>
+            `;
+
+            order.items.forEach(item => {
+                html += `
+                    <div class="order-item">
+                        <div class="item-info">
+                            <div class="item-name">${item.name}</div>
+                            <div class="item-qty">Qty: ${item.quantity}</div>
+                        </div>
+                        <div class="item-price">₹${item.price}</div>
+                    </div>
+                `;
+            });
+
+            html += `
+                        </div>
+                        <div class="order-total">
+                            <span class="total-label">Total</span>
+                            <span class="total-amount">₹${order.total}</span>
+                        </div>
+                    </div>
+
+                    <div class="order-footer">
+            `;
+
+            if (order.tracking) {
+                html += `
+                    <div class="tracking-number">
+                        Tracking: <span class="tracking-number-value">${order.tracking}</span>
+                    </div>
+                `;
+            }
+
+            html += `
+                        <button class="expand-btn" title="View tracking timeline">
+                            <span>Timeline</span>
+                            <span class="expand-icon">▼</span>
+                        </button>
+                    </div>
+
+                    <div class="order-timeline" id="timeline-${order.id}">
+                        <div class="timeline">
+            `;
+
+            order.timeline.forEach(step => {
+                const stepClass = step.completed ? 'completed' : (step.active ? 'active' : 'future');
+                html += `
+                    <div class="timeline-step ${stepClass}">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">${step.step}</div>
+                `;
+                if (step.date) {
+                    html += `<div class="timeline-date">${step.date}</div>`;
+                }
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                        </div>
+                    </div>
+
+                    <div class="order-help">
+                        <a href="#" class="help-link">
+                            <span>Need help?</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            return html;
+        }
+
+        function toggleTimeline(btn) {
+            const card = btn.closest('.order-card');
+            const orderId = card.dataset.orderId;
+            const timeline = document.getElementById(`timeline-${orderId}`);
+
+            const isExpanded = timeline.classList.contains('expanded');
+
+            // Close all other timelines
+            document.querySelectorAll('.order-timeline.expanded').forEach(t => {
+                if (t !== timeline) {
+                    t.classList.remove('expanded');
+                    const otherCard = t.closest('.order-card');
+                    const otherBtn = otherCard.querySelector('.expand-btn');
+                    otherBtn.classList.remove('expanded');
+                }
+            });
+
+            // Toggle current timeline
+            timeline.classList.toggle('expanded');
+            btn.classList.toggle('expanded');
+        }
+
+        function updateTabCounts() {
+            const counts = {
+                all: APP.orders.length,
+                processing: APP.orders.filter(o => o.status === 'processing').length,
+                shipped: APP.orders.filter(o => o.status === 'shipped').length,
+                delivered: APP.orders.filter(o => o.status === 'delivered').length,
+                cancelled: APP.orders.filter(o => o.status === 'cancelled').length
+            };
+
+            Object.keys(counts).forEach(filter => {
+                const badge = document.querySelector(`[data-badge="${filter}"]`);
+                if (badge) {
+                    badge.textContent = counts[filter];
+                }
+            });
+        }
+
+        // ============================================================================
+        // EVENT LISTENERS
+        // ============================================================================
+
+        function attachEventListeners() {
+            // Tab switching
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    APP.currentFilter = tab.dataset.filter;
+                    renderOrders();
+
+                    // Smooth scroll to top
+                    document.querySelector('.tabs-container').scrollLeft = 0;
+                });
+            });
+        }
+
+        function setupTouchGestures() {
+            let startY = 0;
+            const pullRefresh = document.getElementById('pullRefresh');
+
+            document.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].clientY;
+            });
+
+            document.addEventListener('touchmove', (e) => {
+                const currentY = e.touches[0].clientY;
+                const diff = currentY - startY;
+
+                if (window.scrollY === 0 && diff > 0) {
+                    const pullPercent = Math.min(diff / 100, 1);
+                    pullRefresh.style.opacity = pullPercent * 0.8;
+                    pullRefresh.classList.add('visible');
+                }
+            });
+
+            document.addEventListener('touchend', () => {
+                pullRefresh.classList.remove('visible');
+            });
+        }
+
+        // ============================================================================
+        // INITIALIZATION
+        // ============================================================================
+
+        document.addEventListener('DOMContentLoaded', () => {
+            APP.init();
+        });
+    </script>
+</body>
+</html>

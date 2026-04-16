@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>HbA1c Test: What It Means & Why Your GP's 'Normal' Range Is Wrong</title>
+<meta name="description" content="Why your GP's HbA1c 'normal' range (below 5.7%) misses prediabetes. Learn what HbA1c actually measures, why 5.4-5.6% indicates metabolic dysfunction, and how to prevent diabetes in India.">
+<meta name="theme-color" content="#0a0806">
+<link rel="canonical" href="https://arq.clinic/blog/hba1c-test-guide">
+
+<!-- Open Graph -->
+<meta property="og:title" content="HbA1c Test: What It Means & Why Your GP's 'Normal' Range Is Wrong">
+<meta property="og:description" content="The 'normal' HbA1c range hides prediabetes. Learn what this test actually measures, why optimal is below 5.0%, and how to reverse metabolic dysfunction.">
+<meta property="og:image" content="https://arq.clinic/og-hba1c.png">
+<meta property="og:url" content="https://arq.clinic/blog/hba1c-test-guide">
+<meta property="og:type" content="article">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HbA1c Test: What It Means & Why Your GP's 'Normal' Range Is Wrong">
+<meta name="twitter:description" content="Why below 5.7% is not 'normal'. Learn what HbA1c reveals about your 3-month glucose average and metabolic health.">
+<meta name="twitter:image" content="https://arq.clinic/og-hba1c.png">
+
+<!-- Article Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "HbA1c Test: What It Means & Why Your GP's 'Normal' Range Is Wrong",
+  "description": "Why your GP's HbA1c 'normal' range (below 5.7%) misses prediabetes. Learn what HbA1c actually measures, why 5.4-5.6% indicates metabolic dysfunction, and how to prevent diabetes in India.",
+  "image": "https://arq.clinic/og-hba1c.png",
+  "datePublished": "2026-04-16",
+  "dateModified": "2026-04-16",
+  "author": {
+    "@type": "Organization",
+    "name": "arq.",
+    "url": "https://arq.clinic"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "arq.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://arq.clinic/logo.png",
+      "width": 250,
+      "height": 60
+    }
+  }
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the difference between HbA1c, fasting glucose, and OGTT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HbA1c is a 3-month glucose average, showing how high your blood glucose has been since the test date minus 3 months. Fasting glucose is a snapshot of glucose right now, after 8+ hours without food — it's immediate but doesn't show the full pattern. OGTT (oral glucose tolerance test) drinks 75g glucose and measures how your body clears it over 2 hours — it's most sensitive for detecting prediabetes and early dysglycemia. All three are complementary. arq. tests all three because each reveals different information: HbA1c shows chronic exposure, fasting glucose shows basal control, OGTT shows your ability to handle glucose loads. Together, they tell the full metabolic story."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "If my HbA1c is 5.4%, do I have prediabetes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your GP would say no — that's in their 'normal' range (below 5.7%). Medically, you're in the prediabetic range. An HbA1c of 5.4% means your 3-month average glucose has been running high enough to indicate metabolic dysfunction. The diagnosis of prediabetes starts at HbA1c 5.7%, but that doesn't mean 5.4% is fine. Studies show that people with HbA1c in the 5.4-5.6% range have significant insulin resistance and a 30-40% 10-year risk of developing type 2 diabetes. This is exactly why the 5.7% cutoff is misleading — it creates a false sense of safety. If your HbA1c is 5.4-5.6%, you need intervention: dietary change, metformin, exercise. You're not diabetic, but you're not metabolically healthy either."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is fasting insulin important if HbA1c is normal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because HbA1c and fasting glucose can be normal while insulin resistance is already severe. Insulin resistance is the thing that comes before high glucose — your pancreas works overtime to keep glucose normal, flooding your blood with insulin. Over time (years), the pancreas can't keep up, glucose rises, and HbA1c climbs. But that early stage — high insulin, normal glucose — is invisible on HbA1c. Your HOMA-IR and fasting insulin reveal this. If your fasting insulin is above 12 mIU/L with a normal HbA1c, you have insulin resistance. You need to act now, before HbA1c rises. This is why arq. tests insulin alongside HbA1c — it catches the problem 5-10 years earlier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does HOMA-IR tell me that fasting insulin doesn't?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HOMA-IR (Homeostasis Model Assessment for Insulin Resistance) is a calculation that combines fasting glucose and fasting insulin into a single score that estimates how resistant your cells are to insulin. A HOMA-IR above 2.5 is high and suggests significant insulin resistance. Why use it? Because fasting insulin alone doesn't account for what your glucose is doing — a high insulin with low glucose tells a different story than high insulin with high glucose. HOMA-IR accounts for both and gives you a clearer picture of whether insulin resistance is driving your metabolic dysfunction. It's used in research and increasingly in clinical practice as a marker of metabolic health. If your HOMA-IR is above 2.5, lifestyle intervention (diet, exercise) is urgent; your physician may also discuss metformin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "At what HbA1c level should I start metformin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The official guideline: metformin is recommended for prediabetes (HbA1c 5.7-6.4%) if you're overweight, older than 60, or have other metabolic risk factors. But arq. is more nuanced. We consider HbA1c, fasting insulin, HOMA-IR, and lifestyle capacity together. If your HbA1c is 5.4% but your HOMA-IR is above 3.0 (high insulin resistance) and you're not willing or able to make aggressive dietary changes, metformin makes sense. If your HbA1c is 5.8% but you're highly disciplined and committed to diet/exercise, we might defer metformin and give lifestyle modification 3-6 months. There's no one-size-fits-all threshold — it depends on your individual risk profile, what's driving the dysfunction, and what interventions you're committed to. Your arq. physician discusses this with your bloodwork in hand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the '3-month' in HbA1c? Why not 1 month or 6 months?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Red blood cells live about 120 days (roughly 4 months). HbA1c is glucose that has stuck to hemoglobin (the protein in red blood cells), and it stays attached for the lifespan of that cell. So HbA1c measures the glucose average for the last 2-4 months, weighted toward the most recent 4-6 weeks. Why not 1 month? Because glucose fluctuates day-to-day and week-to-week; 1-month tests would be too reactive to individual bad days. Why not 6 months? Because by then you miss recent metabolic changes — if you started exercise last month, HbA1c won't reflect that benefit for 2-3 months. Three months is the sweet spot: stable enough to avoid false alarms, short enough to track intervention. This is also why you repeat HbA1c every 3 months on treatment — it gives time for metabolic changes to register."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can HbA1c be normal if my fasting glucose is high?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, occasionally. If your fasting glucose spiked recently (last 2-3 weeks), HbA1c might still be normal because it's weighted toward the prior 4-6 weeks. More commonly, if HbA1c is normal, fasting glucose is also normal — they move together. But there's a grey zone: you can have relatively high fasting glucose (110-125 mg/dL, which is impaired fasting glucose) with an HbA1c that's still below 5.7% if your glucose is usually well-controlled and you just had one or two high-glucose mornings during those months. This is why OGTT is valuable — it catches people whose fasting glucose is normal but who can't handle glucose loads (they spike high 2 hours after eating). arq. tests all three because each tells a different part of the story."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is HbA1c higher in Indians genetically? Should the cutoff be different?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This is an active research question. Some studies suggest that certain populations (including South Asians) may have slightly higher HbA1c at the same glucose levels — meaning their red blood cells might glycate faster or their hemoglobin variants might behave differently. However, the current clinical cutoffs (5.7% for prediabetes) are based on large studies and are used globally. arq. uses the standard cutoffs but is aware of the research. The more important point: Indians have the world's highest diabetes burden (77 million diagnosed diabetics, 100+ million undiagnosed prediabetics). Genetic factors may play a small role, but lifestyle, diet, and metabolic health are dominant. An HbA1c of 5.4% in an Indian person is not 'normal' — it's a warning sign that demands intervention, just as it would in anyone else."
+      }
+    }
+  ]
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/>
+
+<style>
+/* ═══════════════════════════════════════════
+   arq. Blog Article
+   Design tokens from condition template
+   Mobile-first: base 430px. Desktop @ 768px+.
+   ═══════════════════════════════════════════ */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf9f5;--bg2:#f4f2ed;--surface:#eae8e3;
+  --card:#ffffff;--border:rgba(44,40,36,0.08);--border-hover:rgba(44,40,36,0.14);
+  --text:#1a1714;--text-90:rgba(26,23,20,0.9);--text-60:rgba(26,23,20,0.6);--text-30:rgba(26,23,20,0.3);--text-12:rgba(26,23,20,0.12);
+  --gold:#b8922e;--gold-light:#c9a23a;--gold-glow:rgba(184,146,46,0.08);--gold-border:rgba(184,146,46,0.25);
+  --dark:#1a1714;--deep:#0a0806;
+  --sans:'Sora',system-ui,sans-serif;
+  --serif:'DM Serif Display',Georgia,serif;
+  --mono:'IBM Plex Mono','SF Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --nav-h:60px;
+}
+
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--gold);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+em{font-style:italic;color:var(--gold)}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}
+.nav.at-top{background:transparent}
+.nav.scrolled{background:rgba(250,249,245,0.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 var(--border)}
+.nav.scrolled .nav-logo{color:var(--text)}
+.nav.scrolled .nav-hamburger span{background:var(--text)}
+.nav-logo{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--text);letter-spacing:-0.02em;transition:color .3s ease}
+.nav-logo .dot{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
+.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
+.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
+.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
+.nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
+.nav-hamburger:hover{background:rgba(26,23,20,0.06)}
+.nav.scrolled .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
+.nav-hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:1px;transition:background .3s ease}
+
+/* ─── MOTION SYSTEM ─── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.08s}
+.reveal-delay-2{transition-delay:.16s}
+.reveal-delay-3{transition-delay:.24s}
+.reveal-delay-4{transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ─── FOCUS RINGS ─── */
+a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* ─── UTILS ─── */
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;padding:10px 22px;border-radius:50px;transition:all .3s var(--ease);letter-spacing:0.01em;cursor:pointer;white-space:nowrap}
+.btn-light{background:#fff;color:var(--dark);box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.btn-light:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(0,0,0,0.22)}
+.btn-dark{background:var(--dark);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-1px)}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 6px 24px rgba(184,146,46,0.35)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.45)}
+.btn-gold i{margin-left:6px;transition:transform .25s}
+.btn-gold:hover i{transform:translateX(3px)}
+.btn-lg{padding:14px 28px;font-size:13px}
+
+/* ═══ ARTICLE HERO ═══ */
+.article-hero{position:relative;padding:calc(var(--nav-h) + 24px) 20px 32px;background:var(--bg);min-height:auto}
+.article-hero::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,rgba(250,249,245,0.95) 0%,rgba(244,242,237,0.92) 50%,rgba(234,232,227,0.9) 100%)}
+
+.article-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;position:relative;z-index:2}
+.article-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.6}
+
+.article-content{position:relative;z-index:2;max-width:720px;margin:0 auto}
+.article-h1{font-family:var(--serif);font-size:36px;font-weight:400;line-height:1.08;letter-spacing:-0.035em;margin-bottom:20px;color:var(--text)}
+.article-h1 em{color:var(--gold);font-style:italic}
+
+.article-meta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-size:12px;color:var(--text-60);padding:16px 0;border-bottom:1px solid var(--border);margin-bottom:24px}
+.article-meta-item{display:flex;align-items:center;gap:6px}
+.article-meta-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;background:var(--gold-glow);color:var(--gold);font-weight:600;font-size:11px}
+.article-meta-badge i{font-size:13px}
+
+/* ═══ ARTICLE BODY ═══ */
+.article-body{max-width:720px;margin:0 auto;padding:0 20px 56px}
+
+.article-body h2{font-family:var(--serif);font-size:26px;font-weight:400;line-height:1.1;letter-spacing:-0.025em;color:var(--text);margin:36px 0 12px;padding-top:12px}
+.article-body h2:first-child{margin-top:0}
+.article-body h2 em{color:var(--gold);font-style:italic}
+
+.article-body h3{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.1;letter-spacing:-0.015em;color:var(--text);margin:24px 0 8px}
+.article-body h3 em{color:var(--gold)}
+
+.article-body p{font-size:15px;line-height:1.75;color:var(--text-90);margin:0 0 16px;text-align:justify}
+.article-body p em{font-style:italic;color:var(--gold)}
+.article-body p strong{font-weight:600;color:var(--text)}
+
+.article-body ul,.article-body ol{margin:20px 0;padding-left:20px;font-size:15px;line-height:1.75;color:var(--text-90)}
+.article-body li{margin:8px 0}
+.article-body li em{color:var(--gold);font-style:italic}
+
+.article-body a{color:var(--gold);text-decoration:underline;transition:color .2s}
+.article-body a:hover{color:var(--gold-light)}
+
+/* TL;DR BOX */
+.tldr-box{background:var(--card);border:1.5px solid var(--gold-border);border-radius:16px;padding:24px 20px;margin:28px 0;box-shadow:0 4px 16px rgba(184,146,46,0.06)}
+.tldr-box .box-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:inline-flex;align-items:center;gap:8px}
+.tldr-box .box-eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
+.tldr-box h3{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.1;color:var(--text);margin-bottom:16px;margin-top:0}
+.tldr-box ul{margin:0;padding-left:20px}
+.tldr-box li{margin:8px 0;font-size:14px;line-height:1.6}
+.tldr-box li strong{color:var(--text);font-weight:600}
+.tldr-box li em{color:var(--gold);font-style:italic}
+
+/* CTA CARD */
+.cta-card{background:linear-gradient(135deg,rgba(184,146,46,0.08),rgba(184,146,46,0.03));border:1.5px solid var(--gold-border);border-radius:16px;padding:24px 20px;margin:28px 0;text-align:center}
+.cta-card p{font-size:14px;color:var(--text-60);margin:0}
+.cta-card a{color:var(--gold);font-weight:600;text-decoration:none;transition:all .2s}
+.cta-card a:hover{color:var(--gold-light);text-decoration:underline}
+
+/* ═══ FAQ ═══ */
+.faq{padding:56px 20px;background:var(--bg2)}
+.faq-head{text-align:center;margin-bottom:32px;max-width:720px;margin-left:auto;margin-right:auto}
+.faq-head .eyebrow{display:inline-flex;margin-bottom:12px;justify-content:center;width:100%}
+.faq-head h2{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1.1;letter-spacing:-0.025em;color:var(--text)}
+
+.faq-list{max-width:720px;margin:0 auto;list-style:none}
+.faq-item{border-top:1px solid var(--border)}
+.faq-item:last-child{border-bottom:1px solid var(--border)}
+.faq-item details{padding:20px 0;transition:padding .2s}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;cursor:pointer;font-size:14px;font-weight:500;color:var(--text);line-height:1.5}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:22px;color:var(--text-30);transition:transform .25s var(--ease),color .2s;font-weight:300;line-height:1;flex-shrink:0;margin-top:2px}
+.faq-item details[open] summary::after{transform:rotate(45deg);color:var(--gold)}
+.faq-ans{font-size:14px;color:var(--text-60);line-height:1.75;margin-top:14px;max-width:640px}
+.faq-ans em{color:var(--gold);font-style:italic}
+.faq-ans strong{color:var(--text);font-weight:600}
+
+/* ═══ DISCLAIMER ═══ */
+.medical-disclaimer{max-width:720px;margin:0 auto;padding:32px 20px;background:var(--bg);text-align:center}
+.disclaimer-box{background:rgba(184,146,46,0.04);border:1px solid var(--border);border-radius:12px;padding:20px;font-size:12px;color:var(--text-60);line-height:1.6;font-family:var(--mono)}
+.disclaimer-box strong{color:var(--text);font-weight:600}
+
+/* ═══ CTA — FOOTER ═══ */
+.cta-final{position:relative;padding:56px 20px 64px;background:var(--deep);color:#fff;overflow:hidden;border-radius:0;margin-top:0}
+.cta-final::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(184,146,46,0.14) 0%,transparent 65%);pointer-events:none;animation:glowPulse 7s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:0.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.05)}}
+
+.cta-final-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;text-align:center}
+.cta-final .eyebrow-center{display:inline-flex;align-items:center;gap:10px;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+.cta-final .eyebrow-center::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+
+.cta-final h2{font-family:var(--serif);font-size:32px;font-weight:400;line-height:1.12;letter-spacing:-0.03em;margin-bottom:18px}
+.cta-final h2 em{color:var(--gold);font-style:italic}
+.cta-final-lede{font-size:14.5px;color:rgba(255,255,255,0.7);line-height:1.65;max-width:520px;margin:0 auto 36px}
+
+.cta-button-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.cta-button-group .btn{flex:1 1 auto;min-width:140px}
+
+.cta-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;font-size:12px;color:rgba(255,255,255,0.6);margin-top:24px}
+.cta-trust .item{display:flex;align-items:center;gap:6px}
+.cta-trust i{color:var(--gold);font-size:14px}
+
+/* ─── FOOTER ─── */
+.footer{padding:32px 20px;background:var(--deep);color:rgba(255,255,255,0.5);text-align:center;font-size:11px;font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase}
+.footer .logo{font-family:var(--serif);font-size:22px;color:#fff;text-transform:none;letter-spacing:-0.02em;margin-bottom:8px;display:inline-block;font-weight:700}
+.footer .logo .dot{color:var(--gold)}
+
+/* ═══ DESKTOP ═══ */
+@media(min-width:768px){
+  .article-h1{font-size:48px}
+  .article-body{padding:0 40px 72px}
+  .article-body h2{font-size:32px;margin:44px 0 16px}
+  .article-body h3{font-size:20px}
+  .article-body p{font-size:16px}
+  .article-body ul,.article-body ol{font-size:16px}
+  .tldr-box{padding:32px 28px}
+  .cta-final{padding:72px 32px 88px}
+  .cta-final h2{font-size:48px}
+  .cta-final-lede{font-size:16px}
+  .faq{padding:48px 40px}
+  .medical-disclaimer{padding:40px 40px}
+  .article-meta{font-size:13px}
+}
+
+/* ─── DROPDOWN MENU ─── */
+.dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.dropdown-overlay.open{opacity:1;pointer-events:auto}
+.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(380px,90vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:80px 28px 40px;box-shadow:-8px 0 40px rgba(0,0,0,0.12)}
+.dropdown-panel.open{transform:translateX(0)}
+.dropdown-close{position:absolute;top:16px;right:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:18px;transition:all .2s}
+.dropdown-close:hover{background:var(--surface)}
+.dropdown-section{margin-bottom:28px}
+.dropdown-section-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.dropdown-section-title::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
+.dropdown-links{display:flex;flex-wrap:wrap;gap:6px}
+.dropdown-link{display:inline-flex;align-items:center;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:var(--bg2);border:1px solid var(--border);transition:all .2s var(--ease)}
+.dropdown-link:hover{border-color:var(--gold-border);background:var(--gold-glow);color:var(--gold)}
+.dropdown-link.active{border-color:var(--gold);background:var(--gold-glow);color:var(--gold);font-weight:600}
+.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;justify-content:center;align-items:center;gap:6px;margin-top:8px;transition:all .3s var(--ease);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+
+/* ─── READ MORE FOLD ─── */
+.article-fold{max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0}
+.article-fold.expanded{max-height:none;opacity:1;overflow:visible}
+.read-more-wrap{text-align:center;padding:24px 0 8px;position:relative}
+.read-more-wrap::before{content:'';position:absolute;top:-60px;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none}
+.read-more-wrap.hidden{display:none}
+.read-more-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-size:13px;font-weight:600;color:var(--gold);background:var(--gold-glow);border:1.5px solid var(--gold-border);transition:all .3s var(--ease);cursor:pointer}
+.read-more-btn:hover{background:var(--gold);color:#fff;transform:translateY(-1px);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.read-more-btn i{transition:transform .3s}
+
+/* ─── RELATED ARTICLES ─── */
+.related{padding:32px 20px;background:var(--bg);border-top:1px solid var(--border)}
+.related-inner{max-width:720px;margin:0 auto}
+.related-head{margin-bottom:20px}
+.related-head h2{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:-0.02em}
+.related-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:520px){.related-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:768px){.related-grid{grid-template-columns:1fr 1fr 1fr}}
+.related-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 16px;transition:all .25s var(--ease)}
+.related-card:hover{border-color:var(--gold-border);box-shadow:0 4px 16px rgba(184,146,46,0.1);transform:translateY(-2px)}
+.related-card .rc-eyebrow{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.related-card .rc-title{font-family:var(--serif);font-size:15px;font-weight:400;color:var(--text);line-height:1.2;letter-spacing:-0.01em}
+
+/* ─── WAITLIST MODAL ─── */
+.waitlist-overlay{position:fixed;inset:0;z-index:2000;background:rgba(10,8,6,0.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.waitlist-overlay.open{opacity:1;pointer-events:auto}
+.waitlist-modal{background:var(--bg);border-radius:24px;padding:40px 28px;max-width:420px;width:100%;position:relative;transform:translateY(20px) scale(0.97);transition:transform .4s var(--ease);box-shadow:0 24px 80px rgba(0,0,0,0.2)}
+.waitlist-overlay.open .waitlist-modal{transform:translateY(0) scale(1)}
+.waitlist-modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text-60);font-size:16px;transition:all .2s}
+.waitlist-modal-close:hover{background:var(--surface);color:var(--text)}
+.waitlist-modal h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.1;letter-spacing:-0.02em;margin-bottom:8px}
+.waitlist-modal h2 em{color:var(--gold);font-style:italic}
+.waitlist-modal .wl-sub{font-size:13px;color:var(--text-60);line-height:1.5;margin-bottom:24px}
+.waitlist-form{display:flex;flex-direction:column;gap:10px}
+.waitlist-input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);font-family:var(--sans);font-size:14px;color:var(--text);transition:border-color .2s}
+.waitlist-input:focus{outline:none;border-color:var(--gold)}
+.waitlist-input::placeholder{color:var(--text-30)}
+.waitlist-submit{width:100%;padding:14px;border-radius:50px;background:var(--gold);color:#fff;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .3s var(--ease);border:none;box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.waitlist-submit:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+.waitlist-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.waitlist-success{text-align:center;padding:20px 0}
+.waitlist-success i{font-size:48px;color:var(--gold);margin-bottom:12px;display:block}
+.waitlist-success h3{font-family:var(--serif);font-size:22px;margin-bottom:8px}
+.waitlist-success p{font-size:13px;color:var(--text-60)}
+.wl-trust{display:flex;justify-content:center;gap:16px;margin-top:16px;font-size:11px;color:var(--text-30)}
+.wl-trust span{display:flex;align-items:center;gap:4px}
+.wl-trust i{color:var(--gold);font-size:12px}
+
+/* ─── SPACING IMPROVEMENTS ─── */
+.article-body h2{margin:44px 0 16px;padding-top:16px}
+.article-body p{margin:0 0 20px}
+.article-body ul,.article-body ol{margin:20px 0 24px}
+.tldr-box{margin:32px 0}
+.cta-card{margin:36px 0}
+.faq{padding:64px 20px}
+
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav class="nav">
+  <a href="/" class="nav-logo">arq<span class="dot">.</span></a>
+  <div class="nav-right">
+    <a href="#cta" class="nav-link">Talk to a physician</a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── DROPDOWN MENU ─── -->
+<div class="dropdown-overlay" id="dropdownOverlay"></div>
+<div class="dropdown-panel" id="dropdownPanel">
+  <button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
+
+  <div class="dropdown-section">
+    <div class="dropdown-section-title">Conditions</div>
+    <div class="dropdown-links">
+      <a href="/pcos" class="dropdown-link">PCOS</a>
+      <a href="/thyroid" class="dropdown-link">Thyroid</a>
+      <a href="/diabetes" class="dropdown-link">Diabetes</a>
+      <a href="/weight-loss" class="dropdown-link">Weight Loss</a>
+      <a href="/hair-loss" class="dropdown-link">Hair Loss</a>
+      <a href="/testosterone" class="dropdown-link">Testosterone</a>
+      <a href="/vitamin-deficiency" class="dropdown-link">Vitamin Deficiency</a>
+      <a href="/fatigue" class="dropdown-link">Fatigue</a>
+      <a href="/sleep" class="dropdown-link">Sleep</a>
+      <a href="/skin" class="dropdown-link">Skincare</a>
+      <a href="/focus" class="dropdown-link">Focus</a>
+      <a href="/blood-pressure" class="dropdown-link">Blood Pressure</a>
+      <a href="/iv-infusions" class="dropdown-link">IV Infusions</a>
+      <a href="/recovery" class="dropdown-link">Recovery</a>
+    </div>
+  </div>
+
+  <div class="dropdown-section">
+    <div class="dropdown-section-title">Sports</div>
+    <div class="dropdown-links">
+      <a href="/pickleball" class="dropdown-link">Pickleball</a>
+      <a href="/padel" class="dropdown-link">Padel</a>
+      <a href="/runners" class="dropdown-link">Running</a>
+      <a href="/strength" class="dropdown-link">Strength</a>
+      <a href="/performance" class="dropdown-link">Performance</a>
+      <a href="/hyrox" class="dropdown-link">HyRox</a>
+      <a href="/endurance" class="dropdown-link">Endurance</a>
+    </div>
+  </div>
+
+  <div class="dropdown-section">
+    <div class="dropdown-section-title">Learn</div>
+    <div class="dropdown-links">
+      <a href="/blog/" class="dropdown-link">All Articles</a>
+      <a href="/blog/ozempic-india-guide" class="dropdown-link">Ozempic Guide</a>
+      <a href="/blog/pcos-symptoms-india" class="dropdown-link">PCOS Guide</a>
+      <a href="/blog/hba1c-test-guide" class="dropdown-link">HbA1c Test</a>
+      <a href="/blog/finasteride-india-guide" class="dropdown-link">Finasteride Guide</a>
+      <a href="/blog/tretinoin-indian-skin-guide" class="dropdown-link">Tretinoin Guide</a>
+      <a href="/blog/hrv-explained" class="dropdown-link">HRV Explained</a>
+    </div>
+  </div>
+
+  <div class="dropdown-section">
+    <a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+  </div>
+</div>
+
+
+<!-- ═══ ARTICLE HERO ═══ -->
+<section class="article-hero">
+  <div class="article-content">
+    <span class="article-eyebrow">Diabetes & metabolic health</span>
+    <h1 class="article-h1">HbA1c Test: What It Means & Why Your GP's <em>'Normal' Range Is Wrong</em></h1>
+
+    <div class="article-meta">
+      <div class="article-meta-item">
+        <i class="ph-fill ph-calendar"></i>
+        <span>April 16, 2026</span>
+      </div>
+      <div class="article-meta-item">
+        <i class="ph-fill ph-user-circle"></i>
+        <span>arq. medical team</span>
+      </div>
+      <div class="article-meta-badge">
+        <i class="ph-fill ph-stethoscope"></i>
+        Medically reviewed
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ARTICLE BODY ═══ -->
+<section class="article-body">
+
+<p><strong>Your GP told you your HbA1c is 'normal' at 5.4%. You left feeling relieved.</strong> Then you developed <a href="/diabetes" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">diabetes</a> anyway within 5 years. This is not uncommon in India, where 77 million people have diagnosed type 2 diabetes and another 100+ million have undiagnosed prediabetes. The problem: the 'normal' HbA1c range (below 5.7%) is a population threshold, not a personal health target. It hides metabolic dysfunction in plain sight.</p>
+
+<!-- TL;DR -->
+<div class="tldr-box">
+  <span class="box-eyebrow">Key takeaways</span>
+  <h3>Before your next HbA1c test:</h3>
+  <ul>
+    <li><strong>HbA1c measures your 3-month glucose average,</strong> not a single snapshot. It shows chronic exposure to high glucose.</li>
+    <li><strong>Below 5.7% is not 'optimal.'</strong> Optimal is below 5.0%. An HbA1c of 5.4-5.6% indicates metabolic dysfunction and prediabetes, even if your GP says it's normal.</li>
+    <li><strong>Fasting glucose and OGTT are different tests.</strong> You can have normal fasting glucose with impaired glucose tolerance. All three should be tested.</li>
+    <li><strong>Fasting insulin and HOMA-IR reveal insulin resistance</strong> — the root cause that comes 5-10 years <em>before</em> HbA1c rises. Test these alongside HbA1c.</li>
+    <li><strong>India's diabetes epidemic is preventable.</strong> If your HbA1c is 5.4-5.6% with high fasting insulin, metformin + lifestyle intervention can stop progression.</li>
+    <li>arq.'s metabolic panel: HbA1c + fasting glucose + 2-hour glucose (OGTT) + fasting insulin + HOMA-IR + lipids + liver enzymes. <em>The full picture.</em></li>
+  </ul>
+</div>
+
+<h2>What HbA1c Actually Measures (Not a Single Snapshot)</h2>
+
+<p>HbA1c (glycated hemoglobin) is glucose that has permanently attached itself to hemoglobin, the protein inside red blood cells. When blood glucose is high, more glucose sticks to hemoglobin. This bound glucose stays attached for the lifespan of that red blood cell — about 120 days, or roughly 3-4 months.</p>
+
+<p>HbA1c is therefore <em>not</em> a snapshot of your glucose right now. It's a historical average — weighted toward the most recent 4-6 weeks, but incorporating the prior 2-3 months. This is both its strength and its limitation.</p>
+
+<ul>
+  <li><strong>Strength:</strong> HbA1c is stable. It doesn't bounce around with a single meal or a stressful day. It shows the true chronic glucose burden your body has experienced.</li>
+  <li><strong>Limitation:</strong> It misses recent changes. If you cut sugar drastically last week, HbA1c won't reflect that benefit for 2-3 months. And if you ate badly only last month, HbA1c might still look good.</li>
+  <li><strong>The critical limitation:</strong> HbA1c rises after glucose has been high for months. If insulin resistance is severe now, glucose might still be normal (because your pancreas is working overtime), and HbA1c might be normal too. By the time HbA1c is high, you've already had years of metabolic damage.</li>
+</ul>
+
+<p>This is why HbA1c alone is insufficient. You need to look earlier — at fasting insulin, at fasting glucose, at how your body handles a glucose load (OGTT). Catching insulin resistance before HbA1c rises is how you prevent diabetes.</p>
+
+
+    <div class="article-fold" id="articleFold">
+<h2>Why 'Below 5.7%' Is Misleading — The Indian Prediabetes Epidemic</h2>
+
+<p>Your GP used this reference range:</p>
+
+<ul>
+  <li><strong>Below 5.7%:</strong> Normal</li>
+  <li><strong>5.7-6.4%:</strong> Prediabetes</li>
+  <li><strong>6.5% and above:</strong> Diabetes</li>
+</ul>
+
+<p>This range comes from large population studies and is used globally. But here's what it actually means: an HbA1c below 5.7% is the threshold where you're not classified as prediabetic or diabetic. It does NOT mean you're metabolically healthy. And it does NOT mean your risk of future diabetes is low.</p>
+
+<p>In fact, the research is clear: <strong>people with HbA1c in the 5.4-5.6% range have significant insulin resistance and a 30-40% 10-year risk of developing type 2 diabetes.</strong> They are not 'normal.' They are prediabetic by metabolic definition, even if the diagnostic cutoff says otherwise.</p>
+
+<p>India's diabetes epidemic is partly explained by this diagnostic gap. <strong>An HbA1c of 5.4-5.6% is extremely common in India, where 100+ million people meet the criteria for prediabetes.</strong> Yet many are told their results are 'normal' because they're technically below 5.7%. They are not reassured; they are misled.</p>
+
+<p>The optimal HbA1c is <em>below 5.0%.</em> If your HbA1c is 5.0-5.3%, you're metabolically healthy. If it's 5.4-5.6%, you have metabolic dysfunction and need intervention. If it's 5.7-6.4%, you have prediabetes and need aggressive action. If it's 6.5% and above, you are diabetic.</p>
+
+<p>Your GP may call 5.4% 'normal.' Metabolically, it is not.</p>
+
+<h2>HbA1c vs Fasting Glucose vs OGTT — Which Test When?</h2>
+
+<p>Three different tests measure glucose in three different ways. Understanding when each is useful is critical.</p>
+
+<h3>HbA1c (3-Month Average)</h3>
+<p><strong>What it measures:</strong> Your glucose average over the past 3 months. Shows chronic glucose exposure and your long-term metabolic control.</p>
+<p><strong>When to test:</strong> At diagnosis and then every 3-6 months on treatment. Excellent for tracking progression and response to intervention.</p>
+<p><strong>Limitation:</strong> Takes 2-3 months to reflect changes. Doesn't show day-to-day glucose swings or how your body handles specific glucose loads.</p>
+
+<h3>Fasting Glucose (Snapshot After 8+ Hours Without Food)</h3>
+<p><strong>What it measures:</strong> Your blood glucose right now, after a long period without eating. Shows how well your liver and pancreas maintain glucose when you're not eating.</p>
+<p><strong>When to test:</strong> At baseline and regularly. Quick, inexpensive, and reveals your basal glucose control.</p>
+<p><strong>Interpretation:</strong></p>
+<ul>
+  <li>Below 100 mg/dL: Normal</li>
+  <li>100-125 mg/dL: Impaired fasting glucose (prediabetes)</li>
+  <li>126 mg/dL and above: Diabetes</li>
+</ul>
+<p><strong>Limitation:</strong> Only one number, at one point in time. You can have normal fasting glucose and terrible glucose control after meals (high OGTT). Or you can have high fasting glucose but normal HbA1c if the elevation just started.</p>
+
+<h3>OGTT (Oral Glucose Tolerance Test) — The Most Sensitive</h3>
+<p><strong>What it measures:</strong> How your body clears glucose after you drink 75g of glucose (like a large sugary drink). Tests your pancreas's ability to respond to a glucose load and your cells' insulin sensitivity.</p>
+<p><strong>Procedure:</strong> Fast 8+ hours. Measure fasting glucose. Drink 75g glucose solution. Measure glucose again at 2 hours.</p>
+<p><strong>Interpretation (2-hour glucose):</strong></p>
+<ul>
+  <li>Below 140 mg/dL: Normal</li>
+  <li>140-199 mg/dL: Impaired glucose tolerance (IGT) — prediabetes</li>
+  <li>200 mg/dL and above: Diabetes</li>
+</ul>
+<p><strong>Why it matters:</strong> OGTT is the most sensitive test for early dysglycemia. <strong>Many people have normal fasting glucose but impaired glucose tolerance on OGTT.</strong> These people are at high risk of progressing to diabetes. They're also invisible in a standard checkup that only checks fasting glucose.</p>
+<p><strong>Limitation:</strong> More inconvenient than fasting glucose. Not every clinic offers it. But absolutely essential if you're at risk of diabetes.</p>
+
+<h3>Why Test All Three?</h3>
+<p>They measure different things at different times. A 30-year-old Indian with normal fasting glucose and normal HbA1c might have impaired glucose tolerance on OGTT — meaning his cells are already losing their ability to handle glucose. That's prediabetes. Or he might have normal OGTT but very high fasting insulin (more on this below), indicating severe insulin resistance that hasn't yet manifested as high glucose. All three tests together reveal the full metabolic picture. arq. tests all three because each provides critical information.</p>
+
+<h2>The Hidden Risk: Insulin Resistance (5-10 Years Before HbA1c Rises)</h2>
+
+<p>Here's the truth that most clinicians don't emphasize: <strong>insulin resistance comes first. High glucose comes later.</strong></p>
+
+<p>Your pancreas produces insulin to lower blood glucose. When your cells stop listening to insulin (become resistant), the pancreas produces more insulin to compensate. For years, this works — your glucose stays normal (because your pancreas is working hard), but your insulin is high. This is the sweet spot where you can still prevent diabetes: you have insulin resistance, but not yet diabetes.</p>
+
+<p>But over time — 5, 10, 15 years — the pancreas exhausts itself. It can't produce enough extra insulin to keep glucose normal anymore. Glucose starts to rise. HbA1c climbs. And now you have prediabetes or diabetes.</p>
+
+<p>The critical point: <strong>if you wait for HbA1c to become abnormal, you've waited too long. You've already had years of insulin resistance, metabolic damage, and inflammation.</strong></p>
+
+<p>This is why you must test fasting insulin and HOMA-IR.</p>
+
+<h3>Fasting Insulin — The Early Warning Sign</h3>
+<p>If your fasting glucose is normal but your fasting insulin is high (above 12 mIU/L), you have insulin resistance. Your cells are not listening to insulin, and your pancreas is compensating by producing more.</p>
+
+<p><strong>Example:</strong> A 30-year-old Indian man with fasting glucose of 95 mg/dL (normal by standard criteria) and fasting insulin of 18 mIU/L (high). His HbA1c is 5.2% (normal by standard criteria). His GP says he's fine. Metabolically, he has severe insulin resistance. His 10-year risk of diabetes is 40-50%. He needs metformin and lifestyle intervention now.</p>
+
+<p>Without testing fasting insulin, this risk is invisible.</p>
+
+<h3>HOMA-IR — The Insulin Resistance Score</h3>
+<p>HOMA-IR (Homeostasis Model Assessment for Insulin Resistance) is a calculation that combines fasting glucose and fasting insulin into a single number that estimates how resistant your cells are to insulin.</p>
+
+<p><strong>Formula:</strong> HOMA-IR = (fasting glucose in mg/dL × fasting insulin in mIU/L) / 405</p>
+
+<p><strong>Interpretation:</strong></p>
+<ul>
+  <li>Below 2.0: Normal insulin sensitivity</li>
+  <li>2.0-2.5: Borderline</li>
+  <li>Above 2.5: Insulin resistance</li>
+</ul>
+
+<p><strong>Why use it?</strong> Because a high fasting insulin with high fasting glucose tells a different story than high fasting insulin with normal fasting glucose. HOMA-IR accounts for both and gives you a clearer, single measure of whether insulin resistance is present. A HOMA-IR above 2.5 means your cells are significantly resistant to insulin, and your risk of diabetes is elevated.</p>
+
+<p>arq. measures fasting insulin and calculates HOMA-IR for every patient. This catches insulin resistance years before HbA1c rises.</p>
+
+<h2>What an HbA1c of 5.7% Actually Means for a 30-Year-Old Indian</h2>
+
+<p>You're 30. Healthy-looking. No symptoms. Your HbA1c came back at 5.7%. Your GP said, "You have prediabetes. Lose <a href="/weight-loss" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">weight</a> and exercise. Come back in 6 months."</p>
+
+<p>What does this actually mean?</p>
+
+<ul>
+  <li><strong>Your 3-month glucose average has been running at levels that damage your vascular system.</strong> Even without symptoms, glucose at that level causes endothelial dysfunction (damage to blood vessel linings), oxidative stress, and inflammation.</li>
+  <li><strong>Your 10-year risk of developing type 2 diabetes is 30-40%.</strong> If you do nothing, there's a high probability you'll be diabetic by age 40.</li>
+  <li><strong>You likely have severe insulin resistance.</strong> Your pancreas is working overtime to keep glucose near-normal. If you tested fasting insulin, it's probably elevated. If you tested HOMA-IR, it's probably above 2.5.</li>
+  <li><strong>Your metabolism is already damaged.</strong> Even if you feel fine, your body is in a state of chronic low-grade inflammation. Fat is accumulating in your liver (fatty liver is very common in Indians with HbA1c in the 5.4-5.7% range). Your lipid profile is probably abnormal.</li>
+</ul>
+
+<p><strong>What you should do:</strong></p>
+
+<ol>
+  <li><strong>Intensive diet modification.</strong> Not just 'lose weight,' but serious dietary change: low refined carbohydrate intake, high fiber, adequate protein, reduced seed oil consumption. Many Indians consume too much refined grain and sugar, which drives insulin resistance.</li>
+  <li><strong>Regular exercise.</strong> 150 minutes of moderate aerobic activity per week, plus strength training 2-3 times per week. Exercise increases insulin sensitivity directly, independent of weight loss.</li>
+  <li><strong>Metformin consideration.</strong> If your fasting insulin is above 12 mIU/L or HOMA-IR is above 2.5, metformin 500-1000mg daily is indicated. It reduces diabetes progression risk by 30% and is safe long-term.</li>
+  <li><strong>Repeat testing.</strong> HbA1c every 3 months. Fasting glucose and insulin every 6 months. If you're reversing metabolic dysfunction, these markers should improve within 3-6 months.</li>
+</ol>
+
+<p>An HbA1c of 5.7% at 30 is not a death sentence. It's a warning. The next 6-12 months determine whether you become diabetic or reverse course.</p>
+
+<h2>arq.'s Metabolic Panel — The Full Picture</h2>
+
+<p>Standard checkups test HbA1c. Sometimes they test fasting glucose. Rarely do they test OGTT or fasting insulin or HOMA-IR. And lipid profiles and liver enzymes are often treated as separate entities, not considered as part of metabolic dysfunction.</p>
+
+<p>arq.'s approach is different. We test:</p>
+
+<ul>
+  <li><strong>HbA1c:</strong> 3-month glucose average. Shows chronic glucose exposure.</li>
+  <li><strong>Fasting Glucose:</strong> Basal glucose control. Reveals whether your liver and pancreas maintain glucose at rest.</li>
+  <li><strong>2-Hour Glucose (OGTT):</strong> Glucose tolerance. Shows how your body handles a glucose load. Most sensitive for early dysglycemia.</li>
+  <li><strong>Fasting Insulin:</strong> Early insulin resistance marker. High fasting insulin with normal glucose = prediabetes by metabolic definition.</li>
+  <li><strong>HOMA-IR:</strong> Insulin resistance score. Quantifies how resistant your cells are to insulin.</li>
+  <li><strong>Lipid Panel (Total, LDL, HDL, Triglycerides):</strong> Metabolic dysfunction goes hand-in-hand with abnormal lipids. High triglycerides and low HDL are markers of insulin resistance.</li>
+  <li><strong>Liver Enzymes (ALT, AST, GGT):</strong> Fatty liver is extremely common in people with insulin resistance, even before diabetes develops. Liver enzyme elevation indicates hepatic fat accumulation.</li>
+</ul>
+
+<p>Together, these markers tell a complete story. Are you metabolically healthy? Do you have insulin resistance? Is your liver affected? What's your exact diabetes risk? What's the best intervention for your specific profile?</p>
+
+<h2>Treatment: Reversing Metabolic Dysfunction Before Diabetes Develops</h2>
+
+<p>If your HbA1c is 5.4-5.6% with high fasting insulin, you are prediabetic. <strong>The goal is to reverse metabolic dysfunction before HbA1c climbs higher.</strong> This is possible. Many Indians have done it.</p>
+
+<h3>Lifestyle Modification (First-Line)</h3>
+<p><strong>Diet:</strong> Low refined carbohydrate, high fiber, adequate protein. For most Indians, this means: rice and bread at 1/3 of typical portions, vegetables with every meal, legumes daily, and whole grains instead of refined. Avoid sugary drinks, fruit juices, and processed foods. This alone can reverse mild-to-moderate insulin resistance within 3-6 months.</p>
+
+<p><strong>Exercise:</strong> 150 minutes of moderate aerobic activity weekly (walking, cycling, swimming) plus strength training 2-3 times weekly. Resistance exercise is particularly effective at improving insulin sensitivity.</p>
+
+<p><strong>Weight loss:</strong> If overweight (BMI above 25), losing 5-10% of body weight improves insulin sensitivity significantly. But weight loss is secondary to diet quality — a lean person on a high-carbohydrate, low-fiber diet can still be insulin-resistant.</p>
+
+<h3>Metformin</h3>
+<p>If lifestyle modification alone is insufficient, or if your fasting insulin is very high (above 15 mIU/L), metformin is indicated.</p>
+<ul>
+  <li><strong>Mechanism:</strong> Reduces hepatic glucose production, improves insulin sensitivity, may decrease intestinal glucose absorption.</li>
+  <li><strong>Evidence:</strong> The Diabetes Prevention Program trial (landmark US study) showed metformin reduced progression from prediabetes to diabetes by 30%. Combined with lifestyle intervention, the reduction was 60%.</li>
+  <li><strong>Dose:</strong> 500-1000mg twice daily (1000-2000mg/day). Start low and titrate to minimize gastrointestinal side effects.</li>
+  <li><strong>Safety:</strong> Generally safe. Most common side effect is diarrhea (usually improves with extended-release formulation). Rare risk of lactic acidosis only in severe renal impairment. Requires renal function monitoring annually.</li>
+  <li><strong>Duration:</strong> Indefinite. Metformin is typically continued long-term in prediabetes and diabetes.</li>
+</ul>
+
+<h3>Berberine (Emerging Alternative)</h3>
+<p>An alkaloid from plants like Berberis. Recent evidence shows berberine improves insulin sensitivity and reduces HbA1c in prediabetes and early diabetes, with efficacy comparable to metformin in some studies.</p>
+<ul>
+  <li><strong>Dose:</strong> 500mg three times daily.</li>
+  <li><strong>Evidence:</strong> Several randomized trials show HbA1c reduction of 0.3-0.6% in 3 months. Well-tolerated.</li>
+  <li><strong>Advantage:</strong> Natural, fewer side effects than metformin in some people.</li>
+  <li><strong>Limitation:</strong> Less long-term data than metformin. More expensive.</li>
+</ul>
+
+<p>arq. considers berberine if metformin causes intolerable gastrointestinal effects, but metformin remains first-line.</p>
+
+<h3>GLP-1 Agonists (For Difficult Cases)</h3>
+<p>If insulin resistance is severe (HOMA-IR above 4.0) or if you have significant obesity (BMI above 30), GLP-1 agonists like semaglutide or dulaglutide can be considered.</p>
+<ul>
+  <li><strong>Mechanism:</strong> Slows gastric emptying, increases satiety, improves insulin secretion, reduces HbA1c by 0.5-1.5%.</li>
+  <li><strong>Additional benefit:</strong> Significant weight loss (5-10% of body weight).</li>
+  <li><strong>Limitation:</strong> Expensive. Requires weekly injections. Not typically first-line for prediabetes, but increasingly used in the US and Europe.</li>
+</ul>
+
+<p>In India, access and cost limit GLP-1 use to wealthier patients. But if finances allow and metformin is not tolerated, it's an option.</p>
+
+<h2>Monitoring: How Often Should You Test?</h2>
+
+<p>Once you're diagnosed with prediabetes (HbA1c 5.7-6.4%) or insulin resistance, testing should become regular.</p>
+
+<ul>
+  <li><strong>HbA1c:</strong> Every 3 months initially. Once stable (below 5.5%), every 6 months. If on metformin, every 3-6 months.</li>
+  <li><strong>Fasting glucose:</strong> Every 3-6 months. You're trying to keep it below 100 mg/dL.</li>
+  <li><strong>Fasting insulin and HOMA-IR:</strong> Baseline, then every 6 months. These should trend downward with intervention.</li>
+  <li><strong>Lipid panel and liver enzymes:</strong> Baseline, then annually. You're looking for lipid improvement and normalization of liver enzymes.</li>
+</ul>
+
+<p>Frequent monitoring keeps you accountable and allows your physician to adjust treatment. Many Indians become non-adherent after 3 months of lifestyle modification because they don't feel different. But biomarkers are improving, and that's what matters. Your HbA1c falling from 5.6% to 5.2% over 3 months shows that your intervention is working, even if you feel unchanged.</p>
+
+<div class="cta-card">
+  <p><strong>Prediabetic?</strong> Know your insulin resistance. <a href="https://arq.clinic/diabetes">Get the full metabolic panel →</a></p>
+</div>
+
+<h2>India's Diabetes Epidemic: Why Prevention Matters Now</h2>
+
+<p><strong>77 million Indians have diagnosed type 2 diabetes. Another 100+ million have prediabetes, most undiagnosed.</strong> If current trends continue, diabetes will become the leading cause of death in India by 2050.</p>
+
+<p>Why is India so affected? Multiple factors:</p>
+
+<ul>
+  <li><strong>Genetic predisposition:</strong> South Asians (Indians, Pakistanis, Bangladeshis) have higher insulin resistance risk than Europeans, even at lower BMI.</li>
+  <li><strong>Dietary change:</strong> Traditional diets have been replaced by processed foods, refined grains, and sugary drinks. Polished rice, white bread, and soda are now staples.</li>
+  <li><strong>Reduced physical activity:</strong> Urbanization has made manual labor obsolete. Most Indians now have sedentary jobs.</li>
+  <li><strong>Abdominal obesity:</strong> Even lean Indians often carry excess fat around the abdomen (visceral fat), which is metabolically damaging and drives insulin resistance.</li>
+</ul>
+
+<p>But it's not inevitable. Prediabetes is reversible. HbA1c of 5.6% is not permanent. With aggressive lifestyle change and/or metformin, you can reduce your diabetes risk by 60%. This is proven.</p>
+
+<p>The barrier is not biological — it's awareness. Many Indians don't know they're prediabetic because they were never tested. Even those who are tested are often told "5.6% is normal, come back in a year." They are not treated. And within 5-10 years, they're diabetic.</p>
+
+<p>Prevention must start now. If you're 30 and prediabetic, the next decade determines your health outcomes. Act now.</p>
+
+</section>
+
+<!-- ═══ FAQ ═══ -->
+
+    </div><!-- end article-fold -->
+
+    <div class="read-more-wrap" id="readMoreWrap">
+      <button class="read-more-btn" id="readMoreBtn">
+        Continue reading <i class="ph-bold ph-caret-down"></i>
+      </button>
+    </div>
+<section class="faq">
+  <div class="faq-head">
+    <span class="eyebrow" style="justify-content: center; display: flex;">Questions</span>
+    <h2>Frequently asked about HbA1c and prediabetes</h2>
+  </div>
+  <ul class="faq-list">
+    <li class="faq-item">
+      <details>
+        <summary>What's the difference between HbA1c, fasting glucose, and OGTT?</summary>
+        <div class="faq-ans">HbA1c is a 3-month glucose average, showing how high your blood glucose has been since the test date minus 3 months. Fasting glucose is a snapshot of glucose right now, after 8+ hours without food — it's immediate but doesn't show the full pattern. OGTT (oral glucose tolerance test) drinks 75g glucose and measures how your body clears it over 2 hours — it's most sensitive for detecting prediabetes and early dysglycemia. All three are complementary. arq. tests all three because each reveals different information: HbA1c shows chronic exposure, fasting glucose shows basal control, OGTT shows your ability to handle glucose loads. Together, they tell the full metabolic story.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>If my HbA1c is 5.4%, do I have prediabetes?</summary>
+        <div class="faq-ans">Your GP would say no — that's in their 'normal' range (below 5.7%). Medically, you're in the prediabetic range. An HbA1c of 5.4% means your 3-month average glucose has been running high enough to indicate metabolic dysfunction. The diagnosis of prediabetes starts at HbA1c 5.7%, but that doesn't mean 5.4% is fine. Studies show that people with HbA1c in the 5.4-5.6% range have significant insulin resistance and a 30-40% 10-year risk of developing type 2 diabetes. This is exactly why the 5.7% cutoff is misleading — it creates a false sense of safety. If your HbA1c is 5.4-5.6%, you need intervention: dietary change, metformin, exercise. You're not diabetic, but you're not metabolically healthy either.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>Why is fasting insulin important if HbA1c is normal?</summary>
+        <div class="faq-ans">Because HbA1c and fasting glucose can be normal while insulin resistance is already severe. Insulin resistance is the thing that comes before high glucose — your pancreas works overtime to keep glucose normal, flooding your blood with insulin. Over time (years), the pancreas can't keep up, glucose rises, and HbA1c climbs. But that early stage — high insulin, normal glucose — is invisible on HbA1c. Your HOMA-IR and fasting insulin reveal this. If your fasting insulin is above 12 mIU/L with a normal HbA1c, you have insulin resistance. You need to act now, before HbA1c rises. This is why arq. tests insulin alongside HbA1c — it catches the problem 5-10 years earlier.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>What does HOMA-IR tell me that fasting insulin doesn't?</summary>
+        <div class="faq-ans">HOMA-IR (Homeostasis Model Assessment for Insulin Resistance) is a calculation that combines fasting glucose and fasting insulin into a single score that estimates how resistant your cells are to insulin. A HOMA-IR above 2.5 is high and suggests significant insulin resistance. Why use it? Because fasting insulin alone doesn't account for what your glucose is doing — a high insulin with low glucose tells a different story than high insulin with high glucose. HOMA-IR accounts for both and gives you a clearer picture of whether insulin resistance is driving your metabolic dysfunction. It's used in research and increasingly in clinical practice as a marker of metabolic health. If your HOMA-IR is above 2.5, lifestyle intervention (diet, exercise) is urgent; your physician may also discuss metformin.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>At what HbA1c level should I start metformin?</summary>
+        <div class="faq-ans">The official guideline: metformin is recommended for prediabetes (HbA1c 5.7-6.4%) if you're overweight, older than 60, or have other metabolic risk factors. But arq. is more nuanced. We consider HbA1c, fasting insulin, HOMA-IR, and lifestyle capacity together. If your HbA1c is 5.4% but your HOMA-IR is above 3.0 (high insulin resistance) and you're not willing or able to make aggressive dietary changes, metformin makes sense. If your HbA1c is 5.8% but you're highly disciplined and committed to diet/exercise, we might defer metformin and give lifestyle modification 3-6 months. There's no one-size-fits-all threshold — it depends on your individual risk profile, what's driving the dysfunction, and what interventions you're committed to. Your arq. physician discusses this with your bloodwork in hand.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>What is the '3-month' in HbA1c? Why not 1 month or 6 months?</summary>
+        <div class="faq-ans">Red blood cells live about 120 days (roughly 4 months). HbA1c is glucose that has stuck to hemoglobin (the protein in red blood cells), and it stays attached for the lifespan of that cell. So HbA1c measures the glucose average for the last 2-4 months, weighted toward the most recent 4-6 weeks. Why not 1 month? Because glucose fluctuates day-to-day and week-to-week; 1-month tests would be too reactive to individual bad days. Why not 6 months? Because by then you miss recent metabolic changes — if you started exercise last month, HbA1c won't reflect that benefit for 2-3 months. Three months is the sweet spot: stable enough to avoid false alarms, short enough to track intervention. This is also why you repeat HbA1c every 3 months on treatment — it gives time for metabolic changes to register.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>Can HbA1c be normal if my fasting glucose is high?</summary>
+        <div class="faq-ans">Yes, occasionally. If your fasting glucose spiked recently (last 2-3 weeks), HbA1c might still be normal because it's weighted toward the prior 4-6 weeks. More commonly, if HbA1c is normal, fasting glucose is also normal — they move together. But there's a grey zone: you can have relatively high fasting glucose (110-125 mg/dL, which is impaired fasting glucose) with an HbA1c that's still below 5.7% if your glucose is usually well-controlled and you just had one or two high-glucose mornings during those months. This is why OGTT is valuable — it catches people whose fasting glucose is normal but who can't handle glucose loads (they spike high 2 hours after eating). arq. tests all three because each tells a different part of the story.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>Is HbA1c higher in Indians genetically? Should the cutoff be different?</summary>
+        <div class="faq-ans">This is an active research question. Some studies suggest that certain populations (including South Asians) may have slightly higher HbA1c at the same glucose levels — meaning their red blood cells might glycate faster or their hemoglobin variants might behave differently. However, the current clinical cutoffs (5.7% for prediabetes) are based on large studies and are used globally. arq. uses the standard cutoffs but is aware of the research. The more important point: Indians have the world's highest diabetes burden (77 million diagnosed diabetics, 100+ million undiagnosed prediabetics). Genetic factors may play a small role, but lifestyle, diet, and metabolic health are dominant. An HbA1c of 5.4% in an Indian person is not 'normal' — it's a warning sign that demands intervention, just as it would in anyone else.</div>
+      </details>
+    </li>
+  </ul>
+</section>
+
+<!-- ═══ MEDICAL DISCLAIMER ═══ -->
+<section class="medical-disclaimer">
+  <div class="disclaimer-box">
+    <strong>Medical Disclaimer:</strong> This article is for educational purposes only and does not constitute medical advice. HbA1c interpretation depends on clinical context, and only a qualified physician can diagnose and treat diabetes and prediabetes. The information provided reflects current medical evidence as of 2026 and is specific to adults without kidney disease, hemoglobinopathies, or recent blood transfusions (which can affect HbA1c accuracy). Always consult a licensed physician before starting any diabetes management protocol. arq. is India's physician-led online clinic — our physicians review your complete bloodwork and medical history before recommending treatment.
+  </div>
+</section>
+
+<!-- ═══ CTA — FOOTER ═══ -->
+<section class="cta-final" id="cta">
+  <div class="cta-final-inner">
+    <span class="eyebrow-center">Prediabetic or metabolically at risk?</span>
+    <h2>Know your insulin resistance <em>before</em> glucose rises</h2>
+    <p class="cta-final-lede">HbA1c + fasting insulin + HOMA-IR + OGTT. A physician who reads all markers, not just one. A plan to reverse metabolic dysfunction, not just manage it.</p>
+    <div class="cta-button-group">
+      <a href="https://arq.clinic/diabetes" class="btn btn-gold btn-lg">Check your metabolic health <i class="ph-bold ph-arrow-right"></i></a>
+    </div>
+    <div class="cta-trust">
+      <div class="item"><i class="ph-fill ph-check-circle"></i>NABL-accredited labs</div>
+      <div class="item"><i class="ph-fill ph-check-circle"></i>DPDP-compliant</div>
+      <div class="item"><i class="ph-fill ph-check-circle"></i>Licensed physicians</div>
+    </div>
+  </div>
+</section>
+
+
+<section class="related">
+  <div class="related-inner">
+    <div class="related-head"><h2>Keep reading</h2></div>
+    <div class="related-grid">
+    <a href="/diabetes" class="related-card"><div class="rc-eyebrow">Condition</div><div class="rc-title">Diabetes</div></a>
+    <a href="/blog/insulin-resistance-india" class="related-card"><div class="rc-eyebrow">Article</div><div class="rc-title">Insulin Resistance</div></a>
+    <a href="/blog/prediabetes-india" class="related-card"><div class="rc-eyebrow">Article</div><div class="rc-title">Prediabetes</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="logo">arq<span class="dot">.</span></div>
+  <div>India's online clinic · © 2026</div>
+</footer>
+
+<script>
+// ─── Nav scroll transition ───
+const nav = document.querySelector('.nav');
+const setNav = () => nav.classList.toggle('scrolled', window.scrollY > 100);
+setNav();
+window.addEventListener('scroll', setNav, {passive:true});
+
+// ─── Scroll reveal ───
+const reveal = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+
+reveal.forEach(el => io.observe(el));
+
+// ─── Smooth scroll for anchor links ───
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if(target) {
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+
+// ─── FAQ accordion ───
+document.querySelectorAll('.faq-item details').forEach(detail => {
+  detail.addEventListener('toggle', () => {
+    if(detail.open) {
+      detail.scrollIntoView({behavior:'smooth', block:'nearest'});
+    }
+  });
+});
+
+
+// ─── Dropdown menu ───
+const dropdownOverlay = document.getElementById('dropdownOverlay');
+const dropdownPanel = document.getElementById('dropdownPanel');
+const dropdownClose = document.getElementById('dropdownClose');
+const hamburger = document.querySelector('.nav-hamburger');
+
+function openDropdown() {
+  dropdownOverlay.classList.add('open');
+  dropdownPanel.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDropdown() {
+  dropdownOverlay.classList.remove('open');
+  dropdownPanel.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if (hamburger) hamburger.addEventListener('click', openDropdown);
+if (dropdownClose) dropdownClose.addEventListener('click', closeDropdown);
+if (dropdownOverlay) dropdownOverlay.addEventListener('click', closeDropdown);
+
+// Highlight current page in dropdown
+const currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+document.querySelectorAll('.dropdown-link').forEach(link => {
+  const href = link.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '');
+  if (currentPath === href || currentPath.endsWith(href)) {
+    link.classList.add('active');
+  }
+});
+
+// ─── Waitlist modal ───
+function openWaitlist() {
+  const ol = document.getElementById('waitlistOverlay');
+  if (ol) { ol.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeWaitlist() {
+  const ol = document.getElementById('waitlistOverlay');
+  if (ol) { ol.classList.remove('open'); document.body.style.overflow = ''; }
+}
+
+// Close on overlay click
+const wlOverlay = document.getElementById('waitlistOverlay');
+if (wlOverlay) wlOverlay.addEventListener('click', function(e) {
+  if (e.target === wlOverlay) closeWaitlist();
+});
+
+function submitWaitlist(e) {
+  e.preventDefault();
+  const btn = document.getElementById('wlSubmit');
+  const name = document.getElementById('wlName').value;
+  const email = document.getElementById('wlEmail').value;
+  const phone = document.getElementById('wlPhone').value;
+  btn.disabled = true;
+  btn.textContent = 'Joining...';
+
+  // Store to Google Sheets via Apps Script or simple endpoint
+  const data = { name, email, phone, page: window.location.pathname, ts: new Date().toISOString() };
+
+  // Try to send to a simple endpoint; fallback to localStorage
+  fetch('https://arq.clinic/api/waitlist', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).catch(() => {
+    // Fallback: store locally
+    const existing = JSON.parse(localStorage.getItem('arq_waitlist') || '[]');
+    existing.push(data);
+    localStorage.setItem('arq_waitlist', JSON.stringify(existing));
+  }).finally(() => {
+    document.getElementById('waitlistForm').style.display = 'none';
+    document.getElementById('waitlistSuccess').style.display = 'block';
+    setTimeout(closeWaitlist, 3000);
+  });
+}
+
+// Wire up all waitlist links
+document.querySelectorAll('a[href="#cta"], a[href="#"], .nav-link').forEach(link => {
+  const text = link.textContent.toLowerCase();
+  if (text.includes('waitlist') || text.includes('talk to')) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      closeDropdown();
+      openWaitlist();
+    });
+  }
+});
+
+// ─── Read more fold ───
+const readMoreBtn = document.getElementById('readMoreBtn');
+const articleFold = document.getElementById('articleFold');
+const readMoreWrap = document.querySelector('.read-more-wrap');
+if (readMoreBtn && articleFold) {
+  readMoreBtn.addEventListener('click', function() {
+    articleFold.classList.add('expanded');
+    if (readMoreWrap) readMoreWrap.classList.add('hidden');
+  });
+}
+
+</script>
+
+
+<!-- ─── WAITLIST MODAL ─── -->
+<div class="waitlist-overlay" id="waitlistOverlay">
+  <div class="waitlist-modal">
+    <button class="waitlist-modal-close" onclick="closeWaitlist()" aria-label="Close"><i class="ph-bold ph-x"></i></button>
+    <div id="waitlistForm">
+      <h2>Join the <em>waitlist</em></h2>
+      <p class="wl-sub">100+ biomarkers. A dedicated physician. Protocol delivered to your door. Be first in line when we launch.</p>
+      <form class="waitlist-form" onsubmit="submitWaitlist(event)">
+        <input type="text" class="waitlist-input" id="wlName" placeholder="Your name" required>
+        <input type="email" class="waitlist-input" id="wlEmail" placeholder="Your email" required>
+        <input type="tel" class="waitlist-input" id="wlPhone" placeholder="Phone (optional)">
+        <button type="submit" class="waitlist-submit" id="wlSubmit">Join the waitlist</button>
+      </form>
+      <div class="wl-trust">
+        <span><i class="ph-fill ph-lock"></i> DPDP-compliant</span>
+        <span><i class="ph-fill ph-shield-check"></i> No spam</span>
+      </div>
+    </div>
+    <div id="waitlistSuccess" class="waitlist-success" style="display:none">
+      <i class="ph-fill ph-check-circle"></i>
+      <h3>You're on the list</h3>
+      <p>We'll reach out when it's your turn. Welcome to arq.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

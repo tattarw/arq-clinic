@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>{{TITLE_TAG}}</title>
+<meta name="description" content="{{META_DESCRIPTION}}">
+<meta name="theme-color" content="#0a0806">
+<link rel="canonical" href="https://arq.clinic/{{CANONICAL}}">
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{OG_TITLE}}">
+<meta property="og:description" content="{{OG_DESCRIPTION}}">
+<meta property="og:image" content="{{OG_IMAGE_URL}}">
+<meta property="og:url" content="https://arq.clinic/{{CANONICAL}}">
+<meta property="og:type" content="article">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{TWITTER_TITLE}}">
+<meta name="twitter:description" content="{{TWITTER_DESCRIPTION}}">
+<meta name="twitter:image" content="{{OG_IMAGE_URL}}">
+
+<!-- Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ARTICLE_HEADLINE}}",
+  "description": "{{ARTICLE_DESCRIPTION}}",
+  "image": "{{OG_IMAGE_URL}}",
+  "datePublished": "{{PUBLISH_DATE}}",
+  "author": {
+    "@type": "Person",
+    "name": "{{AUTHOR_NAME}}",
+    "jobTitle": "{{AUTHOR_TITLE}}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "arq.",
+    "url": "https://arq.clinic",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://arq.clinic/logo.png"
+    }
+  }
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{FAQ_Q1}}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{FAQ_A1}}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{FAQ_Q2}}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{FAQ_A2}}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{FAQ_Q3}}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{FAQ_A3}}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{FAQ_Q4}}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{FAQ_A4}}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{FAQ_Q5}}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{FAQ_A5}}"
+      }
+    }
+  ]
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/>
+
+<style>
+/* ═══════════════════════════════════════════
+   arq. Blog Post Template
+   Mobile-first: base 430px. Desktop @ 768px+.
+   ═══════════════════════════════════════════ */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf9f5;--bg2:#f4f2ed;--surface:#eae8e3;
+  --card:#ffffff;--border:rgba(44,40,36,0.08);--border-hover:rgba(44,40,36,0.14);
+  --text:#1a1714;--text-90:rgba(26,23,20,0.9);--text-60:rgba(26,23,20,0.6);--text-30:rgba(26,23,20,0.3);--text-12:rgba(26,23,20,0.12);
+  --gold:#b8922e;--gold-light:#c9a23a;--gold-glow:rgba(184,146,46,0.08);--gold-border:rgba(184,146,46,0.25);
+  --dark:#1a1714;--deep:#0a0806;
+  --sans:'Sora',system-ui,sans-serif;
+  --serif:'DM Serif Display',Georgia,serif;
+  --mono:'IBM Plex Mono','SF Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --nav-h:60px;
+}
+
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--gold);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+em{font-style:italic;color:var(--gold)}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}
+.nav.at-top{background:transparent}
+.nav.scrolled{background:rgba(250,249,245,0.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 var(--border)}
+.nav.scrolled .nav-logo{color:var(--text)}
+.nav.scrolled .nav-hamburger span{background:var(--text)}
+.nav-logo{font-family:var(--serif);font-size:30px;font-weight:700;color:#fff;letter-spacing:-0.02em;transition:color .3s ease}
+.nav-logo .dot{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:12px;font-weight:600;padding:8px 16px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
+.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
+.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
+.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
+.nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
+.nav-hamburger:hover{background:rgba(255,255,255,0.08)}
+.nav.scrolled .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
+.nav-hamburger span{display:block;width:20px;height:2px;background:#fff;border-radius:1px;transition:background .3s ease}
+
+/* ─── MOTION SYSTEM ─── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.08s}
+.reveal-delay-2{transition-delay:.16s}
+.reveal-delay-3{transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ─── FOCUS RINGS ─── */
+a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* ─── UTILS ─── */
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+.eyebrow-center{display:inline-flex;align-items:center;gap:10px;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase}
+.eyebrow-center::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;padding:10px 22px;border-radius:50px;transition:all .3s var(--ease);letter-spacing:0.01em;cursor:pointer;white-space:nowrap}
+.btn-light{background:#fff;color:var(--dark);box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.btn-light:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(0,0,0,0.22)}
+.btn-dark{background:var(--dark);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-1px)}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 6px 24px rgba(184,146,46,0.35)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.45)}
+.btn-gold i{margin-left:6px;transition:transform .25s}
+.btn-gold:hover i{transform:translateX(3px)}
+.btn-lg{padding:14px 28px;font-size:13px}
+.btn-block{display:flex;width:100%;padding:16px;font-size:14px;justify-content:center}
+
+/* ═══ 1. BREADCRUMB ═══ */
+.breadcrumb{padding:16px 24px;background:var(--bg);border-bottom:1px solid var(--border)}
+.breadcrumb-inner{max-width:720px;margin:0 auto}
+.breadcrumb a,.breadcrumb span{font-size:12px;color:var(--text-60)}
+.breadcrumb a{color:var(--gold);transition:color .2s}
+.breadcrumb a:hover{color:var(--dark)}
+.breadcrumb-sep{margin:0 8px;color:var(--text-30)}
+
+/* ═══ 2. ARTICLE HEADER ═══ */
+.article-header{padding:40px 24px;background:var(--bg);border-bottom:1px solid var(--border)}
+.article-header-inner{max-width:720px;margin:0 auto}
+.article-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+.article-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+.article-title{font-family:var(--serif);font-size:32px;font-weight:400;line-height:1.15;color:var(--text);margin-bottom:20px;letter-spacing:-0.02em}
+.article-byline{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.byline-author{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:500}
+.byline-avatar{width:40px;height:40px;border-radius:50%;background:var(--gold-glow);border:1px solid var(--gold-border)}
+.byline-info{flex:1}
+.byline-name{display:block;color:var(--text);font-weight:600;font-size:13px}
+.byline-role{display:block;color:var(--text-60);font-size:12px;margin-top:2px}
+.byline-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--text-60)}
+.byline-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--gold-glow);border:1px solid var(--gold-border);border-radius:20px;font-size:11px;font-weight:600;color:var(--gold)}
+.byline-badge i{font-size:12px}
+
+/* ═══ 3. QUICK ANSWER BOX ═══ */
+.quick-answer{padding:24px;background:var(--bg2);border-left:4px solid var(--gold);border-radius:8px;margin-bottom:32px}
+.quick-answer-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+.quick-answer-content{font-size:14px;color:var(--text-60);line-height:1.6}
+.quick-answer-list{list-style:none;margin:12px 0 0 0;padding:0}
+.quick-answer-list li{padding:8px 0;display:flex;gap:10px}
+.quick-answer-list li::before{content:'◆';color:var(--gold);font-size:8px;line-height:1.7;flex-shrink:0}
+
+/* ═══ 4. ARTICLE BODY ═══ */
+.article-body{padding:40px 24px}
+.article-body-inner{max-width:720px;margin:0 auto}
+.article-body p{font-size:16px;color:var(--text);line-height:1.7;margin-bottom:24px}
+.article-body h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.2;color:var(--text);margin:40px 0 16px 0;letter-spacing:-0.02em}
+.article-body h3{font-family:var(--sans);font-size:18px;font-weight:600;color:var(--text);margin:28px 0 12px 0;letter-spacing:-0.01em}
+.article-body h2 em,.article-body h3 em{color:var(--gold);font-style:italic}
+.article-body strong{color:var(--text);font-weight:600}
+.article-body ul,.article-body ol{margin:16px 0 24px 0;padding-left:24px;font-size:16px;color:var(--text);line-height:1.7}
+.article-body li{margin-bottom:8px}
+.article-body blockquote{padding:20px;background:var(--bg2);border-left:4px solid var(--gold);margin:28px 0;font-size:15px;font-style:italic;color:var(--text-60);line-height:1.7}
+.article-body a{color:var(--gold);font-weight:500;transition:color .2s}
+.article-body a:hover{color:var(--dark)}
+
+/* ═══ 5. INTERNAL LINK CTA ═══ */
+.cta-card{background:linear-gradient(135deg,rgba(184,146,46,0.08),rgba(184,146,46,0.03));border:1.5px solid var(--gold-border);border-radius:16px;padding:24px;margin:40px 0;display:flex;gap:16px;align-items:center;transition:all .3s var(--ease);text-decoration:none;color:inherit}
+.cta-card:hover{border-color:var(--gold);box-shadow:0 8px 24px rgba(184,146,46,0.12)}
+.cta-card-icon{width:44px;height:44px;background:var(--gold);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;flex-shrink:0}
+.cta-card-body{flex:1}
+.cta-card-label{font-size:12px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px}
+.cta-card-text{font-size:14px;color:var(--text);font-weight:500}
+.cta-card-arrow{color:var(--gold);font-size:18px;transition:transform .3s var(--ease)}
+.cta-card:hover .cta-card-arrow{transform:translateX(4px)}
+
+/* ═══ 6. FAQ SECTION ═══ */
+.faq{padding:56px 24px;background:var(--bg2);margin-top:40px}
+.faq-inner{max-width:720px;margin:0 auto}
+.faq-head{text-align:center;margin-bottom:32px}
+.faq-head .eyebrow-center{margin-bottom:12px}
+.faq-head h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.15;letter-spacing:-0.02em;margin-bottom:8px}
+.faq-head p{font-size:14px;color:var(--text-60)}
+
+.faq-list{list-style:none;margin:0;padding:0}
+.faq-item{border-top:1px solid var(--border)}
+.faq-item:last-child{border-bottom:1px solid var(--border)}
+.faq-item details{padding:20px 0;transition:padding .2s}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;cursor:pointer;font-size:14px;font-weight:500;color:var(--text);line-height:1.5}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:22px;color:var(--text-30);transition:transform .25s var(--ease),color .2s;font-weight:300;line-height:1;flex-shrink:0;margin-top:2px}
+.faq-item details[open] summary::after{transform:rotate(45deg);color:var(--gold)}
+.faq-ans{font-size:14px;color:var(--text-60);line-height:1.6;margin-top:14px;max-width:640px}
+
+/* ═══ 7. CTA — WAITLIST ═══ */
+.cta-final{position:relative;padding:72px 24px 88px;background:var(--deep);color:#fff;overflow:hidden;border-radius:28px 28px 0 0;margin-top:12px}
+.cta-final::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(184,146,46,0.14) 0%,transparent 65%);pointer-events:none;animation:glowPulse 7s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:0.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.05)}}
+
+.cta-final-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;text-align:center}
+.cta-final .eyebrow-center{margin-bottom:18px;color:var(--gold)}
+.cta-final h2{font-family:var(--serif);font-size:32px;font-weight:400;line-height:1.12;letter-spacing:-0.03em;margin-bottom:18px}
+.cta-final h2 em{color:var(--gold);font-style:italic}
+.cta-final-lede{font-size:14.5px;color:rgba(255,255,255,0.7);line-height:1.65;max-width:520px;margin:0 auto 36px}
+
+.cta-button-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.cta-button-group .btn{flex:1 1 auto;min-width:140px}
+@media(min-width:520px){.cta-button-group .btn{flex:0 0 auto}}
+
+.cta-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;font-size:12px;color:rgba(255,255,255,0.6);margin-top:24px}
+.cta-trust .item{display:flex;align-items:center;gap:6px}
+.cta-trust i{color:var(--gold);font-size:14px}
+
+/* ═══ 8. MEDICAL DISCLAIMER ═══ */
+.disclaimer{padding:20px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;font-size:12px;color:var(--text-60);line-height:1.6;margin-bottom:40px}
+.disclaimer strong{color:var(--text)}
+
+/* ─── FOOTER ─── */
+.footer{padding:32px 24px;background:var(--deep);color:rgba(255,255,255,0.5);text-align:center;font-size:11px;font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase}
+.footer .logo{font-family:var(--serif);font-size:22px;color:#fff;text-transform:none;letter-spacing:-0.02em;margin-bottom:8px;display:inline-block;font-weight:700}
+.footer .logo .dot{color:var(--gold)}
+
+/* ═══ DESKTOP ═══ */
+@media(min-width:768px){
+  .nav{padding:0 32px}
+  .article-header{padding:56px 56px}
+  .article-title{font-size:40px}
+  .article-body{padding:56px 56px}
+  .article-body h2{font-size:36px;margin:48px 0 20px 0}
+  .faq{padding:80px 56px}
+  .faq-head h2{font-size:36px}
+  .cta-final{padding:128px 32px 144px}
+  .cta-final h2{font-size:40px}
+  .cta-final-lede{font-size:16px}
+}
+
+/* Tablet adjustments */
+@media(min-width:520px) and (max-width:767px){
+  .article-title{font-size:36px}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav class="nav">
+  <a href="/" class="nav-logo">arq<span class="dot">.</span></a>
+  <div class="nav-right">
+    <a href="#cta" class="nav-link">Join the waitlist</a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── BREADCRUMB ─── -->
+<nav class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/">arq.</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="/blog">Blog</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>{{BREADCRUMB_TITLE}}</span>
+  </div>
+</nav>
+
+<!-- ═══ ARTICLE HEADER ═══ -->
+<header class="article-header">
+  <div class="article-header-inner">
+    <span class="article-eyebrow">{{ARTICLE_CATEGORY}}</span>
+    <h1 class="article-title">{{ARTICLE_TITLE}}</h1>
+    <div class="article-byline">
+      <div class="byline-author">
+        <div class="byline-avatar"></div>
+        <div class="byline-info">
+          <span class="byline-name">{{AUTHOR_NAME}}</span>
+          <span class="byline-role">{{AUTHOR_TITLE}}</span>
+        </div>
+      </div>
+      <div class="byline-meta">
+        <span class="byline-badge"><i class="ph-fill ph-check-circle"></i>Medically reviewed</span>
+        <span>{{PUBLISH_DATE}}</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ QUICK ANSWER BOX ═══ -->
+<section class="article-body">
+  <div class="article-body-inner">
+    <div class="quick-answer reveal">
+      <div class="quick-answer-label">TL;DR — Quick answer</div>
+      <div class="quick-answer-content">{{QUICK_ANSWER_INTRO}}</div>
+      <ul class="quick-answer-list">
+        <li>{{QUICK_ANSWER_1}}</li>
+        <li>{{QUICK_ANSWER_2}}</li>
+        <li>{{QUICK_ANSWER_3}}</li>
+        <li>{{QUICK_ANSWER_4}}</li>
+        <li>{{QUICK_ANSWER_5}}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ARTICLE BODY ═══ -->
+<article class="article-body">
+  <div class="article-body-inner">
+    {{ARTICLE_CONTENT}}
+  </div>
+</article>
+
+<!-- ═══ CTA CARD ═══ -->
+<section class="article-body">
+  <div class="article-body-inner">
+    <a href="{{CTA_LINK}}" class="cta-card reveal">
+      <div class="cta-card-icon"><i class="ph-bold ph-heart"></i></div>
+      <div class="cta-card-body">
+        <div class="cta-card-label">{{CTA_LABEL}}</div>
+        <div class="cta-card-text">{{CTA_TEXT}}</div>
+      </div>
+      <div class="cta-card-arrow"><i class="ph-bold ph-arrow-right"></i></div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="faq-head">
+      <span class="eyebrow-center">Questions</span>
+      <h2>Frequently asked</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <details><summary>{{FAQ_Q1}}</summary><div class="faq-ans">{{FAQ_A1}}</div></details>
+      </div>
+      <div class="faq-item">
+        <details><summary>{{FAQ_Q2}}</summary><div class="faq-ans">{{FAQ_A2}}</div></details>
+      </div>
+      <div class="faq-item">
+        <details><summary>{{FAQ_Q3}}</summary><div class="faq-ans">{{FAQ_A3}}</div></details>
+      </div>
+      <div class="faq-item">
+        <details><summary>{{FAQ_Q4}}</summary><div class="faq-ans">{{FAQ_A4}}</div></details>
+      </div>
+      <div class="faq-item">
+        <details><summary>{{FAQ_Q5}}</summary><div class="faq-ans">{{FAQ_A5}}</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DISCLAIMER ═══ -->
+<section class="article-body">
+  <div class="article-body-inner">
+    <div class="disclaimer">
+      <strong>Medical Disclaimer:</strong> This article is for informational purposes only and does not constitute medical advice. Always consult a licensed physician before starting any medication or health protocol. The information presented reflects the state of medical knowledge as of {{PUBLISH_DATE}} and may change.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA — WAITLIST ═══ -->
+<section class="cta-final" id="cta" aria-label="Call to action">
+  <div class="cta-final-inner">
+    <span class="eyebrow-center">Ready for clarity?</span>
+    <h2>Your health <em>deserves data</em></h2>
+    <p class="cta-final-lede">100+ biomarkers. A physician assigned to you. A protocol built on your data, not templates.</p>
+    <div class="cta-button-group">
+      <a href="#" class="btn btn-gold btn-lg">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+    </div>
+    <div class="cta-trust">
+      <div class="item"><i class="ph-fill ph-check-circle"></i>NABL-accredited labs</div>
+      <div class="item"><i class="ph-fill ph-check-circle"></i>DPDP-compliant</div>
+      <div class="item"><i class="ph-fill ph-check-circle"></i>Licensed physicians</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="logo">arq<span class="dot">.</span></div>
+  <div>India's online clinic · © 2026</div>
+</footer>
+
+<script>
+// ─── Nav scroll transition ───
+const nav = document.querySelector('.nav');
+const setNav = () => nav.classList.toggle('scrolled', window.scrollY > window.innerHeight * 0.6);
+setNav();
+window.addEventListener('scroll', setNav, {passive:true});
+
+// ─── Scroll reveal ───
+const reveal = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+
+reveal.forEach(el => io.observe(el));
+
+// ─── Smooth scroll for anchor links ───
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if(target) {
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+</script>
+
+</body>
+</html>

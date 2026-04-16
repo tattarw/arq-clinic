@@ -1,0 +1,490 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><title>Peter Attia's Longevity Stack: What's Legal in India? (2026 Guide)</title><meta name="description" content="Peter Attia's longevity stack explained for India. Learn which supplements and medications are legal in India, costs, and how arq makes evidence-based longevity accessible."><meta name="theme-color" content="#0a0806"><link rel="canonical" href="https://arq.clinic/blog/peter-attia-longevity-stack-india"><!-- Open Graph --><meta property="og:title" content="Peter Attia's Longevity Stack: What's Legal in India? (2026 Guide)"><meta property="og:description" content="The complete guide to implementing Attia's longevity protocols in India—which molecules are legal, costs, and where to access them safely."><meta property="og:image" content="https://arq.clinic/og-peter-attia-stack.jpg"><meta property="og:url" content="https://arq.clinic/blog/peter-attia-longevity-stack-india"><meta property="og:type" content="article"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Peter Attia's Longevity Stack: What's Legal in India? (2026 Guide)"><meta name="twitter:description" content="The complete guide to implementing Attia's longevity protocols in India—which molecules are legal, costs, and where to access them safely."><meta name="twitter:image" content="https://arq.clinic/og-peter-attia-stack.jpg"><!-- Article Structured Data --><script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Peter Attia's Longevity Stack: What's Legal in India? (2026 Guide)",
+ "description": "Complete guide to Peter Attia's longevity protocols and supplements available in India with legal status, costs, and arq access.",
+ "image": "https://arq.clinic/og-peter-attia-stack.jpg",
+ "datePublished": "2026-04-16",
+ "dateModified": "2026-04-16",
+ "author": {
+ "@type": "Organization",
+ "name": "arq. medical team",
+ "url": "https://arq.clinic"
+ },
+ "publisher": {
+ "@type": "Organization",
+ "name": "arq.clinic",
+ "url": "https://arq.clinic",
+ "logo": {
+ "@type": "ImageObject",
+ "url": "https://arq.clinic/logo.png",
+ "width": 250,
+ "height": 60
+ }
+ }
+}
+</script><!-- FAQ Schema --><script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "Is naltrexone legal in India?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Yes. Naltrexone is approved in India and available as a prescription medication. Low-dose naltrexone (LDN) is off-label use but legal and available through doctors."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Is rapamycin available for longevity in India?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Rapamycin (sirolimus) is approved in India as an immunosuppressant for transplant patients. Off-label longevity dosing (3-6mg weekly) requires specialized medical supervision and is available through arq."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "How much does Peter Attia's longevity stack cost in India?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Foundation supplements (OTC) cost . Adding prescription molecules like naltrexone or rapamycin ranges with medical supervision through arq."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What's Peter Attia's #1 recommendation for longevity?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Exercise, specifically Zone 2 cardio (150 min/week) and VO2 max training (1 sessions weekly). Attia calls it the most important lever—it's free and more powerful than any supplement."
+ }
+ }
+ ]
+}
+</script><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/><style>
+/* ═══════════════════════════════════════════
+ arq. Blog Article
+ Design tokens from condition template
+ Mobile-first: base 430px. Desktop @ 768px+.
+ ═══════════════════════════════════════════ */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+ --bg:#faf9f5;--bg2:#f4f2ed;--surface:#eae8e3;
+ --card:#ffffff;--border:rgba(44,40,36,0.08);--border-hover:rgba(44,40,36,0.14);
+ --text:#1a1714;--text-90:rgba(26,23,20,0.9);--text-60:rgba(26,23,20,0.6);--text-30:rgba(26,23,20,0.3);--text-12:rgba(26,23,20,0.12);
+ --gold:#b8922e;--gold-light:#c9a23a;--gold-glow:rgba(184,146,46,0.08);--gold-border:rgba(184,146,46,0.25);
+ --dark:#1a1714;--deep:#0a0806;
+ --sans:'Sora',system-ui,sans-serif;
+ --serif:'DM Serif Display',Georgia,serif;
+ --mono:'IBM Plex Mono','SF Mono',monospace;
+ --ease:cubic-bezier(0.16,1,0.3,1);
+ --nav-h:60px;
+}
+
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--gold);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+em{font-style:italic;color:var(--gold)}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}
+.nav.at-top{background:transparent}
+.nav.scrolled{background:rgba(250,249,245,0.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 var(--border)}
+.nav.scrolled .nav-logo{color:var(--text)}
+.nav.scrolled .nav-hamburger span{background:var(--text)}
+.nav-logo{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--text);letter-spacing:.02em;transition:color .3s ease}
+.nav-logo .dot{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
+.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
+.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
+.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
+.nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
+.nav-hamburger:hover{background:rgba(26,23,20,0.06)}
+.nav.scrolled .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
+.nav-hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:1px;transition:background .3s ease}
+
+/* ─── MOTION SYSTEM ─── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-delay{transition-delay:.08s}
+.reveal-delay{transition-delay:.16s}
+.reveal-delay{transition-delay:.24s}
+.reveal-delay{transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ─── FOCUS RINGS ─── */
+a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* ─── UTILS ─── */
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;padding:10px 22px;border-radius:50px;transition:all .3s var(--ease);letter-spacing:0.01em;cursor:pointer;white-space:nowrap}
+.btn-light{background:#fff;color:var(--dark);box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.btn-light:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(0,0,0,0.22)}
+.btn-dark{background:var(--dark);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-1px)}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 6px 24px rgba(184,146,46,0.35)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.45)}
+.btn-gold i{margin-left:6px;transition:transform .25s}
+.btn-gold:hover i{transform:translateX(3px)}
+.btn-lg{padding:14px 28px;font-size:13px}
+
+/* ═══ ARTICLE HERO ═══ */
+.article-hero{position:relative;padding:calc(var(--nav-h) + 32px) 20px 0;background:var(--bg);min-height:auto}
+
+.article-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;position:relative;z-index:2}
+.article-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.6}
+
+.article-content{position:relative;z-index:2;max-width:720px;margin:0 auto}
+.article-h1{font-family:var(--serif);font-size:36px;font-weight:400;line-height:1.08;letter-spacing:.035em;margin-bottom:20px;color:var(--text)}
+.article-h1 em{color:var(--gold);font-style:italic}
+
+.article-meta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-size:12px;color:var(--text);padding:16px 0;border-bottom:1px solid var(--border);margin-bottom:24px}
+.article-meta-item{display:flex;align-items:center;gap:6px}
+.article-meta-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;background:var(--gold-glow);color:var(--gold);font-weight:600;font-size:11px}
+.article-meta-badge i{font-size:13px}
+
+/* ═══ ARTICLE BODY ═══ */
+.article-body{max-width:720px;margin:0 auto;padding:0 20px 56px}
+
+.article-body h2{font-family:var(--serif);font-size:26px;font-weight:400;line-height:1.1;letter-spacing:.025em;color:var(--text);margin:32px 0 12px;padding-top:12px}
+.article-body h2:first-child{margin-top:0}
+.article-body h2 em{color:var(--gold);font-style:italic}
+
+.article-body h3{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.1;letter-spacing:.015em;color:var(--text);margin:24px 0 8px}
+.article-body h3 em{color:var(--gold)}
+
+.article-body h4{font-family:var(--serif);font-size:16px;font-weight:400;line-height:1.1;letter-spacing:.01em;color:var(--text);margin:16px 0 8px}
+
+.article-body p{font-size:15px;line-height:1.75;color:var(--text);margin:0 0 16px;text-align:justify}
+.article-body p em{font-style:italic;color:var(--gold)}
+.article-body p strong{font-weight:600;color:var(--text)}
+
+.article-body ul,.article-body ol{margin:20px 0;padding-left:20px;font-size:15px;line-height:1.75;color:var(--text)}
+.article-body li{margin:8px 0}
+.article-body li em{color:var(--gold);font-style:italic}
+
+.article-body a{color:var(--gold);text-decoration:underline;transition:color .2s}
+.article-body a:hover{color:var(--gold-light)}
+
+/* TL;DR BOX */
+.tldr-box{background:var(--card);border:1.5px solid var(--gold-border);border-radius:16px;padding:24px 20px;margin:28px 0;box-shadow:0 4px 16px rgba(184,146,46,0.06)}
+.tldr-box .box-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:inline-flex;align-items:center;gap:8px}
+.tldr-box .box-eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
+.tldr-box h3{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.1;color:var(--text);margin-bottom:16px;margin-top:0}
+.tldr-box ul{margin:0;padding-left:20px}
+.tldr-box li{margin:8px 0;font-size:14px;line-height:1.6}
+.tldr-box li strong{color:var(--text);font-weight:600}
+.tldr-box li em{color:var(--gold);font-style:italic}
+
+/* STACK MOLECULE CARDS */
+.stack-molecule{background:var(--card);border:1.5px solid var(--gold-border);border-radius:12px;padding:20px;margin:20px 0;box-shadow:0 2px 8px rgba(184,146,46,0.05)}
+.stack-molecule h4{margin-top:0;margin-bottom:16px}
+.stack-meta{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 16px}
+.stack-meta-item{display:flex;flex-direction:column;gap:4px}
+.stack-meta-label{font-size:11px;color:var(--text);text-transform:uppercase;letter-spacing:0.1em;font-weight:600}
+.stack-meta-value{color:var(--text);font-weight:500;font-size:14px}
+.cost-badge{display:inline-block;background:var(--gold-glow);color:var(--gold);padding:6px 12px;border-radius:6px;font-weight:600;font-size:13px;width:fit-content}
+.legal-yes{color:#2c7d3f}
+.legal-caution{color:#d97706}
+.rationale{background:rgba(184,146,46,0.04);border-left:3px solid var(--gold);padding:16px;margin:16px 0 0;border-radius:4px;font-size:14px;color:var(--text);line-height:1.6}
+
+/* CTA CARD */
+.cta-card{background:linear-gradient(135deg,rgba(184,146,46,0.08),rgba(184,146,46,0.03));border:1.5px solid var(--gold-border);border-radius:16px;padding:24px 20px;margin:28px 0;text-align:center}
+.cta-card p{font-size:14px;color:var(--text);margin:0}
+.cta-card a{color:var(--gold);font-weight:600;text-decoration:none;transition:all .2s}
+.cta-card a:hover{color:var(--gold-light);text-decoration:underline}
+
+/* ═══ FAQ ═══ */
+.faq{padding:40px 20px;background:var(--bg2);margin-top:0}
+.faq-head{text-align:center;margin-bottom:32px;max-width:720px;margin-left:auto;margin-right:auto}
+.faq-head .eyebrow{display:inline-flex;margin-bottom:12px;justify-content:center;width:100%}
+.faq-head h2{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1.1;letter-spacing:.025em;color:var(--text)}
+
+.faq-list{max-width:720px;margin:0 auto;list-style:none}
+.faq-item{border-top:1px solid var(--border)}
+.faq-item:last-child{border-bottom:1px solid var(--border)}
+.faq-item details{padding:20px 0;transition:padding .2s}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;cursor:pointer;font-size:14px;font-weight:500;color:var(--text);line-height:1.5}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:22px;color:var(--text);transition:transform .25s var(--ease),color .2s;font-weight:300;line-height:1;flex-shrink:0;margin-top:2px}
+.faq-item details[open] summary::after{transform:rotate(45deg);color:var(--gold)}
+.faq-ans{font-size:14px;color:var(--text);line-height:1.75;margin-top:14px;max-width:640px}
+.faq-ans em{color:var(--gold);font-style:italic}
+.faq-ans strong{color:var(--text);font-weight:600}
+
+/* ═══ DISCLAIMER ═══ */
+.medical-disclaimer{max-width:720px;margin:0 auto;padding:32px 20px;background:var(--bg);text-align:center}
+.disclaimer-box{background:rgba(184,146,46,0.04);border:1px solid var(--border);border-radius:12px;padding:20px;font-size:12px;color:var(--text);line-height:1.6;font-family:var(--mono)}
+.disclaimer-box strong{color:var(--text);font-weight:600}
+
+/* ═══ CTA — FOOTER ═══ */
+.cta-final{position:relative;padding:56px 20px 64px;background:var(--deep);color:#fff;overflow:hidden;border-radius:0;margin-top:0}
+.cta-final::before{content:'';position:absolute;top:0;left:50%;transform:translateX(%);width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(184,146,46,0.14) 0%,transparent 65%);pointer-events:none;animation:glowPulse 7s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:0.6;transform:translateX(%) scale(1)}50%{opacity:1;transform:translateX(%) scale(1.05)}}
+
+.cta-final-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;text-align:center}
+.cta-final .eyebrow-center{display:inline-flex;align-items:center;gap:10px;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+.cta-final .eyebrow-center::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+
+.cta-final h2{font-family:var(--serif);font-size:32px;font-weight:400;line-height:1.12;letter-spacing:.03em;margin-bottom:18px}
+.cta-final h2 em{color:var(--gold);font-style:italic}
+.cta-final-lede{font-size:14.5px;color:rgba(255,255,255,0.7);line-height:1.65;max-width:520px;margin:0 auto 36px}
+
+.cta-button-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.cta-button-group .btn{flex:1 1 auto;min-width:140px}
+
+.cta-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;font-size:12px;color:rgba(255,255,255,0.6);margin-top:24px}
+.cta-trust .item{display:flex;align-items:center;gap:6px}
+.cta-trust i{color:var(--gold);font-size:14px}
+
+/* ─── FOOTER ─── */
+.footer{padding:32px 20px;background:var(--deep);color:rgba(255,255,255,0.5);text-align:center;font-size:11px;font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase}
+.footer .logo{font-family:var(--serif);font-size:22px;color:#fff;text-transform:none;letter-spacing:.02em;margin-bottom:8px;display:inline-block;font-weight:700}
+.footer .logo .dot{color:var(--gold)}
+
+/* ═══ DESKTOP ═══ */
+@media(min-width:768px){
+ .article-h1{font-size:48px}
+ .article-body{padding:0 40px 72px}
+ .article-body h2{font-size:32px;margin:44px 0 16px}
+ .article-body h3{font-size:20px}
+ .article-body p{font-size:16px}
+ .article-body ul,.article-body ol{font-size:16px}
+ .tldr-box{padding:32px 28px}
+ .cta-final{padding:72px 32px 88px}
+ .cta-final h2{font-size:48px}
+ .cta-final-lede{font-size:16px}
+ .faq{padding:48px 40px}
+ .medical-disclaimer{padding:40px 40px}
+ .article-meta{font-size:13px}
+ .stack-meta{grid-template-columns:1fr 1fr}
+}
+
+/* ─── DROPDOWN MENU ─── */
+.dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.dropdown-overlay.open{opacity:1;pointer-events:auto}
+.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(380px,90vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:80px 28px 40px;box-shadow:-8px 0 40px rgba(0,0,0,0.12)}
+.dropdown-panel.open{transform:translateX(0)}
+.dropdown-close{position:absolute;top:16px;right:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:18px;transition:all .2s}
+.dropdown-close:hover{background:var(--surface)}
+.dropdown-section{margin-bottom:28px}
+.dropdown-section-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.dropdown-section-title::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
+.dropdown-links{display:flex;flex-wrap:wrap;gap:6px}
+.dropdown-link{display:inline-flex;align-items:center;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:var(--bg2);border:1px solid var(--border);transition:all .2s var(--ease)}
+.dropdown-link:hover{border-color:var(--gold-border);background:var(--gold-glow);color:var(--gold)}
+.dropdown-link.active{border-color:var(--gold);background:var(--gold-glow);color:var(--gold);font-weight:600}
+.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;justify-content:center;align-items:center;gap:6px;margin-top:8px;transition:all .3s var(--ease);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+
+/* ─── READ MORE FOLD ─── */
+.article-fold{max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0}
+.article-fold.expanded{max-height:none;opacity:1;overflow:visible}
+.read-more-wrap{text-align:center;padding:24px 0 8px;position:relative}
+.read-more-wrap::before{content:'';position:absolute;top:-60px;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none}
+.read-more-wrap.hidden{display:none}
+.read-more-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-size:13px;font-weight:600;color:var(--gold);background:var(--gold-glow);border:1.5px solid var(--gold-border);transition:all .3s var(--ease);cursor:pointer}
+.read-more-btn:hover{background:var(--gold);color:#fff;transform:translateY(-1px);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.read-more-btn i{transition:transform .3s}
+
+/* ─── RELATED ARTICLES ─── */
+.related{padding:32px 20px;background:var(--bg);border-top:1px solid var(--border)}
+.related-inner{max-width:720px;margin:0 auto}
+.related-head{margin-bottom:20px}
+.related-head h2{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:.02em}
+.related-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:520px){.related-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:768px){.related-grid{grid-template-columns:1fr 1fr 1fr}}
+.related-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 16px;transition:all .25s var(--ease)}
+.related-card:hover{border-color:var(--gold-border);box-shadow:0 4px 16px rgba(184,146,46,0.1);transform:translateY(-2px)}
+.related-card .rc-eyebrow{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.related-card .rc-title{font-family:var(--serif);font-size:15px;font-weight:400;color:var(--text);line-height:1.2;letter-spacing:.01em}
+
+/* ─── WAITLIST MODAL ─── */
+.waitlist-overlay{position:fixed;inset:0;z-index:2000;background:rgba(10,8,6,0.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.waitlist-overlay.open{opacity:1;pointer-events:auto}
+.waitlist-modal{background:var(--bg);border-radius:24px;padding:40px 28px;max-width:420px;width:100%;position:relative;transform:translateY(20px) scale(0.97);transition:transform .4s var(--ease);box-shadow:0 24px 80px rgba(0,0,0,0.2)}
+.waitlist-overlay.open .waitlist-modal{transform:translateY(0) scale(1)}
+.waitlist-modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:16px;transition:all .2s}
+.waitlist-modal-close:hover{background:var(--surface);color:var(--text)}
+.waitlist-modal h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.1;letter-spacing:.02em;margin-bottom:8px}
+.waitlist-modal h2 em{color:var(--gold);font-style:italic}
+.waitlist-modal .wl-sub{font-size:13px;color:var(--text);line-height:1.5;margin-bottom:24px}
+.waitlist-form{display:flex;flex-direction:column;gap:10px}
+.waitlist-input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);font-family:var(--sans);font-size:14px;color:var(--text);transition:border-color .2s}
+.waitlist-input:focus{outline:none;border-color:var(--gold)}
+.waitlist-input::placeholder{color:var(--text)}
+.waitlist-submit{width:100%;padding:14px;border-radius:50px;background:var(--gold);color:#fff;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .3s var(--ease);border:none;box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.waitlist-submit:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+.waitlist-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.waitlist-success{text-align:center;padding:20px 0}
+.waitlist-success i{font-size:48px;color:var(--gold);margin-bottom:12px;display:block}
+.waitlist-success h3{font-family:var(--serif);font-size:22px;margin-bottom:8px}
+.waitlist-success p{font-size:13px;color:var(--text)}
+.wl-trust{display:flex;justify-content:center;gap:16px;margin-top:16px;font-size:11px;color:var(--text)}
+.wl-trust span{display:flex;align-items:center;gap:4px}
+.wl-trust i{color:var(--gold);font-size:12px}
+
+/* ─── SPACING IMPROVEMENTS ─── */
+.article-body h2{margin:44px 0 16px;padding-top:16px}
+.article-body p{margin:0 0 20px}
+.article-body ul,.article-body ol{margin:20px 0 24px}
+.tldr-box{margin:32px 0}
+.cta-card{margin:36px 0}
+.faq{padding:64px 20px}
+
+</style></head><body><!-- ─── NAV ─── --><nav class="nav"><div class="nav-logo">arq<span class="dot">.</span></div><div class="nav-right"><a href="#cta" class="nav-link">Start here</a><button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav><!-- ─── ARTICLE ─── --><article class="article-hero"><div class="article-content"><span class="article-eyebrow">Longevity</span><h1 class="article-h1">Peter Attia's. <em>Longevity Stack</em> in India</h1><div class="article-meta"><div class="article-meta-item">April 4, 2026</div><div class="article-meta-badge"><i class="ph-bold ph-clock"></i> 12 min read</div></div></div></article><!-- ─── ARTICLE BODY ─── --><section class="article-body"><div class="tldr-box"><span class="box-eyebrow">TL;DR</span><h3>The Complete Stack</h3><ul><li><strong>Foundation</strong> Metformin (), NMN (), Vitamin D (), Omega ()</li><li><strong>Advanced</strong> Naltrexone (), Rapamycin () — requires physician supervision</li><li><strong>Most important</strong> Exercise. Zone 2 cardio 150–180 min/week + VO2 max training 1–2x/week. Free. More powerful than supplements.</li><li><strong>Cost range</strong>(foundation) to +/mo (full stack with monitoring)</li><li><strong>Key difference</strong> arq integrates blood work, physician guidance, and individualized protocols—not templates</li></ul></div><h2>Who is Peter Attia?</h2><p>If you've listened to. <strong>The Huberman Lab Podcast</strong>, <strong>The Joe Rogan Experience</strong>, or pretty much any longevity-focused podcast in the last five years, you've heard Peter Attia. He's the physician, researcher, and author of. <em>Outlive: The Science and Art of Longevity</em>—arguably the most influential book on evidence-based lifespan extension in the modern era.</p><p>Attia trained at Stanford, worked as a physician, and spent years at McKinsey consulting before pivoting entirely to longevity medicine. Now, through his podcast. <strong>"The Drive"</strong> and his clinical work, he's become the de facto standard-setter for what serious longevity practice looks like.</p><p>What makes Attia different: he doesn't just theorize. He tests protocols on himself, publishes the data, and updates his recommendations as evidence evolves. His approach is. <strong>evidence-first, not supplement-first</strong>. When he recommends something, it's because the mechanistic biology checks out and the data supports it—not because it's trendy.</p><p>The result? His protocols and supplement stacks have become the template that thousands of biohackers, clinicians, and longevity enthusiasts follow worldwide. And now, they're becoming accessible in India through platforms like arq.</p><div class="article-fold" id="articleFold"><h2>Why This Matters for India</h2><p>Three critical facts converge to make this moment unique for Indian readers</p><p><strong>1. Longevity awareness is exploding.</strong> The Huberman Lab and Attia's podcast have millions of Indian listeners. You know what metformin does. You've heard about NAD+ restoration. You understand Zone 2 cardio. But when you try to implement it, you hit a wall: where do you access these things in India? How much will they cost? Are they even legal?</p><p><strong>2. India manufactures most of these molecules as generics.</strong> Metformin, naltrexone, rapamycin—India's pharmaceutical industry produces the raw material and finished products. The markup between manufacturing cost and US retail price is enormous. A month of naltrexone that costs $200 in the US could cost in India. A vial of rapamycin available for might cost $1,200 in the States.</p><p><strong>3. Until now, there was no organized platform connecting you to these molecules legally and safely.</strong> You could find naltrexone on chemist shelves or order NMN from sketchy supplements sites, but you had no doctor guidance, no quality assurance, no integration with blood work. That's where. <strong>arq</strong> enters the picture.</p><h2>The Stack: Every Molecule Explained</h2><p>Peter Attia's longevity approach uses a foundation of evidence-backed interventions. Below is the complete breakdown of each molecule he's discussed or used—what it does, why he recommends it, and the India-specific context.</p><div class="stack-molecule"><h4>Metformin (AMPK Activator)</h4><div class="stack-meta"><div class="stack-meta-item"><span class="stack-meta-label">Mechanism</span><span class="stack-meta-value">AMPK activation</span></div><div class="stack-meta-item"><span class="stack-meta-label">Dose</span><span class="stack-meta-value">500–1000 mg/day</span></div><div class="stack-meta-item"><span class="stack-meta-label">Status in India</span><span class="stack-meta-value legal-yes">OTC / Rx</span></div><div class="stack-meta-item"><span class="stack-meta-label">Monthly Cost</span><span class="cost-badge"></span></div></div><p>Metformin is the workhorse of longevity protocols. It activates AMPK, a master metabolic regulator that mimics some effects of caloric restriction. It improves glucose homeostasis, reduces inflammation, and has been shown in the. <strong>TAME trial</strong> (Targeting Aging with Metformin) to extend healthspan markers.</p><p>Attia has discussed metformin extensively on. <em>The Drive</em>, and it's one of the few prescription drugs he personally uses for longevity (rather than for disease management).</p><div class="rationale"><strong>Why India?</strong> Metformin is so cheap in India it's almost free. At , it's the entry point to any longevity stack. Available OTC in most chemists. arq integrates it with a doctor consultation to ensure proper dosing and to monitor any GI side effects.
+ </div></div><div class="stack-molecule"><h4>Rapamycin (mTOR Inhibitor)</h4><div class="stack-meta"><div class="stack-meta-item"><span class="stack-meta-label">Mechanism</span><span class="stack-meta-value">mTOR inhibition</span></div><div class="stack-meta-item"><span class="stack-meta-label">Dose</span><span class="stack-meta-value">3–6 mg weekly</span></div><div class="stack-meta-item"><span class="stack-meta-label">Status in India</span><span class="stack-meta-value legal-caution">Rx (off-label)</span></div><div class="stack-meta-item"><span class="stack-meta-label">Monthly Cost</span><span class="cost-badge"></span></div></div><p>Rapamycin (sirolimus) is a powerful mTOR inhibitor—one of the most researched pathways in aging biology. Studies in mice show rapamycin extends lifespan significantly. Attia has used intermittent rapamycin dosing (weekly pulses rather than daily) to minimize side effects while capturing longevity benefits.</p><p>It's approved in India for transplant immunosuppression. Longevity dosing is off-label but legal—it just requires a physician's prescription and careful monitoring.</p><div class="rationale"><strong>Why India?</strong> Rapamycin costs $1,000+ per month in the US. In India, a month's supply costs (roughly $100–150 USD). Still significant, but 10x cheaper. Requires doctor supervision through arq for blood work and safety monitoring.
+ </div></div><div class="stack-molecule"><h4>NAD+ Precursors: NMN & NR</h4><div class="stack-meta"><div class="stack-meta-item"><span class="stack-meta-label">Mechanism</span><span class="stack-meta-value">NAD+ restoration</span></div><div class="stack-meta-item"><span class="stack-meta-label">Dose</span><span class="stack-meta-value">250–500 mg/day</span></div><div class="stack-meta-item"><span class="stack-meta-label">Status in India</span><span class="stack-meta-value legal-yes">Supplement</span></div><div class="stack-meta-item"><span class="stack-meta-label">Monthly Cost</span><span class="cost-badge"></span></div></div><p>NAD+ (nicotinamide adenine dinucleotide) is the coenzyme of cellular energy and longevity. David Sinclair's research at Harvard demonstrated that NAD+ declines with age, and restoring it activates sirtuins and PARPs—proteins that regulate DNA repair and longevity.</p><p>NMN (nicotinamide mononucleotide) and NR (nicotinamide riboside) are precursors that boost NAD+ levels. Attia has discussed these extensively and uses them personally.</p><div class="rationale"><strong>Why India?</strong> NMN and NR are available as supplements in India through multiple brands. Quality varies widely—look for third-party testing for purity and potency. At , NMN is accessible to anyone building a basic longevity stack.
+ </div></div><div class="stack-molecule"><h4>Omega (EPA/DHA)</h4><div class="stack-meta"><div class="stack-meta-item"><span class="stack-meta-label">Mechanism</span><span class="stack-meta-value">CVD + cognitive protection</span></div><div class="stack-meta-item"><span class="stack-meta-label">Dose</span><span class="stack-meta-value">2–4 g/day</span></div><div class="stack-meta-item"><span class="stack-meta-label">Status in India</span><span class="stack-meta-value legal-yes">Supplement</span></div><div class="stack-meta-item"><span class="stack-meta-label">Monthly Cost</span><span class="cost-badge"></span></div></div><p>Omega polyunsaturated fatty acids are foundational for cardiovascular and brain health. EPA reduces inflammation; DHA is essential for cognitive reserve. Attia recommends high-quality fish oil or algae-based omega with emphasis on molecular distillation to remove mercury and PCBs.</p><div class="rationale"><strong>Why India?</strong> High-quality omega is readily available and affordable in India. Look for products that specify molecular distillation and EPA/DHA content. Available through supplement retailers at competitive prices.
+ </div></div><div class="stack-molecule"><h4>Vitamin D3</h4><div class="stack-meta"><div class="stack-meta-item"><span class="stack-meta-label">Mechanism</span><span class="stack-meta-value">Immune & bone health</span></div><div class="stack-meta-item"><span class="stack-meta-label">Dose</span><span class="stack-meta-value">5,000 IU/day (adjusted)</span></div><div class="stack-meta-item"><span class="stack-meta-label">Status in India</span><span class="stack-meta-value legal-yes">OTC</span></div><div class="stack-meta-item"><span class="stack-meta-label">Monthly Cost</span><span class="cost-badge"></span></div></div><p>Despite India's sunny climate, vitamin D deficiency is endemic. Poor sun exposure, skin pigmentation, and dietary insufficiency leave most Indians with suboptimal levels. Attia emphasizes testing to establish baseline and then supplementing to optimal ranges (40–60 ng/mL).</p><div class="rationale"><strong>Why India?</strong> This is critical for Indians. Even though you're in a tropical country, you're likely deficient due to sun exposure patterns and diet. Vitamin D3 is affordable (). Get your levels tested, then optimize your supplementation accordingly.
+ </div></div><h2>Frequently Asked Questions</h2><ul class="faq-list"><li class="faq-item"><details><summary>Is naltrexone legal in India?</summary><div class="faq-ans">Yes. Naltrexone is approved in India and available as a prescription medication. Low-dose naltrexone (LDN) at 1.7–4.5 mg/day is an off-label use, but it is legal and available through qualified physicians who can supervise its use appropriately.</div></details></li><li class="faq-item"><details><summary>Is rapamycin available for longevity in India?</summary><div class="faq-ans">Yes. Rapamycin (sirolimus) is approved in India as an immunosuppressant for transplant patients. Longevity dosing (3–6 mg weekly) is off-label use but legal. It requires medical supervision and regular blood work monitoring through a qualified physician. arq coordinates this medical oversight.</div></details></li><li class="faq-item"><details><summary>How much does the full longevity stack cost per month in India?</summary><div class="faq-ans">A basic supplement foundation (metformin, NMN, omega vitamin D, magnesium) costs . Adding prescription molecules like naltrexone adds . Adding rapamycin pushes the total to . These figures don't include medical consultations and blood work monitoring, which arq coordinates separately.</div></details></li><li class="faq-item"><details><summary>What's Peter Attia's #1 recommendation for longevity?</summary><div class="faq-ans">Exercise. Specifically: 150–180 minutes per week of Zone 2 cardio (moderate intensity) and 1–2 sessions weekly of VO2 max training (high intensity). Attia calls exercise "the most potent longevity lever"—more powerful than any supplement, and it's free. Proper sleep and recovery are equally critical to any longevity protocol.</div></details></li><li class="faq-item"><details><summary>Should I start with all supplements or build gradually?</summary><div class="faq-ans">Build gradually. Start with metformin, vitamin D (after testing levels), and omega. These are foundational, affordable, and have strong evidence. After 2–3 months of stable baseline protocols, consider adding NAD+ precursors. Prescription molecules like rapamycin and naltrexone require medical consultation and monitoring—arq physicians will guide this progression based on your health status.</div></details></li><li class="faq-item"><details><summary>Do I need blood work before starting?</summary><div class="faq-ans">Absolutely. Before any protocol, baseline blood work should include: lipid panel, glucose, HbA1c, liver enzymes (AST, ALT), kidney function (creatinine, eGFR), vitamin D levels, and inflammatory markers (hsCRP). This establishes your baseline and helps your physician individualize your protocol safely. arq coordinates this testing as part of the consultation process.</div></details></li></ul></div><div class="read-more-wrap" id="readMoreWrap"><button class="read-more-btn" id="readMoreBtn"><i class="ph-bold ph-arrow-down"></i> Read more
+ </button></div><div class="cta-card"><p><strong>Ready to implement evidence-based longevity?</strong> arq connects you with qualified physicians experienced in Attia's protocols. Get personalized guidance based on your blood work and health status. <a href="#cta">Start your consultation →</a></p></div></section><!-- ═══ MEDICAL DISCLAIMER ═══ --><section class="medical-disclaimer"><div class="disclaimer-box"><strong>Medical Disclaimer</strong> This article is for educational purposes only and does not constitute medical advice. Longevity protocols are not approved by the FDA or CDSCO for anti-aging indications. All information is based on published research as of April 2026. Individual responses to these interventions vary. Always consult with a qualified physician before starting any longevity protocol, supplement, or medication. arq is India's physician-led online clinic—our physicians review your bloodwork and health status before prescribing.
+ </div></section><!-- ═══ CTA — FOOTER ═══ --><section class="cta-final" id="cta"><div class="cta-final-inner"><span class="eyebrow-center">Build your longevity protocol</span><h2>Evidence-based. <em>longevity medicine</em> for India</h2><p class="cta-final-lede">100+ biomarkers. A physician assigned to you. A protocol built on Attia's framework and your specific bloodwork. Know your baseline, optimize with data, live longer.</p><div class="cta-button-group"><a href="https://arq.clinic/longevity" class="btn btn-gold btn-lg">Start consultation. <i class="ph-bold ph-arrow-right"></i></a></div><div class="cta-trust"><div class="item"><i class="ph-fill ph-check-circle"></i>NABL-accredited labs</div><div class="item"><i class="ph-fill ph-check-circle"></i>DPDP-compliant</div><div class="item"><i class="ph-fill ph-check-circle"></i>Licensed physicians</div></div></div></section><section class="related"><div class="related-inner"><div class="related-head"><h2>Keep reading</h2></div><div class="related-grid"><a href="/blog/nad-supplement-india" class="related-card"><div class="rc-eyebrow">Article</div><div class="rc-title">NAD+ Supplementation</div></a><a href="/blog/ampk-metformin" class="related-card"><div class="rc-eyebrow">Article</div><div class="rc-title">AMPK & Metformin</div></a><a href="/longevity" class="related-card"><div class="rc-eyebrow">Condition</div><div class="rc-title">Longevity</div></a></div></div></section><!-- ─── FOOTER ─── --><footer class="footer"><div class="logo">arq<span class="dot">.</span></div><div>India's online clinic · © 2026</div></footer><script>
+// ─── Nav scroll transition ───
+const nav = document.querySelector('.nav');
+const setNav = () => nav.classList.toggle('scrolled', window.scrollY > 100);
+setNav();
+window.addEventListener('scroll', setNav, {passive:true});
+
+// ─── Scroll reveal ───
+const reveal = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+ entries.forEach(e => {
+ if(e.isIntersecting){
+ e.target.classList.add('in');
+ io.unobserve(e.target);
+ }
+ });
+}, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+
+reveal.forEach(el => io.observe(el));
+
+// ─── Smooth scroll for anchor links ───
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+ link.addEventListener('click', (e) => {
+ const target = document.querySelector(link.getAttribute('href'));
+ if(target) {
+ e.preventDefault();
+ target.scrollIntoView({behavior:'smooth'});
+ }
+ });
+});
+
+// ─── FAQ accordion ───
+document.querySelectorAll('.faq-item details').forEach(detail => {
+ detail.addEventListener('toggle', () => {
+ if(detail.open) {
+ detail.scrollIntoView({behavior:'smooth', block:'nearest'});
+ }
+ });
+});
+
+// ─── Dropdown menu ───
+const dropdownOverlay = document.getElementById('dropdownOverlay');
+const dropdownPanel = document.getElementById('dropdownPanel');
+const dropdownClose = document.getElementById('dropdownClose');
+const hamburger = document.querySelector('.nav-hamburger');
+
+function openDropdown() {
+ dropdownOverlay.classList.add('open');
+ dropdownPanel.classList.add('open');
+ document.body.style.overflow = 'hidden';
+}
+function closeDropdown() {
+ dropdownOverlay.classList.remove('open');
+ dropdownPanel.classList.remove('open');
+ document.body.style.overflow = '';
+}
+
+if (hamburger) hamburger.addEventListener('click', openDropdown);
+if (dropdownClose) dropdownClose.addEventListener('click', closeDropdown);
+if (dropdownOverlay) dropdownOverlay.addEventListener('click', closeDropdown);
+
+// Highlight current page in dropdown
+const currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+document.querySelectorAll('.dropdown-link').forEach(link => {
+ const href = link.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '');
+ if (currentPath === href || currentPath.endsWith(href)) {
+ link.classList.add('active');
+ }
+});
+
+// ─── Waitlist modal ───
+function openWaitlist() {
+ const ol = document.getElementById('waitlistOverlay');
+ if (ol) { ol.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeWaitlist() {
+ const ol = document.getElementById('waitlistOverlay');
+ if (ol) { ol.classList.remove('open'); document.body.style.overflow = ''; }
+}
+
+// Close on overlay click
+const wlOverlay = document.getElementById('waitlistOverlay');
+if (wlOverlay) wlOverlay.addEventListener('click', function(e) {
+ if (e.target === wlOverlay) closeWaitlist();
+});
+
+function submitWaitlist(e) {
+ e.preventDefault();
+ const btn = document.getElementById('wlSubmit');
+ const name = document.getElementById('wlName').value;
+ const email = document.getElementById('wlEmail').value;
+ const phone = document.getElementById('wlPhone').value;
+ btn.disabled = true;
+ btn.textContent = 'Joining...';
+
+ // Store to Google Sheets via Apps Script or simple endpoint
+ const data = { name, email, phone, page: window.location.pathname, ts: new Date().toISOString() };
+
+ // Try to send to a simple endpoint; fallback to localStorage
+ fetch('https://arq.clinic/api/waitlist', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify(data)
+ }).catch(() => {
+ // Fallback: store locally
+ const existing = JSON.parse(localStorage.getItem('arq_waitlist') || '[]');
+ existing.push(data);
+ localStorage.setItem('arq_waitlist', JSON.stringify(existing));
+ }).finally(() => {
+ document.getElementById('waitlistForm').style.display = 'none';
+ document.getElementById('waitlistSuccess').style.display = 'block';
+ setTimeout(closeWaitlist, 3000);
+ });
+}
+
+// Wire up all waitlist links
+document.querySelectorAll('a[href="#cta"], a[href="#"], .nav-link').forEach(link => {
+ const text = link.textContent.toLowerCase();
+ if (text.includes('waitlist') || text.includes('talk to') || text.includes('start')) {
+ link.addEventListener('click', function(e) {
+ e.preventDefault();
+ closeDropdown();
+ openWaitlist();
+ });
+ }
+});
+
+// ─── Read more fold ───
+const readMoreBtn = document.getElementById('readMoreBtn');
+const articleFold = document.getElementById('articleFold');
+const readMoreWrap = document.getElementById('readMoreWrap');
+if (readMoreBtn && articleFold) {
+ readMoreBtn.addEventListener('click', function() {
+ articleFold.classList.add('expanded');
+ if (readMoreWrap) readMoreWrap.classList.add('hidden');
+ });
+}
+
+</script><!-- ─── WAITLIST MODAL ─── --><div class="waitlist-overlay" id="waitlistOverlay"><div class="waitlist-modal"><button class="waitlist-modal-close" onclick="closeWaitlist()" aria-label="Close"><i class="ph-bold ph-x"></i></button><div id="waitlistForm"><h2>Join the. <em>waitlist</em></h2><p class="wl-sub">100+ biomarkers. A dedicated physician. Protocol delivered to your door. Be first in line when we launch.</p><form class="waitlist-form" onsubmit="submitWaitlist(event)"><input type="text" class="waitlist-input" id="wlName" placeholder="Your name" required><input type="email" class="waitlist-input" id="wlEmail" placeholder="Your email" required><input type="tel" class="waitlist-input" id="wlPhone" placeholder="Phone (optional)"><button type="submit" class="waitlist-submit" id="wlSubmit">Join the waitlist</button></form><div class="wl-trust"><span><i class="ph-fill ph-lock"></i> DPDP-compliant</span><span><i class="ph-fill ph-shield-check"></i> No spam</span></div></div><div id="waitlistSuccess" class="waitlist-success" style="display:none"><i class="ph-fill ph-check-circle"></i><h3>You're on the list</h3><p>We'll reach out when it's your turn. Welcome to arq.</p></div></div></div><!-- ─── DROPDOWN MENU ─── --><div class="dropdown-overlay" id="dropdownOverlay"></div><div class="dropdown-panel" id="dropdownPanel"><button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button><div class="dropdown-section"><div class="dropdown-section-title">Explore</div><div class="dropdown-links"><a href="/" class="dropdown-link">Home</a><a href="/blog" class="dropdown-link">Blog</a><a href="/longevity" class="dropdown-link">Longevity</a><a href="/conditions" class="dropdown-link">Conditions</a></div></div><div class="dropdown-section"><div class="dropdown-section-title">Get Started</div><button class="dropdown-cta" onclick="openWaitlist()"><i class="ph-bold ph-arrow-right"></i> Join waitlist</button></div></div></body></html>

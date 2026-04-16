@@ -1,0 +1,293 @@
+{
+  "organization": {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "arq.clinic",
+    "legalName": "Dear One Technologies Pvt Ltd",
+    "url": "https://arq.clinic",
+    "logo": "https://arq.clinic/logo.png",
+    "description": "Telemedicine platform providing personalized longevity and wellness consultations in India",
+    "sameAs": [
+      "https://www.instagram.com/arq.clinic",
+      "https://www.linkedin.com/company/arq-clinic",
+      "https://twitter.com/arqclinic"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "email": "hello@arq.clinic"
+    }
+  },
+  "website": {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "arq.clinic",
+    "url": "https://arq.clinic",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://arq.clinic/search?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  },
+  "localBusiness": {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "arq.clinic",
+    "image": "https://arq.clinic/logo.png",
+    "description": "Telemedicine platform for longevity, biohacking, and wellness in India",
+    "url": "https://arq.clinic",
+    "telephone": "+91-XXXX-XXXX-XX",
+    "priceRange": "₹",
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "serviceType": "Telemedicine, Pharmaceutical Consultation",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "India"
+    }
+  },
+  "breadcrumbList": {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://arq.clinic"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://arq.clinic/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "[Article Title]",
+        "item": "https://arq.clinic/blog/[slug]"
+      }
+    ]
+  },
+  "articleSchemas": {
+    "bpc-157-india": {
+      "@context": "https://schema.org",
+      "@type": ["Article", "MedicalWebPage"],
+      "headline": "BPC-157 in India: Legality, Benefits, and How to Get It",
+      "description": "Comprehensive guide to BPC-157 availability and legality in India",
+      "url": "https://arq.clinic/blog/bpc-157-india",
+      "image": "https://arq.clinic/blog/images/bpc-157.jpg",
+      "datePublished": "2026-04-04",
+      "dateModified": "2026-04-04",
+      "author": {
+        "@type": "Organization",
+        "name": "arq.clinic"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "arq.clinic",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://arq.clinic/logo.png"
+        }
+      },
+      "mainEntity": {
+        "@type": "MedicalEntity",
+        "name": "BPC-157",
+        "alternateName": "Body Protection Compound-157"
+      }
+    },
+    "modafinil-legal-india": {
+      "@context": "https://schema.org",
+      "@type": ["Article", "MedicalWebPage"],
+      "headline": "Is Modafinil Legal in India? A Complete Guide",
+      "description": "Guide to modafinil legality and availability in India",
+      "url": "https://arq.clinic/blog/modafinil-legal-india",
+      "image": "https://arq.clinic/blog/images/modafinil.jpg",
+      "datePublished": "2026-04-04",
+      "dateModified": "2026-04-04",
+      "author": {
+        "@type": "Organization",
+        "name": "arq.clinic"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "arq.clinic",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://arq.clinic/logo.png"
+        }
+      },
+      "mainEntity": {
+        "@type": "MedicalEntity",
+        "name": "Modafinil"
+      }
+    },
+    "modafinil-vs-armodafinil": {
+      "@context": "https://schema.org",
+      "@type": ["Article", "MedicalWebPage"],
+      "headline": "Modafinil vs Armodafinil: Comparison, Effects, and Which is Better",
+      "description": "Detailed comparison of modafinil and armodafinil",
+      "url": "https://arq.clinic/blog/modafinil-vs-armodafinil",
+      "image": "https://arq.clinic/blog/images/modafinil-vs-armodafinil.jpg",
+      "datePublished": "2026-04-04",
+      "dateModified": "2026-04-04",
+      "author": {
+        "@type": "Organization",
+        "name": "arq.clinic"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "arq.clinic",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://arq.clinic/logo.png"
+        }
+      },
+      "mainEntity": {
+        "@type": "MedicalEntity",
+        "name": "Modafinil vs Armodafinil Comparison"
+      }
+    },
+    "semaglutide-india": {
+      "@context": "https://schema.org",
+      "@type": ["Article", "MedicalWebPage"],
+      "headline": "Semaglutide in India: Availability, Legality, and Medical Use",
+      "description": "Complete guide to semaglutide availability and use in India",
+      "url": "https://arq.clinic/blog/semaglutide-india",
+      "image": "https://arq.clinic/blog/images/semaglutide.jpg",
+      "datePublished": "2026-04-04",
+      "dateModified": "2026-04-04",
+      "author": {
+        "@type": "Organization",
+        "name": "arq.clinic"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "arq.clinic",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://arq.clinic/logo.png"
+        }
+      },
+      "mainEntity": {
+        "@type": "MedicalEntity",
+        "name": "Semaglutide"
+      }
+    },
+    "trt-india": {
+      "@context": "https://schema.org",
+      "@type": ["Article", "MedicalWebPage"],
+      "headline": "Testosterone Replacement Therapy (TRT) in India: Guide and Legality",
+      "description": "Comprehensive guide to testosterone replacement therapy options in India",
+      "url": "https://arq.clinic/blog/trt-india",
+      "image": "https://arq.clinic/blog/images/trt.jpg",
+      "datePublished": "2026-04-04",
+      "dateModified": "2026-04-04",
+      "author": {
+        "@type": "Organization",
+        "name": "arq.clinic"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "arq.clinic",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://arq.clinic/logo.png"
+        }
+      },
+      "mainEntity": {
+        "@type": "MedicalEntity",
+        "name": "Testosterone Replacement Therapy"
+      }
+    },
+    "telemedicine-legal-india": {
+      "@context": "https://schema.org",
+      "@type": ["Article", "MedicalWebPage"],
+      "headline": "Is Telemedicine Legal in India? Complete Legal Guide",
+      "description": "Legal framework and regulations for telemedicine services in India",
+      "url": "https://arq.clinic/blog/telemedicine-legal-india",
+      "image": "https://arq.clinic/blog/images/telemedicine.jpg",
+      "datePublished": "2026-04-04",
+      "dateModified": "2026-04-04",
+      "author": {
+        "@type": "Organization",
+        "name": "arq.clinic"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "arq.clinic",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://arq.clinic/logo.png"
+        }
+      },
+      "mainEntity": {
+        "@type": "MedicalEntity",
+        "name": "Telemedicine"
+      }
+    },
+    "biohacking-india": {
+      "@context": "https://schema.org",
+      "@type": ["Article", "MedicalWebPage"],
+      "headline": "Biohacking in India: The Complete Guide to Body Optimization",
+      "description": "Ultimate guide to biohacking practices, legality, and implementation in India",
+      "url": "https://arq.clinic/blog/biohacking-india",
+      "image": "https://arq.clinic/blog/images/biohacking.jpg",
+      "datePublished": "2026-04-04",
+      "dateModified": "2026-04-04",
+      "author": {
+        "@type": "Organization",
+        "name": "arq.clinic"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "arq.clinic",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://arq.clinic/logo.png"
+        }
+      },
+      "mainEntity": {
+        "@type": "MedicalEntity",
+        "name": "Biohacking"
+      }
+    },
+    "peter-attia-longevity-stack-india": {
+      "@context": "https://schema.org",
+      "@type": ["Article", "MedicalWebPage"],
+      "headline": "Peter Attia's Longevity Stack in India: Complete Implementation Guide",
+      "description": "How to implement Peter Attia's longevity protocol in India",
+      "url": "https://arq.clinic/blog/peter-attia-longevity-stack-india",
+      "image": "https://arq.clinic/blog/images/peter-attia.jpg",
+      "datePublished": "2026-04-04",
+      "dateModified": "2026-04-04",
+      "author": {
+        "@type": "Organization",
+        "name": "arq.clinic"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "arq.clinic",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://arq.clinic/logo.png"
+        }
+      },
+      "mainEntity": {
+        "@type": "MedicalEntity",
+        "name": "Longevity Stack"
+      }
+    }
+  }
+}

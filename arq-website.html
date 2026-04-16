@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arq.clinic — Your body. Your call.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Epilogue:wght@200;300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#0c0b09;
+  --ink:#141210;
+  --surface:#1c1a17;
+  --card:#222018;
+  --lift:#2c2a24;
+
+  --cream:#f2ece0;
+  --cream-70:rgba(242,236,224,0.7);
+  --cream-40:rgba(242,236,224,0.4);
+  --cream-15:rgba(242,236,224,0.15);
+  --cream-07:rgba(242,236,224,0.07);
+  --cream-04:rgba(242,236,224,0.04);
+
+  --gold:#c8973a;
+  --gold-hi:#dba84a;
+  --gold-lo:rgba(200,151,58,0.12);
+  --gold-border:rgba(200,151,58,0.28);
+
+  --serif:'Playfair Display',serif;
+  --sans:'Epilogue',sans-serif;
+  --mono:'DM Mono',monospace;
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--cream);
+  font-family:var(--sans);
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ── GRAIN ── */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;mix-blend-mode:overlay;
+}
+
+/* ─────────────────────────────────────
+   NAV
+───────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:54px;
+  padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(12,11,9,0.88);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--cream-07);
+  transition:border-color 0.3s;
+}
+
+.nav-logo{
+  font-family:var(--serif);
+  font-size:20px;font-weight:400;
+  letter-spacing:0.05em;
+  color:var(--cream);text-decoration:none;
+  cursor:pointer;
+}
+.nav-logo span{color:var(--gold)}
+
+.nav-right{display:flex;align-items:center;gap:10px}
+
+.nav-search-btn{
+  display:flex;align-items:center;gap:7px;
+  background:none;border:1px solid var(--cream-15);
+  color:var(--cream-40);padding:7px 14px;
+  font-family:var(--mono);font-size:9px;
+  letter-spacing:0.12em;text-transform:uppercase;
+  cursor:pointer;transition:all 0.2s;border-radius:2px;
+}
+.nav-search-btn:hover{border-color:var(--cream-40);color:var(--cream-70)}
+
+.nav-wa{
+  display:flex;align-items:center;gap:6px;
+  background:var(--gold);color:var(--bg);
+  padding:8px 16px;
+  font-family:var(--mono);font-size:9px;
+  letter-spacing:0.12em;text-transform:uppercase;
+  text-decoration:none;transition:all 0.2s;border-radius:2px;
+  cursor:pointer;border:none;
+}
+.nav-wa:hover{background:var(--gold-hi);transform:translateY(-1px)}
+
+/* ─────────────────────────────────────
+   PAGES
+───────────────────────────────────── */
+.page{display:none;min-height:100vh;padding-top:54px}
+.page.active{display:block}
+
+/* ─────────────────────────────────────
+   HOME PAGE — SEARCH HERO
+───────────────────────────────────── */
+.hero{
+  min-height:calc(100vh - 54px);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:48px 20px 60px;
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+
+/* Floating pills decoration */
+.hero-pills{
+  position:absolute;inset:0;
+  pointer-events:none;overflow:hidden;
+}
+.pill-obj{
+  position:absolute;
+  border-radius:50%;
+  opacity:0;
+  animation:pill-float 1.2s ease forwards;
+}
+.pill-obj:nth-child(1){width:22px;height:14px;background:#d4a574;border-radius:20px;top:18%;left:12%;animation-delay:0.3s;transform:rotate(-15deg)}
+.pill-obj:nth-child(2){width:16px;height:16px;background:#b8c4aa;border-radius:50%;top:22%;right:18%;animation-delay:0.5s}
+.pill-obj:nth-child(3){width:28px;height:10px;background:#c8a8d4;border-radius:20px;top:70%;left:8%;animation-delay:0.4s;transform:rotate(25deg)}
+.pill-obj:nth-child(4){width:18px;height:18px;background:#a8c4b8;border-radius:50%;top:75%;right:12%;animation-delay:0.6s}
+.pill-obj:nth-child(5){width:32px;height:12px;background:#d4c4a8;border-radius:20px;top:40%;left:5%;animation-delay:0.7s;transform:rotate(-8deg)}
+.pill-obj:nth-child(6){width:14px;height:14px;background:#c4a8a8;border-radius:50%;top:35%;right:7%;animation-delay:0.35s}
+
+/* Vial object */
+.vial-obj{
+  position:absolute;
+  width:3px;height:48px;
+  background:linear-gradient(180deg,rgba(242,236,224,0.15) 0%,rgba(242,236,224,0.04) 100%);
+  border-radius:2px;
+  top:28%;right:24%;
+  opacity:0;
+  animation:pill-float 1.2s 0.5s ease forwards;
+}
+.vial-obj::before{
+  content:'';position:absolute;top:-4px;left:-2px;right:-2px;height:6px;
+  background:rgba(200,151,58,0.4);border-radius:2px;
+}
+
+@keyframes pill-float{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.hero-inner{
+  position:relative;z-index:1;
+  max-width:600px;width:100%;
+}
+
+.hero-eyebrow{
+  font-family:var(--mono);
+  font-size:9px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+  opacity:0;animation:rise 0.7s 0.1s ease forwards;
+}
+
+.hero-headline{
+  font-family:var(--serif);
+  font-size:clamp(36px,10vw,72px);
+  font-weight:400;line-height:1.05;
+  letter-spacing:-0.02em;
+  margin-bottom:8px;
+  opacity:0;animation:rise 0.7s 0.2s ease forwards;
+}
+.hero-headline em{font-style:italic;color:var(--gold)}
+
+.hero-sub{
+  font-size:14px;color:var(--cream-40);
+  margin-bottom:36px;line-height:1.6;
+  opacity:0;animation:rise 0.7s 0.3s ease forwards;
+}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ── SEARCH BAR ── */
+.search-wrap{
+  position:relative;
+  margin-bottom:28px;
+  opacity:0;animation:rise 0.7s 0.4s ease forwards;
+}
+
+.search-bar{
+  width:100%;
+  background:var(--surface);
+  border:1px solid var(--cream-15);
+  border-radius:3px;
+  display:flex;align-items:center;gap:12px;
+  padding:0 18px;
+  transition:border-color 0.25s,box-shadow 0.25s;
+  position:relative;
+  overflow:hidden;
+}
+.search-bar::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:0;transition:opacity 0.3s;
+}
+.search-bar:focus-within{
+  border-color:var(--gold-border);
+  box-shadow:0 0 0 3px var(--gold-lo);
+}
+.search-bar:focus-within::before{opacity:0.5}
+
+.search-icon{
+  color:var(--cream-40);flex-shrink:0;
+  transition:color 0.2s;
+}
+.search-bar:focus-within .search-icon{color:var(--gold)}
+
+.search-input{
+  flex:1;
+  background:none;border:none;outline:none;
+  font-family:var(--serif);
+  font-size:clamp(17px,4vw,22px);
+  font-style:italic;
+  color:var(--cream);
+  padding:22px 0;
+  width:100%;
+}
+.search-input::placeholder{color:var(--cream-40)}
+
+.search-clear{
+  background:none;border:none;
+  color:var(--cream-40);cursor:pointer;
+  padding:4px;display:none;
+  font-size:18px;transition:color 0.2s;
+}
+.search-clear:hover{color:var(--cream)}
+.search-input:not(:placeholder-shown) ~ .search-clear{display:block}
+
+/* ── SEARCH SUGGESTIONS ── */
+.suggestions{
+  display:flex;flex-wrap:wrap;gap:7px;
+  justify-content:center;
+  opacity:0;animation:rise 0.7s 0.5s ease forwards;
+  margin-bottom:20px;
+}
+
+.sug-pill{
+  font-family:var(--mono);
+  font-size:9px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--cream-70);
+  border:1px solid var(--cream-15);
+  padding:7px 14px;border-radius:20px;
+  cursor:pointer;transition:all 0.18s;
+  background:transparent;
+}
+.sug-pill:hover,.sug-pill.active{
+  border-color:var(--gold-border);
+  color:var(--gold);background:var(--gold-lo);
+}
+
+/* ── SEARCH RESULTS ── */
+.search-results{
+  display:none;
+  text-align:left;
+  margin-top:16px;
+}
+.search-results.visible{display:block}
+
+.results-label{
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--cream-40);margin-bottom:14px;
+  padding-bottom:10px;border-bottom:1px solid var(--cream-07);
+}
+
+.result-items{
+  display:flex;flex-direction:column;gap:1px;
+  background:var(--cream-07);border-radius:3px;overflow:hidden;
+}
+
+.result-item{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:var(--surface);
+  padding:16px 18px;
+  cursor:pointer;transition:background 0.15s;
+  border-left:2px solid transparent;
+  text-decoration:none;
+}
+.result-item:hover{
+  background:var(--card);
+  border-left-color:var(--gold);
+}
+
+.result-left{}
+.result-name{
+  font-family:var(--serif);
+  font-size:17px;font-weight:400;
+  color:var(--cream);margin-bottom:2px;
+  line-height:1.2;
+}
+.result-cat{
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--cream-40);
+}
+
+.result-right{
+  display:flex;flex-direction:column;
+  align-items:flex-end;flex-shrink:0;
+}
+.result-price{
+  font-family:var(--serif);font-size:16px;
+  color:var(--cream);line-height:1;
+}
+.result-unit{
+  font-family:var(--mono);font-size:7px;
+  letter-spacing:0.08em;color:var(--cream-40);
+}
+
+.no-results{
+  text-align:center;padding:32px 20px;
+  font-size:14px;color:var(--cream-40);
+}
+.no-results strong{color:var(--cream);display:block;margin-bottom:6px;font-weight:400;font-family:var(--serif);font-size:18px;font-style:italic}
+
+/* ── HERO FOOTER ── */
+.hero-footer{
+  margin-top:40px;
+  display:flex;align-items:center;justify-content:center;gap:20px;
+  flex-wrap:wrap;
+  opacity:0;animation:rise 0.7s 0.6s ease forwards;
+}
+.hero-stat{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+}
+.hero-stat-n{
+  font-family:var(--serif);font-size:20px;
+  color:var(--cream);line-height:1;
+}
+.hero-stat-l{
+  font-family:var(--mono);font-size:7px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--cream-40);
+}
+.hero-stat-sep{
+  width:1px;height:28px;background:var(--cream-15);
+}
+
+/* ─────────────────────────────────────
+   PRODUCT PAGE
+───────────────────────────────────── */
+.product-page{
+  padding:0 20px 80px;
+  max-width:560px;margin:0 auto;
+}
+
+.prod-back{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:9px;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--cream-40);padding:20px 0;
+  cursor:pointer;transition:color 0.2s;background:none;border:none;
+}
+.prod-back:hover{color:var(--cream)}
+.prod-back svg{transition:transform 0.2s}
+.prod-back:hover svg{transform:translateX(-3px)}
+
+.prod-eyebrow{
+  font-family:var(--mono);font-size:9px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+
+.prod-name{
+  font-family:var(--serif);
+  font-size:clamp(38px,10vw,60px);
+  font-weight:400;line-height:1.05;
+  letter-spacing:-0.02em;
+  color:var(--cream);
+  margin-bottom:6px;
+}
+
+.prod-kit{
+  font-family:var(--mono);font-size:9px;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--cream-40);margin-bottom:20px;
+}
+
+.prod-rule{
+  width:100%;height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  margin-bottom:24px;opacity:0.35;
+}
+
+.prod-desc{
+  font-size:15px;color:var(--cream-70);
+  line-height:1.85;margin-bottom:28px;
+  max-width:480px;
+}
+
+.prod-desc strong{color:var(--cream);font-weight:400}
+
+/* tags */
+.prod-tags{
+  display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px;
+}
+.prod-tag{
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:4px 10px;border-radius:2px;
+}
+.t-rx{background:var(--gold-lo);color:var(--gold);border:1px solid var(--gold-border)}
+.t-mbbs{background:rgba(100,150,200,0.1);color:#90b8e0;border:1px solid rgba(100,150,200,0.2)}
+.t-endo{background:rgba(150,100,200,0.1);color:#c090e0;border:1px solid rgba(150,100,200,0.2)}
+.t-blood{background:rgba(200,100,100,0.1);color:#e09090;border:1px solid rgba(200,100,100,0.2)}
+.t-peptide{background:rgba(100,180,160,0.1);color:#80d4c0;border:1px solid rgba(100,180,160,0.2)}
+.t-grey{background:rgba(80,80,80,0.15);color:#a0a0b0;border:1px solid rgba(80,80,80,0.3)}
+
+/* price block */
+.prod-price-block{
+  background:var(--surface);
+  border:1px solid var(--cream-07);
+  padding:24px 20px;
+  margin-bottom:20px;
+  position:relative;overflow:hidden;
+}
+.prod-price-block::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:0.4;
+}
+.prod-price-label{
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--cream-40);margin-bottom:6px;
+}
+.prod-price-num{
+  font-family:var(--serif);
+  font-size:40px;font-weight:400;
+  color:var(--cream);line-height:1;margin-bottom:3px;
+}
+.prod-price-unit{
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:0.08em;color:var(--cream-40);
+  margin-bottom:16px;
+}
+.prod-consult{
+  font-size:12px;color:var(--cream-40);
+  padding-top:14px;border-top:1px solid var(--cream-07);
+}
+.prod-consult strong{color:var(--gold);font-weight:400}
+
+/* how it works */
+.prod-how{
+  margin-bottom:28px;
+}
+.prod-how-title{
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--cream-40);margin-bottom:14px;
+}
+.prod-steps{
+  display:flex;flex-direction:column;gap:1px;
+  background:var(--cream-07);border-radius:2px;overflow:hidden;
+}
+.prod-step{
+  display:flex;gap:16px;align-items:flex-start;
+  background:var(--surface);padding:16px 18px;
+}
+.prod-step-n{
+  font-family:var(--serif);font-size:24px;
+  color:rgba(200,151,58,0.2);flex-shrink:0;line-height:1;
+  margin-top:-2px;
+}
+.prod-step-text{font-size:13px;color:var(--cream-70);line-height:1.6}
+.prod-step-text strong{color:var(--cream);font-weight:400}
+.prod-step-time{
+  font-family:var(--mono);font-size:7px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gold);margin-top:4px;display:block;
+}
+
+/* CTA */
+.prod-cta{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;background:var(--gold);color:var(--bg);
+  padding:18px;border:none;cursor:pointer;
+  font-family:var(--mono);font-size:10px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  border-radius:2px;transition:all 0.2s;
+  font-weight:400;margin-bottom:10px;
+}
+.prod-cta:hover{background:var(--gold-hi);transform:translateY(-1px)}
+
+.prod-priv{
+  text-align:center;
+  font-family:var(--mono);font-size:7px;
+  letter-spacing:0.08em;color:var(--cream-40);
+  line-height:2;
+}
+
+/* legal note */
+.prod-legal{
+  margin-top:24px;padding:16px;
+  background:var(--card);border-radius:2px;
+  font-size:11px;color:var(--cream-40);
+  line-height:1.7;
+}
+.prod-legal strong{color:var(--cream-70);font-weight:400}
+
+/* ─────────────────────────────────────
+   BROWSE PAGE
+───────────────────────────────────── */
+.browse-page{
+  padding:24px 20px 80px;
+  max-width:680px;margin:0 auto;
+}
+
+.browse-title{
+  font-family:var(--serif);
+  font-size:clamp(30px,7vw,48px);
+  font-weight:400;letter-spacing:-0.02em;
+  margin-bottom:6px;
+}
+.browse-title em{font-style:italic;color:var(--gold)}
+
+.browse-sub{
+  font-size:13px;color:var(--cream-40);
+  margin-bottom:28px;
+}
+
+.browse-cats{
+  display:flex;flex-wrap:wrap;gap:6px;
+  margin-bottom:24px;
+}
+.browse-cat{
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  border:1px solid var(--cream-15);
+  color:var(--cream-40);
+  padding:6px 14px;border-radius:20px;
+  cursor:pointer;transition:all 0.18s;background:none;
+}
+.browse-cat:hover,.browse-cat.on{
+  border-color:var(--gold-border);
+  color:var(--gold);background:var(--gold-lo);
+}
+
+.browse-section-label{
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--cream-40);margin:24px 0 10px;
+  padding-bottom:8px;border-bottom:1px solid var(--cream-07);
+}
+
+.browse-grid{
+  display:flex;flex-direction:column;gap:1px;
+  background:var(--cream-07);border-radius:2px;overflow:hidden;
+  margin-bottom:4px;
+}
+
+.browse-item{
+  display:flex;align-items:center;
+  justify-content:space-between;gap:16px;
+  background:var(--surface);padding:18px 18px;
+  cursor:pointer;transition:all 0.15s;
+  border-left:2px solid transparent;
+}
+.browse-item:hover{
+  background:var(--card);
+  border-left-color:var(--gold);
+}
+.bi-left{}
+.bi-name{
+  font-family:var(--serif);font-size:18px;
+  font-weight:400;color:var(--cream);
+  margin-bottom:2px;line-height:1.1;
+}
+.bi-kit{
+  font-family:var(--mono);font-size:7px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--cream-40);
+}
+.bi-right{
+  display:flex;flex-direction:column;
+  align-items:flex-end;flex-shrink:0;gap:2px;
+}
+.bi-price{
+  font-family:var(--serif);font-size:17px;
+  color:var(--cream);
+}
+.bi-unit{
+  font-family:var(--mono);font-size:7px;
+  letter-spacing:0.08em;color:var(--cream-40);
+}
+.bi-arr{color:var(--cream-40);font-size:14px;transition:transform 0.2s,color 0.2s;margin-top:4px}
+.browse-item:hover .bi-arr{transform:translateX(3px);color:var(--gold)}
+
+/* ─────────────────────────────────────
+   HOW IT WORKS
+───────────────────────────────────── */
+.how-section{
+  padding:64px 20px;
+  background:var(--surface);
+  border-top:1px solid var(--cream-07);
+  border-bottom:1px solid var(--cream-07);
+}
+.how-inner{max-width:560px;margin:0 auto}
+.how-eyebrow{
+  font-family:var(--mono);font-size:9px;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;
+}
+.how-title{
+  font-family:var(--serif);
+  font-size:clamp(26px,6vw,40px);
+  font-weight:400;line-height:1.1;
+  margin-bottom:32px;
+}
+.how-title em{font-style:italic;color:var(--gold)}
+
+.how-steps{
+  display:flex;flex-direction:column;gap:1px;
+  background:var(--cream-07);border-radius:2px;overflow:hidden;
+}
+.how-step{
+  background:var(--ink);
+  padding:24px 20px;
+  display:grid;grid-template-columns:40px 1fr;
+  gap:16px;align-items:start;
+}
+.how-n{
+  font-family:var(--serif);font-size:36px;
+  color:rgba(200,151,58,0.15);line-height:1;
+  margin-top:-4px;
+}
+.how-step-title{
+  font-family:var(--serif);font-size:18px;
+  font-weight:400;color:var(--cream);
+  margin-bottom:5px;
+}
+.how-step-body{font-size:12px;color:var(--cream-40);line-height:1.7}
+.how-step-time{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:8px;
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--gold);
+}
+.how-step-time::before{
+  content:'';display:block;
+  width:12px;height:1px;background:var(--gold);
+}
+
+/* ─────────────────────────────────────
+   BOTTOM CTA
+───────────────────────────────────── */
+.bottom-cta{
+  padding:72px 20px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.bottom-cta-glow{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(200,151,58,0.05) 0%,transparent 65%);
+  pointer-events:none;
+}
+.bottom-wm{
+  position:absolute;
+  font-family:var(--serif);
+  font-size:clamp(80px,25vw,180px);
+  color:rgba(200,151,58,0.025);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;font-style:italic;
+  white-space:nowrap;
+}
+.bottom-eyebrow{
+  font-family:var(--mono);font-size:9px;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+  position:relative;
+}
+.bottom-title{
+  font-family:var(--serif);
+  font-size:clamp(28px,7vw,52px);
+  font-weight:400;line-height:1.1;
+  margin-bottom:12px;position:relative;
+}
+.bottom-title em{font-style:italic;color:var(--gold)}
+.bottom-sub{
+  font-size:13px;color:var(--cream-40);
+  max-width:300px;margin:0 auto 32px;
+  line-height:1.8;position:relative;
+}
+.bottom-btn{
+  display:inline-flex;align-items:center;
+  justify-content:center;gap:8px;
+  background:var(--gold);color:var(--bg);
+  padding:18px 32px;border:none;cursor:pointer;
+  font-family:var(--mono);font-size:10px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  border-radius:2px;transition:all 0.22s;
+  font-weight:400;width:100%;max-width:400px;
+  position:relative;
+}
+.bottom-btn:hover{background:var(--gold-hi);transform:translateY(-2px)}
+.bottom-fine{
+  margin-top:12px;
+  font-family:var(--mono);font-size:7px;
+  color:rgba(242,236,224,0.1);letter-spacing:0.06em;
+  line-height:2;position:relative;
+}
+
+/* ─────────────────────────────────────
+   FOOTER
+───────────────────────────────────── */
+footer{
+  padding:32px 20px 24px;
+  background:var(--surface);
+  border-top:1px solid var(--cream-07);
+}
+.footer-logo{
+  font-family:var(--serif);font-size:18px;
+  color:var(--cream);margin-bottom:3px;
+}
+.footer-logo span{color:var(--gold)}
+.footer-tag{
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--cream-40);margin-bottom:20px;
+}
+.footer-links{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4px 16px;margin-bottom:20px;
+}
+.fl{
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--cream-40);text-decoration:none;
+  padding:3px 0;transition:color 0.2s;
+}
+.fl:hover{color:var(--gold)}
+.footer-bottom{
+  border-top:1px solid var(--cream-07);
+  padding-top:16px;
+  font-family:var(--mono);font-size:7px;
+  color:rgba(242,236,224,0.08);
+  letter-spacing:0.06em;line-height:2;
+}
+
+/* ─────────────────────────────────────
+   MODAL
+───────────────────────────────────── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(16px);z-index:800;
+  align-items:flex-end;
+}
+.modal-overlay.open{display:flex}
+.modal{
+  background:var(--surface);width:100%;
+  border-radius:14px 14px 0 0;
+  border:1px solid var(--cream-07);border-bottom:none;
+  padding:8px 20px 40px;
+  max-height:92svh;overflow-y:auto;
+  animation:slideUp 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes slideUp{
+  from{transform:translateY(100%);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+.modal-handle{
+  width:32px;height:3px;
+  background:var(--cream-15);border-radius:2px;
+  margin:8px auto 20px;
+}
+.modal-title{
+  font-family:var(--serif);font-size:24px;
+  font-weight:400;color:var(--cream);
+  margin-bottom:4px;
+}
+.modal-sub{font-size:13px;color:var(--cream-40);margin-bottom:22px;line-height:1.6}
+.modal-label{
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;
+}
+.modal-opts{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:8px;margin-bottom:20px;
+}
+.modal-opt{
+  padding:16px 12px;
+  border:1px solid var(--cream-07);
+  background:var(--ink);
+  cursor:pointer;text-align:left;
+  transition:all 0.18s;
+  display:flex;flex-direction:column;gap:5px;
+  border-radius:2px;
+}
+.modal-opt:hover,.modal-opt.sel{
+  border-color:var(--gold-border);
+  background:var(--gold-lo);
+}
+.opt-icon{font-size:18px}
+.opt-name{
+  font-family:var(--serif);font-size:16px;
+  color:var(--cream);line-height:1.1;
+}
+.opt-sub{
+  font-family:var(--mono);font-size:7px;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--cream-40);
+}
+.modal-go{
+  width:100%;background:var(--gold);color:var(--bg);
+  border:none;padding:17px;
+  font-family:var(--mono);font-size:10px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  cursor:pointer;border-radius:2px;
+  transition:opacity 0.2s;font-weight:400;
+  margin-bottom:10px;
+}
+.modal-go:hover{opacity:0.88}
+.modal-priv{
+  font-family:var(--mono);font-size:7px;
+  color:var(--cream-40);text-align:center;
+  letter-spacing:0.06em;line-height:2;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="showHome()">ar<span>q</span></div>
+  <div class="nav-right">
+    <button class="nav-search-btn" onclick="showHome();setTimeout(()=>document.getElementById('searchInput').focus(),100)">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Search
+    </button>
+    <button class="nav-wa" onclick="openModal()">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Start
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════ HOME PAGE ══════════════ -->
+<div class="page active" id="home-page">
+
+  <div class="hero">
+    <!-- floating pills -->
+    <div class="hero-pills">
+      <div class="pill-obj"></div>
+      <div class="pill-obj"></div>
+      <div class="pill-obj"></div>
+      <div class="pill-obj"></div>
+      <div class="pill-obj"></div>
+      <div class="pill-obj"></div>
+      <div class="vial-obj"></div>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-eyebrow">India's biohacker clinic</div>
+
+      <h1 class="hero-headline">
+        Your body.<br><em>Your call.</em>
+      </h1>
+
+      <p class="hero-sub">What are you looking for?</p>
+
+      <!-- Search -->
+      <div class="search-wrap">
+        <div class="search-bar">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input 
+            class="search-input" 
+            id="searchInput"
+            type="text" 
+            placeholder="modafinil, sildenafil, BPC-157…"
+            autocomplete="off"
+            oninput="handleSearch(this.value)"
+          >
+          <button class="search-clear" onclick="clearSearch()">×</button>
+        </div>
+
+        <div class="search-results" id="searchResults">
+          <div class="results-label" id="resultsLabel"></div>
+          <div class="result-items" id="resultItems"></div>
+        </div>
+      </div>
+
+      <!-- suggestions -->
+      <div class="suggestions" id="suggestions">
+        <button class="sug-pill" onclick="searchFor('modafinil')">Modafinil</button>
+        <button class="sug-pill" onclick="searchFor('sildenafil')">Sildenafil</button>
+        <button class="sug-pill" onclick="searchFor('semaglutide')">Semaglutide</button>
+        <button class="sug-pill" onclick="searchFor('BPC-157')">BPC-157</button>
+        <button class="sug-pill" onclick="searchFor('finasteride')">Finasteride</button>
+        <button class="sug-pill" onclick="searchFor('THC')">THC · CBD</button>
+        <button class="sug-pill" onclick="showBrowse()">Browse all →</button>
+      </div>
+
+      <div class="hero-footer">
+        <div class="hero-stat">
+          <div class="hero-stat-n">26+</div>
+          <div class="hero-stat-l">Protocols</div>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-n">2hr</div>
+          <div class="hero-stat-l">Doctor call</div>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-n">48hr</div>
+          <div class="hero-stat-l">Delivery</div>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-n">₹0</div>
+          <div class="hero-stat-l">Consult fee</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <div class="how-section">
+    <div class="how-inner">
+      <div class="how-eyebrow">How it works</div>
+      <h2 class="how-title">From decision<br>to door. <em>Seamlessly.</em></h2>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-n">1</div>
+          <div>
+            <div class="how-step-title">You decide</div>
+            <div class="how-step-body">Search for what you want. Read what it does, what it costs, what happens next. Buy. No forms. No intake questionnaire. 60 seconds.</div>
+            <span class="how-step-time">60 seconds</span>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-n">2</div>
+          <div>
+            <div class="how-step-title">The doctor calls you</div>
+            <div class="how-step-body">A licensed physician — not a chatbot, not a form — calls within 2 hours. 5 minutes. They ask the right questions, issue your e-prescription, and that's it. No lecture.</div>
+            <span class="how-step-time">Within 2 hours</span>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-n">3</div>
+          <div>
+            <div class="how-step-title">It arrives. Discreetly.</div>
+            <div class="how-step-body">Plain matte box. No brand name outside. No product name. Looks like any other courier. Inside: your protocol card. What to take. When. What to expect.</div>
+            <span class="how-step-time">48 hours</span>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-n">4</div>
+          <div>
+            <div class="how-step-title">One tap to refill</div>
+            <div class="how-step-body">Day 25 we message you on WhatsApp. Same order? One tap YES. Ships today. Your doctor knows your case. No re-intake. Ever.</div>
+            <span class="how-step-time">Every month</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="bottom-cta">
+    <div class="bottom-cta-glow"></div>
+    <div class="bottom-wm">arq</div>
+    <div class="bottom-eyebrow">Get started</div>
+    <h2 class="bottom-title">Everything you've<br>been <em>researching.</em><br>Now legal.</h2>
+    <p class="bottom-sub">26 protocols. Peptides to prescriptions. Doctor in 2 hours. Delivered in 48.</p>
+    <button class="bottom-btn" onclick="openModal()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Start on WhatsApp — it's free
+    </button>
+    <div class="bottom-fine">Licensed physicians · AYUSH compliant · Schedule H certified<br>All products require a valid prescription · Dear One Technologies Pvt Ltd</div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">ar<span>q</span>.clinic</div>
+    <div class="footer-tag">India's biohacker clinic</div>
+    <div class="footer-links">
+      <a class="fl" onclick="showBrowse()">Browse all</a><a class="fl" href="#">Privacy</a>
+      <a class="fl" href="#">How it works</a><a class="fl" href="#">Terms</a>
+      <a class="fl" href="#">For doctors</a><a class="fl" href="#">Contact</a>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Dear One Technologies Pvt Ltd · CIN U86900MH2026PTC467148<br>
+      arq.clinic connects patients with licensed physicians. We are not a pharmacy.<br>
+      All prescription medications require a valid e-prescription from a registered medical practitioner.
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════ BROWSE PAGE ══════════════ -->
+<div class="page" id="browse-page">
+  <div class="browse-page">
+    <button class="prod-back" onclick="showHome()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      Back
+    </button>
+    <h2 class="browse-title">All <em>protocols.</em></h2>
+    <p class="browse-sub">26 products. Every one legally prescribed. Doctor included.</p>
+
+    <div class="browse-cats">
+      <button class="browse-cat on" onclick="filterCat('all',this)">All</button>
+      <button class="browse-cat" onclick="filterCat('Cognition',this)">Cognition</button>
+      <button class="browse-cat" onclick="filterCat('Performance',this)">Performance</button>
+      <button class="browse-cat" onclick="filterCat('Longevity',this)">Longevity</button>
+      <button class="browse-cat" onclick="filterCat('Peptides',this)">Peptides</button>
+      <button class="browse-cat" onclick="filterCat('Body',this)">Body</button>
+      <button class="browse-cat" onclick="filterCat('Feel/Protect',this)">Feel · Protect</button>
+    </div>
+
+    <div id="browseContent"></div>
+  </div>
+</div>
+
+<!-- ══════════════ PRODUCT PAGE ══════════════ -->
+<div class="page" id="product-page">
+  <div class="product-page" id="productContent"></div>
+</div>
+
+<!-- ══════════════ MODAL ══════════════ -->
+<div class="modal-overlay" id="modal" onclick="maybeCloseModal(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <h2 class="modal-title">What are you after?</h2>
+    <p class="modal-sub">Pick a category. Doctor calls within 2 hours. Delivered in 48.</p>
+    <div class="modal-label">I want to —</div>
+    <div class="modal-opts">
+      <button class="modal-opt" onclick="selOpt(this,'think sharper — modafinil or armodafinil')">
+        <span class="opt-icon">🧠</span>
+        <span class="opt-name">Think sharper</span>
+        <span class="opt-sub">Modafinil · Armodafinil · NAD+</span>
+      </button>
+      <button class="modal-opt" onclick="selOpt(this,'perform better — sildenafil, tadalafil or testosterone')">
+        <span class="opt-icon">⚡</span>
+        <span class="opt-name">Perform better</span>
+        <span class="opt-sub">ED · TRT · PT-141</span>
+      </button>
+      <button class="modal-opt" onclick="selOpt(this,'age slower with longevity protocols')">
+        <span class="opt-icon">∞</span>
+        <span class="opt-name">Age slower</span>
+        <span class="opt-sub">Metformin · LDN · Thymosin</span>
+      </button>
+      <button class="modal-opt" onclick="selOpt(this,'start a peptide protocol')">
+        <span class="opt-icon">💉</span>
+        <span class="opt-name">Peptides</span>
+        <span class="opt-sub">BPC-157 · Sermorelin · CJC</span>
+      </button>
+      <button class="modal-opt" onclick="selOpt(this,'look better — hair, skin or weight')">
+        <span class="opt-icon">✦</span>
+        <span class="opt-name">Look better</span>
+        <span class="opt-sub">Hair · Skin · Semaglutide</span>
+      </button>
+      <button class="modal-opt" onclick="selOpt(this,'get started')">
+        <span class="opt-icon">💬</span>
+        <span class="opt-name">Not sure yet</span>
+        <span class="opt-sub">We'll guide you</span>
+      </button>
+    </div>
+    <button class="modal-go" onclick="goWA()">Continue on WhatsApp →</button>
+    <div class="modal-priv">🔒 Completely private · Doctor within 2 hours · Plain packaging</div>
+  </div>
+</div>
+
+<script>
+// ── PRODUCT DATA ──
+const PRODUCTS = [
+  // COGNITION
+  {id:'modafinil',name:'Modafinil',dose:'200mg',cat:'Cognition',kit:'arq / focus',price:1799,unit:'/month',tags:['rx','mbbs'],desc:'The molecule that the IIT crowd has been sourcing from sketchy sites for years. <strong>Schedule H. Legally prescribed.</strong> 12 hours of clean, sustained focus. No crash. No rebound. MBBS call, prescription issued, ships same day.',doctor:'MBBS physician',blood:false,legal:'Schedule H — telemedicine prescribable',keywords:['modafinil','focus','smart drug','nootropic','modalert']},
+  {id:'armodafinil',name:'Armodafinil',dose:'150mg',cat:'Cognition',kit:'arq / focus+',price:1999,unit:'/month',tags:['rx','mbbs'],desc:'The upgraded version. Cleaner than modafinil. Longer half-life. <strong>Less crash. Stronger peak.</strong> The R-enantiomer of modafinil — 150mg does what 200mg modafinil does, but smoother. The biohacker\'s choice.',doctor:'MBBS physician',blood:false,legal:'Schedule H — telemedicine prescribable',keywords:['armodafinil','waklert','artvigil','focus','nootropic']},
+  {id:'nad',name:'NAD+',dose:'500mg NMN oral',cat:'Cognition',kit:'arq / restore',price:2999,unit:'/month',tags:['rx','mbbs'],desc:'<strong>Nicotinamide Mononucleotide.</strong> The Sinclair protocol. Cellular energy, DNA repair, cognitive function. The longevity community\'s daily stack — now properly sourced and physician supervised.',doctor:'MBBS physician',blood:false,legal:'Prescription supplement',keywords:['NAD','NMN','nicotinamide','longevity','cellular']},
+
+  // PERFORMANCE
+  {id:'sildenafil',name:'Sildenafil',dose:'50–100mg',cat:'Performance',kit:'arq / perform',price:999,unit:'/month',tags:['rx','mbbs'],desc:'<strong>Works in 30 minutes. Lasts 4–6 hours.</strong> No awkward chemist. No prescription required upfront — just buy, the doctor calls, your prescription is issued. Ships in plain packaging the same day.',doctor:'MBBS physician',blood:false,legal:'Schedule H — telemedicine prescribable',keywords:['sildenafil','ED','erectile','viagra','performance']},
+  {id:'tadalafil',name:'Tadalafil',dose:'5–20mg',cat:'Performance',kit:'arq / perform+',price:1199,unit:'/month',tags:['rx','mbbs'],desc:'36-hour window. <strong>5mg daily or 20mg on-demand.</strong> Fits your schedule, not the other way. The more forgiving option — less timing pressure, same clinical outcome.',doctor:'MBBS physician',blood:false,legal:'Schedule H — telemedicine prescribable',keywords:['tadalafil','cialis','ED','erectile','daily']},
+  {id:'pt141',name:'PT-141',dose:'Bremelanotide',cat:'Performance',kit:'arq / desire',price:3499,unit:'/month',tags:['rx','peptide'],desc:'<strong>Acts centrally — on desire, not just blood flow.</strong> The peptide that works where sildenafil doesn\'t. For men and women. Prescribed off-label by specialist physicians. Grey market no more.',doctor:'Specialist physician',blood:false,legal:'Physician supervised compounded preparation',keywords:['PT-141','bremelanotide','desire','libido','peptide']},
+  {id:'trt',name:'Testosterone',dose:'TRT protocol',cat:'Performance',kit:'arq / build',price:3499,unit:'/month',tags:['rx','endo','blood'],desc:'<strong>Low energy. Low libido. Muscle loss. Brain fog.</strong> If you\'ve done the reading, you know. Endocrinologist prescribed. Blood panel via home collection — testosterone, LH, FSH, estradiol, PSA, hematocrit. The full protocol.',doctor:'Endocrinologist',blood:true,legal:'Schedule H — endocrinologist prescription',keywords:['testosterone','TRT','low T','hormone','androgen']},
+
+  // LONGEVITY
+  {id:'metformin',name:'Metformin',dose:'500–1000mg',cat:'Longevity',kit:'arq / extend',price:499,unit:'/month',tags:['rx','mbbs'],desc:'<strong>The Attia longevity protocol.</strong> Pre-diabetes, PCOS, cellular aging. One of the most researched longevity molecules in existence. MBBS prescription. Ships the same day.',doctor:'MBBS physician',blood:false,legal:'Schedule H — telemedicine prescribable',keywords:['metformin','longevity','anti-aging','blood sugar','Attia']},
+  {id:'ldn',name:'Naltrexone (LDN)',dose:'1.5–4.5mg',cat:'Longevity',kit:'arq / immune',price:999,unit:'/month',tags:['rx','mbbs'],desc:'<strong>Low-dose naltrexone.</strong> The longevity community\'s quiet favourite. Immune modulation, mood, energy, inflammation. Compounded at the correct sub-therapeutic dose. Finally available properly in India.',doctor:'MBBS physician',blood:false,legal:'Compounded prescription preparation',keywords:['naltrexone','LDN','immune','inflammation','longevity']},
+  {id:'thymosin',name:'Thymosin Alpha-1',dose:'1.6mg vial',cat:'Longevity',kit:'arq / immune+',price:4999,unit:'/month',tags:['rx','peptide'],desc:'Approved drug in 30+ countries. <strong>T-cell regulation. Immune modulation. Anti-aging immune support.</strong> Prescribed off-label. The serious immune protocol for people who know what it does.',doctor:'Specialist physician',blood:false,legal:'Approved drug — off-label prescription',keywords:['thymosin','alpha-1','immune','T-cell','peptide']},
+  {id:'tesamorelin',name:'Tesamorelin',dose:'2mg daily',cat:'Longevity',kit:'arq / compose',price:5999,unit:'/month',tags:['rx','endo','peptide'],desc:'<strong>GH peptide for abdominal fat reduction, muscle mass, cognitive health.</strong> FDA-approved for a narrow indication, widely used off-label for body composition and longevity. Endocrinologist supervised.',doctor:'Endocrinologist',blood:false,legal:'Approved drug — off-label prescription',keywords:['tesamorelin','GH','growth hormone','fat','body composition']},
+
+  // PEPTIDES
+  {id:'bpc157',name:'BPC-157',dose:'Oral / injectable',cat:'Peptides',kit:'arq / recover',price:3999,unit:'/month',tags:['peptide','grey'],desc:'<strong>Body Protection Compound.</strong> Gut healing, tendon repair, injury recovery, inflammation. The most talked-about peptide in the biohacking world. Physician supervised compounded preparation. Legal. Clean source.',doctor:'Specialist physician',blood:false,legal:'Physician supervised — compounded preparation',keywords:['BPC-157','BPC157','recovery','gut','healing','peptide']},
+  {id:'sermorelin',name:'Sermorelin',dose:'300–500mcg nightly',cat:'Peptides',kit:'arq / release',price:3999,unit:'/month',tags:['rx','peptide'],desc:'<strong>Growth hormone secretagogue. Nightly injection.</strong> Stimulates your pituitary to release natural GH — not synthetic HGH. Muscle recovery, sleep quality, body composition. The clean, legal GH path.',doctor:'Endocrinologist',blood:false,legal:'Prescription — off-label use',keywords:['sermorelin','GH','growth hormone','muscle','sleep','peptide']},
+  {id:'cjc',name:'CJC-1295 + Ipamorelin',dose:'Combination protocol',cat:'Peptides',kit:'arq / build',price:5999,unit:'/month',tags:['peptide','grey'],desc:'<strong>The gold-standard GH peptide stack.</strong> 3–5x growth hormone release. Muscle, fat loss, sleep quality, recovery. CJC-1295 provides sustained GH stimulation; Ipamorelin adds the pulse. Physician supervised.',doctor:'Specialist physician',blood:false,legal:'Physician supervised — compounded preparation',keywords:['CJC-1295','ipamorelin','GH','growth hormone','stack','peptide']},
+  {id:'tb500',name:'TB-500',dose:'2–2.5mg twice weekly',cat:'Peptides',kit:'arq / heal',price:4999,unit:'/month',tags:['peptide','grey'],desc:'<strong>Thymosin Beta-4 fragment. Tissue repair, wound healing, inflammation.</strong> Often stacked with BPC-157 for accelerated injury recovery. Physician supervised compounded preparation.',doctor:'Specialist physician',blood:false,legal:'Physician supervised — compounded preparation',keywords:['TB-500','thymosin','repair','healing','inflammation','peptide']},
+  {id:'aod',name:'AOD-9604',dose:'300mcg daily',cat:'Peptides',kit:'arq / lean',price:3999,unit:'/month',tags:['peptide'],desc:'<strong>GH fragment peptide. Fat metabolism without GH side effects.</strong> No blood sugar impact. No IGF-1 elevation. Pure lipolysis. Body recomposition protocol for the serious biohacker.',doctor:'Specialist physician',blood:false,legal:'Physician supervised — compounded preparation',keywords:['AOD-9604','AOD','fat loss','lipolysis','peptide']},
+
+  // BODY
+  {id:'semaglutide',name:'Semaglutide',dose:'Generic — weekly injection',cat:'Body',kit:'arq / lean',price:2499,unit:'/month',tags:['rx','endo','blood'],desc:'<strong>Generic Ozempic. Patent expired March 2026.</strong> GLP-1 agonist. The clinically validated weight loss protocol. Endocrinologist prescription. HbA1c + kidney panel recommended. Weekly injection. Significant results in 8–12 weeks.',doctor:'Endocrinologist',blood:true,legal:'CDSCO approved — endocrinologist prescription',keywords:['semaglutide','ozempic','wegovy','GLP-1','weight loss','fat']},
+  {id:'finasteride',name:'Finasteride',dose:'1mg daily',cat:'Body',kit:'arq / retain',price:799,unit:'/month',tags:['rx','mbbs'],desc:'<strong>1mg daily. Stops DHT-driven hair loss.</strong> Results visible in 90 days. The most evidence-backed hair loss treatment available. MBBS prescription. No waiting room. No awkward pharmacist.',doctor:'MBBS physician',blood:false,legal:'Schedule H — telemedicine prescribable',keywords:['finasteride','hair loss','DHT','baldness','propecia','hair']},
+  {id:'minoxidil',name:'Minoxidil',dose:'5% topical / oral low-dose',cat:'Body',kit:'arq / retain+',price:699,unit:'/month',tags:['rx','mbbs'],desc:'<strong>Topical 5% or oral low-dose.</strong> Regrowth support. The natural stack with finasteride for maximum effect. Prescription formulation — stronger and better quality than OTC options.',doctor:'MBBS physician',blood:false,legal:'Schedule H — telemedicine prescribable',keywords:['minoxidil','hair growth','regrowth','rogaine','hair']},
+  {id:'isotretinoin',name:'Isotretinoin',dose:'20mg daily',cat:'Body',kit:'arq / clear',price:1499,unit:'/month',tags:['rx','mbbs','blood'],desc:'<strong>The real acne solution.</strong> Not a topical. Not a cycle. A 6-month protocol that ends persistent acne. Prescription grade. Dermatologist-level care via telemedicine. Blood test required — liver, lipids.',doctor:'MBBS physician',blood:true,legal:'Schedule H — requires blood monitoring',keywords:['isotretinoin','acne','accutane','roaccutane','skin','clear']},
+  {id:'tretinoin',name:'Tretinoin',dose:'0.025–0.05% cream',cat:'Body',kit:'arq / glow',price:899,unit:'/month',tags:['rx','mbbs'],desc:'<strong>Prescription retinoid. The real stuff.</strong> Acne, texture, hyperpigmentation, anti-aging. Not the watered-down OTC retinol. MBBS prescription. Monthly supply. Consistent results.',doctor:'MBBS physician',blood:false,legal:'Schedule H — telemedicine prescribable',keywords:['tretinoin','retinoid','acne','skin','texture','anti-aging','retin-A']},
+
+  // FEEL / PROTECT
+  {id:'thc',name:'THC · CBD Oil',dose:'Vijaya extract, 30ml',cat:'Feel/Protect',kit:'arq / unwind',price:2999,unit:'/month',tags:['rx'],desc:'<strong>AYUSH-licensed Vijaya extract.</strong> The legal high that nobody knows is legal. Sleep, pain, stress, mood. BAMS vaidya consultation — usually under 5 minutes. Discreetly packaged. Finally a clean source.',doctor:'BAMS vaidya',blood:false,legal:'AYUSH licensed — BAMS prescription',keywords:['THC','CBD','cannabis','Vijaya','hemp','sleep','pain']},
+  {id:'ocp',name:'OCP',dose:'28-day pack',cat:'Feel/Protect',kit:'arq / protect',price:499,unit:'/month',tags:['rx','mbbs'],desc:'<strong>Oral contraceptive pill.</strong> Monthly supply. No questions. No judgement. No one asking why you want it. Just your prescription and your privacy. MBBS consultation included.',doctor:'MBBS physician',blood:false,legal:'Schedule H — telemedicine prescribable',keywords:['OCP','contraceptive','pill','birth control']},
+  {id:'prep',name:'PrEP',dose:'Tenofovir/FTC daily',cat:'Feel/Protect',kit:'arq / shield',price:1999,unit:'/month',tags:['rx','mbbs'],desc:'<strong>HIV pre-exposure prophylaxis.</strong> Daily pill. Monthly supply. MBBS consultation — completely judgment-free. Finally available online in India with the discretion it deserves.',doctor:'MBBS physician',blood:false,legal:'Schedule H — telemedicine prescribable',keywords:['PrEP','HIV','prevention','Truvada']},
+  {id:'sertraline',name:'Sertraline',dose:'50mg',cat:'Feel/Protect',kit:'arq / balance',price:699,unit:'/month',tags:['rx'],desc:'<strong>Anxiety, depression, low mood.</strong> The psychiatrist consultation you\'ve been putting off — now in a 15-minute call on WhatsApp. No waiting room. No stigma. Just the conversation you needed to have.',doctor:'Psychiatrist',blood:false,legal:'Schedule H — psychiatrist prescription',keywords:['sertraline','SSRI','anxiety','depression','mood','mental health']},
+  {id:'melatonin',name:'Melatonin',dose:'5mg+',cat:'Feel/Protect',kit:'arq / sleep',price:499,unit:'/month',tags:['rx','mbbs'],desc:'<strong>High-dose prescription melatonin.</strong> Sleep architecture, circadian reset, jet lag protocol. Non-habit forming. Prescription strength — significantly more effective than the OTC versions.',doctor:'MBBS physician',blood:false,legal:'Prescription formulation',keywords:['melatonin','sleep','circadian','jet lag']},
+];
+
+// ── HELPERS ──
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function showHome(){showPage('home-page');clearSearch()}
+function showBrowse(){showPage('browse-page');renderBrowse('all')}
+function openModal(){document.getElementById('modal').classList.add('open')}
+function maybeCloseModal(e){if(e.target.id==='modal')closeModal()}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+
+// ── SEARCH ──
+function handleSearch(val){
+  const q=val.trim().toLowerCase();
+  const sugs=document.getElementById('suggestions');
+  const results=document.getElementById('searchResults');
+  if(!q){sugs.style.display='flex';results.classList.remove('visible');return}
+  sugs.style.display='none';
+  results.classList.add('visible');
+
+  const matches=PRODUCTS.filter(p=>{
+    return p.name.toLowerCase().includes(q)||
+           p.cat.toLowerCase().includes(q)||
+           (p.keywords||[]).some(k=>k.toLowerCase().includes(q))||
+           p.desc.toLowerCase().includes(q);
+  });
+
+  const label=document.getElementById('resultsLabel');
+  const items=document.getElementById('resultItems');
+
+  label.textContent=matches.length
+    ?`${matches.length} result${matches.length!==1?'s':''} for "${val}"`
+    :`No results for "${val}"`;
+
+  if(!matches.length){
+    items.innerHTML=`<div class="no-results"><strong>We don't have that yet.</strong>Tell us on WhatsApp — we might be adding it soon.</div>`;
+    return;
+  }
+
+  items.innerHTML=matches.map(p=>`
+    <div class="result-item" onclick="showProduct('${p.id}')">
+      <div class="result-left">
+        <div class="result-name">${p.name}</div>
+        <div class="result-cat">${p.cat} · ${p.dose}</div>
+      </div>
+      <div class="result-right">
+        <div class="result-price">₹${p.price.toLocaleString('en-IN')}</div>
+        <div class="result-unit">${p.unit}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function searchFor(term){
+  const input=document.getElementById('searchInput');
+  input.value=term;
+  handleSearch(term);
+  input.focus();
+}
+
+function clearSearch(){
+  const input=document.getElementById('searchInput');
+  input.value='';
+  handleSearch('');
+  input.focus();
+}
+
+// ── PRODUCT PAGE ──
+function showProduct(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(!p)return;
+  showPage('product-page');
+
+  const tagHTML=p.tags.map(t=>{
+    const map={
+      rx:'<span class="prod-tag t-rx">Rx required</span>',
+      mbbs:'<span class="prod-tag t-mbbs">MBBS call</span>',
+      endo:'<span class="prod-tag t-endo">Endocrinologist</span>',
+      blood:'<span class="prod-tag t-blood">Blood test required</span>',
+      peptide:'<span class="prod-tag t-peptide">Peptide protocol</span>',
+      grey:'<span class="prod-tag t-grey">Physician supervised</span>',
+    };
+    return map[t]||'';
+  }).join('');
+
+  document.getElementById('productContent').innerHTML=`
+    <button class="prod-back" onclick="history.back();showBrowse()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      Back
+    </button>
+
+    <div class="prod-eyebrow">${p.cat}</div>
+    <h1 class="prod-name">${p.name}</h1>
+    <div class="prod-kit">${p.kit} · ${p.dose}</div>
+    <div class="prod-rule"></div>
+
+    <div class="prod-tags">${tagHTML}</div>
+
+    <p class="prod-desc">${p.desc}</p>
+
+    <div class="prod-price-block">
+      <div class="prod-price-label">Monthly price</div>
+      <div class="prod-price-num">₹${p.price.toLocaleString('en-IN')}</div>
+      <div class="prod-price-unit">${p.unit} · consultation included · free delivery</div>
+      <div class="prod-consult">
+        <strong>Doctor included:</strong> ${p.doctor} calls you within 2 hours of purchase.
+        ${p.blood?'Blood test booking included — home collection via Suburban Diagnostics.':'No blood test required for this protocol.'}
+      </div>
+    </div>
+
+    <div class="prod-how">
+      <div class="prod-how-title">What happens next</div>
+      <div class="prod-steps">
+        <div class="prod-step">
+          <div class="prod-step-n">1</div>
+          <div class="prod-step-text">
+            <strong>You buy.</strong> Takes 60 seconds. Pay via UPI or card.
+            <span class="prod-step-time">Now</span>
+          </div>
+        </div>
+        <div class="prod-step">
+          <div class="prod-step-n">2</div>
+          <div class="prod-step-text">
+            <strong>Doctor calls.</strong> ${p.doctor}. 5–10 minutes. Your e-prescription is issued.
+            <span class="prod-step-time">Within 2 hours</span>
+          </div>
+        </div>
+        ${p.blood?`<div class="prod-step">
+          <div class="prod-step-n">3</div>
+          <div class="prod-step-text">
+            <strong>Blood test.</strong> Suburban home collection booked automatically. Results reviewed by your doctor.
+            <span class="prod-step-time">Next morning</span>
+          </div>
+        </div>`:''}
+        <div class="prod-step">
+          <div class="prod-step-n">${p.blood?4:3}</div>
+          <div class="prod-step-text">
+            <strong>Shipped.</strong> Plain matte box. No brand name. No product name visible. Your address, that's it.
+            <span class="prod-step-time">Same day</span>
+          </div>
+        </div>
+        <div class="prod-step">
+          <div class="prod-step-n">${p.blood?5:4}</div>
+          <div class="prod-step-text">
+            <strong>At your door.</strong> Mumbai, Delhi, Bangalore. Track on WhatsApp.
+            <span class="prod-step-time">Within 48 hours</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="prod-cta" onclick="openModal()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Get ${p.name} on WhatsApp
+    </button>
+
+    <p class="prod-priv">🔒 Plain packaging · Discreet billing · Private WhatsApp</p>
+
+    <div class="prod-legal">
+      <strong>Legal status:</strong> ${p.legal}. All arq products require a valid e-prescription from a registered medical practitioner. arq.clinic connects patients with licensed physicians — we are not a pharmacy. Dear One Technologies Pvt Ltd · CIN U86900MH2026PTC467148
+    </div>
+  `;
+}
+
+// ── BROWSE ──
+function renderBrowse(cat){
+  const cats=['Cognition','Performance','Longevity','Peptides','Body','Feel/Protect'];
+  const filtered=cat==='all'?PRODUCTS:PRODUCTS.filter(p=>p.cat===cat);
+  const grouped={};
+  filtered.forEach(p=>{
+    if(!grouped[p.cat])grouped[p.cat]=[];
+    grouped[p.cat].push(p);
+  });
+
+  let html='';
+  (cat==='all'?cats:Object.keys(grouped)).forEach(c=>{
+    const prods=grouped[c];
+    if(!prods||!prods.length)return;
+    html+=`<div class="browse-section-label">${c}</div>
+    <div class="browse-grid">
+    ${prods.map(p=>`
+      <div class="browse-item" onclick="showProduct('${p.id}')">
+        <div class="bi-left">
+          <div class="bi-name">${p.name}</div>
+          <div class="bi-kit">${p.kit} · ${p.dose}</div>
+        </div>
+        <div class="bi-right">
+          <div class="bi-price">₹${p.price.toLocaleString('en-IN')}</div>
+          <div class="bi-unit">${p.unit}</div>
+          <div class="bi-arr">→</div>
+        </div>
+      </div>
+    `).join('')}
+    </div>`;
+  });
+  document.getElementById('browseContent').innerHTML=html;
+}
+
+function filterCat(cat,btn){
+  document.querySelectorAll('.browse-cat').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderBrowse(cat);
+}
+
+// ── MODAL ──
+function selOpt(btn,val){
+  document.querySelectorAll('.modal-opt').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  btn._val=val;
+}
+function goWA(){
+  const sel=document.querySelector('.modal-opt.sel');
+  const msg=encodeURIComponent('Hi, I want to '+(sel?sel._val:'get started'));
+  window.open('https://wa.me/919999999999?text='+msg,'_blank');
+  closeModal();
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeModal();
+});
+</script>
+</body>
+</html>

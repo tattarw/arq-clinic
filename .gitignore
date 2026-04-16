@@ -1,0 +1,8 @@
+.deploy-keys
+.DS_Store
+*.command
+railway-deploy/
+Dockerfile
+docker-compose.yml
+.railwayignore
+node_modules/

@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arq. — Your body. Your call.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#050505;
+  --bg2:#0a0a0a;
+  --surface:#111;
+  --card:#141414;
+  --card-hover:#1a1a1a;
+  --border:rgba(255,255,255,0.06);
+  --border-hover:rgba(255,255,255,0.12);
+
+  --white:#e8e4dd;
+  --white-90:rgba(232,228,221,0.9);
+  --white-60:rgba(232,228,221,0.6);
+  --white-30:rgba(232,228,221,0.3);
+  --white-12:rgba(232,228,221,0.12);
+  --white-06:rgba(232,228,221,0.06);
+
+  --gold:#c9a050;
+  --gold-dim:rgba(201,160,80,0.6);
+  --gold-glow:rgba(201,160,80,0.08);
+  --gold-border:rgba(201,160,80,0.2);
+
+  --green:#3ecf71;
+  --green-dim:rgba(62,207,113,0.15);
+  --blue:#5b9cf5;
+  --blue-dim:rgba(91,156,245,0.12);
+  --purple:#a78bfa;
+  --purple-dim:rgba(167,139,250,0.12);
+  --red:#f87171;
+  --red-dim:rgba(248,113,113,0.12);
+  --cyan:#67e8f9;
+  --cyan-dim:rgba(103,232,249,0.12);
+  --orange:#fb923c;
+  --orange-dim:rgba(251,146,60,0.12);
+
+  --sans:'Inter',system-ui,sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+  --mono:'JetBrains Mono','SF Mono',monospace;
+
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{background:var(--bg);color:var(--white);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden}
+
+/* ─── NOISE TEXTURE ─── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;
+}
+
+::selection{background:var(--gold);color:var(--bg)}
+
+a{color:inherit;text-decoration:none}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--white-12);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--white-30)}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:60px;padding:0 clamp(20px,4vw,48px);
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(5,5,5,0.8);
+  backdrop-filter:blur(40px) saturate(180%);
+  -webkit-backdrop-filter:blur(40px) saturate(180%);
+  border-bottom:1px solid var(--border);
+  transition:all 0.4s var(--ease);
+}
+.nav.scrolled{background:rgba(5,5,5,0.95);border-color:var(--border-hover)}
+
+.nav-logo{
+  font-family:var(--serif);font-size:22px;font-weight:500;
+  letter-spacing:0.02em;color:var(--white);
+  cursor:pointer;transition:opacity 0.2s;
+}
+.nav-logo:hover{opacity:0.8}
+.nav-logo span{color:var(--gold)}
+
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-link{
+  font-size:13px;font-weight:500;letter-spacing:0.03em;
+  color:var(--white-60);transition:color 0.2s;cursor:pointer;
+}
+.nav-link:hover{color:var(--white)}
+
+.nav-cta{
+  display:flex;align-items:center;gap:8px;
+  background:var(--gold);color:var(--bg);
+  padding:9px 20px;border-radius:6px;
+  font-size:13px;font-weight:600;letter-spacing:0.02em;
+  border:none;cursor:pointer;transition:all 0.2s;
+}
+.nav-cta:hover{background:#d4ad5e;transform:translateY(-1px)}
+.nav-cta svg{width:16px;height:16px}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:120px clamp(20px,5vw,48px) 80px;
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+
+/* Ambient glow */
+.hero::after{
+  content:'';position:absolute;
+  width:600px;height:600px;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,var(--gold-glow) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px;border-radius:100px;
+  background:var(--gold-glow);
+  border:1px solid var(--gold-border);
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:32px;
+  opacity:0;animation:fadeUp 0.8s 0.2s var(--ease) forwards;
+}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+.hero-h1{
+  font-family:var(--serif);
+  font-size:clamp(48px,8vw,96px);
+  font-weight:400;line-height:1.0;
+  letter-spacing:-0.03em;
+  color:var(--white);
+  margin-bottom:24px;
+  opacity:0;animation:fadeUp 0.8s 0.35s var(--ease) forwards;
+}
+.hero-h1 em{font-style:italic;color:var(--gold)}
+
+.hero-sub{
+  font-size:clamp(15px,1.8vw,18px);
+  color:var(--white-60);line-height:1.6;
+  max-width:520px;margin:0 auto 48px;
+  opacity:0;animation:fadeUp 0.8s 0.5s var(--ease) forwards;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ─── SEARCH ─── */
+.search-container{
+  width:100%;max-width:640px;
+  position:relative;z-index:10;
+  opacity:0;animation:fadeUp 0.8s 0.65s var(--ease) forwards;
+}
+
+.search-box{
+  width:100%;
+  background:var(--surface);
+  border:1px solid var(--border-hover);
+  border-radius:12px;
+  display:flex;align-items:center;
+  padding:0 20px;height:56px;
+  transition:all 0.3s var(--ease);
+  gap:12px;
+}
+.search-box:focus-within{
+  border-color:var(--gold-border);
+  box-shadow:0 0 0 4px var(--gold-glow),0 20px 60px rgba(0,0,0,0.4);
+  background:var(--card);
+}
+
+.search-box svg{color:var(--white-30);flex-shrink:0;transition:color 0.2s}
+.search-box:focus-within svg{color:var(--gold)}
+
+.search-box input{
+  flex:1;background:none;border:none;outline:none;
+  font-family:var(--sans);font-size:15px;
+  color:var(--white);font-weight:400;
+}
+.search-box input::placeholder{color:var(--white-30)}
+
+.search-kbd{
+  font-family:var(--mono);font-size:10px;
+  color:var(--white-30);
+  padding:3px 8px;border-radius:4px;
+  border:1px solid var(--border);
+  background:var(--bg2);
+  flex-shrink:0;
+}
+
+/* Quick tags */
+.quick-tags{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:8px;margin-top:16px;
+  opacity:0;animation:fadeUp 0.8s 0.8s var(--ease) forwards;
+}
+
+.qtag{
+  padding:6px 14px;border-radius:6px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:0.02em;
+  background:var(--white-06);
+  border:1px solid var(--border);
+  color:var(--white-60);
+  cursor:pointer;transition:all 0.2s;
+}
+.qtag:hover{
+  background:var(--gold-glow);border-color:var(--gold-border);
+  color:var(--gold);
+}
+
+/* Stats bar */
+.hero-stats{
+  display:flex;align-items:center;gap:0;
+  margin-top:56px;
+  opacity:0;animation:fadeUp 0.8s 0.95s var(--ease) forwards;
+}
+.hero-stat{
+  display:flex;flex-direction:column;align-items:center;
+  padding:0 clamp(16px,3vw,40px);
+}
+.hero-stat:not(:last-child){border-right:1px solid var(--border)}
+.hero-stat-val{
+  font-family:var(--mono);font-size:clamp(20px,2.5vw,28px);
+  font-weight:600;color:var(--white);letter-spacing:-0.02em;
+}
+.hero-stat-label{
+  font-size:11px;color:var(--white-30);
+  letter-spacing:0.06em;text-transform:uppercase;
+  margin-top:4px;
+}
+
+/* ═══════════════════════════════════════
+   SECTION STYLES
+═══════════════════════════════════════ */
+section{padding:clamp(80px,12vh,140px) clamp(20px,5vw,48px)}
+
+.section-tag{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+}
+
+.section-h2{
+  font-family:var(--serif);
+  font-size:clamp(32px,5vw,56px);
+  font-weight:400;line-height:1.1;
+  letter-spacing:-0.02em;
+  color:var(--white);margin-bottom:20px;
+}
+.section-h2 em{font-style:italic;color:var(--gold)}
+
+.section-p{
+  font-size:clamp(15px,1.5vw,17px);
+  color:var(--white-60);max-width:600px;
+  line-height:1.65;
+}
+
+/* ═══════════════════════════════════════
+   PROTOCOLS (Products)
+═══════════════════════════════════════ */
+.protocols{background:var(--bg)}
+
+.proto-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  margin-top:48px;
+}
+
+.proto-card{
+  background:var(--card);
+  padding:28px;
+  cursor:pointer;
+  transition:all 0.3s var(--ease);
+  position:relative;
+}
+.proto-card:hover{background:var(--card-hover)}
+.proto-card:hover .proto-arrow{opacity:1;transform:translateX(0)}
+
+.proto-cat{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:4px 10px;border-radius:4px;
+  margin-bottom:16px;
+}
+.proto-cat.cognition{color:var(--blue);background:var(--blue-dim)}
+.proto-cat.performance{color:var(--orange);background:var(--orange-dim)}
+.proto-cat.longevity{color:var(--green);background:var(--green-dim)}
+.proto-cat.peptides{color:var(--purple);background:var(--purple-dim)}
+.proto-cat.body{color:var(--red);background:var(--red-dim)}
+.proto-cat.otc{color:var(--cyan);background:var(--cyan-dim)}
+
+.proto-name{
+  font-family:var(--sans);font-size:17px;font-weight:600;
+  color:var(--white);margin-bottom:4px;
+  letter-spacing:-0.01em;
+}
+
+.proto-dose{
+  font-family:var(--mono);font-size:12px;
+  color:var(--white-30);margin-bottom:16px;
+}
+
+.proto-bottom{
+  display:flex;align-items:flex-end;justify-content:space-between;
+}
+
+.proto-price{
+  font-family:var(--mono);font-size:13px;color:var(--white-60);
+}
+.proto-price strong{
+  font-size:20px;font-weight:600;color:var(--white);
+  letter-spacing:-0.02em;
+}
+
+.proto-tag{
+  font-family:var(--mono);font-size:10px;
+  color:var(--white-30);letter-spacing:0.04em;
+  padding:3px 8px;border-radius:3px;
+  background:var(--white-06);
+}
+
+.proto-arrow{
+  position:absolute;top:28px;right:28px;
+  color:var(--gold);opacity:0;
+  transform:translateX(-4px);
+  transition:all 0.3s var(--ease);
+}
+
+/* ═══════════════════════════════════════
+   HOW IT WORKS
+═══════════════════════════════════════ */
+.how{background:var(--bg2)}
+
+.how-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;margin-top:56px;
+  border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+}
+
+.how-step{
+  padding:36px 28px;
+  border-right:1px solid var(--border);
+  position:relative;
+  transition:background 0.3s;
+}
+.how-step:last-child{border-right:none}
+.how-step:hover{background:var(--card)}
+
+.how-num{
+  font-family:var(--mono);font-size:48px;font-weight:300;
+  color:var(--white-06);line-height:1;
+  margin-bottom:20px;
+}
+
+.how-title{
+  font-size:16px;font-weight:600;color:var(--white);
+  margin-bottom:8px;
+}
+
+.how-desc{
+  font-size:13px;color:var(--white-30);line-height:1.55;
+  margin-bottom:16px;
+}
+
+.how-time{
+  font-family:var(--mono);font-size:11px;
+  color:var(--gold);letter-spacing:0.04em;
+}
+
+@media(max-width:900px){
+  .how-steps{grid-template-columns:1fr 1fr}
+  .how-step{border-bottom:1px solid var(--border)}
+  .how-step:nth-child(2){border-right:none}
+}
+@media(max-width:560px){
+  .how-steps{grid-template-columns:1fr}
+  .how-step{border-right:none}
+}
+
+/* ═══════════════════════════════════════
+   TRUST BAR
+═══════════════════════════════════════ */
+.trust{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.trust-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:48px;max-width:900px;margin:0 auto;
+}
+
+.trust-item{text-align:center}
+
+.trust-icon{
+  width:48px;height:48px;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+  border-radius:10px;
+  background:var(--gold-glow);
+  border:1px solid var(--gold-border);
+  color:var(--gold);
+}
+
+.trust-title{
+  font-size:15px;font-weight:600;color:var(--white);
+  margin-bottom:6px;
+}
+
+.trust-desc{
+  font-size:13px;color:var(--white-30);line-height:1.5;
+  max-width:280px;margin:0 auto;
+}
+
+@media(max-width:640px){
+  .trust-grid{grid-template-columns:1fr;gap:32px}
+}
+
+/* ═══════════════════════════════════════
+   CATEGORIES
+═══════════════════════════════════════ */
+.categories{background:var(--bg2)}
+
+.cat-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;margin-top:48px;
+}
+
+.cat-card{
+  padding:32px;border-radius:12px;
+  background:var(--card);
+  border:1px solid var(--border);
+  cursor:pointer;
+  transition:all 0.3s var(--ease);
+  position:relative;overflow:hidden;
+}
+.cat-card:hover{
+  border-color:var(--border-hover);
+  transform:translateY(-2px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+.cat-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  opacity:0;transition:opacity 0.3s;
+}
+.cat-card:hover::before{opacity:1}
+.cat-card.c-cognition::before{background:var(--blue)}
+.cat-card.c-performance::before{background:var(--orange)}
+.cat-card.c-longevity::before{background:var(--green)}
+.cat-card.c-peptides::before{background:var(--purple)}
+.cat-card.c-body::before{background:var(--red)}
+.cat-card.c-supplements::before{background:var(--cyan)}
+
+.cat-icon{
+  width:40px;height:40px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;font-size:18px;
+}
+.c-cognition .cat-icon{background:var(--blue-dim);color:var(--blue)}
+.c-performance .cat-icon{background:var(--orange-dim);color:var(--orange)}
+.c-longevity .cat-icon{background:var(--green-dim);color:var(--green)}
+.c-peptides .cat-icon{background:var(--purple-dim);color:var(--purple)}
+.c-body .cat-icon{background:var(--red-dim);color:var(--red)}
+.c-supplements .cat-icon{background:var(--cyan-dim);color:var(--cyan)}
+
+.cat-name{
+  font-size:16px;font-weight:600;color:var(--white);
+  margin-bottom:8px;letter-spacing:0.01em;
+}
+
+.cat-count{
+  font-family:var(--mono);font-size:11px;
+  color:var(--white-30);margin-bottom:12px;
+}
+
+.cat-list{
+  font-size:13px;color:var(--white-30);line-height:1.6;
+}
+
+@media(max-width:900px){.cat-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.cat-grid{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════
+   MOLECULE HIGHLIGHT
+═══════════════════════════════════════ */
+.molecule{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+}
+
+.mol-showcase{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:64px;align-items:center;
+  margin-top:56px;
+}
+
+.mol-data{display:flex;flex-direction:column;gap:24px}
+
+.mol-name{
+  font-family:var(--mono);font-size:13px;font-weight:500;
+  color:var(--gold);letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+
+.mol-title{
+  font-family:var(--serif);font-size:clamp(28px,4vw,42px);
+  font-weight:400;color:var(--white);letter-spacing:-0.02em;
+  line-height:1.15;
+}
+
+.mol-desc{font-size:15px;color:var(--white-60);line-height:1.65}
+
+.mol-specs{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+
+.mol-spec{
+  padding:16px;border-radius:8px;
+  background:var(--card);
+  border:1px solid var(--border);
+}
+.mol-spec-label{
+  font-family:var(--mono);font-size:10px;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--white-30);margin-bottom:4px;
+}
+.mol-spec-val{
+  font-size:15px;font-weight:600;color:var(--white);
+}
+
+.mol-visual{
+  aspect-ratio:1;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+
+/* Animated molecular grid */
+.mol-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size:40px 40px;
+  opacity:0.5;
+}
+
+.mol-formula{
+  font-family:var(--mono);font-size:clamp(48px,6vw,80px);
+  font-weight:300;color:var(--white-12);
+  letter-spacing:-0.04em;
+  z-index:1;
+}
+
+.mol-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:8px;
+  background:var(--gold);color:var(--bg);
+  font-size:14px;font-weight:600;
+  border:none;cursor:pointer;transition:all 0.2s;
+}
+.mol-cta:hover{background:#d4ad5e;transform:translateY(-1px)}
+
+@media(max-width:768px){
+  .mol-showcase{grid-template-columns:1fr}
+  .mol-visual{max-height:300px}
+}
+
+/* ═══════════════════════════════════════
+   PROMISE BAR
+═══════════════════════════════════════ */
+.promise{
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:clamp(48px,6vh,80px) clamp(20px,5vw,48px);
+}
+
+.promise-inner{
+  max-width:900px;margin:0 auto;
+  text-align:center;
+}
+
+.promise-h{
+  font-family:var(--serif);
+  font-size:clamp(24px,3.5vw,40px);
+  font-weight:400;color:var(--white);
+  letter-spacing:-0.02em;
+  margin-bottom:40px;line-height:1.2;
+}
+.promise-h em{font-style:italic;color:var(--gold)}
+
+.promise-items{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;
+}
+
+.promise-item{
+  padding:0 clamp(12px,2vw,28px);
+  border-right:1px solid var(--border);
+}
+.promise-item:last-child{border-right:none}
+
+.promise-val{
+  font-family:var(--mono);font-size:clamp(18px,2.5vw,28px);
+  font-weight:600;color:var(--gold);
+  margin-bottom:4px;
+}
+.promise-label{
+  font-size:12px;color:var(--white-30);
+  line-height:1.4;
+}
+
+@media(max-width:640px){
+  .promise-items{grid-template-columns:1fr 1fr;gap:24px 0}
+  .promise-item:nth-child(2){border-right:none}
+  .promise-item{border-bottom:none}
+}
+
+/* ═══════════════════════════════════════
+   CTA SECTION
+═══════════════════════════════════════ */
+.cta-section{
+  background:var(--bg);
+  text-align:center;
+  padding:clamp(100px,14vh,160px) clamp(20px,5vw,48px);
+  position:relative;overflow:hidden;
+}
+
+.cta-section::before{
+  content:'';position:absolute;
+  width:800px;height:400px;
+  bottom:0;left:50%;transform:translateX(-50%);
+  background:radial-gradient(ellipse,var(--gold-glow) 0%,transparent 60%);
+  pointer-events:none;
+}
+
+.cta-eyebrow{
+  font-family:var(--mono);font-size:11px;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:24px;
+}
+
+.cta-h{
+  font-family:var(--serif);
+  font-size:clamp(36px,6vw,64px);
+  font-weight:400;line-height:1.1;
+  letter-spacing:-0.03em;
+  color:var(--white);margin-bottom:16px;
+}
+.cta-h em{font-style:italic;color:var(--gold)}
+
+.cta-sub{
+  font-size:16px;color:var(--white-30);
+  margin-bottom:40px;
+}
+
+.cta-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 36px;border-radius:10px;
+  background:var(--gold);color:var(--bg);
+  font-size:15px;font-weight:600;letter-spacing:0.01em;
+  border:none;cursor:pointer;
+  transition:all 0.3s var(--ease);
+  position:relative;z-index:1;
+}
+.cta-btn:hover{
+  background:#d4ad5e;
+  transform:translateY(-2px);
+  box-shadow:0 12px 40px rgba(201,160,80,0.25);
+}
+.cta-btn svg{width:20px;height:20px}
+
+.cta-fine{
+  font-size:12px;color:var(--white-12);
+  margin-top:20px;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer{
+  border-top:1px solid var(--border);
+  padding:48px clamp(20px,5vw,48px);
+  background:var(--bg);
+}
+
+.footer-top{
+  display:flex;justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:40px;
+}
+
+.footer-brand .nav-logo{font-size:20px}
+.footer-tagline{
+  font-size:12px;color:var(--white-30);margin-top:4px;
+}
+
+.footer-cols{display:flex;gap:56px}
+.footer-col h4{
+  font-family:var(--mono);font-size:10px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--white-30);margin-bottom:12px;
+}
+.footer-col a{
+  display:block;font-size:13px;color:var(--white-60);
+  margin-bottom:8px;transition:color 0.2s;
+}
+.footer-col a:hover{color:var(--white)}
+
+.footer-bottom{
+  display:flex;justify-content:space-between;
+  align-items:center;
+  padding-top:24px;
+  border-top:1px solid var(--border);
+}
+
+.footer-legal{font-size:11px;color:var(--white-12);line-height:1.6;max-width:600px}
+.footer-company{
+  font-family:var(--mono);font-size:10px;
+  color:var(--white-12);text-align:right;
+}
+
+@media(max-width:768px){
+  .footer-top{flex-direction:column;gap:32px}
+  .footer-cols{flex-direction:column;gap:24px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+}
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(24px);transition:all 0.7s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">arq<span>.</span></div>
+  <div class="nav-links">
+    <span class="nav-link" onclick="scrollTo('.protocols')">Protocols</span>
+    <span class="nav-link" onclick="scrollTo('.how')">How it works</span>
+    <span class="nav-link" onclick="scrollTo('.categories')">Categories</span>
+    <span class="nav-link" onclick="scrollTo('.molecule')">Science</span>
+  </div>
+  <button class="nav-cta" onclick="openWhatsApp()">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.29-1.243l-.307-.184-2.87.852.852-2.87-.184-.307A8 8 0 1112 20z"/></svg>
+    Start on WhatsApp
+  </button>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    India's biohacker clinic
+  </div>
+
+  <h1 class="hero-h1">Your body.<br><em>Your call.</em></h1>
+
+  <p class="hero-sub">Search by molecule. Doctor calls in 2 hours. Ships in 48. No intake forms. No judgment. Just science.</p>
+
+  <div class="search-container">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Search protocols... modafinil, BPC-157, semaglutide" autocomplete="off">
+      <span class="search-kbd">/</span>
+    </div>
+    <div class="quick-tags">
+      <span class="qtag" onclick="fillSearch('Modafinil')">Modafinil</span>
+      <span class="qtag" onclick="fillSearch('Sildenafil')">Sildenafil</span>
+      <span class="qtag" onclick="fillSearch('BPC-157')">BPC-157</span>
+      <span class="qtag" onclick="fillSearch('Semaglutide')">Semaglutide</span>
+      <span class="qtag" onclick="fillSearch('Finasteride')">Finasteride</span>
+      <span class="qtag" onclick="fillSearch('Ashwagandha')">Ashwagandha</span>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-val">26+</div>
+      <div class="hero-stat-label">Protocols</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">2hr</div>
+      <div class="hero-stat-label">Doctor call</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">48hr</div>
+      <div class="hero-stat-label">Delivery</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">₹0</div>
+      <div class="hero-stat-label">Consult fee</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROTOCOLS ═══ -->
+<section class="protocols">
+  <div class="reveal">
+    <div class="section-tag">Protocols</div>
+    <h2 class="section-h2">The molecule is<br>the <em>product.</em></h2>
+    <p class="section-p">No brand names. No proprietary blends. No mystery formulas. You know exactly what you're getting, the dose, and the science behind it.</p>
+  </div>
+
+  <div class="proto-grid reveal">
+    <!-- Cognition -->
+    <div class="proto-card" onclick="openWhatsApp()">
+      <div class="proto-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proto-cat cognition">⚡ Cognition</div>
+      <div class="proto-name">Modafinil</div>
+      <div class="proto-dose">200mg · 30 tablets · Monthly</div>
+      <div class="proto-bottom">
+        <div class="proto-price"><strong>₹1,799</strong>/mo</div>
+        <div class="proto-tag">Rx</div>
+      </div>
+    </div>
+
+    <div class="proto-card" onclick="openWhatsApp()">
+      <div class="proto-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proto-cat cognition">⚡ Cognition</div>
+      <div class="proto-name">Armodafinil</div>
+      <div class="proto-dose">150mg · 30 tablets · Monthly</div>
+      <div class="proto-bottom">
+        <div class="proto-price"><strong>₹1,999</strong>/mo</div>
+        <div class="proto-tag">Rx</div>
+      </div>
+    </div>
+
+    <!-- Performance -->
+    <div class="proto-card" onclick="openWhatsApp()">
+      <div class="proto-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proto-cat performance">🔥 Performance</div>
+      <div class="proto-name">Sildenafil</div>
+      <div class="proto-dose">50mg · 8 tablets</div>
+      <div class="proto-bottom">
+        <div class="proto-price"><strong>₹999</strong>/mo</div>
+        <div class="proto-tag">Rx</div>
+      </div>
+    </div>
+
+    <div class="proto-card" onclick="openWhatsApp()">
+      <div class="proto-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proto-cat performance">🔥 Performance</div>
+      <div class="proto-name">Testosterone (TRT)</div>
+      <div class="proto-dose">Gel/Oral · Monthly protocol</div>
+      <div class="proto-bottom">
+        <div class="proto-price"><strong>₹3,499</strong>/mo</div>
+        <div class="proto-tag">Rx · Specialist</div>
+      </div>
+    </div>
+
+    <!-- Peptides -->
+    <div class="proto-card" onclick="openWhatsApp()">
+      <div class="proto-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proto-cat peptides">🧬 Peptides</div>
+      <div class="proto-name">BPC-157</div>
+      <div class="proto-dose">Oral · 30-day supply</div>
+      <div class="proto-bottom">
+        <div class="proto-price"><strong>₹3,999</strong>/mo</div>
+        <div class="proto-tag">Rx · Physician supervised</div>
+      </div>
+    </div>
+
+    <div class="proto-card" onclick="openWhatsApp()">
+      <div class="proto-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proto-cat peptides">🧬 Peptides</div>
+      <div class="proto-name">CJC-1295 + Ipamorelin</div>
+      <div class="proto-dose">Combo · 30-day protocol</div>
+      <div class="proto-bottom">
+        <div class="proto-price"><strong>₹5,999</strong>/mo</div>
+        <div class="proto-tag">Rx · Physician supervised</div>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="proto-card" onclick="openWhatsApp()">
+      <div class="proto-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proto-cat body">💊 Body</div>
+      <div class="proto-name">Semaglutide</div>
+      <div class="proto-dose">Generic · Monthly protocol</div>
+      <div class="proto-bottom">
+        <div class="proto-price"><strong>₹2,499</strong>/mo</div>
+        <div class="proto-tag">Rx · Endocrinologist</div>
+      </div>
+    </div>
+
+    <div class="proto-card" onclick="openWhatsApp()">
+      <div class="proto-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proto-cat body">💊 Body</div>
+      <div class="proto-name">Finasteride</div>
+      <div class="proto-dose">1mg · 30 tablets · Monthly</div>
+      <div class="proto-bottom">
+        <div class="proto-price"><strong>₹799</strong>/mo</div>
+        <div class="proto-tag">Rx</div>
+      </div>
+    </div>
+
+    <!-- OTC -->
+    <div class="proto-card" onclick="openWhatsApp()">
+      <div class="proto-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proto-cat otc">🧪 Supplement</div>
+      <div class="proto-name">Ashwagandha KSM-66</div>
+      <div class="proto-dose">600mg · 60 capsules · Monthly</div>
+      <div class="proto-bottom">
+        <div class="proto-price"><strong>₹299</strong>/mo</div>
+        <div class="proto-tag">OTC</div>
+      </div>
+    </div>
+
+    <div class="proto-card" onclick="openWhatsApp()">
+      <div class="proto-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proto-cat otc">🧪 Supplement</div>
+      <div class="proto-name">Magnesium L-Threonate</div>
+      <div class="proto-dose">144mg elemental · 60 caps · Monthly</div>
+      <div class="proto-bottom">
+        <div class="proto-price"><strong>₹599</strong>/mo</div>
+        <div class="proto-tag">OTC</div>
+      </div>
+    </div>
+
+    <!-- Longevity -->
+    <div class="proto-card" onclick="openWhatsApp()">
+      <div class="proto-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proto-cat longevity">🌿 Longevity</div>
+      <div class="proto-name">Metformin</div>
+      <div class="proto-dose">500mg · 60 tablets · Monthly</div>
+      <div class="proto-bottom">
+        <div class="proto-price"><strong>₹499</strong>/mo</div>
+        <div class="proto-tag">Rx</div>
+      </div>
+    </div>
+
+    <div class="proto-card" onclick="openWhatsApp()">
+      <div class="proto-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proto-cat longevity">🌿 Longevity</div>
+      <div class="proto-name">NAD+ (NMN 500mg)</div>
+      <div class="proto-dose">30 capsules · Monthly</div>
+      <div class="proto-bottom">
+        <div class="proto-price"><strong>₹2,999</strong>/mo</div>
+        <div class="proto-tag">Supplement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="how">
+  <div class="reveal">
+    <div class="section-tag">How it works</div>
+    <h2 class="section-h2">From decision<br>to door. <em>Seamlessly.</em></h2>
+  </div>
+
+  <div class="how-steps reveal">
+    <div class="how-step">
+      <div class="how-num">01</div>
+      <div class="how-title">Choose your protocol</div>
+      <div class="how-desc">Search by molecule. Read the science. See the price. Select your protocol. No forms, no intake questionnaire. 60 seconds.</div>
+      <div class="how-time">60 sec</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">02</div>
+      <div class="how-title">Doctor consultation</div>
+      <div class="how-desc">A licensed physician — not a chatbot — calls within 2 hours. They verify, evaluate your case, determine if appropriate. No lecture.</div>
+      <div class="how-time">< 2 hours</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">03</div>
+      <div class="how-title">Prescription if appropriate</div>
+      <div class="how-desc">If medically appropriate after doctor evaluation, your prescription is issued. Plain matte box. No brand name. Inside: your protocol card with dosage and timeline.</div>
+      <div class="how-time">Evaluated</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">04</div>
+      <div class="how-title">Ships to your door</div>
+      <div class="how-desc">Your order ships within 48 hours if prescription approved. Discreet packaging. Day 25: refill reminder on WhatsApp. One tap reorder with your established doctor relationship.</div>
+      <div class="how-time">48 hours</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST BAR ═══ -->
+<section class="trust">
+  <div class="trust-grid reveal">
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="trust-title">Doctor consultation</div>
+      <div class="trust-desc">Every Rx order includes evaluation and consultation with an MBBS or specialist doctor. Doctor determines if prescription is appropriate.</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <div class="trust-title">Completely discreet</div>
+      <div class="trust-desc">Plain packaging. No visible branding. WhatsApp communication auto-purges. Your business stays yours.</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="trust-title">Pharma-grade only</div>
+      <div class="trust-desc">Sourced from licensed Indian manufacturers. Sun Pharma, Cipla, Dr. Reddy's. Same molecules, transparent supply chain.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CATEGORIES ═══ -->
+<section class="categories">
+  <div class="reveal">
+    <div class="section-tag">Categories</div>
+    <h2 class="section-h2">Six verticals.<br><em>One platform.</em></h2>
+    <p class="section-p">Every protocol is backed by published research. Every product ships with a dosage card, expected timeline, and what to watch for.</p>
+  </div>
+
+  <div class="cat-grid reveal">
+    <div class="cat-card c-cognition">
+      <div class="cat-icon">⚡</div>
+      <div class="cat-name">Cognition</div>
+      <div class="cat-count">3 protocols · from ₹1,799/mo</div>
+      <div class="cat-list">Modafinil · Armodafinil · NMN 500mg</div>
+    </div>
+    <div class="cat-card c-performance">
+      <div class="cat-icon">🔥</div>
+      <div class="cat-name">Performance</div>
+      <div class="cat-count">4 protocols · from ₹999/mo</div>
+      <div class="cat-list">Sildenafil · Tadalafil · PT-141 · TRT</div>
+    </div>
+    <div class="cat-card c-longevity">
+      <div class="cat-icon">🌿</div>
+      <div class="cat-name">Longevity</div>
+      <div class="cat-count">4 protocols · from ₹499/mo</div>
+      <div class="cat-list">Metformin · LDN · Thymosin Alpha-1 · Tesamorelin</div>
+    </div>
+    <div class="cat-card c-peptides">
+      <div class="cat-icon">🧬</div>
+      <div class="cat-name">Peptides</div>
+      <div class="cat-count">5 protocols · from ₹3,999/mo</div>
+      <div class="cat-list">BPC-157 · Sermorelin · CJC-1295 · TB-500 · AOD-9604</div>
+    </div>
+    <div class="cat-card c-body">
+      <div class="cat-icon">💊</div>
+      <div class="cat-name">Body</div>
+      <div class="cat-count">5 protocols · from ₹699/mo</div>
+      <div class="cat-list">Semaglutide · Finasteride · Minoxidil · Isotretinoin · Tretinoin</div>
+    </div>
+    <div class="cat-card c-supplements">
+      <div class="cat-icon">🧪</div>
+      <div class="cat-name">Supplements</div>
+      <div class="cat-count">8 protocols · from ₹199/mo</div>
+      <div class="cat-list">Ashwagandha · Creatine · Magnesium · Omega-3 · Lion's Mane</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MOLECULE HIGHLIGHT ═══ -->
+<section class="molecule">
+  <div class="reveal">
+    <div class="section-tag">Deep dive</div>
+    <h2 class="section-h2">Know what<br>you're <em>taking.</em></h2>
+  </div>
+
+  <div class="mol-showcase reveal">
+    <div class="mol-data">
+      <div class="mol-name">Featured Protocol</div>
+      <div class="mol-title">BPC-157<br>Body Protection Compound</div>
+      <div class="mol-desc">A pentadecapeptide composed of 15 amino acids. Originally isolated from human gastric juice. Research suggests this compound may support healing of muscle, tendon, and ligament tissues through angiogenesis and growth hormone receptor signaling pathways.</div>
+
+      <div class="mol-specs">
+        <div class="mol-spec">
+          <div class="mol-spec-label">Dosage</div>
+          <div class="mol-spec-val">250-500 mcg/day</div>
+        </div>
+        <div class="mol-spec">
+          <div class="mol-spec-label">Protocol</div>
+          <div class="mol-spec-val">30-90 days</div>
+        </div>
+        <div class="mol-spec">
+          <div class="mol-spec-label">Route</div>
+          <div class="mol-spec-val">Oral capsule</div>
+        </div>
+        <div class="mol-spec">
+          <div class="mol-spec-label">Supervision</div>
+          <div class="mol-spec-val">Physician required</div>
+        </div>
+      </div>
+
+      <div>
+        <button class="mol-cta" onclick="openWhatsApp()">
+          Start this protocol
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mol-visual">
+      <div class="mol-grid-bg"></div>
+      <div class="mol-formula">C₆₂H₉₈N₁₆O₂₂</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROMISE BAR ═══ -->
+<section class="promise">
+  <div class="promise-inner reveal">
+    <h3 class="promise-h">The arq <em>promise.</em></h3>
+    <div class="promise-items">
+      <div class="promise-item">
+        <div class="promise-val">₹0</div>
+        <div class="promise-label">Doctor consultation fee. Always.</div>
+      </div>
+      <div class="promise-item">
+        <div class="promise-val">100%</div>
+        <div class="promise-label">Refund if doctor declines Rx.</div>
+      </div>
+      <div class="promise-item">
+        <div class="promise-val">2 hr</div>
+        <div class="promise-label">Max wait for doctor callback.</div>
+      </div>
+      <div class="promise-item">
+        <div class="promise-val">Plain</div>
+        <div class="promise-label">Box. No branding. No product name. Ever.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <div class="reveal">
+    <div class="cta-eyebrow">Get started</div>
+    <h2 class="cta-h">Everything you've been<br><em>researching.</em><br>Now legal.</h2>
+    <p class="cta-sub">26 protocols. Doctor in 2 hours. Delivered in 48.</p>
+    <button class="cta-btn" onclick="openWhatsApp()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.29-1.243l-.307-.184-2.87.852.852-2.87-.184-.307A8 8 0 1112 20z"/></svg>
+      Start on WhatsApp — it's free
+    </button>
+    <p class="cta-fine">Licensed physicians · Pharma-grade compounds · Schedule H compliant</p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">arq<span>.</span></div>
+      <div class="footer-tagline">India's biohacker clinic</div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Protocols</h4>
+        <a href="#">Cognition</a>
+        <a href="#">Performance</a>
+        <a href="#">Longevity</a>
+        <a href="#">Peptides</a>
+        <a href="#">Body</a>
+        <a href="#">Supplements</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">How it works</a>
+        <a href="#">For doctors</a>
+        <a href="#">Science</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Refund policy</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">
+      arq.clinic is a consultation-first platform. All prescription medications require evaluation by a licensed physician. Supplements are regulated under FSSAI guidelines. All prescriptions require a valid doctor consultation. arq.clinic is a technology platform, not a pharmacy or healthcare provider. All products are dispensed by licensed pharmacies. We do not guarantee prescription issuance.
+    </div>
+    <div class="footer-company">
+      © 2026 Dear One Technologies Pvt Ltd<br>
+      CIN: [Registration Number]<br>
+      Mumbai, India
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Keyboard shortcut for search
+document.addEventListener('keydown', (e) => {
+  if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+    e.preventDefault();
+    document.getElementById('searchInput').focus();
+  }
+  if (e.key === 'Escape') {
+    document.getElementById('searchInput').blur();
+  }
+});
+
+// Quick tag fill
+function fillSearch(term) {
+  const input = document.getElementById('searchInput');
+  input.value = term;
+  input.focus();
+  filterProtocols(term);
+}
+
+// Search filter
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  filterProtocols(e.target.value);
+});
+
+function filterProtocols(term) {
+  const cards = document.querySelectorAll('.proto-card');
+  const q = term.toLowerCase();
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = q === '' || text.includes(q) ? '' : 'none';
+  });
+}
+
+// WhatsApp
+function openWhatsApp() {
+  window.open('https://wa.me/91XXXXXXXXXX?text=Hey%20arq%20%E2%80%94%20I%20want%20to%20start%20a%20protocol', '_blank');
+}
+
+// Smooth scroll
+function scrollTo(selector) {
+  document.querySelector(selector).scrollIntoView({ behavior: 'smooth' });
+}
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

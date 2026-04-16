@@ -1,0 +1,529 @@
+{% comment %} templates/index.liquid {% endcomment %}
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero__pills" aria-hidden="true">
+    <div class="hero__pill" style="width:22px;height:13px;background:#d4a574;border-radius:20px;top:16%;left:10%;transform:rotate(-18deg);animation-delay:0.3s"></div>
+    <div class="hero__pill" style="width:15px;height:15px;background:#b8c4aa;border-radius:50%;top:20%;right:15%;animation-delay:0.5s"></div>
+    <div class="hero__pill" style="width:30px;height:10px;background:#c8a8d4;border-radius:20px;top:72%;left:7%;transform:rotate(22deg);animation-delay:0.4s"></div>
+    <div class="hero__pill" style="width:18px;height:18px;background:#a8c4b8;border-radius:50%;top:74%;right:10%;animation-delay:0.6s"></div>
+    <div class="hero__pill" style="width:34px;height:11px;background:#d4c4a8;border-radius:20px;top:42%;left:4%;transform:rotate(-6deg);animation-delay:0.7s"></div>
+    <div class="hero__pill" style="width:13px;height:13px;background:#c4a8a8;border-radius:50%;top:32%;right:6%;animation-delay:0.35s"></div>
+    <!-- Vial -->
+    <div class="hero__vial" style="top:26%;right:22%;animation-delay:0.5s">
+      <div class="hero__vial-cap"></div>
+      <div class="hero__vial-body"></div>
+    </div>
+  </div>
+
+  <div class="hero__inner">
+    <div class="hero__eyebrow animate-up">India's first biohacker clinic</div>
+
+    <h1 class="hero__headline animate-up animate-up-1">
+      Your body.<br><em>Your call.</em>
+    </h1>
+
+    <p class="hero__sub animate-up animate-up-2">
+      What are you looking for?
+    </p>
+
+    <!-- ── SEARCH BAR ── -->
+    <div class="hero__search-wrap animate-up animate-up-2">
+      <div class="hero__search-bar" id="heroSearchBar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="hero__search-icon">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input
+          type="text"
+          class="hero__search-input"
+          id="heroSearchInput"
+          placeholder="modafinil, sildenafil, BPC-157…"
+          autocomplete="off"
+          aria-label="Search protocols"
+          onfocus="this.closest('.hero__search-bar').classList.add('focused')"
+          onblur="this.closest('.hero__search-bar').classList.remove('focused')"
+        >
+        <button class="hero__search-clear" id="heroSearchClear" onclick="clearHeroSearch()" aria-label="Clear search">×</button>
+      </div>
+
+      <!-- Results dropdown -->
+      <div class="hero__search-results" id="heroSearchResults" role="listbox" aria-label="Search results"></div>
+    </div>
+
+    <!-- Suggestion pills -->
+    <div class="hero__suggestions animate-up animate-up-3" id="heroSuggestions">
+      <button class="sug" onclick="heroSearchFor('modafinil')">Modafinil</button>
+      <button class="sug" onclick="heroSearchFor('armodafinil')">Armodafinil</button>
+      <button class="sug" onclick="heroSearchFor('sildenafil')">Sildenafil</button>
+      <button class="sug" onclick="heroSearchFor('semaglutide')">Semaglutide</button>
+      <button class="sug" onclick="heroSearchFor('BPC-157')">BPC-157</button>
+      <button class="sug" onclick="heroSearchFor('finasteride')">Finasteride</button>
+      <button class="sug" onclick="heroSearchFor('THC CBD')">THC · CBD</button>
+      <a href="/collections/all" class="sug sug--ghost">Browse all →</a>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero__stats animate-up animate-up-4">
+      <div class="hero__stat">
+        <div class="hero__stat-n">26+</div>
+        <div class="hero__stat-l">Protocols</div>
+      </div>
+      <div class="hero__stat-sep"></div>
+      <div class="hero__stat">
+        <div class="hero__stat-n">2hr</div>
+        <div class="hero__stat-l">Doctor call</div>
+      </div>
+      <div class="hero__stat-sep"></div>
+      <div class="hero__stat">
+        <div class="hero__stat-n">48hr</div>
+        <div class="hero__stat-l">Delivery</div>
+      </div>
+      <div class="hero__stat-sep"></div>
+      <div class="hero__stat">
+        <div class="hero__stat-n">₹0</div>
+        <div class="hero__stat-l">Consult fee</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TICKER ─── -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <div class="ticker__inner">
+      {% assign ticker_items = "Modafinil,Armodafinil,Sildenafil,Tadalafil,Semaglutide,BPC-157,Sermorelin,THC·CBD,NAD+,Finasteride,Tretinoin,TRT,100% Legal,WhatsApp Native,48hr Delivery,Doctor Included,Discreet Packaging" | split: "," %}
+      {% for item in ticker_items %}
+        <span class="ticker__item">{{ item }}</span><span class="ticker__dot"></span>
+      {% endfor %}
+      {% for item in ticker_items %}
+        <span class="ticker__item">{{ item }}</span><span class="ticker__dot"></span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- ─── MANIFESTO ─── -->
+<section class="manifesto section-full">
+  <div class="container-text">
+    <div class="eyebrow">Why arq exists</div>
+    <div class="manifesto__body">
+      <p class="manifesto__p">You've done the research. You know the difference between modafinil and armodafinil. You've been sourcing things from <em>somewhere</em> — and you know it's not ideal.</p>
+      <p class="manifesto__p">India's entire medical system assumes the doctor knows best. The patient arrives with symptoms. The doctor decides the solution. The pharmacist enforces the gate.</p>
+      <p class="manifesto__p">But you're not a patient. <strong>You're informed.</strong> You know what you want. You just need someone to handle the paperwork.</p>
+      <p class="manifesto__p">That's arq. Every protocol, every peptide, every prescription — legally prescribed, doctor supervised, delivered discreetly. <strong>No waiting rooms. No explaining yourself.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURED PROTOCOLS ─── -->
+<section class="featured-protocols section-full">
+  <div class="container">
+    <div class="featured-protocols__header">
+      <div class="eyebrow">Protocols</div>
+      <h2 class="t-headline">What people <em>actually</em> want.</h2>
+      <a href="/collections/all" class="btn btn-secondary btn-sm">Browse all 26 →</a>
+    </div>
+
+    <div class="protocols-grid">
+      {% assign featured_handles = settings.featured_products | split: ',' %}
+      {% for handle in featured_handles limit: 9 %}
+        {% assign p = all_products[handle | strip] %}
+        {% if p != blank %}
+          {% render 'product-card', product: p %}
+        {% endif %}
+      {% endfor %}
+
+      <!-- Fallback: render from collection if no featured set -->
+      {% if featured_handles.size == 0 %}
+        {% assign collection = collections['all'] %}
+        {% for p in collection.products limit: 9 %}
+          {% render 'product-card', product: p %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section class="how-section section-full">
+  <div class="container" style="max-width:640px">
+    <div class="eyebrow">The process</div>
+    <h2 class="t-headline" style="margin-bottom:32px">
+      From decision to door.<br><em>Seamlessly.</em>
+    </h2>
+
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step__n">1</div>
+        <div class="how-step__content">
+          <div class="how-step__title">You decide</div>
+          <div class="how-step__body">Search for what you want. Read what it does, what it costs, what happens next. Buy. No forms, no intake questionnaire. 60 seconds.</div>
+          <div class="how-step__time">60 seconds</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-step__n">2</div>
+        <div class="how-step__content">
+          <div class="how-step__title">Doctor calls you</div>
+          <div class="how-step__body">A licensed physician — not a chatbot — calls within 2 hours. 5 minutes. They issue your e-prescription. No lecture, no judgment.</div>
+          <div class="how-step__time">Within 2 hours</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-step__n">3</div>
+        <div class="how-step__content">
+          <div class="how-step__title">It arrives. Discreetly.</div>
+          <div class="how-step__body">Plain matte box. No brand name outside. No product name. Looks like any other courier. Inside: your protocol card.</div>
+          <div class="how-step__time">48 hours</div>
+        </div>
+      </div>
+      <div class="how-step how-step--last">
+        <div class="how-step__n">4</div>
+        <div class="how-step__content">
+          <div class="how-step__title">One tap to refill</div>
+          <div class="how-step__body">Day 25 we message you on WhatsApp. Same order? Reply YES. Ships today. Your doctor knows your case. No re-intake. Ever.</div>
+          <div class="how-step__time">Every month</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST STRIP ─── -->
+<div class="trust-strip">
+  <div class="container">
+    <div class="trust-items">
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Licensed physicians only</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <span>Discreet billing — Dear One Technologies</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>AYUSH compliant · Schedule H certified</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Doctor within 2 hours. Always.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── BOTTOM CTA ─── -->
+<section class="bottom-cta section-full">
+  <div class="bottom-cta__glow"></div>
+  <div class="bottom-cta__wm" aria-hidden="true">arq</div>
+  <div class="container-text" style="text-align:center;position:relative">
+    <div class="eyebrow" style="justify-content:center">Get started today</div>
+    <h2 class="t-headline" style="margin-bottom:12px">
+      Everything you've been<br><em>researching.</em> Now legal.
+    </h2>
+    <p class="t-small" style="max-width:320px;margin:0 auto 32px;line-height:1.85">
+      26 protocols. Peptides to prescriptions. Doctor in 2 hours. Delivered in 48.
+    </p>
+    <button class="btn btn-primary btn-lg btn-full" style="max-width:400px;margin:0 auto" onclick="openWAModal()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Start on WhatsApp — it's free
+    </button>
+    <div style="margin-top:12px;font-family:var(--mono);font-size:7px;color:var(--cream-15);letter-spacing:0.06em;line-height:2">
+      Licensed physicians · AYUSH compliant · Schedule H certified<br>
+      Dear One Technologies Pvt Ltd · CIN U86900MH2026PTC467148
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── HERO ── */
+.hero {
+  min-height: calc(100svh - var(--nav-h));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px 60px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero__pills { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.hero__pill {
+  position: absolute;
+  opacity: 0;
+  animation: floatIn 1s ease forwards;
+}
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero__vial { position: absolute; opacity: 0; animation: floatIn 1s ease forwards; }
+.hero__vial-cap { width: 7px; height: 10px; background: rgba(200,151,58,0.4); border-radius: 2px 2px 0 0; margin: 0 auto; }
+.hero__vial-body { width: 7px; height: 44px; background: linear-gradient(180deg,rgba(242,236,224,0.18) 0%,rgba(242,236,224,0.04) 100%); border-radius: 0 0 3px 3px; margin: 0 auto; }
+
+.hero__inner { position: relative; z-index: 1; width: 100%; max-width: 580px; }
+
+.hero__eyebrow {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.hero__headline {
+  font-family: var(--serif);
+  font-size: clamp(40px, 11vw, 80px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.hero__headline em { font-style: italic; color: var(--gold); }
+.hero__sub { font-size: 14px; color: var(--cream-40); margin-bottom: 24px; }
+
+/* Search */
+.hero__search-wrap { position: relative; margin-bottom: 20px; }
+.hero__search-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--cream-15);
+  border-radius: var(--radius-lg);
+  padding: 0 16px;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  position: relative;
+}
+.hero__search-bar.focused,
+.hero__search-bar:focus-within {
+  border-color: var(--gold-border);
+  box-shadow: 0 0 0 3px var(--gold-lo), 0 8px 40px rgba(0,0,0,0.4);
+}
+.hero__search-icon { color: var(--cream-40); flex-shrink: 0; transition: color 0.2s; }
+.hero__search-bar.focused .hero__search-icon { color: var(--gold); }
+.hero__search-input {
+  flex: 1;
+  font-family: var(--serif);
+  font-size: clamp(18px, 4vw, 24px);
+  font-style: italic;
+  padding: 22px 0;
+  color: var(--cream);
+}
+.hero__search-input::placeholder { color: var(--cream-40); }
+.hero__search-clear {
+  background: none; border: none;
+  color: var(--cream-40); font-size: 20px;
+  display: none; transition: color 0.2s; padding: 4px;
+}
+.hero__search-clear:hover { color: var(--cream); }
+.hero__search-input:not(:placeholder-shown) ~ .hero__search-clear { display: block; }
+
+/* Search results */
+.hero__search-results {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0; right: 0;
+  background: var(--surface);
+  border: 1px solid var(--cream-15);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  z-index: 200;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.hero__search-results:empty { display: none; }
+
+.hero__result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  text-decoration: none;
+  transition: background 0.15s;
+  border-bottom: 1px solid var(--cream-07);
+  border-left: 2px solid transparent;
+}
+.hero__result:last-child { border-bottom: none; }
+.hero__result:hover {
+  background: var(--card);
+  border-left-color: var(--gold);
+}
+.hero__result-name { font-family: var(--serif); font-size: 16px; color: var(--cream); margin-bottom: 2px; line-height: 1.2; }
+.hero__result-cat { font-family: var(--mono); font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-40); }
+.hero__result-price { font-family: var(--serif); font-size: 15px; color: var(--cream); flex-shrink: 0; text-align: right; }
+.hero__result-unit { font-family: var(--mono); font-size: 7px; color: var(--cream-40); letter-spacing: 0.06em; }
+
+/* Suggestions */
+.hero__suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+.sug {
+  background: none;
+  border: 1px solid var(--cream-15);
+  color: var(--cream-70);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-decoration: none;
+  display: inline-flex;
+}
+.sug:hover { border-color: var(--gold-border); color: var(--gold); background: var(--gold-lo); }
+.sug--ghost { color: var(--cream-40); }
+
+/* Stats */
+.hero__stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.hero__stat { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 0 16px; }
+.hero__stat-n { font-family: var(--serif); font-size: 22px; color: var(--cream); line-height: 1; }
+.hero__stat-l { font-family: var(--mono); font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-40); }
+.hero__stat-sep { width: 1px; height: 28px; background: var(--cream-15); flex-shrink: 0; }
+
+/* Ticker */
+.ticker { overflow: hidden; border-top: 1px solid var(--cream-07); border-bottom: 1px solid var(--cream-07); background: var(--surface); padding: 11px 0; }
+.ticker__track { overflow: hidden; }
+.ticker__inner { display: flex; align-items: center; white-space: nowrap; animation: ticker 32s linear infinite; gap: 16px; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker__item { font-family: var(--mono); font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,236,224,0.2); flex-shrink: 0; }
+.ticker__dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); opacity: 0.5; flex-shrink: 0; }
+
+/* Manifesto */
+.manifesto { padding: 72px 0; background: var(--surface); border-bottom: 1px solid var(--cream-07); }
+.manifesto__body { margin-top: 24px; }
+.manifesto__p { font-family: var(--serif); font-size: clamp(17px, 3.5vw, 22px); font-weight: 400; line-height: 1.7; color: var(--cream-70); margin-bottom: 20px; }
+.manifesto__p em { font-style: italic; color: var(--cream); }
+.manifesto__p strong { color: var(--gold); font-weight: 400; }
+
+/* Protocols grid */
+.featured-protocols { padding: 72px 0; }
+.featured-protocols__header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.protocols-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--cream-07); }
+@media (min-width: 480px) { .protocols-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 860px) { .protocols-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+/* How it works */
+.how-section { padding: 72px 0; background: var(--surface); border-top: 1px solid var(--cream-07); border-bottom: 1px solid var(--cream-07); }
+.how-steps { display: flex; flex-direction: column; gap: 1px; background: var(--cream-07); border-radius: var(--radius); overflow: hidden; }
+.how-step {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 16px;
+  background: var(--ink);
+  padding: 24px 20px;
+  border-bottom: 1px solid var(--cream-07);
+}
+.how-step--last { border-bottom: none; }
+.how-step__n { font-family: var(--serif); font-size: 36px; color: rgba(200,151,58,0.15); line-height: 1; margin-top: -4px; }
+.how-step__title { font-family: var(--serif); font-size: 18px; color: var(--cream); margin-bottom: 5px; }
+.how-step__body { font-size: 13px; color: var(--cream-40); line-height: 1.7; }
+.how-step__time { font-family: var(--mono); font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-top: 8px; display: flex; align-items: center; gap: 8px; }
+.how-step__time::before { content: ''; width: 12px; height: 1px; background: var(--gold); display: block; }
+
+/* Trust strip */
+.trust-strip { padding: 16px 0; background: var(--surface); border-bottom: 1px solid var(--cream-07); }
+.trust-items { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 8px; padding: 8px 16px; font-family: var(--mono); font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-40); }
+.trust-sep { width: 1px; height: 20px; background: var(--cream-07); flex-shrink: 0; }
+@media (max-width: 600px) { .trust-sep { display: none; } .trust-items { flex-direction: column; } }
+
+/* Bottom CTA */
+.bottom-cta { padding: 80px 0; position: relative; overflow: hidden; }
+.bottom-cta__glow { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(200,151,58,0.05) 0%, transparent 60%); pointer-events: none; }
+.bottom-cta__wm { position: absolute; font-family: var(--serif); font-size: clamp(80px,25vw,180px); color: rgba(200,151,58,0.025); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; font-style: italic; white-space: nowrap; }
+
+.section-full { padding-left: 0; padding-right: 0; }
+</style>
+
+<script>
+// ── HERO SEARCH ──
+const heroInput   = document.getElementById('heroSearchInput');
+const heroResults = document.getElementById('heroSearchResults');
+const heroSugs    = document.getElementById('heroSuggestions');
+const heroClear   = document.getElementById('heroSearchClear');
+
+heroInput?.addEventListener('input', e => {
+  const q = e.target.value.trim();
+  if (!q) {
+    heroResults.innerHTML = '';
+    heroSugs.style.display = 'flex';
+    return;
+  }
+  heroSugs.style.display = 'none';
+  doHeroSearch(q);
+});
+
+function doHeroSearch(q) {
+  fetch(`/search/suggest.json?q=${encodeURIComponent(q)}&resources[type]=product&resources[limit]=6`)
+    .then(r => r.json())
+    .then(data => {
+      const products = data.resources?.results?.products || [];
+      if (!products.length) {
+        heroResults.innerHTML = `
+          <div style="padding:20px;text-align:center">
+            <div style="font-family:var(--serif);font-size:17px;font-style:italic;color:var(--cream-40);margin-bottom:4px">No results for "${q}"</div>
+            <div style="font-size:12px;color:var(--cream-40)">Try: modafinil, sildenafil, BPC-157…</div>
+          </div>`;
+        return;
+      }
+      heroResults.innerHTML = products.map(p => `
+        <a href="${p.url}" class="hero__result">
+          <div>
+            <div class="hero__result-name">${p.title}</div>
+            <div class="hero__result-cat">${p.product_type || 'Protocol'}</div>
+          </div>
+          <div>
+            <div class="hero__result-price">${p.price}</div>
+            <div class="hero__result-unit">/month</div>
+          </div>
+        </a>
+      `).join('');
+    })
+    .catch(() => {
+      heroResults.innerHTML = `<div style="padding:16px;text-align:center;font-size:12px;color:var(--cream-40)">
+        <a href="/search?q=${encodeURIComponent(q)}" style="color:var(--gold)">View all results for "${q}" →</a>
+      </div>`;
+    });
+}
+
+function heroSearchFor(q) {
+  heroInput.value = q;
+  heroInput.focus();
+  doHeroSearch(q);
+}
+
+function clearHeroSearch() {
+  heroInput.value = '';
+  heroResults.innerHTML = '';
+  heroSugs.style.display = 'flex';
+  heroInput.focus();
+}
+
+// Close results on outside click
+document.addEventListener('click', e => {
+  if (!e.target.closest('.hero__search-wrap')) {
+    heroResults.innerHTML = '';
+    if (!heroInput.value) heroSugs.style.display = 'flex';
+  }
+});
+</script>

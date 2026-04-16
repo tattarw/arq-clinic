@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Vitamin B12 Deficiency: Symptoms Your Doctor Might Miss</title>
+<meta name="description" content="India has one of the highest B12 deficiency rates globally. Learn which symptoms doctors miss, why serum B12 alone is insufficient, and how arq. diagnoses & treats B12 deficiency properly.">
+<meta name="theme-color" content="#0a0806">
+<link rel="canonical" href="https://arq.clinic/blog/vitamin-b12-deficiency-india">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Vitamin B12 Deficiency: Symptoms Your Doctor Might Miss">
+<meta property="og:description" content="India has one of the highest B12 deficiency rates globally. Learn the symptoms doctors miss, better diagnostic markers, and how to fix it.">
+<meta property="og:image" content="https://arq.clinic/og-b12-deficiency.png">
+<meta property="og:url" content="https://arq.clinic/blog/vitamin-b12-deficiency-india">
+<meta property="og:type" content="article">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vitamin B12 Deficiency: Symptoms Your Doctor Might Miss">
+<meta name="twitter:description" content="47% of North Indians are B12 deficient. Learn the hidden symptoms and better diagnostics.">
+<meta name="twitter:image" content="https://arq.clinic/og-b12-deficiency.png">
+
+<!-- Article Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Vitamin B12 Deficiency: Symptoms Your Doctor Might Miss",
+  "description": "India has one of the highest B12 deficiency rates globally. Learn which symptoms doctors miss, why serum B12 alone is insufficient, and how arq. diagnoses & treats B12 deficiency properly.",
+  "image": "https://arq.clinic/og-b12-deficiency.png",
+  "datePublished": "2026-04-16",
+  "dateModified": "2026-04-16",
+  "author": {
+    "@type": "Organization",
+    "name": "arq.",
+    "url": "https://arq.clinic"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "arq.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://arq.clinic/logo.png",
+      "width": 250,
+      "height": 60
+    }
+  }
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is B12 deficiency so common in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "B12 is only found in animal products — meat, fish, eggs, dairy. 40% of India is vegetarian, and an additional 30% eat meat only occasionally. Lacto-vegetarian diets provide minimal B12 (small amounts in milk and yogurt, but only if consumed regularly and in sufficient quantity). Vegan diets provide zero B12 unless fortified. Additionally, vegetarian Indian diets often lack the intrinsic factor needed to absorb B12 from dairy sources. The result: 47% of North Indians are B12 deficient. In some regions, it's higher."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is serum B12 alone enough to diagnose deficiency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Serum B12 is the first test, but it's insufficient on its own. A 'normal' serum B12 can mask functional deficiency — the B12 is in your blood but your cells can't use it. Functional B12 status is revealed by methylmalonic acid (MMA) and homocysteine — these rise when B12 is actually deficient at the cellular level. arq. tests serum B12, MMA, and homocysteine together, which catches 95% of deficiencies that serum B12 alone would miss. This is especially important in vegans and long-term metformin users."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does metformin cause B12 deficiency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Metformin (the most prescribed diabetes medication in India) depletes B12 by reducing its absorption in the terminal ileum. Long-term metformin users have a 10-30% risk of B12 deficiency — and many don't know it. If you've been on metformin for more than 2-3 years, your B12 status should be checked. Symptoms like fatigue or tingling are often blamed on diabetes when they're actually B12 deficiency. arq. monitors B12 in all metformin users and supplements prophylactically if needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between methylcobalamin and cyanocobalamin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both are B12 forms, but methylcobalamin is more bioavailable — your body uses it directly in energy and nervous system function. Cyanocobalamin requires conversion in your liver, which is slower but still effective. For injections, both work well. For oral supplementation, methylcobalamin is better absorbed, especially if you have absorption issues (pernicious anemia, celiac disease, Crohn's). Most Indian pharmacies stock both; methylcobalamin is slightly more expensive but worth it for deficiency correction."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I take B12 oral supplements or injections?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the cause of deficiency. If it's dietary (vegetarian/vegan), oral methylcobalamin works well — 1000-2000 mcg daily is effective. If it's malabsorption (pernicious anemia, celiac, Crohn's, post-gastrectomy), injections are better because they bypass the GI tract. Monthly B12 injections (1000 mcg IM) are standard for malabsorption. Most Indians can start with oral supplements; if symptoms don't improve in 3 months, switch to injections. arq. assesses your B12 absorption status and recommends the best route."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to recover from B12 deficiency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fatigue and brain fog improve in 2-4 weeks. Peripheral neuropathy (tingling, numbness) takes longer — 2-3 months if caught early, or 6-12 months if peripheral nerves are severely damaged. Mood and cognitive symptoms improve in 4-8 weeks. Some damage is permanent if left untreated for years — which is why early diagnosis matters. arq. tests at baseline and rechecks at 12 weeks to ensure B12 is normalizing and symptoms are reversing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I test for B12 deficiency at home?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No home test is reliable. B12 testing requires serum B12, methylmalonic acid (MMA), and homocysteine — all blood tests requiring lab analysis. Some online services claim to offer saliva B12 tests, but these aren't validated. You need a proper blood test from an NABL-accredited lab. arq. orders these tests and interprets them correctly: if serum B12 is 200-400 pg/mL (low-normal) and MMA is elevated, you likely have functional deficiency that needs treating."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I overdose on B12 supplements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. B12 is water-soluble, so excess is excreted in urine — there's no storage toxicity. You cannot overdose on B12 supplements, whether oral or injected. This is why maintenance supplementation is safe: once your B12 is corrected, ongoing supplementation (oral 1000 mcg daily, or monthly injections) keeps it normalized without risk of harm. Vegans and long-term metformin users can safely supplement indefinitely."
+      }
+    }
+  ]
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/>
+
+<style>
+/* ═══════════════════════════════════════════
+   arq. Blog Article
+   Design tokens from condition template
+   Mobile-first: base 430px. Desktop @ 768px+.
+   ═══════════════════════════════════════════ */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf9f5;--bg2:#f4f2ed;--surface:#eae8e3;
+  --card:#ffffff;--border:rgba(44,40,36,0.08);--border-hover:rgba(44,40,36,0.14);
+  --text:#1a1714;--text-90:rgba(26,23,20,0.9);--text-60:rgba(26,23,20,0.6);--text-30:rgba(26,23,20,0.3);--text-12:rgba(26,23,20,0.12);
+  --gold:#b8922e;--gold-light:#c9a23a;--gold-glow:rgba(184,146,46,0.08);--gold-border:rgba(184,146,46,0.25);
+  --dark:#1a1714;--deep:#0a0806;
+  --sans:'Sora',system-ui,sans-serif;
+  --serif:'DM Serif Display',Georgia,serif;
+  --mono:'IBM Plex Mono','SF Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --nav-h:60px;
+}
+
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--gold);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+em{font-style:italic;color:var(--gold)}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}
+.nav.at-top{background:transparent}
+.nav.scrolled{background:rgba(250,249,245,0.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 var(--border)}
+.nav.scrolled .nav-logo{color:var(--text)}
+.nav.scrolled .nav-hamburger span{background:var(--text)}
+.nav-logo{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--text);letter-spacing:-0.02em;transition:color .3s ease}
+.nav-logo .dot{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:11px;font-weight:600;padding:7px 12px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
+.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
+.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
+.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
+.nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
+.nav-hamburger:hover{background:rgba(26,23,20,0.06)}
+.nav.scrolled .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
+.nav-hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:1px;transition:background .3s ease}
+
+/* ─── MOTION SYSTEM ─── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.08s}
+.reveal-delay-2{transition-delay:.16s}
+.reveal-delay-3{transition-delay:.24s}
+.reveal-delay-4{transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ─── FOCUS RINGS ─── */
+a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* ─── UTILS ─── */
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;padding:10px 22px;border-radius:50px;transition:all .3s var(--ease);letter-spacing:0.01em;cursor:pointer;white-space:nowrap}
+.btn-light{background:#fff;color:var(--dark);box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.btn-light:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(0,0,0,0.22)}
+.btn-dark{background:var(--dark);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-1px)}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 6px 24px rgba(184,146,46,0.35)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.45)}
+.btn-gold i{margin-left:6px;transition:transform .25s}
+.btn-gold:hover i{transform:translateX(3px)}
+.btn-lg{padding:14px 28px;font-size:13px}
+
+/* ═══ ARTICLE HERO ═══ */
+.article-hero{position:relative;padding:calc(var(--nav-h) + 24px) 20px 32px;background:var(--bg);min-height:auto}
+.article-hero::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,rgba(250,249,245,0.95) 0%,rgba(244,242,237,0.92) 50%,rgba(234,232,227,0.9) 100%)}
+
+.article-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;position:relative;z-index:2}
+.article-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.6}
+
+.article-content{position:relative;z-index:2;max-width:720px;margin:0 auto}
+.article-h1{font-family:var(--serif);font-size:36px;font-weight:400;line-height:1.08;letter-spacing:-0.035em;margin-bottom:20px;color:var(--text)}
+.article-h1 em{color:var(--gold);font-style:italic}
+
+.article-meta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-size:12px;color:var(--text-60);padding:16px 0;border-bottom:1px solid var(--border);margin-bottom:24px}
+.article-meta-item{display:flex;align-items:center;gap:6px}
+.article-meta-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;background:var(--gold-glow);color:var(--gold);font-weight:600;font-size:11px}
+.article-meta-badge i{font-size:13px}
+
+/* ═══ ARTICLE BODY ═══ */
+.article-body{max-width:720px;margin:0 auto;padding:0 20px 56px}
+
+.article-body h2{font-family:var(--serif);font-size:26px;font-weight:400;line-height:1.1;letter-spacing:-0.025em;color:var(--text);margin:36px 0 12px;padding-top:12px}
+.article-body h2:first-child{margin-top:0}
+.article-body h2 em{color:var(--gold);font-style:italic}
+
+.article-body h3{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.1;letter-spacing:-0.015em;color:var(--text);margin:24px 0 8px}
+.article-body h3 em{color:var(--gold)}
+
+.article-body p{font-size:15px;line-height:1.75;color:var(--text-90);margin:0 0 16px;text-align:justify}
+.article-body p em{font-style:italic;color:var(--gold)}
+.article-body p strong{font-weight:600;color:var(--text)}
+
+.article-body ul,.article-body ol{margin:20px 0;padding-left:20px;font-size:15px;line-height:1.75;color:var(--text-90)}
+.article-body li{margin:8px 0}
+.article-body li em{color:var(--gold);font-style:italic}
+
+.article-body a{color:var(--gold);text-decoration:underline;transition:color .2s}
+.article-body a:hover{color:var(--gold-light)}
+
+/* TL;DR BOX */
+.tldr-box{background:var(--card);border:1.5px solid var(--gold-border);border-radius:16px;padding:24px 20px;margin:28px 0;box-shadow:0 4px 16px rgba(184,146,46,0.06)}
+.tldr-box .box-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:inline-flex;align-items:center;gap:8px}
+.tldr-box .box-eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
+.tldr-box h3{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.1;color:var(--text);margin-bottom:16px;margin-top:0}
+.tldr-box ul{margin:0;padding-left:20px}
+.tldr-box li{margin:8px 0;font-size:14px;line-height:1.6}
+.tldr-box li strong{color:var(--text);font-weight:600}
+.tldr-box li em{color:var(--gold);font-style:italic}
+
+/* CTA CARD */
+.cta-card{background:linear-gradient(135deg,rgba(184,146,46,0.08),rgba(184,146,46,0.03));border:1.5px solid var(--gold-border);border-radius:16px;padding:24px 20px;margin:28px 0;text-align:center}
+.cta-card p{font-size:14px;color:var(--text-60);margin:0}
+.cta-card a{color:var(--gold);font-weight:600;text-decoration:none;transition:all .2s}
+.cta-card a:hover{color:var(--gold-light);text-decoration:underline}
+
+/* ═══ FAQ ═══ */
+.faq{padding:56px 20px;background:var(--bg2)}
+.faq-head{text-align:center;margin-bottom:32px;max-width:720px;margin-left:auto;margin-right:auto}
+.faq-head .eyebrow{display:inline-flex;margin-bottom:12px;justify-content:center;width:100%}
+.faq-head h2{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1.1;letter-spacing:-0.025em;color:var(--text)}
+
+.faq-list{max-width:720px;margin:0 auto;list-style:none}
+.faq-item{border-top:1px solid var(--border)}
+.faq-item:last-child{border-bottom:1px solid var(--border)}
+.faq-item details{padding:20px 0;transition:padding .2s}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;cursor:pointer;font-size:14px;font-weight:500;color:var(--text);line-height:1.5}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:22px;color:var(--text-30);transition:transform .25s var(--ease),color .2s;font-weight:300;line-height:1;flex-shrink:0;margin-top:2px}
+.faq-item details[open] summary::after{transform:rotate(45deg);color:var(--gold)}
+.faq-ans{font-size:14px;color:var(--text-60);line-height:1.75;margin-top:14px;max-width:640px}
+.faq-ans em{color:var(--gold);font-style:italic}
+.faq-ans strong{color:var(--text);font-weight:600}
+
+/* ═══ DISCLAIMER ═══ */
+.medical-disclaimer{max-width:720px;margin:0 auto;padding:32px 20px;background:var(--bg);text-align:center}
+.disclaimer-box{background:rgba(184,146,46,0.04);border:1px solid var(--border);border-radius:12px;padding:20px;font-size:12px;color:var(--text-60);line-height:1.6;font-family:var(--mono)}
+.disclaimer-box strong{color:var(--text);font-weight:600}
+
+/* ═══ CTA — FOOTER ═══ */
+.cta-final{position:relative;padding:56px 20px 64px;background:var(--deep);color:#fff;overflow:hidden;border-radius:0;margin-top:0}
+.cta-final::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(184,146,46,0.14) 0%,transparent 65%);pointer-events:none;animation:glowPulse 7s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:0.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.05)}}
+
+.cta-final-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;text-align:center}
+.cta-final .eyebrow-center{display:inline-flex;align-items:center;gap:10px;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+.cta-final .eyebrow-center::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+
+.cta-final h2{font-family:var(--serif);font-size:32px;font-weight:400;line-height:1.12;letter-spacing:-0.03em;margin-bottom:18px}
+.cta-final h2 em{color:var(--gold);font-style:italic}
+.cta-final-lede{font-size:14.5px;color:rgba(255,255,255,0.7);line-height:1.65;max-width:520px;margin:0 auto 36px}
+
+.cta-button-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.cta-button-group .btn{flex:1 1 auto;min-width:140px}
+
+.cta-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;font-size:12px;color:rgba(255,255,255,0.6);margin-top:24px}
+.cta-trust .item{display:flex;align-items:center;gap:6px}
+.cta-trust i{color:var(--gold);font-size:14px}
+
+/* ─── FOOTER ─── */
+.footer{padding:32px 20px;background:var(--deep);color:rgba(255,255,255,0.5);text-align:center;font-size:11px;font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase}
+.footer .logo{font-family:var(--serif);font-size:22px;color:#fff;text-transform:none;letter-spacing:-0.02em;margin-bottom:8px;display:inline-block;font-weight:700}
+.footer .logo .dot{color:var(--gold)}
+
+/* ═══ DESKTOP ═══ */
+@media(min-width:768px){
+  .article-h1{font-size:48px}
+  .article-body{padding:0 40px 72px}
+  .article-body h2{font-size:32px;margin:44px 0 16px}
+  .article-body h3{font-size:20px}
+  .article-body p{font-size:16px}
+  .article-body ul,.article-body ol{font-size:16px}
+  .tldr-box{padding:32px 28px}
+  .cta-final{padding:72px 32px 88px}
+  .cta-final h2{font-size:48px}
+  .cta-final-lede{font-size:16px}
+  .faq{padding:48px 40px}
+  .medical-disclaimer{padding:40px 40px}
+  .article-meta{font-size:13px}
+}
+
+/* ─── DROPDOWN MENU ─── */
+.dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.dropdown-overlay.open{opacity:1;pointer-events:auto}
+.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(380px,90vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:80px 28px 40px;box-shadow:-8px 0 40px rgba(0,0,0,0.12)}
+.dropdown-panel.open{transform:translateX(0)}
+.dropdown-close{position:absolute;top:16px;right:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:18px;transition:all .2s}
+.dropdown-close:hover{background:var(--surface)}
+.dropdown-section{margin-bottom:28px}
+.dropdown-section-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.dropdown-section-title::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
+.dropdown-links{display:flex;flex-wrap:wrap;gap:6px}
+.dropdown-link{display:inline-flex;align-items:center;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:var(--bg2);border:1px solid var(--border);transition:all .2s var(--ease)}
+.dropdown-link:hover{border-color:var(--gold-border);background:var(--gold-glow);color:var(--gold)}
+.dropdown-link.active{border-color:var(--gold);background:var(--gold-glow);color:var(--gold);font-weight:600}
+.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;justify-content:center;align-items:center;gap:6px;margin-top:8px;transition:all .3s var(--ease);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+
+/* ─── READ MORE FOLD ─── */
+.article-fold{max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0}
+.article-fold.expanded{max-height:none;opacity:1;overflow:visible}
+.read-more-wrap{text-align:center;padding:24px 0 8px;position:relative}
+.read-more-wrap::before{content:'';position:absolute;top:-60px;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none}
+.read-more-wrap.hidden{display:none}
+.read-more-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-size:13px;font-weight:600;color:var(--gold);background:var(--gold-glow);border:1.5px solid var(--gold-border);transition:all .3s var(--ease);cursor:pointer}
+.read-more-btn:hover{background:var(--gold);color:#fff;transform:translateY(-1px);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.read-more-btn i{transition:transform .3s}
+
+/* ─── RELATED ARTICLES ─── */
+.related{padding:32px 20px;background:var(--bg);border-top:1px solid var(--border)}
+.related-inner{max-width:720px;margin:0 auto}
+.related-head{margin-bottom:20px}
+.related-head h2{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:-0.02em}
+.related-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:520px){.related-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:768px){.related-grid{grid-template-columns:1fr 1fr 1fr}}
+.related-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 16px;transition:all .25s var(--ease)}
+.related-card:hover{border-color:var(--gold-border);box-shadow:0 4px 16px rgba(184,146,46,0.1);transform:translateY(-2px)}
+.related-card .rc-eyebrow{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.related-card .rc-title{font-family:var(--serif);font-size:15px;font-weight:400;color:var(--text);line-height:1.2;letter-spacing:-0.01em}
+
+/* ─── WAITLIST MODAL ─── */
+.waitlist-overlay{position:fixed;inset:0;z-index:2000;background:rgba(10,8,6,0.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.waitlist-overlay.open{opacity:1;pointer-events:auto}
+.waitlist-modal{background:var(--bg);border-radius:24px;padding:40px 28px;max-width:420px;width:100%;position:relative;transform:translateY(20px) scale(0.97);transition:transform .4s var(--ease);box-shadow:0 24px 80px rgba(0,0,0,0.2)}
+.waitlist-overlay.open .waitlist-modal{transform:translateY(0) scale(1)}
+.waitlist-modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text-60);font-size:16px;transition:all .2s}
+.waitlist-modal-close:hover{background:var(--surface);color:var(--text)}
+.waitlist-modal h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.1;letter-spacing:-0.02em;margin-bottom:8px}
+.waitlist-modal h2 em{color:var(--gold);font-style:italic}
+.waitlist-modal .wl-sub{font-size:13px;color:var(--text-60);line-height:1.5;margin-bottom:24px}
+.waitlist-form{display:flex;flex-direction:column;gap:10px}
+.waitlist-input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);font-family:var(--sans);font-size:14px;color:var(--text);transition:border-color .2s}
+.waitlist-input:focus{outline:none;border-color:var(--gold)}
+.waitlist-input::placeholder{color:var(--text-30)}
+.waitlist-submit{width:100%;padding:14px;border-radius:50px;background:var(--gold);color:#fff;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .3s var(--ease);border:none;box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.waitlist-submit:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+.waitlist-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.waitlist-success{text-align:center;padding:20px 0}
+.waitlist-success i{font-size:48px;color:var(--gold);margin-bottom:12px;display:block}
+.waitlist-success h3{font-family:var(--serif);font-size:22px;margin-bottom:8px}
+.waitlist-success p{font-size:13px;color:var(--text-60)}
+.wl-trust{display:flex;justify-content:center;gap:16px;margin-top:16px;font-size:11px;color:var(--text-30)}
+.wl-trust span{display:flex;align-items:center;gap:4px}
+.wl-trust i{color:var(--gold);font-size:12px}
+
+/* ─── SPACING IMPROVEMENTS ─── */
+.article-body h2{margin:44px 0 16px;padding-top:16px}
+.article-body p{margin:0 0 20px}
+.article-body ul,.article-body ol{margin:20px 0 24px}
+.tldr-box{margin:32px 0}
+.cta-card{margin:36px 0}
+.faq{padding:64px 20px}
+
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav class="nav">
+  <a href="/" class="nav-logo">arq<span class="dot">.</span></a>
+  <div class="nav-right">
+    <a href="#cta" class="nav-link">Talk to a physician</a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── DROPDOWN MENU ─── -->
+<div class="dropdown-overlay" id="dropdownOverlay"></div>
+<div class="dropdown-panel" id="dropdownPanel">
+  <button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
+
+  <div class="dropdown-section">
+    <div class="dropdown-section-title">Conditions</div>
+    <div class="dropdown-links">
+      <a href="/pcos" class="dropdown-link">PCOS</a>
+      <a href="/thyroid" class="dropdown-link">Thyroid</a>
+      <a href="/diabetes" class="dropdown-link">Diabetes</a>
+      <a href="/weight-loss" class="dropdown-link">Weight Loss</a>
+      <a href="/hair-loss" class="dropdown-link">Hair Loss</a>
+      <a href="/testosterone" class="dropdown-link">Testosterone</a>
+      <a href="/vitamin-deficiency" class="dropdown-link">Vitamin Deficiency</a>
+      <a href="/fatigue" class="dropdown-link">Fatigue</a>
+      <a href="/sleep" class="dropdown-link">Sleep</a>
+      <a href="/skin" class="dropdown-link">Skincare</a>
+      <a href="/focus" class="dropdown-link">Focus</a>
+      <a href="/blood-pressure" class="dropdown-link">Blood Pressure</a>
+      <a href="/iv-infusions" class="dropdown-link">IV Infusions</a>
+      <a href="/recovery" class="dropdown-link">Recovery</a>
+    </div>
+  </div>
+
+  <div class="dropdown-section">
+    <div class="dropdown-section-title">Sports</div>
+    <div class="dropdown-links">
+      <a href="/pickleball" class="dropdown-link">Pickleball</a>
+      <a href="/padel" class="dropdown-link">Padel</a>
+      <a href="/runners" class="dropdown-link">Running</a>
+      <a href="/strength" class="dropdown-link">Strength</a>
+      <a href="/performance" class="dropdown-link">Performance</a>
+      <a href="/hyrox" class="dropdown-link">HyRox</a>
+      <a href="/endurance" class="dropdown-link">Endurance</a>
+    </div>
+  </div>
+
+  <div class="dropdown-section">
+    <div class="dropdown-section-title">Learn</div>
+    <div class="dropdown-links">
+      <a href="/blog/" class="dropdown-link">All Articles</a>
+      <a href="/blog/ozempic-india-guide" class="dropdown-link">Ozempic Guide</a>
+      <a href="/blog/pcos-symptoms-india" class="dropdown-link">PCOS Guide</a>
+      <a href="/blog/hba1c-test-guide" class="dropdown-link">HbA1c Test</a>
+      <a href="/blog/finasteride-india-guide" class="dropdown-link">Finasteride Guide</a>
+      <a href="/blog/tretinoin-indian-skin-guide" class="dropdown-link">Tretinoin Guide</a>
+      <a href="/blog/hrv-explained" class="dropdown-link">HRV Explained</a>
+    </div>
+  </div>
+
+  <div class="dropdown-section">
+    <a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+  </div>
+</div>
+
+
+<!-- ═══ ARTICLE HERO ═══ -->
+<section class="article-hero">
+  <div class="article-content">
+    <span class="article-eyebrow">Vitamin deficiency guide</span>
+    <h1 class="article-h1">Vitamin B12 Deficiency: Symptoms Your <em>Doctor Might Miss</em></h1>
+
+    <div class="article-meta">
+      <div class="article-meta-item">
+        <i class="ph-fill ph-calendar"></i>
+        <span>April 16, 2026</span>
+      </div>
+      <div class="article-meta-item">
+        <i class="ph-fill ph-user-circle"></i>
+        <span>arq. medical team</span>
+      </div>
+      <div class="article-meta-badge">
+        <i class="ph-fill ph-stethoscope"></i>
+        Medically reviewed
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ARTICLE BODY ═══ -->
+<section class="article-body">
+
+<p><strong>Your <a href="/fatigue" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">fatigue</a> isn't stress. Your tingling isn't anxiety. Your brain fog isn't age.</strong> India has one of the highest B12 deficiency rates globally — 47% of North Indians are deficient — yet most doctors only order a single serum B12 test, which misses 30-40% of real deficiencies. The result: B12-deficient patients are told their symptoms are psychosomatic. They're prescribed antidepressants for B12-driven depression. They're told to "manage stress" when their nervous system is literally starving for B12. This is a diagnostic failure, and it's common.</p>
+
+<!-- TL;DR -->
+<div class="tldr-box">
+  <span class="box-eyebrow">Key takeaways</span>
+  <h3>B12 deficiency in India:</h3>
+  <ul>
+    <li><strong>Prevalence:</strong> 47% of North Indians are B12 deficient; higher in vegetarians and vegans</li>
+    <li><strong>Missed symptoms:</strong> Fatigue (blamed on stress), tingling (blamed on anxiety), brain fog (blamed on age), depression (treated as psychiatric)</li>
+    <li><strong>Serum B12 alone is insufficient</strong> — you need methylmalonic acid (MMA) and homocysteine to detect functional deficiency</li>
+    <li><strong>Metformin users:</strong> 10-30% risk of B12 depletion; needs monitoring</li>
+    <li><strong>Vegetarians/vegans:</strong> B12 is only in animal products; dietary sources are minimal or zero</li>
+    <li><strong>arq. approach:</strong> serum B12 + MMA + homocysteine + folate + iron + <a href="/thyroid" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">thyroid</a>, because symptoms overlap</li>
+  </ul>
+</div>
+
+<h2>Why is B12 Deficiency So Common in India?</h2>
+
+<p>B12 is found only in animal products — meat, fish, eggs, dairy. It does not occur naturally in plants. India is 40% vegetarian and another 30% occasionally meat-eating. This dietary pattern creates a massive B12 deficiency epidemic.</p>
+
+<p><strong>The problem in different diets:</strong></p>
+<ul>
+  <li><strong>Lacto-vegetarian (milk + dairy):</strong> Provides minimal B12. A glass of milk has 0.4-0.5 mcg; yogurt has 0.3-0.4 mcg. The RDA is 2.4 mcg daily. You'd need 5-6 servings of dairy every single day — which most Indians don't consume. Additionally, B12 absorption from dairy requires stomach acid and intrinsic factor, both of which decline with age.</li>
+  <li><strong>Vegan (no animal products):</strong> Provides zero B12 unless fortified. Most Indian vegan foods are not fortified. A vegan Indian diet, no matter how nutrient-dense, contains essentially no B12.</li>
+  <li><strong>Occasional meat-eaters:</strong> Even eating meat 2-3 times per week may not be enough if portions are small or other absorption issues exist.</li>
+</ul>
+
+<p>The result: <strong>47% of North Indians are B12 deficient.</strong> In some Southern regions with predominantly vegetarian populations, the rate is even higher — up to 60%. Among vegans, deficiency is nearly universal without supplementation.</p>
+
+
+    <div class="article-fold" id="articleFold">
+<h2>The Symptoms Doctors Miss</h2>
+
+<p>B12 deficiency has a wide range of symptoms, and many are dismissed as other conditions. Here's what doctors often misattribute:</p>
+
+<h3>1. Fatigue & Weakness</h3>
+<p>B12 is essential for energy production at the cellular level. Deficiency causes severe, persistent fatigue that doesn't improve with sleep. <strong>Doctors often blame stress.</strong> They order tests for thyroid and anemia, find them normal (because CBC and thyroid panel aren't flagging it), and conclude the fatigue is psychological. The patient is sent to a therapist. Meanwhile, B12 is deficient and getting worse.</p>
+
+<h3>2. Peripheral Neuropathy (Tingling & Numbness)</h3>
+<p>B12 is critical for maintaining myelin — the insulation around nerve fibers. Deficiency causes demyelination, leading to tingling, numbness, or burning in hands and feet. <strong>Doctors often blame anxiety or dismiss it as "stress-related paresthesia."</strong> Some order an EMG (electromyography) to rule out diabetic neuropathy, and when that's normal, assume symptoms are psychosomatic. The neuropathy worsens silently. If B12 deficiency is prolonged, this damage becomes permanent.</p>
+
+<h3>3. Brain Fog & Memory Loss</h3>
+<p>B12 is required for myelin formation in the brain and for proper neurotransmitter synthesis. Deficiency causes cognitive fogginess, poor concentration, memory lapses, and slowed thinking. <strong>Doctors often blame age.</strong> A 45-year-old with sudden cognitive decline is told, "That's just getting older." Or they're diagnosed with early-onset cognitive decline or dementia. Meanwhile, B12 correction could reverse symptoms completely.</p>
+
+<h3>4. Depression & Mood Disturbance</h3>
+<p>B12 deficiency impairs neurotransmitter production (dopamine, serotonin, norepinephrine), causing depression, irritability, and mood instability. <strong>Doctors almost always prescribe antidepressants first.</strong> The depression may improve slightly (placebo effect, lifestyle adjustments), but without B12 correction, it persists. The patient stays on SSRIs indefinitely when the root cause was nutritional all along.</p>
+
+<h3>5. Glossitis (Inflamed Tongue)</h3>
+<p>B12 deficiency causes the tongue to become swollen, red, sore, and smooth (loss of normal papillae). <strong>Doctors sometimes think it's a fungal infection</strong> and prescribe antifungals, which don't help. Or they blame a dietary irritant. The glossitis resolves only with B12 correction.</p>
+
+<h3>6. Pale or Yellowish Skin</h3>
+<p>B12 deficiency can cause macrocytic anemia (large, immature red blood cells) and also impairs RBC production. Combined with B12's role in bilirubin metabolism, this can cause a slight yellowish or very pale appearance. <strong>Doctors sometimes assume jaundice and order liver tests</strong>, which come back normal. Or they dismiss pale skin as anemia without checking B12-specific markers.</p>
+
+<p>The core problem: <strong>B12 deficiency symptoms overlap with thyroid disease, depression, anxiety, diabetes complications, and aging.</strong> Without checking the right markers, deficiency is invisible.</p>
+
+<h2>Why Serum B12 Alone Is Not Enough</h2>
+
+<p>Most labs and doctors test only serum B12 — the amount of B12 in your blood. This seems logical, but it's medically inadequate. Here's why:</p>
+
+<h3>The Problem: Normal Serum B12, Abnormal Function</h3>
+<p>You can have a "normal" serum B12 level (200-900 pg/mL) but still have functional B12 deficiency. This happens because:</p>
+
+<ul>
+  <li><strong>B12 is bound to proteins in blood.</strong> Serum B12 measures total B12, but not how much is actually available to your cells.</li>
+  <li><strong>Some B12 is in transit, unused.</strong> Your cells can't access it.</li>
+  <li><strong>You might have malabsorption issues.</strong> B12 is in your blood but can't enter cells due to pernicious anemia, celiac disease, or Crohn's disease.</li>
+</ul>
+
+<p>The result: A patient with "normal" serum B12 (say, 300 pg/mL) can have severe cellular B12 deficiency and all the symptoms — fatigue, neuropathy, depression — but the serum B12 test says they're fine. They're told it's not B12. They're blamed for having psychosomatic symptoms.</p>
+
+<h3>The Solution: Methylmalonic Acid (MMA) & Homocysteine</h3>
+<p>MMA and homocysteine are metabolic byproducts that accumulate when B12 is deficient at the cellular level. They're the true markers of functional B12 status:</p>
+
+<ul>
+  <li><strong>Methylmalonic acid (MMA):</strong> Elevated when B12 is functionally deficient. Even if serum B12 is "normal," high MMA reveals true deficiency.</li>
+  <li><strong>Homocysteine:</strong> Also elevated in B12 deficiency. Importantly, homocysteine is an independent cardiovascular risk factor — high homocysteine increases risk of heart attack and stroke, even without other risk factors.</li>
+</ul>
+
+<p><strong>arq.'s approach:</strong> We test serum B12, MMA, and homocysteine together. If serum B12 is low-normal (200-400 pg/mL) AND MMA is elevated, you have functional deficiency that needs treatment. If serum B12 is "normal" but MMA is high, you still have deficiency requiring intervention. This catches 95% of deficiencies that serum B12 alone would miss.</p>
+
+<h2>Metformin Users: A Special Risk Group</h2>
+
+<p>If you've been on metformin (the most prescribed diabetes drug in India) for more than 2-3 years, your B12 is likely deficient. Metformin is a well-established B12 antagonist.</p>
+
+<h3>How Metformin Depletes B12</h3>
+<p>Metformin reduces B12 absorption in the terminal ileum (last part of the small intestine) where B12 is normally absorbed. The mechanism isn't fully understood, but the effect is real and dose-dependent. Long-term metformin users have a 10-30% risk of B12 deficiency.</p>
+
+<h3>The Problem</h3>
+<p>Most diabetics on metformin are never screened for B12. Their fatigue, tingling, and cognitive decline are attributed to diabetes itself, not to B12 deficiency. They're not supplemented. Years pass, and nerve damage accumulates, potentially becoming permanent.</p>
+
+<h3>What Should Happen</h3>
+<p>Anyone on metformin for more than 2-3 years should have B12 checked (serum B12, MMA, homocysteine). If deficient, supplementation should be prophylactic — ongoing, not one-time. arq. monitors this automatically: all metformin users get baseline B12 testing and then annual monitoring with supplementation if needed.</p>
+
+<h2>The arq. Approach to B12 Deficiency: Test Comprehensively</h2>
+
+<p>Most doctors stop at serum B12. arq. doesn't. Here's what we test:</p>
+
+<h3>Primary B12 Markers</h3>
+<ul>
+  <li><strong>Serum B12:</strong> Baseline measurement; low-normal (200-400) is concerning if combined with symptoms</li>
+  <li><strong>Methylmalonic acid (MMA):</strong> Elevated when B12 is functionally deficient; most sensitive marker</li>
+  <li><strong>Homocysteine:</strong> Elevated in B12 deficiency AND an independent cardiovascular risk factor</li>
+</ul>
+
+<h3>Supporting Tests (Symptoms Overlap)</h3>
+<ul>
+  <li><strong>Folate level:</strong> B12 and folate work together. Folate deficiency mimics B12 deficiency and can coexist.</li>
+  <li><strong>Iron panel (ferritin, serum iron):</strong> Iron deficiency also causes fatigue, tingling, and cognitive issues. Must rule in or out.</li>
+  <li><strong>Thyroid panel (TSH, Free T4):</strong> Hypothyroidism causes nearly identical symptoms to B12 deficiency. Thyroid disease is common in India and often missed.</li>
+  <li><strong>Complete blood count (CBC):</strong> Reveals macrocytic anemia (large RBCs), which suggests B12/folate deficiency. Also reveals if you're anemic from other causes.</li>
+</ul>
+
+<h3>If Malabsorption Is Suspected</h3>
+<ul>
+  <li><strong>Intrinsic factor antibodies:</strong> Tests for pernicious anemia (autoimmune B12 malabsorption)</li>
+  <li><strong>Tissue transglutaminase (tTG) antibodies:</strong> Screen for celiac disease, a common cause of B12 malabsorption</li>
+  <li><strong>Cobalamin absorption test (Schilling test, if available):</strong> Measures how well you absorb B12 from food</li>
+</ul>
+
+<p>With this comprehensive panel, arq. identifies not just B12 deficiency, but the underlying cause (dietary, malabsorption, metformin-related) and any coexisting deficiencies (folate, iron, thyroid dysfunction). Your treatment is tailored to the cause.</p>
+
+<h2>Treatment: Methylcobalamin vs Cyanocobalamin, Oral vs Injection</h2>
+
+<p>Once B12 deficiency is confirmed, treatment depends on the cause and severity.</p>
+
+<h3>Two Forms of B12</h3>
+
+<h4>Cyanocobalamin</h4>
+<p>The synthetic form, common in supplements and injections. Your liver converts it to methylcobalamin (the active form). Effective, but slightly slower. Most Indian pharmacies stock cyanocobalamin (Inj B12, Neurobion, etc.).</p>
+
+<h4>Methylcobalamin</h4>
+<p>The active form, ready for use by your cells. More bioavailable, absorbed more efficiently, especially in people with absorption issues. Slightly more expensive, but worth it if malabsorption is a factor. Better for vegans, metformin users, and anyone with GI disease.</p>
+
+<p>For severe deficiency or malabsorption: methylcobalamin is preferred.</p>
+
+<h3>Two Routes: Oral vs Injection</h3>
+
+<h4>Oral Supplementation</h4>
+<p><strong>Good for:</strong> Dietary deficiency (vegans, vegetarians), mild deficiency, maintenance after correction</p>
+<p><strong>Dose:</strong> 1000-2000 mcg daily (methylcobalamin or cyanocobalamin)</p>
+<p><strong>Timeline:</strong> 2-3 months to correct deficiency; requires daily compliance</p>
+<p><strong>Absorption:</strong> 1-5% of oral B12 is absorbed passively (no intrinsic factor required). If you can swallow pills and absorb nutrients, oral works.</p>
+
+<h4>Intramuscular (IM) Injection</h4>
+<p><strong>Good for:</strong> Malabsorption (pernicious anemia, celiac, Crohn's), severe deficiency, post-gastrectomy patients, poor GI absorption</p>
+<p><strong>Dose:</strong> 1000 mcg IM weekly for 6-8 weeks, then monthly maintenance</p>
+<p><strong>Timeline:</strong> Rapid improvement; within 2-4 weeks for fatigue and brain fog</p>
+<p><strong>Absorption:</strong> Bypasses the GI tract entirely; doesn't require intrinsic factor or healthy absorption</p>
+
+<h3>When to Use Which</h3>
+<ul>
+  <li><strong>Pure dietary deficiency (vegetarian/vegan):</strong> Oral methylcobalamin 1000-2000 mcg daily for 3 months, then maintenance 500-1000 mcg daily indefinitely</li>
+  <li><strong>Metformin-related deficiency:</strong> Start oral; if symptoms don't resolve in 3 months, switch to monthly injections</li>
+  <li><strong>Pernicious anemia / celiac disease / Crohn's:</strong> IM injections 1000 mcg monthly, long-term maintenance</li>
+  <li><strong>Severe deficiency with neuropathy:</strong> IM injections for faster correction; switch to oral maintenance once normalized</li>
+</ul>
+
+<p>arq. assesses your B12 absorption status (via intrinsic factor antibodies, tTG antibodies, and clinical history) and recommends the best route. If you're vegan, monthly reminders and oral supplementation work. If you have celiac disease, injections are necessary.</p>
+
+<h2>Timeline for Recovery</h2>
+
+<p>B12 deficiency recovery is not instantaneous. Different symptoms resolve on different timelines:</p>
+
+<ul>
+  <li><strong>Fatigue & energy:</strong> Improvement in 2-4 weeks</li>
+  <li><strong>Brain fog & memory:</strong> Improvement in 3-8 weeks</li>
+  <li><strong>Depression & mood:</strong> Improvement in 4-8 weeks (may need to taper psychiatric medications)</li>
+  <li><strong>Glossitis:</strong> Resolution in 2-4 weeks</li>
+  <li><strong>Peripheral neuropathy (tingling/numbness):</strong> Early-stage (caught within months) resolves in 2-3 months. Late-stage (years of deficiency) may take 6-12 months or longer. <strong>If left untreated for years, nerve damage may be permanent.</strong></li>
+</ul>
+
+<p>This is why early diagnosis matters. Treated early, B12 deficiency is completely reversible. Ignored for years, permanent neurological damage can occur.</p>
+
+<h2>Prevention & Maintenance</h2>
+
+<h3>Vegetarians & Vegans</h3>
+<ul>
+  <li>Supplement with 1000-2000 mcg methylcobalamin daily, indefinitely</li>
+  <li>Or get IM injections monthly</li>
+  <li>Check serum B12, MMA, homocysteine annually to ensure adequate levels</li>
+  <li>Cannot rely on dietary sources (dairy provides minimal B12; fortified foods are rare in India)</li>
+</ul>
+
+<h3>Metformin Users</h3>
+<ul>
+  <li>Baseline B12 testing (serum B12, MMA, homocysteine) at start</li>
+  <li>Repeat testing every 2-3 years while on metformin</li>
+  <li>If deficient or low-normal with symptoms, start supplementation (1000 mcg daily oral, or monthly injections)</li>
+  <li>Continue indefinitely; metformin users have ongoing depletion risk</li>
+</ul>
+
+<h3>Everyone Else</h3>
+<ul>
+  <li>If you have symptoms (fatigue, tingling, cognitive decline), get tested</li>
+  <li>If B12 is deficient, supplement or inject as recommended</li>
+  <li>If you've been vegetarian/vegan or on metformin for years, check proactively</li>
+  <li>Once corrected, maintenance supplementation prevents recurrence</li>
+</ul>
+
+<div class="cta-card">
+  <p><strong>Tired, foggy, or tingling?</strong> It might be B12. <a href="#cta">Talk to an arq. physician to test properly →</a></p>
+</div>
+
+<h2>How arq. Prescribes B12 Treatment (Differently)</h2>
+
+<p>Most doctors order serum B12, see it's "normal," and move on. arq. doesn't.</p>
+
+<p><strong>arq.'s difference:</strong></p>
+<ul>
+  <li><strong>Test functionally, not just serum:</strong> MMA and homocysteine reveal true B12 status that serum alone misses</li>
+  <li><strong>Rule out coexisting deficiencies:</strong> Folate, iron, thyroid — all tested because symptoms overlap</li>
+  <li><strong>Identify the cause:</strong> Dietary? Malabsorption? Metformin-related? Treatment depends on the cause.</li>
+  <li><strong>Choose the right formulation and route:</strong> Vegan needing oral daily supplement? Metformin user needing injections? Celiac disease requiring IM? We recommend what fits your situation.</li>
+  <li><strong>Monitor recovery:</strong> Repeat testing at 12 weeks ensures B12 is normalizing and symptoms are improving. If not, we adjust.</li>
+  <li><strong>Maintenance protocols:</strong> Once corrected, you get a long-term plan: ongoing supplementation, annual monitoring, tailored to your risk.</li>
+</ul>
+
+<p>The core principle: <strong>test comprehensively, treat the cause, monitor recovery.</strong> That's how B12 deficiency stops being missed.</p>
+
+</section>
+
+<!-- ═══ FAQ ═══ -->
+
+    </div><!-- end article-fold -->
+
+    <div class="read-more-wrap" id="readMoreWrap">
+      <button class="read-more-btn" id="readMoreBtn">
+        Continue reading <i class="ph-bold ph-caret-down"></i>
+      </button>
+    </div>
+<section class="faq">
+  <div class="faq-head">
+    <span class="eyebrow" style="justify-content: center; display: flex;">Questions</span>
+    <h2>Frequently asked about B12 deficiency</h2>
+  </div>
+  <ul class="faq-list">
+    <li class="faq-item">
+      <details>
+        <summary>Why is B12 deficiency so common in India?</summary>
+        <div class="faq-ans">B12 is only found in animal products — meat, fish, eggs, dairy. 40% of India is vegetarian, and an additional 30% eat meat only occasionally. Lacto-vegetarian diets provide minimal B12 (small amounts in milk and yogurt, but only if consumed regularly and in sufficient quantity). Vegan diets provide zero B12 unless fortified. Additionally, vegetarian Indian diets often lack the intrinsic factor needed to absorb B12 from dairy sources. The result: 47% of North Indians are B12 deficient. In some regions, it's higher.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>Is serum B12 alone enough to diagnose deficiency?</summary>
+        <div class="faq-ans">No. Serum B12 is the first test, but it's insufficient on its own. A "normal" serum B12 can mask functional deficiency — the B12 is in your blood but your cells can't use it. Functional B12 status is revealed by methylmalonic acid (MMA) and homocysteine — these rise when B12 is actually deficient at the cellular level. arq. tests serum B12, MMA, and homocysteine together, which catches 95% of deficiencies that serum B12 alone would miss. This is especially important in vegans and long-term metformin users.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>Does metformin cause B12 deficiency?</summary>
+        <div class="faq-ans">Yes. Metformin (the most prescribed diabetes medication in India) depletes B12 by reducing its absorption in the terminal ileum. Long-term metformin users have a 10-30% risk of B12 deficiency — and many don't know it. If you've been on metformin for more than 2-3 years, your B12 status should be checked. Symptoms like fatigue or tingling are often blamed on diabetes when they're actually B12 deficiency. arq. monitors B12 in all metformin users and supplements prophylactically if needed.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>What's the difference between methylcobalamin and cyanocobalamin?</summary>
+        <div class="faq-ans">Both are B12 forms, but methylcobalamin is more bioavailable — your body uses it directly in energy and nervous system function. Cyanocobalamin requires conversion in your liver, which is slower but still effective. For injections, both work well. For oral supplementation, methylcobalamin is better absorbed, especially if you have absorption issues (pernicious anemia, celiac disease, Crohn's). Most Indian pharmacies stock both; methylcobalamin is slightly more expensive but worth it for deficiency correction.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>Should I take B12 oral supplements or injections?</summary>
+        <div class="faq-ans">It depends on the cause of deficiency. If it's dietary (vegetarian/vegan), oral methylcobalamin works well — 1000-2000 mcg daily is effective. If it's malabsorption (pernicious anemia, celiac, Crohn's, post-gastrectomy), injections are better because they bypass the GI tract. Monthly B12 injections (1000 mcg IM) are standard for malabsorption. Most Indians can start with oral supplements; if symptoms don't improve in 3 months, switch to injections. arq. assesses your B12 absorption status and recommends the best route.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>How long does it take to recover from B12 deficiency?</summary>
+        <div class="faq-ans">Fatigue and brain fog improve in 2-4 weeks. Peripheral neuropathy (tingling, numbness) takes longer — 2-3 months if caught early, or 6-12 months if peripheral nerves are severely damaged. Mood and cognitive symptoms improve in 4-8 weeks. Some damage is permanent if left untreated for years — which is why early diagnosis matters. arq. tests at baseline and rechecks at 12 weeks to ensure B12 is normalizing and symptoms are improving.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>Can I test for B12 deficiency at home?</summary>
+        <div class="faq-ans">No home test is reliable. B12 testing requires serum B12, methylmalonic acid (MMA), and homocysteine — all blood tests requiring lab analysis. Some online services claim to offer saliva B12 tests, but these aren't validated. You need a proper blood test from an NABL-accredited lab. arq. orders these tests and interprets them correctly: if serum B12 is 200-400 pg/mL (low-normal) and MMA is elevated, you likely have functional deficiency that needs treating.</div>
+      </details>
+    </li>
+    <li class="faq-item">
+      <details>
+        <summary>Can I overdose on B12 supplements?</summary>
+        <div class="faq-ans">No. B12 is water-soluble, so excess is excreted in urine — there's no storage toxicity. You cannot overdose on B12 supplements, whether oral or injected. This is why maintenance supplementation is safe: once your B12 is corrected, ongoing supplementation (oral 1000 mcg daily, or monthly injections) keeps it normalized without risk of harm. Vegans and long-term metformin users can safely supplement indefinitely.</div>
+      </details>
+    </li>
+  </ul>
+</section>
+
+<!-- ═══ MEDICAL DISCLAIMER ═══ -->
+<section class="medical-disclaimer">
+  <div class="disclaimer-box">
+    <strong>Medical Disclaimer:</strong> This article is for educational purposes only and does not constitute medical advice. B12 deficiency has multiple causes (dietary, malabsorption, metformin-related), and only a qualified physician can diagnose and treat your specific situation. Vitamin B12 supplementation, while safe at therapeutic doses, should be prescribed based on your bloodwork and symptoms. Consult a licensed physician before starting B12 treatment. arq. is India's physician-led online clinic — our physicians review your bloodwork and symptoms before recommending B12 therapy. This information reflects current medical evidence as of 2026.
+  </div>
+</section>
+
+<!-- ═══ CTA — FOOTER ═══ -->
+<section class="cta-final" id="cta">
+  <div class="cta-final-inner">
+    <span class="eyebrow-center">Your fatigue might not be what you think it is</span>
+    <h2>B12 deficiency is <em>fixable</em></h2>
+    <p class="cta-final-lede">Get tested properly. Serum B12 + MMA + homocysteine + folate + iron + thyroid. Know your real status. Get treated. Watch your life change.</p>
+    <div class="cta-button-group">
+      <a href="https://arq.clinic/vitamin-deficiency" class="btn btn-gold btn-lg">Check your vitamin status <i class="ph-bold ph-arrow-right"></i></a>
+    </div>
+    <div class="cta-trust">
+      <div class="item"><i class="ph-fill ph-check-circle"></i>NABL-accredited labs</div>
+      <div class="item"><i class="ph-fill ph-check-circle"></i>DPDP-compliant</div>
+      <div class="item"><i class="ph-fill ph-check-circle"></i>Licensed physicians</div>
+    </div>
+  </div>
+</section>
+
+
+<section class="related">
+  <div class="related-inner">
+    <div class="related-head"><h2>Keep reading</h2></div>
+    <div class="related-grid">
+    <a href="/vitamin-deficiency" class="related-card"><div class="rc-eyebrow">Condition</div><div class="rc-title">Vitamin Deficiency</div></a>
+    <a href="/blog/iron-deficiency-india" class="related-card"><div class="rc-eyebrow">Article</div><div class="rc-title">Iron Deficiency</div></a>
+    <a href="/fatigue" class="related-card"><div class="rc-eyebrow">Condition</div><div class="rc-title">Fatigue</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="logo">arq<span class="dot">.</span></div>
+  <div>India's online clinic · © 2026</div>
+</footer>
+
+<script>
+// ─── Nav scroll transition ───
+const nav = document.querySelector('.nav');
+const setNav = () => nav.classList.toggle('scrolled', window.scrollY > 100);
+setNav();
+window.addEventListener('scroll', setNav, {passive:true});
+
+// ─── Scroll reveal ───
+const reveal = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+
+reveal.forEach(el => io.observe(el));
+
+// ─── Smooth scroll for anchor links ───
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if(target) {
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+
+// ─── FAQ accordion ───
+document.querySelectorAll('.faq-item details').forEach(detail => {
+  detail.addEventListener('toggle', () => {
+    if(detail.open) {
+      detail.scrollIntoView({behavior:'smooth', block:'nearest'});
+    }
+  });
+});
+
+
+// ─── Dropdown menu ───
+const dropdownOverlay = document.getElementById('dropdownOverlay');
+const dropdownPanel = document.getElementById('dropdownPanel');
+const dropdownClose = document.getElementById('dropdownClose');
+const hamburger = document.querySelector('.nav-hamburger');
+
+function openDropdown() {
+  dropdownOverlay.classList.add('open');
+  dropdownPanel.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDropdown() {
+  dropdownOverlay.classList.remove('open');
+  dropdownPanel.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if (hamburger) hamburger.addEventListener('click', openDropdown);
+if (dropdownClose) dropdownClose.addEventListener('click', closeDropdown);
+if (dropdownOverlay) dropdownOverlay.addEventListener('click', closeDropdown);
+
+// Highlight current page in dropdown
+const currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+document.querySelectorAll('.dropdown-link').forEach(link => {
+  const href = link.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '');
+  if (currentPath === href || currentPath.endsWith(href)) {
+    link.classList.add('active');
+  }
+});
+
+// ─── Waitlist modal ───
+function openWaitlist() {
+  const ol = document.getElementById('waitlistOverlay');
+  if (ol) { ol.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeWaitlist() {
+  const ol = document.getElementById('waitlistOverlay');
+  if (ol) { ol.classList.remove('open'); document.body.style.overflow = ''; }
+}
+
+// Close on overlay click
+const wlOverlay = document.getElementById('waitlistOverlay');
+if (wlOverlay) wlOverlay.addEventListener('click', function(e) {
+  if (e.target === wlOverlay) closeWaitlist();
+});
+
+function submitWaitlist(e) {
+  e.preventDefault();
+  const btn = document.getElementById('wlSubmit');
+  const name = document.getElementById('wlName').value;
+  const email = document.getElementById('wlEmail').value;
+  const phone = document.getElementById('wlPhone').value;
+  btn.disabled = true;
+  btn.textContent = 'Joining...';
+
+  // Store to Google Sheets via Apps Script or simple endpoint
+  const data = { name, email, phone, page: window.location.pathname, ts: new Date().toISOString() };
+
+  // Try to send to a simple endpoint; fallback to localStorage
+  fetch('https://arq.clinic/api/waitlist', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).catch(() => {
+    // Fallback: store locally
+    const existing = JSON.parse(localStorage.getItem('arq_waitlist') || '[]');
+    existing.push(data);
+    localStorage.setItem('arq_waitlist', JSON.stringify(existing));
+  }).finally(() => {
+    document.getElementById('waitlistForm').style.display = 'none';
+    document.getElementById('waitlistSuccess').style.display = 'block';
+    setTimeout(closeWaitlist, 3000);
+  });
+}
+
+// Wire up all waitlist links
+document.querySelectorAll('a[href="#cta"], a[href="#"], .nav-link').forEach(link => {
+  const text = link.textContent.toLowerCase();
+  if (text.includes('waitlist') || text.includes('talk to')) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      closeDropdown();
+      openWaitlist();
+    });
+  }
+});
+
+// ─── Read more fold ───
+const readMoreBtn = document.getElementById('readMoreBtn');
+const articleFold = document.getElementById('articleFold');
+const readMoreWrap = document.querySelector('.read-more-wrap');
+if (readMoreBtn && articleFold) {
+  readMoreBtn.addEventListener('click', function() {
+    articleFold.classList.add('expanded');
+    if (readMoreWrap) readMoreWrap.classList.add('hidden');
+  });
+}
+
+</script>
+
+
+<!-- ─── WAITLIST MODAL ─── -->
+<div class="waitlist-overlay" id="waitlistOverlay">
+  <div class="waitlist-modal">
+    <button class="waitlist-modal-close" onclick="closeWaitlist()" aria-label="Close"><i class="ph-bold ph-x"></i></button>
+    <div id="waitlistForm">
+      <h2>Join the <em>waitlist</em></h2>
+      <p class="wl-sub">100+ biomarkers. A dedicated physician. Protocol delivered to your door. Be first in line when we launch.</p>
+      <form class="waitlist-form" onsubmit="submitWaitlist(event)">
+        <input type="text" class="waitlist-input" id="wlName" placeholder="Your name" required>
+        <input type="email" class="waitlist-input" id="wlEmail" placeholder="Your email" required>
+        <input type="tel" class="waitlist-input" id="wlPhone" placeholder="Phone (optional)">
+        <button type="submit" class="waitlist-submit" id="wlSubmit">Join the waitlist</button>
+      </form>
+      <div class="wl-trust">
+        <span><i class="ph-fill ph-lock"></i> DPDP-compliant</span>
+        <span><i class="ph-fill ph-shield-check"></i> No spam</span>
+      </div>
+    </div>
+    <div id="waitlistSuccess" class="waitlist-success" style="display:none">
+      <i class="ph-fill ph-check-circle"></i>
+      <h3>You're on the list</h3>
+      <p>We'll reach out when it's your turn. Welcome to arq.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+{% comment %} snippets/product-card.liquid {% endcomment %}
+
+{%- assign kit_name      = product.metafields.arq.kit_name -%}
+{%- assign doctor_type   = product.metafields.arq.doctor_type | default: 'MBBS' -%}
+{%- assign blood_req     = product.metafields.arq.blood_required -%}
+
+<a href="{{ product.url }}" class="product-card">
+  <div class="product-card__cat">{{ product.type }}</div>
+  <h3 class="product-card__name">{{ product.title }}</h3>
+  {%- if kit_name != blank -%}
+    <div class="product-card__kit">{{ kit_name }}</div>
+  {%- endif -%}
+  <div class="product-card__desc">
+    {{ product.metafields.arq.short_desc | default: product.description | strip_html | truncate: 80 }}
+  </div>
+  <div class="product-card__footer">
+    <div class="product-card__price">
+      {{ product.price | money }}
+      <span class="product-card__unit">/mo</span>
+    </div>
+    <div class="product-card__arrow">→</div>
+  </div>
+  {%- if blood_req -%}
+    <div class="product-card__blood-tag">Blood test required</div>
+  {%- endif -%}
+</a>
+
+<style>
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  padding: 24px 20px;
+  text-decoration: none;
+  transition: background 0.18s;
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+  border-left: 2px solid transparent;
+}
+.product-card:hover {
+  background: var(--card);
+  border-left-color: var(--gold);
+}
+.product-card__cat {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+  margin-bottom: 8px;
+}
+.product-card__name {
+  font-family: var(--serif);
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.product-card__kit {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.product-card__desc {
+  font-size: 12px;
+  color: var(--cream-40);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 16px;
+}
+.product-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-card__price {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--cream);
+}
+.product-card__unit {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  color: var(--cream-40);
+}
+.product-card__arrow {
+  color: var(--cream-40);
+  font-size: 16px;
+  transition: transform 0.2s, color 0.2s;
+}
+.product-card:hover .product-card__arrow {
+  transform: translateX(4px);
+  color: var(--gold);
+}
+.product-card__blood-tag {
+  position: absolute;
+  top: 14px; right: 14px;
+  font-family: var(--mono);
+  font-size: 6px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--red-lo);
+  color: #e08080;
+  border: 1px solid var(--red-border);
+  padding: 3px 7px;
+  border-radius: 2px;
+}
+</style>

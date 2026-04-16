@@ -59,9 +59,9 @@ em{font-style:italic;color:var(--gold)}
 .nav-logo{font-family:var(--serif);font-size:30px;font-weight:700;color:#fff;letter-spacing:-0.02em;transition:color .3s ease}
 .nav-logo .dot{color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:10px}
-.nav-link{font-size:12px;font-weight:600;padding:8px 16px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
-.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
-.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
+.nav-link{font-size:12px;font-weight:600;padding:8px 16px;border-radius:20px;transition:all .25s var(--ease);background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.18);letter-spacing:0.01em;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.nav-link:hover{background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.3);transform:translateY(-1px)}
+.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark);backdrop-filter:none;-webkit-backdrop-filter:none}
 .nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
 .nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
 .nav-hamburger:hover{background:rgba(255,255,255,0.08)}

@@ -44,8 +44,8 @@ done
 echo "→ Uploading blog posts..."
 scp -i "$SSH_KEY" "$SCRIPT_DIR"/blog/*.html "$SERVER:${WEBROOT}/blog/"
 
-# 6. Upload images
-echo "→ Uploading images..."
+# 6. Upload images (only from images/ — unused images live in _unused-images/)
+echo "→ Uploading images ($(ls "$SCRIPT_DIR"/images/ | wc -l | tr -d ' ') files)..."
 scp -i "$SSH_KEY" "$SCRIPT_DIR"/images/*.svg "$SCRIPT_DIR"/images/*.jpg "$SCRIPT_DIR"/images/*.png "$SERVER:${WEBROOT}/images/" 2>/dev/null || true
 
 # 7. Upload SEO files

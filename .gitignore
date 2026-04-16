@@ -6,3 +6,4 @@ Dockerfile
 docker-compose.yml
 .railwayignore
 node_modules/
+_unused-images/

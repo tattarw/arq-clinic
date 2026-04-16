@@ -764,35 +764,109 @@ document.querySelectorAll('.dropdown-link').forEach(link => {
 
 </script>
 
-<script src="https://tally.so/widgets/embed.js"></script>
+<!-- ═══ WAITLIST MODAL ═══ -->
+<div class="wl-overlay" id="wlOverlay">
+  <div class="wl-modal">
+    <button class="wl-close" id="wlClose" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+    <div class="wl-header">
+      <span class="wl-eyebrow">Early access</span>
+      <h2 class="wl-title">Join the waitlist</h2>
+      <p class="wl-sub">Be among the first to experience physician-led, data-driven health — delivered to your door across India.</p>
+    </div>
+    <form class="wl-form" id="wlForm" autocomplete="on">
+      <div class="wl-field">
+        <label class="wl-label" for="wlName">Full name</label>
+        <input class="wl-input" type="text" id="wlName" name="name" required autocomplete="name" placeholder="Dr. Priya Sharma">
+      </div>
+      <div class="wl-field">
+        <label class="wl-label" for="wlEmail">Email</label>
+        <input class="wl-input" type="email" id="wlEmail" name="email" required autocomplete="email" placeholder="priya@example.com">
+      </div>
+      <div class="wl-field">
+        <label class="wl-label" for="wlPhone">Phone <span class="wl-opt">(optional)</span></label>
+        <input class="wl-input" type="tel" id="wlPhone" name="phone" autocomplete="tel" placeholder="+91 98765 43210">
+      </div>
+      <button class="wl-submit" type="submit" id="wlSubmit">
+        <span class="wl-submit-text">Join the waitlist</span>
+        <span class="wl-submit-loading" style="display:none"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="32" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 9 9" to="360 9 9" dur="0.8s" repeatCount="indefinite"/></circle></svg></span>
+      </button>
+    </form>
+    <div class="wl-success" id="wlSuccess" style="display:none">
+      <div class="wl-check"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="var(--gold)" stroke-width="1.5"/><path d="M10 16.5l4 4 8-9" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3 class="wl-done-title">You're on the list</h3>
+      <p class="wl-done-sub">We'll be in touch soon.</p>
+    </div>
+    <p class="wl-footer">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+<style>
+.wl-overlay{position:fixed;inset:0;z-index:9999;background:rgba(10,8,6,0.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.wl-overlay.active{opacity:1;pointer-events:auto}
+.wl-modal{position:relative;width:90%;max-width:400px;background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:40px 32px 32px;transform:translateY(12px) scale(0.97);transition:transform .35s cubic-bezier(.16,1,.3,1);box-shadow:0 24px 80px rgba(10,8,6,0.25)}
+.wl-overlay.active .wl-modal{transform:translateY(0) scale(1)}
+.wl-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border:none;background:var(--surface);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-60);transition:all .2s}
+.wl-close:hover{background:var(--border-hover);color:var(--text)}
+.wl-header{text-align:center;margin-bottom:28px}
+.wl-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px}
+.wl-title{font-family:var(--serif);font-size:26px;font-weight:400;color:var(--text);margin:0 0 10px;line-height:1.2}
+.wl-sub{font-family:var(--sans);font-size:13px;color:var(--text-60);line-height:1.55;margin:0;max-width:320px;margin-inline:auto}
+.wl-form{display:flex;flex-direction:column;gap:16px}
+.wl-field{display:flex;flex-direction:column;gap:5px}
+.wl-label{font-family:var(--mono);font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-60)}
+.wl-opt{color:var(--text-30);text-transform:none;letter-spacing:0;font-size:9px}
+.wl-input{font-family:var(--sans);font-size:14px;color:var(--text);background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;outline:none;transition:border-color .2s,box-shadow .2s}
+.wl-input::placeholder{color:var(--text-30)}
+.wl-input:focus{border-color:var(--gold-border);box-shadow:0 0 0 3px var(--gold-glow)}
+.wl-submit{margin-top:4px;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.01em;color:#fff;background:var(--text);border:none;border-radius:8px;padding:14px 24px;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px}
+.wl-submit:hover{background:#2c2824;box-shadow:0 4px 20px rgba(10,8,6,0.15)}
+.wl-submit:active{transform:scale(0.98)}
+.wl-submit:disabled{opacity:0.5;cursor:not-allowed}
+.wl-success{text-align:center;padding:24px 0 8px}
+.wl-check{margin-bottom:16px}
+.wl-done-title{font-family:var(--serif);font-size:22px;color:var(--text);margin:0 0 6px}
+.wl-done-sub{font-family:var(--sans);font-size:13px;color:var(--text-60);margin:0}
+.wl-footer{font-family:var(--mono);font-size:8.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-30);text-align:center;margin:20px 0 0}
+@media(max-width:520px){.wl-modal{padding:32px 24px 24px}.wl-title{font-size:23px}}
+</style>
 <script>
-function openWaitlist() {
-  if (window.Tally) {
-    Tally.openPopup('MedNpl', {
-      layout: 'modal',
-      width: 400,
-      overlay: true,
-      hideTitle: false,
-      autoClose: 3000,
-      hiddenFields: { page: window.location.pathname },
-      onSubmit: function() {
-        if (typeof gtag === 'function') gtag('event', 'waitlist_signup', { page: window.location.pathname });
-      }
+(function(){
+  var overlay=document.getElementById('wlOverlay'),form=document.getElementById('wlForm'),
+      success=document.getElementById('wlSuccess'),closeBtn=document.getElementById('wlClose'),
+      submitBtn=document.getElementById('wlSubmit');
+
+  window.openWaitlist=function(){overlay.classList.add('active');document.body.style.overflow='hidden';var ni=document.getElementById('wlName');if(ni)setTimeout(function(){ni.focus()},350)};
+
+  function closeModal(){overlay.classList.remove('active');document.body.style.overflow=''}
+  closeBtn.addEventListener('click',closeModal);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.classList.contains('active'))closeModal()});
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('wlName').value.trim(),
+        email=document.getElementById('wlEmail').value.trim(),
+        phone=document.getElementById('wlPhone').value.trim();
+    submitBtn.disabled=true;
+    submitBtn.querySelector('.wl-submit-text').style.display='none';
+    submitBtn.querySelector('.wl-submit-loading').style.display='inline-flex';
+
+    fetch('https://api.tally.so/forms/MedNpl/respond',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({fields:{name:name,email:email,phone:phone,page:window.location.pathname}})
+    }).catch(function(){}).finally(function(){
+      form.style.display='none';
+      success.style.display='block';
+      if(typeof gtag==='function')gtag('event','waitlist_signup',{page:window.location.pathname});
+      setTimeout(closeModal,2800);
+      setTimeout(function(){form.style.display='';success.style.display='none';form.reset();submitBtn.disabled=false;submitBtn.querySelector('.wl-submit-text').style.display='';submitBtn.querySelector('.wl-submit-loading').style.display='none'},3200);
     });
-  }
-}
-// Wire all waitlist buttons
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('a[href="#join"], a[href="#cta"], a[href="#"], .nav-link, .btn').forEach(function(link) {
-    var text = link.textContent.toLowerCase();
-    if (text.includes('waitlist')) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        openWaitlist();
-      });
-    }
   });
-});
+
+  document.querySelectorAll('a[href="#join"],a[href="#cta"],a[href="#"],.nav-link,.btn').forEach(function(link){
+    var t=link.textContent.toLowerCase();
+    if(t.includes('waitlist')){link.addEventListener('click',function(e){e.preventDefault();openWaitlist()})}
+  });
+})();
 </script>
 </body>
 </html>

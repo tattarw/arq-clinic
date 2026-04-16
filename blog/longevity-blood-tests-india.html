@@ -337,38 +337,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
 
 /* ═══ WAITLIST MODAL ═══ */
-.waitlist-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
-.waitlist-overlay.open{opacity:1;pointer-events:auto}
-
-.waitlist-modal{position:relative;background:var(--card);border-radius:20px;padding:40px 32px;max-width:420px;width:90%;max-height:90vh;overflow-y:auto;animation:slideIn .4s var(--ease)}
 
 @keyframes slideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
-.waitlist-modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .2s;color:var(--text)}
-.waitlist-modal-close:hover{background:var(--bg)}
-
-.waitlist-modal h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.1;letter-spacing:-0.025em;margin-bottom:12px}
-.waitlist-modal h2 em{color:var(--gold)}
-
-.wl-sub{font-size:14px;line-height:1.6;color:var(--text-60);margin-bottom:24px}
-
-.waitlist-form{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
-
-.waitlist-input{padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:var(--sans);transition:border-color .2s;background:var(--bg)}
-.waitlist-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-glow)}
-
-.waitlist-submit{padding:12px 16px;background:var(--gold);color:#fff;border-radius:8px;font-size:13px;font-weight:600;transition:all .3s var(--ease);cursor:pointer}
-.waitlist-submit:hover{background:var(--gold-light);transform:translateY(-1px)}
-.waitlist-submit:disabled{opacity:0.6;cursor:not-allowed}
-
-.wl-trust{display:flex;gap:16px;justify-content:center;font-size:11px;color:var(--text-60);margin-top:16px}
-.wl-trust span{display:flex;align-items:center;gap:6px}
-.wl-trust i{color:var(--gold)}
-
-.waitlist-success{text-align:center;padding:20px 0}
-.waitlist-success i{font-size:48px;color:var(--gold);margin-bottom:16px}
-.waitlist-success h3{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:8px}
-.waitlist-success p{font-size:14px;color:var(--text-60)}
 
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:768px){
@@ -383,7 +353,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
   .article-body h2{font-size:22px}
   .cta-final{padding:40px 20px}
   .cta-final h2{font-size:26px}
-  .waitlist-modal{padding:32px 20px}
+  
 }
 </style>
 
@@ -792,104 +762,37 @@ document.querySelectorAll('.dropdown-link').forEach(link => {
   }
 });
 
-// ─── Waitlist modal ───
-function openWaitlist() {
-  const ol = document.getElementById('waitlistOverlay');
-  if (ol) { ol.classList.add('open'); document.body.style.overflow = 'hidden'; }
-}
-function closeWaitlist() {
-  const ol = document.getElementById('waitlistOverlay');
-  if (ol) { ol.classList.remove('open'); document.body.style.overflow = ''; }
-}
-
-// Close on overlay click
-const wlOverlay = document.getElementById('waitlistOverlay');
-if (wlOverlay) wlOverlay.addEventListener('click', function(e) {
-  if (e.target === wlOverlay) closeWaitlist();
-});
-
-function submitWaitlist(e) {
-  e.preventDefault();
-  const btn = document.getElementById('wlSubmit');
-  const name = document.getElementById('wlName').value;
-  const email = document.getElementById('wlEmail').value;
-  const phone = document.getElementById('wlPhone').value;
-  btn.disabled = true;
-  btn.textContent = 'Joining...';
-
-  // Store to Google Sheets via Apps Script or simple endpoint
-  const data = { name, email, phone, page: window.location.pathname, ts: new Date().toISOString() };
-
-  // Try to send to a simple endpoint; fallback to localStorage
-  fetch('https://arq.clinic/api/waitlist', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  }).catch(() => {
-    // Fallback: store locally
-    const existing = JSON.parse(localStorage.getItem('arq_waitlist') || '[]');
-    existing.push(data);
-    localStorage.setItem('arq_waitlist', JSON.stringify(existing));
-  }).finally(() => {
-    document.getElementById('waitlistForm').style.display = 'none';
-    document.getElementById('waitlistSuccess').style.display = 'block';
-    setTimeout(closeWaitlist, 3000);
-  });
-}
-
-// Wire up all waitlist links
-document.querySelectorAll('a[href="#cta"], a[href="#"], .nav-link').forEach(link => {
-  const text = link.textContent.toLowerCase();
-  if (text.includes('waitlist') || text.includes('talk to')) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      closeDropdown();
-      openWaitlist();
-    });
-  }
-});
-
-// ─── Read more fold ───
-const readMoreBtn = document.getElementById('readMoreBtn');
-const articleFold = document.getElementById('articleFold');
-const readMoreWrap = document.querySelector('.read-more-wrap');
-if (readMoreBtn && articleFold) {
-  readMoreBtn.addEventListener('click', function() {
-    articleFold.classList.add('expanded');
-    if (readMoreWrap) readMoreWrap.classList.add('hidden');
-  });
-}
-
 </script>
 
-
-<!-- ─── WAITLIST MODAL ─── -->
-<div class="waitlist-overlay" id="waitlistOverlay">
-  <div class="waitlist-modal">
-    <button class="waitlist-modal-close" onclick="closeWaitlist()" aria-label="Close"><i class="ph-bold ph-x"></i></button>
-    <div id="waitlistForm">
-      <h2>Join the <em>waitlist</em></h2>
-      <p class="wl-sub">100+ biomarkers. A dedicated physician. Protocol delivered to your door. Be first in line when we launch.</p>
-      <form class="waitlist-form" onsubmit="submitWaitlist(event)">
-        <input type="hidden" name="source" id="wlSource" value="blog-longevity-blood-tests-india">
-        
-        <input type="text" class="waitlist-input" id="wlName" placeholder="Your name" required>
-        <input type="email" class="waitlist-input" id="wlEmail" placeholder="Your email" required>
-        <input type="tel" class="waitlist-input" id="wlPhone" placeholder="Phone (optional)">
-        <button type="submit" class="waitlist-submit" id="wlSubmit">Join the waitlist</button>
-      </form>
-      <div class="wl-trust">
-        <span><i class="ph-fill ph-lock"></i> DPDP-compliant</span>
-        <span><i class="ph-fill ph-shield-check"></i> No spam</span>
-      </div>
-    </div>
-    <div id="waitlistSuccess" class="waitlist-success" style="display:none">
-      <i class="ph-fill ph-check-circle"></i>
-      <h3>You're on the list</h3>
-      <p>We'll reach out when it's your turn. Welcome to arq.</p>
-    </div>
-  </div>
-</div>
-
+<script src="https://tally.so/widgets/embed.js"></script>
+<script>
+function openWaitlist() {
+  if (window.Tally) {
+    Tally.openPopup('MedNpl', {
+      layout: 'modal',
+      width: 400,
+      overlay: true,
+      hideTitle: false,
+      autoClose: 3000,
+      hiddenFields: { page: window.location.pathname },
+      onSubmit: function() {
+        if (typeof gtag === 'function') gtag('event', 'waitlist_signup', { page: window.location.pathname });
+      }
+    });
+  }
+}
+// Wire all waitlist buttons
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href="#join"], a[href="#cta"], a[href="#"], .nav-link, .btn').forEach(function(link) {
+    var text = link.textContent.toLowerCase();
+    if (text.includes('waitlist')) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        openWaitlist();
+      });
+    }
+  });
+});
+</script>
 </body>
 </html>

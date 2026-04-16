@@ -166,28 +166,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;justify-content:center;align-items:center;gap:6px;margin-top:8px;transition:all .3s var(--ease);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
 .dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
 
-/* ─── WAITLIST MODAL ─── */
-.waitlist-overlay{position:fixed;inset:0;z-index:2000;background:rgba(10,8,6,0.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
-.waitlist-overlay.open{opacity:1;pointer-events:auto}
-.waitlist-modal{background:var(--bg);border-radius:24px;padding:40px 28px;max-width:420px;width:100%;position:relative;transform:translateY(20px) scale(0.97);transition:transform .4s var(--ease);box-shadow:0 24px 80px rgba(0,0,0,0.2)}
-.waitlist-overlay.open .waitlist-modal{transform:translateY(0) scale(1)}
-.waitlist-modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text-60);font-size:16px;transition:all .2s}
-.waitlist-modal-close:hover{background:var(--surface);color:var(--text)}
-.waitlist-modal h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.1;letter-spacing:-0.02em;margin-bottom:8px}
-.waitlist-modal h2 em{color:var(--gold);font-style:italic}
-.waitlist-modal .wl-sub{font-size:13px;color:var(--text-60);line-height:1.5;margin-bottom:24px}
-.waitlist-form{display:flex;flex-direction:column;gap:10px}
-.waitlist-input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);font-family:var(--sans);font-size:14px;color:var(--text);transition:border-color .2s}
-.waitlist-input:focus{outline:none;border-color:var(--gold)}
-.waitlist-input::placeholder{color:var(--text-30)}
-.waitlist-submit{width:100%;padding:14px;border-radius:50px;background:var(--gold);color:#fff;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .3s var(--ease);border:none;box-shadow:0 6px 24px rgba(184,146,46,0.3)}
-.waitlist-submit:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
-.waitlist-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
-.waitlist-success{text-align:center;padding:20px 0}
-.waitlist-success i{font-size:48px;color:var(--gold);margin-bottom:12px;display:block}
-.waitlist-success h3{font-family:var(--serif);font-size:22px;margin-bottom:8px}
-.waitlist-success p{font-size:13px;color:var(--text-60)}
-
 /* ─── DESKTOP ─── */
 @media(min-width:768px){
   .hero{padding:calc(var(--nav-h) + 48px) 40px 56px}
@@ -797,21 +775,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
   </div>
 </footer>
 
-<!-- ─── WAITLIST MODAL ─── -->
-<div class="waitlist-overlay" id="waitlistOverlay">
-  <div class="waitlist-modal">
-    <button class="waitlist-modal-close" id="waitlistClose" aria-label="Close"><i class="ph-bold ph-x"></i></button>
-    <h2>Join the waitlist <em>→</em></h2>
-    <p class="wl-sub">Early access to new guides, personalized protocols, and physician consultations.</p>
-    <form class="waitlist-form" id="waitlistForm" onsubmit="submitWaitlist(event)">
-        <input type="hidden" name="source" id="wlSource" value="blog-index">
-        
-      <input type="email" class="waitlist-input" placeholder="your@email.com" required>
-      <button type="submit" class="waitlist-submit">Join waitlist</button>
-    </form>
-  </div>
-</div>
-
 <script>
 // Navigation scroll effect
 const nav = document.getElementById('mainNav');
@@ -854,22 +817,11 @@ function openWaitlist(event) {
   document.body.style.overflow = 'hidden';
 }
 
-function closeWaitlist() {
-  waitlistOverlay.classList.remove('open');
-  document.body.style.overflow = 'auto';
-}
 
-waitlistClose.addEventListener('click', closeWaitlist);
-waitlistOverlay.addEventListener('click', (e) => {
-  if (e.target === waitlistOverlay) closeWaitlist();
-});
-
-function submitWaitlist(event) {
   event.preventDefault();
   const email = event.target.querySelector('input[type="email"]').value;
   alert(`Thanks for joining! We'll be in touch at ${email}`);
   event.target.reset();
-  closeWaitlist();
 }
 </script>
 </body>

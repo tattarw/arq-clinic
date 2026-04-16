@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>IV Infusions India — Physician-Prescribed, Home Delivery | arq.</title>
+<meta name="description" content="IV therapy bypasses gut absorption. Most IV bars sell without testing deficiency first. arq. only prescribes IV when bloodwork shows clinical need—delivered to your home.">
+<meta name="theme-color" content="#0a0806">
+<link rel="canonical" href="https://arq.clinic/iv-infusions">
+
+<!-- Open Graph -->
+<meta property="og:title" content="IV Infusions India — Physician-Prescribed, Home Delivery | arq.">
+<meta property="og:description" content="Prescribed, not chosen. Physician-guided IV therapy based on your bloodwork, delivered to your door.">
+<meta property="og:image" content="https://arq.clinic/og-iv-infusions.jpg">
+<meta property="og:url" content="https://arq.clinic/iv-infusions">
+<meta property="og:type" content="article">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IV Infusions India — Physician-Prescribed, Home Delivery | arq.">
+<meta name="twitter:description" content="IV therapy based on blood work. No guessing. No IV bar markup. Just clinical need.">
+<meta name="twitter:image" content="https://arq.clinic/og-iv-infusions.jpg">
+
+<!-- Structured Data: Medical Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalOrganization",
+  "name": "arq.",
+  "url": "https://arq.clinic",
+  "description": "India's physician-led online health clinic",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "availableLanguage": ["en"]
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "India"
+  },
+  "medicalSpecialty": "Preventive Medicine"
+}
+</script>
+
+<!-- Structured Data: FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is IV drip therapy and when is it needed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IV drip therapy delivers vitamins, minerals, and nutrients directly into the bloodstream, bypassing the digestive system for 100% bioavailability—compared to 10-30% absorption from oral supplements. IV therapy is clinically indicated when: oral supplementation fails due to poor absorption (common in malabsorption disorders, digestive issues), deficiency is severe (ferritin <10, B12 <150), recovery from illness requires rapid nutrient repletion, or specific nutrients (glutathione, NAD+) are poorly absorbed orally. IV bars sell cocktails based on aesthetics; arq. prescribes only when bloodwork confirms deficiency and oral supplementation is insufficient."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "NAD+ IV infusion India—cost and benefits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NAD+ (nicotinamide adenine dinucleotide) is a coenzyme essential for energy metabolism and cellular repair. IV NAD+ therapy claims include improved energy, mental clarity, and longevity support. Research is promising but not conclusive for most uses. In India, NAD+ IV infusions cost ₹15,000-35,000 per session. Cost-benefit is questionable unless specifically indicated: documented deficiency (rare), confirmed energy dysfunction, or age 60+. Most people optimize NAD+ through lifestyle (exercise, sleep, intermittent fasting) and oral precursors (NMN, NR) first. arq.'s physician evaluates whether IV NAD+ is appropriate given your metabolic markers—avoiding unnecessary expense."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Glutathione IV infusion benefits—is it worth it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Glutathione is your body's master antioxidant and detoxification molecule. IV glutathione claims include skin brightening, immune boost, liver support, and anti-aging. Oral glutathione is poorly absorbed, making IV appealing. However, evidence for IV glutathione benefits is mixed—skin brightening claims lack robust data. Medically indicated use: liver disease (hepatitis, cirrhosis), chemotherapy support, or severe oxidative stress. For healthy people, oral glutathione precursors (NAC, milk thistle) and lifestyle (sleep, exercise, antioxidant diet) build natural glutathione. arq. tests liver function and oxidative stress markers; IV glutathione is prescribed only when bloodwork shows clinical need, not cosmetic preference."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Iron infusion at home India—when is it necessary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IV iron infusion is indicated when: ferritin is <10 (severe deficiency), oral iron causes GI distress or poor absorption, iron deficiency anemia is symptomatic (fatigue, shortness of breath), or recovery is urgent (pre-surgery, athletic competition). arq. tests ferritin and hemoglobin; if deficient, your physician evaluates whether oral iron (first-line, cheapest, slowest) or IV iron (fastest, requires clinical indication) is appropriate. IV iron at home in India costs ₹8,000-15,000 per infusion and raises ferritin within weeks. Many people unnecessarily choose IV when oral supplementation with vitamin C and reduced coffee would work. arq. tests and guides the right choice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is IV therapy safe? What are the risks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IV therapy is safe when physician-prescribed and medically indicated. Risks include: infection (from non-sterile insertion), thrombophlebitis (vein irritation), allergic reaction (rare with standard formulations), electrolyte imbalance (if formulation is inappropriate), and rarely, compartment syndrome (if infused into tissue instead of vein). Home IV infusions carry slightly higher infection risk than clinic-based infusions. arq.'s physicians and nurses are trained in IV safety; formulations are dosed appropriately for your body composition and renal function. Risks are minimal when bloodwork-guided and clinically indicated—much lower than unnecessary IV therapy at IV bars without medical oversight."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vitamin C IV drip—benefits for immune health?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "High-dose IV vitamin C (ascorbic acid) achieves levels impossible orally (due to saturation). Proposed benefits include immune boost, antioxidant support, and faster cold/flu recovery. However, evidence is mixed: meta-analyses show modest benefit for cold duration (1-2 days shorter), minimal benefit for prevention, and no robust evidence for cancer treatment or longevity. For healthy people with normal vitamin C levels, IV vitamin C is unnecessary—oral supplementation (500-1000mg daily) and dietary intake (citrus, berries, leafy greens) suffice. arq. tests your vitamin C status (via nutrition history; direct testing is rarely done); IV vitamin C is prescribed only if deficiency is confirmed or clinically indicated (e.g., severe infection, malabsorption)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who actually needs IV therapy? How do I know?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You need IV therapy if: bloodwork shows severe deficiency (ferritin <10, B12 <150, magnesium <1.5), oral supplementation fails (documented poor absorption, GI intolerance), symptoms are severe (fatigue, weakness, dyspnea), recovery is urgent (pre-surgery, post-illness), or specific nutrients (glutathione, NAD+, IV vitamins) are medically indicated. Most people do not need IV therapy—optimizing diet, gut health, and oral supplementation solves 90% of deficiencies cheaply. IV therapy is expensive (₹8,000-35,000 per session); claiming everyone needs it is marketing. arq.'s approach: test first, prescribe only if indicated, avoid guessing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does arq. prescribe IV infusions—what's the process?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "arq.'s IV process: 1) Bloodwork reveals deficiencies (ferritin, B12, vitamin D, magnesium, liver/kidney function). 2) Your physician evaluates whether oral supplementation is sufficient or IV is clinically justified. 3) If IV is indicated, your physician determines the exact formulation (iron, glutathione, NAD+, vitamin cocktail) based on your markers, not a menu. 4) IV is administered at home by a trained nurse in a sterile, supervised environment. 5) Follow-up bloodwork confirms that infusion corrected the deficiency. This approach avoids unnecessary IV therapy—prescribing only when medically sound. Cost is higher than IV bars but outcomes are evidence-based, not aesthetic-driven."
+      }
+    }
+  ]
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/>
+
+<style>
+/* ═══════════════════════════════════════════
+   arq. Condition Page Template
+   Mobile-first: base 430px. Desktop @ 768px+.
+   ═══════════════════════════════════════════ */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf9f5;--bg2:#f4f2ed;--surface:#eae8e3;
+  --card:#ffffff;--border:rgba(44,40,36,0.08);--border-hover:rgba(44,40,36,0.14);
+  --text:#1a1714;--text-90:rgba(26,23,20,0.9);--text-60:rgba(26,23,20,0.6);--text-30:rgba(26,23,20,0.3);--text-12:rgba(26,23,20,0.12);
+  --gold:#b8922e;--gold-light:#c9a23a;--gold-glow:rgba(184,146,46,0.08);--gold-border:rgba(184,146,46,0.25);
+  --dark:#1a1714;--deep:#0a0806;
+  --sans:'Sora',system-ui,sans-serif;
+  --serif:'DM Serif Display',Georgia,serif;
+  --mono:'IBM Plex Mono','SF Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --nav-h:60px;
+}
+
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--gold);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+em{font-style:italic;color:var(--gold)}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;transition:background .4s var(--ease),border-radius .4s var(--ease),box-shadow .4s var(--ease);border-radius:0}
+.nav.at-top{background:transparent}
+.nav.scrolled{background:rgba(250,249,245,0.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 var(--border)}
+.nav.scrolled .nav-logo{color:var(--text)}
+.nav.scrolled .nav-hamburger span{background:var(--text)}
+.nav-logo{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--text);letter-spacing:-0.02em;transition:color .3s ease}
+.nav-logo .dot{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:12px;font-weight:600;padding:8px 16px;border-radius:20px;transition:all .25s var(--ease);background:#fff;color:var(--dark);border:1.5px solid #fff;letter-spacing:0.01em}
+.nav-link:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px)}
+.nav.scrolled .nav-link{background:var(--dark);color:#fff;border-color:var(--dark)}
+.nav.scrolled .nav-link:hover{background:var(--gold);border-color:var(--gold)}
+.nav-hamburger{display:flex;flex-direction:column;gap:4px;padding:8px;transition:background .25s;border-radius:8px}
+.nav-hamburger:hover{background:rgba(26,23,20,0.06)}
+.nav.scrolled .nav-hamburger:hover{background:rgba(26,23,20,0.06)}
+.nav-hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:1px;transition:background .3s ease}
+
+/* ─── MOTION SYSTEM ─── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.08s}
+.reveal-delay-2{transition-delay:.16s}
+.reveal-delay-3{transition-delay:.24s}
+.reveal-delay-4{transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ─── FOCUS RINGS ─── */
+a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* ─── UTILS ─── */
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+.eyebrow-center{display:inline-flex;align-items:center;gap:10px;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase}
+.eyebrow-center::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;padding:10px 22px;border-radius:50px;transition:all .3s var(--ease);letter-spacing:0.01em;cursor:pointer;white-space:nowrap}
+.btn-light{background:#fff;color:var(--dark);box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.btn-light:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(0,0,0,0.22)}
+.btn-dark{background:var(--dark);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-1px)}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 6px 24px rgba(184,146,46,0.35)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.45)}
+.btn-gold i{margin-left:6px;transition:transform .25s}
+.btn-gold:hover i{transform:translateX(3px)}
+.btn-lg{padding:14px 28px;font-size:13px}
+.btn-block{display:flex;width:100%;padding:16px;font-size:14px;justify-content:center}
+
+/* ═══ 1. HERO — THE HOOK ═══ */
+.hero{position:relative;height:100vh;height:100svh;min-height:640px;padding:calc(var(--nav-h) + 24px) 24px 40px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;color:#fff;background:var(--bg)}
+.hero::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,rgba(250,249,245,0.95) 0%,rgba(244,242,237,0.92) 50%,rgba(234,232,227,0.9) 100%)}
+
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;position:relative;z-index:2}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.6}
+
+.hero-content{position:relative;z-index:2;max-width:620px}
+.hero-h1{font-family:var(--serif);font-size:40px;font-weight:400;line-height:1.05;letter-spacing:-0.035em;margin-bottom:16px;color:var(--text)}
+.hero-h1 em{color:var(--gold);font-style:italic}
+.hero-sub{font-size:14.5px;color:var(--text-60);line-height:1.55;margin-bottom:24px;max-width:400px}
+
+.hero-ctas{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.hero-ctas .btn{flex:1 1 auto;min-width:0}
+@media(min-width:520px){.hero-ctas .btn{flex:0 0 auto}}
+
+.hero-trust{display:flex;flex-wrap:wrap;gap:12px 20px;font-size:13px;color:var(--text-60);margin-top:20px}
+.hero-trust .item{display:flex;align-items:center;gap:6px}
+.hero-trust i{color:var(--gold);font-size:14px}
+
+/* ═══ 2. THE PROBLEM ═══ */
+.problem{padding:64px 24px;background:var(--bg);border-top:1px solid var(--border)}
+.problem-inner{max-width:920px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+.problem-head{display:flex;flex-direction:column;gap:12px}
+.problem-eye{margin-bottom:4px}
+.problem-h2{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1.12;letter-spacing:-0.025em;color:var(--text)}
+.problem-h2 em{color:var(--gold);font-style:italic}
+.problem-text{font-size:14px;color:var(--text-60);line-height:1.6;max-width:540px}
+
+.problem-card{background:var(--card);border:1px solid var(--gold-border);border-radius:20px;padding:28px 24px;box-shadow:0 4px 16px rgba(184,146,46,0.06)}
+.problem-card .card-eyebrow{font-size:10px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:16px}
+.problem-stat{display:flex;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.problem-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.problem-stat i{color:var(--gold);font-size:16px;flex-shrink:0;margin-top:2px}
+.problem-stat-body{flex:1}
+.problem-stat-label{font-size:12px;color:var(--text-60);font-weight:500;letter-spacing:0.01em;margin-bottom:2px}
+.problem-stat-val{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--text);letter-spacing:-0.02em}
+
+/* ═══ 3. THE BIOMARKERS ═══ */
+.markers{padding:64px 24px;background:var(--bg2)}
+.markers-head{text-align:center;margin-bottom:32px}
+.markers-head .eyebrow-center{margin-bottom:12px}
+.markers-head h2{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1.12;letter-spacing:-0.025em;margin-bottom:8px}
+.markers-head p{font-size:13px;color:var(--text-60);max-width:480px;margin:0 auto}
+
+.markers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:680px;margin:0 auto}
+.marker-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 16px;text-align:center;transition:all .3s var(--ease)}
+.marker-card:hover{border-color:var(--gold-border);box-shadow:0 6px 24px rgba(184,146,46,0.12)}
+.marker-card i{color:var(--gold);font-size:20px;margin-bottom:8px;display:block}
+.marker-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;letter-spacing:-0.01em}
+.marker-detail{font-size:11.5px;color:var(--text-60);line-height:1.4;min-height:32px;display:flex;align-items:center;justify-content:center}
+
+/* ═══ 4. WHY ARQ. ═══ */
+.differ{padding:64px 24px;background:var(--bg);border-top:1px solid var(--border)}
+.differ-inner{max-width:680px;margin:0 auto;text-align:center}
+.differ h2{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1.12;letter-spacing:-0.025em;margin-bottom:32px}
+.differ-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.differ-box{border-radius:16px;padding:24px 20px;text-align:center}
+.differ-box.vs-left{background:var(--bg2);border:1px solid var(--border)}
+.differ-box.vs-right{background:var(--gold-glow);border:1.5px solid var(--gold-border)}
+.differ-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;color:var(--text-60);text-transform:uppercase;margin-bottom:12px}
+.differ-label.gold{color:var(--gold)}
+.differ-text{font-size:14px;font-weight:500;color:var(--text);line-height:1.5}
+.differ-icon{font-size:24px;margin:16px 0}
+
+/* ═══ 5. THE PROTOCOL ═══ */
+.protocol{padding:64px 24px;background:var(--bg2)}
+.protocol-head{text-align:center;margin-bottom:36px}
+.protocol-head .eyebrow-center{margin-bottom:12px}
+.protocol-head h2{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1.12;letter-spacing:-0.025em;margin-bottom:8px}
+.protocol-head p{font-size:13px;color:var(--text-60);max-width:480px;margin:0 auto}
+
+.protocol-timeline{display:grid;grid-template-columns:1fr;gap:20px;max-width:600px;margin:0 auto;position:relative}
+.protocol-timeline::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold),transparent);opacity:0.3;z-index:0}
+@media(max-width:520px){.protocol-timeline::before{left:30px}}
+
+.protocol-step{position:relative;z-index:1;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.protocol-step::before{content:attr(data-step);position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:40px;height:40px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px;font-weight:400;z-index:2;box-shadow:0 4px 12px rgba(184,146,46,0.3)}
+@media(max-width:520px){.protocol-step::before{left:30px;transform:translateX(-50%)}}
+
+.protocol-step-icon{width:32px;height:32px;background:var(--gold-glow);border:1px solid var(--gold-border);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:16px;flex-shrink:0}
+
+.protocol-step-body h3{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:-0.01em}
+.protocol-step-body p{font-size:12.5px;color:var(--text-60);line-height:1.5}
+
+/* ═══ 6. MEMBER STORY ═══ */
+.story{padding:64px 24px;background:var(--bg);border-top:1px solid var(--border)}
+.story-inner{max-width:640px;margin:0 auto}
+.story-eye{text-align:center;margin-bottom:24px}
+.story-card{background:linear-gradient(135deg,rgba(184,146,46,0.08),rgba(184,146,46,0.03));border:1.5px solid var(--gold-border);border-radius:20px;padding:32px 28px;text-align:center}
+.story-quote{font-family:var(--serif);font-size:28px;line-height:1.2;color:var(--text);margin-bottom:16px;letter-spacing:-0.02em}
+.story-quote::before{content:'"';color:var(--gold);font-size:48px;display:block;line-height:0.8;margin-bottom:4px}
+.story-meta{display:flex;justify-content:center;gap:12px;align-items:center;font-size:12px;color:var(--text-60)}
+.story-meta-val{color:var(--gold);font-weight:600}
+
+/* ═══ 7. FAQ ═══ */
+.faq{padding:56px 24px;background:var(--bg2)}
+.faq-head{text-align:center;margin-bottom:32px}
+.faq-head .eyebrow-center{margin-bottom:12px}
+.faq-head h2{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1.12;letter-spacing:-0.025em}
+
+.faq-list{max-width:720px;margin:0 auto;list-style:none}
+.faq-item{border-top:1px solid var(--border)}
+.faq-item:last-child{border-bottom:1px solid var(--border)}
+.faq-item details{padding:20px 0;transition:padding .2s}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;font-size:13.5px;font-weight:500;color:var(--text);line-height:1.4}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:22px;color:var(--text-30);transition:transform .25s var(--ease),color .2s;font-weight:300;line-height:1}
+.faq-item details[open] summary::after{transform:rotate(45deg);color:var(--gold)}
+.faq-ans{font-size:13px;color:var(--text-60);line-height:1.6;margin-top:14px;max-width:640px}
+
+/* ═══ 8. CTA — GET YOUR BASELINE ═══ */
+.cta-final{position:relative;padding:72px 24px 88px;background:var(--deep);color:#fff;overflow:hidden;border-radius:28px 28px 0 0;margin-top:12px}
+.cta-final::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(184,146,46,0.14) 0%,transparent 65%);pointer-events:none;animation:glowPulse 7s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:0.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.05)}}
+
+.cta-final-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;text-align:center}
+.cta-final .eyebrow-center{margin-bottom:18px;color:var(--gold)}
+.cta-final h2{font-family:var(--serif);font-size:32px;font-weight:400;line-height:1.12;letter-spacing:-0.03em;margin-bottom:18px}
+.cta-final h2 em{color:var(--gold);font-style:italic}
+.cta-final-lede{font-size:14.5px;color:rgba(255,255,255,0.7);line-height:1.65;max-width:520px;margin:0 auto 36px}
+
+.cta-button-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.cta-button-group .btn{flex:1 1 auto;min-width:140px}
+@media(min-width:520px){.cta-button-group .btn{flex:0 0 auto}}
+
+.cta-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;font-size:12px;color:rgba(255,255,255,0.6);margin-top:24px}
+.cta-trust .item{display:flex;align-items:center;gap:6px}
+.cta-trust i{color:var(--gold);font-size:14px}
+
+/* ─── FOOTER ─── */
+.footer{padding:32px 24px;background:var(--deep);color:rgba(255,255,255,0.5);text-align:center;font-size:11px;font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase}
+.footer .logo{font-family:var(--serif);font-size:22px;color:#fff;text-transform:none;letter-spacing:-0.02em;margin-bottom:8px;display:inline-block;font-weight:700}
+.footer .logo .dot{color:var(--gold)}
+
+/* ═══ DESKTOP ═══ */
+@media(min-width:768px){
+  .nav{padding:0 32px}
+  .hero{padding:calc(var(--nav-h) + 40px) 56px 72px;min-height:760px}
+  .hero-h1{font-size:56px;max-width:720px;letter-spacing:-0.035em;line-height:1.08}
+  .hero-sub{font-size:17px;max-width:500px}
+  .hero-trust{font-size:14px}
+  .problem-inner{grid-template-columns:1fr 1fr;gap:48px}
+  .problem-h2{font-size:44px}
+  .problem-text{font-size:15px;max-width:100%}
+  .markers-head h2{font-size:44px}
+  .markers-grid{grid-template-columns:repeat(3,1fr);gap:16px}
+  .differ-inner{max-width:720px}
+  .differ h2{font-size:44px}
+  .differ-grid{grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+  .differ-box{padding:32px 28px;text-align:left}
+  .differ-box.vs-right::before{content:'arq.';position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:12px;font-weight:600;color:var(--gold)}
+  .protocol-head h2{font-size:44px}
+  .protocol-timeline{grid-template-columns:1fr;gap:24px}
+  .protocol-timeline::before{left:50%;width:2px}
+  .protocol-step{grid-template-columns:1fr;padding:32px 28px}
+  .story-inner{margin:0 auto}
+  .story-card{padding:40px 36px}
+  .story-quote{font-size:32px}
+  .faq-head h2{font-size:44px}
+  .faq-item summary{font-size:14.5px}
+  .cta-final{padding:128px 32px 144px}
+  .cta-final h2{font-size:48px}
+  .cta-final-lede{font-size:16px}
+}
+
+/* Tablet adjustments */
+@media(min-width:520px) and (max-width:767px){
+  .markers-grid{grid-template-columns:repeat(3,1fr)}
+  .problem-inner{grid-template-columns:1fr 1fr;gap:32px}
+  .protocol-step::before{left:34px}
+}
+
+/* ─── DROPDOWN MENU ─── */
+.dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.dropdown-overlay.open{opacity:1;pointer-events:auto}
+.dropdown-panel{position:fixed;top:0;right:0;z-index:1001;width:min(380px,90vw);height:100vh;height:100dvh;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease);padding:80px 28px 40px;box-shadow:-8px 0 40px rgba(0,0,0,0.12)}
+.dropdown-panel.open{transform:translateX(0)}
+.dropdown-close{position:absolute;top:16px;right:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:18px;transition:all .2s}
+.dropdown-close:hover{background:var(--surface)}
+.dropdown-section{margin-bottom:28px}
+.dropdown-section-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.dropdown-section-title::before{content:'';width:16px;height:1px;background:var(--gold);opacity:0.5}
+.dropdown-links{display:flex;flex-wrap:wrap;gap:6px}
+.dropdown-link{display:inline-flex;align-items:center;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text);background:var(--bg2);border:1px solid var(--border);transition:all .2s var(--ease)}
+.dropdown-link:hover{border-color:var(--gold-border);background:var(--gold-glow);color:var(--gold)}
+.dropdown-link.active{border-color:var(--gold);background:var(--gold-glow);color:var(--gold);font-weight:600}
+.dropdown-cta{display:flex;width:100%;padding:14px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;justify-content:center;align-items:center;gap:6px;margin-top:8px;transition:all .3s var(--ease);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+
+/* ─── READ MORE FOLD ─── */
+.article-fold{max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0}
+.article-fold.expanded{max-height:none;opacity:1;overflow:visible}
+.read-more-wrap{text-align:center;padding:24px 0 8px;position:relative}
+.read-more-wrap::before{content:'';position:absolute;top:-60px;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none}
+.read-more-wrap.hidden{display:none}
+.read-more-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-size:13px;font-weight:600;color:var(--gold);background:var(--gold-glow);border:1.5px solid var(--gold-border);transition:all .3s var(--ease);cursor:pointer}
+.read-more-btn:hover{background:var(--gold);color:#fff;transform:translateY(-1px);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.read-more-btn i{transition:transform .3s}
+
+/* ─── RELATED ARTICLES ─── */
+.related{padding:48px 20px;background:var(--bg);border-top:1px solid var(--border)}
+.related-inner{max-width:720px;margin:0 auto}
+.related-head{margin-bottom:20px}
+.related-head h2{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:-0.02em}
+.related-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:520px){.related-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:768px){.related-grid{grid-template-columns:1fr 1fr 1fr}}
+.related-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 16px;transition:all .25s var(--ease)}
+.related-card:hover{border-color:var(--gold-border);box-shadow:0 4px 16px rgba(184,146,46,0.1);transform:translateY(-2px)}
+.related-card .rc-eyebrow{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.related-card .rc-title{font-family:var(--serif);font-size:15px;font-weight:400;color:var(--text);line-height:1.2;letter-spacing:-0.01em}
+
+/* ─── WAITLIST MODAL ─── */
+.waitlist-overlay{position:fixed;inset:0;z-index:2000;background:rgba(10,8,6,0.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.waitlist-overlay.open{opacity:1;pointer-events:auto}
+.waitlist-modal{background:var(--bg);border-radius:24px;padding:40px 28px;max-width:420px;width:100%;position:relative;transform:translateY(20px) scale(0.97);transition:transform .4s var(--ease);box-shadow:0 24px 80px rgba(0,0,0,0.2)}
+.waitlist-overlay.open .waitlist-modal{transform:translateY(0) scale(1)}
+.waitlist-modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text-60);font-size:16px;transition:all .2s}
+.waitlist-modal-close:hover{background:var(--surface);color:var(--text)}
+.waitlist-modal h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.1;letter-spacing:-0.02em;margin-bottom:8px}
+.waitlist-modal h2 em{color:var(--gold);font-style:italic}
+.waitlist-modal .wl-sub{font-size:13px;color:var(--text-60);line-height:1.5;margin-bottom:24px}
+.waitlist-form{display:flex;flex-direction:column;gap:10px}
+.waitlist-input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);font-family:var(--sans);font-size:14px;color:var(--text);transition:border-color .2s}
+.waitlist-input:focus{outline:none;border-color:var(--gold)}
+.waitlist-input::placeholder{color:var(--text-30)}
+.waitlist-submit{width:100%;padding:14px;border-radius:50px;background:var(--gold);color:#fff;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .3s var(--ease);border:none;box-shadow:0 6px 24px rgba(184,146,46,0.3)}
+.waitlist-submit:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
+.waitlist-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.waitlist-success{text-align:center;padding:20px 0}
+.waitlist-success i{font-size:48px;color:var(--gold);margin-bottom:12px;display:block}
+.waitlist-success h3{font-family:var(--serif);font-size:22px;margin-bottom:8px}
+.waitlist-success p{font-size:13px;color:var(--text-60)}
+.wl-trust{display:flex;justify-content:center;gap:16px;margin-top:16px;font-size:11px;color:var(--text-30)}
+.wl-trust span{display:flex;align-items:center;gap:4px}
+.wl-trust i{color:var(--gold);font-size:12px}
+
+/* ─── SPACING IMPROVEMENTS ─── */
+.article-body h2{margin:44px 0 16px;padding-top:16px}
+.article-body p{margin:0 0 20px}
+.article-body ul,.article-body ol{margin:20px 0 24px}
+.tldr-box{margin:32px 0}
+.cta-card{margin:36px 0}
+.faq{padding:64px 20px}
+
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav class="nav">
+  <a href="/" class="nav-logo">arq<span class="dot">.</span></a>
+  <div class="nav-right">
+    <a href="#cta" class="nav-link">Talk to a physician</a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── DROPDOWN MENU ─── -->
+<div class="dropdown-overlay" id="dropdownOverlay"></div>
+<div class="dropdown-panel" id="dropdownPanel">
+  <button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
+
+  <div class="dropdown-section">
+    <div class="dropdown-section-title">Conditions</div>
+    <div class="dropdown-links">
+      <a href="/pcos" class="dropdown-link">PCOS</a>
+      <a href="/thyroid" class="dropdown-link">Thyroid</a>
+      <a href="/diabetes" class="dropdown-link">Diabetes</a>
+      <a href="/weight-loss" class="dropdown-link">Weight Loss</a>
+      <a href="/hair-loss" class="dropdown-link">Hair Loss</a>
+      <a href="/testosterone" class="dropdown-link">Testosterone</a>
+      <a href="/vitamin-deficiency" class="dropdown-link">Vitamin Deficiency</a>
+      <a href="/fatigue" class="dropdown-link">Fatigue</a>
+      <a href="/sleep" class="dropdown-link">Sleep</a>
+      <a href="/skin" class="dropdown-link">Skincare</a>
+      <a href="/focus" class="dropdown-link">Focus</a>
+      <a href="/blood-pressure" class="dropdown-link">Blood Pressure</a>
+      <a href="/iv-infusions" class="dropdown-link">IV Infusions</a>
+      <a href="/recovery" class="dropdown-link">Recovery</a>
+    </div>
+  </div>
+
+  <div class="dropdown-section">
+    <div class="dropdown-section-title">Sports</div>
+    <div class="dropdown-links">
+      <a href="/pickleball" class="dropdown-link">Pickleball</a>
+      <a href="/padel" class="dropdown-link">Padel</a>
+      <a href="/runners" class="dropdown-link">Running</a>
+      <a href="/strength" class="dropdown-link">Strength</a>
+      <a href="/performance" class="dropdown-link">Performance</a>
+      <a href="/hyrox" class="dropdown-link">HyRox</a>
+      <a href="/endurance" class="dropdown-link">Endurance</a>
+    </div>
+  </div>
+
+  <div class="dropdown-section">
+    <div class="dropdown-section-title">Learn</div>
+    <div class="dropdown-links">
+      <a href="/blog/" class="dropdown-link">All Articles</a>
+      <a href="/blog/ozempic-india-guide" class="dropdown-link">Ozempic Guide</a>
+      <a href="/blog/pcos-symptoms-india" class="dropdown-link">PCOS Guide</a>
+      <a href="/blog/hba1c-test-guide" class="dropdown-link">HbA1c Test</a>
+      <a href="/blog/finasteride-india-guide" class="dropdown-link">Finasteride Guide</a>
+      <a href="/blog/tretinoin-indian-skin-guide" class="dropdown-link">Tretinoin Guide</a>
+      <a href="/blog/hrv-explained" class="dropdown-link">HRV Explained</a>
+    </div>
+  </div>
+
+  <div class="dropdown-section">
+    <a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+  </div>
+</div>
+
+
+<!-- ═══ 1. HERO — THE HOOK ═══ -->
+<section class="hero" aria-label="IV infusions information">
+  <div class="hero-content">
+    <span class="hero-eyebrow">arq. × IV therapy</span>
+    <h1 class="hero-h1">Prescribed. Not chosen.<br><em>Delivered to your door.</em></h1>
+    <p class="hero-sub">IV bars sell supplements based on what sounds good. arq. prescribes IV therapy only when your bloodwork shows clinical deficiency and oral absorption fails.</p>
+    <div class="hero-ctas">
+      <a href="#cta" class="btn btn-gold btn-lg">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+    </div>
+    <div class="hero-trust">
+      <div class="item"><i class="ph-fill ph-drop"></i>100+ biomarkers</div>
+      <div class="item"><i class="ph-fill ph-stethoscope"></i>Dedicated physician</div>
+      <div class="item"><i class="ph-fill ph-house"></i>Delivered to your door</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 2. THE PROBLEM ═══ -->
+<section class="problem">
+  <div class="problem-inner">
+    <div class="problem-head">
+      <span class="problem-eye eyebrow">The problem</span>
+      <h2 class="problem-h2">IV bars sell <em>marketing,</em> not medicine</h2>
+      <p class="problem-text">IV therapy bypasses the gut for 100% bioavailability—but most IV bars sell cocktails without testing deficiency first. A glutathione infusion sounds good until you realize you don't have a deficiency. A NAD+ drip promises energy until your bloodwork shows your mitochondria are fine. arq. only prescribes IV therapy when bloodwork proves clinical need.</p>
+    </div>
+    <div class="problem-card">
+      <div class="card-eyebrow">IV Reality</div>
+      <div class="problem-stat">
+        <i class="ph-fill ph-warning-circle"></i>
+        <div class="problem-stat-body">
+          <div class="problem-stat-label">IV therapy bioavailability</div>
+          <div class="problem-stat-val">100% (vs. 10-30% oral)</div>
+        </div>
+      </div>
+      <div class="problem-stat">
+        <i class="ph-fill ph-warning-circle"></i>
+        <div class="problem-stat-body">
+          <div class="problem-stat-label">IV bars that test deficiency</div>
+          <div class="problem-stat-val">Virtually none</div>
+        </div>
+      </div>
+      <div class="problem-stat">
+        <i class="ph-fill ph-warning-circle"></i>
+        <div class="problem-stat-body">
+          <div class="problem-stat-label">IV cost range in India</div>
+          <div class="problem-stat-val">₹8,000-35,000 per session</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3. THE BIOMARKERS ═══ -->
+<section class="markers">
+  <div class="markers-head">
+    <span class="eyebrow-center">The science</span>
+    <h2>Markers we test for IV eligibility</h2>
+    <p>These biomarkers reveal the root causes — and what actually works to fix them.</p>
+  </div>
+  <div class="markers-grid">
+    <div class="marker-card reveal reveal-delay-1">
+      <i class="ph-fill ph-iron"></i>
+      <div class="marker-name">Ferritin</div>
+      <div class="marker-detail">Iron storage; <10 justifies IV iron infusion</div>
+    </div>
+    <div class="marker-card reveal reveal-delay-2">
+      <i class="ph-fill ph-pill"></i>
+      <div class="marker-name">Vitamin B12</div>
+      <div class="marker-detail">Low B12 (<150) indicates IV supplementation need</div>
+    </div>
+    <div class="marker-card reveal reveal-delay-3">
+      <i class="ph-fill ph-sun"></i>
+      <div class="marker-name">Vitamin D</div>
+      <div class="marker-detail">Deficiency severe enough for IV correction</div>
+    </div>
+    <div class="marker-card reveal reveal-delay-4">
+      <i class="ph-fill ph-leaf"></i>
+      <div class="marker-name">Liver Function (AST/ALT/GGT)</div>
+      <div class="marker-detail">Determines glutathione infusion appropriateness</div>
+    </div>
+    <div class="marker-card reveal reveal-delay-1">
+      <i class="ph-fill ph-activity"></i>
+      <div class="marker-name">NAD+ Metabolic Markers</div>
+      <div class="marker-detail">Mitochondrial function; indicates NAD+ need</div>
+    </div>
+    <div class="marker-card reveal reveal-delay-2">
+      <i class="ph-fill ph-bolt"></i>
+      <div class="marker-name">Magnesium (RBC)</div>
+      <div class="marker-detail">Cellular magnesium; IV indicated if <1.5</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4. WHY ARQ. ═══ -->
+<section class="differ">
+  <div class="differ-inner">
+    <h2>Why arq. for IV therapy</h2>
+    <div class="differ-grid">
+      <div class="differ-box vs-left">
+        <div class="differ-label">IV bars</div>
+        <div class="differ-icon"><i class="ph-bold ph-x"></i></div>
+        <div class="differ-text">IV bars sell cocktails based on what sounds good. No blood tests. No physician. Expensive, untargeted.</div>
+      </div>
+      <div class="differ-box vs-right">
+        <div class="differ-label gold">arq. approach</div>
+        <div class="differ-icon"><i class="ph-fill ph-check"></i></div>
+        <div class="differ-text">Only prescribes IV therapy when your bloodwork shows clinical deficiency. Your physician determines the exact formulation you need.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5. THE PROTOCOL ═══ -->
+<section class="protocol">
+  <div class="protocol-head">
+    <span class="eyebrow-center">How it works</span>
+    <h2>The arq. protocol for IV infusions</h2>
+    <p>Three steps. Your data. Your physician. Your protocol.</p>
+  </div>
+  <div class="protocol-timeline">
+    <div class="protocol-step" data-step="1">
+      <div class="protocol-step-icon"><i class="ph-fill ph-drop"></i></div>
+      <div class="protocol-step-body">
+        <h3>Blood test at home</h3>
+        <p>100+ biomarkers drawn at your door in 10 minutes. NABL-accredited labs. Results in 5 days. No clinic visit, no waiting rooms — just data.</p>
+      </div>
+    </div>
+    <div class="protocol-step" data-step="2">
+      <div class="protocol-step-icon"><i class="ph-fill ph-stethoscope"></i></div>
+      <div class="protocol-step-body">
+        <h3>Physician consult + results</h3>
+        <p>Your physician reviews nutrient levels, hydration markers, and metabolic status. Which infusion protocol matches your actual deficiencies — not guesswork.</p>
+      </div>
+    </div>
+    <div class="protocol-step" data-step="3">
+      <div class="protocol-step-icon"><i class="ph-fill ph-pill"></i></div>
+      <div class="protocol-step-body">
+        <h3>Your protocol, delivered</h3>
+        <p>Physician-designed IV infusion protocol matched to your deficiencies. In-home administration. Follow-up bloodwork to confirm absorption.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 6. MEMBER STORY ═══ -->
+<section class="story">
+  <div class="story-inner">
+    <div class="story-eye eyebrow">Member story</div>
+    <div class="story-card reveal">
+      <div class="story-quote">Ferritin was 6. Oral iron wasn't absorbing. IV iron infusion at home, ferritin to 80 in 4 weeks.</div>
+      <div class="story-meta">
+        <span>Ferritin increased 74 points <span class="story-meta-val">in 4 weeks</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 6b. RELATED LINKS ═══ -->
+<section class="related-links" style="padding:40px 24px;background:var(--bg2)">
+  <div style="max-width:720px;margin:0 auto">
+    <span class="eyebrow">Related</span>
+    <h2 style="font-family:var(--serif);font-size:24px;margin:12px 0 20px;letter-spacing:-0.02em">Explore more</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <a href="/recovery" style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:12px;font-size:13px;font-weight:500;color:var(--text);transition:all .2s">
+        <i class="ph-bold ph-arrow-right" style="color:var(--gold);font-size:14px"></i>
+        Recovery
+      </a>
+      <a href="/panel" style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:12px;font-size:13px;font-weight:500;color:var(--text);transition:all .2s">
+        <i class="ph-bold ph-arrow-right" style="color:var(--gold);font-size:14px"></i>
+        Panel
+      </a>
+      <a href="/vitamin-deficiency" style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:12px;font-size:13px;font-weight:500;color:var(--text);transition:all .2s">
+        <i class="ph-bold ph-arrow-right" style="color:var(--gold);font-size:14px"></i>
+        Vitamin Deficiency
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 7. FAQ ═══ -->
+<section class="faq">
+  <div class="faq-head">
+    <span class="eyebrow-center">Questions</span>
+    <h2>Frequently asked about IV infusions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <details><summary>What is IV drip therapy and when is it needed?</summary><div class="faq-ans">IV drip therapy delivers vitamins, minerals, and nutrients directly into the bloodstream, bypassing the digestive system for 100% bioavailability—compared to 10-30% absorption from oral supplements. IV therapy is clinically indicated when: oral supplementation fails due to poor absorption (common in malabsorption disorders, digestive issues), deficiency is severe (ferritin <10, B12 <150), <a href="/recovery" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">recovery</a> from illness requires rapid nutrient repletion, or specific nutrients (glutathione, NAD+) are poorly absorbed orally. IV bars sell cocktails based on aesthetics; arq. prescribes only when bloodwork confirms deficiency and oral supplementation is insufficient.</div></details>
+    </div>
+    <div class="faq-item">
+      <details><summary>NAD+ IV infusion India—cost and benefits?</summary><div class="faq-ans">NAD+ (nicotinamide adenine dinucleotide) is a coenzyme essential for energy metabolism and cellular repair. IV NAD+ therapy claims include improved energy, mental clarity, and longevity support. Research is promising but not conclusive for most uses. In India, NAD+ IV infusions cost ₹15,000-35,000 per session. Cost-benefit is questionable unless specifically indicated: documented deficiency (rare), confirmed energy dysfunction, or age 60+. Most people optimize NAD+ through lifestyle (exercise, sleep, intermittent fasting) and oral precursors (NMN, NR) first. arq.'s physician evaluates whether IV NAD+ is appropriate given your metabolic markers—avoiding unnecessary expense.</div></details>
+    </div>
+    <div class="faq-item">
+      <details><summary>Glutathione IV infusion benefits—is it worth it?</summary><div class="faq-ans">Glutathione is your body's master antioxidant and detoxification molecule. IV glutathione claims include skin brightening, immune boost, liver support, and anti-aging. Oral glutathione is poorly absorbed, making IV appealing. However, evidence for IV glutathione benefits is mixed—skin brightening claims lack robust data. Medically indicated use: liver disease (hepatitis, cirrhosis), chemotherapy support, or severe oxidative stress. For healthy people, oral glutathione precursors (NAC, milk thistle) and lifestyle (sleep, exercise, antioxidant diet) build natural glutathione. arq. tests liver function and oxidative stress markers; IV glutathione is prescribed only when bloodwork shows clinical need, not cosmetic preference.</div></details>
+    </div>
+    <div class="faq-item">
+      <details><summary>Iron infusion at home India—when is it necessary?</summary><div class="faq-ans">IV iron infusion is indicated when: ferritin is <10 (severe deficiency), oral iron causes GI distress or poor absorption, iron deficiency anemia is symptomatic (<a href="/fatigue" style="color:var(--gold);text-decoration:underline;text-decoration-color:rgba(184,146,46,0.3);transition:all .2s">fatigue</a>, shortness of breath), or recovery is urgent (pre-surgery, athletic competition). arq. tests ferritin and hemoglobin; if deficient, your physician evaluates whether oral iron (first-line, cheapest, slowest) or IV iron (fastest, requires clinical indication) is appropriate. IV iron at home in India costs ₹8,000-15,000 per infusion and raises ferritin within weeks. Many people unnecessarily choose IV when oral supplementation with vitamin C and reduced coffee would work. arq. tests and guides the right choice.</div></details>
+    </div>
+    <div class="faq-item">
+      <details><summary>Is IV therapy safe? What are the risks?</summary><div class="faq-ans">IV therapy is safe when physician-prescribed and medically indicated. Risks include: infection (from non-sterile insertion), thrombophlebitis (vein irritation), allergic reaction (rare with standard formulations), electrolyte imbalance (if formulation is inappropriate), and rarely, compartment syndrome (if infused into tissue instead of vein). Home IV infusions carry slightly higher infection risk than clinic-based infusions. arq.'s physicians and nurses are trained in IV safety; formulations are dosed appropriately for your body composition and renal function. Risks are minimal when bloodwork-guided and clinically indicated—much lower than unnecessary IV therapy at IV bars without medical oversight.</div></details>
+    </div>
+    <div class="faq-item">
+      <details><summary>Vitamin C IV drip—benefits for immune health?</summary><div class="faq-ans">High-dose IV vitamin C (ascorbic acid) achieves levels impossible orally (due to saturation). Proposed benefits include immune boost, antioxidant support, and faster cold/flu recovery. However, evidence is mixed: meta-analyses show modest benefit for cold duration (1-2 days shorter), minimal benefit for prevention, and no robust evidence for cancer treatment or longevity. For healthy people with normal vitamin C levels, IV vitamin C is unnecessary—oral supplementation (500-1000mg daily) and dietary intake (citrus, berries, leafy greens) suffice. arq. tests your vitamin C status (via nutrition history; direct testing is rarely done); IV vitamin C is prescribed only if deficiency is confirmed or clinically indicated (e.g., severe infection, malabsorption).</div></details>
+    </div>
+    <div class="faq-item">
+      <details><summary>Who actually needs IV therapy? How do I know?</summary><div class="faq-ans">You need IV therapy if: bloodwork shows severe deficiency (ferritin <10, B12 <150, magnesium <1.5), oral supplementation fails (documented poor absorption, GI intolerance), symptoms are severe (fatigue, weakness, dyspnea), recovery is urgent (pre-surgery, post-illness), or specific nutrients (glutathione, NAD+, IV vitamins) are medically indicated. Most people do not need IV therapy—optimizing diet, gut health, and oral supplementation solves 90% of deficiencies cheaply. IV therapy is expensive (₹8,000-35,000 per session); claiming everyone needs it is marketing. arq.'s approach: test first, prescribe only if indicated, avoid guessing.</div></details>
+    </div>
+    <div class="faq-item">
+      <details><summary>How does arq. prescribe IV infusions—what's the process?</summary><div class="faq-ans">arq.'s IV process: 1) Bloodwork reveals deficiencies (ferritin, B12, vitamin D, magnesium, liver/kidney function). 2) Your physician evaluates whether oral supplementation is sufficient or IV is clinically justified. 3) If IV is indicated, your physician determines the exact formulation (iron, glutathione, NAD+, vitamin cocktail) based on your markers, not a menu. 4) IV is administered at home by a trained nurse in a sterile, supervised environment. 5) Follow-up bloodwork confirms that infusion corrected the deficiency. This approach avoids unnecessary IV therapy—prescribing only when medically sound. Cost is higher than IV bars but outcomes are evidence-based, not aesthetic-driven.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 8. CTA — GET YOUR BASELINE ═══ -->
+<section class="cta-final" id="cta" aria-label="Call to action">
+  <div class="cta-final-inner">
+    <span class="eyebrow-center">Start your health journey</span>
+    <h2>Your IV therapy <em>deserves a deeper look</em></h2>
+    <p class="cta-final-lede">100+ biomarkers. A physician assigned to you. A protocol built on your data, not templates.</p>
+    <div class="cta-button-group">
+      <a href="#" class="btn btn-gold btn-lg">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+    </div>
+    <div class="cta-trust">
+      <div class="item"><i class="ph-fill ph-check-circle"></i>NABL-accredited labs</div>
+      <div class="item"><i class="ph-fill ph-check-circle"></i>DPDP-compliant</div>
+      <div class="item"><i class="ph-fill ph-check-circle"></i>Licensed physicians</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="logo">arq<span class="dot">.</span></div>
+  <div>India's online clinic · © 2026</div>
+</footer>
+
+<script>
+// ─── Nav scroll transition ───
+const nav = document.querySelector('.nav');
+const setNav = () => nav.classList.toggle('scrolled', window.scrollY > window.innerHeight * 0.35);
+setNav();
+window.addEventListener('scroll', setNav, {passive:true});
+
+// ─── Scroll reveal ───
+const autoReveal = ['.marker-card','.differ-box','.protocol-step','.story-card','.faq-item'];
+autoReveal.forEach(sel => document.querySelectorAll(sel).forEach((el,i) => {
+  el.classList.add('reveal');
+  if(i%4===1) el.classList.add('reveal-delay-1');
+  if(i%4===2) el.classList.add('reveal-delay-2');
+  if(i%4===3) el.classList.add('reveal-delay-3');
+}));
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// ─── Smooth scroll for anchor links ───
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if(target) {
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+
+
+// ─── Dropdown menu ───
+const dropdownOverlay = document.getElementById('dropdownOverlay');
+const dropdownPanel = document.getElementById('dropdownPanel');
+const dropdownClose = document.getElementById('dropdownClose');
+const hamburger = document.querySelector('.nav-hamburger');
+
+function openDropdown() {
+  dropdownOverlay.classList.add('open');
+  dropdownPanel.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDropdown() {
+  dropdownOverlay.classList.remove('open');
+  dropdownPanel.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if (hamburger) hamburger.addEventListener('click', openDropdown);
+if (dropdownClose) dropdownClose.addEventListener('click', closeDropdown);
+if (dropdownOverlay) dropdownOverlay.addEventListener('click', closeDropdown);
+
+// Highlight current page in dropdown
+const currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+document.querySelectorAll('.dropdown-link').forEach(link => {
+  const href = link.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '');
+  if (currentPath === href || currentPath.endsWith(href)) {
+    link.classList.add('active');
+  }
+});
+
+// ─── Waitlist modal ───
+function openWaitlist() {
+  const ol = document.getElementById('waitlistOverlay');
+  if (ol) { ol.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeWaitlist() {
+  const ol = document.getElementById('waitlistOverlay');
+  if (ol) { ol.classList.remove('open'); document.body.style.overflow = ''; }
+}
+
+// Close on overlay click
+const wlOverlay = document.getElementById('waitlistOverlay');
+if (wlOverlay) wlOverlay.addEventListener('click', function(e) {
+  if (e.target === wlOverlay) closeWaitlist();
+});
+
+function submitWaitlist(e) {
+  e.preventDefault();
+  const btn = document.getElementById('wlSubmit');
+  const name = document.getElementById('wlName').value;
+  const email = document.getElementById('wlEmail').value;
+  const phone = document.getElementById('wlPhone').value;
+  btn.disabled = true;
+  btn.textContent = 'Joining...';
+
+  // Store to Google Sheets via Apps Script or simple endpoint
+  const data = { name, email, phone, page: window.location.pathname, ts: new Date().toISOString() };
+
+  // Try to send to a simple endpoint; fallback to localStorage
+  fetch('https://arq.clinic/api/waitlist', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).catch(() => {
+    // Fallback: store locally
+    const existing = JSON.parse(localStorage.getItem('arq_waitlist') || '[]');
+    existing.push(data);
+    localStorage.setItem('arq_waitlist', JSON.stringify(existing));
+  }).finally(() => {
+    document.getElementById('waitlistForm').style.display = 'none';
+    document.getElementById('waitlistSuccess').style.display = 'block';
+    setTimeout(closeWaitlist, 3000);
+  });
+}
+
+// Wire up all waitlist links
+document.querySelectorAll('a[href="#cta"], a[href="#"], .nav-link').forEach(link => {
+  const text = link.textContent.toLowerCase();
+  if (text.includes('waitlist') || text.includes('talk to')) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      closeDropdown();
+      openWaitlist();
+    });
+  }
+});
+
+// ─── Read more fold ───
+const readMoreBtn = document.getElementById('readMoreBtn');
+const articleFold = document.getElementById('articleFold');
+const readMoreWrap = document.querySelector('.read-more-wrap');
+if (readMoreBtn && articleFold) {
+  readMoreBtn.addEventListener('click', function() {
+    articleFold.classList.add('expanded');
+    if (readMoreWrap) readMoreWrap.classList.add('hidden');
+  });
+}
+
+</script>
+
+
+<!-- ─── WAITLIST MODAL ─── -->
+<div class="waitlist-overlay" id="waitlistOverlay">
+  <div class="waitlist-modal">
+    <button class="waitlist-modal-close" onclick="closeWaitlist()" aria-label="Close"><i class="ph-bold ph-x"></i></button>
+    <div id="waitlistForm">
+      <h2>Join the <em>waitlist</em></h2>
+      <p class="wl-sub">100+ biomarkers. A dedicated physician. Protocol delivered to your door. Be first in line when we launch.</p>
+      <form class="waitlist-form" onsubmit="submitWaitlist(event)">
+        <input type="text" class="waitlist-input" id="wlName" placeholder="Your name" required>
+        <input type="email" class="waitlist-input" id="wlEmail" placeholder="Your email" required>
+        <input type="tel" class="waitlist-input" id="wlPhone" placeholder="Phone (optional)">
+        <button type="submit" class="waitlist-submit" id="wlSubmit">Join the waitlist</button>
+      </form>
+      <div class="wl-trust">
+        <span><i class="ph-fill ph-lock"></i> DPDP-compliant</span>
+        <span><i class="ph-fill ph-shield-check"></i> No spam</span>
+      </div>
+    </div>
+    <div id="waitlistSuccess" class="waitlist-success" style="display:none">
+      <i class="ph-fill ph-check-circle"></i>
+      <h3>You're on the list</h3>
+      <p>We'll reach out when it's your turn. Welcome to arq.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

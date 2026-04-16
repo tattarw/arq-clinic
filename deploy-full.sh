@@ -63,7 +63,7 @@ ssh -i "$SSH_KEY" "$SERVER" 'cat > /etc/nginx/sites-available/arq << "NGINX"
 server {
     listen 80;
     server_name arq.clinic www.arq.clinic;
-    return 301 https://\$host\$request_uri;
+    return 301 https://$host$request_uri;
 }
 
 server {
@@ -72,37 +72,36 @@ server {
     root /var/www/arq;
     index index.html;
 
-    # SSL (managed by certbot or DO)
     ssl_certificate /etc/letsencrypt/live/arq.clinic/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/arq.clinic/privkey.pem;
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
-    # Clean URLs — serve .html without extension
     location / {
-        try_files \$uri \$uri/index.html \$uri.html \$uri/ =404;
+        try_files $uri $uri/index.html $uri.html $uri/ =404;
     }
 
-    # Gzip
     gzip on;
     gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript image/svg+xml;
     gzip_vary on;
     gzip_min_length 1000;
 
-    # Cache static assets
     location ~* \.(jpg|jpeg|png|gif|ico|svg|css|js|woff|woff2|ttf|eot)$ {
         expires 30d;
         add_header Cache-Control "public, immutable";
     }
 
-    # Security headers
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 }
 NGINX'
 
-# 10. Enable site and reload nginx
+# 10. Fix file permissions (nginx runs as www-data)
+echo "→ Setting file permissions..."
+ssh -i "$SSH_KEY" "$SERVER" "chown -R www-data:www-data ${WEBROOT} && find ${WEBROOT} -type d -exec chmod 755 {} \; && find ${WEBROOT} -type f -exec chmod 644 {} \;"
+
+# 11. Enable site and reload nginx
 echo "→ Reloading nginx..."
 ssh -i "$SSH_KEY" "$SERVER" "ln -sf /etc/nginx/sites-available/arq /etc/nginx/sites-enabled/arq && nginx -t && systemctl reload nginx"
 

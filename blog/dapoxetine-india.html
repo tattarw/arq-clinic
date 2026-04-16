@@ -306,12 +306,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 /* ─── READ MORE FOLD ─── */
 .article-fold{max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0}
 .article-fold.expanded{max-height:none;opacity:1;overflow:visible}
+
 .read-more-wrap{text-align:center;padding:24px 0 8px;position:relative}
-.read-more-wrap::before{content:'';position:absolute;top:-60px;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none}
-.read-more-wrap.hidden{display:none}
-.read-more-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-size:13px;font-weight:600;color:var(--gold);background:var(--gold-glow);border:1.5px solid var(--gold-border);transition:all .3s var(--ease);cursor:pointer}
-.read-more-btn:hover{background:var(--gold);color:#fff;transform:translateY(-1px);box-shadow:0 6px 24px rgba(184,146,46,0.3)}
-.read-more-btn i{transition:transform .3s}
 
 /* ─── RELATED ARTICLES ─── */
 .related{padding:32px 20px;background:var(--bg);border-top:1px solid var(--border)}
@@ -326,27 +322,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .related-card .rc-eyebrow{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
 .related-card .rc-title{font-family:var(--serif);font-size:15px;font-weight:400;color:var(--text);line-height:1.2;letter-spacing:.01em}
 
-/* ─── WAITLIST MODAL ─── */
-.waitlist-overlay{position:fixed;inset:0;z-index:2000;background:rgba(10,8,6,0.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
-.waitlist-overlay.open{opacity:1;pointer-events:auto}
-.waitlist-modal{background:var(--bg);border-radius:24px;padding:40px 28px;max-width:420px;width:100%;position:relative;transform:translateY(20px) scale(0.97);transition:transform .4s var(--ease);box-shadow:0 24px 80px rgba(0,0,0,0.2)}
-.waitlist-overlay.open .waitlist-modal{transform:translateY(0) scale(1)}
-.waitlist-modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2);color:var(--text);font-size:16px;transition:all .2s}
-.waitlist-modal-close:hover{background:var(--surface);color:var(--text)}
-.waitlist-modal h2{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.1;letter-spacing:.02em;margin-bottom:8px}
-.waitlist-modal h2 em{color:var(--gold);font-style:italic}
-.waitlist-modal .wl-sub{font-size:13px;color:var(--text);line-height:1.5;margin-bottom:24px}
-.waitlist-form{display:flex;flex-direction:column;gap:10px}
-.waitlist-input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);font-family:var(--sans);font-size:14px;color:var(--text);transition:border-color .2s}
-.waitlist-input:focus{outline:none;border-color:var(--gold)}
-.waitlist-input::placeholder{color:var(--text)}
-.waitlist-submit{width:100%;padding:14px;border-radius:50px;background:var(--gold);color:#fff;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .3s var(--ease);border:none;box-shadow:0 6px 24px rgba(184,146,46,0.3)}
-.waitlist-submit:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(184,146,46,0.4)}
-.waitlist-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
-.waitlist-success{text-align:center;padding:20px 0}
-.waitlist-success i{font-size:48px;color:var(--gold);margin-bottom:12px;display:block}
-.waitlist-success h3{font-family:var(--serif);font-size:22px;margin-bottom:8px}
-.waitlist-success p{font-size:13px;color:var(--text)}
+
 .wl-trust{display:flex;justify-content:center;gap:16px;margin-top:16px;font-size:11px;color:var(--text)}
 .wl-trust span{display:flex;align-items:center;gap:4px}
 .wl-trust i{color:var(--gold);font-size:12px}
@@ -441,74 +417,34 @@ document.querySelectorAll('.dropdown-link').forEach(link => {
  }
 });
 
-// ─── Waitlist modal ───
+</script><script src="https://tally.so/widgets/embed.js"></script>
+<script>
 function openWaitlist() {
- const ol = document.getElementById('waitlistOverlay');
- if (ol) { ol.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  if (window.Tally) {
+    Tally.openPopup('MedNpl', {
+      layout: 'modal',
+      width: 400,
+      overlay: true,
+      hideTitle: false,
+      autoClose: 3000,
+      hiddenFields: { page: window.location.pathname },
+      onSubmit: function() {
+        if (typeof gtag === 'function') gtag('event', 'waitlist_signup', { page: window.location.pathname });
+      }
+    });
+  }
 }
-function closeWaitlist() {
- const ol = document.getElementById('waitlistOverlay');
- if (ol) { ol.classList.remove('open'); document.body.style.overflow = ''; }
-}
-
-// Close on overlay click
-const wlOverlay = document.getElementById('waitlistOverlay');
-if (wlOverlay) wlOverlay.addEventListener('click', function(e) {
- if (e.target === wlOverlay) closeWaitlist();
+// Wire all waitlist buttons
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href="#join"], a[href="#cta"], a[href="#"], .nav-link, .btn').forEach(function(link) {
+    var text = link.textContent.toLowerCase();
+    if (text.includes('waitlist')) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        openWaitlist();
+      });
+    }
+  });
 });
-
-function submitWaitlist(e) {
- e.preventDefault();
- const btn = document.getElementById('wlSubmit');
- const name = document.getElementById('wlName').value;
- const email = document.getElementById('wlEmail').value;
- const phone = document.getElementById('wlPhone').value;
- btn.disabled = true;
- btn.textContent = 'Joining...';
-
- // Store to Google Sheets via Apps Script or simple endpoint
- const data = { name, email, phone, page: window.location.pathname, ts: new Date().toISOString() };
-
- // Try to send to a simple endpoint; fallback to localStorage
- fetch('https://arq.clinic/api/waitlist', {
- method: 'POST',
- headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify(data)
- }).catch(() => {
- // Fallback: store locally
- const existing = JSON.parse(localStorage.getItem('arq_waitlist') || '[]');
- existing.push(data);
- localStorage.setItem('arq_waitlist', JSON.stringify(existing));
- }).finally(() => {
- document.getElementById('waitlistForm').style.display = 'none';
- document.getElementById('waitlistSuccess').style.display = 'block';
- setTimeout(closeWaitlist, 3000);
- });
-}
-
-// Wire up all waitlist links
-document.querySelectorAll('a[href="#cta"], a[href="#"], .nav-link').forEach(link => {
- const text = link.textContent.toLowerCase();
- if (text.includes('waitlist') || text.includes('talk to')) {
- link.addEventListener('click', function(e) {
- e.preventDefault();
- closeDropdown();
- openWaitlist();
- });
- }
-});
-
-// ─── Read more fold ───
-const readMoreBtn = document.getElementById('readMoreBtn');
-const articleFold = document.getElementById('articleFold');
-const readMoreWrap = document.querySelector('.read-more-wrap');
-if (readMoreBtn && articleFold) {
- readMoreBtn.addEventListener('click', function() {
- articleFold.classList.add('expanded');
- if (readMoreWrap) readMoreWrap.classList.add('hidden');
- });
-}
-
-</script><!-- ─── WAITLIST MODAL ─── --><div class="waitlist-overlay" id="waitlistOverlay"><div class="waitlist-modal"><button class="waitlist-modal-close" onclick="closeWaitlist()" aria-label="Close"><i class="ph-bold ph-x"></i></button><div id="waitlistForm"><h2>Join the <em>waitlist</em></h2><p class="wl-sub">100+ biomarkers. A dedicated physician. Protocol delivered to your door. Be first in line when we launch.</p><form class="waitlist-form" onsubmit="submitWaitlist(event)">
-        <input type="hidden" name="source" id="wlSource" value="blog-dapoxetine-india">
-        <input type="text" class="waitlist-input" id="wlName" placeholder="Your name" required><input type="email" class="waitlist-input" id="wlEmail" placeholder="Your email" required><input type="tel" class="waitlist-input" id="wlPhone" placeholder="Phone (optional)"><button type="submit" class="waitlist-submit" id="wlSubmit">Join the waitlist</button></form><div class="wl-trust"><span><i class="ph-fill ph-lock"></i> DPDP-compliant</span><span><i class="ph-fill ph-shield-check"></i> No spam</span></div></div><div id="waitlistSuccess" class="waitlist-success" style="display:none"><i class="ph-fill ph-check-circle"></i><h3>You're on the list</h3><p>We'll reach out when it's your turn. Welcome to arq.</p></div></div></div></body></html>
+</script>
+</body></html>

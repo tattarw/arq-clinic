@@ -250,6 +250,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .article-fold{max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0}
 .article-fold.expanded{max-height:none;opacity:1;overflow:visible}
 
+
 .read-more-toggle{display:flex;align-items:center;justify-content:center;padding:24px 0;gap:8px}
 .read-more-toggle button{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:50px;background:var(--gold);color:#fff;font-weight:600;font-size:13px;transition:all .3s var(--ease)}
 .read-more-toggle button:hover{background:var(--gold-light);transform:translateY(-2px)}
@@ -304,21 +305,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .dropdown-cta{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:var(--gold);color:#fff;border-radius:8px;font-size:13px;font-weight:600;width:100%;justify-content:center;transition:all .3s}
 .dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
 
-/* WAITLIST MODAL */
-.waitlist-modal{position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);padding:20px}
-.waitlist-modal.open{display:flex}
-
-.modal-content{background:#fff;border-radius:20px;padding:40px;max-width:480px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3);position:relative;animation:slideUp .4s var(--ease)}
-
 @keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
 
-.modal-close{position:absolute;top:20px;right:20px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:rgba(26,23,20,0.06);color:var(--text);transition:all .2s}
+
 .modal-close:hover{background:rgba(26,23,20,0.12)}
 
 .modal-content h2{font-family:var(--serif);font-size:28px;margin-bottom:12px;color:var(--text)}
 .modal-content p{font-size:14px;line-height:1.6;color:var(--text-60);margin-bottom:20px}
 
-.modal-form{display:flex;flex-direction:column;gap:12px}
+
 .modal-form input{padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;transition:border-color .2s;font-family:inherit}
 .modal-form input:focus{outline:none;border-color:var(--gold)}
 .modal-form button{padding:12px 16px;background:var(--gold);color:#fff;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;transition:all .3s}
@@ -331,7 +326,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
   .article-body h2{font-size:22px}
   .article-body h3{font-size:16px}
   .article-body p,.article-body ul,.article-body ol{font-size:14px}
-  .modal-content{padding:32px 20px}
+  
   .dropdown-panel{max-width:100%}
 }
 </style>
@@ -759,18 +754,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 </footer>
 
 <!-- Waitlist Modal -->
-<div class="waitlist-modal" id="waitlistModal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeWaitlist()"><i class="ph-bold ph-x"></i></button>
-    <h2>Join the waitlist</h2>
-    <p>Get early access to arq's peptide services and exclusive health insights.</p>
-    <form class="modal-form" onsubmit="handleWaitlistSubmit(event)">
-      <input type="text" placeholder="Your name" required>
-      <input type="email" placeholder="your@email.com" required>
-      <button type="submit">Join waitlist</button>
-    </form>
-  </div>
-</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/phosphor-icons"></script>
 <script>
@@ -812,29 +796,11 @@ function toggleFaq(element) {
 }
 
 // Waitlist Modal
-function openWaitlist() {
-  document.getElementById('waitlistModal').classList.add('open');
-}
-
-function closeWaitlist() {
-  document.getElementById('waitlistModal').classList.remove('open');
-}
-
-function handleWaitlistSubmit(e) {
-  e.preventDefault();
-  closeWaitlist();
-  alert('Thanks for joining the waitlist!');
-}
 
 // Read More Fold
 const foldElement = document.querySelector('.article-fold');
 if (foldElement) {
-  const readMoreBtn = document.createElement('div');
-  readMoreBtn.className = 'read-more-toggle';
-  readMoreBtn.innerHTML = '<button onclick="expandArticle()">Read More</button>';
-  foldElement.parentElement.insertBefore(readMoreBtn, foldElement.nextSibling);
-}
-
+  
 function expandArticle() {
   const fold = document.querySelector('.article-fold');
   fold.classList.add('expanded');
@@ -853,6 +819,36 @@ function revealElements() {
 
 window.addEventListener('scroll', revealElements);
 revealElements();
+</script>
+<script src="https://tally.so/widgets/embed.js"></script>
+<script>
+function openWaitlist() {
+  if (window.Tally) {
+    Tally.openPopup('MedNpl', {
+      layout: 'modal',
+      width: 400,
+      overlay: true,
+      hideTitle: false,
+      autoClose: 3000,
+      hiddenFields: { page: window.location.pathname },
+      onSubmit: function() {
+        if (typeof gtag === 'function') gtag('event', 'waitlist_signup', { page: window.location.pathname });
+      }
+    });
+  }
+}
+// Wire all waitlist buttons
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href="#join"], a[href="#cta"], a[href="#"], .nav-link, .btn').forEach(function(link) {
+    var text = link.textContent.toLowerCase();
+    if (text.includes('waitlist')) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        openWaitlist();
+      });
+    }
+  });
+});
 </script>
 </body>
 </html>

@@ -136,21 +136,21 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:0.4}}
 
 /* Scroll hint */
-.hero-scroll{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:3;font-family:var(--mono);font-size:9px;letter-spacing:0.2em;color:rgba(255,255,255,0.5);text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:6px}
-.hero-scroll .line{width:1px;height:22px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollLine 2.2s ease-in-out infinite}
+/* hero-scroll removed */
 @keyframes scrollLine{0%,100%{opacity:0.3;transform:scaleY(0.6);transform-origin:top}50%{opacity:1;transform:scaleY(1);transform-origin:top}}
 
 /* ═══ 2. CREDENTIALS ═══ */
-.creds{padding:44px 24px 48px;background:var(--bg);text-align:center;border-top:1px solid var(--border)}
-.creds-avatars{display:flex;justify-content:center;margin-bottom:16px}
-.creds-avatars .av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--dark));border:2px solid var(--bg);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:15px}
-.creds-avatars .av+.av{margin-left:-12px}
-.creds-line{font-size:12px;color:var(--text-60);margin-bottom:32px;letter-spacing:0.01em}
-.creds-grid{display:flex;align-items:center;justify-content:center;gap:40px;max-width:600px;margin:0 auto;flex-wrap:wrap}
-.creds-logo{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
-.creds-logo img{height:40px;width:auto;opacity:0.55;filter:grayscale(100%);transition:all .4s}
-.creds-logo:hover img{opacity:0.75}
-.creds-logo small{display:block;font-family:var(--mono);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-30)}
+.creds{padding:32px 24px 36px;background:var(--bg);text-align:center;border-top:1px solid var(--border)}
+.creds-avatars{display:flex;justify-content:center;margin-bottom:10px}
+.creds-avatars .av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--dark));border:2px solid var(--bg);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:13px}
+.creds-avatars .av+.av{margin-left:-10px}
+.creds-line{font-size:11px;color:var(--text-60);margin-bottom:20px;letter-spacing:0.01em}
+.creds-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:460px;margin:0 auto;align-items:end;justify-items:center}
+.creds-logo{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;width:100%}
+.creds-logo .logo-wrap{display:flex;align-items:center;justify-content:center;height:40px;width:100%}
+.creds-logo img{max-width:100%;max-height:100%;object-fit:contain;opacity:0.5;filter:grayscale(100%) brightness(0);transition:opacity .4s}
+.creds-logo:hover img{opacity:0.7}
+.creds-logo small{display:block;font-family:var(--mono);font-size:7px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-60)}
 
 /* ═══ 3. HOW IT WORKS — 4 numbered cards ═══ */
 .how{padding:56px 20px;background:var(--bg)}
@@ -380,9 +380,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
   .reading p.lede{font-size:17px}
   .reading-grid{grid-template-columns:repeat(4,1fr);max-width:880px;gap:14px}
   .reading-cell{padding:22px 18px}
-  .creds{padding:80px 32px}
-  .creds-grid{gap:56px;max-width:760px}
-  .creds-logo img{height:48px}
+  .creds{padding:48px 32px}
+  .creds-grid{gap:24px;max-width:560px}
+  .creds-logo .logo-wrap{height:44px}
   .how{padding:96px 32px}
   .how-head h2{font-size:52px;max-width:700px}
   .how-head p{font-size:15px}
@@ -443,6 +443,39 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .wl-trust{display:flex;justify-content:center;gap:16px;margin-top:16px;font-size:11px;color:var(--text-30)}
 .wl-trust span{display:flex;align-items:center;gap:4px}
 .wl-trust i{color:var(--gold);font-size:12px}
+
+/* ═══ DROPDOWN NAV ═══ */
+.dropdown-overlay{position:fixed;inset:0;z-index:999;background:rgba(10,8,6,0.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.dropdown-overlay.open{opacity:1;pointer-events:auto}
+.dropdown-panel{position:fixed;top:0;left:0;right:0;z-index:1001;background:var(--bg);transform:translateY(-100%);transition:transform .4s var(--ease);padding:72px 24px 28px;box-shadow:0 8px 40px rgba(0,0,0,0.1);max-height:70vh;overflow-y:auto}
+.dropdown-panel.open{transform:translateY(0)}
+.dropdown-close{position:absolute;top:16px;right:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg2,#f0ede7);color:var(--text);font-size:18px;transition:all .2s;border:none;cursor:pointer}
+.dropdown-close:hover{background:var(--surface,#e5e1d8)}
+.dropdown-inner{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:720px;margin:0 auto}
+@media(max-width:520px){.dropdown-inner{grid-template-columns:1fr;gap:16px}}
+.dropdown-section-title{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.dropdown-section-title::before{content:'';width:12px;height:1px;background:var(--gold);opacity:0.5}
+.dropdown-links{display:flex;flex-wrap:wrap;gap:5px}
+.dropdown-link{display:inline-flex;align-items:center;padding:7px 12px;border-radius:8px;font-size:12px;font-weight:500;color:var(--text);background:rgba(26,23,20,0.03);border:1px solid rgba(26,23,20,0.06);transition:all .2s var(--ease);text-decoration:none}
+.dropdown-link:hover{border-color:var(--gold-border);background:var(--gold-glow);color:var(--gold)}
+.dropdown-cta-wrap{grid-column:1/-1;text-align:center;padding-top:4px}
+.dropdown-cta{display:inline-flex;padding:12px 32px;border-radius:50px;font-size:13px;font-weight:600;background:var(--gold);color:#fff;align-items:center;gap:6px;transition:all .3s var(--ease);text-decoration:none;box-shadow:0 4px 16px rgba(184,146,46,0.25)}
+.dropdown-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+/* ═══ FOOTER LINKS ═══ */
+.footer-links{max-width:720px;margin:0 auto 24px;text-align:left}
+.footer-group{border-bottom:1px solid rgba(255,255,255,0.08)}
+.footer-group:first-child{border-top:1px solid rgba(255,255,255,0.08)}
+.footer-group-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px 0;background:none;border:none;color:rgba(255,255,255,0.5);font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:color .2s}
+.footer-group-toggle:hover{color:rgba(255,255,255,0.8)}
+.footer-group-toggle i{font-size:14px;transition:transform .25s}
+.footer-group.open .footer-group-toggle i{transform:rotate(180deg)}
+.footer-group-toggle span{color:var(--gold)}
+.footer-group-links{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.footer-group.open .footer-group-links{max-height:300px}
+.footer-group-links a{display:inline-block;padding:4px 12px 4px 0;font-size:11px;color:rgba(255,255,255,0.35);text-decoration:none;text-transform:none;letter-spacing:0.02em;transition:color .2s}
+.footer-group-links a:hover{color:var(--gold)}
+.footer-group-links-inner{padding:0 0 12px}
 </style>
 </head>
 <body>
@@ -457,6 +490,57 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
     </button>
   </div>
 </nav>
+
+<!-- ─── DROPDOWN PANEL ─── -->
+<div class="dropdown-overlay" id="dropdownOverlay"></div>
+<div class="dropdown-panel" id="dropdownPanel">
+  <button class="dropdown-close" id="dropdownClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
+  <div class="dropdown-inner">
+    <div class="dropdown-section">
+      <div class="dropdown-section-title">Conditions</div>
+      <div class="dropdown-links">
+        <a href="/pcos" class="dropdown-link">PCOS</a>
+        <a href="/thyroid" class="dropdown-link">Thyroid</a>
+        <a href="/diabetes" class="dropdown-link">Diabetes</a>
+        <a href="/weight-loss" class="dropdown-link">Weight Loss</a>
+        <a href="/hair-loss" class="dropdown-link">Hair Loss</a>
+        <a href="/testosterone" class="dropdown-link">Testosterone</a>
+        <a href="/vitamin-deficiency" class="dropdown-link">Vitamins</a>
+        <a href="/fatigue" class="dropdown-link">Fatigue</a>
+        <a href="/sleep" class="dropdown-link">Sleep</a>
+        <a href="/skin" class="dropdown-link">Skincare</a>
+        <a href="/focus" class="dropdown-link">Focus</a>
+        <a href="/blood-pressure" class="dropdown-link">Blood Pressure</a>
+        <a href="/iv-infusions" class="dropdown-link">IV Infusions</a>
+        <a href="/recovery" class="dropdown-link">Recovery</a>
+      </div>
+    </div>
+    <div class="dropdown-section">
+      <div class="dropdown-section-title">Sports</div>
+      <div class="dropdown-links">
+        <a href="/pickleball" class="dropdown-link">Pickleball</a>
+        <a href="/padel" class="dropdown-link">Padel</a>
+        <a href="/runners" class="dropdown-link">Running</a>
+        <a href="/strength" class="dropdown-link">Strength</a>
+        <a href="/performance" class="dropdown-link">Performance</a>
+        <a href="/hyrox" class="dropdown-link">HyRox</a>
+        <a href="/endurance" class="dropdown-link">Endurance</a>
+      </div>
+      <div class="dropdown-section-title" style="margin-top:20px">Learn</div>
+      <div class="dropdown-links">
+        <a href="/blog/" class="dropdown-link">All Articles</a>
+        <a href="/panel" class="dropdown-link">Our Panel</a>
+        <a href="/blog/ozempic-india-guide" class="dropdown-link">Ozempic Guide</a>
+        <a href="/blog/finasteride-india-guide" class="dropdown-link">Finasteride Guide</a>
+        <a href="/blog/pcos-symptoms-india" class="dropdown-link">PCOS Guide</a>
+        <a href="/blog/hba1c-test-guide" class="dropdown-link">HbA1c Test</a>
+      </div>
+    </div>
+    <div class="dropdown-cta-wrap">
+      <a href="#" class="dropdown-cta" onclick="event.preventDefault();closeDropdown();openWaitlist();">Join the waitlist <i class="ph-bold ph-arrow-right"></i></a>
+    </div>
+  </div>
+</div>
 
 <!-- ═══ 1. HERO 2.0 ═══ -->
 <section class="hero" aria-label="arq. membership">
@@ -490,10 +574,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
     </div>
   </div>
 
-  <div class="hero-scroll" aria-hidden="true">
-    <span>Scroll</span>
-    <div class="line"></div>
-  </div>
 </section>
 
 <!-- ═══ 2. CREDENTIALS ═══ -->
@@ -505,10 +585,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
   </div>
   <div class="creds-line">Trained at the world's best. Practicing for you.</div>
   <div class="creds-grid">
-    <div class="creds-logo"><img src="images/logo-oxford.svg" alt="University of Oxford" loading="lazy"><small>Oxford</small></div>
-    <div class="creds-logo"><img src="images/logo-emory.svg" alt="Emory University" loading="lazy"><small>Atlanta</small></div>
-    <div class="creds-logo"><img src="images/logo-aiims.svg" alt="AIIMS New Delhi" loading="lazy"><small>New Delhi</small></div>
-    <div class="creds-logo"><img src="images/logo-cmc.svg" alt="CMC Vellore" loading="lazy"><small>Vellore</small></div>
+    <div class="creds-logo"><div class="logo-wrap"><img src="images/logo-oxford.svg" alt="University of Oxford" loading="lazy"></div><small>Oxford</small></div>
+    <div class="creds-logo"><div class="logo-wrap"><img src="images/logo-emory.svg" alt="Emory University" loading="lazy"></div><small>Atlanta</small></div>
+    <div class="creds-logo"><div class="logo-wrap"><img src="images/logo-aiims.svg" alt="AIIMS New Delhi" loading="lazy"></div><small>New Delhi</small></div>
+    <div class="creds-logo"><div class="logo-wrap"><img src="images/logo-cmc.svg" alt="CMC Vellore" loading="lazy"></div><small>Vellore</small></div>
   </div>
 </section>
 
@@ -789,6 +869,26 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 
 <!-- ─── FOOTER ─── -->
 <footer class="footer">
+  <div class="footer-links">
+    <div class="footer-group" id="fgConditions">
+      <button class="footer-group-toggle" onclick="this.parentElement.classList.toggle('open')"><span>Conditions</span><i class="ph-bold ph-caret-down"></i></button>
+      <div class="footer-group-links"><div class="footer-group-links-inner">
+        <a href="/pcos">PCOS</a><a href="/thyroid">Thyroid</a><a href="/diabetes">Diabetes</a><a href="/weight-loss">Weight Loss</a><a href="/hair-loss">Hair Loss</a><a href="/testosterone">Testosterone</a><a href="/vitamin-deficiency">Vitamins</a><a href="/fatigue">Fatigue</a><a href="/sleep">Sleep</a><a href="/skin">Skincare</a><a href="/focus">Focus</a><a href="/blood-pressure">Blood Pressure</a><a href="/iv-infusions">IV Infusions</a><a href="/recovery">Recovery</a>
+      </div></div>
+    </div>
+    <div class="footer-group" id="fgSports">
+      <button class="footer-group-toggle" onclick="this.parentElement.classList.toggle('open')"><span>Sports</span><i class="ph-bold ph-caret-down"></i></button>
+      <div class="footer-group-links"><div class="footer-group-links-inner">
+        <a href="/pickleball">Pickleball</a><a href="/padel">Padel</a><a href="/runners">Running</a><a href="/strength">Strength</a><a href="/performance">Performance</a><a href="/hyrox">HyRox</a><a href="/endurance">Endurance</a>
+      </div></div>
+    </div>
+    <div class="footer-group" id="fgLearn">
+      <button class="footer-group-toggle" onclick="this.parentElement.classList.toggle('open')"><span>Learn</span><i class="ph-bold ph-caret-down"></i></button>
+      <div class="footer-group-links"><div class="footer-group-links-inner">
+        <a href="/blog/">All Articles</a><a href="/blog/ozempic-india-guide">Ozempic Guide</a><a href="/blog/finasteride-india-guide">Finasteride</a><a href="/blog/pcos-symptoms-india">PCOS Guide</a><a href="/blog/hba1c-test-guide">HbA1c Test</a><a href="/blog/tretinoin-indian-skin-guide">Tretinoin</a><a href="/blog/hrv-explained">HRV</a><a href="/blog/trt-india">TRT India</a><a href="/blog/semaglutide-india">Semaglutide</a><a href="/blog/modafinil-legal-india">Modafinil</a><a href="/blog/biohacking-india">Biohacking</a><a href="/blog/peptide-therapy-india">Peptides</a>
+      </div></div>
+    </div>
+  </div>
   <div class="logo">arq<span class="dot">.</span></div>
   <div>India's online clinic · © 2026</div>
 </footer>
@@ -826,6 +926,18 @@ document.querySelectorAll('.pager-tab').forEach(tab => {
     host.appendChild(p);
   }
 })();
+
+// ─── Dropdown nav ───
+const dropdownOverlay = document.getElementById('dropdownOverlay');
+const dropdownPanel = document.getElementById('dropdownPanel');
+const dropdownClose = document.getElementById('dropdownClose');
+const hamburger = document.querySelector('.nav-hamburger');
+function openDropdown() { dropdownOverlay.classList.add('open'); dropdownPanel.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeDropdown() { dropdownOverlay.classList.remove('open'); dropdownPanel.classList.remove('open'); document.body.style.overflow = ''; }
+if (hamburger) hamburger.addEventListener('click', openDropdown);
+if (dropdownClose) dropdownClose.addEventListener('click', closeDropdown);
+if (dropdownOverlay) dropdownOverlay.addEventListener('click', closeDropdown);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDropdown(); });
 
 // ─── Nav scroll transition ───
 const nav = document.querySelector('.nav');

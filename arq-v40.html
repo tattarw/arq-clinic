@@ -3,10 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>arq. — Prescription Health, Delivered | India's Online Clinic</title>
+<title>arq. — Prescription Health, Delivered | India's Online</title>
 <meta name="description" content="arq. is India's physician-led health platform. 100+ biomarkers every quarter. A personalized health plan built for you.">
 <meta name="theme-color" content="#0a0806">
 <link rel="canonical" href="https://arq.clinic/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arq.clinic">
+<meta property="og:title" content="arq. — India's Physician-Led Online Health Clinic">
+<meta property="og:description" content="100+ biomarkers. A physician-built protocol. Home blood draws across India. Personalised health plans backed by evidence.">
+<meta property="og:image" content="https://arq.clinic/images/og-image.jpg">
+<meta property="og:site_name" content="arq.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="arq. — India's Physician-Led Online Health Clinic">
+<meta name="twitter:description" content="100+ biomarkers. A physician-built protocol. Home blood draws across India.">
+<meta name="twitter:image" content="https://arq.clinic/images/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/>
@@ -144,10 +157,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .creds-line{font-family:var(--mono);font-size:9px;color:var(--text-30);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:16px}
 .creds-grid{display:flex;justify-content:center;align-items:center;gap:32px;flex-wrap:nowrap;max-width:560px;margin:0 auto}
 .creds-logo{display:flex;align-items:center;justify-content:center;height:38px;flex-shrink:0}
-.creds-logo img{height:100%;width:auto;object-fit:contain;opacity:0.45;filter:grayscale(100%) brightness(0);transition:opacity .4s}
-.creds-logo:hover img{opacity:0.65}
-.creds-logo:nth-child(1) img{opacity:0.6}
-.creds-logo:nth-child(2) img{height:42px}
+.creds-logo img{height:100%;width:auto;object-fit:contain;opacity:0.35;filter:grayscale(100%) brightness(0);transition:opacity .4s}
+.creds-logo:hover img{opacity:0.55}
 
 /* ═══ 3. HOW IT WORKS — 4 numbered cards ═══ */
 .how{padding:40px 20px;background:var(--bg)}
@@ -380,7 +391,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
   .creds{padding:24px 32px 28px}
   .creds-grid{gap:40px}
   .creds-logo{height:44px}
-  .creds-logo:nth-child(2) img{height:46px}
   .how{padding:96px 32px}
   .how-head h2{font-size:52px;max-width:700px}
   .how-head p{font-size:15px}
@@ -455,6 +465,27 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 .footer-group-links a:hover{color:var(--gold)}
 .footer-group-links-inner{padding:0 0 12px}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalBusiness",
+      "name": "arq.",
+      "url": "https://arq.clinic",
+      "description": "India's physician-led online health clinic. Personalised protocols built on 100+ biomarkers.",
+      "medicalSpecialty": ["Preventive Medicine", "Internal Medicine", "Endocrinology"],
+      "areaServed": { "@type": "Country", "name": "India" },
+      "logo": "https://arq.clinic/images/logo-arq.svg"
+    },
+    {
+      "@type": "WebSite",
+      "name": "arq.",
+      "url": "https://arq.clinic"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -548,7 +579,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
       <div class="hero-joined-avs" aria-hidden="true">
         <div class="av">A</div><div class="av">K</div><div class="av">R</div>
       </div>
-      <div class="hero-joined-text"><span class="dot"></span><b>37 Indians</b> started this month</div>
+      <div class="hero-joined-text"><span class="dot"></span><b>37 Indians</b> joined this month</div>
     </div>
   </div>
 
@@ -567,8 +598,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
 <section class="how">
   <div class="how-head">
     <span class="eyebrow-center">How it works</span>
-    <h2>Four steps. One plan.<br><em>Yours.</em></h2>
-    <p>No templates. No guesswork. A protocol built on the specifics of your biology.</p>
+    <h2>Four steps. One protocol.<br><em>Yours.</em></h2>
+    <p>No templates. No guesswork. A plan built on your biology.</p>
   </div>
 
   <div class="how-stack">
@@ -593,11 +624,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
       <div class="how-card-bg"><img src="images/step-2.jpg" alt="An Indian woman reading her arq. dashboard on a tablet in warm afternoon light"></div>
       <div class="how-card-overlay">
         <i class="ph-fill ph-chart-line-up"></i>
-        <div><b>Your data, explained</b><span>108 markers · ranked by what matters</span></div>
+        <div><b>Your data, mapped</b><span>108 markers · ranked by clinical relevance</span></div>
       </div>
       <div class="how-card-text">
-        <h3>Results, in plain English<span class="gd">.</span></h3>
-        <p>Every marker plotted, ranked and written in human language. No confusing lab report.</p>
+        <h3>Your results, decoded<span class="gd">.</span></h3>
+        <p>Every marker plotted, ranked and contextualised against your history, your goals, and the latest evidence.</p>
       </div>
     </article>
 
@@ -769,28 +800,24 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="tab"]:focus-vi
       <div class="doc-photo" style="background:linear-gradient(145deg,#e8dfc8,#b8922e33)"><img src="images/doctor-1.jpg" alt="Dr. A. Sharma" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="doc-photo-initials" style="display:none">AS</div></div>
       <div class="doc-name">Dr. A. Sharma, MD</div>
       <div class="doc-title">Chief Medical Officer<br>Internal medicine · 15 yrs</div>
-      <a href="#" class="doc-link">Learn more <i class="ph-bold ph-arrow-right"></i></a>
     </div>
     <div class="doc-card">
       <div class="doc-logo">Emory<small>Atlanta</small></div>
       <div class="doc-photo" style="background:linear-gradient(145deg,#dce3ec,#3d7ed422)"><img src="images/doctor-2.jpg" alt="Dr. K. Iyer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="doc-photo-initials" style="display:none">KI</div></div>
       <div class="doc-name">Dr. K. Iyer, MD</div>
       <div class="doc-title">Endocrinology lead<br>Hormones · metabolism · 12 yrs</div>
-      <a href="#" class="doc-link">Learn more <i class="ph-bold ph-arrow-right"></i></a>
     </div>
     <div class="doc-card">
       <div class="doc-logo">AIIMS<small>New Delhi</small></div>
       <div class="doc-photo" style="background:linear-gradient(145deg,#dcebd8,#22a85a22)"><img src="images/doctor-3.jpg" alt="Dr. R. Nair" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="doc-photo-initials" style="display:none">RN</div></div>
       <div class="doc-name">Dr. R. Nair, MD</div>
       <div class="doc-title">Preventive cardiology<br>Cardiac markers · 18 yrs</div>
-      <a href="#" class="doc-link">Learn more <i class="ph-bold ph-arrow-right"></i></a>
     </div>
     <div class="doc-card">
       <div class="doc-logo">CMC<small>Vellore</small></div>
       <div class="doc-photo" style="background:linear-gradient(145deg,#eedce0,#c95f6f22)"><img src="images/doctor-4.jpg" alt="Dr. S. Menon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="doc-photo-initials" style="display:none">SM</div></div>
       <div class="doc-name">Dr. S. Menon, MD</div>
       <div class="doc-title">Women's health lead<br>PCOS · hormonal · 10 yrs</div>
-      <a href="#" class="doc-link">Learn more <i class="ph-bold ph-arrow-right"></i></a>
     </div>
   </div>
   </div>
